@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Hub</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f1117;
+    --sidebar-bg: #161b22;
+    --card-bg: #1c2128;
+    --card-hover: #22272e;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #7c5cfc;
+    --accent-light: #9b79ff;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --orange: #f0883e;
+    --red: #f85149;
+    --blue: #58a6ff;
+    --pink: #f778ba;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo-icon {
+    width: 30px;
+    height: 30px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .logo-text {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .sidebar-nav {
+    padding: 12px 8px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 14px;
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+
+  .nav-item:hover { background: var(--card-bg); color: var(--text); }
+  .nav-item.active { background: rgba(124,92,252,0.15); color: var(--accent-light); }
+  .nav-item .icon { font-size: 16px; width: 20px; text-align: center; }
+
+  .sidebar-section {
+    padding: 16px 16px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
+  .brand-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: all 0.15s;
+  }
+
+  .brand-item:hover { background: var(--card-bg); color: var(--text); }
+  .brand-item.active { color: var(--text); font-weight: 500; }
+
+  .brand-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  .brand-count {
+    font-size: 11px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1px 7px;
+    color: var(--text-muted);
+  }
+
+  /* MAIN */
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    gap: 8px;
+    background: var(--bg);
+    overflow-x: auto;
+    flex-shrink: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .topbar::-webkit-scrollbar { display: none; }
+
+  .demo-badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--yellow);
+    background: rgba(210,153,34,0.1);
+    border: 1px solid rgba(210,153,34,0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+  }
+
+  .demo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--yellow); }
+
+  .btn-new {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-new:hover { background: var(--accent-light); }
+
+  .search-box {
+    flex: 1;
+    max-width: 360px;
+    position: relative;
+  }
+
+  .search-box input {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 12px 7px 34px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+  }
+
+  .search-box input::placeholder { color: var(--text-muted); }
+  .search-box input:focus { border-color: var(--accent); }
+  .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 14px; }
+
+  .content-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+  }
+
+  .page-header {
+    margin-bottom: 20px;
+  }
+
+  .page-title { font-size: 22px; font-weight: 600; }
+  .page-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+  /* STAT CARDS */
+  .stat-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    min-width: 100px;
+  }
+
+  .stat-card:hover { border-color: var(--accent); }
+  .stat-card.active { border-color: var(--accent); background: rgba(124,92,252,0.08); }
+
+  .stat-num { font-size: 26px; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+  .stat-icon { font-size: 20px; }
+
+  /* KANBAN */
+  .kanban {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .kanban-col {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .col-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .col-count {
+    background: var(--border);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .col-cards { padding: 12px; display: flex; flex-direction: column; gap: 10px; min-height: 60px; }
+
+  /* CONTENT CARD */
+  .content-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .content-card:hover { border-color: var(--accent); background: var(--card-hover); }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .brand-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+
+  .priority-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  .priority-high { background: rgba(248,81,73,0.15); color: var(--red); }
+  .priority-medium { background: rgba(240,136,62,0.15); color: var(--orange); }
+  .priority-low { background: rgba(63,185,80,0.15); color: var(--green); }
+
+  .content-type {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .card-title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .platform-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+
+  .platform-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .card-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+
+  .modal {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-title { font-size: 16px; font-weight: 600; }
+
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .modal-close:hover { background: var(--card-bg); color: var(--text); }
+
+  .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 12px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .form-input, .form-select, .form-textarea {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-select option { background: var(--card-bg); }
+  .form-textarea { resize: vertical; min-height: 80px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .platform-check-group { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .platform-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .platform-check.checked { border-color: var(--accent); background: rgba(124,92,252,0.15); color: var(--accent-light); }
+  .platform-check input { display: none; }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn-secondary {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover { border-color: var(--accent); }
+  .btn-primary {
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--accent-light); }
+
+  /* DETAIL MODAL */
+  .status-select-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .status-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text-muted);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .status-btn:hover, .status-btn.active { border-color: var(--accent); color: var(--accent-light); background: rgba(124,92,252,0.1); }
+
+  .delete-btn {
+    background: rgba(248,81,73,0.1);
+    border: 1px solid rgba(248,81,73,0.3);
+    color: var(--red);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .delete-btn:hover { background: rgba(248,81,73,0.2); }
+
+  .caption-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: var(--text-muted);
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .empty-col {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    padding: 20px;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: block;
+    border: 1px solid var(--border);
+  }
+
+  .card-image-placeholder {
+    width: 100%;
+    height: 100px;
+    border: 2px dashed var(--border);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+
+  .card-image-placeholder:hover { border-color: var(--accent); color: var(--accent-light); }
+
+  .detail-image {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+
+  .img-upload-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .img-upload-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .img-upload-btn:hover { border-color: var(--accent); color: var(--accent-light); }
+
+  /* POST PREVIEW */
+  .preview-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 20px;
+  }
+
+  .preview-wrap {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .preview-phone {
+    width: 340px;
+    min-width: 340px;
+    background: #000;
+    border-radius: 36px;
+    border: 8px solid #1a1a1a;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0,0,0,0.6);
+  }
+
+  .preview-topbar {
+    background: #000;
+    padding: 10px 16px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .preview-handle { font-size: 13px; font-weight: 700; color: #fff; }
+  .preview-more { color: #fff; font-size: 18px; letter-spacing: 2px; }
+
+  .preview-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    background: #111;
+  }
+
+  .preview-img-empty {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-size: 48px;
+  }
+
+  .preview-actions {
+    background: #000;
+    padding: 10px 14px 4px;
+    display: flex;
+    gap: 14px;
+  }
+
+  .preview-action { font-size: 22px; cursor: default; }
+
+  .preview-caption-box {
+    background: #000;
+    padding: 4px 14px 16px;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+
+  .preview-caption-text {
+    font-size: 12px;
+    color: #e0e0e0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+
+  .preview-caption-text strong { color: #fff; }
+
+  .preview-hashtags {
+    font-size: 11px;
+    color: #4a9eff;
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+
+  .preview-platform-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .preview-tab {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .preview-tab.active { border-color: var(--accent); color: var(--accent-light); background: rgba(124,92,252,0.1); }
+  .preview-tab:hover { border-color: var(--accent); }
+
+  .preview-close-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  .preview-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 12px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .preview-meta div { margin-bottom: 4px; }
+
+  .img-remove-btn {
+    background: rgba(248,81,73,0.1);
+    border: 1px solid rgba(248,81,73,0.2);
+    color: var(--red);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 900px) {
+    .kanban { grid-template-columns: 1fr; }
+    .sidebar { width: 200px; min-width: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">⚡</div>
+    <span class="logo-text">Content Hub</span>
+  </div>
+
+  <div class="sidebar-nav">
+    <div class="nav-item active" onclick="selectBrand('all')">
+      <span class="icon">▦</span> Dashboard
+    </div>
+    <div class="nav-item" onclick="openModal()">
+      <span class="icon">＋</span> New Submission
+    </div>
+  </div>
+
+  <div class="sidebar-section">Brands</div>
+  <div id="brand-list" style="padding: 0 8px 16px;"></div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="demo-badge">
+      <div class="demo-dot"></div>
+      Local mode — data saved in browser
+    </div>
+    <div class="search-box">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="search-input" placeholder="Search content..." oninput="renderBoard()">
+    </div>
+    <button class="btn-new" onclick="openModal()">
+      <span>＋</span> New Submission
+    </button>
+    <button class="btn-secondary" onclick="loadAllPosts()" style="font-size:12px;padding:7px 12px;" title="Reset board with full 30-day SNG calendar">↺ Load All Posts</button>
+    <button class="btn-secondary" onclick="exportPosts()" style="font-size:12px;padding:7px 12px;background:#1a2a1a;border-color:#22c55e;color:#22c55e;" title="Export all posts to JSON file for phone sync">⬇ Export</button>
+    <label style="cursor:pointer;">
+      <button class="btn-secondary" onclick="this.parentElement.querySelector('input').click()" style="font-size:12px;padding:7px 12px;background:#1a1a2a;border-color:#818cf8;color:#818cf8;" title="Import posts from JSON file">⬆ Import</button>
+      <input type="file" accept=".json" onchange="importPosts(this)" style="display:none;">
+    </label>
+    <button class="btn-secondary" onclick="sendDailyBrief()" style="font-size:12px;padding:7px 12px;background:#1a1a2a;border-color:#f59e0b;color:#f59e0b;" title="Send today's post + comment targets to your phone">📲 Send Brief</button>
+    <button class="btn-secondary" onclick="openAlertSettings()" style="font-size:12px;padding:7px 12px;background:#1a1a2a;border-color:#64748b;color:#64748b;" title="Alert settings">🔔</button>
+    <button class="btn-secondary" onclick="openComments()" style="font-size:12px;padding:7px 12px;background:#1a2a1a;border-color:#22c55e;color:#22c55e;" title="Comment templates + daily targets">💬 Comments</button>
+    <button class="btn-secondary" onclick="openCommandCenter()" style="font-size:12px;padding:7px 12px;background:#2a1a1a;border-color:#ef4444;color:#ef4444;" title="Command Center — contacts, emails, action items">⚡ Command</button>
+    <button class="btn-secondary" onclick="openAgenda()" style="font-size:12px;padding:7px 12px;background:#1a1a2a;border-color:#818cf8;color:#818cf8;" title="Agenda — tasks, deadlines, calendar">📅 Agenda</button>
+  </div>
+
+  <!-- Alert Settings Modal -->
+  <div id="alert-settings-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;">
+    <div style="background:#1a1a2a;border:1px solid #334155;border-radius:12px;padding:28px;max-width:420px;width:90%;position:relative;">
+      <h3 style="margin:0 0 6px;color:#f1f5f9;font-size:16px;">📲 Phone Alert Setup</h3>
+      <p style="margin:0 0 20px;color:#94a3b8;font-size:13px;line-height:1.6;">Get a push notification on your phone every time a post needs your approval or it's time to comment. Free, no account needed.</p>
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px;margin-bottom:18px;font-size:12px;color:#94a3b8;line-height:1.7;">
+        <strong style="color:#f59e0b;">Step 1:</strong> Install the free <strong>ntfy</strong> app on your phone<br>
+        &nbsp;&nbsp;→ Search "ntfy" on App Store or Google Play<br>
+        <strong style="color:#f59e0b;">Step 2:</strong> Open ntfy → tap ＋ → Subscribe to topic:<br>
+        <div style="margin:6px 0;padding:8px 12px;background:#1e293b;border-radius:6px;font-family:monospace;color:#22c55e;font-size:13px;letter-spacing:0.05em;" id="topic-display">sng-cycles-bryan</div>
+        <strong style="color:#f59e0b;">Step 3:</strong> Enter your topic name below and save
+      </div>
+      <label style="display:block;margin-bottom:6px;font-size:12px;color:#94a3b8;">Your ntfy topic (make it unique)</label>
+      <input id="ntfy-topic-input" type="text" placeholder="e.g. sng-cycles-bryan" style="width:100%;box-sizing:border-box;padding:10px 12px;background:#0f172a;border:1px solid #334155;border-radius:7px;color:#f1f5f9;font-size:14px;margin-bottom:16px;" oninput="document.getElementById('topic-display').textContent=this.value||'sng-cycles-bryan'">
+      <div style="display:flex;gap:10px;">
+        <button onclick="saveAlertSettings()" style="flex:1;padding:10px;background:#f59e0b;color:#000;border:none;border-radius:7px;font-weight:700;font-size:13px;cursor:pointer;">Save &amp; Test Alert</button>
+        <button onclick="document.getElementById('alert-settings-overlay').style.display='none'" style="padding:10px 18px;background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:7px;font-size:13px;cursor:pointer;">Cancel</button>
+      </div>
+      <p style="margin:14px 0 0;font-size:11px;color:#475569;text-align:center;">Alerts fire when: post moves to Awaiting Approval · Daily Brief is sent · Comment targets are queued</p>
+    </div>
+  </div>
+
+  <!-- Command Center Modal -->
+  <div id="command-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:1000;overflow-y:auto;padding:20px;box-sizing:border-box;">
+    <div style="background:#1a1a2a;border:1px solid #334155;border-radius:12px;padding:24px;max-width:640px;margin:0 auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+        <h3 style="margin:0;color:#ef4444;font-size:18px;font-weight:900;letter-spacing:0.05em;">⚡ SNG COMMAND CENTER</h3>
+        <button onclick="document.getElementById('command-overlay').style.display='none'" style="background:none;border:1px solid #334155;color:#94a3b8;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:13px;">✕ Close</button>
+      </div>
+
+      <!-- URGENT ACTION ITEMS -->
+      <div style="margin-bottom:24px;">
+        <div style="font-size:11px;color:#ef4444;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">🔥 URGENT — DO THESE NOW</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="background:#2a0a0a;border:1px solid #7f1d1d;border-radius:8px;padding:10px 14px;font-size:12px;color:#fca5a5;">💊 File provisional patent — $130 at USPTO Patent Center — THIS WEEK</div>
+          <div style="background:#2a0a0a;border:1px solid #7f1d1d;border-radius:8px;padding:10px 14px;font-size:12px;color:#fca5a5;">📨 Send Greenline demand letter — add today's date + attach video evidence</div>
+          <div style="background:#1a1a0a;border:1px solid #713f12;border-radius:8px;padding:10px 14px;font-size:12px;color:#fde68a;">📱 Create social accounts: TikTok, Instagram, YouTube — @sngcycles</div>
+          <div style="background:#1a1a0a;border:1px solid #713f12;border-radius:8px;padding:10px 14px;font-size:12px;color:#fde68a;">🌐 Deploy updated app to Netlify — sng-content-hub.zip is in Downloads</div>
+          <div style="background:#1a1a0a;border:1px solid #713f12;border-radius:8px;padding:10px 14px;font-size:12px;color:#fde68a;">📧 Send Fernando email — add his email to fernando-update.md and send</div>
+          <div style="background:#0a1a0a;border:1px solid #14532d;border-radius:8px;padding:10px 14px;font-size:12px;color:#86efac;">📨 Send 8 sponsor outreach emails — see sponsor-outreach.md</div>
+          <div style="background:#0a1a0a;border:1px solid #14532d;border-radius:8px;padding:10px 14px;font-size:12px;color:#86efac;">⏳ Await Dino response — DO NOT pitch business until he replies to check-in</div>
+          <div style="background:#0a1a0a;border:1px solid #14532d;border-radius:8px;padding:10px 14px;font-size:12px;color:#86efac;">⏳ Await GritShift response on BAC Tools / controller recovery</div>
+        </div>
+      </div>
+
+      <!-- TEAM -->
+      <div style="margin-bottom:24px;">
+        <div style="font-size:11px;color:#f59e0b;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">👥 TEAM</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:12px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#f1f5f9;">Bryan Jaworski — Founder</div>
+            <div style="font-size:11px;color:#94a3b8;margin-top:3px;">sharknotgoldfish@gmail.com · 786-761-2950 · 173 Saratoga Blvd W, Royal Palm Beach FL 33411</div>
+          </div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:12px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#f1f5f9;">Fernando — Lead Mechanic / Partner</div>
+            <div style="font-size:11px;color:#94a3b8;margin-top:3px;">KTM factory mechanic · Riva Motorsports Miami/Fort Lauderdale · KTM concept + race bikes</div>
+            <div style="font-size:11px;color:#f59e0b;margin-top:3px;">Email: [ADD FERNANDO'S EMAIL] · Key for: WP contacts, controller recovery, swingarm fab, Riva dealer relationship</div>
+          </div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:12px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#f1f5f9;">Dino — Investor (Personal Friend)</div>
+            <div style="font-size:11px;color:#94a3b8;margin-top:3px;">$100M+ net worth · Will be Unit 001 mechanic · Human check-in sent May 31</div>
+            <div style="font-size:11px;color:#ef4444;margin-top:3px;">⚠️ DO NOT pitch business until he responds to the check-in text</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMAIL DRAFTS -->
+      <div style="margin-bottom:24px;">
+        <div style="font-size:11px;color:#f59e0b;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">📧 EMAIL DRAFTS READY TO SEND</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;">
+            <div style="font-size:12px;font-weight:700;color:#22c55e;">✅ sponsor-outreach.md</div>
+            <div style="font-size:11px;color:#94a3b8;margin-top:2px;">8 sponsor emails: Flow Wheels · Lewis Brakes · Sotion · WP Suspension · Warp 9 · Chi Battery · Powerful Lithium · Charged Cycle Works</div>
+          </div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;">
+            <div style="font-size:12px;font-weight:700;color:#22c55e;">✅ outreach-campaign.md</div>
+            <div style="font-size:11px;color:#94a3b8;margin-top:2px;">50 cold outreach targets: dealers · clubs · media · events · Ducati/KTM FL dealers</div>
+          </div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;">
+            <div style="font-size:12px;font-weight:700;color:#ef4444;">🔥 greenline-demand-letter.md</div>
+            <div style="font-size:11px;color:#94a3b8;margin-top:2px;">Demand letter for bricked BAC8000 — add date + attach video evidence — SEND NOW</div>
+          </div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;">
+            <div style="font-size:12px;font-weight:700;color:#f59e0b;">⏳ fernando-update.md</div>
+            <div style="font-size:11px;color:#94a3b8;margin-top:2px;">Full May 31 update to Fernando — need his email to send</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEY CONTACTS -->
+      <div style="margin-bottom:24px;">
+        <div style="font-size:11px;color:#f59e0b;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">📞 KEY RELATIONSHIPS</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;font-size:11px;color:#94a3b8;"><strong style="color:#f1f5f9;">GritShift</strong> — Electric moto shop, FL (other end of state). Text sent May 31 re: BAC Tools. Prefer EBMX over BAC8000.</div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;font-size:11px;color:#94a3b8;"><strong style="color:#f1f5f9;">ASI (Accelerated Systems Inc.)</strong> — BAC8000 manufacturer. Bryan is approved dealer. Remote tunes = $75–120/25 min income. BAC Tools = $499.</div>
+          <div style="background:#2a0a0a;border:1px solid #7f1d1d;border-radius:8px;padding:10px 14px;font-size:11px;color:#fca5a5;"><strong style="color:#f1f5f9;">Greenline Engineering</strong> — IN DISPUTE. Soft-bricked BAC8000 on April 4. $1,100 owed. Demand letter ready.</div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;font-size:11px;color:#94a3b8;"><strong style="color:#f1f5f9;">Riva Motorsports</strong> — Miami/Fort Lauderdale. On dealer outreach list. Fernando works here — use his relationship, skip cold email.</div>
+        </div>
+      </div>
+
+      <!-- COMPETITIVE -->
+      <div>
+        <div style="font-size:11px;color:#f59e0b;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">🏁 COMPETITIVE POSITION</div>
+        <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px;font-size:12px;color:#cbd5e1;line-height:1.8;">
+          <strong style="color:#ef4444;">Stark VARG SM</strong> — "World's most powerful electric supermoto" — 80hp · 275 lbs · $12,900<br>
+          <strong style="color:#22c55e;">SNG 520E Platinum</strong> — 100hp · 202 lbs · $30,000 · 1 of 100<br>
+          <strong style="color:#f59e0b;">Power-to-weight advantage: 70% better than Stark</strong><br>
+          <span style="color:#64748b;">Gas tank cover · clamshell system · Italian UFO plastics · 160mm extension — none of it exists anywhere else online.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Agenda Modal -->
+  <div id="agenda-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:1000;overflow-y:auto;padding:20px;box-sizing:border-box;">
+    <div style="background:#1a1a2a;border:1px solid #334155;border-radius:12px;padding:24px;max-width:600px;margin:0 auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <h3 style="margin:0;color:#818cf8;font-size:18px;font-weight:900;">📅 SNG AGENDA</h3>
+        <button onclick="document.getElementById('agenda-overlay').style.display='none'" style="background:none;border:1px solid #334155;color:#94a3b8;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:13px;">✕ Close</button>
+      </div>
+      <p style="color:#475569;font-size:11px;margin:0 0 20px;">Tap any task to mark done. Use "Add to Calendar" to export to Google/Outlook.</p>
+
+      <!-- THIS WEEK -->
+      <div style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#ef4444;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">🔥 THIS WEEK — DO NOT SKIP</div>
+        <div id="agenda-urgent" style="display:flex;flex-direction:column;gap:6px;"></div>
+      </div>
+
+      <!-- HIGH PRIORITY -->
+      <div style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#f59e0b;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">⚡ HIGH PRIORITY</div>
+        <div id="agenda-high" style="display:flex;flex-direction:column;gap:6px;"></div>
+      </div>
+
+      <!-- ONGOING -->
+      <div style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#22c55e;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">📋 ONGOING</div>
+        <div id="agenda-ongoing" style="display:flex;flex-direction:column;gap:6px;"></div>
+      </div>
+
+      <!-- CALENDLY -->
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;margin-bottom:16px;">
+        <div style="font-size:11px;color:#818cf8;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">🔗 CALENDLY — Your Booking Link</div>
+        <input id="calendly-input" type="text" placeholder="Paste your Calendly URL here (e.g. calendly.com/sngcycles)" style="width:100%;box-sizing:border-box;padding:10px 12px;background:#1e293b;border:1px solid #334155;border-radius:7px;color:#f1f5f9;font-size:13px;margin-bottom:10px;" oninput="saveCalendly(this.value)">
+        <div style="font-size:11px;color:#475569;line-height:1.6;">Once you create a free Calendly account, paste your link above. It will auto-appear in your sponsor emails and investor brief so people can book calls with you directly.</div>
+      </div>
+
+      <!-- EXPORT -->
+      <button onclick="exportAgendaICS()" style="width:100%;padding:12px;background:#1e293b;border:1px solid #818cf8;border-radius:8px;color:#818cf8;font-size:13px;font-weight:700;cursor:pointer;">📥 Export All Tasks → Google Calendar / Outlook (.ics)</button>
+    </div>
+  </div>
+
+  <!-- Comments Modal -->
+  <div id="comments-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;overflow-y:auto;padding:20px;box-sizing:border-box;">
+    <div style="background:#1a1a2a;border:1px solid #334155;border-radius:12px;padding:24px;max-width:600px;margin:0 auto;position:relative;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <h3 style="margin:0;color:#f1f5f9;font-size:16px;">💬 Comment Playbook</h3>
+        <button onclick="document.getElementById('comments-overlay').style.display='none'" style="background:none;border:1px solid #334155;color:#94a3b8;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:13px;">✕ Close</button>
+      </div>
+
+      <div style="margin-bottom:24px;">
+        <div style="font-size:11px;color:#f59e0b;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">TODAY'S TARGETS</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;font-size:12px;color:#cbd5e1;">🎯 <strong style="color:#f1f5f9;">TikTok</strong> — Comment on latest @surron_official build video</div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;font-size:12px;color:#cbd5e1;">🎯 <strong style="color:#f1f5f9;">TikTok</strong> — Comment on top post in #supermoto today</div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;font-size:12px;color:#cbd5e1;">🎯 <strong style="color:#f1f5f9;">Instagram</strong> — Comment on latest @ktm_official supermoto post</div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;font-size:12px;color:#cbd5e1;">🎯 <strong style="color:#f1f5f9;">Instagram</strong> — Comment on latest @zeromotorcycles post</div>
+          <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:10px 14px;font-size:12px;color:#cbd5e1;">🎯 <strong style="color:#f1f5f9;">Reddit</strong> — Engage in r/ElectricMotorcycles — find a "what should I buy" thread</div>
+        </div>
+      </div>
+
+      <div style="font-size:11px;color:#f59e0b;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">COMMENT TEMPLATES — TAP TO COPY</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px;" onclick="copyTemplate(this)">
+          <div style="font-size:10px;color:#f59e0b;font-weight:700;margin-bottom:6px;">ELECTRIC PERFORMANCE — use on first-ride / acceleration clips</div>
+          <div style="font-size:12px;color:#cbd5e1;line-height:1.6;">That launch is exactly what gas riders don't expect. Instant torque at zero RPM changes what 'fast' means on a supermoto. The handling conversation always comes after — once you ride it you stop caring what's powering it.</div>
+          <div style="font-size:10px;color:#475569;margin-top:6px;">tap to copy</div>
+        </div>
+
+        <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px;" onclick="copyTemplate(this)">
+          <div style="font-size:10px;color:#f59e0b;font-weight:700;margin-bottom:6px;">BUILD QUALITY — use on custom build reveals / small brand spotlights</div>
+          <div style="font-size:12px;color:#cbd5e1;line-height:1.6;">The detail work on that frame is serious. You can tell someone spent time with that — the kind of thing you lose when production scales too fast. Small-batch building is the only way to keep that level of craft.</div>
+          <div style="font-size:10px;color:#475569;margin-top:6px;">tap to copy</div>
+        </div>
+
+        <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px;" onclick="copyTemplate(this)">
+          <div style="font-size:10px;color:#f59e0b;font-weight:700;margin-bottom:6px;">TECHNICAL — use on spec debates / "is it fast enough" threads</div>
+          <div style="font-size:12px;color:#cbd5e1;line-height:1.6;">Real question — what's the weight distribution with the battery pack? On a supermoto the balance point matters as much as the power number. Curious how it feels through tight corners vs the power delivery on the straights.</div>
+          <div style="font-size:10px;color:#475569;margin-top:6px;">tap to copy</div>
+        </div>
+
+        <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px;" onclick="copyTemplate(this)">
+          <div style="font-size:10px;color:#f59e0b;font-weight:700;margin-bottom:6px;">LIFESTYLE — use on sunrise/sunset rips / garage life content</div>
+          <div style="font-size:12px;color:#cbd5e1;line-height:1.6;">This is the version of riding I want every morning. No warmup, no fumes in the garage, just twist and go. Gas bikes are fun but the ritual of electric is something else.</div>
+          <div style="font-size:10px;color:#475569;margin-top:6px;">tap to copy</div>
+        </div>
+
+        <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px;" onclick="copyTemplate(this)">
+          <div style="font-size:10px;color:#f59e0b;font-weight:700;margin-bottom:6px;">SUR RON UPGRADE PATH — use on maxed-out builds / "what's next" threads</div>
+          <div style="font-size:12px;color:#cbd5e1;line-height:1.6;">You've already done the work — that Sur Ron is worth more in mods than some complete bikes. At some point the question becomes whether you keep stacking upgrades on the platform or step into something built from the ground up for that performance level. Genuinely curious where you go next.</div>
+          <div style="font-size:10px;color:#475569;margin-top:6px;">tap to copy</div>
+        </div>
+
+        <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px;" onclick="copyTemplate(this)">
+          <div style="font-size:10px;color:#f59e0b;font-weight:700;margin-bottom:6px;">DUCATI/KTM MIGRATION — use on Hypermotard / Duke content</div>
+          <div style="font-size:12px;color:#cbd5e1;line-height:1.6;">The Hypermotard's chassis dynamics are hard to argue with — that's still the benchmark for supermoto feel. The question I keep coming back to is what that geometry and weight balance looks like with an electric drivetrain. The torque curve would be completely different. Someone's going to get that right eventually.</div>
+          <div style="font-size:10px;color:#475569;margin-top:6px;">tap to copy</div>
+        </div>
+
+        <div style="background:#0f172a;border:2px solid #f59e0b;border-radius:8px;padding:14px;" onclick="copyTemplate(this)">
+          <div style="font-size:10px;color:#f59e0b;font-weight:700;margin-bottom:6px;">⚠️ SNG NAME DROP — USE SPARINGLY — only when someone directly asks "who builds this"</div>
+          <div style="font-size:12px;color:#cbd5e1;line-height:1.6;">There's a small builder in Florida called SNG Cycles doing exactly this — Shark Not Goldfish, hand-built electric supermotos. Not mass production, not a kit bike. I've been watching their build process and the attention to detail is real. Worth a look if you're serious about the category: @SNGCycles</div>
+          <div style="font-size:10px;color:#475569;margin-top:6px;">tap to copy</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:20px;padding:12px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;">
+        <div style="font-size:11px;color:#f59e0b;font-weight:700;margin-bottom:6px;">HASHTAGS — TAP TO COPY</div>
+        <div style="font-size:11px;color:#94a3b8;line-height:1.8;" onclick="navigator.clipboard.writeText(this.innerText)" style="cursor:pointer;">
+          #ElectricMotorcycle #Supermoto #NoGasHaulsAss #ElectricMoto #SupermotoLife #SurRon #StarkVarg #ZeroMotorcycles #EmotoNation #CustomElectricMoto #ElectricMotoBuilder #HooliganMoto #SupermotoAddict #MotoLife #RideElectric #ElectricOrNothing #MotoCustom #FutureOfMoto #BikeLife #GarageLife #SNGCycles #SharkNotGoldfish #FloridaBuilt #LimitedRun #ElectricSupermoto
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="content-area">
+    <div class="page-header">
+      <div class="page-title" id="page-title">All Brands</div>
+      <div class="page-subtitle" id="page-subtitle">Loading...</div>
+    </div>
+
+    <div class="stat-row" id="stat-row"></div>
+    <div class="kanban" id="kanban"></div>
+  </div>
+</div>
+
+<!-- NEW SUBMISSION MODAL -->
+<div class="modal-overlay" id="new-modal" style="display:none;" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <span class="modal-title">New Content Submission</span>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Title / Post Concept</label>
+        <input class="form-input" id="f-title" placeholder="What is this post about?" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Brand</label>
+          <select class="form-select" id="f-brand">
+            <option value="SNG Cycles">SNG Cycles</option>
+            <option value="Bryan Personal">Bryan Personal</option>
+            <option value="SSDS">SSDS</option>
+            <option value="CCM">CCM</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Content Type</label>
+          <select class="form-select" id="f-type">
+            <option value="Short-form Video">Short-form Video</option>
+            <option value="Static Image">Static Image</option>
+            <option value="Carousel">Carousel</option>
+            <option value="Long-form Video">Long-form Video</option>
+            <option value="Story">Story</option>
+            <option value="Reel">Reel</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Priority</label>
+          <select class="form-select" id="f-priority">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Target Date</label>
+          <input class="form-input" id="f-date" type="date" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Platforms</label>
+        <div class="platform-check-group" id="platform-checks">
+          <label class="platform-check"><input type="checkbox" value="TikTok" /> 🎵 TikTok</label>
+          <label class="platform-check"><input type="checkbox" value="Instagram" /> 📷 Instagram</label>
+          <label class="platform-check"><input type="checkbox" value="YouTube" /> ▶️ YouTube</label>
+          <label class="platform-check"><input type="checkbox" value="Twitter / X" /> 𝕏 Twitter / X</label>
+          <label class="platform-check"><input type="checkbox" value="Facebook" /> 📘 Facebook</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Caption / Script (optional)</label>
+        <textarea class="form-textarea" id="f-caption" placeholder="Paste the caption or script here..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes (optional)</label>
+        <textarea class="form-textarea" id="f-notes" placeholder="Hashtags, hooks, music ideas, collab tags..." style="min-height:60px;"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn-primary" onclick="submitNew()">Add to Board</button>
+    </div>
+  </div>
+</div>
+
+<!-- POST PREVIEW OVERLAY -->
+<div class="preview-overlay" id="preview-overlay" style="display:none;" onclick="closePreview(event)">
+  <div class="preview-wrap" onclick="event.stopPropagation()">
+    <div class="preview-phone">
+      <div class="preview-topbar">
+        <span class="preview-handle" id="prev-handle">@sngcycles</span>
+        <span class="preview-more">•••</span>
+      </div>
+      <div id="prev-img-area"></div>
+      <div class="preview-actions">
+        <span class="preview-action">🤍</span>
+        <span class="preview-action">💬</span>
+        <span class="preview-action">📤</span>
+      </div>
+      <div class="preview-caption-box">
+        <div class="preview-caption-text" id="prev-caption"></div>
+        <div class="preview-hashtags" id="prev-hashtags"></div>
+      </div>
+    </div>
+    <div class="preview-platform-tabs">
+      <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Preview as</div>
+      <div class="preview-tab active" onclick="setPreviewPlatform('Instagram',this)">📷 Instagram</div>
+      <div class="preview-tab" onclick="setPreviewPlatform('TikTok',this)">🎵 TikTok</div>
+      <div class="preview-tab" onclick="setPreviewPlatform('Facebook',this)">📘 Facebook</div>
+      <div class="preview-meta" id="prev-meta"></div>
+      <button class="preview-close-btn" onclick="closePreview()">✕ Close Preview</button>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detail-modal" style="display:none;" onclick="closeDetail(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <span class="modal-title" id="d-title">Post Detail</span>
+      <button class="modal-close" onclick="closeDetail()">×</button>
+    </div>
+    <div class="modal-body" id="d-body"></div>
+    <div class="modal-footer">
+      <button class="delete-btn" id="d-delete">Delete</button>
+      <button class="btn-secondary" onclick="closeDetail()">Close</button>
+      <button class="btn-secondary" id="d-preview" style="border-color:var(--accent);color:var(--accent-light)">👁 Preview Post</button>
+      <button class="btn-primary" id="d-save">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Brand config ───────────────────────────────────────────────────────────────
+const BRANDS = [
+  { name: 'SNG Cycles',     color: '#7c5cfc', dot: '#7c5cfc' },
+  { name: 'Emails',         color: '#ef4444', dot: '#ef4444' },
+  { name: 'Bryan Personal', color: '#58a6ff', dot: '#58a6ff' },
+  { name: 'SSDS',           color: '#3fb950', dot: '#3fb950' },
+  { name: 'CCM',            color: '#f0883e', dot: '#f0883e' },
+];
+
+const STATUSES = ['Submitted','Editing','Awaiting Approval','Scheduled','Posted'];
+const STATUS_ICONS = { Submitted:'📤', Editing:'✂️', 'Awaiting Approval':'⏳', Scheduled:'📅', Posted:'✅' };
+
+const PLATFORM_ICONS = { TikTok:'🎵', Instagram:'📷', YouTube:'▶️', 'Twitter / X':'𝕏', Facebook:'📘' };
+
+// ── Storage ───────────────────────────────────────────────────────────────────
+function loadItems() {
+  try { return JSON.parse(localStorage.getItem('ch_items') || '[]'); } catch { return []; }
+}
+function saveItems(items) {
+  localStorage.setItem('ch_items', JSON.stringify(items));
+}
+
+// Images stored separately by post ID to keep main data clean
+function loadImage(id) {
+  try { return localStorage.getItem('ch_img_' + id) || null; } catch { return null; }
+}
+function saveImage(id, dataUrl) {
+  try {
+    if (dataUrl) localStorage.setItem('ch_img_' + id, dataUrl);
+    else localStorage.removeItem('ch_img_' + id);
+  } catch(e) { alert('Image too large to store. Try a smaller file (under 1MB).'); }
+}
+function deleteImage(id) { try { localStorage.removeItem('ch_img_' + id); } catch {} }
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let currentBrand = 'all';
+let currentStatus = 'all';
+let editId = null;
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function brandColor(name) {
+  const b = BRANDS.find(x => x.name === name);
+  return b ? b.color : '#8b949e';
+}
+
+function fmtDate(d) {
+  if (!d) return '';
+  const dt = new Date(d + 'T00:00:00');
+  return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function genId() { return Date.now().toString(36) + Math.random().toString(36).substr(2,5); }
+
+// ── Render ─────────────────────────────────────────────────────────────────────
+function renderSidebar() {
+  const items = loadItems();
+  const list = document.getElementById('brand-list');
+  list.innerHTML = BRANDS.map(b => {
+    const count = items.filter(i => i.brand === b.name).length;
+    const active = currentBrand === b.name;
+    return `<div class="brand-item ${active ? 'active' : ''}" onclick="selectBrand('${b.name}')">
+      <div style="display:flex;align-items:center">
+        <div class="brand-dot" style="background:${b.dot}; margin-right:8px;"></div>
+        ${b.name}
+      </div>
+      <span class="brand-count">${count}</span>
+    </div>`;
+  }).join('');
+}
+
+function renderBoard() {
+  const items = loadItems();
+  const q = document.getElementById('search-input').value.toLowerCase();
+
+  let filtered = items.filter(i => {
+    if (currentBrand !== 'all' && i.brand !== currentBrand) return false;
+    if (currentStatus !== 'all' && i.status !== currentStatus) return false;
+    if (q && !i.title.toLowerCase().includes(q) && !i.brand.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  // Page header
+  document.getElementById('page-title').textContent = currentBrand === 'all' ? 'All Brands' : currentBrand;
+  document.getElementById('page-subtitle').textContent = `${filtered.length} piece${filtered.length !== 1 ? 's' : ''} of content`;
+
+  // Stats
+  const statRow = document.getElementById('stat-row');
+  const totalItems = currentBrand === 'all' ? items : items.filter(i => i.brand === currentBrand);
+  const statData = [
+    { label: 'Total', key: 'all', icon: '', num: totalItems.length },
+    ...STATUSES.map(s => ({
+      label: s, key: s, icon: STATUS_ICONS[s],
+      num: totalItems.filter(i => i.status === s).length
+    }))
+  ];
+
+  statRow.innerHTML = statData.map(s => `
+    <div class="stat-card ${currentStatus === s.key ? 'active' : ''}" onclick="filterStatus('${s.key}')">
+      ${s.icon ? `<span class="stat-icon">${s.icon}</span>` : ''}
+      <div>
+        <div class="stat-num">${s.num}</div>
+        <div class="stat-label">${s.label}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // Kanban columns (show 3 per row: first 3, last 2 span)
+  const kanban = document.getElementById('kanban');
+  kanban.innerHTML = STATUSES.map(status => {
+    const cards = filtered.filter(i => i.status === status);
+    return `
+      <div class="kanban-col">
+        <div class="col-header">
+          <span>${STATUS_ICONS[status]} ${status}</span>
+          <span class="col-count">${cards.length}</span>
+        </div>
+        <div class="col-cards">
+          ${cards.length ? cards.map(renderCard).join('') : '<div class="empty-col">No content here</div>'}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderCard(item) {
+  const color = brandColor(item.brand);
+  const platforms = (item.platforms || []).map(p =>
+    `<span class="platform-tag">${PLATFORM_ICONS[p] || ''} ${p}</span>`
+  ).join('');
+  const priorityClass = `priority-${(item.priority || 'medium').toLowerCase()}`;
+
+  const img = loadImage(item.id) || (item.imageUrl ? item.imageUrl : null);
+  const imgHtml = img
+    ? `<img class="card-image" src="${img}" alt="post image" onclick="event.stopPropagation();openDetail('${item.id}')">`
+    : `<div class="card-image-placeholder" onclick="event.stopPropagation();triggerImageUpload('${item.id}')">📷 Click to add image</div>`;
+
+  return `<div class="content-card" onclick="openDetail('${item.id}')">
+    ${imgHtml}
+    <div class="card-top">
+      <span class="brand-tag" style="color:${color};border-color:${color}20;background:${color}18">${item.brand}</span>
+      <span class="priority-tag ${priorityClass}">${item.priority || 'Medium'}</span>
+    </div>
+    <div class="content-type">${typeIcon(item.type)} ${item.type || ''}</div>
+    <div class="card-title">${item.title}</div>
+    ${platforms ? `<div class="platform-tags">${platforms}</div>` : ''}
+    ${item.date ? `<div class="card-date">📅 ${fmtDate(item.date)}</div>` : ''}
+  </div>`;
+}
+
+function typeIcon(t) {
+  const map = { 'Short-form Video':'🎬', 'Static Image':'🖼️', 'Carousel':'🗂️', 'Long-form Video':'📹', 'Story':'⭕', 'Reel':'🎞️' };
+  return map[t] || '📄';
+}
+
+// ── Interactions ──────────────────────────────────────────────────────────────
+function selectBrand(b) {
+  currentBrand = b;
+  currentStatus = 'all';
+  renderSidebar();
+  renderBoard();
+}
+
+function filterStatus(s) {
+  currentStatus = currentStatus === s ? 'all' : s;
+  renderBoard();
+}
+
+// ── New modal ─────────────────────────────────────────────────────────────────
+function openModal() {
+  document.getElementById('new-modal').style.display = 'flex';
+  document.getElementById('f-title').value = '';
+  document.getElementById('f-caption').value = '';
+  document.getElementById('f-notes').value = '';
+  document.getElementById('f-date').value = '';
+  // Set brand default to currentBrand if applicable
+  const brandSel = document.getElementById('f-brand');
+  if (currentBrand !== 'all' && [...brandSel.options].some(o => o.value === currentBrand)) {
+    brandSel.value = currentBrand;
+  }
+  // Reset platform checks
+  document.querySelectorAll('#platform-checks .platform-check').forEach(el => {
+    el.classList.remove('checked');
+    el.querySelector('input').checked = false;
+  });
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('new-modal')) {
+    document.getElementById('new-modal').style.display = 'none';
+  }
+}
+
+function submitNew() {
+  const title = document.getElementById('f-title').value.trim();
+  if (!title) { alert('Please enter a title.'); return; }
+
+  const platforms = [...document.querySelectorAll('#platform-checks input:checked')].map(i => i.value);
+  const item = {
+    id: genId(),
+    title,
+    brand: document.getElementById('f-brand').value,
+    type: document.getElementById('f-type').value,
+    priority: document.getElementById('f-priority').value,
+    date: document.getElementById('f-date').value,
+    platforms,
+    caption: document.getElementById('f-caption').value.trim(),
+    notes: document.getElementById('f-notes').value.trim(),
+    status: 'Submitted',
+    created: Date.now(),
+  };
+
+  const items = loadItems();
+  items.unshift(item);
+  saveItems(items);
+  closeModal();
+  renderSidebar();
+  renderBoard();
+}
+
+// Platform check toggle
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#platform-checks .platform-check').forEach(label => {
+    label.addEventListener('click', () => {
+      const cb = label.querySelector('input');
+      cb.checked = !cb.checked;
+      label.classList.toggle('checked', cb.checked);
+    });
+  });
+});
+
+// ── Detail modal ──────────────────────────────────────────────────────────────
+function openDetail(id) {
+  editId = id;
+  const items = loadItems();
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+
+  document.getElementById('d-title').textContent = item.title;
+
+  const color = brandColor(item.brand);
+  const statusBtns = STATUSES.map(s =>
+    `<button class="status-btn ${item.status === s ? 'active' : ''}" onclick="setStatus('${id}','${s}')">${STATUS_ICONS[s]} ${s}</button>`
+  ).join('');
+
+  const platformChecks = Object.keys(PLATFORM_ICONS).map(p => {
+    const checked = (item.platforms || []).includes(p);
+    return `<label class="platform-check ${checked ? 'checked' : ''}" onclick="togglePlatformDetail('${id}','${p}',this)">
+      <input type="checkbox" ${checked ? 'checked' : ''} style="display:none"> ${PLATFORM_ICONS[p]} ${p}
+    </label>`;
+  }).join('');
+
+  const existingImg = loadImage(item.id) || (item.imageUrl ? item.imageUrl : null);
+  document.getElementById('d-body').innerHTML = `
+    <div class="form-group">
+      <label class="form-label">Post Image</label>
+      ${existingImg ? `<img class="detail-image" id="d-img-preview" src="${existingImg}">` : `<div id="d-img-preview" style="display:none"></div>`}
+      <div class="img-upload-row">
+        <label class="img-upload-btn" for="d-img-input">📷 ${existingImg ? 'Replace Image' : 'Upload Image'}</label>
+        <input type="file" id="d-img-input" accept="image/*" style="display:none" onchange="handleImageUpload('${item.id}', this)">
+        ${existingImg ? `<button class="img-remove-btn" onclick="removeImage('${item.id}')">Remove</button>` : ''}
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Brand</label>
+      <span class="brand-tag" style="color:${color};border-color:${color}20;background:${color}18;display:inline-block;padding:4px 10px;border-radius:20px;font-size:13px">${item.brand}</span>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Type</label>
+        <select class="form-select" id="d-type">
+          ${['Short-form Video','Static Image','Carousel','Long-form Video','Story','Reel'].map(t => `<option ${item.type===t?'selected':''}>${t}</option>`).join('')}
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Priority</label>
+        <select class="form-select" id="d-priority">
+          ${['High','Medium','Low'].map(p => `<option ${item.priority===p?'selected':''}>${p}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Target Date</label>
+      <input class="form-input" id="d-date" type="date" value="${item.date || ''}" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Status</label>
+      <div class="status-select-row">${statusBtns}</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Platforms</label>
+      <div class="platform-check-group" id="d-platforms">${platformChecks}</div>
+    </div>
+    ${item.caption ? `<div class="form-group"><label class="form-label">Caption / Script</label><div class="caption-box">${item.caption}</div></div>` : ''}
+    <div class="form-group">
+      <label class="form-label">Caption / Script</label>
+      <textarea class="form-textarea" id="d-caption" style="min-height:100px">${item.caption || ''}</textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Notes</label>
+      <textarea class="form-textarea" id="d-notes" style="min-height:60px">${item.notes || ''}</textarea>
+    </div>
+  `;
+
+  document.getElementById('d-save').onclick = () => saveDetail(id);
+  document.getElementById('d-delete').onclick = () => deleteItem(id);
+  document.getElementById('d-preview').onclick = () => openPreview(id);
+  document.getElementById('detail-modal').style.display = 'flex';
+}
+
+function closeDetail(e) {
+  if (!e || e.target === document.getElementById('detail-modal')) {
+    document.getElementById('detail-modal').style.display = 'none';
+    editId = null;
+  }
+}
+
+function setStatus(id, status) {
+  const items = loadItems();
+  const item = items.find(i => i.id === id);
+  if (item) {
+    item.status = status;
+    saveItems(items);
+    if (status === 'Awaiting Approval') {
+      sendNtfy(`✅ Post needs your approval`, `"${item.title}" is ready to review in SNG Content Hub.`, 'high');
+    }
+    if (status === 'Scheduled') {
+      sendNtfy(`📅 Post scheduled`, `"${item.title}" is scheduled for ${item.date}.`, 'default');
+    }
+    if (status === 'Posted') {
+      sendNtfy(`🚀 Post went live`, `"${item.title}" has been marked as posted. Time to go comment!`, 'default');
+    }
+  }
+  document.querySelectorAll('.status-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.includes(status));
+  });
+  renderBoard();
+}
+
+// ── ntfy Alert System ─────────────────────────────────────────────────────────
+function getNtfyTopic() {
+  return localStorage.getItem('sng_ntfy_topic') || '';
+}
+
+function sendNtfy(title, message, priority = 'default') {
+  const topic = getNtfyTopic();
+  if (!topic) return;
+  fetch('https://ntfy.sh/' + encodeURIComponent(topic), {
+    method: 'POST',
+    headers: { 'Title': title, 'Priority': priority, 'Tags': 'shark' },
+    body: message
+  }).catch(() => {});
+}
+
+const AGENDA_TASKS = {
+  urgent: [
+    { id:'pat', text:'File provisional patent — $130 at USPTO Patent Center', detail:'Go to: patentcenter.uspto.gov — covers clamshell system, hood release, gas tank enclosure' },
+    { id:'grn', text:'Send Greenline demand letter — add today\'s date + attach video', detail:'Open greenline-demand-letter.md, fill in today\'s date + 10-day deadline, attach pre-tune video + email chain + $85 refund proof' },
+    { id:'soc', text:'Create social accounts: TikTok, Instagram, YouTube', detail:'Username: @sngcycles or @sharknotgoldfish — do all 3 at once' },
+    { id:'net', text:'Deploy updated app to Netlify', detail:'Drag sng-content-hub.zip from Downloads to app.netlify.com — replaces old version' },
+  ],
+  high: [
+    { id:'day1', text:'Post Day 1 — Build 2 Ride Out video', detail:'52-second ride-out video. Caption ready in app. Post to TikTok + Instagram first.' },
+    { id:'spons', text:'Send 8 sponsor outreach emails', detail:'Priority: Flow Wheels → Lewis Brakes → Powerful Lithium → Charged Cycle Works → WP → Warp 9 → Sotion → Chi. All emails in Emails category.' },
+    { id:'fern', text:'Send Fernando partner update email', detail:'Open fernando-update.md — add his email address and send. He needs to know about the WP contact opportunity and controller situation.' },
+    { id:'dino', text:'Await Dino response — DO NOT pitch yet', detail:'Human check-in sent May 31. Let him respond first. Only move to business conversation after he replies.' },
+    { id:'grit', text:'Await GritShift response on BAC Tools', detail:'Text sent May 31. They may be able to recover the soft-bricked BAC8000 controller.' },
+    { id:'cal', text:'Set up Calendly booking link', detail:'Free at calendly.com — create account, set 20-min meeting slot, paste link in Agenda tab above. Adds to all sponsor emails automatically.' },
+  ],
+  ongoing: [
+    { id:'cmt', text:'Daily: Comment on 5 accounts (see Comments tab)', detail:'15 min/day. Targets: @surron_official, @ktm_official, @zeromotorcycles, r/ElectricMotorcycles, #supermoto' },
+    { id:'swng', text:'Research custom one-piece swingarm fabricator', detail:'Need Florida CNC/motorsport fab shop. Ask Fernando — he likely knows someone.' },
+    { id:'pat2', text:'Attorney consult: WMI + frame fabrication eligibility', detail:'Needed before production. Frame-in-house route recommended. SAE registration for WMI number.' },
+    { id:'vid', text:'Upload May 29 garage video to TikTok', detail:'File: 20260529_154733.mp4 — shows true size of the beast. Strong early content.' },
+    { id:'ebmx', text:'Mystery shop EBMX / Charged CW — test their CS before committing', detail:'Place a small inquiry as a regular customer. See how they respond before featuring them as a sponsor.' },
+  ]
+};
+
+function saveCalendly(val) { localStorage.setItem('sng_calendly', val); }
+
+function openAgenda() {
+  document.getElementById('agenda-overlay').style.display = 'block';
+  window.scrollTo(0,0);
+  const done = JSON.parse(localStorage.getItem('sng_agenda_done') || '[]');
+  const saved = localStorage.getItem('sng_calendly') || '';
+  document.getElementById('calendly-input').value = saved;
+  ['urgent','high','ongoing'].forEach(tier => {
+    const el = document.getElementById('agenda-' + tier);
+    el.innerHTML = AGENDA_TASKS[tier].map(t => {
+      const isDone = done.includes(t.id);
+      return `<div id="atask-${t.id}" onclick="toggleAgendaTask('${t.id}')" style="background:#0f172a;border:1px solid ${isDone?'#22c55e':'#1e293b'};border-radius:8px;padding:12px 14px;cursor:pointer;opacity:${isDone?'0.5':'1'}">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:18px;height:18px;min-width:18px;border-radius:4px;border:2px solid ${isDone?'#22c55e':'#475569'};background:${isDone?'#22c55e':'transparent'};display:flex;align-items:center;justify-content:center;margin-top:1px;font-size:11px;">${isDone?'✓':''}</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:${isDone?'#475569':'#f1f5f9'};${isDone?'text-decoration:line-through;':''}">${t.text}</div>
+            <div style="font-size:11px;color:#475569;margin-top:3px;line-height:1.5;">${t.detail}</div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  });
+}
+
+function toggleAgendaTask(id) {
+  const done = JSON.parse(localStorage.getItem('sng_agenda_done') || '[]');
+  const idx = done.indexOf(id);
+  if (idx > -1) done.splice(idx, 1); else done.push(id);
+  localStorage.setItem('sng_agenda_done', JSON.stringify(done));
+  openAgenda();
+}
+
+function exportAgendaICS() {
+  const allTasks = [...AGENDA_TASKS.urgent, ...AGENDA_TASKS.high, ...AGENDA_TASKS.ongoing];
+  const now = new Date();
+  const fmt = (d) => d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  let ics = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//SNG Cycles//Agenda//EN\n';
+  allTasks.forEach((t, i) => {
+    const start = new Date(now.getTime() + i * 3600000);
+    const end = new Date(start.getTime() + 1800000);
+    ics += `BEGIN:VEVENT\nUID:sng-${t.id}@sngcycles\nDTSTAMP:${fmt(now)}\nDTSTART:${fmt(start)}\nDTEND:${fmt(end)}\nSUMMARY:SNG - ${t.text}\nDESCRIPTION:${t.detail.replace(/,/g,'\\,')}\nEND:VEVENT\n`;
+  });
+  ics += 'END:VCALENDAR';
+  const blob = new Blob([ics], {type:'text/calendar'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'sng-agenda.ics';
+  document.body.appendChild(a);
+  a.click();
+}
+
+function openCommandCenter() {
+  document.getElementById('command-overlay').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function openComments() {
+  document.getElementById('comments-overlay').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function copyTemplate(el) {
+  const text = el.querySelector('div:nth-child(2)').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const hint = el.querySelector('div:last-child');
+    const orig = hint.innerText;
+    hint.innerText = '✅ copied!';
+    hint.style.color = '#22c55e';
+    setTimeout(() => { hint.innerText = orig; hint.style.color = '#475569'; }, 1500);
+  });
+}
+
+function openAlertSettings() {
+  const saved = getNtfyTopic();
+  document.getElementById('ntfy-topic-input').value = saved;
+  document.getElementById('topic-display').textContent = saved || 'sng-cycles-bryan';
+  document.getElementById('alert-settings-overlay').style.display = 'flex';
+}
+
+function saveAlertSettings() {
+  const topic = document.getElementById('ntfy-topic-input').value.trim().replace(/\s+/g, '-').toLowerCase();
+  if (!topic) { alert('Enter a topic name first.'); return; }
+  localStorage.setItem('sng_ntfy_topic', topic);
+  document.getElementById('alert-settings-overlay').style.display = 'none';
+  sendNtfy('🦈 SNG Alerts Active', 'Content Hub alerts are set up. You\'ll get notified when posts need approval and when it\'s time to comment.', 'high');
+  setTimeout(() => alert('✅ Test alert sent! Check your ntfy app.\n\nYou\'ll now get notified automatically when:\n• A post needs your approval\n• It\'s time to post or comment'), 300);
+}
+
+const DAILY_COMMENT_TARGETS = [
+  { platform: 'TikTok', account: '@electricmotorcycleforum', action: 'Comment on latest electric moto video' },
+  { platform: 'TikTok', account: '@surron_official', action: 'Comment on latest Sur Ron build/ride video' },
+  { platform: 'TikTok', account: '#supermoto', action: 'Comment on top post in #supermoto today' },
+  { platform: 'Instagram', account: '@electricmotorcycleforum', action: 'Comment on latest post' },
+  { platform: 'Instagram', account: '@ktm_official', action: 'Comment on latest supermoto/Duke post' },
+];
+
+function sendDailyBrief() {
+  const topic = getNtfyTopic();
+  if (!topic) {
+    openAlertSettings();
+    return;
+  }
+  const today = new Date().toISOString().split('T')[0];
+  const items = loadItems().filter(i => i.brand === 'SNG Cycles');
+  const todayPost = items.find(i => i.date === today);
+  const awaitingPosts = items.filter(i => i.status === 'Awaiting Approval').slice(0, 3);
+
+  let msg = '';
+  if (todayPost) {
+    msg += `📅 TODAY'S POST: "${todayPost.title}" — Status: ${todayPost.status}\n\n`;
+  } else if (awaitingPosts.length) {
+    msg += `⏳ NEEDS APPROVAL: ${awaitingPosts.map(p => p.title).join(', ')}\n\n`;
+  }
+  msg += `💬 COMMENT TARGETS:\n`;
+  DAILY_COMMENT_TARGETS.forEach((t, i) => {
+    msg += `${i + 1}. [${t.platform}] ${t.account} — ${t.action}\n`;
+  });
+  msg += `\nOpen SNG Content Hub to approve and post.`;
+  sendNtfy('🦈 SNG Daily Brief', msg, 'high');
+  alert('📲 Daily brief sent to your phone!\n\nCheck your ntfy app.');
+}
+
+// ── Post Preview ──────────────────────────────────────────────────────────────
+let previewItem = null;
+
+function openPreview(id) {
+  const items = loadItems();
+  previewItem = items.find(i => i.id === id);
+  if (!previewItem) return;
+  renderPreview('Instagram');
+  document.getElementById('preview-overlay').style.display = 'flex';
+}
+
+function closePreview(e) {
+  if (!e || e.target === document.getElementById('preview-overlay')) {
+    document.getElementById('preview-overlay').style.display = 'none';
+  }
+}
+
+function setPreviewPlatform(platform, el) {
+  document.querySelectorAll('.preview-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderPreview(platform);
+}
+
+const PLATFORM_HANDLES = {
+  Instagram: '@sngcycles',
+  TikTok: '@sharknotgoldfish',
+  Facebook: 'SNG Cycles',
+};
+
+function renderPreview(platform) {
+  if (!previewItem) return;
+  const img = loadImage(previewItem.id) || (previewItem.imageUrl ? previewItem.imageUrl : null);
+  const handle = PLATFORM_HANDLES[platform] || '@sngcycles';
+
+  document.getElementById('prev-handle').textContent = handle;
+
+  const imgArea = document.getElementById('prev-img-area');
+  imgArea.innerHTML = img
+    ? `<img class="preview-img" src="${img}">`
+    : `<div class="preview-img-empty">${typeIcon(previewItem.type)}</div>`;
+
+  // Split caption from hashtags for display
+  const fullCaption = previewItem.caption || '(No caption yet — add one in the edit view)';
+  const hashtagMatch = fullCaption.match(/(#\w+[\s#\w]*)?$/s);
+  const captionText = hashtagMatch ? fullCaption.replace(hashtagMatch[0], '').trim() : fullCaption;
+  const hashtags = fullCaption.match(/#\w+/g) || [];
+
+  document.getElementById('prev-caption').innerHTML = `<strong>${handle}</strong> ${captionText}`;
+  document.getElementById('prev-hashtags').textContent = hashtags.join(' ');
+
+  const notes = previewItem.notes ? `<div>📝 <em>${previewItem.notes}</em></div>` : '';
+  document.getElementById('prev-meta').innerHTML = `
+    <div><strong>${previewItem.title}</strong></div>
+    <div style="margin-top:6px">📅 ${previewItem.date ? fmtDate(previewItem.date) : 'No date set'}</div>
+    <div>🏷 ${previewItem.type}</div>
+    <div>⚡ ${previewItem.priority} priority</div>
+    ${notes}
+  `;
+}
+
+function triggerImageUpload(id) {
+  openDetail(id);
+  setTimeout(() => document.getElementById('d-img-input')?.click(), 200);
+}
+
+function handleImageUpload(id, input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    saveImage(id, e.target.result);
+    // Update preview in detail modal
+    let preview = document.getElementById('d-img-preview');
+    if (preview) {
+      preview.src = e.target.result;
+      preview.className = 'detail-image';
+      preview.style.display = '';
+    }
+    renderBoard();
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeImage(id) {
+  deleteImage(id);
+  closeDetail();
+  renderBoard();
+  setTimeout(() => openDetail(id), 100);
+}
+
+function togglePlatformDetail(id, platform, label) {
+  const cb = label.querySelector('input');
+  cb.checked = !cb.checked;
+  label.classList.toggle('checked', cb.checked);
+}
+
+function saveDetail(id) {
+  const items = loadItems();
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+
+  item.type = document.getElementById('d-type').value;
+  item.priority = document.getElementById('d-priority').value;
+  item.date = document.getElementById('d-date').value;
+  item.caption = document.getElementById('d-caption').value.trim();
+  item.notes = document.getElementById('d-notes').value.trim();
+
+  const checkedLabels = document.querySelectorAll('#d-platforms .platform-check.checked');
+  item.platforms = [...checkedLabels].map(l => l.querySelector('input').value || l.textContent.trim().replace(/^[^\w]+/,'').trim());
+
+  saveItems(items);
+  closeDetail();
+  renderSidebar();
+  renderBoard();
+}
+
+function deleteItem(id) {
+  if (!confirm('Delete this post?')) return;
+  deleteImage(id);
+  const items = loadItems().filter(i => i.id !== id);
+  saveItems(items);
+  closeDetail();
+  renderSidebar();
+  renderBoard();
+}
+
+// ── All 30 SNG posts + other brand posts ──────────────────────────────────────
+function getAllSNGPosts() {
+  const t = Date.now();
+  return [
+    // ── WEEK 1 ──
+    { id: genId(), title: 'Day 1 — The Ride Out 🎬 POST THIS FIRST', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram','YouTube'], date: '2026-06-01', imageUrl: 'images/rd-build-orange-garage.jpg', caption: '14 months. $31,000. 3 prototypes. 1,000 hours.\n\nThis is the moment it all became real.\n\nSNG Cycles. Built in Florida. Built different.\n\nNo Gas. Hauls Ass.', notes: '🎬 USE "BUILD 2 RIDE OUT" VIDEO — 52 seconds, founder on orange/white prototype in garage, riding it out for the first time. This is your launch post. Post this before anything else. Raw, real, unscripted — exactly what TikTok rewards.', created: t },
+    { id: genId(), title: 'Day 2 — The Origin Story: 3 R&D builds', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram','YouTube'], date: '2026-06-02', imageUrl: 'images/rd-build-orange-garage.jpg', caption: 'I built it wrong 3 times.\n\nFirst build — wrong controller. Sold the parts.\nSecond build — wrong swing arm. Sold the parts.\nThird build — got it right.\n\nA year in. $20k deep. 3 full R&D cycles.\n\nMost people would\'ve quit. I kept going because nothing on the market looked like what I saw in my head.\n\nThis is what I saw.', notes: '🎬 USE THE MAY 29 GARAGE VIDEO (20260529_154733.mp4) — shows the TRUE SIZE of this beast next to a person. Thumbnail: completed gold 270E front angle. Video is on your phone/downloads.', created: t-1000 },
+    { id: genId(), title: 'Day 3 — Holochrome wrap detail', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram'], date: '2026-06-03', imageUrl: 'images/rd-gold-270e-complete-front.jpg', caption: 'The frame IS the paint job.\n\nHolochrome shattered-glass wrap. Changes color in every light.\n\nThis isn\'t a photoshop. This is the actual bike.\n\nSNG 270E Holochrome Edition. 300 worldwide.\n\nWhen they\'re gone, they\'re gone.', notes: '520E Black holochrome finish — use as visual reference for holochrome post.', created: t-2000 },
+    { id: genId(), title: 'Day 4 — Specs drop', brand: 'SNG Cycles', type: 'Static Image', priority: 'Medium', status: 'Awaiting Approval', platforms: ['Instagram','TikTok'], date: '2026-06-04', imageUrl: 'images/e520-specs-diagram.png', caption: '27kW Sotion mid-drive.\nBAC8000 controller.\nCNC 7075 T6 aluminum extended swingarm.\n520 primary chain drive.\n72V system.\n\nThis isn\'t a bicycle with a bigger battery.\n\nThis is a motorcycle. Built like one.\n\nSNG 270E.', notes: 'E-520 jackshaft/specs technical diagram — shows engineering depth.', created: t-3000 },
+    { id: genId(), title: 'Day 5 — The CTA / Waitlist push', brand: 'SNG Cycles', type: 'Static Image', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram'], date: '2026-06-05', imageUrl: 'images/270e-gold-reveal.png', caption: 'We\'re not a dealership.\nWe\'re not a brand with a factory.\n\nWe\'re a team of two mechanics and one builder who decided the market was wrong and built the right thing.\n\n30 bikes in the first production run. Refundable reservation. Lock your spot now or watch someone else ride yours.\n\nLink in bio. SNG Cycles. Shark Not Goldfish.', notes: 'Gold 270E "NO GAS HAULS ASS" showroom hero shot.', created: t-4000 },
+    { id: genId(), title: 'Day 6 — The Ducati gap hook 🔒 HOLD', brand: 'SNG Cycles', type: 'Static Image', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram'], date: '2026-06-06', imageUrl: 'images/render-270e-gold-wide.png', caption: 'Ducati makes the most beautiful supermoto on earth.\n\nThere is no electric version.\n\nNo EV. No hybrid. Nothing.\n\nThe 2026 Hypermotard costs $20,995. Gas only.\n\nSo I built the electric version myself. In Florida. In my garage.\n\nSNG 270E. $21,000. No gas. Hauls ass.', notes: '⚠️ HOLD — post only after you have real engagement. Biggest hook. Gold 270E hero shot.', created: t-5000 },
+    // ── WEEK 2 ──
+    { id: genId(), title: 'Day 8 — What happens when you build with no rulebook?', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram'], date: '2026-06-08', imageUrl: 'images/rd-build-white-assembled.jpg', caption: 'No blueprint. No budget committee. No permission.\nJust a garage, a vision, and the conviction that somebody had to build it.\n3 prototypes. 14 months. $31,000 of our own money.\nThis is what happens when you stop waiting for someone else to do it.\nSNG Cycles. Built in Florida. Built different.\nDrop a "🔧" if you respect the grind.', notes: 'Completed 270E prototype in garage — gold fairings, #22 plate, full holochrome wrap. This IS the answer to "what happens when you build without a rulebook."', created: t-6000 },
+    { id: genId(), title: 'Day 9 — 5 reasons riders are done with gas', brand: 'SNG Cycles', type: 'Carousel', priority: 'Medium', status: 'Awaiting Approval', platforms: ['Instagram'], date: '2026-06-09', imageUrl: 'images/render-270e-gold-side.png', caption: 'Riders have been asking for this for a decade.\nThe industry kept stalling.\nWe didn\'t.\nSwipe through every reason the future of supermoto is electric — and why SNG Cycles is the only brand doing it right.\n\nLink in bio → Join the waitlist.', notes: '5 slides. Cover: gold 270E showroom shot.', created: t-7000 },
+    { id: genId(), title: 'Day 10 — Gas purist vs Electric convert (poll)', brand: 'SNG Cycles', type: 'Story', priority: 'Medium', status: 'Awaiting Approval', platforms: ['Instagram','TikTok'], date: '2026-06-10', imageUrl: 'images/rd-orange-270e-front.jpg', caption: 'Real talk — the moto community is split.\nHalf of you won\'t touch anything without a combustion engine.\nThe other half drove a Tesla once and never looked back.\nWhich side are you on?\n\nGas purist 🔥 or Electric convert ⚡ — vote below.\n\n(And if you voted electric — you already know about us.)', notes: 'Poll post. Megladon comic wrap as the "electric side" visual.', created: t-8000 },
+    { id: genId(), title: 'Day 11 — 520E Black Edition: for the rider who needs no explanation', brand: 'SNG Cycles', type: 'Static Image', priority: 'High', status: 'Awaiting Approval', platforms: ['Instagram','Facebook'], date: '2026-06-11', imageUrl: 'images/520e-black-edition.png', caption: 'Some bikes make noise.\nThe 520E doesn\'t need to.\n\nAll black. Liquid-cooled. 99V. Apple CarPlay. Numbered 001–100.\nThis one is for the rider who already knows.\n\nStarting at $25k. Short list.\nWaitlist → link in bio.', notes: '520E Holochrome Black Edition product poster — bike + collector box.', created: t-9000 },
+    { id: genId(), title: 'Day 12 — Nobody shows you this part (BTS)', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram'], date: '2026-06-12', imageUrl: 'images/rd-swingarm-garage.jpg', caption: 'Every great brand has a version of this moment.\nThe part they don\'t put in the pitch deck.\nThe 11pm rework. The third prototype that didn\'t make it.\nThe decision to keep going anyway.\n\nWe\'re showing you ours.\nBecause when you ride SNG — you\'re not just buying a bike.\nYou\'re backing the build.\n\nFollow along. This is just the beginning.', notes: 'Swingarm, RK chain, Lewis brakes in garage — raw BTS build shot.', created: t-10000 },
+    { id: genId(), title: 'Day 13 — What kind of rider are you, really?', brand: 'SNG Cycles', type: 'Static Image', priority: 'Medium', status: 'Awaiting Approval', platforms: ['Instagram'], date: '2026-06-13', imageUrl: 'images/rd-orange-270e-side.jpg', caption: 'Early morning. Empty road. No exhaust note — just the whistle of clean air and instant torque.\n\nSome riders ride for the noise.\nWe ride for the feeling.\n\nIf you know, you know.\nIf you don\'t — you\'re about to.\n\nSNG 270E Supermoto. Starting at $21k. Built in Florida.\nWaitlist → link in bio.', notes: 'Gold 270E showroom — lifestyle angle.', created: t-11000 },
+    { id: genId(), title: 'Day 14 — Customize one thing (engagement post)', brand: 'SNG Cycles', type: 'Story', priority: 'Low', status: 'Awaiting Approval', platforms: ['TikTok','Instagram'], date: '2026-06-14', imageUrl: 'images/graffiti-edition.png', caption: 'We\'re building it anyway — might as well build what you actually want.\n\nOne thing. Your dream bike. What do you change?\nColor? Seat height? Sound (yes, even electric bikes can growl)?\nDrop it below — we actually read these.\n\nSNG Cycles. Built by riders, for riders.', notes: 'Megladon comic wrap — shows the wild customization potential.', created: t-12000 },
+    { id: genId(), title: 'Day 15 — 2 weeks in: founder update', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','YouTube'], date: '2026-06-15', imageUrl: 'images/rd-owner-suited-up.jpg', caption: 'Two weeks of putting this brand into the world.\nHere\'s the honest version of what happened.\n\nThe community has spoken and we\'re listening.\nThis is a brand built in public — the wins and the stumbles are both on the table.\n\nKeep watching. It gets better from here.', notes: 'Founder suited up in full gear/helmet on the bike in the garage — raw, authentic founder energy. Filmed in-garage.', created: t-13000 },
+    // ── WEEK 3 ──
+    { id: genId(), title: 'Day 16 — 520E Black Edition deep dive', brand: 'SNG Cycles', type: 'Carousel', priority: 'High', status: 'Awaiting Approval', platforms: ['Instagram'], date: '2026-06-16', imageUrl: 'images/rd-lewis-brakes-unbox.jpg', caption: '$25k. All black. No compromises.\n\nThe 520E Black Edition was built for the rider who doesn\'t need to explain themselves.\nNot flashy. Not loud. Just devastatingly capable.\n\nEvery detail chosen with intention.\nEvery component dialed.\nOne colorway. One statement.\n\nThis one has a short list. Make sure your name is on it.\nLink in bio → waitlist.', notes: '520E Black Edition poster — full product shot with collector box. Use for carousel cover.', created: t-14000 },
+    { id: genId(), title: 'Day 17 — Apparel drop', brand: 'SNG Cycles', type: 'Static Image', priority: 'Medium', status: 'Awaiting Approval', platforms: ['Instagram','TikTok'], date: '2026-06-17', imageUrl: 'images/sng-hoodie-buildup.png', caption: 'The brand isn\'t just the bike.\nIt\'s the culture around it.\n\nSNG Cycles apparel is live — and it\'s the first way to roll with the brand before your bike is delivered.\n\nThe logo means something. Shark mentality. Forward motion. No coasting.\nWear it like you mean it.\n\nShop → link in bio.', notes: 'SNG BUILD UP hoodie — front and back view. Clean apparel lifestyle shot.', created: t-15000 },
+    { id: genId(), title: 'Day 18 — 270E vs 520E: which one is yours?', brand: 'SNG Cycles', type: 'Story', priority: 'Medium', status: 'Awaiting Approval', platforms: ['Instagram','TikTok'], date: '2026-06-18', imageUrl: 'images/render-270e-gold-alt.png', caption: 'Both are electric. Both are built in Florida. Both will turn every head on the block.\nBut only one is yours.\n\n270E Supermoto — Gold. Starting at $21k. 🔶\nor\n520E Black Edition — All black. Starting at $25k. 🖤\n\nComment your pick and why — the best answers get featured.', notes: 'Poll: 270E gold vs 520E Black. Use gold 270E as cover, mention both in caption.', created: t-16000 },
+    { id: genId(), title: 'Day 19 — Non-rider first reaction on the 270E', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram'], date: '2026-06-19', imageUrl: 'images/rd-gold-270e-complete-front.jpg', caption: 'First reaction from someone who\'s never touched a motorcycle.\nWe didn\'t coach them. We didn\'t edit the pause.\n\nThat look?\nThat\'s the whole pitch.\n\nSNG 270E Supermoto. Gold. Electric. Starting at $21k.\nBuilt to make people feel something before they even turn it on.\n\nWaitlist → link in bio.', notes: 'Film a real first-timer sitting on the Megladon bike. No coaching. Pure reaction.', created: t-17000 },
+    { id: genId(), title: 'Day 20 — Component deep dive (BTS build process)', brand: 'SNG Cycles', type: 'Long-form Video', priority: 'Medium', status: 'Awaiting Approval', platforms: ['YouTube','Instagram'], date: '2026-06-20', imageUrl: 'images/rd-rear-brake-detail.jpg', caption: 'This nearly killed prototype #2.\nAnd fixing it made the 270E what it is today.\nFull breakdown on YouTube → link in bio.', notes: 'Real rear wheel/brake/chain detail photo — shows engineering quality. Lead image for component deep dive.', created: t-18000 },
+    { id: genId(), title: 'Day 21 — Community highlight / reshare day', brand: 'SNG Cycles', type: 'Story', priority: 'Low', status: 'Awaiting Approval', platforms: ['Instagram'], date: '2026-06-21', imageUrl: 'images/sng4life-graphic.png', caption: 'Three weeks in.\nWe see every comment, every tag, every DM.\nYou\'re building this with us.\nMore coming. Stay with us. 🔥', notes: 'SNG4LIFE knuckle graphic — culture/identity post for community reshare day.', created: t-19000 },
+    { id: genId(), title: 'Day 22 — Florida mornings lifestyle', brand: 'SNG Cycles', type: 'Static Image', priority: 'Medium', status: 'Awaiting Approval', platforms: ['Instagram'], date: '2026-06-22', imageUrl: 'images/rd-gold-plastics.jpg', caption: 'Built here. Ridden here. Proud of it.\n\nFlorida doesn\'t get enough credit in the moto world.\nWe\'re changing that — one electric supermoto at a time.\n\nThe SNG 270E. Gold. Silent. Devastatingly quick.\nThis is what Sunday morning looks like from our side.\n\nJoin the waitlist → link in bio.', notes: 'Real completed 270E — gold fairings, #22 plate, front angle from garage. Real build, Florida-made.', created: t-20000 },
+    // ── WEEK 4 ──
+    { id: genId(), title: 'Day 23 — How we\'re different (educational carousel)', brand: 'SNG Cycles', type: 'Carousel', priority: 'High', status: 'Awaiting Approval', platforms: ['Instagram'], date: '2026-06-23', imageUrl: 'images/rd-build-white-fairings.jpg', caption: 'Nobody built the electric Ducati Hypermotard.\nSo we did.\n\nThe supermoto segment is the most exciting riding category on earth — and the entire electric market ignored it.\nBig brands went cruiser. Went commuter. Went safe.\n\nSNG went supermoto.\nAnd we didn\'t compromise on anything to get there.\n\nFour models. One obsession.\nSee the full lineup → link in bio.', notes: 'Megladon comic wrap — boldest visual to lead the differentiation story.', created: t-21000 },
+    { id: genId(), title: 'Day 24 — Testimonial request video', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram'], date: '2026-06-24', imageUrl: 'images/270e-gold-reveal.png', caption: 'We haven\'t put a single production bike on the road yet.\nBut the community is already here.\n\nRecord a 15-second video. Tell us why you want an SNG.\nWe\'ll feature the best ones right here.\n\nDM us or tag #IWantAnSNG — let\'s see it.', notes: 'Founder on camera with 270E in background. Ask for community testimonials.', created: t-22000 },
+    { id: genId(), title: 'Day 25 — 520E Platinum Edition reveal', brand: 'SNG Cycles', type: 'Static Image', priority: 'High', status: 'Awaiting Approval', platforms: ['Instagram','Facebook'], date: '2026-06-25', imageUrl: 'images/520e-black-edition.png', caption: '$30,000. Platinum finish. Zero apologies.\n\nThe 520E Platinum isn\'t the most expensive bike we make because we wanted it to be.\nIt\'s because we refused to cut a single corner to bring it down.\n\n100hp. Holochrome silver. Numbered 001–100.\nThis is SNG at its ceiling.\nAnd the ceiling is very high.\n\nWaitlist → link in bio.', notes: '⚠️ Using 520E Black poster as placeholder — get a Platinum render created before this posts. Price is $30,000 (corrected from $25k).', created: t-23000 },
+    { id: genId(), title: 'Day 26 — Tag a rider (engagement)', brand: 'SNG Cycles', type: 'Static Image', priority: 'Medium', status: 'Awaiting Approval', platforms: ['TikTok','Instagram'], date: '2026-06-26', imageUrl: 'images/graffiti-edition.png', caption: 'You know exactly who this is.\nThe one who\'s been "thinking about going electric" since 2022.\nThe one who watched every Zero and Energica video and still hasn\'t pulled the trigger.\n\nTag them.\nSNG Cycles just made the decision easy.\n\nStarting at $19k. Built in Florida. Ready when they are.\nWaitlist → link in bio.', notes: 'Graffiti Edition — bold, colorful, built for sharing and tagging.', created: t-24000 },
+    { id: genId(), title: 'Day 27 — Holochrome BTS (color-shift focus)', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['Instagram','TikTok'], date: '2026-06-27', imageUrl: 'images/rd-front-brake-detail.jpg', caption: 'It\'s not a color.\nIt\'s every color.\n\nThe Holochrome Supermoto is limited to 300 units — and there\'s a reason we\'re not making more.\nWhen something is this rare, more would ruin it.\n\nIridescent finish. Electric supermoto. Starting at $19k.\nOne of 300. That\'s the whole sentence.\n\nClaim yours → link in bio.', notes: '520E Black holochrome finish — rotate slowly in light to show color shift. No voiceover needed.', created: t-25000 },
+    { id: genId(), title: 'Day 28 — Price breakdown / value carousel', brand: 'SNG Cycles', type: 'Carousel', priority: 'Medium', status: 'Awaiting Approval', platforms: ['Instagram'], date: '2026-06-28', imageUrl: 'images/render-270e-gold-wide.png', caption: 'Let\'s talk about the number.\nStarting at $19,000 is not a small ask. We know that.\n\nSo let\'s talk about what it actually means.\nSwipe through — because context changes everything.\n\nWhen you buy SNG, you\'re not buying a commodity.\nYou\'re buying a limited-run, Florida-built, custom electric supermoto from a brand that put its own money in before asking for yours.\n\nThat\'s different. And different costs something.\nWaitlist → link in bio.', notes: '5 slides — gold 270E as cover. Value breakdown content in slides.', created: t-26000 },
+    { id: genId(), title: 'Day 29 — One month in: founder update', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','YouTube','Instagram'], date: '2026-06-29', imageUrl: 'images/rd-gold-270e-complete-top.jpg', caption: 'One month.\nWe put this brand into the world with no agency, no PR firm, and no plan B.\n\nHere\'s what actually happened.\n\n30 days down. The bikes aren\'t done yet.\nBut the brand? The brand is alive.\n\nThank you. Now let\'s build the next 30.', notes: 'Completed 270E overhead/top view — #22 plate, all stickers, holochrome wrap. 60-90 sec honest update. USE THE MAY 29 GARAGE VIDEO to show true bike size.', created: t-27000 },
+    { id: genId(), title: 'Day 30 — Full lineup reveal + hard CTA', brand: 'SNG Cycles', type: 'Carousel', priority: 'High', status: 'Awaiting Approval', platforms: ['Instagram','Facebook','TikTok'], date: '2026-06-30', imageUrl: 'images/render-270e-gold-side.png', caption: 'This is SNG Cycles.\n\n270E Supermoto — Gold. Starting at $21k. The flagship.\nHolochrome Supermoto — Iridescent. Starting at $19k. 300 units only.\n520E Black Edition — All black. Starting at $25k. No flash needed.\n520E Platinum — Platinum. Starting at $30k. The ceiling.\n\nFour models. One obsession. Zero gas.\nBuilt in Florida by someone who bet their own money first.\n\nThe waitlist is open.\nThe builds are in progress.\nThe only question is whether your name is on the list.\n\nLink in bio. Let\'s go.\nNo Gas. Hauls Ass.', notes: '5-slide carousel. Use all models. Graffiti Edition as cover — boldest visual for the big finale.', created: t-28000 },
+    { id: genId(), title: '⭐ MILESTONE — First Full-Size Build Complete', brand: 'SNG Cycles', type: 'Short-form Video', priority: 'High', status: 'Awaiting Approval', platforms: ['TikTok','Instagram','YouTube'], date: '2026-06-07', imageUrl: 'images/rd-gold-270e-complete-top.jpg', caption: 'The moment I\'ve been building toward for a year.\n\nFirst full-size Ducati-style electric bike. Built in my Florida garage.\nNo factory. No team of engineers. No permission.\n\nJust me, two mechanics, and the conviction that somebody had to do it.\n\nThis is the one.\nSNG 270E. Gold. Electric. Florida-made.\n\nNo gas. Hauls ass.', notes: '🎬 PIVOTAL POST — Use the May 29 video (20260529_154733.mp4) which shows true size of the bike. Thumbnail: rd-gold-270e-complete-top.jpg. This is the most authentic content you have. Post this early.', created: t-5500 },
+    // ── OUTREACH ──
+    { id: genId(), title: '📧 FLOW WHEELS — KTM Fork Adapter Sponsorship', brand: 'Emails', type: 'Outreach Email', priority: 'High', status: 'Submitted', platforms: [], date: '2026-05-31', imageUrl: 'images/rd-gold-270e-complete-front.jpg', caption: 'SUBJECT: Unit 001 — Need Your KTM Fork Adapter Kit | Sponsorship Conversation\n\nHi [Name],\n\nI\'m Bryan Jaworski, founder of SNG Cycles — a Florida brand building limited-run street-legal electric supermotos. $21k–$30k bikes. Numbered units. Built for the rider who shops Ducati and KTM and wants the electric version nobody else built yet.\n\nWe\'re building Unit 001 — the first production-spec SNG 270E ever made. We\'re running WP suspension with KTM forks and we need your fork/brake/wheel adapter kit to make it work right. That\'s not a workaround — that\'s the correct way to build this.\n\nThe entire Unit 001 build is being documented publicly on TikTok and Instagram. Every component. Every supplier. Every technical decision explained to an audience of high-income motorcycle enthusiasts who are actively looking for a serious electric supermoto.\n\nYour adapter kit is a necessary part of doing this build properly. I\'d rather have you in the content as a partner than just a purchase on a receipt.\n\nWhat I\'m asking: kit sponsorship on Unit 001 in exchange for full brand documentation — build content, spec sheet, and credit across everything we put out publicly.\n\nDo you have 15 minutes this week?\n\nBryan Jaworski\nSNG Cycles — Shark Not Goldfish\nsharknotgoldfish@gmail.com', notes: '🔴 CRITICAL — buy the kit regardless if they say no. Product: https://flowwheels.net/products/ktm-fork-brake-wheel-adapter-kit-for-stock-wheels-and-brakes\nATTACH: rd-gold-270e-complete-top.jpg + rd-gold-270e-complete-front.jpg + 520e-black-edition.png', created: t-50000 },
+    { id: genId(), title: '📧 LEWIS BRAKES — EP8+ Unit 001 Sponsorship', brand: 'Emails', type: 'Outreach Email', priority: 'High', status: 'Submitted', platforms: [], date: '2026-05-31', imageUrl: 'images/rd-lewis-brakes-unbox.jpg', caption: 'SUBJECT: We Already Run Your EP8+ — Now We\'re Building Unit 001\n\nHi [Name],\n\nI\'m Bryan Jaworski, founder of SNG Cycles — a Florida brand building limited-run street-legal electric supermotos. $21k–$30k. Numbered units. Built for the rider who shops Ducati and KTM and wants the electric version that doesn\'t exist yet.\n\nHere\'s the thing — we already run your EP8+. Put it on our R&D prototype before we ever thought about reaching out. Not because we had a deal, because after testing what was available, yours stopped the bike the way it needed to be stopped on an electric drivetrain.\n\nNow we\'re building Unit 001. The first production-spec SNG 270E ever made. We\'re documenting the entire build publicly — every component, every decision, every reason we chose what we chose.\n\nWe want Lewis Brakes on Unit 001. Formally. With your brand integrated into the build content, the spec sheet, the investor materials, and every post we put out.\n\nWhat I\'m asking: component sponsorship on Unit 001 in exchange for full brand documentation across the build.\n\nWe already chose you once with nothing to gain. Now we\'re offering something back.\n\n20 minutes this week?\n\nBryan Jaworski\nSNG Cycles — Shark Not Goldfish\nsharknotgoldfish@gmail.com', notes: 'If no → shop Brembo, Galfer, or other premium caliper brands.\nATTACH: rd-gold-270e-complete-top.jpg + rd-gold-270e-complete-front.jpg + 520e-black-edition.png', created: t-49000 },
+    { id: genId(), title: '📧 SOTION — 27kW Motor Unit 001 Sponsorship', brand: 'Emails', type: 'Outreach Email', priority: 'Medium', status: 'Submitted', platforms: [], date: '2026-05-31', imageUrl: 'images/e520-specs-diagram.png', caption: 'SUBJECT: Unit 001 — First Production SNG Runs Your Motor\n\nHi [Name],\n\nI\'m Bryan Jaworski, founder of SNG Cycles — a Florida-based brand building limited-run, street-legal electric supermotos for the US premium motorcycle market.\n\nWe\'re building Unit 001 — the first production-spec SNG 270E. Spec: your 27kW mid-drive, BAC8000 controller, CNC 7075 aluminum extended swingarm, 72V system. $21,000 retail. 30 numbered units in the first run.\n\nThe entire build is being documented publicly. Every component gets named, filmed, and explained to an audience of high-income motorcycle enthusiasts — riders actively looking for the electric supermoto that doesn\'t exist yet. We\'re building it.\n\nWhat I\'m asking: motor sponsorship on Unit 001 in exchange for full brand integration across the build documentation. Social content, spec sheets, investor materials, and first-production-unit credentials.\n\nThis is the first production US-built premium electric supermoto running your motor. That\'s worth a conversation.\n\nAre you available this week?\n\nBryan Jaworski\nSNG Cycles — Shark Not Goldfish\nsharknotgoldfish@gmail.com', notes: 'If no → shop QS Motor, MXUS, or other mid-drive suppliers.\nContact via Alibaba or sotion.com direct.\nATTACH: rd-gold-270e-complete-top.jpg + rd-gold-270e-complete-front.jpg + 520e-black-edition.png', created: t-48000 },
+    { id: genId(), title: '📧 WP SUSPENSION — XACT 4 Forks Sponsorship', brand: 'Emails', type: 'Outreach Email', priority: 'High', status: 'Submitted', platforms: [], date: '2026-05-31', imageUrl: 'images/rd-gold-270e-complete-top.jpg', caption: 'SUBJECT: Unit 001 — A 6\'7" Former KTM Rider Put Your Forks on an Electric Supermoto\n\nHi [Name],\n\nI\'m Bryan Jaworski, founder of SNG Cycles. I\'m 6\'7". My last three bikes were KTMs — a 690 Duke, a 450 SXF, and a 525 SM. All three ran WP suspension. So when I built Unit 001, there was no other fork conversation.\n\nThe whole electric supermoto community swears by the Sirius forks. The WP XACT 4s weigh less, have more travel, and come in $1,000 cheaper. I didn\'t pick them from a spec sheet — I picked them because I already knew what they feel like at speed on three KTM platforms.\n\nUnit 001 runs WP forks. The entire build is documented publicly. Your brand goes in the spec sheet, investor brief, and every piece of content.\n\nA KTM Group suspension brand on a premium US-built electric supermoto is a story that hasn\'t been told yet. I\'d like to tell it right.\n\nWorth a conversation?\n\nBryan Jaworski · SNG Cycles · sharknotgoldfish@gmail.com', notes: 'Contact: wp-suspension.com — find sponsorship/motorsport contact.\nAlso try KTM North America motorsport/sponsorship.\nIf Fernando has WP/KTM contact — use that intro instead of cold email.\nATTACH: rd-gold-270e-complete-top.jpg + rd-gold-270e-complete-front.jpg + 520e-black-edition.png', created: t-47500 },
+    { id: genId(), title: '📧 WARP 9 RACING — Supermoto Wheels Sponsorship', brand: 'Emails', type: 'Outreach Email', priority: 'High', status: 'Submitted', platforms: [], date: '2026-05-31', imageUrl: 'images/rd-gold-270e-complete-top.jpg', caption: 'SUBJECT: Unit 001 — Your Wheels on the First Production Electric Supermoto\n\nHi [Name],\n\nI\'m Bryan Jaworski, founder of SNG Cycles — a Florida brand building limited-run street-legal electric supermotos. $21k–$30k. Numbered units.\n\nUnit 001 runs Warp 9 wheels. Running WP XACT 4 forks, Lewis Brakes EP8+ calipers, 27kW Sotion mid-drive, CNC 7075 aluminum extended swingarm. Every component chosen because it\'s the right call.\n\nThe entire build is documented publicly on TikTok and Instagram. Wheels are in every shot. Every video. Every spec sheet.\n\nWarp 9 belongs on this build because this is exactly the kind of build Warp 9 belongs on.\n\nWhat I\'m asking: wheel sponsorship on Unit 001 in exchange for full brand integration across the build.\n\nCan we talk?\n\nBryan Jaworski · SNG Cycles · sharknotgoldfish@gmail.com', notes: 'Contact: warp9racing.com\nIf no → shop Excel, Talon, or SM Pro wheels.\nATTACH: rd-gold-270e-complete-top.jpg + rd-gold-270e-complete-front.jpg + 520e-black-edition.png', created: t-47400 },
+    { id: genId(), title: '📧 CHI BATTERY — Premium Pack Sponsorship', brand: 'Emails', type: 'Outreach Email', priority: 'Medium', status: 'Submitted', platforms: [], date: '2026-05-31', imageUrl: 'images/e520-specs-diagram.png', caption: 'SUBJECT: Unit 001 — Chi Pack in the First Production US Electric Supermoto\n\nHi [Name],\n\nI\'m Bryan Jaworski, founder of SNG Cycles — Florida brand building limited-run street-legal electric supermotos.\n\nThe battery is the question everyone asks first. I want the answer to be Chi.\n\nUnit 001 is running 72V. WP XACT 4 forks. Lewis Brakes EP8+. Warp 9 wheels. 27kW Sotion mid-drive. CNC 7075 aluminum swingarm. Everything chosen because it\'s the right call. The battery needs to match that standard.\n\nThe entire build is documented publicly. Your pack doesn\'t just go in the bike — it goes in the spec sheet, investor brief, and every piece of content.\n\nWhat I\'m asking: battery sponsorship on Unit 001 in exchange for full brand integration. First production US-built premium electric supermoto. The battery brand that powers it gets that credential permanently.\n\nAre you available this week?\n\nBryan Jaworski · SNG Cycles · sharknotgoldfish@gmail.com', notes: 'Contact: chibatterysystems.com\nIf no → go Powerful Lithium Damysus (already spec\'d out — see next card).\nATTACH: rd-gold-270e-complete-top.jpg + rd-gold-270e-complete-front.jpg + 520e-black-edition.png', created: t-47300 },
+    { id: genId(), title: '📧 POWERFUL LITHIUM — Damysus 96V Sponsorship', brand: 'Emails', type: 'Outreach Email', priority: 'High', status: 'Submitted', platforms: [], date: '2026-05-31', imageUrl: 'images/e520-specs-diagram.png', caption: 'SUBJECT: Unit 001 — Your Damysus Pack in the First Production US Electric Supermoto\n\nHi [Name],\n\nI\'m Bryan Jaworski, founder of SNG Cycles — Florida brand building limited-run street-legal electric supermotos.\n\nI\'ve been looking at the Damysus 96V pack. Molicel P42A cells. Smart BMS with Bluetooth. 38.9kW output on the 38Ah. That\'s a battery for someone building something serious.\n\nUnit 001 is running WP XACT 4 forks, Lewis Brakes EP8+, Warp 9 wheels, 27kW Sotion mid-drive, CNC 7075 aluminum swingarm. Everything chosen because it\'s the right call.\n\nThe battery is the question everyone asks first. I want that answer to be a name they can look up and respect.\n\nWhat I\'m asking: Damysus pack sponsorship on Unit 001 in exchange for full brand integration — social content, spec sheets, investor materials, first-production-unit credentials.\n\nCan we talk this week?\n\nBryan Jaworski · SNG Cycles · sharknotgoldfish@gmail.com', notes: 'Contact: powerfullithium.com — smaller company, likely direct founder contact. HIGH yes probability.\nProduct: 96V Damysus 38Ah — $2,500 retail\nNOTE: 96V = voltage upgrade from current 72V spec — update spec sheet if they say yes.\nIf no → shop Luna Cycle, Biktrix, or Reention.\nATTACH: rd-gold-270e-complete-top.jpg + rd-gold-270e-complete-front.jpg + 520e-black-edition.png', created: t-47200 },
+    { id: genId(), title: '📧 CHARGED CYCLE WORKS — EBMX XLB-60 Sponsorship', brand: 'Emails', type: 'Outreach Email', priority: 'High', status: 'Submitted', platforms: [], date: '2026-05-31', imageUrl: 'images/e520-specs-diagram.png', caption: 'SUBJECT: From a Customer to a Partner — SNG Cycles Unit 001\n\nHey [Name],\n\nIt\'s Bryan — I\'ve been a customer for a while now, spent a good amount with you guys on builds. You know I\'m serious about this stuff.\n\nI\'m building Unit 001 — the first production-spec SNG 270E electric supermoto. Florida brand, limited run, $21k–$30k bikes built for the rider who shops KTM and Ducati and wants the electric version nobody else made. The whole build is being documented publicly — every component, every decision, every brand behind it.\n\nI want the EBMX XLB-60 V2 on this build. Formally. With Charged Cycle Works credited as a partner — in the spec sheet, the investor brief, the social content, and every piece of media that comes out of Unit 001.\n\nYou already know what kind of builder I am. Now I\'m offering something back.\n\nWhat does a conversation look like?\n\nBryan Jaworski · SNG Cycles · sharknotgoldfish@gmail.com · 786-761-2950', notes: 'Warm relationship — existing customer, spent thousands here.\nNote: Bryan has had CS frustrations but no confrontation. Approach warm and professional.\nIf no response → go direct to EBMX manufacturer.\nATTACH: rd-gold-270e-complete-top.jpg + rd-gold-270e-complete-front.jpg + 520e-black-edition.png', created: t-47100 },
+    { id: genId(), title: '🔥 GREENLINE ENGINEERING — Demand Letter', brand: 'Emails', type: 'Outreach Email', priority: 'High', status: 'Awaiting Approval', platforms: [], date: '2026-05-31', imageUrl: 'images/rd-build-orange-garage.jpg', caption: 'SUBJECT: Formal Demand for Controller Repair or Replacement — BAC8000 Damaged During Remote Tune\n\nTo Greenline Engineering,\n\nOn or around April 4, 2026, I engaged Greenline Engineering to perform a remote tune on my BAC8000 controller. The controller was fully functional prior to your service. Following your remote session, the controller was non-functional — soft-bricked.\n\nWhen I reported this issue, Greenline Engineering immediately refunded my $85 service fee without dispute, without investigation, and without requesting any additional information. That refund is an implicit acknowledgment that your service caused the damage.\n\nI have spent the past 57 days attempting to resolve this. That ends today.\n\nMY ASK: Attempt the remote tune again and restore the controller remotely — same way it was damaged. If needed I will purchase USB adapter and external power source for the wake-up procedure. I will not ship the controller.\n\nIf no response in 10 business days: Florida Small Claims Court ($1,100 claim) + BBB complaint + ASI report + public reviews.\n\nBryan Jaworski · 173 Saratoga Blvd W · Royal Palm Beach FL 33411 · sharknotgoldfish@gmail.com · 786-761-2950', notes: '🔴 SEND NOW — add today\'s date. ATTACH: pre-tune video (controller working) + email chain + $85 refund confirmation.\n\nASI threat is the most powerful — Greenline may lose their authorized dealer status.\nFull letter in: greenline-demand-letter.md', created: t-47000 },
+    { id: genId(), title: '📧 FERNANDO — Partner Update May 31', brand: 'Emails', type: 'Outreach Email', priority: 'High', status: 'Awaiting Approval', platforms: [], date: '2026-05-31', imageUrl: 'images/rd-owner-suited-up.jpg', caption: 'SUBJECT: SNG Cycles — Here\'s Where We\'re At. This Is Getting Real.\n\nFernando,\n\nBig update. Wanted to get you fully caught up.\n\nCOMPETITIVE: Stark VARG SM just launched — 80hp, 275 lbs, $12,900. SNG 520E Platinum: 100hp, 202 lbs. 70% better power-to-weight. Nobody building a Light Bee to our size anywhere online. Gas tank cover, clamshell system — completely original.\n\nWP FORKS: Running XACT 4s. If you have a KTM/WP contact, that introduction is worth more than any cold email.\n\nRIVA MOTORSPORTS: Already on our dealer outreach list. You being there changes how that conversation happens — skip the cold email, let\'s talk about the right move.\n\nUNIT 001 NEEDS:\n1. BAC8000 soft-bricked by Greenline on April 4 — demand letter going out. If you know anyone running BAC Tools, that\'s priority #1.\n2. Motor: EBMX XLB-60 V2 tops out at ~56hp. 100hp goal needs a different motor conversation — what\'s your read?\n3. Custom one-piece swingarm — know any CNC/motorsport fab shops in Florida?\n4. Provisional patent — files this week.\n\n8 sponsor emails drafted and ready. 30+ social posts scheduled. Day 1 launch post ready.\n\nLet\'s get on a call.\n\nBryan', notes: '⚠️ NEED FERNANDO\'S EMAIL — add to TO field before sending.\nFull email in: fernando-update.md\n\nFernando is KTM factory mechanic at Riva Motorsports Miami/Fort Lauderdale. Key for: WP contacts, controller recovery, swingarm fab, Riva dealer relationship.', created: t-46000 },
+    // ── OTHER BRANDS ──
+    { id: genId(), title: 'Morning routine that actually works', brand: 'Bryan Personal', type: 'Static Image', priority: 'Medium', status: 'Submitted', platforms: ['Instagram','Twitter / X'], date: '2026-06-03', caption: '', notes: '', created: t-30000 },
+    { id: genId(), title: '5 detailing mistakes that ruin your paint', brand: 'SSDS', type: 'Carousel', priority: 'High', status: 'Awaiting Approval', platforms: ['Instagram','Facebook'], date: '2026-06-05', caption: '', notes: '', created: t-31000 },
+  ];
+}
+
+function seedIfEmpty() {
+  if (loadItems().length > 0) return;
+  saveItems(getAllSNGPosts());
+}
+
+function loadAllPosts() {
+  if (!confirm('This will replace all current posts with the full 30-day SNG content calendar. Continue?')) return;
+  saveItems(getAllSNGPosts());
+  renderSidebar();
+  renderBoard();
+}
+
+function exportPosts() {
+  const posts = loadItems();
+  const blob = new Blob([JSON.stringify(posts, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'sng-posts-' + new Date().toISOString().split('T')[0] + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importPosts(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const posts = JSON.parse(e.target.result);
+      if (!Array.isArray(posts)) throw new Error('Invalid format');
+      if (confirm('Import ' + posts.length + ' posts? This will replace your current board.')) {
+        saveItems(posts);
+        renderSidebar();
+        renderBoard();
+      }
+    } catch(err) {
+      alert('Invalid file. Use a file exported from this app.');
+    }
+    input.value = '';
+  };
+  reader.readAsText(file);
+}
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+seedIfEmpty();
+renderSidebar();
+renderBoard();
+</script>
+</body>
+</html>

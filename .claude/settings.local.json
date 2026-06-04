@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"/home/shark/SNG-BIKE-PROJECT/ChatGPT Image May 26, 2026, 03_15_31 AM.png\" /home/shark/sng-cycles/images/270e-gold-reveal.png)",
+      "Bash(cp \"/home/shark/SNG-BIKE-PROJECT/ChatGPT Image May 27, 2026, 10_42_45 AM.png\" /home/shark/sng-cycles/images/megladon-comic-wrap.png)",
+      "Bash(cp \"/home/shark/SNG-BIKE-PROJECT/ChatGPT Image May 27, 2026, 03_31_22 AM.png\" /home/shark/sng-cycles/images/520e-black-edition.png)",
+      "Bash(cp \"/home/shark/SNG-BIKE-PROJECT/ChatGPT Image May 25, 2026, 08_19_03 PM.png\" /home/shark/sng-cycles/images/sng-hoodie-buildup.png)",
+      "Bash(cp \"/home/shark/SNG-BIKE-PROJECT/ChatGPT Image May 15, 2026, 12_54_01 PM.png\" /home/shark/sng-cycles/images/e520-specs-diagram.png)",
+      "Bash(cp \"/mnt/c/Users/Shark/Downloads/20260529_083345.jpg\" /home/shark/sng-cycles/images/rd-gold-270e-complete-top.jpg)",
+      "Bash(cp \"/mnt/c/Users/Shark/Downloads/20260529_174039.jpg\" /home/shark/sng-cycles/images/rd-gold-270e-complete-front.jpg)",
+      "Bash(cp \"/mnt/c/Users/Shark/Downloads/20260320_093521.jpg\" /home/shark/sng-cycles/images/rd-orange-270e-front.jpg)",
+      "Bash(cp \"/mnt/c/Users/Shark/Downloads/20260326_041146.jpg\" /home/shark/sng-cycles/images/rd-orange-270e-side.jpg)",
+      "Bash(cp \"/mnt/c/Users/Shark/Downloads/20260507_140533.jpg\" /home/shark/sng-cycles/images/rd-build-white-fairings.jpg)",
+      "Bash(npm install *)",
+      "Bash(sudo npm install -g netlify-cli)",
+      "Bash(npx --yes netlify-cli --version)",
+      "Bash(npx netlify-cli *)",
+      "Bash(zip -r /mnt/c/Users/Shark/Downloads/sng-content-hub.zip netlify-deploy/)",
+      "Read(//mnt/c/Users/Shark/Downloads/**)",
+      "Bash(python3 *)",
+      "Bash(cp /home/shark/sng-cycles/content-hub.html /home/shark/sng-cycles/netlify-deploy/index.html)",
+      "Bash(zip -r /mnt/c/Users/Shark/Downloads/sng-content-hub.zip .)",
+      "Bash(git config *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}

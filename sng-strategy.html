@@ -159,6 +159,12 @@
     body { background: white; padding: 0; }
     .page { box-shadow: none; margin: 0; }
   }
+
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; margin: 0; }
+  }
 </style>
 </head>
 <body>
@@ -535,7 +541,39 @@
     </div>
   </div>
 
-  <div class="guide-footer">
+    <div class="doc-body" style="padding:28px 44px; background:#0a0a0a; border-top:4px solid #e85d04;">
+    <div style="font-size:9px;font-weight:900;color:#e85d04;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;">The Capital Ask</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div style="background:#111;border-top:3px solid #e85d04;padding:14px 16px;">
+        <div style="font-family:Impact,'Arial Black',Arial,sans-serif;font-size:26px;color:#fff;">~$20,000</div>
+        <div style="font-size:9px;color:#777;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;">Hero Prototype Build</div>
+      </div>
+      <div style="background:#111;border-top:3px solid #e85d04;padding:14px 16px;">
+        <div style="font-family:Impact,'Arial Black',Arial,sans-serif;font-size:26px;color:#fff;">$8K–$20K</div>
+        <div style="font-size:9px;color:#777;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;">Frame Fab Tooling</div>
+      </div>
+      <div style="background:#111;border-top:3px solid #e85d04;padding:14px 16px;">
+        <div style="font-family:Impact,'Arial Black',Arial,sans-serif;font-size:26px;color:#fff;">$35K–$75K</div>
+        <div style="font-size:9px;color:#777;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;">Compliance &amp; Legal (WMI / FMVSS)</div>
+      </div>
+      <div style="background:#111;border-top:3px solid #e85d04;padding:14px 16px;">
+        <div style="font-family:Impact,'Arial Black',Arial,sans-serif;font-size:26px;color:#fff;">$3K–$5K</div>
+        <div style="font-size:9px;color:#777;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;">Social Content + Demand Validation</div>
+      </div>
+    </div>
+    <div style="background:#e85d04;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-size:9px;font-weight:900;color:rgba(255,255,255,0.75);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;">Total Seed Ask</div>
+        <div style="font-family:Impact,'Arial Black',Arial,sans-serif;font-size:32px;color:#fff;letter-spacing:1px;">$66,000 – $120,000</div>
+      </div>
+      <div style="text-align:right;font-size:11px;color:rgba(255,255,255,0.85);line-height:1.7;">
+        Founder commits ~$25K from settlement alongside this raise.<br>
+        $31K + 1,000 hours already invested — not in this ask.<br>
+        <strong style="color:#fff;">30 units sold unlocks $4M scale capital.</strong>
+      </div>
+    </div>
+  </div>
+<div class="guide-footer">
     <div class="footer-left"><strong>SNG Motors / CCM Inc.</strong> · Royal Palm Beach, FL · sharknotgoldfish@gmail.com</div>
     <div class="footer-center">Confidential — Investor Distribution Only</div>
     <div class="footer-right">Commercialization Strategy Blueprint · June 2026</div>
