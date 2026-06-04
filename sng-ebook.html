@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave the School Behind — SNG Cycles</title>
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-deep:       #0a0c12;
+      --bg-base:       #0f1117;
+      --bg-card:       #141820;
+      --bg-navy:       #1a2744;
+      --bg-navy-light: #1f2e52;
+      --orange:        #f47820;
+      --orange-light:  #ff9344;
+      --orange-dim:    #b85a10;
+      --white:         #ffffff;
+      --off-white:     #e8eaf0;
+      --gray-light:    #b0b6c8;
+      --gray-mid:      #6b7494;
+      --gray-dark:     #2a2f3e;
+      --font-heading:  'Georgia', 'Times New Roman', serif;
+      --font-body:     'Helvetica Neue', 'Arial', sans-serif;
+      --font-mono:     'Courier New', monospace;
+      --max-width:     760px;
+      --gutter:        2rem;
+    }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      line-height: 1.75;
+    }
+
+    /* =============================================
+       COVER
+    ============================================= */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0a0c12 0%, #0d1220 40%, #111827 70%, #0a0c12 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem var(--gutter);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 30%, rgba(244,120,32,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 20% 80%, rgba(26,39,68,0.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cover-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .cover-eyebrow::before,
+    .cover-eyebrow::after {
+      content: '——';
+      margin: 0 0.75em;
+      opacity: 0.5;
+    }
+
+    .cover-logo-mark {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 0.25em;
+      position: relative;
+    }
+
+    .cover-logo-mark span {
+      color: var(--orange);
+    }
+
+    .cover-subtitle-large {
+      font-family: var(--font-body);
+      font-size: clamp(0.95rem, 2vw, 1.2rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .cover-divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+      margin: 0 auto 3.5rem;
+      position: relative;
+    }
+
+    .cover-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5.5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 680px;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .cover-tagline {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      color: var(--gray-light);
+      font-style: italic;
+      max-width: 560px;
+      line-height: 1.5;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .cover-meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+    }
+
+    .cover-meta-value {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .cover-fin {
+      position: absolute;
+      bottom: 3rem;
+      right: 3rem;
+      font-size: 5rem;
+      opacity: 0.04;
+      user-select: none;
+      line-height: 1;
+    }
+
+    /* =============================================
+       TABLE OF CONTENTS
+    ============================================= */
+    .toc-section {
+      background: var(--bg-navy);
+      padding: 4rem var(--gutter);
+    }
+
+    .toc-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .toc-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2rem;
+    }
+
+    .toc-heading {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      gap: 0;
+    }
+
+    .toc-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s;
+    }
+
+    .toc-item:hover {
+      color: var(--orange-light);
+    }
+
+    .toc-number {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+      min-width: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .toc-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--off-white);
+      flex: 1;
+    }
+
+    .toc-subtitle {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      font-style: italic;
+    }
+
+    /* =============================================
+       CHAPTER LAYOUT
+    ============================================= */
+    .chapter {
+      padding: 6rem var(--gutter);
+      max-width: calc(var(--max-width) + var(--gutter) * 2);
+      margin: 0 auto;
+    }
+
+    .chapter:nth-child(odd) {
+      background: var(--bg-base);
+    }
+
+    .chapter:nth-child(even) {
+      background: var(--bg-card);
+    }
+
+    .chapter-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* Chapter header */
+    .chapter-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .chapter-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.25rem;
+    }
+
+    .chapter-label::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--orange);
+    }
+
+    .chapter-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .chapter-subtitle {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .chapter-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--orange);
+      margin: 1.75rem 0 0;
+    }
+
+    /* Body text */
+    .chapter p {
+      font-size: 1.05rem;
+      line-height: 1.82;
+      color: var(--off-white);
+      margin-bottom: 1.5rem;
+    }
+
+    .chapter p:last-child {
+      margin-bottom: 0;
+    }
+
+    .chapter h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 2.5rem 0 1rem;
+    }
+
+    /* =============================================
+       PULL QUOTES
+    ============================================= */
+    .pull-quote {
+      border-left: 3px solid var(--orange);
+      margin: 2.5rem 0;
+      padding: 1.5rem 0 1.5rem 2rem;
+      background: linear-gradient(90deg, rgba(244,120,32,0.06) 0%, transparent 100%);
+    }
+
+    .pull-quote p {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem) !important;
+      font-style: italic;
+      color: var(--white) !important;
+      line-height: 1.45 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    /* =============================================
+       CALLOUT / STAT BOXES
+    ============================================= */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--gray-dark);
+      border: 1px solid var(--gray-dark);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 2.5rem 0;
+    }
+
+    .stat-cell {
+      background: var(--bg-navy);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      line-height: 1.4;
+    }
+
+    /* Callout box */
+    .callout {
+      background: var(--bg-navy);
+      border: 1px solid var(--bg-navy-light);
+      border-top: 3px solid var(--orange);
+      border-radius: 0 0 4px 4px;
+      padding: 1.75rem 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .callout-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .callout p {
+      color: var(--gray-light) !important;
+      font-size: 0.95rem !important;
+      margin-bottom: 0.5rem !important;
+      line-height: 1.65 !important;
+    }
+
+    .callout p strong {
+      color: var(--off-white);
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    /* =============================================
+       SPEC TABLE
+    ============================================= */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.92rem;
+    }
+
+    .spec-table thead tr {
+      background: var(--orange);
+    }
+
+    .spec-table thead th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bg-deep);
+      font-weight: 700;
+    }
+
+    .spec-table tbody tr {
+      border-bottom: 1px solid var(--gray-dark);
+    }
+
+    .spec-table tbody tr:nth-child(even) {
+      background: rgba(26,39,68,0.4);
+    }
+
+    .spec-table tbody tr:hover {
+      background: rgba(244,120,32,0.06);
+    }
+
+    .spec-table tbody td {
+      padding: 0.7rem 1rem;
+      color: var(--off-white);
+      vertical-align: top;
+    }
+
+    .spec-table tbody td:first-child {
+      color: var(--gray-light);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .spec-table tbody td strong {
+      color: var(--white);
+    }
+
+    /* =============================================
+       BIKE CARDS
+    ============================================= */
+    .bike-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .bike-card {
+      background: var(--bg-navy);
+      border: 1px solid var(--bg-navy-light);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bike-card-header {
+      padding: 1.5rem 1.5rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .bike-card-edition {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.4rem;
+    }
+
+    .bike-card-name {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .bike-card-body {
+      padding: 1.25rem 1.5rem;
+      flex: 1;
+    }
+
+    .bike-card-body p {
+      font-size: 0.9rem !important;
+      color: var(--gray-light) !important;
+      margin-bottom: 1rem !important;
+      line-height: 1.65 !important;
+    }
+
+    .bike-card-footer {
+      padding: 1rem 1.5rem;
+      background: rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .bike-card-price {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    .bike-card-units {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+    }
+
+    /* =============================================
+       COMPARISON BOX
+    ============================================= */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--gray-dark);
+      border: 1px solid var(--gray-dark);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .comparison-col {
+      background: var(--bg-navy);
+      padding: 1.5rem;
+    }
+
+    .comparison-col.featured {
+      background: linear-gradient(160deg, #1a2744, #1f3060);
+    }
+
+    .comparison-brand {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-brand.competitor {
+      color: var(--gray-mid);
+    }
+
+    .comparison-model {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .comparison-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.88rem;
+    }
+
+    .comparison-row:last-child {
+      border-bottom: none;
+    }
+
+    .comparison-key {
+      color: var(--gray-mid);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+    }
+
+    .comparison-val {
+      color: var(--off-white);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .comparison-val.win {
+      color: var(--orange);
+    }
+
+    /* =============================================
+       TIMELINE (Build Story)
+    ============================================= */
+    .timeline {
+      margin: 2.5rem 0;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      bottom: 0.6rem;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--orange), rgba(244,120,32,0.1));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.25rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.45rem;
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--orange);
+      border: 2px solid var(--bg-base);
+    }
+
+    .timeline-dot.fail {
+      background: var(--gray-dark);
+      border-color: var(--gray-mid);
+    }
+
+    .timeline-dot.win {
+      background: var(--orange);
+      box-shadow: 0 0 12px rgba(244,120,32,0.5);
+    }
+
+    .timeline-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-label.fail {
+      color: var(--gray-mid);
+    }
+
+    .timeline-heading {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-text {
+      font-size: 0.92rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       ENGINEERING FEATURES
+    ============================================= */
+    .feature-list {
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .feature-item {
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--gray-dark);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .feature-item:last-child {
+      border-bottom: none;
+    }
+
+    .feature-number {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+      padding-top: 0.2rem;
+    }
+
+    .feature-name {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+      font-size: 0.93rem;
+      color: var(--gray-light);
+      line-height: 1.72;
+    }
+
+    /* =============================================
+       PHILOSOPHY SECTION
+    ============================================= */
+    .philosophy-hero {
+      background: linear-gradient(135deg, var(--bg-navy), #0f1a30);
+      border: 1px solid var(--bg-navy-light);
+      border-radius: 4px;
+      padding: 3rem 2.5rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+
+    .philosophy-word {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .philosophy-word span {
+      color: var(--orange);
+    }
+
+    .philosophy-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+    }
+
+    /* =============================================
+       MOAT LIST
+    ============================================= */
+    .moat-list {
+      list-style: none;
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .moat-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-navy);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .moat-icon {
+      color: var(--orange);
+      font-size: 0.9rem;
+      padding-top: 0.1rem;
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+    }
+
+    .moat-text {
+      font-size: 0.95rem;
+      color: var(--off-white);
+      line-height: 1.6;
+    }
+
+    .moat-text strong {
+      color: var(--white);
+    }
+
+    /* =============================================
+       CLOSING / CTA
+    ============================================= */
+    .closing-section {
+      background: linear-gradient(160deg, #0a0c12 0%, #0e1422 50%, #0a0c12 100%);
+      padding: 7rem var(--gutter);
+      text-align: center;
+    }
+
+    .closing-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .closing-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2rem;
+    }
+
+    .closing-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .closing-body {
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--bg-deep);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem 2.25rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .cta-primary:hover {
+      background: var(--orange-light);
+    }
+
+    .cta-secondary {
+      display: inline-block;
+      border: 1px solid var(--gray-dark);
+      color: var(--gray-light);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem 2.25rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .cta-secondary:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .footer {
+      background: var(--bg-deep);
+      border-top: 1px solid var(--gray-dark);
+      padding: 3rem var(--gutter);
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand span {
+      color: var(--orange);
+    }
+
+    .footer-tagline {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-legal {
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      line-height: 1.6;
+    }
+
+    /* =============================================
+       PRINT STYLES
+    ============================================= */
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+      }
+
+      .cover {
+        background: #0f1117;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        page-break-after: always;
+      }
+
+      .toc-section,
+      .chapter,
+      .closing-section {
+        page-break-inside: avoid;
+      }
+
+      .bike-card,
+      .comparison-grid,
+      .callout {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 600px) {
+      :root {
+        --gutter: 1.25rem;
+      }
+
+      html { font-size: 15px; }
+
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cover-meta {
+        gap: 1.5rem;
+      }
+
+      .toc-item {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       COVER PAGE
+  ============================================= -->
+  <section class="cover">
+    <div class="cover-eyebrow">SNG Cycles &mdash; Florida Built &mdash; 2025</div>
+
+    <div class="cover-logo-mark">SNG<span>.</span></div>
+    <div class="cover-subtitle-large">Shark Not Goldfish Cycles</div>
+
+    <div class="cover-divider"></div>
+
+    <h1 class="cover-title">Leave the School Behind</h1>
+    <p class="cover-tagline">How One Builder Made the Electric Supermoto Nobody Else Would Build</p>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Founder</span>
+        <span class="cover-meta-value">Bryan Jaworski</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">R&amp;D Prototypes</span>
+        <span class="cover-meta-value">3</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Total Hours</span>
+        <span class="cover-meta-value">1,000</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Models</span>
+        <span class="cover-meta-value">6</span>
+      </div>
+    </div>
+
+    <div class="cover-fin">&#9651;</div>
+  </section>
+
+  <!-- ============================================
+       TABLE OF CONTENTS
+  ============================================= -->
+  <section class="toc-section">
+    <div class="toc-inner">
+      <p class="toc-label">Contents</p>
+      <h2 class="toc-heading">Seven Chapters.<br>One Machine.</h2>
+      <ul class="toc-list">
+        <li><a class="toc-item" href="#chapter-1">
+          <span class="toc-number">01</span>
+          <span>
+            <span class="toc-title">The Problem</span><br>
+            <span class="toc-subtitle">Every motorcycle ever made was built for someone 5'10"</span>
+          </span>
+        </a></li>
+        <li><a class="toc-item" href="#chapter-2">
+          <span class="toc-number">02</span>
+          <span>
+            <span class="toc-title">Three Builds</span><br>
+            <span class="toc-subtitle">$31,000. 1,000 hours. Three prototypes. One answer.</span>
+          </span>
+        </a></li>
+        <li><a class="toc-item" href="#chapter-3">
+          <span class="toc-number">03</span>
+          <span>
+            <span class="toc-title">The Engineering</span><br>
+            <span class="toc-subtitle">Every decision on the machine explained</span>
+          </span>
+        </a></li>
+        <li><a class="toc-item" href="#chapter-4">
+          <span class="toc-number">04</span>
+          <span>
+            <span class="toc-title">The Philosophy</span><br>
+            <span class="toc-subtitle">Shark Not Goldfish — what it actually means</span>
+          </span>
+        </a></li>
+        <li><a class="toc-item" href="#chapter-5">
+          <span class="toc-number">05</span>
+          <span>
+            <span class="toc-title">The Bikes</span><br>
+            <span class="toc-subtitle">270E, Holochrome, 520E Black, 520E Platinum</span>
+          </span>
+        </a></li>
+        <li><a class="toc-item" href="#chapter-6">
+          <span class="toc-number">06</span>
+          <span>
+            <span class="toc-title">The Numbers</span><br>
+            <span class="toc-subtitle">Competitive analysis and why the premium is justified</span>
+          </span>
+        </a></li>
+        <li><a class="toc-item" href="#chapter-7">
+          <span class="toc-number">07</span>
+          <span>
+            <span class="toc-title">What's Next</span><br>
+            <span class="toc-subtitle">Unit 001, production, the vision</span>
+          </span>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CHAPTER 1 — THE PROBLEM
+  ============================================= -->
+  <article class="chapter" id="chapter-1">
+    <div class="chapter-inner">
+      <div class="chapter-header">
+        <p class="chapter-label">Chapter One</p>
+        <h2 class="chapter-title">The Problem</h2>
+        <p class="chapter-subtitle">Every motorcycle ever made was built for someone 5'10". Then the electric revolution came — and the problem got worse.</p>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>I'm 6'7". I've been riding since I was a kid. KTMs mostly — the 690 Duke, the 450 SXF, the 525 SM. I know what a serious motorcycle feels like. I know what it's like to throw a leg over something that was actually designed to perform, not just look like it performs.</p>
+
+      <p>And for my entire life, every single one of those bikes was built for someone who isn't me.</p>
+
+      <p>The seat height on a KTM 450 SXF — one of the best supermoto platforms ever built — is 37.6 inches. You're already cramped if you're anywhere over 6'2". For me, at 6'7" and 209 pounds, riding a stock supermoto means knees up near the handlebars, body folded like a jackknife, fighting geometry that was never designed to let a tall rider be comfortable, let alone fast. The motorcycle industry has been building bikes for the average rider for seventy-plus years. The average rider, apparently, is 5'10".</p>
+
+      <p>I dealt with it because the options were either adapt to what existed or stop riding. I adapted. I learned how to be quick on machines that weren't built for my body. But I never stopped noticing the gap.</p>
+
+      <div class="pull-quote">
+        <p>"Every motorcycle ever made was built for someone 5'10". The electric revolution came. And instead of fixing that problem, the industry just electrified it."</p>
+        <cite>Bryan Jaworski, Founder</cite>
+      </div>
+
+      <p>Then electric supermotos started showing up. I paid attention. I watched the Stark VARG come out and generate huge buzz. I looked at what Cake and KTM Freeride and the other players were doing. The performance was getting real. Torque delivery on electric motors is honestly better suited to supermoto than almost any other application — instant, precise, controllable. The technology was finally there.</p>
+
+      <p>But nobody had built the right bike.</p>
+
+      <p>The Stark VARG is built on the same 37.4-inch seat height as a conventional supermoto. Lighter than a gas bike — 250 pounds — which is genuinely impressive. But still built for the 5'10" rider. Still the same geometry the industry has been running for decades. The electric revolution came to supermotos and brought exactly the same ergonomic blind spot it inherited from ICE.</p>
+
+      <p>And there was a second problem. The serious rider — the person who bought a Ducati Hypermotard or a KTM 890 SMR, the collector, the track-day buyer, the person who understands what premium suspension and proper geometry and hand-selected components actually means — had nowhere to go. The electric supermoto market was either race-only enduros, underpowered commuters, or kit bikes with bargain-bin controllers and forks pulled from whatever donor platform happened to be cheap.</p>
+
+      <p>Nobody was building an electric supermoto for the buyer who knew what they were buying. Nobody was building one for the tall rider. Nobody was building one with the kind of component selection that makes a motorcycle a real motorcycle instead of a conversion project.</p>
+
+      <div class="callout">
+        <p class="callout-label">The Gap in the Market</p>
+        <p>The serious electric supermoto buyer — <strong>tall, experienced, collector-minded</strong> — had exactly zero options. The market served the mass average and called it done.</p>
+        <p>SNG was built because that buyer existed and nobody was building their motorcycle.</p>
+      </div>
+
+      <p>I spent a long time waiting for someone else to fix this. I followed every release announcement. I read every spec sheet. I watched the community forums and the review channels and the launch events. And the bike I was waiting for never came.</p>
+
+      <p>So I stopped waiting.</p>
+
+      <p>The decision to build my own motorcycle wasn't a business plan hatched on a whiteboard. It was the natural conclusion of a guy who rides, who understands components, who had the skills and the frustration and the refusal to accept that the right machine just wasn't going to exist. I had the background. I had the data from years on KTMs. I had the specific knowledge of what I needed. And I had the recognition that if the tall rider's electric supermoto was ever going to exist, I was going to have to build it myself.</p>
+
+      <p>That's how SNG Cycles started. Not with a pitch deck. Not with a market research report. With a problem that nobody else was solving and a decision to stop waiting for someone who never showed up.</p>
+    </div>
+  </article>
+
+  <!-- ============================================
+       CHAPTER 2 — THREE BUILDS
+  ============================================= -->
+  <article class="chapter" id="chapter-2">
+    <div class="chapter-inner">
+      <div class="chapter-header">
+        <p class="chapter-label">Chapter Two</p>
+        <h2 class="chapter-title">Three Builds</h2>
+        <p class="chapter-subtitle">$50,000+. 1,000 hours. 14 months. Three builds. Each one closer. Third one right.</p>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>Three builds. That's what it took to get to Unit 001. Not because any of them didn't work — they all worked. It's because each build answered questions the previous one raised, and by the time the third build was done, every single decision was backed by data instead of theory. That's the difference between a prototype and a production machine — and closing that gap cost $50,000+ and fourteen months of accumulated knowledge.</p>
+
+      <p>Here's what that looked like.</p>
+
+      <div class="stat-grid">
+        <div class="stat-cell">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Full Prototypes</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-value">$50K+</div>
+          <div class="stat-label">R&amp;D Investment</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-value">1,000</div>
+          <div class="stat-label">Build Hours</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-value">14</div>
+          <div class="stat-label">Months</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-label">Build One &mdash; What a Big Rider Actually Needs</p>
+          <p class="timeline-heading">The suspension was too light. The power made it squirrelly. Good — now I know.</p>
+          <p class="timeline-text">Build One worked. It rode. But the suspension was spec'd for an average-sized rider, and when real power hit it with 209 pounds on top, it became unpredictable — too much movement, not enough control. So the swingarm got extended. And once the swingarm moved, the geometry shifted. And once the geometry shifted, the wheels became part of the equation. One solution led to the next problem, which led to the next solution. That chain of cause and effect is how you end up with a machine that's 100 pounds lighter than the Stark VARG while being taller and built for a bigger rider. Build One didn't tell me what I wanted. It told me exactly what the machine needed.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-label">Build Two &mdash; Patience and the Blueprint for Big and Light</p>
+          <p class="timeline-heading">A lot of that build was waiting. Waiting for the right parts. That was the lesson.</p>
+          <p class="timeline-text">Build Two taught patience. Not the kind of patience where you sit still — the kind where you stop and wait for what's right instead of grabbing what's available. A significant part of those 14 months wasn't wrench time. It was waiting. Waiting for the right suspension components. Waiting for the CNC work. Refusing to compromise on parts because the wrong part would mean doing it again. Build Two also proved something that shouldn't be possible: you can build bigger — taller geometry, more stature, designed for a larger rider — and end up lighter. Every deliberate decision shaved weight. Every "good enough" shortcut that didn't get taken kept the number going down. That blueprint is what made Unit 001 possible.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot win"></div>
+          <p class="timeline-label">Build Three &mdash; The Feeling Nobody Can Take From You</p>
+          <p class="timeline-heading">Unit 001. This is what it feels like to do something nobody else did.</p>
+          <p class="timeline-text">Build Three came together with everything the first two taught. The swingarm geometry was right. The weight was right. The seat height was right. The gas tank enclosure, the clamshell system, the 520 chain, the WP forks — every decision earned, not assumed. But the thing Build Three really taught wasn't about the bike. It was the moment you finish something and search for it online and find nothing. Nobody's done this. Not once. Not twice. In a world where you assume everything's been done before, that feeling hits different. That's what Unit 001 is. Not just a machine — proof that there are still things left to build for the first time.</p>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        <p>"I didn't set out to build something better than the Varg. I set out to build something that worked for me. One problem led to the next solution, and somewhere in there I looked up and realized I'd done it."</p>
+        <cite>Bryan Jaworski, Founder</cite>
+      </div>
+
+      <p>Three builds. $50,000+ in personal investment. 1,000 hours across 14 months. Each one worked. Each one taught something the last one couldn't. By the time Build Three was done, every single decision on that machine was backed by real data — not spec sheets, not forum posts, not what the community consensus said to do. Data from riding the machine, feeling what was wrong, fixing it, and riding it again.</p>
+
+      <p>That knowledge is the competitive moat. There is no shortcut to it. No competitor can buy the 14 months. No funded startup can replicate three builds of accumulated understanding. The motorcycle is the proof — 202 pounds, 39.5-inch seat height, production-ready engineering decisions built into a machine that looks and rides like it should cost what it costs.</p>
+
+      <p>No factory. No team of engineers. No permission from anyone. Just the problem, the process, and the refusal to stop until it felt right.</p>
+    </div>
+  </article>
+
+  <!-- ============================================
+       CHAPTER 3 — THE ENGINEERING
+  ============================================= -->
+  <article class="chapter" id="chapter-3">
+    <div class="chapter-inner">
+      <div class="chapter-header">
+        <p class="chapter-label">Chapter Three</p>
+        <h2 class="chapter-title">The Engineering</h2>
+        <p class="chapter-subtitle">Every decision on the machine explained — from the forks to the battery enclosure to the chain nobody else runs.</p>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>A motorcycle is a system. Every component affects every other component. The decisions on an SNG machine aren't independent choices — they're an integrated stack that was built from the rider backward: a 6'7", 209-pound experienced rider who knows what a proper motorcycle feels like and will immediately notice if any part of the system is wrong.</p>
+
+      <p>Here's how the machine was built, and why.</p>
+
+      <div class="feature-list">
+
+        <div class="feature-item">
+          <span class="feature-number">01</span>
+          <div>
+            <p class="feature-name">Gas Tank Battery Enclosure</p>
+            <p class="feature-desc">The community standard for electric supermoto battery housing is a 3D-printed plastic block bolted to the frame. Bryan looked at that solution and recognized the answer was already sitting in every motorcycle salvage yard in the country. He sourced a Husqvarna gas tank shell, cut the bottom off, and retained the OEM top mounting points to attach it directly to the frame. He then cut the center out of the stock Sur-Ron battery door, mixed shop clay, water, and baking soda into a working plaster, formed it over the old door, and mounted the tank shell on top — creating a seamless, factory-quality transition between the two pieces. The battery itself installs at a specific angle, which locks it in place by geometry alone — no latches, no straps, no extra hardware. The result looks like it was engineered by the OEM. There are zero documented examples of this approach anywhere in the electric motorcycle community.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-number">02</span>
+          <div>
+            <p class="feature-name">Clamshell Hood-Release System <em style="color: var(--orange); font-size: 0.8rem;">(Patent Pending)</em></p>
+            <p class="feature-desc">Once the tank enclosure is in place, you need a way to access the battery and electronics without fighting the bodywork. Bryan built a custom upper subframe section with swivel fairing spreaders — the same principle as a car hood release. Pull the mechanism, the rear plastics flare open and stay open, giving full access to the battery, the controller, and the wiring without removing a single bolt. Close it and everything snaps back flush. No tools. No disassembly. No production motorcycle on earth has anything like this. It is currently patent-pending.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-number">03</span>
+          <div>
+            <p class="feature-name">WP XACT 4 Forks</p>
+            <p class="feature-desc">The electric supermoto community defaults to Sirius or KKE forks. They're popular because they're available and reasonably priced. Bryan chose WP XACT 4. The reason isn't arbitrary brand loyalty — he had data from three KTMs' worth of riding on WP suspension. He knew exactly how they behaved, exactly where they were in the performance window, and exactly how they'd feel under his weight and riding style at the seat height he was targeting. WP XACT 4 also offered more travel and came in lighter and a thousand dollars cheaper than comparable alternatives once the full specification was compared. The community consensus wasn't wrong for the community. For this machine, the data said WP.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-number">04</span>
+          <div>
+            <p class="feature-name">160mm Extended CNC Swingarm — 7075 T6 Aluminum</p>
+            <p class="feature-desc">The swingarm extension was the decision that killed Prototype 2. The geometry has to be right or the bike doesn't work — full stop. The final spec is a 160mm extended swingarm machined from 7075 T6 aluminum, which is aerospace-grade — the same alloy series used in aircraft structural components and high-stress mechanical assemblies. The extension is built from 100mm and 60mm extenders stacked to achieve the final geometry. The result is the handling characteristic and weight distribution that makes a 202-pound supermoto work for a 6'7" rider at speed. The next evolution: a single billet custom swingarm that eliminates the extender stack entirely.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-number">05</span>
+          <div>
+            <p class="feature-name">27kW Sotion Mid-Drive + BAC8000 Controller</p>
+            <p class="feature-desc">The power system is the heart of the machine. The 27kW Sotion mid-drive delivers torque in the way that makes electric supermotos genuinely better than their gas counterparts for this application — instant, linear, controllable from the grip. The BAC8000 controller manages that delivery with the thermal management and integration quality the system requires. This is the combination that was missing on Prototype 1 and that made everything else on Prototype 3 work properly. The 72V system architecture was chosen for the voltage window that balances performance, battery architecture, and component availability at the production quality level SNG demands.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-number">06</span>
+          <div>
+            <p class="feature-name">520 Primary Chain</p>
+            <p class="feature-desc">Most electric supermoto conversions run a belt or a smaller chain because they're lighter and simpler. SNG runs a 520 primary chain — the chain pitch used on serious performance motorcycles. It's heavier on paper. The reasoning: a 520 chain handles the torque delivery of the Sotion mid-drive with a larger safety margin, handles the abuse of serious riding without the failure modes that show up in lightweight chain systems under sustained hard use, and integrates with the drivetrain as a complete system rather than as a compromise. On a $21,000 motorcycle, the drivetrain doesn't compromise.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-number">07</span>
+          <div>
+            <p class="feature-name">UFO ABS Plastics — Hand-Formed On Site</p>
+            <p class="feature-desc">UFO Plast is an Italian manufacturer that supplies bodywork to factory motocross and supermoto race programs. The ABS panels on an SNG machine start as premium Italian motorsport-grade material and are heat-formed and shaped on site — literally by hand, with a heat gun and a razor blade, until the fitment and lines are right. This is not a bolt-on cosmetic exercise. The hand-forming process, combined with the gas tank enclosure mounting system and the clamshell rear section, creates bodywork integration that doesn't exist anywhere else. The Holochrome edition adds a iridescent color-shifting wrap over this base that changes from blue to green to gold to purple depending on the angle of light. It cannot be accurately photographed. It has to be seen in person.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-number">08</span>
+          <div>
+            <p class="feature-name">Lewis Brakes EP8+ &amp; Warp 9 Wheels</p>
+            <p class="feature-desc">Braking and rolling stock are where the difference between a motorcycle and a conversion project is most viscerally felt. Lewis Brakes EP8+ hydraulic disc brakes were selected for their performance window and integration with the SNG weight and power profile. Warp 9 wheels are the standard for serious off-road and supermoto application — proven, lightweight, and built to take the kind of loading that occurs on a performance machine used the way a supermoto is supposed to be used. These are not value-engineered components. They are the right components for the application.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout">
+        <p class="callout-label">Weight: The Engineering Result</p>
+        <p>Every component decision on an SNG machine is made with the weight target in mind. <strong>202 pounds</strong> is the result. That is lighter than the Stark VARG SM at 275 pounds. Lighter than any comparable electric supermoto on the market. Not by trimming corners — by making better decisions at every system level.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============================================
+       CHAPTER 4 — THE PHILOSOPHY
+  ============================================= -->
+  <article class="chapter" id="chapter-4">
+    <div class="chapter-inner">
+      <div class="chapter-header">
+        <p class="chapter-label">Chapter Four</p>
+        <h2 class="chapter-title">The Philosophy</h2>
+        <p class="chapter-subtitle">Shark Not Goldfish. What it means, where it came from, and why it's tattooed on both hands.</p>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <div class="philosophy-hero">
+        <p class="philosophy-word"><span>Shark</span><br>Not<br>Goldfish.</p>
+        <p class="philosophy-tag">The name is the philosophy. The philosophy is the brand.</p>
+      </div>
+
+      <p>A goldfish has a short memory and a smaller world. When the tank changes — when the water gets turbid or the environment shifts — the goldfish panics. It doesn't have the context or the capability to adapt. It just reacts, or it doesn't.</p>
+
+      <p>A shark has been in the ocean for four hundred and fifty million years. The ocean has changed — the temperature, the currents, the chemistry, the species that surround it. The shark adapted and thrived. It doesn't need the conditions to be stable. It thrives precisely because the conditions change. The waves don't threaten it. The waves are where it operates.</p>
+
+      <p>The electric revolution in motorcycles is a wave. Most of the industry is behaving like a goldfish — waiting to see how it shakes out, building half-measures, hedging. The legacy manufacturers spent decades building the internal combustion engine to a level of refinement that is genuinely impressive, and now they're watching that refinement become obsolete faster than their product cycles can adapt. That's the goldfish problem. The water changed and they're trying to figure out how to survive in the new conditions.</p>
+
+      <div class="pull-quote">
+        <p>"The electric revolution is the wave. We didn't wait to see what it meant. We built the machine. That's what sharks do."</p>
+        <cite>Bryan Jaworski, Founder</cite>
+      </div>
+
+      <p>SNG was founded in the middle of the wave. Not after it passed. Not before it arrived. In it. The decision to build an electric supermoto wasn't a hedge against a future that might come. It was a clear-eyed recognition that the future was already here and nobody had built the right machine for it.</p>
+
+      <p>That's the first meaning of Shark Not Goldfish: thriving during waves of change rather than panicking or waiting them out.</p>
+
+      <p>There's a second meaning, and it's the one that gets into why the tagline is "Leave the School Behind."</p>
+
+      <p>Fish travel in schools because safety lives in the group. Collective behavior, collective direction, collective risk management. Most markets work like a school — companies follow each other, copy each other's decisions, compete on the same specs for the same customer in the same price band. The school of electric supermoto builders is competing for the 5'10" buyer, the mass-market specification, the lowest-common-denominator ergonomics. They're moving together in the same direction because that's where the most fish are.</p>
+
+      <p>SNG left the school behind. Built for the rider nobody else built for. Chose components the community consensus didn't choose because the data said something different. Filed a patent on a battery access system that no production motorcycle has attempted. Sourced a $50 salvaged gas tank and turned it into an engineering solution that looks like OEM work. The school would never have done any of that. The school doesn't do that kind of thing. The school follows the school.</p>
+
+      <div class="callout">
+        <p class="callout-label">SNG4LIFE</p>
+        <p>Bryan has <strong>"SNG4LIFE"</strong> tattooed on his knuckles. The shark fin logo is tattooed on both hands. This isn't a brand for a business plan. This is a life position. The philosophy isn't a marketing choice — it's the founding principle of every build decision, every component selection, every engineering call.</p>
+      </div>
+
+      <p>The name comes from that. Shark Not Goldfish is the refusal to follow the school. It's the recognition that in a market full of companies making the same compromises, the differentiated position belongs to whoever builds something different and builds it well. Leave the school behind doesn't mean leave the market behind — it means leave the consensus behavior that produces mediocre machines for mediocre buyers.</p>
+
+      <p>SNG machines are built for the rider who already left the school. The KTM buyer. The Ducati buyer. The person who has owned serious motorcycles, who has opinions about suspension and geometry and component selection, who knows the difference between a machine that was engineered and a machine that was assembled. That rider doesn't want to be in the school. They never wanted to be in the school. They want the machine that was built for them.</p>
+
+      <p>That's the machine SNG builds.</p>
+    </div>
+  </article>
+
+  <!-- ============================================
+       CHAPTER 5 — THE BIKES
+  ============================================= -->
+  <article class="chapter" id="chapter-5">
+    <div class="chapter-inner">
+      <div class="chapter-header">
+        <p class="chapter-label">Chapter Five</p>
+        <h2 class="chapter-title">The Bikes</h2>
+        <p class="chapter-subtitle">Four models. Limited runs. Every unit numbered. From the 270E entry point to the 520E Platinum collector ceiling.</p>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>The SNG lineup is six vehicles across two divisions. Every unit numbered. Every run limited. SNG Cycles handles the two-wheel machines — the riders nobody else built for. SNG Motors handles everything with three wheels or more. The parent is SNG Customs. The mission is the same across all of it: build what the industry refused to.</p>
+
+      <p>Every SNG Cycles model carries the tall-rider DNA — 38 to 39.5 inches of seat height, engineered from the ground up for the rider the market forgot. Every SNG Motors vehicle is a sit-down platform built for riders who want performance without compromise and a machine that turns heads before it even moves.</p>
+
+      <h3 style="margin-top: 2.5rem; margin-bottom: 1rem; color: var(--orange); font-size: 1rem; letter-spacing: 0.2em; text-transform: uppercase; font-family: var(--font-mono);">SNG Cycles — 2-Wheel Division</h3>
+
+      <div class="bike-grid">
+
+        <div class="bike-card">
+          <div class="bike-card-header">
+            <p class="bike-card-edition">Entry Series &mdash; Limited Run</p>
+            <h3 class="bike-card-name">Reef Shark</h3>
+          </div>
+          <div class="bike-card-body">
+            <p>The Reef Shark is the entry point into the SNG world — and even here, the brand promise holds. 38-inch seat height. Every SNG model, at every price, is built for the tall rider nobody else built for. That's not a feature on the Reef Shark. It's the reason it exists.</p>
+            <p>26–52kW power range with 72V or 84V battery options lets the buyer spec their machine. The gift box delivery — jersey, hat, keychain — ships with every unit, regardless of price. Because the SNG experience doesn't start when you can afford a Mako. It starts the moment you enter the ecosystem.</p>
+          </div>
+          <div class="bike-card-footer">
+            <span class="bike-card-price">$14,900</span>
+            <span class="bike-card-units">38" seat · Limited series</span>
+          </div>
+        </div>
+
+        <div class="bike-card">
+          <div class="bike-card-header">
+            <p class="bike-card-edition">270E Series &mdash; Gold &amp; Holochrome</p>
+            <h3 class="bike-card-name">Mako</h3>
+          </div>
+          <div class="bike-card-body">
+            <p>The Mako is Unit 001. The machine that required three prototypes, $50,000+ in R&amp;D, and 1,000 hours to get right. 27kW mid-drive. WP XACT 4 forks. 160mm extended CNC 7075 T6 aluminum swingarm. 39.5-inch seat height. 202 pounds.</p>
+            <p>The Gold edition is the build bike — 30 numbered units, gold finish, the machine that started the brand. The Holochrome edition is the visual statement: iridescent shattered-glass wrap that changes from blue to green to gold depending on the light. No photograph captures it accurately. It has to be seen in person.</p>
+          </div>
+          <div class="bike-card-footer">
+            <span class="bike-card-price">$21,000 – $30,000</span>
+            <span class="bike-card-units">39.5" seat · Numbered units</span>
+          </div>
+        </div>
+
+        <div class="bike-card">
+          <div class="bike-card-header">
+            <p class="bike-card-edition">Street Premium &mdash; 39" Seat &mdash; "The Stark Eater"</p>
+            <h3 class="bike-card-name">Great White</h3>
+          </div>
+          <div class="bike-card-body">
+            <p>The Great White is the street premium. 100 horsepower peak. 96V / 60Ah battery. The Shark Jaw™ front platform system — a fold-down standing platform rated at 300 lbs, patentable, nothing like it on any production motorcycle. The rear exoskeleton with replaceable slide pucks finishes the picture.</p>
+            <p>Three colorways: Holochrome Blue (white bike, 105hp), Stealth Black, Arctic Grey. Matching tool set and digital torque wrench in every delivery box. The Great White is the machine that justifies calling Stark a competitor — not a ceiling.</p>
+          </div>
+          <div class="bike-card-footer">
+            <span class="bike-card-price">$35,000 – $40,000</span>
+            <span class="bike-card-units">August 2026 reveal</span>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 style="margin-top: 3rem; margin-bottom: 1rem; color: #6b9fd4; font-size: 1rem; letter-spacing: 0.2em; text-transform: uppercase; font-family: var(--font-mono);">SNG Motors — 3+ Wheel Division</h3>
+
+      <div class="bike-grid">
+
+        <div class="bike-card">
+          <div class="bike-card-header">
+            <p class="bike-card-edition">Electric Tadpole &mdash; 2F / 1R</p>
+            <h3 class="bike-card-name">Nurse Shark</h3>
+          </div>
+          <div class="bike-card-body">
+            <p>The Nurse Shark is a tadpole — two wheels in front, one fat tire in the rear. That layout triggers autocycle classification in most states, which means no motorcycle license required. It seats two. It's the machine that opens the SNG world to riders who would never touch a two-wheeler.</p>
+            <p>Grey and white colorway — like a real nurse shark. Sit-down platform. 15kW mid-drive. The Nurse Shark is proof that the SNG brand isn't just for the lone rider. It's for everyone who wants to leave the school behind.</p>
+          </div>
+          <div class="bike-card-footer">
+            <span class="bike-card-price">$24,000 – $31,000</span>
+            <span class="bike-card-units">Tadpole · 2 passengers</span>
+          </div>
+        </div>
+
+        <div class="bike-card">
+          <div class="bike-card-header">
+            <p class="bike-card-edition">4-Wheel Electric &mdash; SNG Motors</p>
+            <h3 class="bike-card-name">Black Tip</h3>
+          </div>
+          <div class="bike-card-body">
+            <p>The Black Tip is SNG Motors' four-wheel entry. Sit-down. Serious terrain. The blacktip shark runs in packs near shore — fast, aggressive, everywhere you don't expect it. The Black Tip vehicle brings that energy to four wheels at a price point that opens the SNG Motors world to a broader buyer.</p>
+            <p>Details forthcoming. The Black Tip is already in the pipeline. At $40,000–$49,000, it slots between the Nurse Shark and the Hammerhead — the middle of the SNG Motors world.</p>
+          </div>
+          <div class="bike-card-footer">
+            <span class="bike-card-price">$40,000 – $49,000</span>
+            <span class="bike-card-units">4 wheels · Sit-down</span>
+          </div>
+        </div>
+
+        <div class="bike-card">
+          <div class="bike-card-header">
+            <p class="bike-card-edition">AWD Flagship &mdash; "The Destroyer"</p>
+            <h3 class="bike-card-name">Hammerhead</h3>
+          </div>
+          <div class="bike-card-body">
+            <p>The Hammerhead is the top of everything SNG builds. 81kW continuous / 110+ hp peak. AWD dual-motor. 144V system. Fox 3.0 coilovers. WARN ZEON winch. Paddle tires. No electric competitor at any price does what this machine does in the terrain it was designed for.</p>
+            <p>The Hammerhead hauls two Makos on its eBike hitch rack and drives to the dunes under its own power. It is the ecosystem flagship. It is the machine you build a brand around. $75,000. No apology.</p>
+          </div>
+          <div class="bike-card-footer">
+            <span class="bike-card-price">$75,000</span>
+            <span class="bike-card-units">AWD · 110+ hp · Flagship</span>
+          </div>
+        </div>
+
+      </div>
+
+      <h3>Full Platform Specifications</h3>
+      <p>All models are built on the same core platform. The following specifications apply across the SNG lineup:</p>
+
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Motor</td><td><strong>27kW Sotion Mid-Drive</strong></td></tr>
+          <tr><td>Controller</td><td><strong>BAC8000</strong></td></tr>
+          <tr><td>System Voltage</td><td><strong>72V</strong></td></tr>
+          <tr><td>Forks</td><td><strong>WP XACT 4</strong> — more travel, lighter, data-backed</td></tr>
+          <tr><td>Brakes</td><td><strong>Lewis Brakes EP8+</strong> hydraulic disc</td></tr>
+          <tr><td>Wheels</td><td><strong>Warp 9</strong> — supermoto spec</td></tr>
+          <tr><td>Swingarm</td><td><strong>160mm extended, CNC 7075 T6 aluminum</strong></td></tr>
+          <tr><td>Chain</td><td><strong>520 primary</strong> — performance drivetrain spec</td></tr>
+          <tr><td>Plastics</td><td><strong>UFO ABS</strong> — Italian motorsport grade, hand-formed</td></tr>
+          <tr><td>Battery Enclosure</td><td><strong>Gas tank clamshell</strong> — original design, patent pending</td></tr>
+          <tr><td>Seat Height</td><td><strong>39 inches</strong> — 2.6 inches taller than a KTM 450 SXF</td></tr>
+          <tr><td>Curb Weight</td><td><strong>202 lbs</strong></td></tr>
+          <tr><td>Origin</td><td><strong>Florida-built, American-made</strong></td></tr>
+          <tr><td>Street Legal</td><td><strong>Yes</strong> — full DOT compliance</td></tr>
+        </tbody>
+      </table>
+
+    </div>
+  </article>
+
+  <!-- ============================================
+       CHAPTER 6 — THE NUMBERS
+  ============================================= -->
+  <article class="chapter" id="chapter-6">
+    <div class="chapter-inner">
+      <div class="chapter-header">
+        <p class="chapter-label">Chapter Six</p>
+        <h2 class="chapter-title">The Numbers</h2>
+        <p class="chapter-subtitle">Competitive analysis. What $21,000 buys. Why the premium is self-evident once you look at the specification.</p>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <div class="callout">
+        <p class="callout-label">A New Category: Ultra Light</p>
+        <p>The SNG Mako doesn't fit neatly into existing electric motorcycle categories. It outperforms the Sur-Ron Ultra Bee across the board — power, torque delivery, geometry, rake, trail, and suspension — while being purpose-engineered for tall riders that no production machine has ever addressed. It is lighter than machines with less performance. It is more capable than machines that weigh more. The industry doesn't have a name for this class yet. <strong>We're calling it Ultra Light.</strong></p>
+      </div>
+
+      <p>The premium pricing on an SNG machine is not arbitrary. It reflects the component stack, the production volume, the engineering investment, and the specific position in the market the machines occupy. But it's worth walking through the competitive landscape plainly, because the numbers make the value case on their own.</p>
+
+      <p>Two comparisons matter. The Sur-Ron Ultra Bee is the benchmark the serious electric dirt community respects — the machine serious builders and performance riders point to as the bar. The Stark VARG SM is the benchmark the supermoto world has set for electric performance. The SNG Mako is better than both, in the ways that actually matter to the rider who knows what they're looking at.</p>
+
+      <div class="comparison-grid">
+        <div class="comparison-col featured">
+          <p class="comparison-brand">SNG Cycles</p>
+          <p class="comparison-model">Mako — Ultra Light<br>Gold Edition</p>
+          <div class="comparison-row">
+            <span class="comparison-key">Category</span>
+            <span class="comparison-val win">Ultra Light</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Weight</span>
+            <span class="comparison-val win">202 lbs</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Seat Height</span>
+            <span class="comparison-val win">39.5"</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Geometry</span>
+            <span class="comparison-val win">Tall-rider engineered</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Forks</span>
+            <span class="comparison-val win">WP XACT 4</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Handling</span>
+            <span class="comparison-val win">Knee-carve nimble</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Battery Access</span>
+            <span class="comparison-val win">Clamshell — no tools</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Built For Tall Riders</span>
+            <span class="comparison-val win">Yes — only one that is</span>
+          </div>
+        </div>
+        <div class="comparison-col">
+          <p class="comparison-brand competitor">Sur-Ron / Stark</p>
+          <p class="comparison-model">Ultra Bee &amp; VARG SM<br>Production Models</p>
+          <div class="comparison-row">
+            <span class="comparison-key">Category</span>
+            <span class="comparison-val">Standard production</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Weight</span>
+            <span class="comparison-val">150–275 lbs</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Seat Height</span>
+            <span class="comparison-val">34"–37.4"</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Geometry</span>
+            <span class="comparison-val">Average rider spec</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Forks</span>
+            <span class="comparison-val">KYB / stock</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Handling</span>
+            <span class="comparison-val">Standard</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Battery Access</span>
+            <span class="comparison-val">Bolt-off panels</span>
+          </div>
+          <div class="comparison-row">
+            <span class="comparison-key">Built For Tall Riders</span>
+            <span class="comparison-val">No</span>
+          </div>
+        </div>
+      </div>
+
+      <p>The weight difference deserves its own paragraph. The Mako at 202 pounds is dramatically lighter than the VARG SM at 275 pounds — a 73-pound delta on a machine where every pound affects how the bike responds. But the more important comparison is what that weight means in motion. At 202 pounds with the Mako's geometry, rake, and trail dialed for a tall rider, you can carve turns with your knees. The bike responds to body inputs the way a supermoto is supposed to — instantly, intuitively, with no lag between the rider's intention and the machine's response. That's what "nimble" actually means on a motorcycle. Not a spec sheet number. A feeling.</p>
+
+      <div class="stat-grid">
+        <div class="stat-cell">
+          <div class="stat-value">202</div>
+          <div class="stat-label">SNG Weight<br>(lbs)</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-value">275</div>
+          <div class="stat-label">Stark VARG Weight<br>(lbs)</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-value">73</div>
+          <div class="stat-label">lbs lighter<br>than nearest rival</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-value">39"</div>
+          <div class="stat-label">Seat Height<br>vs 37.4" industry avg</div>
+        </div>
+      </div>
+
+      <p>The Stark has real power — 80 horsepower is legitimately impressive. SNG's 27kW output is in a different power band, but power-to-weight ratio tells a more complete story on a supermoto than peak power alone. A lighter machine with appropriate torque delivery outperforms a heavier machine with higher peak output in almost every real-world supermoto use case: corner entry, mid-corner balance, exit acceleration, direction changes. The physics are not subtle.</p>
+
+      <div class="pull-quote">
+        <p>"73 pounds lighter than your closest competitor. That's not a spec sheet number. That's a completely different machine in your hands."</p>
+        <cite>Bryan Jaworski, Founder</cite>
+      </div>
+
+      <p>The price premium over the Stark VARG — $21,000 versus $12,900 — reflects several realities that the spec comparison doesn't fully capture. First: limited production. A 30-unit run is a fundamentally different product than a mass-production motorcycle. The collector premium alone is justified by the production economics. Second: the component stack. WP XACT 4 forks, Lewis Brakes, Warp 9 wheels, CNC aerospace-grade swingarm — this is not a value-engineered specification. Third: the engineering IP. The patent-pending clamshell system and the gas tank battery enclosure represent original engineering that doesn't exist elsewhere. Fourth: the fit. A buyer who is 6'3"+ and has wanted a proper electric supermoto for years is not comparing $21,000 to $12,900. They're comparing it to their KTM 890 SMR at $18,000, which still doesn't solve their problem.</p>
+
+      <p>The person SNG is built for doesn't need to be convinced that premium components justify premium pricing. They've already paid premium pricing. They just haven't been able to get the machine they actually wanted. SNG is the first time that machine exists at any price.</p>
+    </div>
+  </article>
+
+  <!-- ============================================
+       CHAPTER 7 — WHAT'S NEXT
+  ============================================= -->
+  <article class="chapter" id="chapter-7">
+    <div class="chapter-inner">
+      <div class="chapter-header">
+        <p class="chapter-label">Chapter Seven</p>
+        <h2 class="chapter-title">What's Next</h2>
+        <p class="chapter-subtitle">Unit 001 is built. The R&amp;D is done. The production run is the next wave. Here's where SNG goes from here.</p>
+        <div class="chapter-rule"></div>
+      </div>
+
+      <p>Unit 001 exists. That fact matters more than any spec sheet or business projection. There is a physical machine — 202 pounds, 39-inch seat height, WP forks, BAC8000 controller, patent-pending clamshell system, gas tank battery enclosure — sitting in Florida that was built from scratch over fourteen months by one builder with the right knowledge and the refusal to stop until it was right.</p>
+
+      <p>The R&D is done. The engineering decisions are made. The mistakes have been paid for in time and money and then turned into competitive advantage. What comes next is taking everything that was learned across three prototypes and moving it into production.</p>
+
+      <h3>The Production Run</h3>
+      <p>The 30-unit Megalodon run is the first step. Thirty numbered gold bikes that carry the same DNA as Unit 001, built to the same specification, with the same component stack and the same hand-formed bodywork. The production build process is not a factory line — it's a documented, repeatable assembly sequence for a small batch of machines that each require the same attention to detail that went into the prototype. Every unit is numbered. Every unit is documented. Every unit is delivered as a collector's item.</p>
+
+      <p>The Holochrome Edition and the 520E platform follow. The Holochrome's 300-unit run represents the brand's broadest distribution while still maintaining the limited-run character that makes SNG machines what they are. The 520E Black and Platinum Editions bring the liquid-cooled platform to market for the performance-first buyer at the top of the collector range.</p>
+
+      <div class="pull-quote">
+        <p>"The prototype proved the machine. The production run proves the brand. These are not the same challenge — and both matter."</p>
+        <cite>Bryan Jaworski, Founder</cite>
+      </div>
+
+      <h3>Sponsor Partnerships</h3>
+      <p>Component supplier relationships are a strategic priority for the next phase. The brands already on the SNG machine — WP Suspension, Lewis Brakes, Warp 9, UFO Plast — represent the kind of component partnerships that serious manufacturers carry. Formalizing those relationships as the production run begins means better pricing, better availability, and the kind of co-branding that reinforces the premium specification story to the buyer who cares about what's on their motorcycle.</p>
+
+      <p>Florida's motorsport community is also a natural sponsorship channel. The machine exists in a state with year-round riding, strong motorcycle culture, and a growing concentration of premium buyers. Track days, demo events, and presence at the gatherings where the SNG buyer already spends their time are the near-term marketing strategy. The machine sells itself when people see it in person — particularly the Holochrome. The job is to put it in front of the right people.</p>
+
+      <h3>The Next Evolution of the Platform</h3>
+      <p>The engineering roadmap is already clear. The 160mm swingarm currently uses stacked extenders — 100mm plus 60mm — to achieve the final geometry. The next generation will replace that with a single billet custom swingarm machined as one piece. It's lighter. It's cleaner. It's a more direct expression of the geometry without the extender stack. That evolution is already designed in principle. It goes into production when the first run proves out the full platform.</p>
+
+      <p>The clamshell system is patent-pending. As the patent matures, the licensing opportunity opens. No production motorcycle manufacturer has this system. There is a real possibility that what was designed as a single-bike engineering solution becomes an IP asset with broader market applications.</p>
+
+      <h3>The Vision</h3>
+      <p>SNG Cycles is not trying to become a mass-market motorcycle manufacturer. The school doesn't interest us. The vision is the premium end of the electric supermoto market, served by limited-run, numbered machines that are built for the rider nobody else builds for, with the engineering decisions that the application demands and the founder authenticity that cannot be replicated by a corporate brand team.</p>
+
+      <p>Every SNG machine that exists in the world carries the story of three prototypes, $31,000, and 1,000 hours. That story is baked into every numbered unit. It's why the machines are worth what they're worth. It's why the buyers who understand the market will understand the value immediately.</p>
+
+      <p>The electric revolution is moving. The ocean is changing. SNG is already in it.</p>
+
+      <div class="callout">
+        <p class="callout-label">The Core Vision</p>
+        <p><strong>Limited runs. Numbered units. Premium buyers.</strong> The rider nobody else built for. The machine that required three builds to get right. The brand that left the school behind.</p>
+        <p>That's SNG Cycles. That's where it's going.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============================================
+       COMPETITIVE MOATS SUMMARY
+  ============================================= -->
+  <section style="background: var(--bg-navy); padding: 5rem 2rem;">
+    <div style="max-width: 760px; margin: 0 auto;">
+      <p style="font-family: 'Courier New', monospace; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.25rem;">Why No One Can Copy This</p>
+      <h2 style="font-family: Georgia, serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: var(--white); margin-bottom: 2rem; line-height: 1.2;">Seven Competitive Moats</h2>
+      <ul class="moat-list">
+        <li class="moat-item">
+          <span class="moat-icon">01</span>
+          <span class="moat-text"><strong>Patent-pending clamshell system.</strong> No production motorcycle on earth has this. A hood-release mechanism for the rear of a motorcycle. Original engineering, filed for protection.</span>
+        </li>
+        <li class="moat-item">
+          <span class="moat-icon">02</span>
+          <span class="moat-text"><strong>Gas tank battery enclosure.</strong> Zero documented examples online. A $50 salvaged tank turned into factory-quality battery housing with integrated bodywork mounting. Completely original.</span>
+        </li>
+        <li class="moat-item">
+          <span class="moat-icon">03</span>
+          <span class="moat-text"><strong>39-inch seat height.</strong> Built for the rider nobody else builds for. A full 2.6 inches above the KTM 450 SXF — the industry benchmark. Every other manufacturer left this buyer without a machine.</span>
+        </li>
+        <li class="moat-item">
+          <span class="moat-icon">04</span>
+          <span class="moat-text"><strong>202 lbs.</strong> Lighter than any comparable electric supermoto on the market. Lighter than the Stark VARG SM by 73 pounds. The weight target was non-negotiable and every component decision served it.</span>
+        </li>
+        <li class="moat-item">
+          <span class="moat-icon">05</span>
+          <span class="moat-text"><strong>Hand-formed bodywork.</strong> UFO Italian motorsport ABS plastics, heat-formed and shaped on site. The integration between the tank enclosure, the clamshell rear, and the hand-formed panels cannot be replicated without the same process.</span>
+        </li>
+        <li class="moat-item">
+          <span class="moat-icon">06</span>
+          <span class="moat-text"><strong>Numbered limited runs.</strong> A 30-unit Megalodon is a fundamentally different product than a mass-production motorcycle. The collector premium is built into the production model from day one. Once a run closes, it closes.</span>
+        </li>
+        <li class="moat-item">
+          <span class="moat-icon">07</span>
+          <span class="moat-text"><strong>Florida-built, American-made.</strong> The founder's story, the brand's authenticity, the 14-month R&D history — these are not replicable by a funded startup or a legacy OEM. The machine carries its origin in every numbered unit.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CLOSING CTA
+  ============================================= -->
+  <section class="closing-section">
+    <div class="closing-inner">
+      <p class="closing-label">SNG Cycles &mdash; Florida Built</p>
+      <h2 class="closing-title">No Gas.<br>Hauls Ass.<br>Leave the School Behind.</h2>
+      <p class="closing-body">Unit 001 is built. The production run is coming. Thirty numbered Megalodon editions. One hundred 520E Blacks. One hundred 520E Platinums. Three hundred Holochrome editions. Limited. Numbered. Closed when they're gone.</p>
+      <p class="closing-body" style="margin-top: -1rem;">If you're the rider nobody else built for — this is your machine.</p>
+      <div class="cta-group">
+        <a class="cta-primary" href="mailto:jaworskibc@gmail.com">Reserve Your Unit</a>
+        <a class="cta-secondary" href="sng-cycles.html">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BUILDER SERIES — BONUS SECTION
+  ============================================= -->
+  <section style="background:#0a0c12; padding:80px 24px; border-top:1px solid #1a1a2a;">
+    <div style="max-width:720px; margin:0 auto; text-align:center;">
+      <div style="font-size:10px; font-weight:700; color:#f47820; letter-spacing:4px; text-transform:uppercase; margin-bottom:16px;">SNG Builder Series</div>
+      <h2 style="font-family:'Barlow Condensed',Arial,sans-serif; font-size:48px; font-weight:900; color:#fff; line-height:1.1; margin-bottom:16px;">You Just Got a Free Build Guide.<br><span style="color:#f47820;">Which One?</span></h2>
+      <p style="font-size:15px; color:#888; line-height:1.8; max-width:560px; margin:0 auto 36px;">This eBook includes one complete SNG Builder Series guide — free. The guides cover real builds: a Sur-Ron LBX frame-up, a Light Bee upgrade, a 52kW CRF450 electric build, a custom jackshaft system, and a custom electric trike that sold for $32,000 four days after it was finished.</p>
+      <p style="font-size:15px; color:#fff; line-height:1.8; max-width:560px; margin:0 auto 40px; font-weight:600;">Check your download folder. Your guide is in there.<br><span style="color:#f47820;">Individual guide value: $49 – $299.</span></p>
+
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:48px;">
+        <div style="background:#141820; border:1px solid #1e2d45; border-radius:10px; padding:20px 24px; text-align:left; min-width:200px;">
+          <div style="font-size:9px; color:#f47820; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:6px;">Guide #001</div>
+          <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:4px;">Sur-Ron LBX Frame-Up</div>
+          <div style="font-size:20px; font-weight:900; color:#f47820;">$149</div>
+        </div>
+        <div style="background:#141820; border:1px solid #1e2d45; border-radius:10px; padding:20px 24px; text-align:left; min-width:200px;">
+          <div style="font-size:9px; color:#f47820; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:6px;">Guide #002</div>
+          <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:4px;">SNG 270-E Light Bee</div>
+          <div style="font-size:20px; font-weight:900; color:#f47820;">$149</div>
+        </div>
+        <div style="background:#141820; border:1px solid #f47820; border-radius:10px; padding:20px 24px; text-align:left; min-width:200px; position:relative;">
+          <div style="position:absolute; top:-1px; right:-1px; background:#f47820; color:#fff; font-size:8px; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:3px 8px; border-radius:0 10px 0 6px;">Most Valuable</div>
+          <div style="font-size:9px; color:#f47820; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:6px;">Guide #003</div>
+          <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:4px;">52kW CRF450 Build</div>
+          <div style="font-size:20px; font-weight:900; color:#f47820;">$249</div>
+        </div>
+        <div style="background:#141820; border:1px solid #1e2d45; border-radius:10px; padding:20px 24px; text-align:left; min-width:200px;">
+          <div style="font-size:9px; color:#f47820; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:6px;">Guide #004</div>
+          <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:4px;">E-520 Jackshaft</div>
+          <div style="font-size:20px; font-weight:900; color:#f47820;">$49</div>
+        </div>
+        <div style="background:#141820; border:1px solid #1e2d45; border-radius:10px; padding:20px 24px; text-align:left; min-width:200px;">
+          <div style="font-size:9px; color:#f47820; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:6px;">Guide #005 · Premium</div>
+          <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:4px;">A+ Concept Trike</div>
+          <div style="font-size:20px; font-weight:900; color:#f47820;">$299</div>
+        </div>
+      </div>
+
+      <div style="background:#141820; border:2px solid #f47820; border-radius:12px; padding:32px; margin-bottom:32px;">
+        <div style="font-size:11px; color:#f47820; letter-spacing:3px; text-transform:uppercase; font-weight:700; margin-bottom:10px;">Want the Rest?</div>
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif; font-size:36px; font-weight:900; color:#fff; margin-bottom:8px;">All 5 Guides — $699</div>
+        <div style="font-size:13px; color:#888; margin-bottom:24px;">$895 in individual value. Five builds. Five sourced parts lists. Everything documented.</div>
+        <a href="mailto:sharknotgoldfish@gmail.com?subject=All 5 SNG Builder Guides Bundle&body=I'd like to purchase the complete SNG Builder Series (all 5 guides) for $699. Please send payment details." style="display:inline-block; background:#f47820; color:#fff; padding:16px 40px; border-radius:8px; font-family:'Barlow Condensed',Arial,sans-serif; font-size:16px; font-weight:900; letter-spacing:2px; text-transform:uppercase; text-decoration:none;">Get All 5 — $699</a>
+      </div>
+
+      <p style="font-size:12px; color:#555; line-height:1.7;">Questions or individual guide orders: <a href="mailto:sharknotgoldfish@gmail.com" style="color:#f47820; text-decoration:none;">sharknotgoldfish@gmail.com</a><br>Venmo / PayPal / Zelle accepted. PDF delivered within 24 hours of payment.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+  ============================================= -->
+  <footer class="footer">
+    <p class="footer-brand">SNG<span>.</span> Cycles</p>
+    <p class="footer-tagline">Shark Not Goldfish &mdash; Florida Built &mdash; Est. 2024</p>
+    <p class="footer-legal">
+      &copy; 2025 SNG Cycles. All rights reserved.<br>
+      Clamshell hood-release system patent pending.<br>
+      All specifications subject to change. Limited production runs. Each unit individually numbered.<br>
+      "SNG Cycles," "Shark Not Goldfish," and the shark fin logo are trademarks of SNG Cycles.
+    </p>
+  </footer>
+
+</body>
+</html>

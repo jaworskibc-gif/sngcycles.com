@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Cycles — Investor Brief</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: #111;
+    background: #fff;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.75in;
+  }
+
+  @media print { .no-print { display: none; } }
+
+  .no-print {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .no-print button {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    padding: 10px 32px;
+    background: #1a2744;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 3px solid #f47820;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .brand-name {
+    font-size: 22pt;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .brand-sub {
+    font-size: 9pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #555;
+    margin-top: 3px;
+  }
+  .header-meta {
+    text-align: right;
+    font-size: 9pt;
+    color: #555;
+    line-height: 1.7;
+  }
+  .conf-tag {
+    font-size: 8pt;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #1a2744;
+    padding: 2px 8px;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+
+  /* HERO IMAGE BLOCK */
+  .hero-img-block {
+    width: 100%;
+    height: 220px;
+    background: #f0f0f0;
+    border: 1px dashed #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-img-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-img-block .img-placeholder {
+    text-align: center;
+    color: #999;
+    font-size: 9pt;
+  }
+  .hero-caption {
+    font-size: 8.5pt;
+    color: #555;
+    text-align: center;
+    margin-top: -14px;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ONE LINE ASK */
+  .ask-bar {
+    background: #1a2744;
+    color: #fff;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    font-size: 11pt;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+  }
+  .ask-bar span { font-weight: normal; opacity: 0.75; font-size: 9.5pt; }
+
+  /* SECTION HEADERS */
+  h2 {
+    font-size: 9pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #fff;
+    background: #333;
+    padding: 4px 10px;
+    margin-top: 22px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 10.5pt;
+    font-weight: bold;
+    margin-bottom: 4px;
+    margin-top: 10px;
+  }
+
+  p { margin-bottom: 8px; }
+
+  /* MARKET GAP — KEY SECTION */
+  .gap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    background: #ddd;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+  .gap-cell {
+    background: #fff;
+    padding: 14px;
+  }
+  .gap-cell-label {
+    font-size: 8pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  .gap-cell-title {
+    font-size: 12pt;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 5px;
+  }
+  .gap-cell-body {
+    font-size: 9pt;
+    color: #444;
+    line-height: 1.5;
+  }
+  .gap-highlight {
+    background: #1a2744;
+    color: #fff;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: 10pt;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  .gap-highlight span { font-weight: normal; opacity: 0.8; }
+
+  /* COMPETITOR TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    margin-bottom: 12px;
+  }
+  th {
+    background: #1a2744;
+    color: #fff;
+    padding: 6px 10px;
+    text-align: left;
+    font-size: 8.5pt;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #f8f8f8; }
+  .sng-row td { background: #1a2744 !important; color: #fff; font-weight: bold; }
+  .check { color: #1a2744; font-weight: bold; }
+  .cross { color: #bbb; }
+
+  /* BUILDS GRID */
+  .builds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #ddd;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+  .build-cell {
+    background: #fff;
+    padding: 12px 14px;
+  }
+  .build-name {
+    font-size: 10.5pt;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .build-price {
+    font-size: 9pt;
+    color: #555;
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+  .build-desc {
+    font-size: 8.5pt;
+    color: #555;
+    line-height: 1.5;
+  }
+  .build-img-placeholder {
+    width: 100%;
+    height: 80px;
+    background: #f0f0f0;
+    border: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8pt;
+    color: #bbb;
+    margin-bottom: 8px;
+  }
+
+  /* NUMBERS GRID */
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: #ddd;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+  .number-cell {
+    background: #fff;
+    padding: 12px;
+    text-align: center;
+  }
+  .number-label {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #777;
+    margin-bottom: 3px;
+  }
+  .number-value {
+    font-size: 16pt;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .number-note {
+    font-size: 8pt;
+    color: #777;
+  }
+
+  /* ROADMAP */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: #ddd;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+  .phase {
+    background: #fff;
+    padding: 12px;
+  }
+  .phase-label {
+    font-size: 8pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #777;
+    margin-bottom: 4px;
+  }
+  .phase-title {
+    font-size: 10pt;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    line-height: 1.2;
+  }
+  .phase-items {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.6;
+  }
+  .phase.active { background: #1a2744; color: #fff; }
+  .phase.active .phase-label { color: #aaa; }
+  .phase.active .phase-items { color: #ccc; }
+
+  /* CAPITAL ASK */
+  .capital-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+    font-size: 9.5pt;
+  }
+  .capital-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .capital-table .total-row td {
+    background: #1a2744;
+    color: #fff;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 10pt;
+  }
+  .capital-table .label-col { font-weight: bold; width: 55%; }
+  .capital-table .range-col { text-align: right; color: #333; }
+  .capital-table .total-row .range-col { color: #fff; }
+
+  /* FOUNDER */
+  .founder-bar {
+    background: #f5f5f5;
+    border-left: 4px solid #f47820;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: 9.5pt;
+    line-height: 1.65;
+  }
+
+  /* MOAT */
+  .moat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #ddd;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+  .moat-cell {
+    background: #fff;
+    padding: 12px 14px;
+  }
+  .moat-title {
+    font-size: 9.5pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .moat-body {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.55;
+  }
+
+  /* BOTTOM LINE */
+  .bottom-line {
+    border-top: 3px solid #f47820;
+    padding-top: 14px;
+    margin-top: 20px;
+    font-size: 9.5pt;
+    line-height: 1.65;
+    color: #333;
+  }
+  .bottom-line strong { color: #1a2744; }
+
+  /* FOOTER */
+  .doc-footer {
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding-top: 8px;
+    font-size: 8pt;
+    color: #aaa;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<div class="no-print">
+  <button onclick="window.print()">Save as PDF / Print</button>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="brand-name">SNG Cycles</div>
+    <div class="brand-sub">Shark Not Goldfish Cycles &nbsp;·&nbsp; Florida Built</div>
+  </div>
+  <div class="header-meta">
+    <div class="conf-tag">Confidential</div><br>
+    Under NCNDA — Complete Care Marketing, LLC<br>
+    Prepared for: <strong>___________________</strong><br>
+    Date: <strong>___________________</strong>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero-img-block">
+  <img src="the great white.png" alt="SNG Great White">
+</div>
+<div class="hero-caption">SNG Great White &nbsp;·&nbsp; Hand-built, Florida &nbsp;·&nbsp; Finished &amp; Running</div>
+
+<!-- ONE LINE ASK -->
+<div class="ask-bar">
+  The Ask: Seed capital to build, certify, and launch the first premium American electric supermoto brand. &nbsp;<span>Nobody has built this. The market just confirmed it.</span>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>The Market Gap — Why Now, Why SNG</h2>
+
+<div class="gap-highlight">
+  There is no luxury, custom, limited-edition electric supermoto brand anywhere in the world. &nbsp;<span>We just checked. Here is exactly what the market looks like.</span>
+</div>
+
+<div class="gap-grid">
+  <div class="gap-cell">
+    <div class="gap-cell-label">Gap #1 — The Bike</div>
+    <div class="gap-cell-title">No Electric Ducati Hypermotard Exists</div>
+    <div class="gap-cell-body">
+      Ducati just launched the 2026 Hypermotard V2 SP at <strong>$20,995 — gas only.</strong> Their electric development is racing prototypes and entry-level models. No premium electric supermoto from Ducati, KTM, or any major OEM. The buyer who wants the Hypermotard experience in electric form has <strong>nowhere to go.</strong> SNG fills that exact gap.
+    </div>
+  </div>
+  <div class="gap-cell">
+    <div class="gap-cell-label">Gap #2 — The Brand</div>
+    <div class="gap-cell-title">No Custom Luxury Electric Moto Brand</div>
+    <div class="gap-cell-body">
+      The Stark VARG SM is the only electric supermoto worth mentioning — 80HP, road-legal, serious machine. But it's a performance/track product, not a luxury custom brand. No holochrome wraps, no collector boxes, no limited drops, no premium ownership experience. <strong>The Orange County Choppers of the electric era does not exist yet.</strong>
+    </div>
+  </div>
+  <div class="gap-cell">
+    <div class="gap-cell-label">Gap #3 — The Lifestyle</div>
+    <div class="gap-cell-title">No Electric Supermoto Apparel Brand</div>
+    <div class="gap-cell-body">
+      Fox, Alpinestars, Fly Racing, Leatt — all traditional gas MX brands. <strong>Zero brands have staked out the electric supermoto lifestyle space.</strong> SNG's apparel line (hoodies, hats, tees) isn't competing with Fox — it's filling a lane that doesn't exist, with first-mover position in an audience that's growing fast.
+    </div>
+  </div>
+</div>
+
+<!-- COMPETITOR TABLE -->
+<table>
+  <thead>
+    <tr>
+      <th>Brand / Product</th>
+      <th>Electric</th>
+      <th>Street Legal</th>
+      <th>Custom / Limited</th>
+      <th>Luxury Positioning</th>
+      <th>Price Range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Ducati Hypermotard V2 SP</strong></td>
+      <td class="cross">✗ Gas</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td class="check">✓</td>
+      <td>$20,995</td>
+    </tr>
+    <tr>
+      <td><strong>Stark VARG SM</strong></td>
+      <td class="check">✓</td>
+      <td class="check">✓</td>
+      <td class="cross">✗ Production</td>
+      <td class="cross">✗ Performance</td>
+      <td>~$12–15k</td>
+    </tr>
+    <tr>
+      <td><strong>Zero / Energica</strong></td>
+      <td class="check">✓</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗ Generic</td>
+      <td>$11–25k</td>
+    </tr>
+    <tr>
+      <td><strong>Sur-Ron / Talaria</strong></td>
+      <td class="check">✓</td>
+      <td class="cross">✗ Off-road</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>$4–8k</td>
+    </tr>
+    <tr class="sng-row">
+      <td><strong>SNG Cycles ← This is the gap</strong></td>
+      <td>✓ Electric</td>
+      <td>✓ Street Legal</td>
+      <td>✓ Limited Drops</td>
+      <td>✓ Luxury Custom</td>
+      <td>$19–30k</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>The Product — What SNG Builds</h2>
+
+<div class="builds-grid">
+  <div class="build-cell">
+    <img src="comic bike.png" style="width:100%;height:120px;object-fit:cover;display:block;margin-bottom:8px;" alt="SNG Mako">
+    <div class="build-name">Mako — SNG 270E Supermoto</div>
+    <div class="build-price">$21,000–$30,000 &nbsp;·&nbsp; Flagship</div>
+    <div class="build-desc">27kW Sotion mid-drive. 39.5" seat height. Limited colorway drops. "No Gas Hauls Ass." The build that started it all — finished and running.</div>
+  </div>
+  <div class="build-cell">
+    <img src="full holo chrome set w bike.png" style="width:100%;height:120px;object-fit:cover;display:block;margin-bottom:8px;" alt="Holochrome Black Edition">
+    <div class="build-name">Holochrome Black Edition — 52kW</div>
+    <div class="build-price">$19,000–$25,000 &nbsp;·&nbsp; Limited 100 Units Worldwide</div>
+    <div class="build-desc">52kW · 96V 60Ah · Liquid-cooled motor. Holochrome wrap. LED collector box: matching hoodie, snapback, keychain. 100 units. Once gone, gone forever.</div>
+  </div>
+  <div class="build-cell">
+    <img src="the great white.png" style="width:100%;height:120px;object-fit:cover;display:block;margin-bottom:8px;" alt="Great White">
+    <div class="build-name">Great White</div>
+    <div class="build-price">$35,000–$40,000 &nbsp;·&nbsp; Premium</div>
+    <div class="build-desc">Top of the food chain. 39" seat height. WP suspension. 7" Apple CarPlay dash. Numbered collector box. Built for the rider who settles for nothing.</div>
+  </div>
+</div>
+
+<p style="font-size:9pt; color:#555;"><strong>Total planned production — ever: 500 units across all editions.</strong> Scarcity is the product. Every buyer knows their number.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>SNG Motors — The Off-Road Division</h2>
+
+<p style="font-size:9.5pt; margin-bottom:10px;"><strong>SNG Motors is the second division.</strong> Same custom, limited-edition DNA — applied to off-road platforms the motorcycle market has never touched. Two vehicles, two massive underserved gaps.</p>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#ddd; border:1px solid #ddd; margin-bottom:6px;">
+  <div style="background:#fff; overflow:hidden;">
+    <img src="81 kw hammerhead .jpeg" style="width:100%;height:180px;object-fit:cover;display:block;" alt="Hammerhead Loaded">
+    <div style="padding:10px 14px 12px;">
+      <div style="font-size:10.5pt;font-weight:900;text-transform:uppercase;margin-bottom:2px;">Hammerhead — Loaded</div>
+      <div style="font-size:8.5pt;color:#f47820;font-weight:bold;margin-bottom:4px;">$59,900 &nbsp;·&nbsp; 81kW Electric Supercart</div>
+      <div style="font-size:8.5pt;color:#444;line-height:1.5;">144V · 30–40kWh · 110+ HP peak · AWD dual motor · 65–75 MPH · WARN winch · roof light bar · full roll cage. The machine that ends the dune run.</div>
+    </div>
+  </div>
+  <div style="background:#fff; overflow:hidden;">
+    <img src="hammer head utv.png" style="width:100%;height:180px;object-fit:cover;display:block;" alt="Hammerhead Base"
+      onerror="this.src='81 kw hammerhead .jpeg';">
+    <div style="padding:10px 14px 12px;">
+      <div style="font-size:10.5pt;font-weight:900;text-transform:uppercase;margin-bottom:2px;">Hammerhead — Base</div>
+      <div style="font-size:8.5pt;color:#f47820;font-weight:bold;margin-bottom:4px;">$45,000 &nbsp;·&nbsp; Entry Supercart</div>
+      <div style="font-size:8.5pt;color:#444;line-height:1.5;">Full roll cage · AWD dual motor · Fox coilovers · paddle tires. Same DNA as the Loaded, room to build it your way. The buy-in to the Hammerhead platform.</div>
+    </div>
+  </div>
+</div>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#ddd; border:1px solid #ddd; margin-bottom:12px;">
+  <div style="background:#fff; overflow:hidden;">
+    <img src="tadpole .jpeg" style="width:100%;height:180px;object-fit:cover;display:block;" alt="Reef Tadpole">
+    <div style="padding:10px 14px 12px;">
+      <div style="font-size:10.5pt;font-weight:900;text-transform:uppercase;margin-bottom:2px;">Reef Shark — Electric Tadpole</div>
+      <div style="font-size:8.5pt;color:#f47820;font-weight:bold;margin-bottom:4px;">Coming Soon &nbsp;·&nbsp; SNG Motors &nbsp;·&nbsp; 27kW · 83 MPH</div>
+      <div style="font-size:8.5pt;color:#444;line-height:1.5;">2-front / 1-rear tadpole layout. 27kW electric powertrain. Sit-down ergonomics, motorcycle controls, 83 MPH top speed. The gap between supermoto and UTV — nobody else fills it.</div>
+    </div>
+  </div>
+  <div style="background:#1a2744; color:#fff; padding:14px 16px; display:flex; flex-direction:column; justify-content:center;">
+    <div style="font-size:8pt;font-weight:bold;text-transform:uppercase;letter-spacing:0.12em;color:#aaa;margin-bottom:10px;">SNG Motors — The Expansion</div>
+    <div style="font-size:9.5pt;line-height:1.7;">Two wheels. Three wheels. Four wheels.<br><br>
+    SNG Motors takes the same handbuilt, limited-edition philosophy into off-road vehicles no production manufacturer is building custom. The Hammerhead is for the dune runner who wants something nobody else on the sand has. The Reef is for the rider who's outgrown a motorcycle and isn't ready for a full UTV.<br><br>
+    <strong style="color:#f47820;">Neither vehicle has a custom, limited-edition competitor anywhere.</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Proof It's Real</h2>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:2px;">
+  <img src="sng holochrome sm 2 .jpg" style="width:100%;height:140px;object-fit:cover;display:block;border:1px solid #eee;" alt="SNG 270E">
+  <img src="ChatGPT Image Jun 1, 2026, 05_53_18 PM.png" style="width:100%;height:140px;object-fit:cover;display:block;border:1px solid #eee;" alt="Megladon Collector Box">
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px;">
+  <img src="apparel-leave-collection.png" style="width:100%;height:140px;object-fit:cover;display:block;border:1px solid #eee;" alt="Leave the School Behind Tee">
+  <img src="hoodie-gw-white.png" style="width:100%;height:140px;object-fit:cover;display:block;border:1px solid #eee;" alt="Great White Hoodie">
+</div>
+<p style="font-size:8pt;color:#777;text-align:center;margin-bottom:10px;letter-spacing:0.06em;text-transform:uppercase;">Megladon ownership package — leather jacket · Megalodon tee · SNG snapback · keychain &nbsp;&nbsp;|&nbsp;&nbsp; Great White Hoodie — "Leave the School Behind"</p>
+
+<div class="founder-bar">
+  <strong>Two finished, running, photographed bikes exist today.</strong> The gold 270E Holochrome and the shark Megaladon Supermoto were hand-built in Florida over 14+ months of R&D — three prototypes, parts bought and resold, every mistake documented. This isn't a concept. The bikes are real.
+  <br><br>
+  <strong>The founder has already put $31,000 and 1,000 hours into proving this works.</strong> Build cost, quality, and process are proven — not estimated. The ebook <em>"How to Build a Savage eBike with AI"</em> documents the full methodology including two complete builds step-by-step. The team is standing by: 2 mechanics, 1 body/wrap specialist.
+  <br><br>
+  <strong>The body panels were built, not just installed.</strong> The fairings start as UFO plastics — Italian-made ABS panels — then the founder cuts them down, heat-guns the curves, and shapes them by hand with a razor blade until they fit the frame perfectly. No mold required, no outside vendor. The shape on that bike exists because someone stood in a garage and made it happen.
+  <br><br>
+  <strong>Every engineering decision on this bike started with function.</strong> The founder rides in the dunes. That means a battery cover that fills with sand is not a battery cover — it's a problem. The extended battery enclosures on competing builds pack with debris, rattle loose, and look like an afterthought because they are one. So the founder bought a gas tank off a totaled bike for $50, cut the bottom off, heat-formed it, used a baking soda plaster to set the shape, and mounted the original tank lid to the frame with a cutout at center. The result: a sealed, factory-looking battery enclosure with built-in plastic mounting points — indistinguishable from a motorcycle gas tank because it is one.
+  <br><br>
+  Nobody else is doing this. It wasn't a design decision. It was the obvious solution to a real problem — and "obvious to me" is what $31,000 and 1,000 hours of domain knowledge buys. The aesthetics followed the function. They usually do when the engineer actually rides the bike.
+  <br><br>
+  The same principle drives the quick-change system: a custom-fabricated upper subframe, a hidden car-style hood release tucked under the rear fairing, and homemade swivel brackets that hold the plastics at the correct spread while bracing against wind load at speed. Pull the release — you hear the pop — the seat, tank shell, and front fairings lift as one clamshell piece. Battery out in seconds. No tools. No bolts. No sand traps.
+  <br><br>
+  That system is the subject of a provisional patent filing. No production motorcycle on earth does this.
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Unit Economics</h2>
+
+<div class="numbers-grid">
+  <div class="number-cell">
+    <div class="number-label">Build Cost</div>
+    <div class="number-value">~$12k</div>
+    <div class="number-note">Per unit, proven through testing</div>
+  </div>
+  <div class="number-cell">
+    <div class="number-label">Retail Price</div>
+    <div class="number-value">$19–30k</div>
+    <div class="number-note">Depending on edition</div>
+  </div>
+  <div class="number-cell">
+    <div class="number-label">Gross Margin</div>
+    <div class="number-value">~$8–13k</div>
+    <div class="number-note">40–52% per bike</div>
+  </div>
+  <div class="number-cell">
+    <div class="number-label">Scale Trigger</div>
+    <div class="number-value">30 units</div>
+    <div class="number-note">~$300k gross on the run</div>
+  </div>
+</div>
+
+<p style="font-size:9pt; color:#555;">Build cost is not a projection — it is the actual cost arrived at through three prototypes and a year of sourcing. The margin story is real.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>The Ownership Experience — The Moat</h2>
+
+<div class="moat-grid">
+  <div class="moat-cell">
+    <div class="moat-title">In-Person Delivery Only</div>
+    <div class="moat-body">We don't ship bikes in a box. Every buyer comes to us — or we come to them. Every delivery includes a full suspension, brake, and fork setup dialed to the rider's body weight and height. Nobody complaints about a bike that was set up for them personally.</div>
+  </div>
+  <div class="moat-cell">
+    <div class="moat-title">The Build Journey</div>
+    <div class="moat-body">From deposit to delivery: AI-generated mockup sign-off → halfway build video with today's paper and their name → thank-you poster for the wall → LED collector box on arrival. The buyer is part of the story before the bike exists.</div>
+  </div>
+  <div class="moat-cell">
+    <div class="moat-title">Patent-Pending Innovation</div>
+    <div class="moat-body">SNG's proprietary Quick-Change Rear System — 30 seconds to swap between naked hypermoto and fully-dressed with plastics. No tools. One platform, two completely different bikes. No production supermoto offers this. Patent application in process.</div>
+  </div>
+  <div class="moat-cell">
+    <div class="moat-title">Hand-Formed Bodywork</div>
+    <div class="moat-body">The fairings start as Italian UFO ABS panels, then the founder cuts them down, heat-forms every curve, and shapes them by hand with a razor blade. No external fabricator. No mold. The shape on the 270E exists because someone stood in a garage and built it that way. That craftsmanship transfers to every production unit.</div>
+  </div>
+  <div class="moat-cell">
+    <div class="moat-title">Referral Engine</div>
+    <div class="moat-body">Sales team goes out with QR codes worth $250 in "Build Bucks." Every scan registers under the referring rep. Deposits trigger next-day ACH. The network builds itself. Buyers become evangelists because the experience is designed for it.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Validation Strategy — Demand Before Production</h2>
+
+<p>Nobody drops $20–30k on an electric motorcycle they can't see. The validation plan runs in parallel with the compliance/build phase — no street-legal status required:</p>
+
+<p><strong>Social content drop</strong> using the two finished bikes, the R&D story, and the brand. Views, shares, and comments prove demand without a single legal sale. <strong>Refundable reservations</strong> via QR code collect real money down — proof the buyer exists at this price before a single production unit is built. The deposit agreement is already drafted.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>The Roadmap to First Legal Sale</h2>
+
+<div class="roadmap">
+  <div class="phase active">
+    <div class="phase-label">Phase 0 — Now</div>
+    <div class="phase-title">Foundation</div>
+    <div class="phase-items">
+      Attorney: WMI/manufacturer eligibility<br>
+      File provisional patent<br>
+      Social content launch<br>
+      Refundable reservation deposits open
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-label">Phase 1 — Funded</div>
+    <div class="phase-title">Build + Certify</div>
+    <div class="phase-items">
+      Hero prototype bike built<br>
+      Frame fab setup (TIG/jig)<br>
+      NHTSA WMI registration<br>
+      FMVSS self-certification
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-label">Phase 2</div>
+    <div class="phase-title">First Sales</div>
+    <div class="phase-items">
+      In-person demos<br>
+      Deposits convert to sales<br>
+      First titled units delivered<br>
+      Powersports financing live
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-label">Phase 3 — Trigger</div>
+    <div class="phase-title">Scale: 30 Units</div>
+    <div class="phase-items">
+      30 bikes sold<br>
+      ~$300k gross margin<br>
+      $4M scale capital unlocked<br>
+      Full edition launches
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>The Capital Ask</h2>
+
+<table class="capital-table">
+  <tr>
+    <td class="label-col">Hero prototype build (parts + mechanic + founder time)</td>
+    <td class="range-col">~$20,000</td>
+  </tr>
+  <tr>
+    <td class="label-col">Frame fabrication tooling (TIG welder, jig, notcher, materials)</td>
+    <td class="range-col">$8,000 – $20,000</td>
+  </tr>
+  <tr>
+    <td class="label-col">Compliance &amp; legal (WMI/FMVSS attorney, SAE filing, EPA/DOT, import setup)</td>
+    <td class="range-col">$35,000 – $75,000</td>
+  </tr>
+  <tr>
+    <td class="label-col">Social content + initial demand validation</td>
+    <td class="range-col">$3,000 – $5,000</td>
+  </tr>
+  <tr class="total-row">
+    <td class="label-col">Total Seed Ask</td>
+    <td class="range-col">~$66,000 – $120,000</td>
+  </tr>
+</table>
+
+<p style="font-size:8.5pt; color:#555;">Ranges are honest — compliance costs vary based on the attorney's WMI eligibility assessment and build-spec decisions. The founder commits ~$25k from incoming settlement alongside this raise. The $31,000 and 1,000 hours already sunk in R&D is not in this ask — it's already in the product.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Why This Works — The Straight Version</h2>
+
+<div class="bottom-line">
+  <strong>The gap is confirmed and documented.</strong> No luxury electric supermoto brand. No electric Ducati Hypermotard. No electric supermoto lifestyle brand. Three open lanes, first-mover position in all three.<br><br>
+  <strong>The product is real.</strong> Two finished bikes. Proven build cost. 1,000 hours and $31k already invested. The methodology is documented in a published ebook with two complete builds. This is not an idea — it is a proven build waiting to be scaled.<br><br>
+  <strong>The margin is real.</strong> ~$12k to build, $19–30k retail, 37–60% gross margin. At 30 units — the scale trigger — that's ~$300k gross on the run. The $4M that follows funds the full launch.<br><br>
+  <strong>The experience is the moat.</strong> In-person delivery, body-fit setup, the collector box, the patent-pending Quick-Change Rear. These are not features — they are the reason a buyer pays $22k for an SNG instead of a $12k Stark.<br><br>
+  <strong>The apparel play is a fourth lane nobody is running.</strong> The tall rider can buy a bike built for their body — but the moment they try to buy a hoodie or a riding jacket, they're back to guessing. A regular XL that fits fine in the store comes out of the dryer looking like it belongs in a kids' section. SNG Apparel fixes that. Every piece is offered in tall sizing through 2XLT — the same obsession as the bikes, the same customer, the one-stop shop that has never existed for them. The bikes pull them in. The gear keeps them. The brand becomes a lifestyle, not just a vehicle purchase.<br><br>
+  Nobody is building this. SNG is.
+</div>
+
+<div class="doc-footer">
+  <span>Complete Care Marketing, LLC &nbsp;d/b/a&nbsp; SNG Cycles / Shark Not Goldfish Cycles &nbsp;·&nbsp; Florida</span>
+  <span>Confidential — Subject to NCNDA</span>
+</div>
+
+</body>
+</html>

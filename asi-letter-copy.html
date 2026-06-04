@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ASI Letter — SNG Cycles</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #111; color: #fff; padding: 40px; max-width: 800px; margin: 0 auto; }
+  h2 { color: #e85d04; margin-bottom: 8px; }
+  p.sub { color: #888; font-size: 13px; margin-bottom: 24px; }
+  #letter { background: #fff; color: #111; padding: 40px; border-radius: 8px; font-size: 14px; line-height: 1.9; white-space: pre-wrap; }
+  button { margin-top: 20px; background: #e85d04; color: #fff; border: none; padding: 16px 40px; font-size: 16px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border-radius: 6px; width: 100%; }
+  button:hover { background: #ff7a1f; }
+  #copied { display: none; color: #4caf50; font-weight: 700; margin-top: 12px; text-align: center; font-size: 15px; }
+</style>
+</head>
+<body>
+
+<h2>SNG Cycles — ASI Formal Complaint Letter</h2>
+<p class="sub">Review and approve. When ready, click Copy and paste directly into Gmail to send.</p>
+
+<div id="letter">To: ASI / Accelerated Systems Inc. — Dealer Support
+
+Re: BAC8000 Damaged by Authorized Dealer — Prospective Dealer Complaint — Fernando Banchs / SNG Cycles
+
+My name is Fernando Banchs. I am a business partner and authorized dealer candidate with SNG Cycles, an electric motorcycle brand founded by Bryan Jaworski in Royal Palm Beach, Florida. I am also a senior certified mechanic at Riva Powersports — one of the most respected powersports dealerships in the country — where I have worked for many years and am considered one of their top technicians. I have been the primary point of contact with ASI on behalf of SNG Cycles and am writing to formally address a serious situation involving one of your authorized service providers — Greenline Engineering — and how it is affecting our decision to move forward as ASI dealers.
+
+On or around April 4, 2026, Bryan Jaworski engaged Greenline Engineering to perform a remote tune on his BAC8000 motor controller. At Greenline's direction, Bryan downloaded a separate BAC dealer access app to monitor the session. The tune did not complete — however, the controller continued functioning for several days following the session.
+
+When Bryan returned to the BAC dealer app to review the tune, he could clearly see that the tune had not completed. Almost immediately after he viewed that record, his access to the BAC dealer app was terminated. We cannot say with absolute certainty whether the timing was coincidental — but it was close enough that we believe ASI should be aware of it and make that determination themselves. Following the loss of that access, the controller stopped functioning entirely and has been non-functional since.
+
+THE FACTS:
+- The controller was fully operational before Greenline's remote session
+- Greenline directed Bryan to download a separate BAC dealer access app to monitor the session
+- The tune did not complete — visible in the dealer app when Bryan reviewed it days later
+- Bryan's access to the dealer app was terminated shortly after he viewed the incomplete tune record
+- The BAC8000 subsequently stopped functioning entirely and has been non-functional since
+- Greenline blamed the wiring harness — I personally tested all three harnesses alongside Bryan using a voltmeter. As a certified mechanic at Riva Powersports, I can state with confidence that every harness showed correct voltage and full continuity at every point. The harness was not the issue.
+- This has gone on for 57 days with no resolution
+- Greenline issued an $85 refund — an acknowledgment that something went wrong on their end — then refused to repair or replace the controller
+
+WHAT WE ARE ASKING:
+1. Restore Bryan's BAC Door access — he should not be locked out of his own controller's app
+2. Review Greenline Engineering's conduct — using dealer access to lock a customer out of BAC Door following a failed tune is a serious abuse of authorized dealer privileges
+3. Advise on whether ASI can facilitate repair or replacement of the BAC8000, given that the damage occurred while the controller was under Greenline's remote access
+
+SNG Cycles wants to be part of the ASI dealer network. We believe in the product and the platform. But before we commit to that relationship, we need to see how ASI responds when one of their authorized providers damages a customer's equipment and goes silent for two months.
+
+The full 57-day email chain between Bryan and Greenline, along with the voltmeter test results, are available on request.
+
+Fernando Banchs
+Business Partner — SNG Cycles
+F_BANCHS@YAHOO.COM</div>
+
+<button onclick="copyLetter()">COPY FULL LETTER</button>
+<div id="copied">Copied! Now paste into Gmail and send from F_BANCHS@YAHOO.COM.</div>
+
+<script>
+function copyLetter() {
+  var text = document.getElementById('letter').innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    document.getElementById('copied').style.display = 'block';
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Cycles — Market Snapshot 2026</title>
+<style>
+  @page { margin: 0.75in; size: letter; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: #111;
+    background: #fff;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.75in;
+  }
+  @media print { .no-print { display: none; } }
+  .no-print { text-align: center; margin-bottom: 28px; }
+  .no-print button { font-family: Arial, sans-serif; font-size: 13px; padding: 10px 32px; background: #1a2744; color: #fff; border: none; cursor: pointer; border-radius: 4px; }
+
+  .header { border-bottom: 3px solid #f47820; padding-bottom: 14px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .brand-name { font-size: 22pt; font-weight: 900; letter-spacing: -0.01em; text-transform: uppercase; line-height: 1; }
+  .brand-sub { font-size: 9pt; letter-spacing: 0.2em; text-transform: uppercase; color: #555; margin-top: 3px; }
+  .header-meta { text-align: right; font-size: 9pt; color: #555; line-height: 1.7; }
+  .doc-title { font-size: 14pt; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #1a2744; margin-bottom: 4px; }
+
+  h2 { font-size: 9pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.18em; color: #fff; background: #333; padding: 4px 10px; margin-top: 24px; margin-bottom: 12px; }
+
+  /* TAM/SAM/SOM */
+  .tam-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: #ddd; border: 1px solid #ddd; margin-bottom: 14px; }
+  .tam-cell { background: #fff; padding: 16px; text-align: center; }
+  .tam-cell.highlight { background: #1a2744; color: #fff; }
+  .tam-label { font-size: 8pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em; color: #777; margin-bottom: 6px; }
+  .tam-cell.highlight .tam-label { color: #aaa; }
+  .tam-value { font-size: 22pt; font-weight: 900; color: #1a2744; line-height: 1; margin-bottom: 4px; }
+  .tam-cell.highlight .tam-value { color: #f47820; }
+  .tam-desc { font-size: 8pt; color: #555; line-height: 1.5; }
+  .tam-cell.highlight .tam-desc { color: #ccc; }
+
+  /* MARKET DRIVERS */
+  .drivers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #ddd; border: 1px solid #ddd; margin-bottom: 14px; }
+  .driver-cell { background: #fff; padding: 14px 16px; }
+  .driver-title { font-size: 10pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
+  .driver-body { font-size: 8.5pt; color: #444; line-height: 1.6; }
+  .driver-stat { font-size: 16pt; font-weight: 900; color: #f47820; display: block; margin-bottom: 2px; }
+
+  /* COMPETITOR TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 14px; }
+  th { background: #1a2744; color: #fff; padding: 6px 10px; text-align: left; font-size: 8pt; font-weight: bold; letter-spacing: 0.08em; text-transform: uppercase; }
+  td { padding: 7px 10px; border-bottom: 1px solid #eee; vertical-align: middle; }
+  tr:nth-child(even) td { background: #f8f8f8; }
+  .sng-row td { background: #1a2744 !important; color: #fff; font-weight: bold; }
+  .check { color: #2da44e; font-weight: bold; }
+  .cross { color: #ccc; }
+  .price-high { color: #1a2744; font-weight: bold; }
+
+  /* GAP BOX */
+  .gap-box { background: #1a2744; color: #fff; padding: 14px 18px; margin-bottom: 14px; font-size: 10.5pt; font-weight: bold; line-height: 1.6; }
+  .gap-box span { font-weight: normal; opacity: 0.8; font-size: 9.5pt; }
+
+  /* BUYER SEGMENTS */
+  .segment-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: #ddd; border: 1px solid #ddd; margin-bottom: 14px; }
+  .segment-cell { background: #fff; padding: 14px 16px; }
+  .segment-label { font-size: 8pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.12em; color: #777; margin-bottom: 4px; }
+  .segment-name { font-size: 12pt; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 5px; }
+  .segment-body { font-size: 8.5pt; color: #444; line-height: 1.55; }
+  .segment-size { font-size: 10pt; font-weight: 900; color: #f47820; margin-top: 6px; }
+
+  /* TREND BARS */
+  .trend-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 9pt; }
+  .trend-label { width: 220px; min-width: 220px; }
+  .trend-bar-bg { flex: 1; height: 10px; background: #eee; border-radius: 2px; }
+  .trend-bar-fill { height: 10px; background: #1a2744; border-radius: 2px; }
+  .trend-bar-fill.orange { background: #f47820; }
+  .trend-pct { width: 40px; text-align: right; font-weight: bold; font-size: 9pt; }
+
+  /* CALL OUT */
+  .callout { border-left: 4px solid #f47820; background: #f8f8f8; padding: 12px 16px; margin-bottom: 14px; font-size: 9.5pt; line-height: 1.65; }
+
+  .doc-footer { border-top: 1px solid #ddd; margin-top: 24px; padding-top: 8px; font-size: 8pt; color: #aaa; display: flex; justify-content: space-between; }
+
+  p { margin-bottom: 10px; font-size: 9.5pt; }
+</style>
+</head>
+<body>
+
+<div class="no-print">
+  <button onclick="window.print()">Save as PDF / Print</button>
+</div>
+
+<div class="header">
+  <div>
+    <div class="brand-name">SNG Cycles</div>
+    <div class="brand-sub">Shark Not Goldfish · Florida Built</div>
+  </div>
+  <div class="header-meta">
+    <div class="doc-title">Market Snapshot — 2026</div>
+    Electric Supermoto &amp; Custom Powersports<br>
+    Prepared by: Bryan Jaworski, Founder<br>
+    Confidential
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>The Market Opportunity — TAM / SAM / SOM</h2>
+
+<div class="tam-grid">
+  <div class="tam-cell">
+    <div class="tam-label">TAM — Total Addressable Market</div>
+    <div class="tam-value">$42B+</div>
+    <div class="tam-desc">Global powersports market (motorcycles, UTVs, off-road). Growing at ~7% CAGR. Electric segment is the fastest-growing sub-category — projected to reach $20B+ by 2030.</div>
+  </div>
+  <div class="tam-cell">
+    <div class="tam-label">SAM — Serviceable Addressable Market</div>
+    <div class="tam-value">$4.2B</div>
+    <div class="tam-desc">Premium electric motorcycle + custom powersports segment. US + EU buyers in the $15,000–$80,000 purchase range who are actively seeking electric alternatives to gas performance bikes.</div>
+  </div>
+  <div class="tam-cell highlight">
+    <div class="tam-label">SOM — SNG's Target</div>
+    <div class="tam-value">$180M</div>
+    <div class="tam-desc">Custom luxury electric supermoto + off-road platforms. Limited-edition, high-margin buyers. 500 units across SNG Cycles + SNG Motors at average $21k–$75k ASP. This is year 1–3.</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>Market Drivers — Why Electric. Why Now. Why SNG.</h2>
+
+<div class="drivers-grid">
+  <div class="driver-cell">
+    <span class="driver-stat">38%</span>
+    <div class="driver-title">YoY Growth — Electric Motorcycle Sales</div>
+    <div class="driver-body">Electric motorcycle sales grew 38%+ year-over-year in North America in 2025. The buyer is here. The demand is proven. The premium segment is still wide open.</div>
+  </div>
+  <div class="driver-cell">
+    <span class="driver-stat">Zero.</span>
+    <div class="driver-title">Luxury Custom Electric Supermoto Brands</div>
+    <div class="driver-body">There is no Orange County Choppers for electric. No custom luxury brand, no limited drops, no collector ownership experience. The category does not exist. SNG builds it from scratch with first-mover position.</div>
+  </div>
+  <div class="driver-cell">
+    <span class="driver-stat">6'2"+</span>
+    <div class="driver-title">Tall Rider Gap — 0 Solutions in the Market</div>
+    <div class="driver-body">The entire motorcycle industry builds to a 5'10" standard. No production electric motorcycle exceeds a 38" seat height. SNG's platform reaches 39"–43". This is a documented, unserved segment with millions of riders.</div>
+  </div>
+  <div class="driver-cell">
+    <span class="driver-stat">$20,995</span>
+    <div class="driver-title">Ducati Hypermotard V2 SP — Gas Only, 2026</div>
+    <div class="driver-body">The world's leading premium supermoto manufacturer launched their flagship at $20,995 — gas only. Their electric program is in development. The buyer who wants a Hypermotard in electric form has nowhere to go today. SNG is that destination.</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>Competitive Landscape — Where SNG Sits</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brand / Model</th>
+      <th>Electric</th>
+      <th>Street Legal</th>
+      <th>Custom / Limited</th>
+      <th>Luxury Brand</th>
+      <th>Tall Rider (39"+)</th>
+      <th>Off-Road UTV</th>
+      <th>Apparel / Lifestyle</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Ducati Hypermotard V2 SP</strong></td>
+      <td class="cross">✗</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>$20,995</td>
+    </tr>
+    <tr>
+      <td><strong>Stark VARG SM</strong></td>
+      <td class="check">✓</td>
+      <td class="check">✓</td>
+      <td class="cross">✗ Production</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>~$12–15k</td>
+    </tr>
+    <tr>
+      <td><strong>Zero Motorcycles</strong></td>
+      <td class="check">✓</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗ Generic</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>$11–21k</td>
+    </tr>
+    <tr>
+      <td><strong>Energica</strong></td>
+      <td class="check">✓</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td class="check">✓ Italian</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>$18–25k</td>
+    </tr>
+    <tr>
+      <td><strong>Sur-Ron / Talaria</strong></td>
+      <td class="check">✓</td>
+      <td class="cross">✗ Off-road</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>$4–8k</td>
+    </tr>
+    <tr>
+      <td><strong>Polaris RZR / Can-Am</strong></td>
+      <td class="cross">✗ Mostly gas</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗ Mass market</td>
+      <td class="cross">✗</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td>$18–35k</td>
+    </tr>
+    <tr class="sng-row">
+      <td><strong>SNG Cycles / SNG Motors ← THE GAP</strong></td>
+      <td>✓ All electric</td>
+      <td>✓ Street legal</td>
+      <td>✓ Limited drops</td>
+      <td>✓ Luxury custom</td>
+      <td>✓ 39"–43"</td>
+      <td>✓ Hammerhead</td>
+      <td>✓ Full line</td>
+      <td>$14.9k–$75k</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="gap-box">
+  SNG is the only brand in the world that is simultaneously: electric · street-legal · custom/limited · luxury-positioned · tall-rider engineered · off-road capable · and backed by a lifestyle apparel line. &nbsp;<span>Every competitor checks one or two boxes. SNG checks all of them.</span>
+</div>
+
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>Target Buyer — Who Actually Buys an SNG</h2>
+
+<div class="gap-box" style="margin-bottom:14px;">
+  <strong>Core buyer: 25–60. Ducati Motard or BMW rider. Not the young Sur-Ron crowd.</strong> &nbsp;<span>This was confirmed by the founder firsthand — after buying an electric bike and watching who actually showed up with $20k to spend. It wasn't 22-year-olds. It was the guy who already had a Ducati in the garage and wanted to know what was next.</span>
+</div>
+
+<div class="segment-grid">
+  <div class="segment-cell">
+    <div class="segment-label">Primary Target · Ages 25–60</div>
+    <div class="segment-name">The Ducati / BMW Rider</div>
+    <div class="segment-body">Currently rides or has ridden a Ducati Hypermotard, BMW GS, KTM Super Duke, or Husqvarna 701. HHI $100k–$250k+. Cares about brand identity, fit and finish, and what the bike says about him. Has looked at the electric options and been underwhelmed — a Sur-Ron looks like a bicycle, a Zero looks like nothing.<br><br>This buyer is waiting for someone to make electric feel like a Ducati. SNG is that answer. He doesn't need to be sold on electric — he needs to be sold on <em>this</em> electric.</div>
+    <div class="segment-size">Primary market · $19k–$40k purchase range</div>
+  </div>
+  <div class="segment-cell">
+    <div class="segment-label">Secondary Target · Ages 30–60</div>
+    <div class="segment-name">The Tall Rider (6'2"+)</div>
+    <div class="segment-body">Underserved by every OEM on earth. Has spent 10–20 years riding bikes that never properly fit — knees too high, feet can't touch, ergonomics always a compromise. When this rider sits on an SNG with 39"+ seat height and both feet flat, the conversation is over. Extremely loyal. Extremely vocal. Tells every tall rider he knows.<br><br>Overlaps heavily with the Ducati/BMW demographic — these are often the same buyer.</div>
+    <div class="segment-size">~14M adults 6'2"+ in the US alone</div>
+  </div>
+  <div class="segment-cell">
+    <div class="segment-label">Tertiary Target · Ages 28–55</div>
+    <div class="segment-name">The Collector / Off-Road Buyer</div>
+    <div class="segment-body">Buys limited-edition vehicles as both toys and investments. Already has a Can-Am or Polaris in the garage. Looking for something that stands alone — numbered, custom, hand-built. The Hammerhead and the Megladon Collector Box are built for this person.<br><br>Also includes the dune / trail rider who wants electric without the mass-market feel of a Polaris RZR.</div>
+    <div class="segment-size">$45k–$75k purchase range · SNG Motors</div>
+  </div>
+</div>
+
+<div class="callout" style="margin-bottom:14px;">
+  <strong>Who SNG is NOT targeting:</strong> The 18–25 Sur-Ron/Talaria crowd. That buyer is price-driven, trend-driven, and not spending $20k. SNG leaves that market entirely to the Chinese brands. The SNG buyer has already graduated past that — he's been riding real bikes for 10+ years and knows exactly what he wants. That's the only person worth building for.
+</div>
+
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>Growth Trends — Tailwinds Behind SNG</h2>
+
+<div style="margin-bottom:16px;">
+  <div class="trend-row">
+    <div class="trend-label">Electric vehicle adoption (consumer)</div>
+    <div class="trend-bar-bg"><div class="trend-bar-fill orange" style="width:88%;"></div></div>
+    <div class="trend-pct">↑↑↑</div>
+  </div>
+  <div class="trend-row">
+    <div class="trend-label">Premium/luxury motorcycle demand</div>
+    <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:72%;"></div></div>
+    <div class="trend-pct">↑↑</div>
+  </div>
+  <div class="trend-row">
+    <div class="trend-label">Limited-edition / collectible vehicle market</div>
+    <div class="trend-bar-bg"><div class="trend-bar-fill orange" style="width:80%;"></div></div>
+    <div class="trend-pct">↑↑↑</div>
+  </div>
+  <div class="trend-row">
+    <div class="trend-label">Powersports lifestyle apparel (branded merch)</div>
+    <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:65%;"></div></div>
+    <div class="trend-pct">↑↑</div>
+  </div>
+  <div class="trend-row">
+    <div class="trend-label">Off-road / UTV electric conversion demand</div>
+    <div class="trend-bar-bg"><div class="trend-bar-fill orange" style="width:90%;"></div></div>
+    <div class="trend-pct">↑↑↑</div>
+  </div>
+  <div class="trend-row">
+    <div class="trend-label">Social media virality — EV builds + stunts</div>
+    <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:95%;"></div></div>
+    <div class="trend-pct">↑↑↑</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>The SNG Revenue Model — Multiple Streams</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Revenue Stream</th>
+      <th>Unit / Item</th>
+      <th>Price Range</th>
+      <th>Margin</th>
+      <th>Phase</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>SNG Mako — Supermoto</td><td>Per bike</td><td>$21,000–$30,000</td><td>~45–52%</td><td>Phase 1</td></tr>
+    <tr><td>Great White — Premium</td><td>Per bike</td><td>$35,000–$40,000</td><td>~50–55%</td><td>Phase 1</td></tr>
+    <tr><td>Reef Shark — Entry</td><td>Per bike</td><td>$14,900</td><td>~38–42%</td><td>Phase 1</td></tr>
+    <tr><td>Hammerhead — Supercart</td><td>Per unit</td><td>$45,000–$59,900</td><td>~40–48%</td><td>Phase 2</td></tr>
+    <tr><td>Megladon Collector Box</td><td>Per box</td><td>$499</td><td>~55–65%</td><td>Now</td></tr>
+    <tr><td>Great White Hoodie</td><td>Per unit</td><td>$70</td><td>~60–70%</td><td>Now</td></tr>
+    <tr><td>E-520 Jackshaft Kit</td><td>Per kit</td><td>TBD</td><td>~65–70%</td><td>Phase 1</td></tr>
+    <tr><td>Apparel / Tees / Hats</td><td>Per item</td><td>$35–$70</td><td>~65–75%</td><td>Now</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>The Bottom Line</h2>
+
+<div class="callout">
+  <strong>No brand owns this space.</strong> The electric supermoto category is growing at 38%+ per year. The luxury custom segment within it has zero established players. The tall-rider segment has zero solutions. The off-road electric UTV custom market has zero custom brands.<br><br>
+  SNG Cycles doesn't compete with Ducati or Stark or Zero — it occupies the category none of them are building. That's not a gap in the market. That's a market that doesn't exist yet, with a brand already building it, with prototypes already running, and with buyers already waiting.
+</div>
+
+<div class="doc-footer">
+  <span>SNG Cycles / SNG Motors · Complete Care Marketing, LLC · Royal Palm Beach, FL · sharknotgoldfish@gmail.com</span>
+  <span>Confidential — 2026</span>
+</div>
+
+</body>
+</html>

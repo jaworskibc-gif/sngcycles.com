@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SNG Cycles — Investor 1-Pager</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#d4d4d4;padding:32px 16px;font-family:Arial,'Helvetica Neue',sans-serif;}
+  .page{background:#fff;width:816px;margin:0 auto;box-shadow:0 8px 40px rgba(0,0,0,0.22);}
+
+  .header{background:#0a0a0a;overflow:hidden;}
+  .header::after{content:'';display:block;height:4px;background:linear-gradient(90deg,#e85d04 0%,#ff9533 50%,#e85d04 100%);}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 48px;}
+  .header-left{display:flex;align-items:center;gap:20px;}
+  .header-logo img{height:52px;width:auto;}
+  .header-brand{border-left:1px solid #2a2a2a;padding-left:20px;}
+  .brand-name{font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase;}
+  .brand-sub{font-size:9px;color:#e85d04;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-top:2px;}
+  .header-right{text-align:right;}
+  .guide-badge{display:inline-block;background:#e85d04;color:#fff;font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif;font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:6px;}
+  .guide-series{display:block;font-size:9px;color:#666;letter-spacing:2.5px;text-transform:uppercase;}
+
+  .hero{background:#0f0f0f;padding:44px 48px 40px;}
+  .hero-label{font-size:10px;color:#e85d04;letter-spacing:4px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .hero-headline{font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif;font-size:42px;font-weight:900;color:#fff;line-height:1.05;text-transform:uppercase;margin-bottom:8px;}
+  .hero-headline span{color:#e85d04;}
+  .hero-sub{font-size:13px;color:#888;letter-spacing:0.5px;margin-bottom:28px;}
+  .stat-row{display:flex;gap:0;border:1px solid #1e1e1e;border-radius:3px;overflow:hidden;max-width:100%;}
+  .stat{flex:1;padding:14px 18px;border-right:1px solid #1e1e1e;text-align:center;}
+  .stat:last-child{border-right:none;}
+  .stat-val{font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif;font-size:26px;font-weight:900;color:#fff;letter-spacing:1px;}
+  .stat-val span{color:#e85d04;}
+  .stat-lbl{font-size:8px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+
+  .body{padding:36px 48px;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px;}
+  .section-label{font-size:9px;font-weight:900;color:#e85d04;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;border-bottom:2px solid #e85d04;padding-bottom:5px;}
+  .bullet{font-size:12px;color:#222;line-height:1.7;padding-left:14px;position:relative;margin-bottom:4px;}
+  .bullet::before{content:'—';position:absolute;left:0;color:#e85d04;font-weight:700;}
+  .num-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:28px;}
+  .num-box{background:#f7f7f7;border-top:3px solid #e85d04;padding:14px 16px;}
+  .num-big{font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif;font-size:28px;font-weight:900;color:#0a0a0a;}
+  .num-big span{color:#e85d04;}
+  .num-lbl{font-size:9px;color:#777;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
+  .urgency-box{background:#0a0a0a;padding:20px 24px;margin-bottom:28px;border-left:4px solid #e85d04;}
+  .urgency-label{font-size:9px;font-weight:900;color:#e85d04;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+  .urgency-text{font-size:12.5px;color:#ccc;line-height:1.7;}
+  .urgency-text strong{color:#fff;}
+  .ask-box{background:#e85d04;padding:20px 24px;margin-bottom:28px;}
+  .ask-label{font-size:9px;font-weight:900;color:rgba(255,255,255,0.7);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
+  .ask-main{font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif;font-size:32px;font-weight:900;color:#fff;letter-spacing:1px;}
+  .ask-sub{font-size:11.5px;color:rgba(255,255,255,0.85);margin-top:4px;line-height:1.6;}
+  .contact-row{display:flex;justify-content:space-between;align-items:flex-end;padding-top:20px;border-top:1px solid #efefef;}
+  .contact-name{font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif;font-size:20px;font-weight:900;color:#0a0a0a;letter-spacing:1px;text-transform:uppercase;}
+  .contact-title{font-size:9px;color:#e85d04;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-top:2px;}
+  .contact-email{font-size:11.5px;color:#777;margin-top:6px;}
+  .contact-right{text-align:right;font-size:9px;color:#aaa;letter-spacing:1.5px;text-transform:uppercase;line-height:2;}
+
+  .guide-footer{background:#0a0a0a;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .footer-left{font-size:10px;color:#555;line-height:1.6;}
+  .footer-left strong{color:#888;}
+  .footer-center{font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif;font-size:9px;font-weight:700;color:#333;letter-spacing:3px;text-transform:uppercase;}
+  .footer-right{font-size:9px;color:#555;text-align:right;line-height:1.6;}
+
+  @media print{
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
+    body{background:white;padding:0;}
+    .page{box-shadow:none;margin:0;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-logo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTE2IiB2aWV3Qm94PSIwIDAgMTYwIDExNiI+CiAgPHN0eWxlPi53e2ZpbGw6I2Y3ZjdmNzt9LnN3e2ZpbGw6bm9uZTtzdHJva2U6I2Y3ZjdmNztzdHJva2Utd2lkdGg6NS41O3N0cm9rZS1saW5lY2FwOnNxdWFyZTtzdHJva2UtbGluZWpvaW46bWl0ZXI7fS5zbmd7Zm9udC1mYW1pbHk6SW1wYWN0LCJBcmlhbCBCbGFjayIsc2Fucy1zZXJpZjtmb250LXNpemU6MzlweDtsZXR0ZXItc3BhY2luZzoxcHg7Zm9udC1zdHlsZTppdGFsaWM7Zm9udC13ZWlnaHQ6OTAwO308L3N0eWxlPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI2IDgpIj4KICAgIDxwYXRoIGNsYXNzPSJzdyIgZD0iTTggNjIgQzMwIDM0IDYyIDE0IDk0IDMgTDc4IDM0IEM3MyA0NSA3OCA1NSAxMDMgNzAgTDQ0IDY2IEMzMiA2NSAyMCA2NCA4IDYyIFoiLz4KICAgIDxwYXRoIGNsYXNzPSJzdyIgZD0iTTE4IDYyIEwxMDEgNjIiLz4KICAgIDx0ZXh0IGNsYXNzPSJ3IHNuZyIgeD0iMTgiIHk9IjEwMSIgdHJhbnNmb3JtPSJza2V3WCgtMTIpIj5TTkc8L3RleHQ+CiAgICA8cmVjdCBjbGFzcz0idyIgeD0iMTciIHk9IjEwNCIgd2lkdGg9IjExMiIgaGVpZ2h0PSI0IiB0cmFuc2Zvcm09InNrZXdYKC0xMikiLz4KICA8L2c+Cjwvc3ZnPg==" alt="SNG Cycles"></div>
+      <div class="header-brand">
+        <div class="brand-name">SNG Cycles</div>
+        <div class="brand-sub">Royal Palm Beach, FL</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="guide-badge">Confidential</div>
+      <span class="guide-series">Investor Overview &middot; 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-label">The Opportunity</div>
+  <div class="hero-headline">The Electric Ducati<br>Doesn't Exist Yet.<span> SNG Does.</span></div>
+  <div class="hero-sub">No luxury electric supermoto brand. No electric Hypermotard. No electric supermoto lifestyle brand. Three open lanes. First-mover position in all three.</div>
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-val"><span>$12K</span></div>
+      <div class="stat-lbl">Proven Build Cost</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">$19<span>–</span>30K</div>
+      <div class="stat-lbl">Retail Per Unit</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val"><span>40–52%</span></div>
+      <div class="stat-lbl">Gross Margin</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">30<span> units</span></div>
+      <div class="stat-lbl">Scale Trigger</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val"><span>$4M</span></div>
+      <div class="stat-lbl">Capital Unlocked at Trigger</div>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="two-col">
+    <div>
+      <div class="section-label">This Is Not a Concept</div>
+      <div class="bullet">Two finished, running bikes exist today — hand-built in a Florida garage</div>
+      <div class="bullet">Three R&amp;D prototypes. $31,000 and 1,000 hours already invested by the founder</div>
+      <div class="bullet">Build cost is not a projection — it is the actual cost proven through testing</div>
+      <div class="bullet">Patent-pending Quick-Change Rear System — 30-second full swap, no tools</div>
+      <div class="bullet">Hand-formed bodywork from Italian ABS panels — no mold, no outside vendor</div>
+    </div>
+    <div>
+      <div class="section-label">Three Gaps Nobody Has Filled</div>
+      <div class="bullet">No luxury custom electric supermoto exists — Ducati, KTM, Zero all miss this lane</div>
+      <div class="bullet">No electric supermoto lifestyle brand — Fox, Alpinestars, Fly Racing are all gas</div>
+      <div class="bullet">No electric bike built for the tall rider — SNG is the first 39.5" seat height at this spec</div>
+      <div class="bullet">Stark VARG is the only serious electric supermoto — it's a performance product, not a luxury brand</div>
+      <div class="bullet">Total planned production: 500 units across all editions. Scarcity is the product.</div>
+    </div>
+  </div>
+
+  <div class="num-row">
+    <div class="num-box">
+      <div class="num-big"><span>$66K</span>&ndash;120K</div>
+      <div class="num-lbl">Seed Ask (Total)</div>
+    </div>
+    <div class="num-box">
+      <div class="num-big"><span>$300K</span></div>
+      <div class="num-lbl">Gross at 30-Unit Trigger</div>
+    </div>
+    <div class="num-box">
+      <div class="num-big"><span>$4M</span></div>
+      <div class="num-lbl">Scale Capital Unlocked</div>
+    </div>
+  </div>
+
+  <div class="urgency-box">
+    <div class="urgency-label">Why This Window Closes</div>
+    <div class="urgency-text">
+      The EV market is being defined <strong>right now.</strong> Ducati is watching. Zero is watching. The first brand to plant a flag in the luxury electric supermoto space owns it. <strong>Two bikes are built and running.</strong> The deposit agreement is drafted. The compliance roadmap is complete. The seed round funds the prototype build, compliance certification, and demand validation — <strong>not speculation.</strong> The $4M scale raise follows 30 sold units. This is the last entry point before the trigger.
+    </div>
+  </div>
+
+  <div class="ask-box">
+    <div class="ask-label">The Ask</div>
+    <div class="ask-main">$66,000 &ndash; $120,000 Seed Round</div>
+    <div class="ask-sub">Hero prototype build &middot; Frame fabrication tooling &middot; NHTSA/FMVSS compliance &amp; legal &middot; Demand validation<br>Founder commits ~$25K from incoming settlement alongside this raise. $31K + 1,000 hours already in &mdash; not in this ask.</div>
+  </div>
+
+  <div class="contact-row">
+    <div>
+      <div class="contact-name">Bryan Jaworski</div>
+      <div class="contact-title">Founder &mdash; SNG Cycles / CCM Inc.</div>
+      <div class="contact-email">sharknotgoldfish@gmail.com</div>
+    </div>
+    <div class="contact-right">
+      Confidential &mdash; Under NCNDA<br>
+      Complete Care Marketing, LLC<br>
+      &copy; 2026 CCM Inc.
+    </div>
+  </div>
+
+</div>
+
+<div class="guide-footer">
+  <div class="footer-left"><strong>SNG Cycles / CCM Inc.</strong><br>Royal Palm Beach, FL &middot; sharknotgoldfish@gmail.com</div>
+  <div class="footer-center">Shark Not Goldfish &middot; Leave the School Behind</div>
+  <div class="footer-right">Investor Overview &middot; 2026<br>&copy; 2026 CCM Inc. Confidential</div>
+</div>
+
+</div>
+</body>
+</html>

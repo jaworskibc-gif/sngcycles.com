@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Cycles — Shark Not Goldfish</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #060608;
+    --deep: #080e1a;
+    --panel: #0e1520;
+    --border: #1a2640;
+    --blue: #f47820;
+    --blue-bright: #f7a050;
+    --blue-glow: rgba(244,120,32,0.15);
+    --blue-glow2: rgba(244,120,32,0.06);
+    --navy: #1a2744;
+    --white: #f0f4ff;
+    --text: #b0b8d0;
+    --text-dim: #505870;
+    --cond: 'Barlow Condensed', sans-serif;
+    --body: 'Barlow', sans-serif;
+    --mono: 'Share Tech Mono', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: var(--body);
+    overflow-x: hidden;
+  }
+
+  /* SCANLINE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.03) 3px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 60px;
+    background: rgba(6,6,8,0.97);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .shark-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .nav-wordmark {
+    font-family: var(--cond);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .nav-wordmark span { color: var(--blue); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue-bright); }
+
+  .nav-cta {
+    font-family: var(--cond);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 22px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--blue-bright); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 2rem 80px;
+    position: relative;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 10%, rgba(30,111,255,0.1) 0%, transparent 70%),
+      var(--black);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(30,111,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,111,255,0.05) 1px, transparent 1px);
+    background-size: 70px 70px;
+    mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, transparent 70%);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--blue);
+    opacity: 0.5;
+  }
+
+  .hero h1 {
+    font-family: var(--cond);
+    font-size: clamp(56px, 10vw, 120px);
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .hero h1 em {
+    display: block;
+    color: var(--blue);
+    font-style: normal;
+    -webkit-text-stroke: 2px var(--blue);
+    color: transparent;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-tagline {
+    font-family: var(--cond);
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+  }
+
+  .hero-sub {
+    max-width: 600px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 3rem;
+  }
+
+  .hero-sub strong { color: var(--white); font-weight: 600; }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    font-family: var(--cond);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px 44px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--blue-bright); transform: translateY(-2px); }
+
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 15px 26px;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--blue-bright); border-color: var(--blue); }
+
+  /* TICKER */
+  .ticker {
+    background: var(--blue);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 25s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0 2.5rem;
+    opacity: 0.9;
+  }
+
+  .ticker-item::after { content: '//'; margin-left: 2.5rem; opacity: 0.4; }
+
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* BUILDS GRID */
+  .builds {
+    padding: 100px 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .section-title {
+    font-family: var(--cond);
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 3rem;
+  }
+
+  .builds-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .build-card {
+    background: var(--deep);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .build-card:hover { background: var(--panel); }
+
+  .build-card.featured {
+    grid-column: 1 / -1;
+  }
+
+  .build-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85) saturate(1.1);
+    transition: filter 0.3s, transform 0.4s;
+  }
+
+  .build-card.featured .build-img {
+    aspect-ratio: 21/9;
+  }
+
+  .build-card:hover .build-img { filter: brightness(1) saturate(1.2); transform: scale(1.02); }
+
+  .build-info {
+    padding: 1.5rem;
+    border-top: 2px solid var(--blue);
+  }
+
+  .build-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .build-name {
+    font-family: var(--cond);
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .build-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .build-badge {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    font-family: var(--mono);
+    font-size: 10px;
+    background: var(--blue);
+    color: #fff;
+    padding: 4px 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* NAKED VS DRESSED */
+  .concept {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 100px 2rem;
+  }
+
+  .concept-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .concept-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 3rem;
+  }
+
+  .concept-cell {
+    background: var(--panel);
+    padding: 3rem 2.5rem;
+    text-align: center;
+  }
+
+  .concept-cell.active { border-top: 3px solid var(--blue); }
+
+  .concept-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--text-dim);
+  }
+
+  .concept-cell.active .concept-label { color: var(--blue); }
+
+  .concept-title {
+    font-family: var(--cond);
+    font-size: 42px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .concept-desc {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .concept-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .concept-features li {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .concept-features li::before { content: '→'; color: var(--blue); }
+
+  /* SPECS */
+  .specs-section {
+    padding: 100px 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .spec-item {
+    background: var(--deep);
+    padding: 2rem;
+  }
+
+  .spec-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .spec-value {
+    font-family: var(--cond);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--blue-bright);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .spec-note {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  /* APPAREL */
+  .apparel {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    padding: 100px 2rem;
+  }
+
+  .apparel-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .apparel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 3rem;
+  }
+
+  .apparel-card {
+    background: var(--panel);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .apparel-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+
+  .apparel-name {
+    font-family: var(--cond);
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+
+  .apparel-detail {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  /* INTEREST FORM */
+  .form-section {
+    padding: 100px 2rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .form-box {
+    background: var(--deep);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--blue);
+    padding: 3rem;
+    margin-top: 3rem;
+  }
+
+  .form-intro {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group.full { grid-column: 1 / -1; }
+
+  .form-group label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 14px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--blue); }
+
+  .form-group select option { background: var(--panel); }
+  .form-group textarea { resize: none; min-height: 90px; }
+
+  .form-submit {
+    grid-column: 1 / -1;
+    margin-top: 0.5rem;
+    padding: 18px;
+    background: var(--blue);
+    color: #fff;
+    font-family: var(--cond);
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+  }
+
+  .form-submit:hover { background: var(--blue-bright); }
+
+  .form-note {
+    grid-column: 1 / -1;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: center;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(6,6,8,0.97);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: var(--deep);
+    border: 1px solid var(--blue);
+    padding: 3rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .modal-icon { font-size: 48px; margin-bottom: 1rem; }
+
+  .modal h3 {
+    font-family: var(--cond);
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    margin-bottom: 0.75rem;
+  }
+
+  .modal p {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-close {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    background: none;
+    border: 1px solid var(--border);
+    padding: 10px 28px;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .modal-close:hover { color: var(--blue-bright); border-color: var(--blue); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: var(--cond);
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * { animation: fadeUp 0.6s ease both; }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero-tagline { animation-delay: 0.3s; }
+  .hero-sub { animation-delay: 0.4s; }
+  .hero-actions { animation-delay: 0.5s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .builds-grid, .concept-split, .specs-grid, .apparel-grid, .form-grid { grid-template-columns: 1fr; }
+    .build-card.featured .build-img { aspect-ratio: 4/3; }
+    .form-box { padding: 1.75rem; }
+    section { padding: 60px 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="shark-icon">🦈</span>
+    <span class="nav-wordmark">SNG <span>Cycles</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#builds">Builds</a></li>
+    <li><a href="#concept">Concept</a></li>
+    <li><a href="#specs">Specs</a></li>
+    <li><a href="#interest">Get One</a></li>
+  </ul>
+  <a href="#interest" class="nav-cta">I Want One</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">Shark Not Goldfish Cycles · Florida Built</div>
+  <h1>No Gas.<em>Hauls Ass.</em></h1>
+  <div class="hero-tagline">Built Different. Wrapped Exclusive. The Orange County Choppers of the Electric Era.</div>
+  <p class="hero-sub">
+    <strong>Built for a shark, not a goldfish.</strong> Every SNG build is a custom, one-of-a-kind electric machine — hand-fabricated in Florida, loaded with premium components, and designed to turn heads wherever it goes. Starting at <strong>$19,000.</strong>
+  </p>
+  <div class="hero-actions">
+    <a href="#interest" class="btn-primary">I Want One — Drop My Info</a>
+    <a href="#builds" class="btn-ghost">See the Builds →</a>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Shark Not Goldfish</span>
+    <span class="ticker-item">27kW Sotion Motor</span>
+    <span class="ticker-item">Custom CNC Fabrication</span>
+    <span class="ticker-item">Florida Built</span>
+    <span class="ticker-item">Limited Drops Only</span>
+    <span class="ticker-item">Naked or Fully Dressed</span>
+    <span class="ticker-item">SNG 4 Life</span>
+    <span class="ticker-item">Build Up</span>
+    <span class="ticker-item">Shark Not Goldfish</span>
+    <span class="ticker-item">27kW Sotion Motor</span>
+    <span class="ticker-item">Custom CNC Fabrication</span>
+    <span class="ticker-item">Florida Built</span>
+    <span class="ticker-item">Limited Drops Only</span>
+    <span class="ticker-item">Naked or Fully Dressed</span>
+    <span class="ticker-item">SNG 4 Life</span>
+    <span class="ticker-item">Build Up</span>
+  </div>
+</div>
+
+<!-- BUILDS -->
+<section id="builds">
+  <div class="builds">
+    <div class="section-label">Current Builds</div>
+    <h2 class="section-title">The Lineup.</h2>
+
+    <div class="builds-grid">
+
+      <!-- 520E Black Edition — Hero -->
+      <div class="build-card featured">
+        <img class="build-img" src="sng-520e-black-edition.png" alt="SNG 520E Holochrome Black Edition"
+          onerror="this.style.background='#0f0f18';this.style.minHeight='300px';this.removeAttribute('src')">
+        <span class="build-badge" style="background:#111; border:1px solid #a78bfa; color:#a78bfa;">001 / 100</span>
+        <div class="build-info" style="border-top-color:#a78bfa;">
+          <div class="build-tag" style="color:#a78bfa;">520E · Black Edition · $25,000</div>
+          <div class="build-name">SNG 520E Holochrome Black Edition</div>
+          <div class="build-desc">Jet chrome black wrap. Liquid-cooled 520E motor. 99V 40AH battery. 7" Apple CarPlay dash. Tinted windshield. Billet stunt bars. WP suspension. Numbered collector box 001–100. This is the top of the food chain.</div>
+        </div>
+      </div>
+
+      <!-- 520E Platinum Edition -->
+      <div class="build-card featured" style="opacity:0.85;">
+        <div style="background:#0a0a14; min-height:280px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; border-bottom:2px solid #a78bfa;">
+          <div style="font-size:48px;">🏆</div>
+          <div style="font-family:var(--cond); font-size:28px; font-weight:900; color:var(--white); text-transform:uppercase; letter-spacing:0.1em;">Platinum Edition</div>
+          <div style="font-family:var(--mono); font-size:11px; color:#a78bfa; letter-spacing:0.2em;">Photo Coming Soon</div>
+        </div>
+        <span class="build-badge" style="background:#111; border:1px solid #a78bfa; color:#a78bfa;">001 / 100</span>
+        <div class="build-info" style="border-top-color:#a78bfa;">
+          <div class="build-tag" style="color:#a78bfa;">520E · Platinum Edition · $30,000</div>
+          <div class="build-name">SNG 520E Platinum Edition</div>
+          <div class="build-desc">Holochrome silver wrap. Liquid-cooled 520E. Fully adjustable suspension. Supermoto wheels. SNG Pro lighting. Certificate of authenticity. Numbered 001–100. Built different. Made to stand out.</div>
+        </div>
+      </div>
+
+      <!-- 270E Supermoto -->
+      <div class="build-card">
+        <img class="build-img" src="270e supermoto.png" alt="SNG 270E Supermoto"
+          onerror="this.style.background='#0f0f18';this.style.minHeight='220px';this.removeAttribute('src')">
+        <span class="build-badge">Flagship</span>
+        <div class="build-info">
+          <div class="build-tag">270E · Supermoto · $21,000</div>
+          <div class="build-name">SNG 270E Supermoto</div>
+          <div class="build-desc">27kW electric supermoto built to dominate. Yellow/gold colorway, SNG full custom kit. "No Gas Hauls Ass." The one that started it all.</div>
+        </div>
+      </div>
+
+      <!-- Holochrome Supermoto -->
+      <div class="build-card">
+        <img class="build-img" src="sng holochrome sm 2 .jpg" alt="Holochrome Supermoto"
+          onerror="this.style.background='#0f0f18';this.style.minHeight='220px';this.removeAttribute('src')">
+        <span class="build-badge">Limited · 300</span>
+        <div class="build-info">
+          <div class="build-tag">270E · Holochrome · $19,000</div>
+          <div class="build-name">Holochrome Supermoto Edition</div>
+          <div class="build-desc">Iridescent holochrome wrap. 27kW Sotion. Full package includes hoodie, snapback, keychain and LED collector box. 300 units worldwide.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<div class="concept" id="concept">
+  <div class="concept-inner">
+    <div class="section-label">The Concept</div>
+    <h2 class="section-title">Naked or<br>Fully Dressed.</h2>
+
+    <div class="concept-split">
+      <div class="concept-cell">
+        <div class="concept-label">Option A</div>
+        <div class="concept-title">Naked</div>
+        <p class="concept-desc">Raw platform. Pure performance. No panels, no distractions. Just motor, frame, and intent.</p>
+        <ul class="concept-features">
+          <li>Stripped-down, track-ready profile</li>
+          <li>Lighter weight configuration</li>
+          <li>Rider upgrades at your pace</li>
+          <li>Starting point for your own build</li>
+        </ul>
+      </div>
+      <div class="concept-cell active">
+        <div class="concept-label">Option B</div>
+        <div class="concept-title">Fully Dressed</div>
+        <p class="concept-desc">Full SNG custom kit. Graphics, plastics, every detail finished. Ready to turn heads from day one.</p>
+        <ul class="concept-features">
+          <li>Full custom SNG plastics & graphics</li>
+          <li>Premium component spec</li>
+          <li>Street or track configuration</li>
+          <li>Your build. Your mood. Your way.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:2.5rem;">
+      <p style="font-family:var(--cond); font-size:22px; font-weight:800; text-transform:uppercase; color:var(--white); letter-spacing:0.1em;">
+        One platform. Two vibes. <span style="color:var(--blue);">Built to adapt.</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- SPECS -->
+<section id="specs">
+  <div class="specs-section">
+    <div class="section-label">Build Specs</div>
+    <h2 class="section-title">What's Under<br>the Skin.</h2>
+
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-label">Motor</div>
+        <div class="spec-value">27kW</div>
+        <div class="spec-note">Sotion mid-drive</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Controller</div>
+        <div class="spec-value">BAC8000</div>
+        <div class="spec-note">High-performance regen</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">System</div>
+        <div class="spec-value">72V</div>
+        <div class="spec-note">Full EV drivetrain</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Swingarm</div>
+        <div class="spec-value">CNC</div>
+        <div class="spec-note">7075 T6 aluminum, 6-in extended</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Drive</div>
+        <div class="spec-value">520</div>
+        <div class="spec-note">Primary chain drive</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Bodywork</div>
+        <div class="spec-value">UFO</div>
+        <div class="spec-note">Italian ABS — heat-formed and hand-shaped on site</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Assembly</div>
+        <div class="spec-value">FL</div>
+        <div class="spec-note">Florida fabricated, every one</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPAREL -->
+<div class="apparel">
+  <div class="apparel-inner">
+    <div class="section-label">SNG Gear</div>
+    <h2 class="section-title">Rep Your Build.</h2>
+
+    <div class="apparel-grid">
+      <div class="apparel-card">
+        <div class="apparel-icon">🖤</div>
+        <div>
+          <div class="apparel-name">Black Marble Hoodie — $99</div>
+          <div class="apparel-detail">SNG Cycles · Naked vs Fully Dressed graphic · Limited drop</div>
+        </div>
+      </div>
+      <div class="apparel-card">
+        <div class="apparel-icon">🟢</div>
+        <div>
+          <div class="apparel-name">Camo Hoodie — $99</div>
+          <div class="apparel-detail">SNG Cycles · Build Up back graphic · Limited drop</div>
+        </div>
+      </div>
+      <div class="apparel-card">
+        <div class="apparel-icon">🦈</div>
+        <div>
+          <div class="apparel-name">Shark Not Goldfish Hoodie — $99</div>
+          <div class="apparel-detail">Full back shark graphic · SNG4Life sleeve · Statement piece</div>
+        </div>
+      </div>
+      <div class="apparel-card">
+        <div class="apparel-icon">👕</div>
+        <div>
+          <div class="apparel-name">T-Shirts — $35 · Hats — $50</div>
+          <div class="apparel-detail">Limited drops · Get on the list to be notified first</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOLOCHROME DROP -->
+<div style="background:linear-gradient(135deg, #0a0a18 0%, #0d0a20 50%, #0a0a18 100%); border-top:1px solid #1a1a3a; border-bottom:1px solid #1a1a3a; padding:100px 2rem;">
+  <div style="max-width:1100px; margin:0 auto;">
+
+    <div style="font-family:var(--mono); font-size:11px; color:#7b5cf5; letter-spacing:0.25em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:14px;">
+      Limited Release
+      <span style="flex:1; height:1px; background:#1a1a3a;"></span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+
+      <div>
+        <h2 style="font-family:var(--cond); font-size:clamp(48px,7vw,80px); font-weight:900; text-transform:uppercase; line-height:0.95; margin-bottom:1rem;">
+          <span style="background:linear-gradient(135deg,#a78bfa,#60a5fa,#34d399); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">Holochrome</span><br>
+          <span style="color:var(--white); font-size:60%;">Edition</span>
+        </h2>
+
+        <p style="font-family:var(--cond); font-size:20px; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:#a78bfa; margin-bottom:1.5rem;">
+          Built Different. Wrapped Exclusive. Yours.
+        </p>
+
+        <p style="font-size:16px; color:var(--text-dim); line-height:1.7; margin-bottom:2rem;">
+          The ultimate SNG package. Every piece holochrome — iridescent, shifting, impossible to ignore. Open the box and it <strong style="color:var(--white)">lights up</strong> — LED-illuminated, showcasing the holochrome hoodie, hat, and keychain like a trophy case. <strong style="color:var(--white)">Limited to 300 packages worldwide.</strong> Once they're gone, they're gone.
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:2rem;">
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--mono); font-size:13px; color:var(--text);">
+            <span style="color:#a78bfa;">✓</span> SNG 270-E Holochrome Bike
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--mono); font-size:13px; color:var(--text);">
+            <span style="color:#a78bfa;">✓</span> Holochrome Hoodie
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--mono); font-size:13px; color:var(--text);">
+            <span style="color:#a78bfa;">✓</span> Holochrome Snapback
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--mono); font-size:13px; color:var(--text);">
+            <span style="color:#a78bfa;">✓</span> Holochrome Metal Keychain
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-family:var(--mono); font-size:13px; color:var(--text);">
+            <span style="color:#a78bfa;">✓</span> LED Collector Box — lights up on open, illuminating everything inside
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:#1a1a3a; border:1px solid #1a1a3a; margin-bottom:2rem;">
+          <div style="background:#0d0a20; padding:1.25rem; text-align:center;">
+            <div style="font-family:var(--mono); font-size:9px; color:var(--text-dim); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px;">Holochrome</div>
+            <div style="font-family:var(--cond); font-size:22px; font-weight:900; color:#a78bfa; line-height:1;">$19,000</div>
+            <div style="font-family:var(--mono); font-size:9px; color:var(--text-dim); margin-top:4px;">27kW · 300 units</div>
+          </div>
+          <div style="background:#0d0a20; padding:1.25rem; text-align:center; border-left:1px solid #1a1a3a;">
+            <div style="font-family:var(--mono); font-size:9px; color:var(--text-dim); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px;">Supermoto</div>
+            <div style="font-family:var(--cond); font-size:22px; font-weight:900; color:#a78bfa; line-height:1;">$21,000</div>
+            <div style="font-family:var(--mono); font-size:9px; color:var(--text-dim); margin-top:4px;">270E · Limited</div>
+          </div>
+          <div style="background:#0d0a20; padding:1.25rem; text-align:center; border-left:1px solid #1a1a3a;">
+            <div style="font-family:var(--mono); font-size:9px; color:var(--text-dim); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px;">Platinum Ed.</div>
+            <div style="font-family:var(--cond); font-size:22px; font-weight:900; color:#a78bfa; line-height:1;">$25,000</div>
+            <div style="font-family:var(--mono); font-size:9px; color:var(--text-dim); margin-top:4px;">520E · 100 units</div>
+          </div>
+          <div style="background:#0d0a20; padding:1.25rem; text-align:center; border-left:1px solid #1a1a3a;">
+            <div style="font-family:var(--mono); font-size:9px; color:var(--text-dim); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px;">Black Edition</div>
+            <div style="font-family:var(--cond); font-size:22px; font-weight:900; color:#a78bfa; line-height:1;">$25,000</div>
+            <div style="font-family:var(--mono); font-size:9px; color:var(--text-dim); margin-top:4px;">520E · 100 units</div>
+          </div>
+        </div>
+
+        <div style="display:inline-block; background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.4); padding:12px 20px; margin-bottom:2rem;">
+          <div style="font-family:var(--mono); font-size:10px; color:#a78bfa; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:4px;">Total production run</div>
+          <div style="font-family:var(--cond); font-size:42px; font-weight:900; color:#a78bfa; line-height:1;">500</div>
+          <div style="font-family:var(--mono); font-size:10px; color:var(--text-dim); letter-spacing:0.15em; text-transform:uppercase;">Units worldwide — ever</div>
+        </div>
+
+        <div>
+          <a href="#interest" class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#2563eb); font-size:16px;">
+            Reserve My Holochrome Package →
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <img src="sng holochrome sm 2 .jpg" alt="Holochrome Supermoto Edition"
+          style="width:100%; border:1px solid rgba(167,139,250,0.2); box-shadow:0 0 60px rgba(167,139,250,0.1);"
+          onerror="this.style.display='none'">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- INTEREST FORM -->
+<section id="interest">
+  <div class="form-section">
+    <div class="section-label">Get One</div>
+    <h2 class="section-title">I Want One.</h2>
+
+    <div class="form-box">
+      <p class="form-intro">
+        SNG builds are <strong style="color:var(--white)">limited drops — not mass produced.</strong> Drop your info below and we'll reach out directly to talk about your build. No commitment, no pressure. Just sharks talking to sharks.
+      </p>
+
+      <form class="form-grid" id="interestForm" onsubmit="handleSubmit(event)">
+
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" id="firstName" placeholder="Your name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone / Instagram *</label>
+          <input type="text" id="contact" placeholder="Phone or @handle" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label>Which Build Caught Your Eye?</label>
+          <select id="build">
+            <option value="">Select a build...</option>
+            <option>SNG 270E Supermoto</option>
+
+            <option>Holochrome Edition</option>
+            <option>Holochrome Black Edition — $22,995 (100 units)</option>
+            <option>Custom — I have my own vision</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Naked or Fully Dressed?</label>
+          <select id="config">
+            <option value="">Select preference...</option>
+            <option>Naked — raw platform</option>
+            <option>Fully Dressed — full SNG custom kit</option>
+            <option>Not sure yet — let's talk</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Timeline</label>
+          <select id="timeline">
+            <option>Ready now</option>
+            <option>1–3 months</option>
+            <option>Just exploring</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label>Anything else? (Optional)</label>
+          <textarea id="notes" placeholder="Custom colors, specific build ideas, questions..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">🦈 I'm In — Starting at $19,000</button>
+
+        <p class="form-note">
+          No spam. No bots. A real person from SNG will reach out.<br>
+          Built for riders. Made to stand out.
+        </p>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Shark Not <span>Goldfish</span> Cycles</div>
+  <div class="footer-copy">© 2026 SNG Cycles · Florida Built · Limited Drops Only</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-icon">🦈</div>
+    <h3>You're In.</h3>
+    <p>Your info hit the SNG build list. We'll reach out directly — real conversation, no sales scripts. Sharks only.<br><br><strong style="color:var(--white)">SNG 4 Life. Build Up.</strong></p>
+    <button class="modal-close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+  // ── Lead capture: saves locally + submits to Formspree ───────────────────
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const lead = {
+      id: Date.now(),
+      submitted: new Date().toISOString(),
+      firstName:  document.getElementById('firstName').value.trim(),
+      contact:    document.getElementById('contact').value.trim(),
+      email:      document.getElementById('email').value.trim(),
+      build:      document.getElementById('build').value,
+      config:     document.getElementById('config').value,
+      timeline:   document.getElementById('timeline').value,
+      notes:      document.getElementById('notes').value.trim(),
+    };
+
+    // Save to localStorage so no lead is ever lost
+    const leads = JSON.parse(localStorage.getItem('sng_leads') || '[]');
+    leads.push(lead);
+    localStorage.setItem('sng_leads', JSON.stringify(leads));
+
+    // Submit to Formspree — sends email to sharknotgoldfish@gmail.com
+    const formData = new FormData();
+    formData.append('_subject', 'SNG Cycles — New Pre-Order Interest: ' + lead.firstName);
+    formData.append('_replyto', lead.email || lead.contact);
+    Object.entries(lead).forEach(([k, v]) => formData.append(k, v));
+
+    fetch('https://formspree.io/f/sharknotgoldfish', { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
+      .catch(() => {}); // fail silently — already saved locally
+
+    document.getElementById('interestForm').reset();
+    document.getElementById('modal').classList.add('active');
+  }
+
+  // ── Export leads to CSV (open browser console and run: exportLeads()) ────
+  function exportLeads() {
+    const leads = JSON.parse(localStorage.getItem('sng_leads') || '[]');
+    if (!leads.length) { console.log('No leads yet.'); return; }
+    const keys = Object.keys(leads[0]);
+    const csv = [keys.join(','), ...leads.map(l => keys.map(k => JSON.stringify(l[k] || '')).join(','))].join('\n');
+    const a = document.createElement('a');
+    a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+    a.download = 'sng-leads-' + new Date().toISOString().slice(0,10) + '.csv';
+    a.click();
+    console.log(leads.length + ' leads exported.');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 68, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
