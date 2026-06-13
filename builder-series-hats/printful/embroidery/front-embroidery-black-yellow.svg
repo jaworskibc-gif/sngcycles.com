@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1800" viewBox="0 0 300 440">
+  <path d="M 35,355 C 12,268 52,118 90,15 C 112,68 170,252 225,355 Z" fill="#ffd400"/>
+  <text x="130" y="422" text-anchor="middle"
+        font-family="Impact, 'Arial Narrow', sans-serif"
+        font-weight="900" font-size="86" fill="#ffd400" letter-spacing="14">SNG</text>
+</svg>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0e1117;
+    color: #e0e4ed;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: #0a0d13;
+    padding: 22px 44px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .hd-name { font-size: 21pt; font-weight: 800; color: #fff; letter-spacing: -0.4px; }
+  .hd-title { font-size: 8pt; font-weight: 600; color: #FF6524; margin-top: 5px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .hd-contact { font-size: 8.5pt; color: #7a8299; text-align: right; line-height: 1.8; }
+
+  .accent-bar {
+    height: 3px;
+    background: linear-gradient(90deg, #FF6524 60%, #1B8ED4 100%);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── LAYOUT ── */
+  .body-grid { display: flex; height: calc(100vh - 69px); }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 195px;
+    flex-shrink: 0;
+    background: #141820;
+    padding: 20px 18px 24px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    overflow: hidden;
+  }
+  .sb-section { margin-bottom: 18px; }
+  .sb-title {
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FF6524;
+    border-bottom: 1px solid rgba(255,101,36,0.2);
+    padding-bottom: 5px;
+    margin-bottom: 9px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chip {
+    font-size: 7.5pt;
+    font-weight: 500;
+    color: #c8cdd9;
+    background: rgba(255,101,36,0.08);
+    border: 1px solid rgba(255,101,36,0.18);
+    padding: 2px 7px;
+    border-radius: 2px;
+    line-height: 1.4;
+  }
+  .skill-item {
+    font-size: 8pt;
+    color: #6a7490;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.4;
+  }
+  .edu-name { font-size: 8.5pt; font-weight: 600; color: #e0e4ed; }
+  .edu-detail { font-size: 7.5pt; color: #4a5168; margin-top: 2px; }
+
+  /* ── MAIN ── */
+  .main {
+    flex: 1;
+    padding: 20px 34px 24px;
+    background: #0e1117;
+    overflow: hidden;
+  }
+
+  .summary {
+    font-size: 9pt;
+    color: #8a93a8;
+    line-height: 1.65;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .section-title {
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #fff;
+    padding-bottom: 5px;
+    margin-bottom: 12px;
+    display: block;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #FF6524, #1B8ED4) 1;
+  }
+
+  .exp-item { margin-bottom: 12px; }
+  .exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1px; }
+  .exp-title { font-size: 9.5pt; font-weight: 700; color: #fff; }
+  .exp-date {
+    font-size: 7.5pt;
+    color: #fff;
+    background: #FF6524;
+    padding: 1px 7px;
+    border-radius: 2px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .exp-company { font-size: 8.5pt; font-weight: 500; color: #4a5270; margin-bottom: 5px; }
+
+  ul { padding-left: 14px; }
+  li { margin-bottom: 2px; font-size: 8.5pt; color: #9098b0; line-height: 1.55; }
+  li strong { color: #e0e4ed; }
+
+  @media print {
+    @page { margin: 0; size: letter; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="hd-name">Bryan Jaworski</div>
+    <div class="hd-title">AI Operations &nbsp;·&nbsp; Medicare Systems &nbsp;·&nbsp; Contact Center Performance</div>
+  </div>
+  <div class="hd-contact">
+    Royal Palm Beach, FL<br>
+    sharknotgoldfish@gmail.com
+  </div>
+</div>
+<div class="accent-bar"></div>
+
+<div class="body-grid">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="sb-section">
+      <div class="sb-title">Competencies</div>
+      <div class="chips">
+        <div class="chip">Agentic AI Ops</div>
+        <div class="chip">LLM Workflow Performance</div>
+        <div class="chip">Real-Time Compliance</div>
+        <div class="chip">Medicare Advantage</div>
+        <div class="chip">Contact Center Ops</div>
+        <div class="chip">AI Evaluation</div>
+        <div class="chip">Multi-System Integration</div>
+        <div class="chip">Prompt Engineering</div>
+        <div class="chip">Incident Response</div>
+        <div class="chip">Production Monitoring</div>
+        <div class="chip">Outcome Ownership</div>
+        <div class="chip">Executive Communication</div>
+      </div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-title">Technical</div>
+      <div class="skill-item">Claude · GPT · Gemini</div>
+      <div class="skill-item">Multi-agent orchestration</div>
+      <div class="skill-item">Agentic workflow design</div>
+      <div class="skill-item">Webhook &amp; API integration</div>
+      <div class="skill-item">HTML / CSS / JavaScript</div>
+      <div class="skill-item">Puppeteer automation</div>
+      <div class="skill-item">EnrollHere · TrueTrack</div>
+      <div class="skill-item">MARX · Sunfire · UHone</div>
+      <div class="skill-item">Carrier portals · SharePoint</div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-title">Education</div>
+      <div class="edu-name">Cazenovia High School</div>
+      <div class="edu-detail">High School Diploma · 2005</div>
+    </div>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="summary">
+      Medicare operations practitioner turned AI systems builder. Spent 5+ years as a frontline agent — experienced the compliance gaps and retention losses that plague enrollment operations firsthand, then built the solution. Founder and outcome owner: defines the metric, watches the number, drives resolution.
+    </div>
+
+    <div class="section-title">Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-title">Founder &amp; AI Systems Architect</div>
+        <div class="exp-date">2024 – Present</div>
+      </div>
+      <div class="exp-company">Complete Care Marketing Inc. · Royal Palm Beach, FL</div>
+      <ul>
+        <li><strong>Built Complete Care</strong> — Enrollment Intelligence System replacing 11 open platforms with a unified real-time layer across EnrollHere, TrueTrack, MARX, Sunfire, SharePoint, UHone, and carrier portals</li>
+        <li><strong>Engineered live compliance engine</strong> — detects risk on active calls, locks enrollment, surfaces required verbatim language, auto-timestamps full audit trail; non-compliant enrollments become structurally impossible</li>
+        <li><strong>Designed Complete Care Virtual Coach (CCVC)</strong> — agentic AI delivering real-time objection handling and payer rule intelligence during live enrollments; personalized coaching persona per agent</li>
+        <li>Projected outcomes: 20–30% production lift · $156K saved per training class · ramp 4 weeks → 3–5 days · 46x ROI</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-title">Founder — AI &amp; Automation Development</div>
+        <div class="exp-date">2026 – Present</div>
+      </div>
+      <div class="exp-company">SNG Cycles · Royal Palm Beach, FL</div>
+      <ul>
+        <li>Building a second brand end-to-end using multi-agent AI workflows — research, production, content, and e-commerce automation across Claude, GPT, and Gemini</li>
+        <li>Designed and deployed full brand platform, investor materials, and automated PDF pipeline; webhook-driven automation throughout</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-title">Medicare Sales Team Leader</div>
+        <div class="exp-date">Feb 2025 – Feb 2026</div>
+      </div>
+      <div class="exp-company">HealthPlanOne</div>
+      <ul>
+        <li>Coached Medicare sales team while personally meeting enrollment quota every month</li>
+        <li>Maintained compliance standards across all team calls in a high-volume contact center environment</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-title">Medicare Sales Manager &amp; Agent</div>
+        <div class="exp-date">Jan 2022 – Present</div>
+      </div>
+      <div class="exp-company">Tailormade Insurance Group · Miami, FL</div>
+      <ul>
+        <li>Recruited and managed remote sales team — scripts, training, compliance monitoring; 25–50 MAPD enrollments daily with 8 agents</li>
+        <li>Managed domestic and foreign lead vendors, negotiating costs well below industry average</li>
+        <li>Identified the systemic failure points — multi-system fragmentation, compliance gaps, retention loss — that became the foundation of Complete Care</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

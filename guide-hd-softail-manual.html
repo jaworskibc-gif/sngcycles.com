@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SNG — HD Softail Twin-Motor 96V Conversion Manual</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d0d0d; font-family: Arial, 'Helvetica Neue', sans-serif; }
+
+  .page { width: 816px; background: #0a0a0a; margin: 0 auto 32px; position: relative; overflow: hidden; }
+  .accent-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: #e85d04; z-index: 2; }
+
+  /* LETTERHEAD */
+  .lh { display: flex; align-items: center; justify-content: space-between; padding: 16px 44px 13px 44px; border-bottom: 1px solid #1c1c1c; }
+  .lh-left { display: flex; align-items: center; gap: 12px; }
+  .lh-logo svg { height: 30px; }
+  .lh-brand { border-left: 1px solid #252525; padding-left: 12px; }
+  .lh-brand-name { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 13px; color: #fff; letter-spacing: 3px; text-transform: uppercase; }
+  .lh-brand-sub { font-size: 7px; color: #e85d04; letter-spacing: 2.5px; text-transform: uppercase; margin-top: 1px; }
+  .lh-right { text-align: right; }
+  .lh-doc { font-size: 8px; color: #999; letter-spacing: 1.5px; text-transform: uppercase; }
+  .lh-rev { font-size: 7px; color: #777; margin-top: 2px; letter-spacing: 1px; }
+
+  /* FOOTER */
+  .pf { padding: 9px 44px; border-top: 1px solid #181818; display: flex; justify-content: space-between; align-items: center; }
+  .pf-l { font-size: 7px; color: #777; letter-spacing: 1px; text-transform: uppercase; }
+  .pf-r { font-size: 7px; color: #777; letter-spacing: 1px; }
+
+  .pc { padding: 22px 44px 20px 44px; }
+
+  /* COVER */
+  .cover-eyebrow { font-size: 9px; color: #e85d04; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
+  .cover-h1 { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 48px; color: #fff; line-height: 0.9; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .cover-h1 em { color: #e85d04; font-style: normal; }
+  .cover-h2 { font-size: 13px; color: #aaa; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #1c1c1c; }
+  .meta-tbl { border-collapse: collapse; margin-bottom: 28px; }
+  .meta-tbl td { padding: 8px 0; border-bottom: 1px solid #181818; font-size: 11px; }
+  .meta-tbl td:first-child { color: #999; font-size: 8px; letter-spacing: 2px; text-transform: uppercase; padding-right: 24px; width: 140px; }
+  .meta-tbl td:last-child { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 13px; color: #fff; letter-spacing: 0.5px; }
+  .spec-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+  .chip { background: #111; border: 1px solid #1e1e1e; padding: 10px 16px; border-radius: 3px; min-width: 80px; }
+  .chip-v { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 17px; color: #e85d04; line-height: 1; }
+  .chip-l { font-size: 7px; color: #999; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+  .confidential { padding: 10px 14px; background: rgba(232,93,4,0.06); border-left: 3px solid rgba(232,93,4,0.35); border-radius: 0 3px 3px 0; }
+  .confidential p { font-size: 9px; color: #aaa; line-height: 1.65; }
+
+  /* TOC */
+  .toc-title { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 24px; color: #fff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #e85d04; }
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; }
+  .toc-item { display: flex; align-items: baseline; gap: 10px; padding: 8px 0; border-bottom: 1px solid #161616; }
+  .toc-n { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 13px; color: #e85d04; min-width: 26px; }
+  .toc-t { font-size: 11px; color: #ccc; flex: 1; line-height: 1.3; }
+  .toc-sub { font-size: 10px; color: #888; padding-left: 36px; display: block; padding-top: 2px; }
+
+  /* SECTIONS */
+  .sec { margin-bottom: 18px; }
+  .sec-ey { font-size: 8px; color: #e85d04; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; margin-bottom: 3px; }
+  .sec-h { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 19px; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-bottom: 7px; border-bottom: 1px solid #1f1f1f; }
+  .sub-h { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 11px; color: #e0e0e0; letter-spacing: 2px; text-transform: uppercase; margin: 14px 0 8px; }
+  .sub-num { color: #e85d04; }
+  .comp-tag { display: inline-block; font-size: 8px; color: #e85d04; letter-spacing: 2px; text-transform: uppercase; border: 1px solid rgba(232,93,4,0.3); padding: 2px 8px; border-radius: 2px; margin-bottom: 7px; }
+  .body { font-size: 11px; color: #ccc; line-height: 1.65; margin-bottom: 12px; }
+
+  ul.d { list-style: none; margin-bottom: 12px; }
+  ul.d li { font-size: 11px; color: #ccc; line-height: 1.6; padding-left: 16px; position: relative; margin-bottom: 3px; }
+  ul.d li::before { content: '—'; position: absolute; left: 0; color: #e85d04; font-size: 10px; }
+  ul.d li strong { color: #fff; }
+
+  ol.s { list-style: none; counter-reset: s; margin-bottom: 12px; }
+  ol.s li { font-size: 11px; color: #ccc; line-height: 1.55; padding: 2px 0 3px 26px; position: relative; margin-bottom: 5px; counter-increment: s; }
+  ol.s li::before { content: counter(s); position: absolute; left: 0; top: 2px; width: 18px; height: 18px; background: #e85d04; color: #fff; font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 9px; display: flex; align-items: center; justify-content: center; border-radius: 2px; }
+
+  /* DIAGRAM BLOCKS */
+  pre.diag {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8.5px;
+    color: #c8c8c8;
+    background: #080808;
+    border: 1px solid #1e1e1e;
+    border-left: 3px solid #e85d04;
+    border-radius: 0 3px 3px 0;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    white-space: pre;
+    line-height: 1.45;
+    overflow: hidden;
+  }
+
+  table.dt { width: 100%; border-collapse: collapse; margin-bottom: 14px; font-size: 11px; }
+  table.dt th { background: #e85d04; color: #fff; font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 7px 12px; text-align: left; }
+  table.dt td { padding: 7px 12px; border-bottom: 1px solid #191919; color: #ccc; background: #0d0d0d; }
+  table.dt tr:nth-child(even) td { background: #0b0b0b; }
+  table.dt td:first-child { color: #aaa; font-size: 10px; }
+  table.dt td.v { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 13px; color: #fff; }
+  table.dt td strong { color: #e85d04; font-weight: normal; font-family: Impact,'Arial Black',Arial,sans-serif; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+
+  .warn { background: rgba(232,93,4,0.07); border-left: 3px solid #e85d04; padding: 10px 14px; margin-bottom: 12px; border-radius: 0 3px 3px 0; }
+  .warn p { font-size: 10px; color: #ccc; line-height: 1.6; }
+  .warn strong { color: #e85d04; }
+
+  .info { background: rgba(255,255,255,0.03); border-left: 3px solid #333; padding: 10px 14px; margin-bottom: 12px; border-radius: 0 3px 3px 0; }
+  .info p { font-size: 10px; color: #bbb; line-height: 1.6; }
+
+  .divider { height: 1px; background: #191919; margin: 14px 0; }
+
+  .spec-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .spec-chip { background: #111; border: 1px solid #1e1e1e; padding: 8px 14px; border-radius: 3px; }
+  .spec-chip-v { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 16px; color: #e85d04; line-height: 1; }
+  .spec-chip-l { font-size: 7px; color: #999; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+
+  .math-box { background: #0d0d0d; border: 1px solid #222; border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; }
+  .math-line { font-family: 'Courier New', Courier, monospace; font-size: 11px; color: #ccc; line-height: 1.8; }
+  .math-line .label { color: #999; font-size: 10px; }
+  .math-line .result { color: #e85d04; font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 14px; }
+
+  .phase-header { background: #111; border: 1px solid #222; border-top: 2px solid #e85d04; padding: 8px 14px; margin-bottom: 10px; border-radius: 0 0 3px 3px; }
+  .phase-header-title { font-family: Impact,'Arial Black',Arial,sans-serif; font-size: 13px; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
+  .phase-header-sub { font-size: 9px; color: #e85d04; letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+
+  .ai-prompt { background: #0d0d0d; border: 1px solid #2a2a2a; border-radius: 3px; padding: 14px 16px; margin-bottom: 14px; }
+  .ai-prompt p { font-size: 10.5px; color: #ccc; line-height: 1.75; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER MACRO (reused on each page) -->
+<!-- ═══════════════ PAGE 1 · COVER ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left">
+      <div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div>
+      <div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div>
+    </div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+    <div style="margin-bottom:32px; padding-bottom:24px; border-bottom:1px solid #1c1c1c;">
+      <div class="cover-eyebrow">Master Build Specification Manual</div>
+      <div class="cover-h1">Twin-Motor <em>96V</em><br>Liquid-Cooled<br>HD Softail</div>
+      <div class="cover-h2" style="margin-top:10px;">Electric Conversion · Dual XLB60 · EBMX X-9000 V3 · Full Liquid Cooling</div>
+      <table class="meta-tbl">
+        <tr><td>Project</td><td>Twin-Motor 96V Liquid-Cooled Harley-Davidson Softail</td></tr>
+        <tr><td>Platform</td><td>HD Softail Evolution 1984–1999 / Twin Cam 2000–2017</td></tr>
+        <tr><td>Prepared By</td><td>SNG Engineering Division</td></tr>
+        <tr><td>Revision</td><td>1.0</td></tr>
+        <tr><td>Date</td><td>June 2026</td></tr>
+      </table>
+      <div class="spec-chips">
+        <div class="chip"><div class="chip-v">2×XLB60</div><div class="chip-l">Axial-Flux Motors</div></div>
+        <div class="chip"><div class="chip-v">96V</div><div class="chip-l">26S System Voltage</div></div>
+        <div class="chip"><div class="chip-v">2×X-9000</div><div class="chip-l">EBMX VESC Controllers</div></div>
+        <div class="chip"><div class="chip-v">800A+</div><div class="chip-l">Peak System Burst</div></div>
+        <div class="chip"><div class="chip-v">95–102</div><div class="chip-l">MPH Top Speed</div></div>
+        <div class="chip"><div class="chip-v">4.30:1</div><div class="chip-l">Total Gear Ratio</div></div>
+      </div>
+    </div>
+    <div class="confidential">
+      <p>This document is a complete master technical reference for the SNG dual-motor 96V liquid-cooled Harley-Davidson Softail electric conversion project. It contains every component specification, mechanical calculation, electrical schematic, plumbing map, and software commissioning step. Distribution is restricted. Property of SNG Cycles / CCM Inc.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 1 of 10</div></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 2 · TOC ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left"><div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div><div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div></div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-grid">
+      <div>
+        <div class="toc-item"><span class="toc-n">1</span><span class="toc-t">Master Bill of Materials</span></div>
+        <span class="toc-sub">1.1 Core Chassis &amp; Structural</span>
+        <span class="toc-sub">1.2 High-Voltage Powertrain</span>
+        <span class="toc-sub">1.3 HV Cabling &amp; Drivetrain</span>
+        <span class="toc-sub">1.4 Low-Voltage Control &amp; Safety</span>
+        <span class="toc-sub">1.5 Thermal Management System</span>
+        <div class="toc-item" style="margin-top:8px;"><span class="toc-n">2</span><span class="toc-t">Mechanical Fabrication &amp; Geometry</span></div>
+        <span class="toc-sub">2.1 Dual-Motor Cradle Plate Layout</span>
+        <span class="toc-sub">2.2 Drivetrain &amp; Jackshaft Blueprint</span>
+        <span class="toc-sub">2.3 Drivetrain Gear Reduction Math</span>
+        <div class="toc-item" style="margin-top:8px;"><span class="toc-n">3</span><span class="toc-t">Electrical &amp; Systems Diagrams</span></div>
+        <span class="toc-sub">3.1 HV Power Distribution Map</span>
+        <span class="toc-sub">3.2 Handlebar Controls Pinout</span>
+        <span class="toc-sub">3.3 Gas Tank Electronics Bay</span>
+        <span class="toc-sub">3.4 Low-Voltage Safety Scheme</span>
+      </div>
+      <div>
+        <div class="toc-item"><span class="toc-n">4</span><span class="toc-t">Liquid Cooling Pathway Map</span></div>
+        <div class="toc-item" style="margin-top:8px;"><span class="toc-n">5</span><span class="toc-t">Software Programming &amp; Commissioning</span></div>
+        <span class="toc-sub">Phase 1: Controller 1 Master Init</span>
+        <span class="toc-sub">Phase 2: Controller 2 Slave CAN</span>
+        <span class="toc-sub">Phase 3: Network Data Sync</span>
+        <div class="toc-item" style="margin-top:8px;"><span class="toc-n">6</span><span class="toc-t">Mandatory Safety Testing Protocols</span></div>
+        <span class="toc-sub">Thermal Verification Test</span>
+        <span class="toc-sub">Safety Interlock Test</span>
+        <span class="toc-sub">MSD Isolation Test</span>
+        <div class="toc-item" style="margin-top:8px;"><span class="toc-n">7</span><span class="toc-t">Visual Mock-Up AI Prompt</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 2 of 10</div></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 3 · BOM 1.1 + 1.2 ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left"><div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div><div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div></div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+    <div class="sec">
+      <div class="sec-ey">Section 1</div>
+      <div class="sec-h">Master Bill of Materials</div>
+
+      <div class="sub-h"><span class="sub-num">1.1 —</span> Core Chassis &amp; Structural Integration</div>
+      <table class="dt">
+        <tr><th>Component</th><th>Specification</th></tr>
+        <tr><td>Chassis</td><td>Harley-Davidson Softail Frame — Evolution era 1984–1999 or Twin Cam era 2000–2017</td></tr>
+        <tr><td>Motor Mounting Cradle</td><td>Custom-fabricated 1/4" 6061-T6 aluminum or 3/16" structural steel plates</td></tr>
+        <tr><td>Jackshaft Mount Subframe</td><td>3/8" thick flat structural steel plate or heavy-walled steel square tubing</td></tr>
+        <tr><td>Jackshaft Hub</td><td>1" diameter TGP steel shaft, full-length 1/4" keyway, 12–15 inches long</td></tr>
+        <tr><td>Jackshaft Support</td><td>2× 1" heavy-duty cast-iron pillow block bearings with integrated grease zerk fittings</td></tr>
+        <tr><td>Hardware Fasteners</td><td>Grade 8 zinc-plated bolts, split-lock washers, blue Loctite 242</td></tr>
+      </table>
+
+      <div class="sub-h"><span class="sub-num">1.2 —</span> High-Voltage Powertrain (The Muscle)</div>
+      <table class="dt">
+        <tr><th>Component</th><th>Specification</th></tr>
+        <tr><td>Motors</td><td>2× XLB60 liquid-cooled axial-flux IPM electric motors with factory-machined water jackets</td></tr>
+        <tr><td>Controllers</td><td>2× EBMX X-9000 V3 VESC-based motor controllers</td></tr>
+        <tr><td>Controller Cooling</td><td>2× EBMX billet aluminum water-cooling heatsink plates</td></tr>
+        <tr><td>Traction Batteries</td><td>2× Pre-made 96V (26S / 109.2V max) high-discharge lithium modules in metal shells<br><span style="color:#e85d04;font-size:9px;">MIN SPEC: 300A continuous / 500A peak per pack · Integrated Bluetooth Smart BMS</span><br><span style="color:#aaa;font-size:9px;">(e.g. EBMX Lightning V2 or Voltalize Extreme Power)</span></td></tr>
+        <tr><td>Charging System</td><td>2× Matched high-amperage 96V lithium-ion chargers with isolated charging ports</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 3 of 10</div></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 4 · BOM 1.3 + 1.4 + 1.5 ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left"><div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div><div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div></div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+
+    <div class="sub-h"><span class="sub-num">1.3 —</span> High-Voltage Cabling &amp; Drivetrain Components</div>
+    <table class="dt">
+      <tr><th>Component</th><th>Specification</th></tr>
+      <tr><td>Main DC Power Cable</td><td>15–20 ft each: 2 AWG ultra-flexible high-strand silicone EV wire (red pos / black neg, rated 200°C)</td></tr>
+      <tr><td>AC Motor Phase Cable</td><td>4 AWG high-strand flexible silicone (Blue / Green / Yellow phases)</td></tr>
+      <tr><td>Main Line Disconnects</td><td>2× QS10 Anti-Spark quick-connect plugs or Anderson SB175 industrial connectors</td></tr>
+      <tr><td>Overcurrent Fuses</td><td>2× 400A–500A heavy-duty inline DC circuit breakers or bolt-on fuses</td></tr>
+      <tr><td>Primary Reduction Sprockets</td><td>2× 22-Tooth #530 pitch with 1" bore and 1/4" keyway slot</td></tr>
+      <tr><td>Final Drive Sprockets</td><td>13-Tooth #530 jackshaft output · 28-Tooth #530 rear wheel</td></tr>
+      <tr><td>Drivetrain Chains</td><td>Heavy-duty #530 O-ring or X-ring high-tensile motorcycle chains (primary and final drive)</td></tr>
+      <tr><td>Chain Tensioner</td><td>1× Frame-mounted spring-loaded chain idler tensioner pulley</td></tr>
+    </table>
+
+    <div class="sub-h"><span class="sub-num">1.4 —</span> Low-Voltage (12V) Control &amp; Safety Circuit</div>
+    <table class="dt">
+      <tr><th>Component</th><th>Specification</th></tr>
+      <tr><td>Voltage Step-Down</td><td>96V-to-12V DC-DC converter (min 20A continuous output)</td></tr>
+      <tr><td>Low-Voltage Hub</td><td>12V marine or automotive mini-fuse block</td></tr>
+      <tr><td>Safety Interlocks</td><td>Handlebar magnetic run-tether kill switch + standard rocker handlebar cutoff switch</td></tr>
+      <tr><td>Manual Isolation (MSD)</td><td>Amphenol RadLok or Excel Mate 400A High-Voltage Manual Service Disconnect plug</td></tr>
+      <tr><td>Instrument Panel</td><td>EBMX TFT Digital Dash or EBMX EggRider V2 (or waterproof Android tablet via VESC Bluetooth)</td></tr>
+      <tr><td>Right-Hand Throttle</td><td>0–5V electronic twist grip (Domino or Magura)</td></tr>
+      <tr><td>Left-Hand Regen</td><td>Progressive linear thumb throttle (Wuxing) for variable regenerative braking</td></tr>
+    </table>
+
+    <div class="sub-h"><span class="sub-num">1.5 —</span> Thermal Management System (Liquid Cooling)</div>
+    <table class="dt">
+      <tr><th>Component</th><th>Specification</th></tr>
+      <tr><td>Coolant Pump</td><td>Bosch 12V brushless auxiliary water pump or Davies Craig EWP30</td></tr>
+      <tr><td>Radiator</td><td>Slim dual-pass aluminum motorcycle radiator (Honda CRF450 style), mounted to front downtubes</td></tr>
+      <tr><td>Cooling Fans</td><td>2× 12V SPAL or KTM factory high-static electric cooling fans</td></tr>
+      <tr><td>Fan Thermostat</td><td>Inline 12V thermal switch (N/O, triggers at 50°C / 122°F)</td></tr>
+      <tr><td>Reservoir Tank</td><td>Small aluminum vented coolant expansion tank</td></tr>
+      <tr><td>Plumbing Hoses</td><td>1/2" ID high-pressure reinforced silicone heater hose + stainless steel T-bolt clamps</td></tr>
+      <tr><td>Coolant Fluid</td><td><strong>Evans Waterless Coolant</strong> or Engine Ice — waterless eliminates line pressure, minimizes electrical short conductivity</td></tr>
+    </table>
+
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 4 of 10</div></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 5 · SECTION 2 — MECHANICAL FABRICATION ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left"><div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div><div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div></div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+    <div class="sec">
+      <div class="sec-ey">Section 2</div>
+      <div class="sec-h">Mechanical Fabrication &amp; Geometry</div>
+
+      <div class="sub-h"><span class="sub-num">2.1 —</span> Dual-Motor Cradle Plate Layout</div>
+      <p class="body">Secure the motor plates to the frame's lower engine cradle. Maintain a minimum 1.5-inch vertical clearance between the bottom plate edge and the under-frame horizontal Softail shocks.</p>
+<pre class="diag">
+  ┌─────────────────────────────────────────────────────────────────┐
+  │              CUSTOM DUAL-MOTOR MOUNTING CRADLE                  │
+  └─────────────────────────────────────────────────────────────────┘
+
+    Front Downtube Clamps                      Rear Jackshaft Mounts
+          [███]                                      [███]
+            │                                          │
+            ▼                                          ▼
+  ┌─────────┬──────────────────────────────────────────┬─────────┐
+  │         │  (A) MOTOR 1 HOUSING POSITION            │         │
+  │         │                                          │         │
+  │         │    [░░░░░] Center Shaft Bore (1-inch)    │         │
+  │         │                                          │         │
+  │         ├──────────────────────────────────────────┤         │
+  │         │  (B) MOTOR 2 HOUSING POSITION            │         │
+  │         │                                          │         │
+  │         │    [░░░░░] Center Shaft Bore (1-inch)    │         │
+  │         │                                          │         │
+  └─────────┴──────────────────────────────────────────┴─────────┘
+            ▲                                          ▲
+            │                                          │
+          [███]                                      [███]
+    Bottom Frame Cradle Mounts             Rear Swingarm Pivot Area
+</pre>
+
+      <div class="sub-h"><span class="sub-num">2.2 —</span> Drivetrain &amp; Jackshaft Blueprint</div>
+      <p class="body">The jackshaft combines power from both motors before sending it to the rear wheel, preventing the motors from mechanically fighting each other. Weld or bolt a 3/8" thick steel plate to the rear-engine cradle area. Slot bearing mounting holes by 1/2" vertically to manually adjust primary chain tension.</p>
+<pre class="diag">
+  [ Left Frame Rail ]
+      │
+      ├──[ Pillow Block Bearing ]
+      │       │
+      │   (===O=== [ Jackshaft Input Sprocket A (22T) ] &lt;===(Chain 1)=== [ Motor 1 ]
+      │       │
+      │       │==== [ Jackshaft Output Drive Sprocket (13T) ] ===&gt; (Final Drive) ===&gt; [ Wheel ]
+      │       │
+      │   (===O=== [ Jackshaft Input Sprocket B (22T) ] &lt;===(Chain 2)=== [ Motor 2 ]
+      │       │
+      ├──[ Pillow Block Bearing ]
+      │
+  [ Right Frame Rail ]
+</pre>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 5 of 10</div></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 6 · SECTION 2.3 + SECTION 3.1 ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left"><div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div><div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div></div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+
+    <div class="sub-h"><span class="sub-num">2.3 —</span> Drivetrain Gear Reduction Math</div>
+    <p class="body">Chassis Reference Baseline: Standard 25-inch tall rear tire (e.g. 180/65B16).</p>
+    <div class="math-box">
+      <div class="math-line"><span class="label">Stage 1 — Motors to Jackshaft:   </span>11T motor ÷ 22T jackshaft = <span class="result">2.00:1</span></div>
+      <div class="math-line"><span class="label">Stage 2 — Jackshaft to Wheel:    </span>13T jackshaft ÷ 28T rear = <span class="result">2.15:1</span></div>
+      <div class="math-line"><span class="label">Total System Gear Ratio:          </span>2.00 × 2.15 = <span class="result">4.30:1 Overall Reduction</span></div>
+      <div class="math-line"><span class="label">Speed Ceiling @ 5,500 RPM:        </span>Rear wheel @ 1,279 RPM = <span class="result">95–102 MPH top speed threshold</span></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sec-ey">Section 3</div>
+    <div class="sec-h">Electrical &amp; Systems Diagrams</div>
+
+    <div class="sub-h"><span class="sub-num">3.1 —</span> High-Voltage Power Distribution Map</div>
+    <div class="info"><p>The high-voltage circuits must remain isolated to safely control 400A loads. Each battery pack has its own fuse, disconnect, and controller path.</p></div>
+<pre class="diag">
+  [ BATTERY PACK 1: 96V (26S) ]          [ BATTERY PACK 2: 96V (26S) ]
+       │              │                        │              │
+    (+)│              │(-)                  (+)│              │(-)
+       ▼              ▼                        ▼              ▼
+  ┌─────────┐   ┌──────────┐            ┌─────────┐   ┌──────────┐
+  │ 400A    │   │   MSD    │            │ 400A    │   │  QS10    │
+  │  Fuse   │   │ (Manual  │            │  Fuse   │   │  Plug    │
+  └────┬────┘   │ Service  │            └────┬────┘   └────┬─────┘
+       │        │Disconnect│                 │              │
+       │        └────┬─────┘                │              │
+       │             │                      │              │
+       ▼             ▼                      ▼              ▼
+  ┌──────────────────────────┐       ┌──────────────────────────┐
+  │  EBMX X-9000 V3 (MASTER) │       │  EBMX X-9000 V3 (SLAVE)  │
+  └──────┬──────────┬────────┘       └──────┬──────────┬────────┘
+         │          │                        │          │
+         └──────────[ CAN-BUS LINK ]─────────┘          │
+                    (Data Synchronization)               │
+         (3-Phase 4 AWG)                    (3-Phase 4 AWG)
+              ▼                                    ▼
+  ┌───────────────────────┐          ┌───────────────────────┐
+  │    XLB60 MOTOR 1      │          │    XLB60 MOTOR 2      │
+  └───────────────────────┘          └───────────────────────┘
+</pre>
+
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 6 of 10</div></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 7 · SECTIONS 3.2 + 3.3 + 3.4 ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left"><div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div><div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div></div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+
+    <div class="sub-h"><span class="sub-num">3.2 —</span> Handlebar Controls Pinout Map (To Master Controller Only)</div>
+    <div class="info"><p>Splice the 5V power and ground lines for the left and right throttles together before routing to the master controller.</p></div>
+<pre class="diag">
+  RIGHT-HAND TWIST THROTTLE (0-5V)         MASTER EBMX X-9000 LOOM
+  ┌────────────────────────────┐           ┌───────────────────────────┐
+  │ Red   (+5V Power)     ├────────────────►│ Pin: Throttle +5V Supply  │
+  │ Black (Ground)        ├────────┐        │ Pin: Throttle Ground      │
+  │ White (Signal 0-5V)   ├────────┼───────►│ Pin: Throttle Analog In   │
+  └────────────────────────────┘  │        └───────────────────────────┘
+                                  │
+  LEFT-HAND REGEN LEVER (ADC2)    │
+  ┌────────────────────────────┐  │        ┌───────────────────────────┐
+  │ Red   (+5V Power)     ├────┼───────────►│ [Spliced to 5V Rail]      │
+  │ Black (Ground)        ├────┴───────────►│ [Spliced to Ground Rail]  │
+  │ Green/White (Signal)  ├────────────────►│ Pin: ADC2 / Analog Brake  │
+  └────────────────────────────┘           └───────────────────────────┘
+
+  DIGITAL COCKPIT (TFT DASH / EGGRIDER)
+  ┌────────────────────────────┐           ┌───────────────────────────┐
+  │ VCC (Power Input)     ├────────────────►│ Pin: 12V Auxiliary Out    │
+  │ GND (Ground)          ├────────────────►│ Pin: Common Ground        │
+  │ RX  (Receive Data)    ├────────────────►│ Pin: TX (Transmit Data)   │
+  │ TX  (Transmit Data)   ├────────────────►│ Pin: RX (Receive Data)    │
+  └────────────────────────────┘           └───────────────────────────┘
+</pre>
+
+    <div class="sub-h"><span class="sub-num">3.3 —</span> Modified Gas Tank Electronics Bay</div>
+    <p class="body">Hollow out a factory steel gas tank to cover the top frame rail. Mount an aluminum tray to the steel spine to organize low-voltage power distribution.</p>
+<pre class="diag">
+  _____________________________________________
+ /       [ Gas Tank Steel Outer Shell ]        \
+|                                               |
+|  ┌─────────────┐ ┌─────────────┐ ┌────────┐  |
+|  │   DC-to-DC  │ │  Main Fuse  │ │  12V   │  |
+|  │  Converter  │ │ &amp; Breaker   │ │ Relay  │  |
+|  └─────────────┘ └─────────────┘ └────────┘  |
+|                                               |
+ \_______[ Flat Aluminum Component Tray ]______/
+================================================ (Harley 2" Top Frame Spine)
+</pre>
+
+    <div class="sub-h"><span class="sub-num">3.4 —</span> Low-Voltage (12V) Accessory &amp; Safety Scheme</div>
+<pre class="diag">
+  Traction Battery 1 (+) ──► [ DC-TO-DC STEP DOWN ] ──► 12V Main Output
+                                         │
+                                         ▼
+                               ┌────────────────────┐
+                               │  12V FUSE BLOCK     │
+                               └──────────┬──────────┘
+                                          │
+            ┌─────────────────────────────┴─────────────────────┐
+            ▼                                                     ▼
+  [ IGNITION INTERLOCK ]                             [ COOLING LOOP ]
+            │                                                     │
+  [ Keyed Dashboard Switch ]                      [ Bosch 12V Water Pump ]
+            │                                                     │
+  [ Handlebar Magnet Tether ]                                     ▼
+            │                                       [ Thermal Sensor Switch ]
+  [ Handlebar Red Rocker Kill ]                    (Triggers fans at 50°C)
+            │                                                     │
+            ▼                                                     ▼
+  [ EBMX: Key Switch / Lock Pin ]                [ Dual SPAL Radiator Fans ]
+  (Software Disarm Signal)
+</pre>
+
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 7 of 10</div></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 8 · SECTION 4 — COOLING MAP ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left"><div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div><div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div></div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+    <div class="sec">
+      <div class="sec-ey">Section 4</div>
+      <div class="sec-h">Liquid Cooling Pathway Map</div>
+      <p class="body">Plumb this closed loop using 1/2" ID reinforced silicone heater hose. Route fluid through the controllers first — they are more heat-sensitive than the motors. Use Evans Waterless Coolant or Engine Ice to eliminate line pressure and reduce electrical short conductivity risk.</p>
+
+<pre class="diag">
+  ┌─────────────────────────┐                ┌─────────────────────────┐
+  │     RESERVOIR TANK      │◄───────────────┤  ALUMINUM RADIATOR      │
+  │   (Vented Expansion)    │                │  (Front Downtubes)      │
+  └──────────┬──────────────┘                └─────────────────────────┘
+             │                                          ▲
+             ▼                                          │ (Hot Return 1/2" Hose)
+  ┌─────────────────────────┐                          │
+  │  12V BRUSHLESS PUMP     │                          │
+  │  (Bosch / Davies Craig) │                          │
+  └──────────┬──────────────┘                          │
+             │ (Cold Feed)                             │
+             ▼                                         │
+  ┌─────────────────────────┐                          │
+  │  MASTER X-9000 V3 BLOCK │                          │
+  │  (Controller 1 Cooling) │                          │
+  └──────────┬──────────────┘                          │
+             │                                         │
+             ▼                                         │
+  ┌─────────────────────────┐                          │
+  │  SLAVE X-9000 V3 BLOCK  │                          │
+  │  (Controller 2 Cooling) │                          │
+  └──────────┬──────────────┘                          │
+             │                                         │
+             ▼                                         │
+  ┌─────────────────────────┐                          │
+  │   XLB60 MOTOR 1 JACKET  ├──► [ XLB60 MOTOR 2 JACKET ] ──────────┘
+  │   (Water Jacket Inlet)  │    (Series or parallel — both motors)
+  └─────────────────────────┘
+</pre>
+
+      <div class="warn"><p><strong>ROUTING NOTE — </strong>Controllers are plumbed before motors because the EBMX X-9000 V3 MOSFET banks are more thermally sensitive than the XLB60 motor jackets. Coolest fluid hits the controllers first, hottest fluid returns from the motors to the radiator.</p></div>
+
+      <div class="spec-row" style="margin-top:16px;">
+        <div class="spec-chip"><div class="spec-chip-v">1/2"</div><div class="spec-chip-l">Hose ID</div></div>
+        <div class="spec-chip"><div class="spec-chip-v">50°C</div><div class="spec-chip-l">Fan Trigger</div></div>
+        <div class="spec-chip"><div class="spec-chip-v">EWC</div><div class="spec-chip-l">Evans Waterless</div></div>
+        <div class="spec-chip"><div class="spec-chip-v">Closed</div><div class="spec-chip-l">Loop System</div></div>
+        <div class="spec-chip"><div class="spec-chip-v">T-Bolt</div><div class="spec-chip-l">SS Clamps</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 8 of 10</div></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 9 · SECTION 5 — SOFTWARE ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left"><div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div><div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div></div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+    <div class="sec">
+      <div class="sec-ey">Section 5</div>
+      <div class="sec-h">Software Programming &amp; Commissioning</div>
+      <div class="warn"><p><strong>BEFORE STARTING — </strong>Lift the rear wheel securely off the ground on a center stand before launching any software setup. Never perform motor detection with the wheel on the ground.</p></div>
+
+      <div class="phase-header">
+        <div class="phase-header-title">Phase 1 — Controller 1 (Master) Initialization</div>
+        <div class="phase-header-sub">EBMX Tuning App via Bluetooth</div>
+      </div>
+      <ol class="s">
+        <li>Turn on the 12V auxiliary system, then close the high-voltage main circuit breakers</li>
+        <li>Open the EBMX Tuning App on your smartphone via Bluetooth, connect to Controller 1, rename it <strong style="color:#fff;">"Master"</strong></li>
+        <li>Navigate to <strong style="color:#fff;">Setup / Motor Tuning</strong> → Select <strong style="color:#fff;">Internal Permanent Magnet (IPM) / Axial Flux</strong></li>
+        <li>Execute <strong style="color:#fff;">Auto-Detect Motor</strong> — controller sends high-frequency pulses to calibrate against Motor 1. Save when successful</li>
+        <li>Navigate to <strong style="color:#fff;">Input / Throttle Configuration</strong> — perform threshold calibration (Set Min at rest, Set Max at full twist). Save</li>
+      </ol>
+
+      <div class="phase-header">
+        <div class="phase-header-title">Phase 2 — Controller 2 (Slave) CAN Integration</div>
+        <div class="phase-header-sub">EBMX Tuning App via Bluetooth</div>
+      </div>
+      <ol class="s">
+        <li>Disconnect from Master, connect to Controller 2 via Bluetooth, rename it <strong style="color:#fff;">"Slave"</strong></li>
+        <li>Run identical <strong style="color:#fff;">Auto-Detect Motor</strong> routine for Motor 2. Save when successful</li>
+        <li>Navigate to <strong style="color:#fff;">App Settings / CAN Configuration</strong> — change Controller ID integer from 1 to <strong style="color:#fff;">2</strong></li>
+        <li>Change <strong style="color:#fff;">Control Mode / Input Source</strong> from Local Throttle to <strong style="color:#fff;">CAN-Bus / Slave (Torque)</strong>. Save</li>
+      </ol>
+
+      <div class="phase-header">
+        <div class="phase-header-title">Phase 3 — Activating the Network Data Sync</div>
+        <div class="phase-header-sub">Reconnect to Master Controller</div>
+      </div>
+      <ol class="s">
+        <li>Disconnect from Slave, reconnect to Controller 1 (Master) via Bluetooth</li>
+        <li>Navigate to <strong style="color:#fff;">App Settings / CAN Configuration</strong> and set: Controller ID = 1 · Enable CAN Status Output = <strong style="color:#fff;">ON</strong> · Multiple Controllers Over CAN = <strong style="color:#fff;">ON</strong></li>
+        <li>Open the real-time diagnostic dashboard — verify stable connection to Node 2 (Slave)</li>
+        <li>Configure Regen Tuning on Master: Regen Battery Amps = <strong style="color:#fff;">-60A</strong> · Regen Phase Amps = <strong style="color:#fff;">-120A</strong></li>
+        <li>Apply 5% throttle gently — verify both primary chains drive forward uniformly. If a motor turns backward, toggle <strong style="color:#fff;">Invert Motor Direction</strong> in that controller's menu</li>
+      </ol>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 9 of 10</div></div>
+</div>
+
+
+<!-- ═══════════════ PAGE 10 · SECTIONS 6 + 7 ═══════════════ -->
+<div class="page">
+  <div class="accent-bar"></div>
+  <div class="lh">
+    <div class="lh-left"><div class="lh-logo"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 160 116"><style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,"Arial Black",Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style><g transform="translate(26 8)"><path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/><path class="sw" d="M18 62 L101 62"/><text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text><rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/></g></svg></div><div class="lh-brand"><div class="lh-brand-name">SNG Cycles</div><div class="lh-brand-sub">Engineering Division</div></div></div>
+    <div class="lh-right"><div class="lh-doc">Master Build Specification Manual</div><div class="lh-rev">Revision 1.0 · June 2026</div></div>
+  </div>
+  <div class="pc">
+
+    <div class="sec">
+      <div class="sec-ey">Section 6</div>
+      <div class="sec-h">Mandatory Safety Testing Protocols</div>
+      <p class="body">Perform all three verification checks on the center stand before your first test ride. Do not skip these steps.</p>
+
+      <div class="sub-h"><span class="sub-num">Test 1 —</span> Thermal Verification</div>
+      <ul class="d">
+        <li>Turn on the 12V system</li>
+        <li>Check the clear reservoir tank — confirm fluid is visibly moving, confirming no trapped air locks in the cooling lines</li>
+      </ul>
+
+      <div class="sub-h"><span class="sub-num">Test 2 —</span> Safety Interlock Test</div>
+      <ul class="d">
+        <li>With the system powered ON, pull the handlebar Emergency Magnet Run-Tether</li>
+        <li>Twist the throttle — the display must show an error code and the motors must remain completely dead</li>
+        <li>If motors respond to throttle after tether pull, do not ride. Trace the interlock wiring to the EBMX Key Switch pin</li>
+      </ul>
+
+      <div class="sub-h"><span class="sub-num">Test 3 —</span> MSD Isolation Test</div>
+      <ul class="d">
+        <li>With the system active, pull the orange Manual Service Disconnect (MSD) plug</li>
+        <li>The entire high-voltage dashboard communication loop must drop instantly</li>
+        <li>This proves the high-voltage path is safely open and dead — if any HV indicator remains live, trace the circuit before riding</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sec">
+      <div class="sec-ey">Section 7</div>
+      <div class="sec-h">Visual Mock-Up — AI Image Prompt</div>
+      <p class="body">Copy and paste this prompt into Midjourney, DALL-E 3, or Google AI Studio (Imagen) to generate a realistic visual mock-up of the completed build:</p>
+      <div class="ai-prompt">
+        <p>A custom-built electric Harley-Davidson Softail chopper motorcycle, modern engineering meets classic cruiser aesthetic. The massive V-twin gasoline engine has been completely replaced by two parallel, high-tech, black-and-silver liquid-cooled axial-flux electric motors mounted side-by-side low in the frame. Bright neon orange high-voltage 2 AWG silicone battery cables weave neatly into a custom-fabricated black aluminum protective battery enclosure filling the frame triangle. Transparent blue silicone coolant hoses are neatly routed from a slim vertical radiator on the front downtubes through billet aluminum cooling blocks on twin EBMX controllers mounted under a low-profile bobber solo seat. The original steel teardrop gas tank is hollowed out, acting as a clean, flush-mounted electronic dashboard showing a glowing digital TFT interface screen. Clean garage background, professional commercial motorcycle photography, dramatic cinematic lighting, sharp focus, 8k resolution, photorealistic.</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="pf"><div class="pf-l">SNG · HD Softail Twin-Motor 96V Conversion · Master Build Spec · Rev 1.0</div><div class="pf-r">Page 10 of 10</div></div>
+</div>
+
+</body>
+</html>

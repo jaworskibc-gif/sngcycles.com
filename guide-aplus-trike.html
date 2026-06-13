@@ -5,37 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SNG Build Guide #005 — A+ Concept Trike Full Build Manual</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;500;600;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #d4d4d4; padding: 32px 16px; font-family: Arial, 'Helvetica Neue', sans-serif; }
   .page { background: #fff; width: 816px; margin: 0 auto 32px; box-shadow: 0 8px 40px rgba(0,0,0,0.22); page-break-after: always; }
 
-  .header { background: #0a0a0a; position: relative; overflow: hidden; }
-  .header::after { content:''; display:block; height:4px; background:linear-gradient(90deg,#e85d04 0%,#ff9533 50%,#e85d04 100%); }
+  .header { background: #ffffff; border-bottom: 4px solid #e85d04; }
   .header-inner { display:flex; align-items:center; justify-content:space-between; padding:22px 48px; }
   .header-left { display:flex; align-items:center; gap:20px; }
   .header-logo img { height:60px; width:auto; object-fit:contain; }
-  .header-brand { border-left:1px solid #2a2a2a; padding-left:20px; }
-  .brand-name { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:22px; font-weight:900; color:#fff; letter-spacing:3px; text-transform:uppercase; }
+  .header-brand { border-left:1px solid #e0e0e0; padding-left:20px; }
+  .brand-name { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:22px; font-weight:900; color:#0a0a0a; letter-spacing:3px; text-transform:uppercase; }
   .brand-sub { font-size:9px; color:#e85d04; letter-spacing:3px; text-transform:uppercase; font-weight:600; margin-top:2px; }
   .header-right { text-align:right; }
   .guide-badge { display:inline-block; background:#e85d04; color:#fff; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:10px; font-weight:900; letter-spacing:3px; text-transform:uppercase; padding:3px 10px; border-radius:2px; margin-bottom:6px; }
   .guide-series { display:block; font-size:9px; color:#666; letter-spacing:2.5px; text-transform:uppercase; }
 
   /* COVER */
-  .cover-hero { background:#0f0f0f; padding:52px 48px; position:relative; overflow:hidden; }
+  .cover-hero { background:#f5f5f5; padding:52px 48px; position:relative; overflow:hidden; }
   .cover-hero::before { content:''; position:absolute; top:-60px; right:-60px; width:380px; height:380px; background:radial-gradient(circle,rgba(232,93,4,0.14) 0%,transparent 70%); }
   .guide-number { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:11px; color:#e85d04; letter-spacing:4px; text-transform:uppercase; font-weight:700; margin-bottom:18px; }
-  .guide-title { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:54px; font-weight:900; color:#fff; line-height:1; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+  .guide-title { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:54px; font-weight:900; color:#0a0a0a; line-height:1; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
   .guide-title span { color:#e85d04; }
   .guide-subtitle { font-size:14px; color:#888; font-weight:300; letter-spacing:1px; margin-bottom:36px; text-transform:uppercase; }
 
-  .cover-stats { display:flex; gap:0; border:1px solid #222; border-radius:4px; overflow:hidden; max-width:660px; margin-bottom:32px; }
-  .stat-block { flex:1; padding:14px 16px; border-right:1px solid #222; }
+  .cover-stats { display:flex; gap:0; border:1px solid #e0e0e0; border-radius:4px; overflow:hidden; max-width:660px; margin-bottom:32px; }
+  .stat-block { flex:1; padding:14px 16px; border-right:1px solid #e0e0e0; }
   .stat-block:last-child { border-right:none; }
   .stat-val { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:22px; font-weight:900; color:#e85d04; line-height:1; }
   .stat-label { font-size:8px; color:#666; text-transform:uppercase; letter-spacing:2px; margin-top:3px; }
-  .cover-tagline { font-size:13px; color:#aaa; line-height:1.7; max-width:560px; font-style:italic; }
+  .cover-tagline { font-size:13px; color:#555; line-height:1.7; max-width:560px; font-style:italic; }
 
   /* BODY */
   .guide-body { padding:40px 48px; }
@@ -55,7 +53,7 @@
 
   /* SPECS TABLE */
   .specs-table { width:100%; border-collapse:collapse; margin:14px 0; font-size:12.5px; }
-  .specs-table th { background:#0a0a0a; color:#fff; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:9px 14px; text-align:left; }
+  .specs-table th { background:#e85d04; color:#fff; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:9px 14px; text-align:left; }
   .specs-table td { padding:8px 14px; border-bottom:1px solid #f0f0f0; color:#2a2a2a; vertical-align:top; }
   .specs-table tr:nth-child(even) td { background:#fafafa; }
   .specs-table td:first-child { font-weight:600; color:#0a0a0a; width:40%; }
@@ -63,14 +61,14 @@
 
   /* PARTS TABLE */
   .parts-table { width:100%; border-collapse:collapse; margin:14px 0; font-size:11.5px; }
-  .parts-table th { background:#1a1a1a; color:#e85d04; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:9px; font-weight:900; letter-spacing:2px; text-transform:uppercase; padding:9px 10px; text-align:left; }
+  .parts-table th { background:#f5f5f5; color:#e85d04; border-bottom:2px solid #e85d04; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:9px; font-weight:900; letter-spacing:2px; text-transform:uppercase; padding:9px 10px; text-align:left; }
   .parts-table td { padding:7px 10px; border-bottom:1px solid #efefef; color:#2a2a2a; vertical-align:top; }
   .parts-table tr:nth-child(even) td { background:#fafafa; }
   .parts-table td.price { text-align:right; width:16%; font-weight:600; color:#1a1a1a; }
   .parts-table td.notes { font-size:10.5px; color:#666; width:28%; }
   .parts-category { background:#f5f5f5 !important; border-top:2px solid #e85d04 !important; }
   .parts-category td { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:10px; font-weight:900; color:#e85d04; letter-spacing:2px; text-transform:uppercase; padding:7px 10px; }
-  .parts-total td { background:#0a0a0a !important; color:#fff !important; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:13px; font-weight:900; letter-spacing:1px; padding:11px 10px; }
+  .parts-total td { background:#e85d04 !important; color:#fff !important; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:13px; font-weight:900; letter-spacing:1px; padding:11px 10px; }
   .parts-total td.price { color:#e85d04 !important; font-size:15px; }
 
   /* TOC GRID */
@@ -82,7 +80,7 @@
 
   /* HIGHLIGHT ROW */
   .highlight-row { display:flex; gap:10px; margin:18px 0; }
-  .hl-box { flex:1; background:#0a0a0a; padding:16px 12px; border-radius:4px; text-align:center; }
+  .hl-box { flex:1; background:#f5f5f5; border:1px solid #e8e8e8; padding:16px 12px; border-radius:4px; text-align:center; }
   .hl-val { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:26px; font-weight:900; color:#e85d04; line-height:1; }
   .hl-label { font-size:8.5px; color:#777; text-transform:uppercase; letter-spacing:2px; margin-top:4px; }
 
@@ -102,10 +100,10 @@
   .legal-box strong { color:#444; }
 
   /* FOOTER */
-  .guide-footer { background:#0a0a0a; padding:16px 48px; display:flex; align-items:center; justify-content:space-between; }
+  .guide-footer { background:#f5f5f5; border-top:1px solid #e0e0e0; padding:16px 48px; display:flex; align-items:center; justify-content:space-between; }
   .footer-left { font-size:10px; color:#555; line-height:1.6; }
   .footer-left strong { color:#888; }
-  .footer-center { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:9px; font-weight:700; color:#333; letter-spacing:3px; text-transform:uppercase; text-align:center; }
+  .footer-center { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:9px; font-weight:700; color:#888; letter-spacing:3px; text-transform:uppercase; text-align:center; }
   .footer-right { font-size:9px; color:#555; text-align:right; line-height:1.6; } .page { box-shadow:none; margin:0; } }
 
   @media print {

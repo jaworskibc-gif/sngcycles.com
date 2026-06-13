@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SNG Posting Queue</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b0d10;color:#eceff3;font-family:Arial,Helvetica,sans-serif}
+header{padding:22px 16px;border-bottom:1px solid #252b35;background:#11151b}
+h1{font-size:24px;margin:0 0 6px}
+p{margin:0;color:#aeb6c2;line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto;padding:18px}
+.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:18px}
+.pill{border:1px solid #28303b;background:#121720;border-radius:8px;padding:10px 12px;color:#d8dde5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
+.card{border:1px solid #28303b;background:#11161f;border-radius:8px;overflow:hidden}
+.media{background:#050607;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.media video,.media img{width:100%;height:100%;object-fit:cover;display:block}
+.body{padding:14px}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#f0c84b;font-weight:700;margin-bottom:8px}
+.hook{font-size:18px;font-weight:700;line-height:1.25;margin-bottom:10px}
+.caption{white-space:pre-wrap;color:#d4dae3;font-size:14px;line-height:1.45;background:#0c1016;border:1px solid #252b35;border-radius:8px;padding:10px;max-height:230px;overflow:auto}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+button,a.btn{appearance:none;border:0;background:#f0c84b;color:#0b0d10;border-radius:7px;padding:9px 12px;font-weight:800;cursor:pointer;text-decoration:none;font-size:13px}
+a.btn.secondary{background:#263140;color:#eceff3}
+.note{margin:18px 0;color:#aeb6c2}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>SNG Posting Queue</h1>
+    <p>Manual launch board for @sngcycles. Post natively, add trending audio in-app, then reply to comments for the first hour.</p>
+  </div>
+</header>
+<main class="wrap">
+  <section class="status">
+    <div class="pill">Ready today: yes</div>
+    <div class="pill">GenViral API: not connected</div>
+    <div class="pill">Best first post: Transformation Proof</div>
+    <div class="pill">Story arc: white -> orange -> gold</div>
+  </section>
+  <p class="note">Open the media, upload it to TikTok/IG, copy the caption, add trending sound, post. Core build story: tiny white one, orange one, then gold 270E.</p>
+  <section class="grid" id="cards"></section>
+</main>
+<script>
+const posts = [
+  {
+    title: "01 - Transformation Proof",
+    media: "assets/inbound-content/manual-queue/07-transformation.mp4",
+    type: "video",
+    hook: "It started as a Sur-Ron. By the time I was done, it was not one anymore.",
+    caption: `It started as a Sur-Ron. By the time I was done, it was not one anymore.
+
+Full-size wheels, jackshaft, road-race brakes, custom geometry, and a bike built for a 6'7" rider because nobody else was building it.
+
+Built not bought. Florida-built. VIN-stamped. Made for riders.
+
+Reserve your numbered 270E. Link in bio.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #ebike #florida`
+  },
+  {
+    title: "02 - What It Costs",
+    media: "assets/inbound-content/manual-queue/09-what-it-costs.mp4",
+    type: "video",
+    hook: "Everybody asks why it costs $21k. Here is what is actually in it.",
+    caption: `No secrets. This is what a real electric supermoto costs to build.
+
+WP, Lewis 6/8-piston brakes, Warp9, Sotion, BAC8000, jackshaft, tall-rider geometry, and months of mistakes paid for in cash.
+
+$16,430 in parts before the labor. Imagine what it costs to not have to build it yourself.
+
+270E pre-orders are open. Link in bio.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #surron #florida`
+  },
+  {
+    title: "03 - Holochrome Flex",
+    media: "assets/inbound-content/manual-queue/08-holochrome.mp4",
+    type: "video",
+    hook: "Your phone cannot catch this color right.",
+    caption: `Gold on top. Holo underneath.
+
+Your phone cannot even catch this color right. You have to see it moving in real light.
+
+Holochrome edition. 300 numbered units ever.
+
+Built not bought. Reserve yours. Link in bio.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #emoto #florida`
+  },
+  {
+    title: "04 - Founder Scale Proof",
+    media: "assets/inbound-content/manual-queue/04-founder-scale-garage.jpg",
+    type: "image",
+    hook: "Every bike was built for someone 5'10. I am 6'7.",
+    caption: `This is why SNG exists.
+
+I got tired of folding myself onto bikes made for average-sized riders, so I built one around me.
+
+Garage-built. Florida-built. Made for real riders, not spec-sheet fantasies.
+
+Built not bought. Reserve your numbered 270E. Link in bio.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #tallrider #florida`
+  },
+  {
+    title: "05 - Garage Proof / Unit 001",
+    media: "assets/inbound-content/manual-queue/01-gold-270e-side-garage.jpg",
+    type: "image",
+    hook: "You cannot buy this off the shelf. At any price.",
+    caption: `You cannot buy this off the shelf. At any price.
+
+Gold tank, hand-fit parts, garage R&D, and a bike made to fit a 6'7" rider because nobody else was building it.
+
+Every sticker has a story. Every mistake got paid for.
+
+Built not bought. SNG4LIFE.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #emoto #florida`
+  },
+  {
+    title: "06 - Beauty Shot / Pre-order Ask",
+    media: "assets/inbound-content/manual-queue/02-gold-270e-beauty-shot.jpg",
+    type: "image",
+    hook: "270E. 27kW electric supermoto.",
+    caption: `270E.
+
+27kW electric supermoto. Built for tall riders. Florida-built. VIN-stamped. Numbered.
+
+Built for riders.
+
+Pre-orders are open now. Reserve your unit. Link in bio.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #supermoto #electricmotorcycle #ebike #emoto #florida`
+  },
+  {
+    title: "07 - Number 22 Detail",
+    media: "assets/inbound-content/manual-queue/05-holo-detail-number-22.jpg",
+    type: "image",
+    hook: "Gold on top. Holo underneath. Number 22 out front.",
+    caption: `Gold on top. Holo underneath. Number 22 out front.
+
+Not a kit. Not a catalog bike.
+
+Built in a garage, one piece at a time.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #emoto #florida`
+  },
+  {
+    title: "08 - Unboxing / Parts Receipts",
+    media: "assets/inbound-content/manual-queue/10-unboxing.mp4",
+    type: "video",
+    hook: "14 months of boxes. Every part paid for.",
+    caption: `This is the part nobody sees.
+
+The boxes. The waiting. The wrong parts. The parts that had to be sold to fund the next parts.
+
+No investors. No factory. Just one bike getting built the hard way.
+
+Built not bought. SNG4LIFE.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #ebike #surron #florida`
+  },
+  {
+    title: "09 - I Missed The Rides",
+    media: "assets/inbound-content/manual-queue/06-founder-on-bike-vertical.jpg",
+    type: "image",
+    hook: "I built and tore down 3 bikes before this.",
+    caption: `I built and tore down 3 other bikes before this.
+
+Poured everything I had into it. Missed rides with my boys. Sat around waiting for the next part to show up. Sold the last bike when it still was not good enough.
+
+That is the part people do not see when they look at the gold bike.
+
+It was not bought. It was survived.
+
+SNG4LIFE. Reserve your numbered 270E. Link in bio.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #emoto #florida`
+  }
+];
+
+const cards = document.getElementById("cards");
+for (const post of posts) {
+  const card = document.createElement("article");
+  card.className = "card";
+  const media = post.type === "video"
+    ? `<video src="${post.media}" controls preload="metadata" playsinline></video>`
+    : `<img src="${post.media}" loading="lazy" alt="">`;
+  card.innerHTML = `
+    <div class="media">${media}</div>
+    <div class="body">
+      <div class="kicker">${post.title}</div>
+      <div class="hook">${post.hook}</div>
+      <div class="caption">${post.caption}</div>
+      <div class="actions">
+        <button type="button">Copy caption</button>
+        <a class="btn secondary" href="${post.media}" target="_blank">Open media</a>
+      </div>
+    </div>`;
+  card.querySelector("button").addEventListener("click", async event => {
+    await navigator.clipboard.writeText(post.caption);
+    event.currentTarget.textContent = "Copied";
+    setTimeout(() => event.currentTarget.textContent = "Copy caption", 1200);
+  });
+  cards.appendChild(card);
+}
+</script>
+</body>
+</html>

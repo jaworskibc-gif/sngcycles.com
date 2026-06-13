@@ -442,6 +442,15 @@ footer {
   #modal-inner { grid-template-columns:1fr; }
   #modal-img-wrap { border-radius:16px 16px 0 0; min-height:240px; }
 }
+
+  .merch-float {
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    background: #e85d04; color: #fff; border-radius: 50px;
+    padding: 14px 22px; font-weight: 900; font-size: 13px;
+    letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(244,120,32,0.5); transition: all 0.2s;
+  }
+  .merch-float:hover { background: #ff8c00; transform: translateY(-2px); }
 </style>
 </head>
 <body>
@@ -460,27 +469,85 @@ footer {
   </div>
 </nav>
 
-<!-- ── HERO ── -->
-<div class="hero">
-  <img class="hero-logo" src="sng-logo-orange.jpeg" alt="SNG Cycles">
-  <h1>SNG Cycles</h1>
-  <div class="hero-sub">Shark Not Goldfish</div>
-  <div class="hero-divider"></div>
-  <div class="hero-tagline">Leave the school behind.</div>
-  <div class="hero-btns">
-    <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
-    <a href="#lineup" class="btn-secondary">See the Lineup</a>
+<!-- ── HERO / MERCH SHOWCASE ── -->
+<div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 40px 80px;background:radial-gradient(ellipse at center top,rgba(244,120,32,0.14) 0%,transparent 55%),var(--dark);text-align:center;position:relative;overflow:hidden;">
+  <!-- brand -->
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+    <img src="sng-logo-orange.jpeg" alt="SNG Cycles" style="height:52px;width:52px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(244,120,32,0.5));">
+    <div style="text-align:left;">
+      <div style="font-size:22px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;line-height:1;">SNG Cycles</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:4px;color:var(--orange);text-transform:uppercase;">Shark Not Goldfish</div>
+    </div>
   </div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Models</div></div>
-    <div class="stat"><div class="stat-num">27kW</div><div class="stat-label">Mako Power</div></div>
-    <div class="stat"><div class="stat-num">38"–39.5"</div><div class="stat-label">Seat Height</div></div>
-    <div class="stat"><div class="stat-num">110hp</div><div class="stat-label">Hammerhead Peak</div></div>
+
+  <div style="width:60px;height:3px;background:var(--orange);margin:0 auto 28px;"></div>
+
+  <h1 style="font-size:clamp(32px,5vw,64px);font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:12px;line-height:1.1;">The Brand.<br><span style="color:var(--orange);">The Build. The Rider.</span></h1>
+  <p style="font-size:15px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Premium Riding Apparel · Electric Bikes · Built for Electric Riders</p>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:60px;max-width:560px;">Emoto riders finally have a brand to rep. Gear up first. Bikes are coming.</p>
+
+  <!-- 3 merch category panels -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%;max-width:1100px;margin-bottom:48px;">
+
+    <!-- HATS -->
+    <a href="#hats" style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--text);display:flex;flex-direction:column;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 64px rgba(244,120,32,0.2)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow=''">
+      <div style="width:100%;aspect-ratio:4/3;overflow:hidden;background:#0a1018;">
+        <img src="sng-hat-collection.png" alt="SNG Builder Series Hat Collection" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+      </div>
+      <div style="padding:24px 28px 28px;display:flex;flex-direction:column;flex:1;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">Builder Series</div>
+        <div style="font-size:26px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#fff;margin-bottom:8px;">Hats</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:20px;flex:1;">7 colorways. Embroidered SNG fin logo. Structured fit for the rider who means it.</div>
+        <div style="background:var(--orange);color:#fff;padding:12px 24px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;text-align:center;">Shop Hats →</div>
+      </div>
+    </a>
+
+    <!-- HOODIES -->
+    <a href="#hoodies" style="background:var(--card);border:2px solid var(--orange);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--text);display:flex;flex-direction:column;transition:all 0.25s;box-shadow:0 0 40px rgba(244,120,32,0.18);" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 64px rgba(244,120,32,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow='0 0 40px rgba(244,120,32,0.18)'">
+      <div style="background:var(--orange);padding:6px 14px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;text-align:center;">Most Popular</div>
+      <div style="width:100%;aspect-ratio:4/3;overflow:hidden;background:#0a1018;">
+        <img src="sng-hoodie-shark.png" alt="SNG Cycles Hoodie — Shark Not Goldfish" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+      </div>
+      <div style="padding:24px 28px 28px;display:flex;flex-direction:column;flex:1;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">Great White Drop</div>
+        <div style="font-size:26px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#fff;margin-bottom:8px;">Hoodies</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:20px;flex:1;">Up to 2XLT. Fits like Carhartt. Three designs. Built for the rider the industry forgot.</div>
+        <div style="background:var(--orange);color:#fff;padding:12px 24px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;text-align:center;">Shop Hoodies →</div>
+      </div>
+    </a>
+
+    <!-- SHIRTS -->
+    <a href="#shirts" style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--text);display:flex;flex-direction:column;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 64px rgba(244,120,32,0.2)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow=''">
+      <div style="width:100%;aspect-ratio:4/3;overflow:hidden;background:#0a1018;">
+        <img src="sng-leave-collection-sheet.png" alt="SNG Leave the School Behind Collection" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+      </div>
+      <div style="padding:24px 28px 28px;display:flex;flex-direction:column;flex:1;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">Core Collection</div>
+        <div style="font-size:26px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#fff;margin-bottom:8px;">Shirts</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:20px;flex:1;">4 packs. 5 colorways. Up to 2XLT. Premium construction, no compromises.</div>
+        <div style="background:var(--orange);color:#fff;padding:12px 24px;border-radius:8px;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;text-align:center;">Shop Shirts →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <a href="#lineup" style="font-size:13px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">↓ See the Bikes</a>
+</div>
+
+<!-- ── BIKES PREORDER BANNER ── -->
+<div style="background:linear-gradient(135deg,#0e1520,#0a1018);border-top:2px solid var(--orange);border-bottom:1px solid var(--border);padding:40px 40px;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+    <div>
+      <div style="font-size:11px;font-weight:800;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">🏍️ First Production Run</div>
+      <div style="font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#fff;line-height:1.1;">Taking Preorders Now.</div>
+      <div style="font-size:15px;color:var(--muted);margin-top:8px;">Electric motorcycles, supermoto, and UTVs — engineered in Florida for the riders the market forgot.</div>
+    </div>
+    <button onclick="var s=document.getElementById('lineup');s.style.display=s.style.display==='none'?'block':'none';this.textContent=s.style.display==='none'?'See the Bikes ↓':'Hide the Bikes ↑'" style="background:var(--orange);color:#fff;border:none;padding:16px 36px;border-radius:8px;font-weight:900;font-size:15px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e06810'" onmouseout="this.style.background='var(--orange)'">See the Bikes ↓</button>
   </div>
 </div>
 
 <!-- ── LINEUP ── -->
-<section id="lineup">
+<section id="lineup" style="display:none;">
   <div class="section-label">The Lineup</div>
   <div class="section-title">Built Different.<br>For Every Road.</div>
   <div class="section-desc">Five electric vehicles. Two divisions. One brand. SNG Cycles handles 2-wheel. SNG Motors handles everything else. All engineered in Florida, one at a time.</div>
@@ -525,8 +592,12 @@ footer {
     </div>
 
     <!-- MEGALODON 520E -->
+    
+
+    
+    <!-- MEGALODON 520E -->
     <div class="model-card shop-card" onclick="openProduct('megalodon')" style="cursor:pointer;">
-      <img class="model-img" src="megalodon-520e.png" alt="Megalodon 520E" style="object-fit:cover;" onerror="this.src='megalodon-spec.png';">
+      <img class="model-img" src="megalodon-render.jpg" alt="Megalodon 520E" style="object-fit:cover;object-position:center top;">
       <div class="model-body">
         <div class="model-division">SNG Cycles</div>
         <div class="model-name">Megalodon 520E</div>
@@ -552,7 +623,7 @@ footer {
         <div class="model-specs">
           <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">52kW · 96V Liquid Cooled</span></div>
           <div class="model-spec"><span class="model-spec-label">Dash</span><span class="model-spec-val">7" Smart · Apple CarPlay</span></div>
-          <div class="model-spec"><span class="model-spec-label">Wrap</span><span class="model-spec-val">Holochrome Silver</span></div>
+          <div class="model-spec"><span class="model-spec-label">Wrap</span><span class="model-spec-val">Platinum Silver</span></div>
           <div class="model-spec"><span class="model-spec-label">Units</span><span class="model-spec-val">30 Total · Ever</span></div>
         </div>
         <div class="model-price" style="color:var(--orange);">Reserve Now</div>
@@ -580,22 +651,7 @@ footer {
 
 
     <!-- HAMMERHEAD -->
-    <div class="model-card shop-card" onclick="openProduct('hammerhead')" style="cursor:pointer;">
-      <img class="model-img" src="hammerhead-clean.png" alt="Hammerhead" style="object-fit:cover;" onerror="this.src='HAMMER.png';">
-      <div class="model-body">
-        <div class="model-division">SNG Motors</div>
-        <div class="model-name">Hammerhead</div>
-        <div class="model-tagline">AWD Electric Supercart — The Destroyer</div>
-        <div class="model-specs">
-          <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">81kW / 110+ HP</span></div>
-          <div class="model-spec"><span class="model-spec-label">Drive</span><span class="model-spec-val">AWD Dual Motor</span></div>
-          <div class="model-spec"><span class="model-spec-label">Battery</span><span class="model-spec-val">144V / 30–40kWh</span></div>
-          <div class="model-spec"><span class="model-spec-label">Top Speed</span><span class="model-spec-val">65–75 MPH</span></div>
-        </div>
-        <div class="model-price">$59,900</div>
-        <div class="model-status">Coming July 2026</div>
-      </div>
-    </div>
+    
 
     <!-- BLACK TIP GT -->
     <div class="model-card shop-card" onclick="openProduct('black-tip-gt')" style="cursor:pointer;">
@@ -668,11 +724,198 @@ footer {
 </div>
 
 <!-- ── APPAREL ── -->
-<div style="border-top: 1px solid var(--border);">
-<section id="apparel">
-  <div class="section-label">Apparel</div>
-  <div class="section-title">Built for Tall Riders.<br>Finally.</div>
-  <div class="section-desc">The only brand that fits like Carhartt but rides like Alpine Stars. Every piece goes up to 2XLT — not a regular XL that shrinks to baby size after one wash, but actual tall sizing built for the rider the industry forgot. Premium construction, no compromises, and it fits when you put it on. Finally.</div>
+<div id="apparel" style="border-top:2px solid var(--orange);">
+<section style="padding:0;max-width:none;margin:0;">
+
+  <!-- HEADER BANNER -->
+  <div style="background:#0a0e16;padding:36px 48px;display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;border-bottom:1px solid var(--border);">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <img src="sng-logo-orange.jpeg" alt="SNG" style="height:60px;width:60px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(244,120,32,0.5));">
+      <div>
+        <div style="font-size:26px;font-weight:900;color:#fff;line-height:1;">SNG</div>
+        <div style="font-size:10px;font-weight:700;color:var(--orange);letter-spacing:2px;text-transform:uppercase;">SHARK NOT GOLDFISH</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:clamp(32px,4.5vw,60px);font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:6px;">SNG APPAREL</div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">PREMIUM APPAREL FOR RIDERS</div>
+      <div style="font-size:17px;color:var(--text);font-style:italic;">Lil' somethin' for all you gas-to-electric conversion folks.</div>
+    </div>
+    <div style="width:240px;height:140px;overflow:hidden;border-radius:8px;opacity:0.9;">
+      <img src="sng-merch-booth.png" alt="SNG Merch Booth" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+    </div>
+  </div>
+
+  <!-- 2×2 PRODUCT GRID -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;">
+
+    <!-- TOP LEFT: SNG CLASSIC -->
+    <div id="hats" style="padding:36px 40px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+      <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">SNG CLASSIC</div>
+      <div style="display:flex;gap:24px;align-items:flex-start;">
+        <img src="sng-hat-colorway-grid.png" alt="SNG Classic Hat" style="width:190px;flex-shrink:0;border-radius:8px;filter:drop-shadow(0 0 20px rgba(244,120,32,0.3));object-fit:cover;aspect-ratio:1;">
+        <div style="flex:1;">
+          <ul style="list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:7px;">
+            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• BLACK HAT</li>
+            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• WHITE SNG FIN LOGO</li>
+            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• FLAT BRIM</li>
+            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• SNAPBACK OR FLEXFIT</li>
+            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• PREMIUM WOVEN HEM TAG</li>
+          </ul>
+          <div style="font-size:11px;color:var(--muted);font-style:italic;margin-bottom:18px;line-height:1.6;">SHIPS FLAT.<br>BEND IT IF THAT'S YOUR THING.</div>
+          <select id="size-hat-classic" style="width:100%;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;margin-bottom:8px;cursor:pointer;">
+            <option value="">— Select Size —</option><option>S/M</option><option>L/XL</option><option>One Size (Snapback)</option>
+          </select>
+          <button onclick="orderItem('SNG Classic Hat', 'size-hat-classic', 35)" style="width:100%;background:var(--orange);color:#fff;border:none;padding:11px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Hat — $35</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP RIGHT: CONVERSION SERIES HATS -->
+    <div style="padding:36px 40px;border-bottom:1px solid var(--border);">
+      <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">CONVERSION SERIES HATS</div>
+      <div style="font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">AVAILABLE COLORWAYS</div>
+      <img src="sng-hat-colorway-grid.png" alt="SNG Rider Team Colors — All 6 Colorways" style="width:100%;border-radius:8px;display:block;margin-bottom:20px;">
+      <div style="font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">OPTIONAL SIDE EMBROIDERY</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center;"><div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;line-height:1.4;">NONE<br><span style="color:var(--orange);">(CLASSIC)</span></div></div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center;"><div style="font-size:10px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1.4;">SHARK NOT<br>GOLDFISH</div></div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center;"><div style="font-size:10px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1.4;">LEAVE THE<br>PACK BEHIND</div></div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center;"><div style="font-size:9px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1.5;">I USE TA HAVE GAS.<br>NOW I JUST HAUL ASS.<br><span style="color:var(--orange);">NO CHARGE.</span></div></div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <select id="size-hat-colorway" style="flex:1;min-width:120px;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
+          <option value="">— Select Size —</option><option>S/M</option><option>L/XL</option><option>One Size (Snapback)</option>
+        </select>
+        <button onclick="orderItem('Conversion Series Hat (specify colorway + embroidery in email)', 'size-hat-colorway', 35)" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
+      </div>
+    </div>
+
+    <!-- BOTTOM LEFT: CONVERSION SERIES SHIRT -->
+    <div id="shirts" style="padding:36px 40px;border-right:1px solid var(--border);">
+      <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">CONVERSION SERIES SHIRT</div>
+      <img src="sng-conversion-series-shirt.png" alt="SNG Conversion Series — 6 Colorways" style="width:100%;border-radius:8px;display:block;margin-bottom:18px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:14px;">
+        <div style="font-size:18px;font-weight:900;color:#fff;line-height:1.3;">I USE TA HAVE GAS.<br>NOW I JUST HAUL ASS.</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:1px;">SHARK NOT GOLDFISH CYCLES</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <select id="size-conversion-shirt" style="flex:1;min-width:120px;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
+          <option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option>
+        </select>
+        <button onclick="orderItem('Conversion Series Shirt — I Use Ta Have Gas', 'size-conversion-shirt', 15)" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $15</button>
+      </div>
+    </div>
+
+    <!-- BOTTOM RIGHT: SNG SHIRT COLLECTION -->
+    <div style="padding:36px 40px;">
+      <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">SNG SHIRT COLLECTION</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border);">
+          <img src="sng-megalodon-tee-sheet.png" alt="Megalodon Tee" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
+          <div style="padding:10px 12px;background:var(--card);">
+            <div style="font-size:12px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:2px;">Megalodon Tee</div>
+            <div style="font-size:10px;color:var(--orange);font-weight:700;letter-spacing:1px;">BUILT UP · SHARK NOT GOLDFISH</div>
+          </div>
+        </div>
+        <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border);">
+          <img src="sng-leave-collection-sheet.png" alt="Leave The School Behind Tee" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
+          <div style="padding:10px 12px;background:var(--card);">
+            <div style="font-size:12px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:2px;">Leave The School Behind</div>
+            <div style="font-size:10px;color:var(--orange);font-weight:700;letter-spacing:1px;">PREMIUM COLLECTION · UP TO 2XLT</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+        <div style="border-radius:6px;overflow:hidden;border:1px solid var(--border);">
+          <img src="sng-tee-packs-3-5.png" alt="3-Pack / 5-Pack Tees" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:top;">
+          <div style="padding:6px 10px;background:var(--card);font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">3-PACK · 5-PACK SETS</div>
+        </div>
+        <div style="border-radius:6px;overflow:hidden;border:1px solid var(--border);">
+          <img src="sng-tee-packs-light-dark.png" alt="Light Pack / Dark Pack" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:top;">
+          <div style="padding:6px 10px;background:var(--card);font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">LIGHT PACK · DARK PACK</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:14px;">Up to 2XLT · Premium embroidery · Woven hem label · Ships from Florida</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <select id="size-shirt-collection" style="flex:1;min-width:120px;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
+          <option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option>
+        </select>
+        <button onclick="orderItem('SNG Shirt — specify design + color in email', 'size-shirt-collection', 15)" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $15</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HOODIES -->
+  <div id="hoodies" style="padding:36px 40px;border-top:1px solid var(--border);">
+    <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">SNG HOODIES — $60</div>
+
+    <!-- Featured hoodie — SNG Cycles Shark Not Goldfish -->
+    <div style="background:var(--card);border:2px solid var(--orange);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;">
+      <img src="sng-hoodie-shark.png" alt="SNG Cycles Hoodie — Shark Not Goldfish" style="width:100%;display:block;height:100%;object-fit:cover;min-height:220px;">
+      <div style="padding:28px 24px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">Featured Drop</div>
+        <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;line-height:1.2;margin-bottom:4px;">SNG Cycles Hoodie</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px;">Shark Not Goldfish · Leave The School Behind</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:16px;">Orange hexagon logo front · Full graphic back · Premium heavyweight · Up to 2XLT</div>
+        <select id="size-hoodie-sng" style="width:100%;padding:9px 12px;background:#0a0e16;color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;margin-bottom:10px;cursor:pointer;"><option value="">— Select Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option></select>
+        <button onclick="orderItem('SNG Cycles Hoodie — Shark Not Goldfish', 'size-hoodie-sng', 60)" style="background:var(--orange);color:#fff;border:none;padding:12px;border-radius:7px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now — $60</button>
+      </div>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">GREAT WHITE SERIES</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+        <img src="hoodie-gw-stuntin-habit.png" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;" alt="Stuntin Is A Habit">
+        <div style="padding:16px;">
+          <div style="font-weight:900;color:#fff;font-size:14px;margin-bottom:4px;">Stuntin Is A Habit</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Blue Tie-Dye</div>
+          <select id="size-hoodie-1b" style="width:100%;padding:8px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;margin-bottom:8px;cursor:pointer;"><option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option></select>
+          <button onclick="orderItem('Hoodie — Stuntin Is A Habit', 'size-hoodie-1b', 60)" style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $60</button>
+        </div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+        <img src="hoodie-gw-stuntin-easy.png" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;" alt="Stuntin Aint Easy">
+        <div style="padding:16px;">
+          <div style="font-weight:900;color:#fff;font-size:14px;margin-bottom:4px;">Stuntin Ain't Easy</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Blue Tie-Dye</div>
+          <select id="size-hoodie-2b" style="width:100%;padding:8px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;margin-bottom:8px;cursor:pointer;"><option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option></select>
+          <button onclick="orderItem('Hoodie — Stuntin Ain\'t Easy', 'size-hoodie-2b', 60)" style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $60</button>
+        </div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+        <img src="apparel-platform-hoodie.png" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;" alt="SNG Platform Hoodie">
+        <div style="padding:16px;">
+          <div style="font-weight:900;color:#fff;font-size:14px;margin-bottom:4px;">SNG Platform</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Build Up — Blue/White</div>
+          <select id="size-hoodie-3b" style="width:100%;padding:8px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;margin-bottom:8px;cursor:pointer;"><option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option></select>
+          <button onclick="orderItem('Hoodie — SNG Platform Build Up', 'size-hoodie-3b', 60)" style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $60</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER BANNER -->
+  <div style="background:#0a0e16;border-top:1px solid var(--border);padding:36px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;">
+    <div style="display:flex;align-items:center;gap:20px;">
+      <img src="sng-merch-display.png" alt="SNG Merch" style="width:120px;height:80px;object-fit:cover;object-position:center top;border-radius:6px;">
+      <div>
+        <div style="font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Not ready for a bike yet?</div>
+        <div style="font-size:clamp(16px,2.2vw,26px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1.15;">Start with<br>the gear.</div>
+      </div>
+    </div>
+    <img src="sng-logo-orange.jpeg" alt="SNG" style="height:52px;width:52px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(244,120,32,0.4));">
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:20px;">
+      <div style="text-align:right;">
+        <div style="font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Already wearing the gear?</div>
+        <div style="font-size:clamp(16px,2.2vw,26px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1.15;">Check out<br>the builds.</div>
+      </div>
+      <button onclick="var s=document.getElementById('lineup');s.style.display='block';s.scrollIntoView({behavior:'smooth'});" style="background:transparent;color:#fff;border:2px solid #fff;padding:14px 28px;border-radius:6px;font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='#fff';this.style.color='#080b10'" onmouseout="this.style.background='transparent';this.style.color='#fff'">VIEW BIKES ›</button>
+    </div>
+  </div>
+
+  <div style="display:none;">
 
   <!-- TEE COLLECTION HERO -->
   <div style="margin-bottom:28px;">
@@ -834,7 +1077,7 @@ footer {
   </div>
 
   <!-- GREAT WHITE HOODIE DROP -->
-  <div style="margin-bottom:40px;">
+  <div id="hoodies" style="margin-bottom:40px;">
     <div style="font-size:11px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:8px;">New Drop</div>
     <div style="font-size:28px;font-weight:900;line-height:1.2;margin-bottom:6px;">The Great White Hoodie</div>
     <div style="font-size:14px;color:var(--muted);margin-bottom:24px;">Blue tie-dye or clean white. Front: the bike. Back: the road, the tide, the tire, the quote. <em>Leave the School Behind.</em></div>
@@ -950,7 +1193,7 @@ footer {
   </div>
 
   <!-- HATS -->
-  <div style="margin-bottom:40px;">
+  <div id="hats" style="margin-bottom:40px;">
     <div style="font-size:11px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:8px;">Flat Brim FlexFit®</div>
     <div style="font-size:28px;font-weight:900;line-height:1.2;margin-bottom:6px;">SNG Rider Team Colors</div>
     <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">7 colorways. Every major brand represented. Gas or electric — doesn't matter. <strong style="color:var(--text);">SNG is for riders. Period.</strong></div>
@@ -992,89 +1235,6 @@ footer {
   </div>
 </section>
 </div>
-
-<!-- ── DIGITAL GUIDES ── -->
-<section id="guides" style="padding:100px 40px; max-width:1200px; margin:0 auto;">
-  <div class="section-label">SNG Builder Series</div>
-  <div class="section-title">Build What Doesn't Exist.</div>
-  <div class="section-desc" style="max-width:680px;">Five complete build guides. Every part sourced. Every mistake documented. Every decision explained. From Sur-Ron frame-up to a custom electric trike that sold for $32K — these are the actual plans.</div>
-
-  <div style="margin-top:48px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-
-    <!-- GUIDE 001 -->
-    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; display:flex; flex-direction:column;">
-      <div style="font-size:10px; font-weight:700; color:var(--orange); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:10px;">Guide #001</div>
-      <div style="font-size:20px; font-weight:800; color:var(--text); line-height:1.2; margin-bottom:8px;">Sur-Ron LBX<br>Frame-Up Super Build</div>
-      <div style="font-size:12px; color:var(--muted); line-height:1.6; flex:1; margin-bottom:20px;">Start with nothing but an LBX frame. Every component sourced, priced, and documented. Luxury build from zero. $14,714 in parts — fully catalogued.</div>
-      <div style="font-size:26px; font-weight:900; color:var(--orange); margin-bottom:16px;">$149</div>
-      <a href="mailto:sharknotgoldfish@gmail.com?subject=Guide %23001 — Sur-Ron LBX Frame-Up&body=I'd like to purchase Guide %23001 — Sur-Ron LBX Frame-Up Super Build for $149. Please send payment details." style="display:block; background:var(--orange); color:#fff; text-align:center; padding:12px; border-radius:8px; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; text-decoration:none;">Order Guide #001</a>
-    </div>
-
-    <!-- GUIDE 002 -->
-    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; display:flex; flex-direction:column;">
-      <div style="font-size:10px; font-weight:700; color:var(--orange); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:10px;">Guide #002</div>
-      <div style="font-size:20px; font-weight:800; color:var(--text); line-height:1.2; margin-bottom:8px;">SNG 270-E<br>Light Bee Build</div>
-      <div style="font-size:12px; color:var(--muted); line-height:1.6; flex:1; margin-bottom:20px;">Already have a Light Bee? Upgrade path starts at ~$12,930. Don't have one? Source it and follow the same guide. The SNG 270-E prototype spec, fully documented.</div>
-      <div style="font-size:26px; font-weight:900; color:var(--orange); margin-bottom:16px;">$149</div>
-      <a href="mailto:sharknotgoldfish@gmail.com?subject=Guide %23002 — SNG 270-E Light Bee Build&body=I'd like to purchase Guide %23002 — SNG 270-E Light Bee Build for $149. Please send payment details." style="display:block; background:var(--orange); color:#fff; text-align:center; padding:12px; border-radius:8px; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; text-decoration:none;">Order Guide #002</a>
-    </div>
-
-    <!-- GUIDE 003 -->
-    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-      <div style="position:absolute; top:0; right:0; background:var(--orange); color:#fff; font-size:9px; font-weight:900; letter-spacing:2px; text-transform:uppercase; padding:5px 12px;">Most Valuable</div>
-      <div style="font-size:10px; font-weight:700; color:var(--orange); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:10px;">Guide #003</div>
-      <div style="font-size:20px; font-weight:800; color:var(--text); line-height:1.2; margin-bottom:8px;">52kW CRF450<br>Electric Full Build</div>
-      <div style="font-size:12px; color:var(--muted); line-height:1.6; flex:1; margin-bottom:20px;">Start with a 450 frame — or source everything from eBay, same cost either way. End with 52kW / 70HP. Under $9K in parts. Husqvarna plastics. Complete build guide.</div>
-      <div style="font-size:26px; font-weight:900; color:var(--orange); margin-bottom:16px;">$249</div>
-      <a href="mailto:sharknotgoldfish@gmail.com?subject=Guide %23003 — 52kW CRF450 Electric Build&body=I'd like to purchase Guide %23003 — 52kW CRF450 Electric Full Build for $249. Please send payment details." style="display:block; background:var(--orange); color:#fff; text-align:center; padding:12px; border-radius:8px; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; text-decoration:none;">Order Guide #003</a>
-    </div>
-
-    <!-- GUIDE 004 -->
-    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; display:flex; flex-direction:column;">
-      <div style="font-size:10px; font-weight:700; color:var(--orange); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:10px;">Guide #004</div>
-      <div style="font-size:20px; font-weight:800; color:var(--text); line-height:1.2; margin-bottom:8px;">E-520 Jackshaft<br>Fabrication &amp; Assembly</div>
-      <div style="font-size:12px; color:var(--muted); line-height:1.6; flex:1; margin-bottom:20px;">Dual-stage 15.44:1 reduction system. No machinist skills required — hand the instructions to any machine shop, zero follow-up questions. Includes full exploded BOM and torque specs.</div>
-      <div style="font-size:26px; font-weight:900; color:var(--orange); margin-bottom:16px;">$49</div>
-      <a href="mailto:sharknotgoldfish@gmail.com?subject=Guide %23004 — E-520 Jackshaft Assembly&body=I'd like to purchase Guide %23004 — E-520 Jackshaft Fabrication %26 Assembly for $49. Please send payment details." style="display:block; background:var(--orange); color:#fff; text-align:center; padding:12px; border-radius:8px; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; text-decoration:none;">Order Guide #004</a>
-    </div>
-
-    <!-- GUIDE 005 -->
-    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-      <div style="position:absolute; top:0; right:0; background:#1a1a2e; color:var(--orange); font-size:9px; font-weight:900; letter-spacing:2px; text-transform:uppercase; padding:5px 12px; border-left:2px solid var(--orange);">$32K Verified Sale</div>
-      <div style="font-size:10px; font-weight:700; color:var(--orange); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:10px;">Guide #005 · Premium</div>
-      <div style="font-size:20px; font-weight:800; color:var(--text); line-height:1.2; margin-bottom:8px;">A+ Concept Trike<br>Full Manufacturing Package</div>
-      <div style="font-size:12px; color:var(--muted); line-height:1.6; flex:1; margin-bottom:20px;">Custom electric tadpole trike. Built for $11K–$14K. Sold for $32K. Thursday to Monday morning. Includes dimensioned shop drawings, master build pack, and full BOM. QS138 · Fox Float 3 EVOL RC2 · Warp 9 wheels.</div>
-      <div style="font-size:26px; font-weight:900; color:var(--orange); margin-bottom:16px;">$299</div>
-      <a href="mailto:sharknotgoldfish@gmail.com?subject=Guide %23005 — A%2B Concept Trike&body=I'd like to purchase Guide %23005 — A%2B Concept Trike Full Manufacturing Package for $299. Please send payment details." style="display:block; background:var(--orange); color:#fff; text-align:center; padding:12px; border-radius:8px; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; text-decoration:none;">Order Guide #005</a>
-    </div>
-
-    <!-- BUNDLE -->
-    <div style="background:linear-gradient(135deg,#0e1520 0%,#141e30 100%); border:2px solid var(--orange); border-radius:12px; padding:28px; display:flex; flex-direction:column;">
-      <div style="font-size:10px; font-weight:700; color:var(--orange); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:10px;">Best Value</div>
-      <div style="font-size:20px; font-weight:800; color:var(--text); line-height:1.2; margin-bottom:8px;">All 5 Guides<br>Complete Bundle</div>
-      <div style="font-size:12px; color:var(--muted); line-height:1.6; flex:1; margin-bottom:16px;">Every build guide in the SNG Builder Series. $895 in individual value — yours for $699. Five builds. Five documented parts lists. Everything from a Sur-Ron frame-up to a $32K custom trike.</div>
-      <div style="margin-bottom:16px;">
-        <div style="font-size:13px; color:var(--muted); text-decoration:line-through;">$895 individual</div>
-        <div style="font-size:30px; font-weight:900; color:var(--orange);">$699 <span style="font-size:14px; font-weight:500; color:#4caf50;">Save $196</span></div>
-      </div>
-      <a href="mailto:sharknotgoldfish@gmail.com?subject=SNG Builder Series — All 5 Guides Bundle&body=I'd like to purchase the complete SNG Builder Series bundle (all 5 guides) for $699. Please send payment details." style="display:block; background:var(--orange); color:#fff; text-align:center; padding:14px; border-radius:8px; font-weight:900; font-size:13px; letter-spacing:1px; text-transform:uppercase; text-decoration:none;">Get All 5 — $699</a>
-    </div>
-
-  </div>
-
-  <!-- EBOOK TEASER -->
-  <div style="margin-top:32px; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:32px; display:flex; align-items:center; justify-content:space-between; gap:32px;">
-    <div style="flex:1;">
-      <div style="font-size:10px; font-weight:700; color:var(--orange); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:8px;">Coming Soon · SNG Builder eBook</div>
-      <div style="font-size:22px; font-weight:800; color:var(--text); margin-bottom:10px;">$49 — Includes One Free Build Guide.<br><span style="color:var(--orange);">Which One? Find Out When You Download.</span></div>
-      <div style="font-size:13px; color:var(--muted); line-height:1.7;">The SNG build story, the business model, the market breakdown — and one mystery guide from the Builder Series included free. Value up to $299. Join the waitlist to be first.</div>
-    </div>
-    <div style="flex-shrink:0;">
-      <button onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})" style="background:var(--orange); color:#fff; border:none; padding:16px 32px; border-radius:8px; font-weight:900; font-size:14px; letter-spacing:1px; text-transform:uppercase; cursor:pointer; white-space:nowrap;">Notify Me</button>
-    </div>
-  </div>
-
-</section>
 
 <!-- ── BUILDER ── -->
 <div class="builder-section" id="about">
@@ -1167,17 +1327,18 @@ var PRODUCTS = {
     price:'$35,000 – $40,000', image:'great-white-clean.png',
     desc:'100 HP peak. White and blue lattice stunt chassis. Shark Jaw™ front end. 300 LB rated stunt platforms. Blue hub accents. SNG supermoto tires. Built for the stunt community — the machine nobody else had the nerve to build.',
     selectors:[], orderLabel:'Reserve Your Great White', orderItem:'Great White Reservation'
-  },
-  'megalodon': {
-    badge:'SNG Cycles · 52kW Supermoto', name:'Megalodon 520E', sub:'Built Different. Leave the School Behind.',
-    price:'$26,495', image:'megalodon-520e.png',
-    desc:'52kW Peak Power · 84V Architecture · 70 HP · 100+ MPH · 120+ Mile Range · WP Front Suspension · Adjustable Rear Shock · Powder Blue Supermoto Wheels · Orange Spokes · White Wall Tires · Orange Powder-Coated Bars · 7" Smart Display · Brown Diamond-Stitched Seat · Extended Swingarm · Tall Rider Geometry (37.6" seat) · Street Legal · Fast Charge 2–3 hrs · Regenerative Braking. Package includes SNG Megladon Leather Jacket + Snapback Hat.',
+  },  'megalodon': {
+    badge:'SNG Cycles · 52kW Supermoto', name:'Megalodon 520E', sub:'Leave the School Behind™',
+    price:'$26,495', image:'megalodon-520e.jpg',
+    desc:'52kW Peak Power · 84V Architecture · High Performance Controller · Direct Drive · Regenerative Braking · 70 HP Peak · 100+ MPH Top Speed · Instant Torque · Street Legal · WP Front Suspension · Adjustable Rear Shock · Race Tuned · Hydraulic Front & Rear Disc · Turquoise Bars & Pad · White Performance Grips · 7" Smart Display · Integrated Lighting System · Powder Blue Supermoto Wheels · Turquoise Spokes · White Wall Tires · Extended Swingarm · Tall Rider Geometry · White Powder Coated Frame · Turquoise Diamond-Stitched Seat · Megalodon Graphics Package · Seat Height 37.6" · Wheelbase 60.2" · Est. Weight 200 lbs · Range 120+ Miles · Fast Charge 2–3 hrs · Street Legal, Ready to Ride.',
     selectors:[], orderLabel:'Reserve Your Megalodon 520E — $26,495', orderItem:'Megalodon 520E Reservation'
   },
+  },
+  
   'platinum-520e': {
     badge:'SNG Cycles · Limited 30 Units · Worldwide', name:'Platinum 520E', sub:'Built Different. Made to Stand Out.',
     price:'Reserve Now', image:'platinum-520e.png',
-    desc:'52kW Peak Power · 96V 60Ah Lithium Battery · Advanced Liquid Cooled Motor · 7" Smart Dash Apple CarPlay · Integrated Mirrors LED Turn Signals · Half Quilted Seat Premium Finish · Extended Front Fender · SNG Pro Lighting System · Holochrome Silver Wrap · Fully Adjustable Suspension · Supermoto Wheels & Tires · Premium Blacked Out Parts. Box Set includes: Bike (001/030 serialized) · Premium Hoodie Platinum Edition · Snapback Hat Platinum Edition · Metal Holochrome Keychain · Limited Edition Key Tag · Sticker Pack · Owners Manual · Certificate of Authenticity · Premium Collector Box with LED Lights. Limited to 30 units worldwide. Once gone, gone forever.',
+    desc:'52kW Peak Power · 96V 60Ah Lithium Battery · Advanced Liquid Cooled Motor · 7" Smart Dash Apple CarPlay · Integrated Mirrors LED Turn Signals · Half Quilted Seat Premium Finish · Extended Front Fender · SNG Pro Lighting System · Platinum Finish Wrap · Fully Adjustable Suspension · Supermoto Wheels & Tires · Premium Blacked Out Parts. Box Set includes: Bike (001/030 serialized) · Premium Hoodie Platinum Edition · Snapback Hat Platinum Edition · Metal Platinum Keychain · Limited Edition Key Tag · Sticker Pack · Owners Manual · Certificate of Authenticity · Premium Collector Box with LED Lights. Limited to 30 units worldwide. Once gone, gone forever.',
     selectors:[], orderLabel:'Reserve Your Platinum 520E', orderItem:'Platinum 520E Reservation'
   },
   'sand-shark': {
@@ -1186,12 +1347,7 @@ var PRODUCTS = {
     desc:'20kW mid-drive. Tadpole 2F/1R layout. 83 MPH top speed. 2 passengers. Deep Sea edition wrap. WP suspension. SNG-NCS air design. The most accessible vehicle in the lineup — still a beast.',
     selectors:[], orderLabel:'Reserve Your Sand Shark', orderItem:'Sand Shark Reservation'
   },
-  'hammerhead': {
-    badge:'SNG Motors · Supercart', name:'Hammerhead', sub:'AWD Electric Supercart — The Destroyer',
-    price:'$59,900', image:'hammerhead-clean.png',
-    desc:'81kW continuous / 110+ HP peak. 144V · 30–40kWh. AWD dual motor. Fox coilovers. Paddle tires. WARN winch. Roof light bar. Full roll cage. 65–75 MPH. 40–60 mile dune range. The machine that ends the dune run.',
-    selectors:[], orderLabel:'Reserve Your Hammerhead', orderItem:'Hammerhead Reservation'
-  },
+  
   'hoodie-habit': {
     badge:'Great White Hoodie', name:'Stuntin Is A Habit', sub:'Blue Tie-Dye · $60',
     price:'$60', image:'hoodie-gw-stuntin-habit.png',
@@ -1258,42 +1414,12 @@ var PRODUCTS = {
     desc:'EMRAX 228 High Output · Rear Mounted · RWD · 180 HP · 240 Nm · 0-60: 3.3s · 130 MPH · 25kWh Lithium NMC · 130-180 mile range · Performance cooling · DC fast charge · Lower ride height · Wider track width · ProTaper-style handlebars · Motorcycle controls · Shark fin puddle light · White underglow · Tall diamond-stitched seat · Shark Fin embossed headrest · 5-point racing harness · Lightweight forged wheel option · ~1,050 lbs.',
     selectors:[], orderLabel:'Reserve Your Black Tip Apex — $59,900', orderItem:'Black Tip Apex Reservation'
   },
-  'bt-gt-tee': {
-    badge:'Black Tip GT · SNG Motors', name:'Black Tip GT T-Shirt', sub:'Black · Gold · Leave the School Behind',
-    price:'$30', image:'black-tip-gt-gear.png',
-    desc:'Black Tip GT SNG Motors tee. Black with gold branding. GT vehicle graphic on front. "Leave the School Behind" on the back. Premium quality. Tall sizes available through 2XLT.',
-    selectors:['size'], orderLabel:'Order GT Tee — $30', orderItem:'Black Tip GT T-Shirt'
-  },
-  'bt-gt-hat': {
-    badge:'Black Tip GT · SNG Motors', name:'Black Tip GT Snapback', sub:'Black · Gold Fin Logo',
-    price:'$40', image:'black-tip-gt-gear.png',
-    desc:'Black snapback with gold Black Tip GT shark fin logo. SNG Motors. One size. The hat that goes with the most exciting street build in the lineup.',
-    selectors:[], orderLabel:'Order GT Hat — $40', orderItem:'Black Tip GT Snapback Hat'
-  },
-  'bt-gt-hoodie': {
-    badge:'Black Tip GT · SNG Motors', name:'Black Tip GT Hoodie', sub:'Black · Gold · GT Graphic',
-    price:'$65', image:'black-tip-gt-gear.png',
-    desc:'Black hoodie with gold Black Tip GT branding. GT vehicle graphic on front. "Leave the School Behind" on the back. Heavyweight premium construction. Tall sizes through 2XLT.',
-    selectors:['size'], orderLabel:'Order GT Hoodie — $65', orderItem:'Black Tip GT Hoodie'
-  },
-  'bt-apex-tee': {
-    badge:'Black Tip Apex · SNG Motors', name:'Black Tip Apex T-Shirt', sub:'Black · Gold · Apex Edition',
-    price:'$30', image:'black-tip-apex-gear.png',
-    desc:'Black Tip Apex SNG Motors tee. Black with gold Apex branding. Apex vehicle graphic on front. Premium quality. Tall sizes available through 2XLT.',
-    selectors:['size'], orderLabel:'Order Apex Tee — $30', orderItem:'Black Tip Apex T-Shirt'
-  },
-  'bt-apex-hat': {
-    badge:'Black Tip Apex · SNG Motors', name:'Black Tip Apex Snapback', sub:'Black · Gold · Apex Fin Logo',
-    price:'$40', image:'black-tip-apex-gear.png',
-    desc:'Black snapback with gold Black Tip Apex shark fin logo. SNG Motors. One size. Wear the halo.',
-    selectors:[], orderLabel:'Order Apex Hat — $40', orderItem:'Black Tip Apex Snapback Hat'
-  },
-  'bt-apex-hoodie': {
-    badge:'Black Tip Apex · SNG Motors', name:'Black Tip Apex Hoodie', sub:'Black · Gold · Apex Graphic',
-    price:'$65', image:'black-tip-apex-gear.png',
-    desc:'Black hoodie with gold Black Tip Apex branding. Apex vehicle graphic on front. Heavyweight premium construction. Tall sizes through 2XLT.',
-    selectors:['size'], orderLabel:'Order Apex Hoodie — $65', orderItem:'Black Tip Apex Hoodie'
-  },
+  
+  
+  
+  
+  
+  
   'collector-box': {
     badge:'Limited Edition · $499', name:'Megladon Collector Box', sub:'The Full Package',
     price:'$499', image:'apparel-meg-box.png',
@@ -1442,5 +1568,6 @@ function submitWaitlist() {
 }
 </script>
 
+<a href="#apparel" class="merch-float">Shop Merch</a>
 </body>
 </html>

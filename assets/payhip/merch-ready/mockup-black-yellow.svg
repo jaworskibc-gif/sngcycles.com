@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <defs>
+    <linearGradient id="cr_black-yellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#111316"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  <!-- dark background -->
+  <rect width="900" height="900" fill="#0c0d10"/>
+
+  <!-- SERIES label top -->
+  <text x="450" y="58" text-anchor="middle"
+        font-family="Arial, sans-serif" font-weight="900" font-size="16"
+        fill="#ff5a00" letter-spacing="5">SNG CYCLES · BUILDER'S SERIES</text>
+
+  <!-- hat shadow -->
+  <ellipse cx="450" cy="624" rx="330" ry="22" fill="#000" opacity="0.3"/>
+
+  <!-- flat brim -->
+  <path d="M84 534 Q450 452 816 534 Q816 602 450 618 Q84 602 84 534 Z"
+        fill="#111316" stroke="#000a" stroke-width="3.5"/>
+  <!-- brim stitching line -->
+  <path d="M84 534 Q450 452 816 534"
+        fill="none" stroke="#ffd400" stroke-width="5" stroke-dasharray="12 9" opacity="0.9"/>
+
+  <!-- crown -->
+  <path d="M168 528 C150 288 288 132 450 132 C612 132 750 288 732 528 Z"
+        fill="url(#cr_black-yellow)" stroke="#000a" stroke-width="3.5"/>
+
+  <!-- panel seams -->
+  <path d="M450 132 L450 528" stroke="#0007" stroke-width="2.4"/>
+  <path d="M450 156 C354 210 300 360 312 528" stroke="#0005" stroke-width="2" fill="none"/>
+  <path d="M450 156 C546 210 600 360 588 528" stroke="#0005" stroke-width="2" fill="none"/>
+
+  <!-- top button -->
+  <circle cx="450" cy="144" r="19" fill="#111316" stroke="#ffd400" stroke-width="3"/>
+
+  <!-- front embroidery -->
+  <text x="450" y="322" text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900" font-size="45" fill="#ffd400" letter-spacing="1">I USE TA HAVE GAS.</text>
+  <text x="450" y="378" text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900" font-size="39" fill="#ffd400" letter-spacing="1">NOW I JUST HAUL ASS.</text>
+
+  <!-- SNG subtle badge -->
+  <text x="450" y="462" text-anchor="middle"
+        font-family="Arial, sans-serif" font-weight="900" font-size="20"
+        fill="#ffd400" opacity="0.45" letter-spacing="7">SNG CYCLES</text>
+
+  <!-- colorway label bottom -->
+  <text x="450" y="688" text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif" font-weight="900"
+        font-size="28" fill="#e9eaed">Black / Yellow</text>
+
+  <!-- match tag -->
+  <text x="450" y="722" text-anchor="middle"
+        font-family="Arial, sans-serif" font-weight="900" font-size="14"
+        fill="#ff5a00" letter-spacing="4">ACCENT</text>
+
+  <!-- swatches -->
+  <rect x="386" y="742" width="44" height="44" rx="8" fill="#111316" stroke="#0007" stroke-width="1.5"/>
+  <text x="408" y="806" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#9aa0aa">shell</text>
+  <rect x="470" y="742" width="44" height="44" rx="8" fill="#ffd400" stroke="#0007" stroke-width="1.5"/>
+  <text x="492" y="806" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#9aa0aa">thread</text>
+
+  <!-- price -->
+  <text x="450" y="856" text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif" font-weight="900"
+        font-size="26" fill="#ff5a00">SNG Rider Hat — $35</text>
+
+  <!-- Flat Brim FlexFit -->
+  <text x="450" y="886" text-anchor="middle"
+        font-family="Arial, sans-serif" font-size="14"
+        fill="#9aa0aa" letter-spacing="2">Flat Brim FlexFit®</text>
+</svg>

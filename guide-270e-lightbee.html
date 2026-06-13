@@ -5,35 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SNG Build Guide #002 — SNG 270-E Light Bee Upgrade Build</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;500;600;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #d4d4d4; padding: 32px 16px; font-family: Arial, 'Helvetica Neue', sans-serif; }
   .page { background: #fff; width: 816px; margin: 0 auto 32px; box-shadow: 0 8px 40px rgba(0,0,0,0.22); page-break-after: always; }
 
-  .header { background: #0a0a0a; position: relative; overflow: hidden; }
-  .header::after { content:''; display:block; height:4px; background:linear-gradient(90deg,#e85d04 0%,#ff9533 50%,#e85d04 100%); }
+  .header { background: #ffffff; border-bottom: 4px solid #e85d04; }
   .header-inner { display:flex; align-items:center; justify-content:space-between; padding:22px 48px; }
   .header-left { display:flex; align-items:center; gap:20px; }
   .header-logo img { height:60px; width:auto; object-fit:contain; }
-  .header-brand { border-left:1px solid #2a2a2a; padding-left:20px; }
-  .brand-name { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:22px; font-weight:900; color:#fff; letter-spacing:3px; text-transform:uppercase; }
+  .header-brand { border-left:1px solid #e0e0e0; padding-left:20px; }
+  .brand-name { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:22px; font-weight:900; color:#0a0a0a; letter-spacing:3px; text-transform:uppercase; }
   .brand-sub { font-size:9px; color:#e85d04; letter-spacing:3px; text-transform:uppercase; font-weight:600; margin-top:2px; }
   .header-right { text-align:right; }
   .guide-badge { display:inline-block; background:#e85d04; color:#fff; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:10px; font-weight:900; letter-spacing:3px; text-transform:uppercase; padding:3px 10px; border-radius:2px; margin-bottom:6px; }
   .guide-series { display:block; font-size:9px; color:#666; letter-spacing:2.5px; text-transform:uppercase; }
 
-  .cover-hero { background:#0f0f0f; padding:60px 48px; position:relative; overflow:hidden; }
+  .cover-hero { background:#f5f5f5; padding:60px 48px; position:relative; overflow:hidden; }
   .cover-hero::before { content:''; position:absolute; top:-80px; right:-80px; width:400px; height:400px; background:radial-gradient(circle,rgba(232,93,4,0.12) 0%,transparent 70%); }
   .guide-number { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:11px; color:#e85d04; letter-spacing:4px; text-transform:uppercase; font-weight:700; margin-bottom:20px; }
-  .guide-title { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:52px; font-weight:900; color:#fff; line-height:1; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+  .guide-title { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:52px; font-weight:900; color:#0a0a0a; line-height:1; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
   .guide-title span { color:#e85d04; }
-  .guide-subtitle { font-size:15px; color:#888; font-weight:300; letter-spacing:1px; margin-bottom:40px; text-transform:uppercase; }
-  .cover-stats { display:flex; gap:0; border:1px solid #222; border-radius:4px; overflow:hidden; max-width:580px; margin-bottom:36px; }
-  .stat-block { flex:1; padding:16px 20px; border-right:1px solid #222; }
+  .guide-subtitle { font-size:15px; color:#555; font-weight:300; letter-spacing:1px; margin-bottom:40px; text-transform:uppercase; }
+  .cover-stats { display:flex; gap:0; border:1px solid #e0e0e0; border-radius:4px; overflow:hidden; max-width:580px; margin-bottom:36px; }
+  .stat-block { flex:1; padding:16px 20px; border-right:1px solid #e0e0e0; }
   .stat-block:last-child { border-right:none; }
   .stat-val { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:24px; font-weight:900; color:#e85d04; line-height:1; }
   .stat-label { font-size:9px; color:#666; text-transform:uppercase; letter-spacing:2px; margin-top:4px; }
-  .cover-tagline { font-size:13px; color:#aaa; line-height:1.7; max-width:520px; font-style:italic; }
+  .cover-tagline { font-size:13px; color:#555; line-height:1.7; max-width:520px; font-style:italic; }
 
   .guide-body { padding:44px 48px; }
   .section-header { display:flex; align-items:center; gap:12px; margin:36px 0 18px; }
@@ -47,7 +45,7 @@
   .callout p { font-size:13px; color:#1a1a1a; line-height:1.7; }
 
   .specs-table { width:100%; border-collapse:collapse; margin:16px 0; font-size:13px; }
-  .specs-table th { background:#0a0a0a; color:#fff; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 14px; text-align:left; }
+  .specs-table th { background:#e85d04; color:#fff; font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:10px 14px; text-align:left; }
   .specs-table td { padding:9px 14px; border-bottom:1px solid #f0f0f0; color:#2a2a2a; vertical-align:top; }
   .specs-table tr:nth-child(even) td { background:#fafafa; }
   .specs-table td:first-child { font-weight:600; color:#0a0a0a; width:42%; }
@@ -69,7 +67,7 @@
   .path-cost-label { font-size:9px; color:#999; letter-spacing:1.5px; text-transform:uppercase; }
 
   .highlight-row { display:flex; gap:12px; margin:20px 0; }
-  .hl-box { flex:1; background:#0a0a0a; padding:18px 16px; border-radius:4px; text-align:center; }
+  .hl-box { flex:1; background:#f5f5f5; border:1px solid #e8e8e8; padding:18px 16px; border-radius:4px; text-align:center; }
   .hl-val { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:28px; font-weight:900; color:#e85d04; line-height:1; }
   .hl-label { font-size:9px; color:#777; text-transform:uppercase; letter-spacing:2px; margin-top:5px; }
 
@@ -77,10 +75,10 @@
   .legal-box p { font-size:10.5px; color:#777; line-height:1.7; }
   .legal-box strong { color:#444; }
 
-  .guide-footer { background:#0a0a0a; padding:18px 48px; display:flex; align-items:center; justify-content:space-between; }
+  .guide-footer { background:#f5f5f5; border-top:1px solid #e0e0e0; padding:18px 48px; display:flex; align-items:center; justify-content:space-between; }
   .footer-left { font-size:10px; color:#555; line-height:1.6; }
   .footer-left strong { color:#888; }
-  .footer-center { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:9px; font-weight:700; color:#333; letter-spacing:3px; text-transform:uppercase; text-align:center; }
+  .footer-center { font-family:Impact,'Arial Black','Arial Narrow',Arial,sans-serif; font-size:9px; font-weight:700; color:#888; letter-spacing:3px; text-transform:uppercase; text-align:center; }
   .footer-right { font-size:9px; color:#555; text-align:right; line-height:1.6; } .page { box-shadow:none; margin:0; } }
 
   @media print {
@@ -123,8 +121,8 @@
 
     <div class="cover-stats">
       <div class="stat-block">
-        <div class="stat-val">$16,430</div>
-        <div class="stat-label">Total (incl. Light Bee)</div>
+        <div class="stat-val">~$13,230</div>
+        <div class="stat-label">Total (frame + parts)</div>
       </div>
       <div class="stat-block">
         <div class="stat-val">~$12,930</div>
@@ -160,11 +158,11 @@
         <div class="path-cost-label">in add-on parts</div>
       </div>
       <div class="path-box">
-        <div class="path-label">Path B — Starting From Zero</div>
-        <div class="path-title">Full Build Path</div>
-        <div class="path-desc">Source the Light Bee first (new or used), then follow the same guide. Every step is documented. The $3,500 Light Bee is just the starting point — everything else in the guide is the same.</div>
-        <div class="path-cost">$16,430</div>
-        <div class="path-cost-label">all-in total</div>
+        <div class="path-label">Path B — No LBX Yet</div>
+        <div class="path-title">Frame Only</div>
+        <div class="path-desc">You don't need the whole bike — just the frame. Source an LBX frame for ~$800 and follow the same guide. No reason to buy a running bike you're just going to strip.</div>
+        <div class="path-cost">~$13,230</div>
+        <div class="path-cost-label">frame + upgrade parts</div>
       </div>
     </div>
 
@@ -272,16 +270,16 @@
 
     <div class="highlight-row">
       <div class="hl-box">
-        <div class="hl-val">$3,500</div>
-        <div class="hl-label">Sur-Ron Light Bee (Base)</div>
-      </div>
-      <div class="hl-box">
         <div class="hl-val">$12,930</div>
-        <div class="hl-label">Upgrade Parts</div>
+        <div class="hl-label">Upgrade Parts (Own LBX)</div>
       </div>
       <div class="hl-box">
-        <div class="hl-val">$16,430</div>
-        <div class="hl-label">All-In If Starting Fresh</div>
+        <div class="hl-val">~$800</div>
+        <div class="hl-label">Frame Only (No LBX)</div>
+      </div>
+      <div class="hl-box">
+        <div class="hl-val">~$13,230</div>
+        <div class="hl-label">Frame + Parts Total</div>
       </div>
       <div class="hl-box">
         <div class="hl-val">270-E</div>
@@ -293,16 +291,16 @@
       <tr><th colspan="2">Platform & Starting Point</th></tr>
       <tr><td>Base Platform</td><td class="spec-highlight">Sur-Ron Light Bee (LBX)</td></tr>
       <tr><td>Have a Light Bee already?</td><td>Start at the upgrade parts list (~$12,930). Light Bee cost is already sunk.</td></tr>
-      <tr><td>Don't have a Light Bee?</td><td>Source one new or used (~$3,500), then follow the same guide. Total: ~$16,430.</td></tr>
+      <tr><td>Don't have a Light Bee?</td><td>Source the LBX frame only (~$800) — no reason to buy a whole running bike you're going to strip. Total: ~$13,230.</td></tr>
       <tr><td>Build Result</td><td class="spec-highlight">SNG 270-E prototype specification — the actual SNG build</td></tr>
       <tr><th colspan="2">Build Requirements</th></tr>
       <tr><td>Tools Required</td><td>Standard shop tools — full list in guide. No CNC or specialized equipment.</td></tr>
       <tr><td>Skill Level</td><td>Intermediate mechanical. Electrical wiring comfort required.</td></tr>
       <tr><td>Build Time</td><td>60–80 hrs from base Light Bee. 100+ hrs from zero.</td></tr>
-      <tr><th colspan="2">Cost Breakdown (All-In Path)</th></tr>
-      <tr><td>Sur-Ron Light Bee</td><td>~$3,500 (new or used — condition and year spec in guide)</td></tr>
+      <tr><th colspan="2">Cost Breakdown</th></tr>
+      <tr><td>LBX Frame (if needed)</td><td>~$800</td></tr>
       <tr><td>Upgrade Components</td><td>~$12,930 — fully sourced and priced in guide</td></tr>
-      <tr><td>Total</td><td class="spec-highlight">$16,430</td></tr>
+      <tr><td>Total (frame path)</td><td class="spec-highlight">~$13,230</td></tr>
     </table>
 
     <div class="section-header">

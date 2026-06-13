@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#0a0a0a"/>
+  
+  <!-- SNG Logo Top Left -->
+  <g transform="translate(40 40) scale(0.6)">
+    <style>.sw{fill:none;stroke:#e85d04;stroke-width:5.5;stroke-linecap:square;stroke-linejoin:miter;}.o{fill:#e85d04;}.sng{font-family:Impact,'Arial Black',Arial,sans-serif;font-size:39px;letter-spacing:1px;font-style:italic;font-weight:900;}</style>
+    <path class="sw" d="M8 62 C30 34 62 14 94 3 L78 34 C73 45 78 55 103 70 L44 66 C32 65 20 64 8 62 Z"/>
+    <path class="sw" d="M18 62 L101 62"/>
+    <text class="o sng" x="18" y="101" transform="skewX(-12)">SNG</text>
+    <rect class="o" x="17" y="104" width="112" height="4" transform="skewX(-12)"/>
+  </g>
+
+  <!-- Guide Number Badge -->
+  <rect x="620" y="40" width="140" height="40" fill="#e85d04" rx="4"/>
+  <text x="690" y="68" text-anchor="middle" font-family="Impact, sans-serif" font-size="20" fill="#fff" letter-spacing="2">GUIDE 001</text>
+
+  <!-- Main Title -->
+  <text x="40" y="400" font-family="Impact, sans-serif" font-size="80" fill="#fff" text-transform="uppercase">Sur-Ron</text>
+  <text x="40" y="480" font-family="Impact, sans-serif" font-size="80" fill="#e85d04" text-transform="uppercase">LBX</text>
+  
+  <text x="40" y="540" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#888" letter-spacing="2" text-transform="uppercase">Frame-Up Super Build</text>
+
+  <!-- Bottom Bar -->
+  <rect x="0" y="720" width="800" height="80" fill="#111"/>
+  <rect x="0" y="720" width="800" height="4" fill="#e85d04"/>
+  
+  <text x="40" y="770" font-family="Arial, sans-serif" font-size="18" fill="#555" letter-spacing="1">SNG CYCLES · BUILD GUIDE SERIES</text>
+  <text x="760" y="770" text-anchor="end" font-family="Impact, sans-serif" font-size="40" fill="#fff">$149</text>
+</svg>

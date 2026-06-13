@@ -1,0 +1,2381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Cycles — Investor Presentation 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Barlow:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --orange: #e85d04;
+  --orange-hot: #ff8c00;
+  --black: #080808;
+  --dark: #111111;
+  --card: #161616;
+  --border: #222222;
+  --text: #e0e0e0;
+  --muted: #b8b8b8;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  font-family: 'Barlow', sans-serif;
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE SYSTEM
+══════════════════════════════════════════════ */
+.slide {
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+
+.slide-inner {
+  position: relative;
+  z-index: 2;
+  padding: 36px 72px;
+  width: 100%;
+}
+
+/* Orange bar top of each slide */
+.slide-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange) 0%, var(--orange-hot) 50%, transparent 100%);
+  width: 100%;
+}
+
+.slide-number {
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.slide-logo {
+  position: absolute;
+  top: 28px;
+  right: 48px;
+  z-index: 10;
+}
+
+.slide-logo img {
+  height: 36px;
+  width: 36px;
+  object-fit: cover;
+  object-position: center 62%;
+  border-radius: 4px;
+  opacity: 0.6;
+}
+
+/* ══════════════════════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════════════════════ */
+.label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.orange { color: var(--orange); }
+.hot { color: var(--orange-hot); }
+.muted { color: var(--muted); }
+
+/* ══════════════════════════════════════════════
+   SLIDE 1 — COVER
+══════════════════════════════════════════════ */
+#cover {
+  background: var(--black);
+  justify-content: flex-end;
+  min-height: 100vh;
+}
+
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.cover-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.55;
+  filter: contrast(1.1) saturate(1.2);
+}
+
+.cover-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(8,8,8,0.2) 0%,
+    rgba(8,8,8,0.1) 40%,
+    rgba(8,8,8,0.6) 70%,
+    rgba(8,8,8,0.98) 100%
+  );
+}
+
+.cover-vignette-left {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8,8,8,0.85) 0%,
+    transparent 55%
+  );
+}
+
+#cover .slide-inner {
+  padding-bottom: 56px;
+}
+
+.cover-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+
+.cover-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(72px, 9vw, 120px);
+  line-height: 0.88;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+
+.cover-title em {
+  font-style: italic;
+  color: var(--orange);
+}
+
+.cover-tagline {
+  font-size: 16px;
+  font-weight: 300;
+  color: #d0d0d0;
+  letter-spacing: 1px;
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.cover-badges {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #d4d4d4;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.cover-brand-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orange) 0%, var(--orange-hot) 100%);
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE 2 — THE OPPORTUNITY
+══════════════════════════════════════════════ */
+#opportunity {
+  background: var(--dark);
+}
+
+.opp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.opp-left h2 {
+  font-size: clamp(48px, 6vw, 80px);
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.opp-left h2 span {
+  color: var(--orange);
+}
+
+.opp-left p {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.opp-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.opp-stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--orange);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.opp-stat .stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.opp-stat .stat-label {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.opp-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gap-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.gap-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.gap-icon.red { background: rgba(220,50,50,0.12); }
+.gap-icon.orange { background: rgba(232,93,4,0.12); }
+.gap-icon.green { background: rgba(30,160,80,0.12); }
+
+.gap-card h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.gap-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE 3 — THE LINEUP
+══════════════════════════════════════════════ */
+#lineup {
+  background: var(--black);
+}
+
+.lineup-header {
+  margin-bottom: 40px;
+}
+
+.lineup-header h2 {
+  font-size: clamp(40px, 5vw, 68px);
+  color: var(--white);
+}
+
+.lineup-header h2 span { color: var(--orange); }
+
+.bike-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.bike-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.bike-card:hover {
+  border-color: var(--orange);
+}
+
+.bike-img {
+  width: 100%;
+  height: 200px;
+  background: #0f0f0f;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bike-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bike-info {
+  padding: 18px 20px;
+}
+
+.bike-info .model-tag {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+
+.bike-info h3 {
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.bike-specs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.spec-chip {
+  font-size: 13px;
+  font-weight: 600;
+  color: #d0d0d0;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid #2a2a2a;
+  border-radius: 3px;
+  padding: 3px 8px;
+  letter-spacing: 0.5px;
+}
+
+.bike-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.bike-price .price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--orange);
+}
+
+.bike-price .price-label {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE 4 — MEGALODON SPOTLIGHT
+══════════════════════════════════════════════ */
+#megalodon {
+  background: var(--black);
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.spotlight-img {
+  position: relative;
+}
+
+.spotlight-img img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.spotlight-img::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--orange), transparent 60%);
+  z-index: -1;
+}
+
+.spotlight-content h2 {
+  font-size: clamp(52px, 7vw, 96px);
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.spotlight-content h2 em {
+  font-style: italic;
+  color: var(--orange);
+}
+
+.spotlight-content .sub {
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 32px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.spec-row:last-child { border-bottom: none; }
+
+.spec-row:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+.spec-key {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.spec-val {
+  font-weight: 600;
+  color: var(--white);
+  text-align: right;
+}
+
+.spec-val.highlight { color: var(--orange); }
+
+.msrp-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.msrp-box .msrp-label {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.msrp-box .msrp-price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+}
+
+.msrp-box .margin-label {
+  font-size: 13px;
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE 5 — GREAT WHITE SPOTLIGHT
+══════════════════════════════════════════════ */
+#greatwhite {
+  background: var(--dark);
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE 6 — PROVEN (270-E Already Built)
+══════════════════════════════════════════════ */
+#proven {
+  background: var(--black);
+}
+
+.proven-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.proven-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.proven-stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.proven-stat .big {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.proven-stat .small {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-item:last-child { border-bottom: none; }
+
+.tl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.tl-dot.done { background: #4CAF50; }
+.tl-dot.pending { background: var(--muted); }
+
+.tl-text h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.tl-text p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.compliance-box {
+  background: rgba(30,160,80,0.06);
+  border: 1px solid rgba(30,160,80,0.2);
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.compliance-box h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4CAF50;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.compliance-box p {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE 7 — WHY SNG
+══════════════════════════════════════════════ */
+#why {
+  background: var(--dark);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.why-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-hot));
+}
+
+.why-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.why-card h3 {
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 32px;
+  font-size: 13px;
+}
+
+.comp-table thead tr {
+  background: rgba(255,255,255,0.03);
+}
+
+.comp-table thead th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.comp-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.comp-table tbody tr:last-child {
+  background: rgba(232,93,4,0.06);
+  border: 1px solid rgba(232,93,4,0.2);
+}
+
+.comp-table tbody td {
+  padding: 12px 16px;
+  color: var(--text);
+}
+
+.comp-table tbody tr:last-child td {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.comp-table .check { color: #4CAF50; }
+.comp-table .x { color: #e53935; }
+.comp-table .orange-text { color: var(--orange); }
+
+/* ══════════════════════════════════════════════
+   SLIDE 8 — BUSINESS MODEL
+══════════════════════════════════════════════ */
+#business {
+  background: var(--black);
+}
+
+.biz-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.revenue-streams {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.stream-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stream-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: rgba(232,93,4,0.25);
+  line-height: 1;
+  min-width: 48px;
+}
+
+.stream-info h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.stream-info p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.biz-right h3 {
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.unit-econ {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.unit-econ-header {
+  background: #0f0f0f;
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.unit-econ-body {
+  padding: 4px 0;
+}
+
+.econ-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 18px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.econ-row:last-child { border-bottom: none; }
+
+.econ-row .key { color: var(--muted); font-size: 14px; }
+.econ-row .val { font-weight: 600; color: var(--white); }
+.econ-row .val.green { color: #4CAF50; }
+.econ-row .val.orange { color: var(--orange); }
+
+.trigger-box {
+  background: rgba(232,93,4,0.06);
+  border: 1px solid rgba(232,93,4,0.25);
+  border-radius: 6px;
+  padding: 24px;
+  text-align: center;
+}
+
+.trigger-box .t-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.trigger-box .t-label {
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.trigger-box .t-desc {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE 9 — THE ASK
+══════════════════════════════════════════════ */
+#ask {
+  background: var(--dark);
+}
+
+.ask-hero {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.ask-hero h2 {
+  font-size: clamp(60px, 8vw, 110px);
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.ask-hero h2 em {
+  font-style: italic;
+  background: linear-gradient(90deg, var(--orange), var(--orange-hot));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ask-hero p {
+  font-size: 18px;
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.ask-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ask-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.ask-card.featured {
+  background: var(--black);
+  border-color: var(--orange);
+  position: relative;
+}
+
+.ask-card.featured::before {
+  content: 'RECOMMENDED';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--orange);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 4px 12px;
+  border-radius: 3px;
+}
+
+.ask-card .ask-phase {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.ask-card .ask-amount {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.ask-card.featured .ask-amount { color: var(--orange); }
+
+.ask-card .ask-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.ask-card ul {
+  list-style: none;
+  text-align: left;
+  font-size: 14px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ask-card ul li::before {
+  content: '→ ';
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE 10 — TEAM
+══════════════════════════════════════════════ */
+#team {
+  background: var(--black);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.team-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.team-card.founder {
+  border-color: rgba(232,93,4,0.3);
+}
+
+.team-photo {
+  height: 160px;
+  background: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.team-card.founder .team-photo {
+  height: 200px;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a0e00 100%);
+}
+
+.team-body {
+  padding: 18px;
+}
+
+.team-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.team-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.team-bio {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════
+   SLIDE 11 — CTA / CONTACT
+══════════════════════════════════════════════ */
+#contact {
+  background: var(--black);
+  min-height: 60vh;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.contact-left h2 {
+  font-size: clamp(52px, 7vw, 90px);
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.contact-left h2 em {
+  font-style: italic;
+  color: var(--orange);
+}
+
+.contact-left p {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 440px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.contact-icon {
+  font-size: 22px;
+  width: 42px;
+  text-align: center;
+}
+
+.contact-item-text .contact-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.contact-item-text .contact-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.contact-item-text .contact-value a {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════
+   FOOTER / DISCLAIMER
+══════════════════════════════════════════════ */
+.deck-footer {
+  background: #050505;
+  padding: 24px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #1a1a1a;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-left img {
+  height: 28px;
+  width: 28px;
+  object-fit: cover;
+  object-position: center 62%;
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+.footer-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.footer-disclaimer {
+  font-size: 13px;
+  color: #333;
+  max-width: 500px;
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════
+   PRINT / PDF
+══════════════════════════════════════════════ */
+@media print {
+  body { background: #080808; }
+  .slide { page-break-after: always; height: 100vh; max-height: 100vh; overflow: hidden; page-break-inside: avoid; }
+  @page { margin: 0; size: landscape; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 1 — COVER
+═══════════════════════════════════════════ -->
+<section class="slide" id="cover">
+  <div class="cover-brand-bar"></div>
+  <div class="cover-bg">
+    <img src="megalodon-render.jpg" alt="SNG Megalodon 520E">
+    <div class="cover-vignette"></div>
+    <div class="cover-vignette-left"></div>
+  </div>
+  <div class="slide-inner">
+    <div class="cover-eyebrow">Investor Presentation &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Confidential</div>
+    <div class="cover-title">
+      SNG<br>
+      <em>Cycles</em>
+    </div>
+    <div class="cover-tagline">
+      We build the electric supermoto the factory won't.
+      Self-taught engineer. South Florida. 1,000 hours R&D.
+      Three prototypes. One proven build on the road.
+    </div>
+    <div class="cover-badges">
+      <div class="badge"><div class="badge-dot"></div>Street Legal · Compliance Certified</div>
+      <div class="badge"><div class="badge-dot"></div>270-E — Built & Riding</div>
+      <div class="badge"><div class="badge-dot"></div>sngcycles.com — Live</div>
+      <div class="badge"><div class="badge-dot"></div>6-Model 2026 Lineup</div>
+    </div>
+  </div>
+  <div class="slide-number">01 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 2 — THE OPPORTUNITY
+═══════════════════════════════════════════ -->
+<section class="slide" id="opportunity">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner">
+    <div class="label">Three Gaps. One Company.</div>
+    <h2 style="font-size:clamp(40px,5vw,68px);color:var(--white);margin-bottom:8px;">The market is <span style="color:var(--orange);">wide open.</span><br>In three directions.</h2>
+    <p style="font-size:15px;color:var(--text);margin-bottom:28px;max-width:760px;line-height:1.7;">E-moto grew <strong style="color:var(--orange);">38% year-over-year</strong> last year. The segment is exploding — and the three biggest gaps in it all have the same answer.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:24px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:28px;border-top:3px solid var(--orange);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:var(--orange);line-height:1;margin-bottom:10px;">01</div>
+        <h3 style="font-size:19px;color:var(--white);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">No Tall E-Moto Exists</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.75;">Sur-Ron is built for 5'8". Zero is a commuter. Stark is competition spec only. There is not a single electric motorcycle on the market engineered for the 6'+ rider with an MX background. <strong style="color:var(--white);">That rider is SNG's core customer.</strong></p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:28px;border-top:3px solid var(--orange);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:var(--orange);line-height:1;margin-bottom:10px;">02</div>
+        <h3 style="font-size:19px;color:var(--white);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">No Premium E-Moto Brand</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.75;">BMW hasn't done it. Ducati hasn't done it. The high-end motard and supermoto premium space is completely empty on the electric side. <strong style="color:var(--white);">SNG enters at $38K–$62K with a lineup no one else has.</strong></p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:28px;border-top:3px solid var(--orange);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:var(--orange);line-height:1;margin-bottom:10px;">03</div>
+        <h3 style="font-size:19px;color:var(--white);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">No E-Moto Identity Brand</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.75;">Alpinestars and Fox were built on 2-stroke oil 40 years ago. That culture doesn't translate. E-moto is a different identity entirely — and <strong style="color:var(--white);">nobody owns it yet.</strong> SNG is that brand.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+      <div style="background:rgba(232,93,4,0.08);border:1px solid rgba(232,93,4,0.3);border-radius:6px;padding:16px 20px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:var(--orange);line-height:1;">38%</div>
+        <div style="font-size:13px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">YoY Growth — Last Year</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 20px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:var(--white);line-height:1;">$22B</div>
+        <div style="font-size:13px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Global Market by 2030</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 20px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:var(--white);line-height:1;">$0</div>
+        <div style="font-size:13px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Competition Across All 3 Gaps</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 20px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:var(--white);line-height:1;">6'7"</div>
+        <div style="font-size:13px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Founder — Built This Because He Had To</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">02 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 3 — THE LINEUP
+═══════════════════════════════════════════ -->
+<section class="slide" id="lineup">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner">
+    <div class="lineup-header">
+      <div class="label">2026 Model Lineup</div>
+      <h2>Six sharks.<br><span>One ocean.</span></h2>
+    </div>
+    <div class="bike-grid">
+
+      <div class="bike-card">
+        <div class="bike-img">
+          <img src="270e supermoto.png" alt="SNG 270-E">
+        </div>
+        <div class="bike-info">
+          <div class="model-tag">Entry / Conversion</div>
+          <h3>SNG 270-E</h3>
+          <div class="bike-specs">
+            <span class="spec-chip">27kW Peak</span>
+            <span class="spec-chip">72V / FarDriver Controller</span>
+            <span class="spec-chip">WP XACT 85</span>
+          </div>
+          <div class="bike-price">
+            <div><div class="price-label">Starting MSRP</div><div class="price">$24,950</div></div>
+            <div style="font-size:13px;color:#4CAF50;font-weight:700;">BUILT ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bike-card">
+        <div class="bike-img">
+          <img src="mako-flagship.png" alt="SNG Mako">
+        </div>
+        <div class="bike-info">
+          <div class="model-tag">Supermoto</div>
+          <h3>SNG Mako</h3>
+          <div class="bike-specs">
+            <span class="spec-chip">40kW Peak</span>
+            <span class="spec-chip">17" Supermoto</span>
+            <span class="spec-chip">Street Legal</span>
+          </div>
+          <div class="bike-price">
+            <div><div class="price-label">Starting MSRP</div><div class="price">$28,950</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bike-card">
+        <div class="bike-img" style="background:#0a0800;">
+          <img src="great-white-clean.png" alt="SNG Great White">
+        </div>
+        <div class="bike-info">
+          <div class="model-tag">Stunt Platform</div>
+          <h3>Great White</h3>
+          <div class="bike-specs">
+            <span class="spec-chip">~60kW Liquid Cooled</span>
+            <span class="spec-chip">LBX-60 Motor</span>
+            <span class="spec-chip">Custom Frame</span>
+          </div>
+          <div class="bike-price">
+            <div><div class="price-label">Starting MSRP</div><div class="price">$42,500</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bike-card">
+        <div class="bike-img">
+          <img src="megalodon-render.jpg" alt="Megalodon 520E">
+        </div>
+        <div class="bike-info">
+          <div class="model-tag">Flagship Supermoto</div>
+          <h3>Megalodon 520E</h3>
+          <div class="bike-specs">
+            <span class="spec-chip">52kW Peak</span>
+            <span class="spec-chip">Ohlins + Beringer</span>
+            <span class="spec-chip">CarPlay Display</span>
+          </div>
+          <div class="bike-price">
+            <div><div class="price-label">Starting MSRP</div><div class="price">$38,500</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bike-card">
+        <div class="bike-img">
+          <img src="sand-shark.png" alt="Sand Shark">
+        </div>
+        <div class="bike-info">
+          <div class="model-tag">3-Wheel / Tadpole</div>
+          <h3>Sand Shark</h3>
+          <div class="bike-specs">
+            <span class="spec-chip">20kW</span>
+            <span class="spec-chip">Tadpole Config</span>
+            <span class="spec-chip">Custom Frame</span>
+          </div>
+          <div class="bike-price">
+            <div><div class="price-label">Starting MSRP</div><div class="price">$32,000</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bike-card" style="border-color:rgba(232,93,4,0.25);background:#0f0e0a;">
+        <div class="bike-img" style="background:linear-gradient(135deg,#0f0f0f,#1a1200);">
+          <img src="platinum-520e.png" alt="Platinum 520E">
+        </div>
+        <div class="bike-info">
+          <div class="model-tag" style="color:#c8a020;">Limited Collector</div>
+          <h3>Platinum 520E</h3>
+          <div class="bike-specs">
+            <span class="spec-chip">52kW Base</span>
+            <span class="spec-chip">3M Platinum Wrap</span>
+            <span class="spec-chip">Serial + CoA</span>
+          </div>
+          <div class="bike-price">
+            <div><div class="price-label">Starting MSRP</div><div class="price" style="color:#c8a020;">$62,000</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="slide-number">03 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 4 — MEGALODON SPOTLIGHT
+═══════════════════════════════════════════ -->
+<section class="slide" id="megalodon">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner">
+    <div class="spotlight-grid">
+      <div class="spotlight-img">
+        <img src="megalodon-render.jpg" alt="Megalodon 520E">
+      </div>
+      <div class="spotlight-content">
+        <div class="label">Flagship Model</div>
+        <h2>Megalodon<br><em>520E</em></h2>
+        <div class="sub">Electric Supermoto · Street Legal</div>
+        <div class="spec-list">
+          <div class="spec-row">
+            <span class="spec-key">Peak Power</span>
+            <span class="spec-val highlight">52kW (70HP)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Motor</span>
+            <span class="spec-val">LBX-60 High-Power Race</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Controller</span>
+            <span class="spec-val">FarDriver High-Power (1,600A burst)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Battery</span>
+            <span class="spec-val">72V / 60Ah · ~80 mile range</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Suspension</span>
+            <span class="spec-val">WP XACT 48mm · Ohlins TTX36</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Wheels</span>
+            <span class="spec-val">Warp9 17/17 Custom · Blue</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Brakes</span>
+            <span class="spec-val">Beringer 6-Piston (World SMoto spec)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Display</span>
+            <span class="spec-val">RiderNav R7X · Wireless CarPlay</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Safety</span>
+            <span class="spec-val highlight">Front + Rear Cam · Blind Spot Radar</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Compliance</span>
+            <span class="spec-val highlight">Street Legal · Compliance Certified</span>
+          </div>
+        </div>
+        <div class="msrp-box">
+          <div>
+            <div class="msrp-label">Starting MSRP</div>
+            <div class="msrp-price">$38,500</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="msrp-label">Demo Build Cost</div>
+            <div style="font-size:22px;font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#d0d0d0;">~$21,000</div>
+            <div class="margin-label">~45% gross margin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 5 — GREAT WHITE SPOTLIGHT
+═══════════════════════════════════════════ -->
+<section class="slide" id="greatwhite" style="background:var(--dark);">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner">
+    <div class="spotlight-grid">
+      <div class="spotlight-content">
+        <div class="label">The Apex Predator</div>
+        <h2>Great<br><em>White</em></h2>
+        <div class="sub">~60kW Liquid-Cooled Stunt Platform (~80HP)</div>
+        <div class="spec-list">
+          <div class="spec-row">
+            <span class="spec-key">Peak Power</span>
+            <span class="spec-val highlight">~60kW Liquid Cooled</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Motor</span>
+            <span class="spec-val">LBX-60 Liquid Cooled</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Controller</span>
+            <span class="spec-val">High-Power Programmable — TBD at build</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Battery</span>
+            <span class="spec-val">84V / 60Ah High-Discharge</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Frame</span>
+            <span class="spec-val">Custom 4130 Chromoly — Stunt Spec</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Suspension</span>
+            <span class="spec-val">WP XACT Pro A-Kit — Stunt Tuned</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Brakes</span>
+            <span class="spec-val">Beringer 6-Piston F + R</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Platform</span>
+            <span class="spec-val">Extended swingarm · Stunt pegs · Cage</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Safety</span>
+            <span class="spec-val highlight">Front + Rear Cam · Blind Spot Radar</span>
+          </div>
+        </div>
+        <div class="msrp-box">
+          <div>
+            <div class="msrp-label">Starting MSRP</div>
+            <div class="msrp-price">$42,500</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="msrp-label">Demo Build Cost</div>
+            <div style="font-size:22px;font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#d0d0d0;">~$28,000</div>
+            <div class="margin-label">~34% gross margin</div>
+          </div>
+        </div>
+      </div>
+      <div class="spotlight-img">
+        <img src="great-white-clean.png" alt="Great White">
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">05 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 6 — PROVEN
+═══════════════════════════════════════════ -->
+<section class="slide" id="proven">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner">
+    <div class="proven-grid">
+      <div>
+        <div class="label">Proven Traction</div>
+        <h2 style="font-size:clamp(44px,5vw,72px);color:var(--white);margin-bottom:28px;">
+          Not a concept.<br><span style="color:var(--orange);">Already built.</span>
+        </h2>
+        <div class="proven-stats">
+          <div class="proven-stat">
+            <div class="big">1,000<span style="font-size:28px;">+</span></div>
+            <div class="small">Hours of R&D</div>
+          </div>
+          <div class="proven-stat">
+            <div class="big">3</div>
+            <div class="small">Prototypes Built</div>
+          </div>
+          <div class="proven-stat">
+            <div class="big">$40K<span style="font-size:24px;">+</span></div>
+            <div class="small">Self-Funded</div>
+          </div>
+          <div class="proven-stat">
+            <div class="big">270-E</div>
+            <div class="small">Riding Today</div>
+          </div>
+        </div>
+        <div class="compliance-box">
+          <h4>✓ Street Legal Compliance — Secured</h4>
+          <p>SNG Cycles has completed the compliance process required for street-legal VIN registration in all 50 states — a barrier most custom builders never clear. Every build is engineered to meet federal and state requirements from the ground up.</p>
+        </div>
+      </div>
+      <div>
+        <div class="label">Milestones</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-dot done"></div>
+            <div class="tl-text">
+              <h4>Prototype 1 — Concept validation</h4>
+              <p>First functional build, proof of geometry and power concept. Self-funded.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot done"></div>
+            <div class="tl-text">
+              <h4>Prototype 2 — Suspension + drivetrain</h4>
+              <p>WP XACT integration, controller tuning, 520 chain drive development.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot done"></div>
+            <div class="tl-text">
+              <h4>270-E — Production-intent prototype</h4>
+              <p>Built to spec. Riding. $16,430 actual cost. Street legal pathway confirmed.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot done"></div>
+            <div class="tl-text">
+              <h4>Street Legal Compliance — Secured</h4>
+              <p>Full street-legal compliance process complete. VIN registration pathway confirmed in all 50 states.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot done"></div>
+            <div class="tl-text">
+              <h4>Brand + Domain — Registered</h4>
+              <p>sngcycles.com live. Website live. Team assembled. Merch launched.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div class="tl-text">
+              <h4>Demo Fleet — 6 builds</h4>
+              <p>One working prototype of every model. Estimated 10–14 weeks with capital deployed.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot pending"></div>
+            <div class="tl-text">
+              <h4>30-Unit Production Run — $4M trigger</h4>
+              <p>Full production, dealer network, limited collector editions. Scale begins here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">06 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 7 — WHY SNG / COMPETITIVE MOAT
+═══════════════════════════════════════════ -->
+<section class="slide" id="why">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner">
+    <div class="label">Competitive Advantage</div>
+    <h2 style="font-size:clamp(44px,5vw,72px);color:var(--white);margin-bottom:8px;">
+      Why SNG wins.<br><span style="color:var(--orange);">Why no one else can.</span>
+    </h2>
+
+    <table class="comp-table" style="margin-top:32px;margin-bottom:36px;">
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Peak Power</th>
+          <th>Street Legal</th>
+          <th>Tall Rider Geo</th>
+          <th>Compliance Cert</th>
+          <th>Custom Build</th>
+          <th>Available Now</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sur-Ron Light Bee X</td>
+          <td>6kW stock / 27kW mod</td>
+          <td class="x">✕ No</td>
+          <td class="x">✕ No</td>
+          <td class="x">✕ No</td>
+          <td class="x">✕ No</td>
+          <td class="check">✓ Yes</td>
+        </tr>
+        <tr>
+          <td>Stark Varg</td>
+          <td>40kW</td>
+          <td class="check">✓ Yes</td>
+          <td class="x">✕ No</td>
+          <td class="x">✕ No</td>
+          <td class="x">✕ No</td>
+          <td class="check">✓ Yes</td>
+        </tr>
+        <tr>
+          <td>Zero FXE</td>
+          <td>34kW (46HP)</td>
+          <td class="check">✓ Yes</td>
+          <td class="x">✕ No</td>
+          <td>— Standard</td>
+          <td class="x">✕ No</td>
+          <td class="check">✓ Yes</td>
+        </tr>
+        <tr>
+          <td>Cake Kalk (Discontinued)</td>
+          <td>42kW</td>
+          <td class="x">✕ Off-road</td>
+          <td class="x">✕ No</td>
+          <td class="x">✕ No</td>
+          <td class="x">✕ No</td>
+          <td class="x">✕ Bankrupt</td>
+        </tr>
+        <tr>
+          <td><strong class="orange-text">SNG Cycles</strong></td>
+          <td><strong class="orange-text">27kW – 60kW+ (36–80HP)</strong></td>
+          <td class="check"><strong>✓ Yes</strong></td>
+          <td class="check"><strong>✓ Yes — Built for 6'7"</strong></td>
+          <td class="check"><strong>✓ Compliance Certified</strong></td>
+          <td class="check"><strong>✓ Yes</strong></td>
+          <td class="check"><strong>✓ 270-E on road</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="background:rgba(232,93,4,0.06);border:1px solid rgba(232,93,4,0.2);border-radius:6px;padding:14px 24px;margin:20px 0;font-size:13px;color:var(--text);line-height:1.8;">
+      <strong style="color:var(--white);">Standard on every SNG build:</strong> Front + rear dashcam (Innovv K5, 2K resolution) + blind spot radar (Garmin Varia RVT70). <span style="color:var(--orange);font-weight:700;">No other custom e-moto builder includes this. Not one.</span>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">⚡</span>
+        <h3>Compliance First</h3>
+        <p>Every SNG build is engineered for street-legal VIN registration from day one. Competitors build for tracks. We build for roads.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📐</span>
+        <h3>Built for Real Riders</h3>
+        <p>1,000+ hours designing geometry for riders 6'+ who come from KTM 450/500/690 backgrounds. The ergonomics that every other manufacturer ignores — we started there.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🦈</span>
+        <h3>Brand That Travels</h3>
+        <p>SNG is a story — the backyard engineer who built what the factory wouldn't. That narrative is a marketing asset no amount of VC money can replicate. This is authentic.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">07 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 8 — BUSINESS MODEL
+═══════════════════════════════════════════ -->
+<section class="slide" id="business">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner">
+    <div class="biz-grid">
+      <div>
+        <div class="label">Business Model</div>
+        <h2 style="font-size:clamp(40px,5vw,64px);color:var(--white);margin-bottom:24px;">
+          Four ways we<br><span style="color:var(--orange);">make money.</span>
+        </h2>
+        <div class="revenue-streams">
+          <div class="stream-card">
+            <div class="stream-num">01</div>
+            <div class="stream-info">
+              <h4>Custom Builds — Direct Sale</h4>
+              <p>Build-to-order. $24,950–$62,000 MSRP per bike. 35–55% gross margin at demo scale. Production economics improve significantly at 30+ units.</p>
+            </div>
+          </div>
+          <div class="stream-card">
+            <div class="stream-num">02</div>
+            <div class="stream-info">
+              <h4>Limited Production Run — 30 Units</h4>
+              <p>The $4M investor trigger. Blanket factory orders. 30–45% BOM reduction vs. demo cost. Full dealer network activation. Collector editions (Platinum) at premium ASP.</p>
+            </div>
+          </div>
+          <div class="stream-card">
+            <div class="stream-num">03</div>
+            <div class="stream-info">
+              <h4>Apparel & Merch</h4>
+              <p>Drop-ship hats, hoodies, tees live now via Printful. Flat brim only — brand statement. Tall sizes differentiate. Ancillary revenue day one with zero inventory.</p>
+            </div>
+          </div>
+          <div class="stream-card">
+            <div class="stream-num">04</div>
+            <div class="stream-info">
+              <h4>Digital Guides / IP</h4>
+              <p>Proprietary build guides for the DIY e-moto community. Sold via Payhip. Positions SNG as the knowledge authority while generating passive income between builds.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="color:var(--white);margin-bottom:16px;font-size:18px;">Unit Economics — Megalodon 520E</h3>
+        <div class="unit-econ">
+          <div class="unit-econ-header">Demo Build (Single Unit)</div>
+          <div class="unit-econ-body">
+            <div class="econ-row"><span class="key">Component BOM</span><span class="val">~$12,000</span></div>
+            <div class="econ-row"><span class="key">Custom fab + labor</span><span class="val">~$5,000</span></div>
+            <div class="econ-row"><span class="key">Compliance + docs</span><span class="val">~$1,500</span></div>
+            <div class="econ-row"><span class="key">Total demo cost</span><span class="val orange">~$18,500 avg.</span></div>
+            <div class="econ-row"><span class="key">MSRP</span><span class="val">$38,500</span></div>
+            <div class="econ-row"><span class="key">Gross Margin</span><span class="val green">~52%</span></div>
+          </div>
+        </div>
+        <div class="unit-econ">
+          <div class="unit-econ-header">Production Run (30 Units)</div>
+          <div class="unit-econ-body">
+            <div class="econ-row"><span class="key">BOM (volume discount −35%)</span><span class="val">~$7,800</span></div>
+            <div class="econ-row"><span class="key">Assembly (learned curve)</span><span class="val">~$3,000</span></div>
+            <div class="econ-row"><span class="key">Overhead per unit</span><span class="val">~$1,200</span></div>
+            <div class="econ-row"><span class="key">Total production cost</span><span class="val orange">~$12,000</span></div>
+            <div class="econ-row"><span class="key">MSRP</span><span class="val">$38,500</span></div>
+            <div class="econ-row"><span class="key">Gross Margin at Scale</span><span class="val green">~69%</span></div>
+          </div>
+        </div>
+        <div class="trigger-box">
+          <div class="t-num">30</div>
+          <div class="t-label">bikes · $4M investor trigger</div>
+          <div class="t-desc">At 30 units × ~$35K avg. ASP = <strong style="color:var(--orange);">$1.05M gross revenue</strong> on first production run. Platinum edition at $62K ASP = <strong style="color:var(--orange);">$186K per 3-unit batch.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">08 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 9 — THE VAULT
+═══════════════════════════════════════════ -->
+<section class="slide" id="vault" style="background:var(--black);">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner" style="padding-top:20px;padding-bottom:20px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+
+      <!-- LEFT COLUMN -->
+      <div>
+        <div class="label">The Builder's Series</div>
+        <h2 style="font-size:clamp(36px,4vw,56px);color:var(--white);margin-bottom:8px;">Not gas.<br>Not just e-moto.<br><em style="color:var(--orange);">Both.</em></h2>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:16px;">Every gas rider has a closet full of Alpinestars and Fox gear that smells like 2-stroke oil — because that's what those brands were built on 40 years ago. That culture is real. SNG doesn't kill it. <strong style="color:var(--white);">We electrify it.</strong></p>
+
+        <!-- VAULT CONTENTS VISUAL -->
+        <div style="background:#0c0c0c;border:1px solid #2a2a2a;border-radius:12px;overflow:hidden;margin-bottom:12px;">
+          <!-- Chest image header -->
+          <div style="position:relative;height:100px;overflow:hidden;">
+            <img src="vault-chest.jpg" alt="SNG Vault" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(0.65) contrast(1.1);">
+            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,0.2) 0%,rgba(8,8,8,0.75) 100%);"></div>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:5px;">WHAT'S IN THE VAULT</div>
+              <div style="font-size:14px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-top:5px;">#001 OF 25 · SHARK NOT GOLDFISH</div>
+            </div>
+          </div>
+          <!-- Contents grid -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+
+            <div style="padding:8px 10px;border-right:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e;display:flex;gap:8px;align-items:flex-start;">
+              <div style="background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.35);border-radius:4px;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:var(--orange);">01</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;">Builder Jackshaft</div>
+                <div style="font-size:13px;color:#b0b0b0;line-height:1.5;">7075 Billet · ABEC-9 Sealed · Shark CNC</div>
+              </div>
+            </div>
+
+            <div style="padding:8px 10px;border-bottom:1px solid #1e1e1e;display:flex;gap:8px;align-items:flex-start;">
+              <div style="background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.35);border-radius:4px;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:var(--orange);">02</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;">Waterproof Build Plans</div>
+                <div style="font-size:13px;color:#b0b0b0;line-height:1.5;">Bench-length · lays flat while you work</div>
+              </div>
+            </div>
+
+            <div style="padding:8px 10px;border-right:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e;display:flex;gap:8px;align-items:flex-start;">
+              <div style="background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.35);border-radius:4px;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:var(--orange);">03</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;">Builder Tee — Tall Cut</div>
+                <div style="font-size:13px;color:#b0b0b0;line-height:1.5;">Long-torso fit · SNG brand</div>
+              </div>
+            </div>
+
+            <div style="padding:8px 10px;border-bottom:1px solid #1e1e1e;display:flex;gap:8px;align-items:flex-start;">
+              <div style="background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.35);border-radius:4px;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:var(--orange);">04</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;">Flat Brim Hat</div>
+                <div style="font-size:13px;color:#b0b0b0;line-height:1.5;">Your gas bike's colorway · KTM / Honda / Kawi</div>
+              </div>
+            </div>
+
+            <div style="padding:8px 10px;border-right:1px solid #1e1e1e;display:flex;gap:8px;align-items:flex-start;">
+              <div style="background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.35);border-radius:4px;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:var(--orange);">05</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;">Number Plate Decal Set</div>
+                <div style="font-size:13px;color:#b0b0b0;line-height:1.5;">SNG branded · race-spec vinyl</div>
+              </div>
+            </div>
+
+            <div style="padding:8px 10px;display:flex;gap:8px;align-items:flex-start;">
+              <div style="background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.35);border-radius:4px;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:var(--orange);">06</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;">Serial Certificate</div>
+                <div style="font-size:13px;color:#b0b0b0;line-height:1.5;">Numbered #/25 · CoA · Collectible</div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Footer bar -->
+          <div style="background:rgba(232,93,4,0.07);border-top:1px solid rgba(232,93,4,0.2);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:13px;color:var(--orange);font-weight:700;letter-spacing:2px;text-transform:uppercase;">Not a PDF. Not a download. Physical.</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--orange);">$499</div>
+          </div>
+        </div>
+
+        <!-- Hat Colorway callout -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+          <div style="font-size:13px;color:var(--orange);font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">Builder's Series Hats — Your Gas Bike's Colorway</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:8px;background:#1a0e00;border:1px solid #e85d04;border-radius:4px;padding:6px 12px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#e85d04;"></div>
+              <span style="font-size:13px;color:#e85d04;font-weight:700;letter-spacing:1px;">KTM ORANGE</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;background:#0d0d0d;border:1px solid #cc0000;border-radius:4px;padding:6px 12px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#cc0000;"></div>
+              <span style="font-size:13px;color:#cc0000;font-weight:700;letter-spacing:1px;">HONDA RED</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;background:#0a1a0a;border:1px solid #2d7a2d;border-radius:4px;padding:6px 12px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#2d7a2d;"></div>
+              <span style="font-size:13px;color:#2d7a2d;font-weight:700;letter-spacing:1px;">KAWASAKI GREEN</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;background:#0a0a1a;border:1px solid #1a6ed8;border-radius:4px;padding:6px 12px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#1a6ed8;"></div>
+              <span style="font-size:13px;color:#1a6ed8;font-weight:700;letter-spacing:1px;">YAMAHA BLUE</span>
+            </div>
+          </div>
+          <p style="font-size:14px;color:var(--muted);margin-top:10px;line-height:1.6;">Got a KTM? We've got the orange hat. Old frame, blown top end, or just want to feel what 52kW of torque does — we've got a box for that too.</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="border-radius:10px;overflow:hidden;border:1px solid #2a2a2a;background:#080808;">
+          <svg viewBox="0 0 520 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+            <defs>
+              <linearGradient id="vWood" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#4a2008"/>
+                <stop offset="60%" stop-color="#2e1205"/>
+                <stop offset="100%" stop-color="#1e0d03"/>
+              </linearGradient>
+              <linearGradient id="vLidFace" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#3d1a06"/>
+                <stop offset="100%" stop-color="#251004"/>
+              </linearGradient>
+              <linearGradient id="vMetal" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d4982a"/>
+                <stop offset="100%" stop-color="#7a5510"/>
+              </linearGradient>
+              <linearGradient id="vInterior" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a0c04"/>
+                <stop offset="100%" stop-color="#0d0602"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Background -->
+            <rect width="520" height="270" fill="#080808"/>
+
+            <!-- Ground shadow -->
+            <ellipse cx="260" cy="258" rx="168" ry="9" fill="rgba(0,0,0,0.65)"/>
+
+            <!-- ── CHEST BOX ── -->
+            <rect x="88" y="158" width="344" height="96" rx="3" fill="url(#vWood)"/>
+            <!-- Wood grain -->
+            <line x1="88" y1="171" x2="432" y2="171" stroke="#5a2810" stroke-width="1.3" opacity="0.55"/>
+            <line x1="88" y1="183" x2="432" y2="183" stroke="#3a1808" stroke-width="0.8" opacity="0.35"/>
+            <line x1="88" y1="196" x2="432" y2="196" stroke="#5a2810" stroke-width="1.3" opacity="0.55"/>
+            <line x1="88" y1="209" x2="432" y2="209" stroke="#3a1808" stroke-width="0.8" opacity="0.35"/>
+            <line x1="88" y1="222" x2="432" y2="222" stroke="#5a2810" stroke-width="1.3" opacity="0.55"/>
+            <line x1="88" y1="235" x2="432" y2="235" stroke="#3a1808" stroke-width="0.8" opacity="0.35"/>
+            <line x1="88" y1="246" x2="432" y2="246" stroke="#5a2810" stroke-width="1" opacity="0.45"/>
+            <!-- Top metal band -->
+            <rect x="88" y="158" width="344" height="7" fill="url(#vMetal)" rx="1"/>
+            <!-- Bottom metal band -->
+            <rect x="88" y="247" width="344" height="7" fill="url(#vMetal)"/>
+            <!-- Center strap -->
+            <rect x="252" y="158" width="16" height="96" fill="#7a5515" opacity="0.7"/>
+            <!-- Corner pieces -->
+            <rect x="88" y="158" width="16" height="96" fill="#6a4812" opacity="0.75"/>
+            <rect x="416" y="158" width="16" height="96" fill="#6a4812" opacity="0.75"/>
+            <!-- Clasp -->
+            <rect x="246" y="191" width="28" height="18" rx="3" fill="#c8901a"/>
+            <rect x="250" y="195" width="20" height="10" rx="2" fill="#080808"/>
+            <circle cx="260" cy="200" r="4.5" fill="#e8b030"/>
+            <circle cx="260" cy="200" r="2.2" fill="#c89020"/>
+            <!-- Hinges -->
+            <rect x="124" y="156" width="16" height="8" rx="2" fill="#b07820"/>
+            <rect x="380" y="156" width="16" height="8" rx="2" fill="#b07820"/>
+
+            <!-- ── LID OPEN ── -->
+            <path d="M88,158 L88,82 Q260,12 432,82 L432,158 Z" fill="url(#vLidFace)"/>
+            <!-- Lid grain arcs -->
+            <path d="M95,140 Q260,76 425,140" fill="none" stroke="#4a2008" stroke-width="1.1" opacity="0.45"/>
+            <path d="M95,120 Q260,52 425,120" fill="none" stroke="#5a2810" stroke-width="1.1" opacity="0.38"/>
+            <path d="M96,100 Q260,30 424,100"  fill="none" stroke="#4a2008" stroke-width="1"   opacity="0.35"/>
+            <!-- Top dome edge -->
+            <path d="M88,82 Q260,12 432,82" fill="none" stroke="#c8901a" stroke-width="5"/>
+            <!-- Lid side metal -->
+            <rect x="88"  y="80" width="14" height="78" fill="#9a7020" opacity="0.65"/>
+            <rect x="418" y="80" width="14" height="78" fill="#9a7020" opacity="0.65"/>
+            <!-- Lid interior -->
+            <path d="M102,158 L102,88 Q260,22 418,88 L418,158 Z" fill="url(#vInterior)"/>
+            <!-- SNG ghost text on lid interior -->
+            <text x="260" y="115" font-family="'Barlow Condensed',sans-serif" font-size="18" fill="rgba(232,93,4,0.2)" text-anchor="middle" font-weight="900" letter-spacing="10">SNG CYCLES</text>
+
+            <!-- Interior floor -->
+            <rect x="104" y="165" width="312" height="82" fill="url(#vInterior)"/>
+
+            <!-- ══ ITEM 01 — BLUEPRINT SCROLL ══ -->
+            <g transform="translate(112,169)">
+              <rect x="0" y="8" width="64" height="54" rx="2" fill="#0d1c2c"/>
+              <line x1="0"  y1="21" x2="64" y2="21" stroke="#1a3856" stroke-width="0.8"/>
+              <line x1="0"  y1="34" x2="64" y2="34" stroke="#1a3856" stroke-width="0.8"/>
+              <line x1="0"  y1="47" x2="64" y2="47" stroke="#1a3856" stroke-width="0.8"/>
+              <line x1="16" y1="8"  x2="16" y2="62" stroke="#1a3856" stroke-width="0.8"/>
+              <line x1="32" y1="8"  x2="32" y2="62" stroke="#1a3856" stroke-width="0.8"/>
+              <line x1="48" y1="8"  x2="48" y2="62" stroke="#1a3856" stroke-width="0.8"/>
+              <ellipse cx="32" cy="8"  rx="32" ry="6" fill="#152534"/>
+              <ellipse cx="32" cy="8"  rx="24" ry="4" fill="#0d1c2c"/>
+              <ellipse cx="32" cy="62" rx="32" ry="6" fill="#0a1520"/>
+              <text x="32" y="31" font-family="monospace" font-size="14"   fill="#3a7aaa" text-anchor="middle" font-weight="bold">BENCH PLANS</text>
+              <text x="32" y="42" font-family="monospace" font-size="14" fill="#1e4a6a" text-anchor="middle">WATERPROOF</text>
+              <text x="32" y="53" font-family="monospace" font-size="14"   fill="#163a56" text-anchor="middle">FULL SPEC</text>
+            </g>
+
+            <!-- ══ ITEM 02 — JACKSHAFT ══ -->
+            <g transform="translate(200,171)">
+              <ellipse cx="32" cy="12" rx="32" ry="9" fill="#404040"/>
+              <rect x="0" y="12" width="64" height="48" fill="#2e2e2e"/>
+              <ellipse cx="32" cy="60" rx="32" ry="9" fill="#464646"/>
+              <line x1="10" y1="12" x2="10" y2="60" stroke="#3a3a3a" stroke-width="1.4"/>
+              <line x1="21" y1="12" x2="21" y2="60" stroke="#3a3a3a" stroke-width="1.4"/>
+              <line x1="43" y1="12" x2="43" y2="60" stroke="#3a3a3a" stroke-width="1.4"/>
+              <line x1="54" y1="12" x2="54" y2="60" stroke="#3a3a3a" stroke-width="1.4"/>
+              <ellipse cx="32" cy="60" rx="25" ry="6.5" fill="none" stroke="#e85d04" stroke-width="2"/>
+              <ellipse cx="32" cy="12" rx="12" ry="3.5" fill="#1a1a1a"/>
+              <ellipse cx="32" cy="60" rx="12" ry="3.5" fill="#1a1a1a"/>
+              <text x="32" y="39" font-family="'Barlow Condensed',sans-serif" font-size="11" fill="#e85d04" text-anchor="middle" font-weight="900">SNG</text>
+              <text x="32" y="52" font-family="monospace" font-size="14" fill="#b8b8b8" text-anchor="middle">7075 BILLET</text>
+            </g>
+
+            <!-- ══ ITEM 03 — FLAT BRIM HAT ══ -->
+            <g transform="translate(288,164)">
+              <ellipse cx="52" cy="56" rx="52" ry="13" fill="#141414"/>
+              <ellipse cx="52" cy="52" rx="36" ry="8" fill="#1c1c1c"/>
+              <rect x="18" y="18" width="68" height="36" rx="4" fill="#121212"/>
+              <ellipse cx="52" cy="18" rx="34" ry="9" fill="#1a1a1a"/>
+              <line x1="52" y1="9" x2="52" y2="54" stroke="#0a0a0a" stroke-width="0.8"/>
+              <rect x="24" y="28" width="56" height="20" rx="2" fill="#181818"/>
+              <text x="52" y="42" font-family="'Barlow Condensed',sans-serif" font-size="14" fill="#e85d04" text-anchor="middle" font-weight="900" letter-spacing="1">SNG</text>
+              <rect x="24" y="53" width="56" height="4" rx="1" fill="#202020"/>
+              <ellipse cx="52" cy="63" rx="46" ry="5" fill="rgba(0,0,0,0.35)"/>
+            </g>
+
+            <!-- ══ ITEM 04 — CERTIFICATE ══ -->
+            <g transform="translate(389,172)">
+              <rect x="0" y="0" width="38" height="54" rx="2" fill="#cfc070"/>
+              <rect x="2" y="2" width="34" height="50" rx="1" fill="#e8d898"/>
+              <line x1="5" y1="13" x2="33" y2="13" stroke="#8a7030" stroke-width="1.5"/>
+              <line x1="5" y1="20" x2="33" y2="20" stroke="#8a7030" stroke-width="0.6"/>
+              <line x1="5" y1="26" x2="33" y2="26" stroke="#8a7030" stroke-width="0.6"/>
+              <line x1="5" y1="32" x2="33" y2="32" stroke="#8a7030" stroke-width="0.6"/>
+              <circle cx="19" cy="43" r="9"   fill="#e85d04"/>
+              <circle cx="19" cy="43" r="6"   fill="none" stroke="#c04000" stroke-width="1"/>
+              <text x="19" y="45" font-family="monospace" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">01/25</text>
+              <text x="19" y="10" font-family="monospace" font-size="14" fill="#5a4020" text-anchor="middle">CERTIFICATE</text>
+            </g>
+
+            <!-- ══ ITEM 05 — DECAL SHEET (bottom-left overlap) ══ -->
+            <g transform="translate(112,220)" opacity="0.85">
+              <rect x="0" y="0" width="64" height="22" rx="2" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+              <rect x="4" y="3" width="18" height="16" rx="1" fill="#e85d04" opacity="0.7"/>
+              <text x="13" y="14" font-family="'Barlow Condensed',sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="900">SNG</text>
+              <rect x="26" y="5" width="34" height="4" rx="1" fill="#2e2e2e"/>
+              <rect x="26" y="12" width="28" height="4" rx="1" fill="#2e2e2e"/>
+              <rect x="26" y="17" width="20" height="2" rx="1" fill="#2e2e2e"/>
+            </g>
+
+            <!-- ══ ITEM 06 — BUILDER TEE (rolled, top-right corner) ══ -->
+            <g transform="translate(392,172)" opacity="0.7">
+              <rect x="0" y="-10" width="36" height="14" rx="2" fill="#1c1c1c" stroke="#2a2a2a" stroke-width="1"/>
+              <text x="18" y="-2" font-family="'Barlow Condensed',sans-serif" font-size="14" fill="#b8b8b8" text-anchor="middle">TALL TEE</text>
+            </g>
+
+            <!-- ══ NUMBER BADGES ══ -->
+            <circle cx="126" cy="173" r="9" fill="#e85d04"/>
+            <text x="126" y="177" font-family="'Barlow Condensed',sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="900">01</text>
+
+            <circle cx="214" cy="175" r="9" fill="#e85d04"/>
+            <text x="214" y="179" font-family="'Barlow Condensed',sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="900">02</text>
+
+            <circle cx="302" cy="168" r="9" fill="#e85d04"/>
+            <text x="302" y="172" font-family="'Barlow Condensed',sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="900">03</text>
+
+            <circle cx="403" cy="176" r="9" fill="#e85d04"/>
+            <text x="403" y="180" font-family="'Barlow Condensed',sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="900">04</text>
+
+            <!-- ══ LEGEND STRIP ══ -->
+            <rect x="0" y="247" width="520" height="23" fill="rgba(0,0,0,0.5)"/>
+            <line x1="0" y1="247" x2="520" y2="247" stroke="#1e1e1e" stroke-width="1"/>
+            <g font-family="'Barlow Condensed',sans-serif" text-anchor="middle" font-size="14">
+              <text x="75"  y="262" fill="#e85d04" font-weight="700">01</text>
+              <text x="100" y="262" fill="#b8b8b8" letter-spacing="0.5">BENCH PLANS</text>
+              <text x="193" y="262" fill="#e85d04" font-weight="700">02</text>
+              <text x="222" y="262" fill="#b8b8b8" letter-spacing="0.5">JACKSHAFT</text>
+              <text x="305" y="262" fill="#e85d04" font-weight="700">03</text>
+              <text x="336" y="262" fill="#b8b8b8" letter-spacing="0.5">FLAT BRIM HAT</text>
+              <text x="405" y="262" fill="#e85d04" font-weight="700">04</text>
+              <text x="436" y="262" fill="#b8b8b8" letter-spacing="0.5">CERT #/25</text>
+            </g>
+          </svg>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px;">
+          <div class="label" style="margin-bottom:16px;">The Customer Ladder</div>
+          <div style="display:flex;flex-direction:column;gap:0;">
+            <div style="display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--orange);min-width:60px;">$499</div>
+              <div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--white);text-transform:uppercase;">The Vault</div>
+                <div style="font-size:13px;color:var(--muted);">Jackshaft + bench-long waterproof build plans + apparel. Physical. Premium. No download link.</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--orange);min-width:60px;">$8K</div>
+              <div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--white);text-transform:uppercase;">Builder's Box — 52kW Full Kit</div>
+                <div style="font-size:13px;color:var(--muted);">Jackshaft + full instructions. Faster than a Stark Varg. Build it yourself.</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--orange);min-width:60px;">$8K+</div>
+              <div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--white);text-transform:uppercase;">SNG Builds It For You</div>
+                <div style="font-size:13px;color:var(--muted);">Vault owner calls SNG. "Build mine." Done.</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;padding:14px 0;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--orange);min-width:60px;">$40K</div>
+              <div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--white);text-transform:uppercase;">Full SNG Build</div>
+                <div style="font-size:13px;color:var(--muted);">He gets a promotion. Sells the KTM. Wants a Megalodon.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:8px;padding:18px 22px;">
+          <div style="font-size:14px;color:var(--text);line-height:1.9;"><strong style="color:var(--white);">Every Vault owner is a walking billboard.</strong> SNG decals on his bike. SNG hat at the track. Bench-long plans on his workbench when his boys come over. His gas crew asks — he tells the story. Customer acquisition with zero ad spend.<br><span style="color:var(--orange);font-weight:700;">SOLD OUT — Vault #001</span> on the website creates urgency for #002 before it launches.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="slide-number">09 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 10 — THE ASK
+═══════════════════════════════════════════ -->
+<section class="slide" id="ask">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner">
+    <div class="ask-hero">
+      <div class="label">Investment Opportunity</div>
+      <h2>We need <em>capital.</em><br>You need <em>returns.</em></h2>
+      <p>The technology is proven. The market is open. The team is built. The only thing standing between SNG Cycles and 30 bikes in driveways is capital deployment.</p>
+    </div>
+    <div class="ask-grid">
+      <div class="ask-card">
+        <div class="ask-phase">Phase 1 — Demo Fleet</div>
+        <div class="ask-amount">$130K</div>
+        <div class="ask-desc">One working prototype of every model in the lineup. Proof of full range. Ready to show, ride, and close production deposits.</div>
+        <ul>
+          <li>6 demo builds (1 per model)</li>
+          <li>Components sourced & verified</li>
+          <li>10–14 week build timeline</li>
+          <li>270-E already done — 5 builds to go</li>
+          <li>Budget includes contingency</li>
+        </ul>
+      </div>
+      <div class="ask-card featured">
+        <div class="ask-phase">Phase 2 — Production Trigger</div>
+        <div class="ask-amount">$4M</div>
+        <div class="ask-desc">The 30-bike production run. Blanket factory orders. Dealer agreements. Collector editions. Full brand activation. This is where SNG becomes a company.</div>
+        <ul>
+          <li>30 units at target ASP $35K+</li>
+          <li>~$1.05M gross revenue run 1</li>
+          <li>Platinum edition batch ($62K each)</li>
+          <li>30-45% BOM reduction at volume</li>
+          <li>Dealer + content creator network</li>
+          <li>Full compliance + VIN pathway</li>
+        </ul>
+      </div>
+      <div class="ask-card">
+        <div class="ask-phase">What You Get</div>
+        <div class="ask-amount" style="font-size:36px;color:#ccc;">Equity +<br>Returns</div>
+        <div class="ask-desc">Terms available upon NDA/CCM agreement. Investment structure, equity percentage, and projected returns discussed in private session.</div>
+        <ul>
+          <li>Equity stake in SNG Cycles</li>
+          <li>First-mover in proven category</li>
+          <li>Strong gross margins (52–69%)</li>
+          <li>Scalable — same platform, more models</li>
+          <li>Brand with authentic narrative</li>
+          <li>Full IP + compliance assets</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">10 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 11 — TEAM
+═══════════════════════════════════════════ -->
+<section class="slide" id="team">
+  <div class="slide-bar"></div>
+  <div class="slide-logo"><img src="SNG-CC.jpg" alt="SNG"></div>
+  <div class="slide-inner">
+    <div class="label">The Team</div>
+    <h2 style="font-size:clamp(44px,5vw,72px);color:var(--white);margin-bottom:8px;">
+      Built by riders.<br><span style="color:var(--orange);">Run by builders.</span>
+    </h2>
+    <div class="team-grid">
+      <div class="team-card founder">
+        <div class="team-photo" style="background:linear-gradient(135deg,#0f0f0f,#1a0e00,#0f0f0f);">
+          🦈
+        </div>
+        <div class="team-body">
+          <div class="team-name">Bryan Jaworski</div>
+          <div class="team-title">Founder & Chief Engineer</div>
+          <div class="team-bio">Self-taught engineer, Royal Palm Beach FL. 6'7" MX background. Built three prototypes and $40K+ of personal R&D before asking anyone for a dollar. Every spec on every bike came from his hands. The 270-E is riding today because he refused to wait for someone else to build it.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">⚙️</div>
+        <div class="team-body">
+          <div class="team-name">Fernando B.</div>
+          <div class="team-title">Engineering / Technical</div>
+          <div class="team-bio">Technical build support and engineering review. Hands-on with the builds from prototype 1.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">📋</div>
+        <div class="team-body">
+          <div class="team-name">Roy B.</div>
+          <div class="team-title">Operations</div>
+          <div class="team-bio">Operations and logistics. Sourcing relationships and build coordination for the production run.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">🎯</div>
+        <div class="team-body">
+          <div class="team-name">Patrick</div>
+          <div class="team-title">Business Development</div>
+          <div class="team-bio">Market development and dealer relationships. Connecting the build pipeline to buyers.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">11 / 12</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 12 — CONTACT / CTA
+═══════════════════════════════════════════ -->
+<section class="slide" id="contact">
+  <div class="slide-bar"></div>
+  <div class="slide-inner">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="label">Let's Talk</div>
+        <h2>Ready to<br>build the<br><em>future?</em></h2>
+        <p style="margin-top:20px;">The market is open. The product is built. The team is ready. The only question is whether you want in before the first 30 bikes are spoken for.</p>
+        <p style="margin-top:16px;font-size:14px;color:var(--muted);">All investment materials, NDA, and term sheets available upon request. All meetings held under strict confidentiality.</p>
+      </div>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-item-text">
+            <div class="contact-label">Website</div>
+            <div class="contact-value"><a href="https://sngcycles.com">sngcycles.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-item-text">
+            <div class="contact-label">Email — Bryan Jaworski</div>
+            <div class="contact-value"><a href="mailto:sharknotgoldfish@gmail.com">sharknotgoldfish@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-item-text">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Royal Palm Beach, Florida</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📄</div>
+          <div class="contact-item-text">
+            <div class="contact-label">Company</div>
+            <div class="contact-value">SNG Cycles / Complete Care Marketing Inc.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12 / 12</div>
+</section>
+
+<!-- FOOTER -->
+<div class="deck-footer">
+  <div class="footer-left">
+    <img src="SNG-CC.jpg" alt="SNG Cycles">
+    <span class="footer-brand">SNG Cycles</span>
+  </div>
+  <div class="footer-disclaimer">
+    This presentation is strictly confidential and intended solely for the recipient. It does not constitute an offer to sell or a solicitation to buy any security.
+    All financial projections are estimates based on verified component pricing (June 2026) and assumed production efficiencies. Actual results may vary.
+    © 2026 SNG Cycles / Complete Care Marketing Inc. All rights reserved.
+  </div>
+</div>
+
+</body>
+</html>

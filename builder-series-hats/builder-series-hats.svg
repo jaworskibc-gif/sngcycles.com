@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1160" viewBox="0 0 1200 1160">
+  <rect width="1200" height="1160" fill="#0c0d10"/>
+  <text x="40" y="56" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ff5a00" letter-spacing="4">SNG CYCLES · BUILDER'S SERIES</text>
+  <text x="40" y="92" font-family="Arial, sans-serif" font-weight="900" font-size="30" fill="#e9eaed">Hat Colorway Templates — Flat Brim FlexFit®</text>
+  <text x="40" y="118" font-family="Arial, sans-serif" font-size="15" fill="#9aa0aa">Front embroidery: "I Use Ta Have Gas. Now I Just Haul Ass." · 7 colorways · embroidery-ready</text>
+  
+  <g transform="translate(0,140)">
+    <rect x="20" y="14" width="360" height="296" rx="14" fill="#15171c" stroke="#2a2d35"/>
+    <svg x="40" y="24" width="320" height="266" viewBox="0 0 300 250">
+    <path d="M28 178 Q150 150 272 178 Q272 200 150 206 Q28 200 28 178 Z" fill="#111316" stroke="#000a" stroke-width="2"/>
+    <path d="M28 178 Q150 150 272 178" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-dasharray="5 5" opacity="0.9"/>
+    <path d="M56 176 C50 96 96 44 150 44 C204 44 250 96 244 176 Z" fill="#111316" stroke="#000a" stroke-width="2"/>
+    <path d="M150 44 L150 176" stroke="#0007" stroke-width="1.4"/>
+    <path d="M150 52 C118 70 100 120 104 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <path d="M150 52 C182 70 200 120 196 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <circle cx="150" cy="50" r="7" fill="#111316" stroke="#ffffff" stroke-width="1.6"/>
+    <text x="150" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ffffff">I USE TA</text>
+    <text x="150" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ffffff">HAVE GAS.</text>
+    <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ffffff">NOW I JUST</text>
+    <text x="150" y="166" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ffffff">HAUL ASS.</text></svg>
+    <text x="200" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e9eaed">SNG Classic</text>
+    <rect x="174" y="304" width="14" height="14" rx="3" fill="#111316" stroke="#0006"/>
+    <rect x="212" y="304" width="14" height="14" rx="3" fill="#ffffff" stroke="#0006"/>
+    <text x="200" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="10" fill="#ff5a00" letter-spacing="2">HOUSE</text>
+  </g>
+  <g transform="translate(400,140)">
+    <rect x="20" y="14" width="360" height="296" rx="14" fill="#15171c" stroke="#2a2d35"/>
+    <svg x="40" y="24" width="320" height="266" viewBox="0 0 300 250">
+    <path d="M28 178 Q150 150 272 178 Q272 200 150 206 Q28 200 28 178 Z" fill="#111316" stroke="#000a" stroke-width="2"/>
+    <path d="M28 178 Q150 150 272 178" fill="none" stroke="#ff6a00" stroke-width="2.4" stroke-dasharray="5 5" opacity="0.9"/>
+    <path d="M56 176 C50 96 96 44 150 44 C204 44 250 96 244 176 Z" fill="#111316" stroke="#000a" stroke-width="2"/>
+    <path d="M150 44 L150 176" stroke="#0007" stroke-width="1.4"/>
+    <path d="M150 52 C118 70 100 120 104 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <path d="M150 52 C182 70 200 120 196 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <circle cx="150" cy="50" r="7" fill="#111316" stroke="#ff6a00" stroke-width="1.6"/>
+    <text x="150" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ff6a00">I USE TA</text>
+    <text x="150" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ff6a00">HAVE GAS.</text>
+    <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ff6a00">NOW I JUST</text>
+    <text x="150" y="166" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ff6a00">HAUL ASS.</text></svg>
+    <text x="200" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e9eaed">Black / Orange</text>
+    <rect x="174" y="304" width="14" height="14" rx="3" fill="#111316" stroke="#0006"/>
+    <rect x="212" y="304" width="14" height="14" rx="3" fill="#ff6a00" stroke="#0006"/>
+    <text x="200" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="10" fill="#ff5a00" letter-spacing="2">KTM</text>
+  </g>
+  <g transform="translate(800,140)">
+    <rect x="20" y="14" width="360" height="296" rx="14" fill="#15171c" stroke="#2a2d35"/>
+    <svg x="40" y="24" width="320" height="266" viewBox="0 0 300 250">
+    <path d="M28 178 Q150 150 272 178 Q272 200 150 206 Q28 200 28 178 Z" fill="#1c5fb4" stroke="#000a" stroke-width="2"/>
+    <path d="M28 178 Q150 150 272 178" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-dasharray="5 5" opacity="0.9"/>
+    <path d="M56 176 C50 96 96 44 150 44 C204 44 250 96 244 176 Z" fill="#1c5fb4" stroke="#000a" stroke-width="2"/>
+    <path d="M150 44 L150 176" stroke="#0007" stroke-width="1.4"/>
+    <path d="M150 52 C118 70 100 120 104 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <path d="M150 52 C182 70 200 120 196 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <circle cx="150" cy="50" r="7" fill="#1c5fb4" stroke="#ffffff" stroke-width="1.6"/>
+    <text x="150" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ffffff">I USE TA</text>
+    <text x="150" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ffffff">HAVE GAS.</text>
+    <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ffffff">NOW I JUST</text>
+    <text x="150" y="166" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ffffff">HAUL ASS.</text></svg>
+    <text x="200" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e9eaed">Blue / White</text>
+    <rect x="174" y="304" width="14" height="14" rx="3" fill="#1c5fb4" stroke="#0006"/>
+    <rect x="212" y="304" width="14" height="14" rx="3" fill="#ffffff" stroke="#0006"/>
+    <text x="200" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="10" fill="#ff5a00" letter-spacing="2">YAMAHA</text>
+  </g>
+  <g transform="translate(0,470)">
+    <rect x="20" y="14" width="360" height="296" rx="14" fill="#15171c" stroke="#2a2d35"/>
+    <svg x="40" y="24" width="320" height="266" viewBox="0 0 300 250">
+    <path d="M28 178 Q150 150 272 178 Q272 200 150 206 Q28 200 28 178 Z" fill="#c8202b" stroke="#000a" stroke-width="2"/>
+    <path d="M28 178 Q150 150 272 178" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-dasharray="5 5" opacity="0.9"/>
+    <path d="M56 176 C50 96 96 44 150 44 C204 44 250 96 244 176 Z" fill="#c8202b" stroke="#000a" stroke-width="2"/>
+    <path d="M150 44 L150 176" stroke="#0007" stroke-width="1.4"/>
+    <path d="M150 52 C118 70 100 120 104 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <path d="M150 52 C182 70 200 120 196 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <circle cx="150" cy="50" r="7" fill="#c8202b" stroke="#ffffff" stroke-width="1.6"/>
+    <text x="150" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ffffff">I USE TA</text>
+    <text x="150" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ffffff">HAVE GAS.</text>
+    <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ffffff">NOW I JUST</text>
+    <text x="150" y="166" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ffffff">HAUL ASS.</text></svg>
+    <text x="200" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e9eaed">Red / White</text>
+    <rect x="174" y="304" width="14" height="14" rx="3" fill="#c8202b" stroke="#0006"/>
+    <rect x="212" y="304" width="14" height="14" rx="3" fill="#ffffff" stroke="#0006"/>
+    <text x="200" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="10" fill="#ff5a00" letter-spacing="2">HONDA</text>
+  </g>
+  <g transform="translate(400,470)">
+    <rect x="20" y="14" width="360" height="296" rx="14" fill="#15171c" stroke="#2a2d35"/>
+    <svg x="40" y="24" width="320" height="266" viewBox="0 0 300 250">
+    <path d="M28 178 Q150 150 272 178 Q272 200 150 206 Q28 200 28 178 Z" fill="#1a2742" stroke="#000a" stroke-width="2"/>
+    <path d="M28 178 Q150 150 272 178" fill="none" stroke="#d8ff00" stroke-width="2.4" stroke-dasharray="5 5" opacity="0.9"/>
+    <path d="M56 176 C50 96 96 44 150 44 C204 44 250 96 244 176 Z" fill="#1a2742" stroke="#000a" stroke-width="2"/>
+    <path d="M150 44 L150 176" stroke="#0007" stroke-width="1.4"/>
+    <path d="M150 52 C118 70 100 120 104 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <path d="M150 52 C182 70 200 120 196 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <circle cx="150" cy="50" r="7" fill="#1a2742" stroke="#d8ff00" stroke-width="1.6"/>
+    <text x="150" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#d8ff00">I USE TA</text>
+    <text x="150" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#d8ff00">HAVE GAS.</text>
+    <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#d8ff00">NOW I JUST</text>
+    <text x="150" y="166" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#d8ff00">HAUL ASS.</text></svg>
+    <text x="200" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e9eaed">Navy / Hi-Vis</text>
+    <rect x="174" y="304" width="14" height="14" rx="3" fill="#1a2742" stroke="#0006"/>
+    <rect x="212" y="304" width="14" height="14" rx="3" fill="#d8ff00" stroke="#0006"/>
+    <text x="200" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="10" fill="#ff5a00" letter-spacing="2">HI-VIZ</text>
+  </g>
+  <g transform="translate(800,470)">
+    <rect x="20" y="14" width="360" height="296" rx="14" fill="#15171c" stroke="#2a2d35"/>
+    <svg x="40" y="24" width="320" height="266" viewBox="0 0 300 250">
+    <path d="M28 178 Q150 150 272 178 Q272 200 150 206 Q28 200 28 178 Z" fill="#111316" stroke="#000a" stroke-width="2"/>
+    <path d="M28 178 Q150 150 272 178" fill="none" stroke="#2ecc40" stroke-width="2.4" stroke-dasharray="5 5" opacity="0.9"/>
+    <path d="M56 176 C50 96 96 44 150 44 C204 44 250 96 244 176 Z" fill="#111316" stroke="#000a" stroke-width="2"/>
+    <path d="M150 44 L150 176" stroke="#0007" stroke-width="1.4"/>
+    <path d="M150 52 C118 70 100 120 104 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <path d="M150 52 C182 70 200 120 196 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <circle cx="150" cy="50" r="7" fill="#111316" stroke="#2ecc40" stroke-width="1.6"/>
+    <text x="150" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#2ecc40">I USE TA</text>
+    <text x="150" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#2ecc40">HAVE GAS.</text>
+    <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#2ecc40">NOW I JUST</text>
+    <text x="150" y="166" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#2ecc40">HAUL ASS.</text></svg>
+    <text x="200" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e9eaed">Black / Green</text>
+    <rect x="174" y="304" width="14" height="14" rx="3" fill="#111316" stroke="#0006"/>
+    <rect x="212" y="304" width="14" height="14" rx="3" fill="#2ecc40" stroke="#0006"/>
+    <text x="200" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="10" fill="#ff5a00" letter-spacing="2">KAWASAKI</text>
+  </g>
+  <g transform="translate(0,800)">
+    <rect x="20" y="14" width="360" height="296" rx="14" fill="#15171c" stroke="#2a2d35"/>
+    <svg x="40" y="24" width="320" height="266" viewBox="0 0 300 250">
+    <path d="M28 178 Q150 150 272 178 Q272 200 150 206 Q28 200 28 178 Z" fill="#111316" stroke="#000a" stroke-width="2"/>
+    <path d="M28 178 Q150 150 272 178" fill="none" stroke="#ffd400" stroke-width="2.4" stroke-dasharray="5 5" opacity="0.9"/>
+    <path d="M56 176 C50 96 96 44 150 44 C204 44 250 96 244 176 Z" fill="#111316" stroke="#000a" stroke-width="2"/>
+    <path d="M150 44 L150 176" stroke="#0007" stroke-width="1.4"/>
+    <path d="M150 52 C118 70 100 120 104 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <path d="M150 52 C182 70 200 120 196 176" stroke="#0006" stroke-width="1.2" fill="none"/>
+    <circle cx="150" cy="50" r="7" fill="#111316" stroke="#ffd400" stroke-width="1.6"/>
+    <text x="150" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ffd400">I USE TA</text>
+    <text x="150" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="15" fill="#ffd400">HAVE GAS.</text>
+    <text x="150" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ffd400">NOW I JUST</text>
+    <text x="150" y="166" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#ffd400">HAUL ASS.</text></svg>
+    <text x="200" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e9eaed">Black / Yellow</text>
+    <rect x="174" y="304" width="14" height="14" rx="3" fill="#111316" stroke="#0006"/>
+    <rect x="212" y="304" width="14" height="14" rx="3" fill="#ffd400" stroke="#0006"/>
+    <text x="200" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="10" fill="#ff5a00" letter-spacing="2">ACCENT</text>
+  </g>
+</svg>

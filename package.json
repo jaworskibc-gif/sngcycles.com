@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "canvas": "^3.2.3",
+    "netlify-cli": "^26.1.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.0.227",
+    "pptxgenjs": "^4.0.1",
+    "puppeteer": "^25.1.0",
+    "puppeteer-core": "^25.1.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "name": "sng-cycles",
+  "version": "1.0.0",
+  "main": "check-heights.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

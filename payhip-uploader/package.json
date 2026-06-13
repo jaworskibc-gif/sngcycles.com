@@ -1,0 +1,17 @@
+{
+  "name": "sng-payhip-uploader",
+  "version": "1.0.0",
+  "description": "Automates SNG Cycles Payhip store listing creation",
+  "main": "upload.js",
+  "scripts": {
+    "upload": "node upload.js",
+    "install-browsers": "npx playwright install chromium"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "playwright": "^1.48.0",
+    "puppeteer": "^25.1.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
