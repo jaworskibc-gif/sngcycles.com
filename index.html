@@ -385,9 +385,44 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .builder-inner { grid-template-columns: 1fr; gap: 40px; }
+  .builder-inner { grid-template-columns: 1fr !important; gap: 40px !important; padding: 60px 20px !important; }
   footer { flex-direction: column; text-align: center; }
   .hero-stats { gap: 32px; }
+  section { padding: 60px 20px !important; }
+  .waitlist-section { padding: 60px 20px !important; }
+
+  /* Hero 3-panel → single column */
+  #hero-panels { grid-template-columns: 1fr !important; gap: 16px !important; padding: 0 4px !important; }
+
+  /* Apparel header banner → stack, hide decorative image */
+  #apparel-header { grid-template-columns: 1fr !important; padding: 24px 20px !important; gap: 16px !important; }
+  #apparel-header-img { display: none !important; }
+
+  /* Shop / hats / hoodies inner padding */
+  #shop { padding: 40px 20px 32px !important; }
+  #hats-inner { padding: 36px 20px !important; }
+  #hoodies-inner { padding: 36px 20px !important; }
+
+  /* CTA footer banner → stack */
+  #apparel-cta-banner { flex-direction: column !important; align-items: flex-start !important; padding: 28px 20px !important; gap: 16px !important; }
+  #apparel-cta-banner > img { display: none !important; }
+  #apparel-cta-banner > div:last-child { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+
+  /* Signup form inputs stack */
+  #signup-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Hide old product card sections now that 4-panel grid is active */
+#shop, #hats-inner, #hoodies-inner, #apparel-cta-banner { display: none !important; }
+
+/* 4-panel apparel grid — stack on mobile */
+@media (max-width: 768px) {
+  #apparel-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 480px) {
+  #hero-panels { margin-bottom: 32px !important; }
+  .apparel-grid { grid-template-columns: 1fr !important; }
 }
 
 /* ── PRODUCT MODAL ── */
@@ -469,8 +504,8 @@ footer {
   </a>
   <div class="nav-links">
     <a href="#shop">Shop</a>
-    <a href="#hats">Hats</a>
-    <a href="#hoodies">Hoodies</a>
+    <a href="#apparel-grid">Hats</a>
+    <a href="#shop-hoodies">Hoodies</a>
     <a href="builds.html">Builds</a>
     <a href="#waitlist" class="nav-cta">Join the Crew</a>
   </div>
@@ -490,14 +525,14 @@ footer {
   <div style="width:60px;height:3px;background:var(--orange);margin:0 auto 28px;"></div>
 
   <h1 style="font-size:clamp(32px,5vw,64px);font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:12px;line-height:1.1;">The Brand.<br><span style="color:var(--orange);">The Build. The Rider.</span></h1>
-  <p style="font-size:15px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Premium Riding Apparel · Built for Electric Riders</p>
-  <p style="font-size:13px;color:var(--muted);margin-bottom:60px;max-width:560px;">Emoto riders finally have a brand to rep. Gear up first. Bikes are coming.</p>
+  <p style="font-size:15px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Premium Riding Gear · Built for Riders · Period</p>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:60px;max-width:560px;">Gas riders have their brands. Emoto riders got left out completely. SNG is for both — because a shark doesn't pick its water. Gear up. Bikes are coming.</p>
 
   <!-- 3 merch category panels -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%;max-width:1100px;margin-bottom:48px;">
+  <div id="hero-panels" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%;max-width:1100px;margin-bottom:48px;">
 
     <!-- HATS -->
-    <a href="#hats" style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--text);display:flex;flex-direction:column;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 64px rgba(244,120,32,0.2)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow=''">
+    <a href="#apparel-grid" style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--text);display:flex;flex-direction:column;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--orange)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 64px rgba(244,120,32,0.2)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='';this.style.boxShadow=''">
       <div style="width:100%;aspect-ratio:4/3;overflow:hidden;background:#0a1018;">
         <img src="sng-hat-collection.png" alt="SNG Builder Series Hat Collection" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
       </div>
@@ -510,7 +545,7 @@ footer {
     </a>
 
     <!-- HOODIES -->
-    <a href="#hoodies" style="background:var(--card);border:2px solid var(--orange);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--text);display:flex;flex-direction:column;transition:all 0.25s;box-shadow:0 0 40px rgba(244,120,32,0.18);" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 64px rgba(244,120,32,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow='0 0 40px rgba(244,120,32,0.18)'">
+    <a href="#shop-hoodies" style="background:var(--card);border:2px solid var(--orange);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--text);display:flex;flex-direction:column;transition:all 0.25s;box-shadow:0 0 40px rgba(244,120,32,0.18);" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 64px rgba(244,120,32,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow='0 0 40px rgba(244,120,32,0.18)'">
       <div style="background:var(--orange);padding:6px 14px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;text-align:center;">Most Popular</div>
       <div style="width:100%;aspect-ratio:4/3;overflow:hidden;background:#0a1018;">
         <img src="sng-hoodie-shark.png" alt="SNG Cycles Hoodie — Shark Not Goldfish" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
@@ -547,7 +582,7 @@ footer {
 <section style="padding:0;max-width:none;margin:0;">
 
   <!-- HEADER BANNER -->
-  <div style="background:#0a0e16;padding:36px 48px;display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;border-bottom:1px solid var(--border);">
+  <div id="apparel-header" style="background:#0a0e16;padding:36px 48px;display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;border-bottom:1px solid var(--border);">
     <div style="display:flex;align-items:center;gap:14px;">
       <img src="sng-logo-orange.jpeg" alt="SNG" style="height:60px;width:60px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(244,120,32,0.5));">
       <div>
@@ -560,7 +595,7 @@ footer {
       <div style="font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">PREMIUM APPAREL FOR RIDERS</div>
       <div style="font-size:17px;color:var(--text);font-style:italic;">Lil' somethin' for all you gas-to-electric conversion folks.</div>
     </div>
-    <div style="width:240px;height:140px;overflow:hidden;border-radius:8px;opacity:0.9;">
+    <div id="apparel-header-img" style="width:240px;height:140px;overflow:hidden;border-radius:8px;opacity:0.9;">
       <img src="sng-merch-booth.png" alt="SNG Merch Booth" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
     </div>
   </div>
@@ -603,7 +638,7 @@ footer {
   </div>
 
   <!-- ── HATS COLLECTION ── -->
-  <div style="border-top:1px solid var(--border);background:var(--card);padding:56px 40px;">
+  <div id="hats-inner" style="border-top:1px solid var(--border);background:var(--card);padding:56px 40px;">
     <div style="max-width:1200px;margin:0 auto;">
       <div id="hats" style="font-size:11px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;">Flat Brim FlexFit® · $35</div>
       <div style="font-size:clamp(22px,3vw,38px);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Builder's Series Hats</div>
@@ -620,7 +655,7 @@ footer {
   </div>
 
   <!-- ── HOODIES ── -->
-  <div style="border-top:1px solid var(--border);padding:56px 40px;">
+  <div id="hoodies-inner" style="border-top:1px solid var(--border);padding:56px 40px;">
     <div style="max-width:1200px;margin:0 auto;">
       <div id="hoodies" style="font-size:11px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;">Premium Heavyweight · Up to 2XLT</div>
       <div style="font-size:clamp(22px,3vw,38px);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Hoodies</div>
@@ -659,7 +694,7 @@ footer {
   </div>
 
   <!-- ── FOOTER BANNER ── -->
-  <div style="background:#0a0e16;border-top:2px solid var(--orange);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+  <div id="apparel-cta-banner" style="background:#0a0e16;border-top:2px solid var(--orange);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
     <div>
       <div style="font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Gear up first.</div>
       <div style="font-size:clamp(18px,2.5vw,30px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1.15;">Bikes are coming.</div>
@@ -674,7 +709,7 @@ footer {
     </div>
   </div>
 
-  <div style="display:none;">
+  <div id="apparel-grid" style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);border-left:1px solid var(--border);">
     <div style="padding:36px 40px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
       <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">SNG CLASSIC</div>
       <div style="display:flex;gap:24px;align-items:flex-start;">
@@ -691,7 +726,7 @@ footer {
           <select id="size-hat-classic" style="width:100%;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;margin-bottom:8px;cursor:pointer;">
             <option value="">— Select Size —</option><option>S/M</option><option>L/XL</option><option>One Size (Snapback)</option>
           </select>
-          <button onclick="orderItem('SNG Classic Hat', 'size-hat-classic', 35)" style="width:100%;background:var(--orange);color:#fff;border:none;padding:11px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Hat — $35</button>
+          <button onclick="window.open('https://payhip.com/b/Ra5WY','_blank')" style="width:100%;background:var(--orange);color:#fff;border:none;padding:11px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Hat — $35</button>
         </div>
       </div>
     </div>
@@ -712,7 +747,7 @@ footer {
         <select id="size-hat-colorway" style="flex:1;min-width:120px;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
           <option value="">— Select Size —</option><option>S/M</option><option>L/XL</option><option>One Size (Snapback)</option>
         </select>
-        <button onclick="orderItem('Conversion Series Hat (specify colorway + embroidery in email)', 'size-hat-colorway', 35)" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
+        <button onclick="window.open('https://payhip.com/b/Ra5WY','_blank')" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
       </div>
     </div>
 
@@ -726,9 +761,9 @@ footer {
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <select id="size-conversion-shirt" style="flex:1;min-width:120px;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
-          <option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option>
+          <option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option>
         </select>
-        <button onclick="orderItem('Conversion Series Shirt — I Use Ta Have Gas', 'size-conversion-shirt', 15)" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $15</button>
+        <button onclick="window.open('https://payhip.com/b/euj5H','_blank')" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $30</button>
       </div>
     </div>
 
@@ -764,17 +799,17 @@ footer {
       <div style="font-size:11px;color:var(--muted);margin-bottom:14px;">Up to 2XLT · Premium embroidery · Woven hem label · Ships from Florida</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <select id="size-shirt-collection" style="flex:1;min-width:120px;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
-          <option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option>
+          <option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option>
         </select>
-        <button onclick="orderItem('SNG Shirt — specify design + color in email', 'size-shirt-collection', 15)" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $15</button>
+        <button onclick="window.open('https://payhip.com/b/euj5H','_blank')" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $30</button>
       </div>
     </div>
 
   </div>
 
   <!-- HOODIES -->
-  <div style="padding:36px 40px;border-top:1px solid var(--border);">
-    <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">SNG HOODIES — $60</div>
+  <div id="shop-hoodies" style="padding:36px 40px;border-top:1px solid var(--border);">
+    <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">SNG HOODIES</div>
 
     <!-- Featured hoodie — SNG Cycles Shark Not Goldfish -->
     <div style="background:var(--card);border:2px solid var(--orange);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;">
@@ -785,7 +820,7 @@ footer {
         <div style="font-size:13px;color:var(--muted);margin-bottom:6px;">Shark Not Goldfish · Leave The School Behind</div>
         <div style="font-size:11px;color:var(--muted);margin-bottom:16px;">Orange hexagon logo front · Full graphic back · Premium heavyweight · Up to 2XLT</div>
         <select id="size-hoodie-sng" style="width:100%;padding:9px 12px;background:#0a0e16;color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;margin-bottom:10px;cursor:pointer;"><option value="">— Select Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option></select>
-        <button onclick="orderItem('SNG Cycles Hoodie — Shark Not Goldfish', 'size-hoodie-sng', 60)" style="background:var(--orange);color:#fff;border:none;padding:12px;border-radius:7px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now — $60</button>
+        <button onclick="window.open('https://payhip.com/b/mf3R4','_blank')" style="background:var(--orange);color:#fff;border:none;padding:12px;border-radius:7px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now — $65</button>
       </div>
     </div>
 
@@ -797,7 +832,7 @@ footer {
           <div style="font-weight:900;color:#fff;font-size:14px;margin-bottom:4px;">Stuntin Is A Habit</div>
           <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Blue Tie-Dye</div>
           <select id="size-hoodie-1b" style="width:100%;padding:8px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;margin-bottom:8px;cursor:pointer;"><option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option></select>
-          <button onclick="orderItem('Hoodie — Stuntin Is A Habit', 'size-hoodie-1b', 60)" style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $60</button>
+          <button onclick="window.open('https://payhip.com/b/ojElF','_blank')" style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $60</button>
         </div>
       </div>
       <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
@@ -806,7 +841,7 @@ footer {
           <div style="font-weight:900;color:#fff;font-size:14px;margin-bottom:4px;">Stuntin Ain't Easy</div>
           <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Blue Tie-Dye</div>
           <select id="size-hoodie-2b" style="width:100%;padding:8px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;margin-bottom:8px;cursor:pointer;"><option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option></select>
-          <button onclick="orderItem('Hoodie — Stuntin Ain\'t Easy', 'size-hoodie-2b', 60)" style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $60</button>
+          <button onclick="window.open('https://payhip.com/b/lu38x','_blank')" style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $60</button>
         </div>
       </div>
       <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
@@ -836,7 +871,74 @@ footer {
         <div style="font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Already wearing the gear?</div>
         <div style="font-size:clamp(16px,2.2vw,26px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1.15;">Check out<br>the builds.</div>
       </div>
-      <button onclick="var s=document.getElementById('lineup');s.style.display='block';s.scrollIntoView({behavior:'smooth'});" style="background:transparent;color:#fff;border:2px solid #fff;padding:14px 28px;border-radius:6px;font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='#fff';this.style.color='#080b10'" onmouseout="this.style.background='transparent';this.style.color='#fff'">VIEW BIKES ›</button>
+      <button onclick="var s=document.getElementById('lineup');s.scrollIntoView({behavior:'smooth'});" style="background:transparent;color:#fff;border:2px solid #fff;padding:14px 28px;border-radius:6px;font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='#fff';this.style.color='#080b10'" onmouseout="this.style.background='transparent';this.style.color='#fff'">VIEW BIKES ›</button>
+    </div>
+  </div>
+
+  <!-- ── BIKE LINEUP ── -->
+  <div id="lineup" style="background:var(--bg);border-top:3px solid var(--orange);padding:60px 40px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-size:11px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;">SNG Cycles · The Lineup</div>
+      <div style="font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">The Bikes.</div>
+      <div style="font-size:15px;color:var(--muted);margin-bottom:48px;">All electric. All built different. Reserve yours now — production slots go to the list first.</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;">
+
+        <div onclick="openProduct('mako')" style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+          <img src="mako-flagship.png" alt="SNG Mako" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+          <div style="padding:24px;">
+            <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Cycles · Flagship</div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Mako</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">Electric Supermoto — 27kW · WP XACT Forks · Built for tall riders</div>
+            <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$21,000 – $30,000</div>
+            <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Mako →</button>
+          </div>
+        </div>
+
+        <div onclick="openProduct('megalodon')" style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+          <img src="megalodon-520e.jpg" alt="SNG Megalodon 520E" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+          <div style="padding:24px;">
+            <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Cycles · 52kW Supermoto</div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Megalodon 520E</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">52kW Peak · 100+ MPH · 120+ Mile Range · Street Legal</div>
+            <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$26,495</div>
+            <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Megalodon →</button>
+          </div>
+        </div>
+
+        <div onclick="openProduct('great-white')" style="background:var(--card);border:2px solid #3399FF;border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='#3399FF'">
+          <img src="great-white-clean.png" alt="SNG Great White" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+          <div style="padding:24px;">
+            <div style="font-size:10px;color:#3399FF;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Cycles · Stunt Platform</div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Great White</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">100 HP Peak · Shark Jaw™ Front End · 300 LB Stunt Platforms</div>
+            <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$35,000 – $40,000</div>
+            <button style="width:100%;background:#3399FF;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Great White →</button>
+          </div>
+        </div>
+
+        <div onclick="openProduct('platinum-520e')" style="background:linear-gradient(135deg,#1a1a1a,#2a2010);border:2px solid #c9a84c;border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='#c9a84c'">
+          <img src="platinum-520e.png" alt="Platinum 520E" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+          <div style="padding:24px;">
+            <div style="font-size:10px;color:#c9a84c;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Limited · 30 Units Worldwide</div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Platinum 520E</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">52kW · Collector Box · Serialized · Once gone, gone forever</div>
+            <div style="font-size:20px;font-weight:900;color:#c9a84c;margin-bottom:16px;">Reserve Now</div>
+            <button style="width:100%;background:#c9a84c;color:#000;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Platinum 520E →</button>
+          </div>
+        </div>
+
+        <div onclick="openProduct('sand-shark')" style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+          <img src="sand-shark.png" alt="SNG Sand Shark" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
+          <div style="padding:24px;">
+            <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Motors · Entry Level</div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Sand Shark</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">Electric Tadpole · 20kW · 83 MPH · 2 Passengers</div>
+            <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$15,990</div>
+            <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Sand Shark →</button>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -1180,7 +1282,7 @@ footer {
   <p style="color: var(--muted); font-size:15px; margin-top:16px;">First access to drops, Friday deals, BFF codes, new builds, and behind-the-scenes from the garage. Email or text — your choice.</p>
 
   <div id="signup-form" style="max-width:480px;margin:32px auto 0;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+    <div id="signup-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
       <input id="signup-name" type="text" placeholder="First Name" style="padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:15px;outline:none;width:100%;box-sizing:border-box;">
       <input id="signup-phone" type="tel" placeholder="Phone (for texts)" style="padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:15px;outline:none;width:100%;box-sizing:border-box;">
     </div>
@@ -1230,7 +1332,7 @@ footer {
   <div class="footer-links">
     <a href="https://tiktok.com/@sngcycles" target="_blank">TikTok</a>
     <a href="https://instagram.com/sngcycles" target="_blank">Instagram</a>
-    <a href="mailto:sharknotgoldfish@gmail.com">Contact</a>
+    <a href="mailto:sales@sngcycles.com">Contact</a>
   </div>
   <div class="footer-copy">© 2026 SNG Customs / Complete Care Marketing Inc. · Royal Palm Beach, FL</div>
 </footer>
@@ -1244,21 +1346,21 @@ var PRODUCTS = {
     price:'$35', image:'assets/tonight-mvp/01-builder-series-hat-sng-classic.png',
     desc:'Flat brim rider hat with the Florida garage line across the front. Available in 7 SNG team colorways so you can match your bike, your brand, or your personality.\n\nColorways: SNG Classic (Black/White) · Black/Orange · Navy/Hi-Vis · Red/White · Black/Green · Black/Yellow · Blue/White\n\nOptional side embroidery at no charge: Shark Not Goldfish · Leave the School Behind · I Use Ta Have Gas. Now I Just Haul Ass.',
     selectors:['hat-colorway','hat-side'], orderLabel:'Order Hat — $35', orderItem:'Builder\'s Series Hat',
-    payhipUrl:''
+    payhipUrl:'https://payhip.com/b/Ra5WY'
   },
   'tee-black-gas': {
     badge:'First Funny Drop', name:'SNG Black Tee', sub:'I Use Ta Have Gas. Now I Just Haul Ass.',
     price:'$30', image:'assets/tonight-mvp/02-black-tee-use-ta-have-gas.png',
     desc:'The first funny SNG drop.\n\nFront: small SNG shark logo.\nBack: I USE TA HAVE GAS. NOW I JUST HAUL ASS.\n\nThis is not corporate moto merch. Florida garage-built rider gear from the same shop that built the 270E from a Sur-Ron donor into something way past stock.\n\nClean enough to wear anywhere. Dumb enough to make riders laugh. That\'s the point.',
     selectors:['size'], orderLabel:'Order Tee — $30', orderItem:'SNG Black Tee — I Use Ta Have Gas',
-    payhipUrl:''
+    payhipUrl:'https://payhip.com/b/euj5H'
   },
   'hoodie-black-gas': {
     badge:'First Funny Drop · Most Popular', name:'SNG Black Hoodie', sub:'I Use Ta Have Gas. Now I Just Haul Ass.',
     price:'$65', image:'assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png',
     desc:'The hoodie version of the first SNG funny drop.\n\nFront: big SNG shark logo.\nBack: I USE TA HAVE GAS. NOW I JUST HAUL ASS.\n\nBuilt for riders, builders, garage nights, pit days, and anyone who gets the joke without needing it explained. This is SNG before it gets polished by anybody else.\n\nFlorida-built. Rider-owned. Shark Not Goldfish. Up to 2XLT.',
     selectors:['size'], orderLabel:'Order Hoodie — $65', orderItem:'SNG Black Hoodie — I Use Ta Have Gas',
-    payhipUrl:''
+    payhipUrl:'https://payhip.com/b/mf3R4'
   },
   /* ── BIKES ── */
   'mako': {
@@ -1278,8 +1380,6 @@ var PRODUCTS = {
     desc:'52kW Peak Power · 84V Architecture · High Performance Controller · Direct Drive · Regenerative Braking · 70 HP Peak · 100+ MPH Top Speed · Instant Torque · Street Legal · WP Front Suspension · Adjustable Rear Shock · Race Tuned · Hydraulic Front & Rear Disc · Turquoise Bars & Pad · White Performance Grips · 7" Smart Display · Integrated Lighting System · Powder Blue Supermoto Wheels · Turquoise Spokes · White Wall Tires · Extended Swingarm · Tall Rider Geometry · White Powder Coated Frame · Turquoise Diamond-Stitched Seat · Megalodon Graphics Package · Seat Height 37.6" · Wheelbase 60.2" · Est. Weight 200 lbs · Range 120+ Miles · Fast Charge 2–3 hrs · Street Legal, Ready to Ride.',
     selectors:[], orderLabel:'Reserve Your Megalodon 520E — $26,495', orderItem:'Megalodon 520E Reservation'
   },
-  },
-  
   'platinum-520e': {
     badge:'SNG Cycles · Limited 30 Units · Worldwide', name:'Platinum 520E', sub:'Built Different. Made to Stand Out.',
     price:'Reserve Now', image:'platinum-520e.png',
@@ -1297,13 +1397,15 @@ var PRODUCTS = {
     badge:'Great White Hoodie', name:'Stuntin Is A Habit', sub:'Blue Tie-Dye · $60',
     price:'$60', image:'hoodie-gw-stuntin-habit.png',
     desc:'Premium heavyweight hoodie. Front: SNG shark graphic. Back: "Stuntin Is A Habit" — the lifestyle. Blue tie-dye wash. SNG4LIFE sleeve print. Tall sizes available.',
-    selectors:['size'], orderLabel:'Order Now — $60', orderItem:'Great White Hoodie — Stuntin Is A Habit (Blue Tie-Dye)'
+    selectors:['size'], orderLabel:'Order Now — $60', orderItem:'Great White Hoodie — Stuntin Is A Habit (Blue Tie-Dye)',
+    payhipUrl:'https://payhip.com/b/ojElF'
   },
   'hoodie-easy': {
     badge:'Great White Hoodie', name:'Stuntin Aint Easy', sub:'Blue Tie-Dye · $60',
     price:'$60', image:'hoodie-gw-stuntin-easy.png',
     desc:'Premium heavyweight hoodie. Front: SNG shark graphic. Back: "Stuntin Aint Easy" — the respect. Blue tie-dye wash. SNG4LIFE sleeve print. Tall sizes available.',
-    selectors:['size'], orderLabel:'Order Now — $60', orderItem:'Great White Hoodie — Stuntin Aint Easy (Blue Tie-Dye)'
+    selectors:['size'], orderLabel:'Order Now — $60', orderItem:'Great White Hoodie — Stuntin Aint Easy (Blue Tie-Dye)',
+    payhipUrl:'https://payhip.com/b/lu38x'
   },
   'hoodie-white': {
     badge:'SNG Cycles Hoodie', name:'Leave the School Behind', sub:'White · SNG Cycles · $60',
@@ -1315,31 +1417,36 @@ var PRODUCTS = {
     badge:'Tee Pack · $30', name:'Core 3-Pack', sub:'White · Red · Black',
     price:'$30', image:'sng-tee-collection.png',
     desc:'Stuntin Aint Easy · SNG Cycles · Stuntin Is A Habit. Premium embroidery. Woven hem label. Three colorways, one order. Tall sizes available.',
-    selectors:['size'], orderLabel:'Order Core 3-Pack — $30', orderItem:'Core 3-Pack (White/Red/Black)'
+    selectors:['size'], orderLabel:'Order Core 3-Pack — $30', orderItem:'Core 3-Pack (White/Red/Black)',
+    payhipUrl:'https://payhip.com/b/M2TDN'
   },
   'dark-3pack': {
     badge:'Tee Pack · $30', name:'Dark 3-Pack', sub:'Black · Charcoal · Navy',
     price:'$30', image:'sng-tee-collection.png',
     desc:'Stuntin Is A Habit · Stuntin Aint Easy · Swim Without The Pack. Premium embroidery. Woven hem label. Dark colorways for the riders who move in silence.',
-    selectors:['size'], orderLabel:'Order Dark 3-Pack — $30', orderItem:'Dark 3-Pack (Black/Charcoal/Navy)'
+    selectors:['size'], orderLabel:'Order Dark 3-Pack — $30', orderItem:'Dark 3-Pack (Black/Charcoal/Navy)',
+    payhipUrl:'https://payhip.com/b/CQiWY'
   },
   'cutoff-3pack': {
     badge:'Tee Pack · $30', name:'Cut-Off 3-Pack', sub:'Black · Hunter Green · Burgundy',
     price:'$30', image:'sng-tee-collection.png',
     desc:'Stuntin Is A Habit · Swim Without The Pack · Stuntin Aint Easy. Cut-off sleeves. Premium embroidery. Built for track days and dune runs.',
-    selectors:['size'], orderLabel:'Order Cut-Off 3-Pack — $30', orderItem:'Cut-Off 3-Pack (Black/Hunter Green/Burgundy)'
+    selectors:['size'], orderLabel:'Order Cut-Off 3-Pack — $30', orderItem:'Cut-Off 3-Pack (Black/Hunter Green/Burgundy)',
+    payhipUrl:'https://payhip.com/b/9nXKh'
   },
   'light-5pack': {
     badge:'Tee Pack · $25 · Best Value', name:'Light Pack', sub:'White · Hunter Green · Sand · Burgundy · Red',
     price:'$25', image:'sng-tee-collection.png',
     desc:'5 shirts, 5 colorways — $5 each. Stuntin Aint Easy · Stuntin Is A Habit · Swim Without The Pack · For The Riders The Market Forgot · SNG Cycles. The full statement.',
-    selectors:['size'], orderLabel:'Order Light 5-Pack — $25', orderItem:'Light 5-Pack (White/Hunter Green/Sand/Burgundy/Red)'
+    selectors:['size'], orderLabel:'Order Light 5-Pack — $25', orderItem:'Light 5-Pack (White/Hunter Green/Sand/Burgundy/Red)',
+    payhipUrl:'https://payhip.com/b/M7VCP'
   },
   'single-tee': {
     badge:'Single Tee · $15', name:'Pick Your Tee', sub:'Choose your color + slogan',
     price:'$15', image:'sng-tee-collection.png',
-    desc:'Single tee — your colorway, your slogan. Specify in the order email. Premium embroidery, woven hem label. Tall sizes up to 2XLT.',
-    selectors:['size','tee-color'], orderLabel:'Order Single Tee — $15', orderItem:'Single Tee'
+    desc:'Single tee — your colorway, your slogan. Specify in the order notes. Premium embroidery, woven hem label. Tall sizes up to 2XLT.',
+    selectors:['size','tee-color'], orderLabel:'Order Single Tee — $15', orderItem:'Single Tee',
+    payhipUrl:'https://payhip.com/b/saFet'
   },
   'hat': {
     badge:'Flat Brim FlexFit® · $35', name:'SNG Rider Hat', sub:'7 Colorways — Pick Your Brand',
@@ -1436,7 +1543,7 @@ function modalOrder() {
   details += '\n\nName:\nShipping Address:\nPhone:';
   if (p.selectors.length === 0) details += '\n\nInterested in reserving this vehicle. Please send deposit info.';
   var subject = encodeURIComponent('SNG Order — ' + p.orderItem);
-  window.location.href = 'mailto:sharknotgoldfish@gmail.com?subject=' + subject + '&body=' + encodeURIComponent(details);
+  window.location.href = 'mailto:sales@sngcycles.com?subject=' + subject + '&body=' + encodeURIComponent(details);
 }
 
 function orderFridayDeal(option) {
@@ -1448,7 +1555,7 @@ function orderFridayDeal(option) {
       : 'Hoodie Style (Stuntin Is A Habit · Stuntin Aint Easy · The Great White):\nHoodie Size:\n\n') +
     'Name:\nShipping Address:\nPhone:\n\nI understand I will receive my BFF Coupon code by email after purchase is confirmed. Chain rules: BFF code must be passed to someone new — not back to whoever gave you yours.'
   );
-  window.location.href = 'mailto:sharknotgoldfish@gmail.com?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:sales@sngcycles.com?subject=' + subject + '&body=' + body;
 }
 
 function orderHat() {
@@ -1461,7 +1568,7 @@ function orderHat() {
     '\nSide Embroidery: ' + embroidery +
     '\nPrice: $35\n\nName:\nShipping Address:\nPhone:\n\nI understand payment details will be sent to complete this order.'
   );
-  window.location.href = 'mailto:sharknotgoldfish@gmail.com?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:sales@sngcycles.com?subject=' + subject + '&body=' + body;
 }
 
 function orderItem(item, sizeId, price) {
@@ -1472,7 +1579,7 @@ function orderItem(item, sizeId, price) {
     'Item: ' + item + '\nSize: ' + size + '\nPrice: $' + price +
     '\n\nName:\nShipping Address:\nPhone:\n\nI understand payment details will be sent to complete this order.'
   );
-  window.location.href = 'mailto:sharknotgoldfish@gmail.com?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:sales@sngcycles.com?subject=' + subject + '&body=' + body;
 }
 
 function submitSignup() {
@@ -1490,7 +1597,7 @@ function submitSignup() {
   if (document.getElementById('opt-bikes').checked) prefs.push('Bike Reservations');
   var subject = encodeURIComponent('New SNG Signup — ' + (name || email));
   var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + (phone || 'not provided') + '\nPreferences: ' + prefs.join(', '));
-  window.open('mailto:sharknotgoldfish@gmail.com?subject=' + subject + '&body=' + body);
+  window.open('mailto:sales@sngcycles.com?subject=' + subject + '&body=' + body);
   document.getElementById('signup-form').style.display = 'none';
   document.getElementById('signup-success').style.display = 'block';
   var list = JSON.parse(localStorage.getItem('sng_signups') || '[]');
