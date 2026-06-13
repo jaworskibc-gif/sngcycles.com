@@ -492,6 +492,9 @@ footer {
 .product-card-btn:hover { background:#e06810; }
 @media(max-width:768px) { .product-grid { grid-template-columns:1fr 1fr; } }
 @media(max-width:480px) { .product-grid { grid-template-columns:1fr; } }
+.mvp-product-grid { grid-template-columns:repeat(3,1fr); }
+@media(max-width:900px) { .mvp-product-grid { grid-template-columns:1fr !important; } }
+@media(max-width:900px) { .mvp-product-grid > div { max-width:520px; margin:0 auto; width:100%; } }
 </style>
 </head>
 <body>
@@ -709,102 +712,58 @@ footer {
     </div>
   </div>
 
-  <div id="apparel-grid" style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);border-left:1px solid var(--border);">
-    <div style="padding:36px 40px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
-      <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">SNG CLASSIC</div>
-      <div style="display:flex;gap:24px;align-items:flex-start;">
-        <img src="sng-hat-colorway-grid.png" alt="SNG Classic Hat" style="width:190px;flex-shrink:0;border-radius:8px;filter:drop-shadow(0 0 20px rgba(244,120,32,0.3));object-fit:cover;aspect-ratio:1;">
-        <div style="flex:1;">
-          <ul style="list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:7px;">
-            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• BLACK HAT</li>
-            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• WHITE SNG FIN LOGO</li>
-            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• FLAT BRIM</li>
-            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• SNAPBACK OR FLEXFIT</li>
-            <li style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--text);">• PREMIUM WOVEN HEM TAG</li>
-          </ul>
-          <div style="font-size:11px;color:var(--muted);font-style:italic;margin-bottom:18px;line-height:1.6;">SHIPS FLAT.<br>BEND IT IF THAT'S YOUR THING.</div>
-          <select id="size-hat-classic" style="width:100%;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;margin-bottom:8px;cursor:pointer;">
-            <option value="">— Select Size —</option><option>S/M</option><option>L/XL</option><option>One Size (Snapback)</option>
-          </select>
-          <button onclick="window.open('https://payhip.com/b/Ra5WY','_blank')" style="width:100%;background:var(--orange);color:#fff;border:none;padding:11px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Hat — $35</button>
-        </div>
-      </div>
-    </div>
+  <!-- MVP PRODUCT CARDS -->
+  <div id="apparel-grid" style="padding:48px 32px;max-width:1200px;margin:0 auto;">
+    <div style="font-size:11px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;text-align:center;">First Drop · Florida Garage Built</div>
+    <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:8px;line-height:1.1;">I Use Ta Have Gas.<br><span style="color:var(--orange);">Now I Just Haul Ass.</span></h2>
+    <p style="color:var(--muted);font-size:16px;text-align:center;margin-bottom:48px;">Rider gear from the garage that built the 270E. Not corporate. Not basic. Rider-owned.</p>
 
-    <!-- TOP RIGHT: CONVERSION SERIES HATS -->
-    <div style="padding:36px 40px;border-bottom:1px solid var(--border);">
-      <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">CONVERSION SERIES HATS</div>
-      <div style="font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">AVAILABLE COLORWAYS</div>
-      <img src="sng-hat-colorway-grid.png" alt="SNG Rider Team Colors — All 6 Colorways" style="width:100%;border-radius:8px;display:block;margin-bottom:20px;">
-      <div style="font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">OPTIONAL SIDE EMBROIDERY</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px;">
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center;"><div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;line-height:1.4;">NONE<br><span style="color:var(--orange);">(CLASSIC)</span></div></div>
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center;"><div style="font-size:10px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1.4;">SHARK NOT<br>GOLDFISH</div></div>
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center;"><div style="font-size:10px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1.4;">LEAVE THE<br>PACK BEHIND</div></div>
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center;"><div style="font-size:9px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1.5;">I USE TA HAVE GAS.<br>NOW I JUST HAUL ASS.<br><span style="color:var(--orange);">NO CHARGE.</span></div></div>
-      </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <select id="size-hat-colorway" style="flex:1;min-width:120px;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
-          <option value="">— Select Size —</option><option>S/M</option><option>L/XL</option><option>One Size (Snapback)</option>
-        </select>
-        <button onclick="window.open('https://payhip.com/b/Ra5WY','_blank')" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
-      </div>
-    </div>
+    <div class="mvp-product-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
 
-    <!-- BOTTOM LEFT: CONVERSION SERIES SHIRT -->
-    <div id="shirts" style="padding:36px 40px;border-right:1px solid var(--border);">
-      <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">CONVERSION SERIES SHIRT</div>
-      <img src="sng-conversion-series-shirt.png" alt="SNG Conversion Series — 6 Colorways" style="width:100%;border-radius:8px;display:block;margin-bottom:18px;">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:14px;">
-        <div style="font-size:18px;font-weight:900;color:#fff;line-height:1.3;">I USE TA HAVE GAS.<br>NOW I JUST HAUL ASS.</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:1px;">SHARK NOT GOLDFISH CYCLES</div>
+      <!-- HAT -->
+      <div style="background:var(--card);border:2px solid var(--border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:#111;padding:32px 24px;display:flex;align-items:center;justify-content:center;min-height:280px;">
+          <img src="assets/tonight-mvp/01-builder-series-hat-sng-classic.png" alt="Builder's Series Hat" style="width:100%;max-width:300px;object-fit:contain;display:block;">
+        </div>
+        <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
+          <div style="font-size:11px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">Builder's Series · 7 Colorways</div>
+          <div style="font-size:26px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:6px;line-height:1.15;">SNG Flat Brim Hat</div>
+          <div style="font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6;">Embroidered SNG fin logo. "I Use Ta Have Gas." 7 colorways to match your ride. Ships flat.</div>
+          <div style="font-size:42px;font-weight:900;color:var(--orange);margin-bottom:24px;line-height:1;">$35</div>
+          <button onclick="window.open('https://payhip.com/b/Ra5WY','_blank')" style="width:100%;background:var(--orange);color:#fff;border:none;padding:18px;border-radius:10px;font-weight:900;font-size:16px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;margin-top:auto;">Order Now →</button>
+        </div>
       </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <select id="size-conversion-shirt" style="flex:1;min-width:120px;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
-          <option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option>
-        </select>
-        <button onclick="window.open('https://payhip.com/b/euj5H','_blank')" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $30</button>
-      </div>
-    </div>
 
-    <!-- BOTTOM RIGHT: SNG SHIRT COLLECTION -->
-    <div style="padding:36px 40px;">
-      <div style="font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:24px;">SNG SHIRT COLLECTION</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
-        <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border);">
-          <img src="sng-megalodon-tee-sheet.png" alt="Megalodon Tee" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
-          <div style="padding:10px 12px;background:var(--card);">
-            <div style="font-size:12px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:2px;">Megalodon Tee</div>
-            <div style="font-size:10px;color:var(--orange);font-weight:700;letter-spacing:1px;">BUILT UP · SHARK NOT GOLDFISH</div>
-          </div>
+      <!-- HOODIE — center, featured -->
+      <div style="background:var(--card);border:3px solid var(--orange);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;position:relative;box-shadow:0 0 60px rgba(244,120,32,0.25);">
+        <div style="background:var(--orange);padding:10px 16px;text-align:center;font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#fff;">Most Popular</div>
+        <div style="background:#111;padding:32px 24px;display:flex;align-items:center;justify-content:center;min-height:280px;">
+          <img src="assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png" alt="SNG Black Hoodie" style="width:100%;max-width:300px;object-fit:contain;display:block;">
         </div>
-        <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border);">
-          <img src="sng-leave-collection-sheet.png" alt="Leave The School Behind Tee" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
-          <div style="padding:10px 12px;background:var(--card);">
-            <div style="font-size:12px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:2px;">Leave The School Behind</div>
-            <div style="font-size:10px;color:var(--orange);font-weight:700;letter-spacing:1px;">PREMIUM COLLECTION · UP TO 2XLT</div>
-          </div>
+        <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
+          <div style="font-size:11px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">First Funny Drop · Embroidered Front</div>
+          <div style="font-size:26px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:6px;line-height:1.15;">SNG Black Hoodie</div>
+          <div style="font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6;">SNG shark fin embroidered front. "I Use Ta Have Gas." printed back. Premium Gildan heavyweight. S–3XL.</div>
+          <div style="font-size:42px;font-weight:900;color:var(--orange);margin-bottom:24px;line-height:1;">$65</div>
+          <button onclick="window.open('https://payhip.com/b/mf3R4','_blank')" style="width:100%;background:var(--orange);color:#fff;border:none;padding:18px;border-radius:10px;font-weight:900;font-size:16px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;margin-top:auto;">Order Now →</button>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-        <div style="border-radius:6px;overflow:hidden;border:1px solid var(--border);">
-          <img src="sng-tee-packs-3-5.png" alt="3-Pack / 5-Pack Tees" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:top;">
-          <div style="padding:6px 10px;background:var(--card);font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">3-PACK · 5-PACK SETS</div>
-        </div>
-        <div style="border-radius:6px;overflow:hidden;border:1px solid var(--border);">
-          <img src="sng-tee-packs-light-dark.png" alt="Light Pack / Dark Pack" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:top;">
-          <div style="padding:6px 10px;background:var(--card);font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;">LIGHT PACK · DARK PACK</div>
-        </div>
-      </div>
-      <div style="font-size:11px;color:var(--muted);margin-bottom:14px;">Up to 2XLT · Premium embroidery · Woven hem label · Ships from Florida</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <select id="size-shirt-collection" style="flex:1;min-width:120px;padding:9px 12px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
-          <option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option>
-        </select>
-        <button onclick="window.open('https://payhip.com/b/euj5H','_blank')" style="background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $30</button>
-      </div>
-    </div>
 
+      <!-- TEE -->
+      <div style="background:var(--card);border:2px solid var(--border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="background:#111;padding:32px 24px;display:flex;align-items:center;justify-content:center;min-height:280px;">
+          <img src="assets/tonight-mvp/02-black-tee-use-ta-have-gas.png" alt="SNG Black Tee" style="width:100%;max-width:300px;object-fit:contain;display:block;">
+        </div>
+        <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
+          <div style="font-size:11px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">First Funny Drop · Bella+Canvas</div>
+          <div style="font-size:26px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:6px;line-height:1.15;">SNG Black Tee</div>
+          <div style="font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6;">Small SNG chest logo. "I Use Ta Have Gas." on the back. Premium Bella+Canvas unisex. S–3XL.</div>
+          <div style="font-size:42px;font-weight:900;color:var(--orange);margin-bottom:24px;line-height:1;">$30</div>
+          <button onclick="window.open('https://payhip.com/b/euj5H','_blank')" style="width:100%;background:var(--orange);color:#fff;border:none;padding:18px;border-radius:10px;font-weight:900;font-size:16px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;margin-top:auto;">Order Now →</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <!-- HOODIES -->
