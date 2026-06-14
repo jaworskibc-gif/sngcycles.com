@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SNG Growth OS</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --ink: #10151d;
+      --muted: #5b6472;
+      --line: #d7dde8;
+      --orange: #ff6b18;
+      --gold: #b9852a;
+      --green: #17a66a;
+      --blue: #1f6feb;
+      --dark: #10151d;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--ink); }
+    button, input, select, textarea { font: inherit; }
+    .login {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(255,107,24,.20), transparent 34%),
+        linear-gradient(135deg, #10151d, #1c2736);
+      color: #fff;
+    }
+    .login-card {
+      width: min(430px, 100%);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.35);
+    }
+    .login-card h1 { margin: 0 0 8px; font-size: 34px; letter-spacing: 1px; text-transform: uppercase; }
+    .login-card p { color: #c7d0df; line-height: 1.45; }
+    .login-card input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      margin: 8px 0 12px;
+    }
+    .login-card input::placeholder { color: #b7c0ce; }
+    .login-card button, .btn {
+      border: 0;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 6px;
+      padding: 11px 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .login-card button { width: 100%; }
+    .error { color: #ffb4a2; min-height: 20px; margin: 8px 0 0; }
+    .app { display: none; }
+    header {
+      background: var(--dark);
+      color: #fff;
+      padding: 22px 18px;
+      border-bottom: 4px solid var(--orange);
+    }
+    .wrap { max-width: 1220px; margin: 0 auto; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    h1, h2, h3, p { margin-top: 0; }
+    header h1 { margin: 0; font-size: clamp(30px, 5vw, 52px); letter-spacing: 1px; text-transform: uppercase; }
+    header p { margin: 8px 0 0; color: #c7d0df; }
+    nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 18px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    nav button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    nav button.active { background: var(--dark); color: #fff; border-color: var(--dark); }
+    main { padding: 18px; }
+    .grid { display: grid; gap: 14px; }
+    .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .metric { font-size: 34px; font-weight: 900; color: var(--orange); line-height: 1; }
+    .label { color: var(--muted); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; margin-top: 6px; }
+    .muted { color: var(--muted); }
+    .actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+    .btn.secondary { background: #eef2f7; color: var(--ink); }
+    .btn.dark { background: var(--dark); }
+    .btn.small { padding: 7px 9px; font-size: 12px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; font-size: 14px; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; padding: 9px; }
+    th { background: #eef2f7; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+    td[contenteditable="true"] { background: #fff; min-width: 110px; }
+    td[contenteditable="true"]:focus { outline: 2px solid rgba(255,107,24,.35); background: #fffaf6; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+    .section { display: none; }
+    .section.active { display: block; }
+    .pill { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 5px 9px; margin: 3px 4px 3px 0; background: #fff; font-size: 12px; font-weight: 700; }
+    .callout { border-left: 5px solid var(--orange); background: #fff5ef; border-radius: 6px; padding: 12px 14px; margin: 12px 0; }
+    textarea {
+      width: 100%;
+      min-height: 280px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      resize: vertical;
+      background: #fff;
+      color: var(--ink);
+    }
+    .barrow { display: grid; grid-template-columns: 130px 1fr 50px; gap: 10px; align-items: center; margin: 12px 0; }
+    .track { height: 13px; background: #e7ebf2; border-radius: 999px; overflow: hidden; }
+    .bar { height: 100%; border-radius: 999px; }
+    .b1 { background: var(--orange); width: 70%; }
+    .b2 { background: var(--gold); width: 20%; }
+    .b3 { background: var(--blue); width: 10%; }
+    @media (max-width: 860px) {
+      .cards, .two { grid-template-columns: 1fr; }
+      .barrow { grid-template-columns: 1fr; gap: 4px; }
+      main { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="login" id="login">
+    <div class="login-card">
+      <h1>SNG Growth OS</h1>
+      <p>Private schedule, content tracker, creator CRM, comment miner, and lead board.</p>
+      <form id="loginForm">
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter password" autocomplete="current-password">
+        <button type="submit">Open Dashboard</button>
+        <div class="error" id="error"></div>
+      </form>
+      <p class="muted">Private SNG operator dashboard.</p>
+    </div>
+  </section>
+
+  <div class="app" id="app">
+    <header>
+      <div class="wrap topbar">
+        <div>
+          <h1>SNG Growth OS</h1>
+          <p>Motor. Hologram forks. Controller. Brakes. Orange/gold stance. Tall-rider fit.</p>
+        </div>
+        <button class="btn secondary" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <nav id="tabs">
+      <button class="active" data-tab="dashboard">Dashboard</button>
+      <button data-tab="schedule">Schedule</button>
+      <button data-tab="tracker">Post Tracker</button>
+      <button data-tab="comments">Comment Miner</button>
+      <button data-tab="creators">Creator CRM</button>
+      <button data-tab="leads">Leads</button>
+      <button data-tab="report">Weekly Report</button>
+    </nav>
+
+    <main class="wrap">
+      <section class="section active" id="dashboard">
+        <div class="grid cards">
+          <div class="card"><div class="metric">7</div><div class="label">Day Test</div><p>Run the free system before paying for tools.</p></div>
+          <div class="card"><div class="metric">70%</div><div class="label">Build Proof</div><p>Bike, parts, hardware, install, test.</p></div>
+          <div class="card"><div class="metric">20%</div><div class="label">Community</div><p>Polls, replies, creator touchpoints.</p></div>
+          <div class="card"><div class="metric">10%</div><div class="label">Product</div><p>Apparel/drop mentions after proof.</p></div>
+        </div>
+        <div class="grid two" style="margin-top:14px">
+          <div class="card">
+            <h2>Today</h2>
+            <table>
+              <tbody>
+                <tr><th>Post</th><td>One clip where the part is clear in the first second.</td></tr>
+                <tr><th>Reply</th><td>Answer every real comment within the first hour.</td></tr>
+                <tr><th>Scout</th><td>Add 5 relevant creators or accounts.</td></tr>
+                <tr><th>Lead</th><td>Tag anyone asking price, parts, controller, brakes, build slots, or where to buy.</td></tr>
+                <tr><th>Review</th><td>Check 2h, 24h, 72h performance. Recut winners.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <h2>Posting Mix</h2>
+            <div class="barrow"><strong>Build proof</strong><div class="track"><div class="bar b1"></div></div><strong>70%</strong></div>
+            <div class="barrow"><strong>Community</strong><div class="track"><div class="bar b2"></div></div><strong>20%</strong></div>
+            <div class="barrow"><strong>Product</strong><div class="track"><div class="bar b3"></div></div><strong>10%</strong></div>
+            <div class="callout"><strong>No Promote yet:</strong> pay only after organic posts show repeatable comments, saves, follows, and profile visits.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="schedule">
+        <h2>7-Day Schedule</h2>
+        <div class="actions" data-table-actions="scheduleTable"></div>
+        <div class="table-wrap"><table id="scheduleTable"></table></div>
+      </section>
+
+      <section class="section" id="tracker">
+        <h2>Post Tracker</h2>
+        <div class="actions" data-table-actions="trackerTable"></div>
+        <div class="table-wrap"><table id="trackerTable"></table></div>
+      </section>
+
+      <section class="section" id="comments">
+        <h2>Comment Miner</h2>
+        <div class="actions" data-table-actions="commentTable"></div>
+        <div class="table-wrap"><table id="commentTable"></table></div>
+      </section>
+
+      <section class="section" id="creators">
+        <h2>Creator CRM</h2>
+        <div class="actions" data-table-actions="creatorTable"></div>
+        <div class="table-wrap"><table id="creatorTable"></table></div>
+      </section>
+
+      <section class="section" id="leads">
+        <h2>Lead Sheet</h2>
+        <div class="actions" data-table-actions="leadTable"></div>
+        <div class="table-wrap"><table id="leadTable"></table></div>
+      </section>
+
+      <section class="section" id="report">
+        <h2>Weekly Report</h2>
+        <p class="muted">Edit this every Sunday. It saves in this browser.</p>
+        <div class="actions">
+          <button class="btn" id="saveReport">Save Report</button>
+          <button class="btn secondary" id="copyReport">Copy Report</button>
+        </div>
+        <textarea id="weeklyReport"></textarea>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const PASSWORD_HASH = '4ca8c0885c826454e6d58982fcd981573d11bd26c53180a242e7739c8e8aff3a';
+    const STORAGE_PREFIX = 'sng-growth-os-v1:';
+
+    const defaults = {
+      scheduleTable: {
+        columns: ['Day','Theme','Primary Asset','Platform','Post Idea','Caption Draft','CTA','Measure','Status'],
+        rows: [
+          ['1','Motor + hologram forks','Motor/forks closeup','TikTok + IG Reel','Raw proof clip with motor/forks in first second','motor in. forks fit clean. controller next.','comment what part you want to see next','2h/24h/72h views, comments, follows','Ready'],
+          ['2','Gold or orange stance','Gold/orange full bike','IG Reel + TikTok','Full bike stance plus quick hardware cuts','gold or orange tomorrow? this thing is finally looking right.','poll/comment gold or orange','comments, saves, profile visits','Next'],
+          ['3','Controller install','Controller box/install clip','TikTok + Shorts','1000 phase amp install teaser','1000 phase amp controller going in. then we see what it does.','follow for install','retention, comments asking specs','Planned'],
+          ['4','Brake day','Lewis 8 / 6p brakes','TikTok + IG Reel','Brake closeups and why the hardware matters','brake day coming. not skipping the parts that matter.','comment BRAKES for the setup','saves, comments, DMs','Planned'],
+          ['5','Tall rider fit','Rider/bike stance','IG Reel + Shorts','Show why this does not look tiny under a tall rider','built for tall riders. not another tiny setup.','ask height/fit question','comments, DMs','Planned'],
+          ['6','Poll/product research','Story clips/stills','Instagram Stories','Orange vs gold, black vs holo, hoodie vs hat','help pick the first SNG drop.','vote in poll','poll votes, replies','Planned'],
+          ['7','Weekly recap','Best 4 clips','All platforms','Motor/forks/controller/brakes recap','week one build proof. next week it gets louder.','follow SNGCYCLES.COM','follows, profile visits, link clicks','Planned']
+        ]
+      },
+      trackerTable: {
+        columns: ['Date','Platform','Post URL','Content Pillar','Hook Type','Opening Frame','Caption','CTA','Length','Post Time','Views 2h','Views 24h','Views 72h','Likes','Comments','Shares','Saves','Follows','Profile Visits','Link Clicks','Top Comment','Next Test'],
+        rows: [['','','','','','','','','','','','','','','','','','','','','','']]
+      },
+      commentTable: {
+        columns: ['Date','Platform','Post','Comment/DM Text','Theme','Intent Level','Reply Sent','Next Content Idea','Lead Tag'],
+        rows: [['','','','','','','','','']]
+      },
+      creatorTable: {
+        columns: ['Handle','Platform','Niche','Location','Why They Fit','Follower Range','Recent Engagement','Content Style','Outreach Idea','Status','Last Touch','Next Step','Notes'],
+        rows: [['','','','','','','','','','','','','']]
+      },
+      leadTable: {
+        columns: ['Name/Handle','Platform','Source','Interest Tag','Question Asked','Location','Budget Signal','Timeline','Lead Score','Status','Next Follow Up','Notes'],
+        rows: [['','','','','','','','','','','','']]
+      }
+    };
+
+    const defaultReport = `# SNG Weekly Growth Report
+
+Week:
+
+## Top Posts
+- Best views:
+- Best comments:
+- Best saves/shares:
+- Best profile visits:
+- Best DMs/leads:
+
+## Winning Hooks
+-
+
+## Weak Hooks To Stop
+-
+
+## Comment Themes
+- Price:
+- Motor/controller:
+- Brakes:
+- Forks:
+- Tall rider fit:
+- Apparel/drop:
+
+## Leads
+- Hot:
+- Warm:
+- Cool:
+
+## Creator Targets
+-
+
+## Next Week Shoot List
+- Motor/controller:
+- Brakes:
+- Gold/orange stance:
+- Hologram forks:
+- Tall-rider fit:
+
+## Decisions
+- Keep:
+- Kill:
+- Recut:
+- Pay for tools yet? No, unless manual tracking is blocking daily posting.
+`;
+
+    async function sha256(text) {
+      const data = new TextEncoder().encode(text);
+      const hash = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function showApp() {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      initApp();
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const password = document.getElementById('password').value;
+      const hash = await sha256(password);
+      if (hash === PASSWORD_HASH) {
+        sessionStorage.setItem(STORAGE_PREFIX + 'authed', '1');
+        showApp();
+      } else {
+        document.getElementById('error').textContent = 'Wrong password.';
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.removeItem(STORAGE_PREFIX + 'authed');
+      location.reload();
+    });
+
+    if (sessionStorage.getItem(STORAGE_PREFIX + 'authed') === '1') showApp();
+
+    function getTableData(id) {
+      const saved = localStorage.getItem(STORAGE_PREFIX + id);
+      return saved ? JSON.parse(saved) : structuredClone(defaults[id]);
+    }
+
+    function saveTableData(id, data) {
+      localStorage.setItem(STORAGE_PREFIX + id, JSON.stringify(data));
+    }
+
+    function renderTable(id) {
+      const table = document.getElementById(id);
+      const data = getTableData(id);
+      table.innerHTML = '';
+      const thead = document.createElement('thead');
+      const tr = document.createElement('tr');
+      data.columns.forEach(col => {
+        const th = document.createElement('th');
+        th.textContent = col;
+        tr.appendChild(th);
+      });
+      const actionHead = document.createElement('th');
+      actionHead.textContent = 'Actions';
+      tr.appendChild(actionHead);
+      thead.appendChild(tr);
+      table.appendChild(thead);
+
+      const tbody = document.createElement('tbody');
+      data.rows.forEach((row, rowIndex) => {
+        const tr = document.createElement('tr');
+        data.columns.forEach((_, colIndex) => {
+          const td = document.createElement('td');
+          td.contentEditable = 'true';
+          td.textContent = row[colIndex] || '';
+          td.addEventListener('input', () => {
+            const current = getTableData(id);
+            current.rows[rowIndex][colIndex] = td.textContent;
+            saveTableData(id, current);
+          });
+          tr.appendChild(td);
+        });
+        const td = document.createElement('td');
+        const remove = document.createElement('button');
+        remove.className = 'btn small secondary';
+        remove.textContent = 'Delete';
+        remove.addEventListener('click', () => {
+          const current = getTableData(id);
+          current.rows.splice(rowIndex, 1);
+          saveTableData(id, current);
+          renderTable(id);
+        });
+        td.appendChild(remove);
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+    }
+
+    function tableToCsv(data) {
+      const rows = [data.columns, ...data.rows];
+      return rows.map(row => row.map(cell => `"${String(cell || '').replace(/"/g, '""')}"`).join(',')).join('\n');
+    }
+
+    function download(filename, text) {
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function wireTableActions(id) {
+      const holder = document.querySelector(`[data-table-actions="${id}"]`);
+      if (!holder) return;
+      holder.innerHTML = '';
+      const add = document.createElement('button');
+      add.className = 'btn';
+      add.textContent = 'Add Row';
+      add.addEventListener('click', () => {
+        const data = getTableData(id);
+        data.rows.push(data.columns.map(() => ''));
+        saveTableData(id, data);
+        renderTable(id);
+      });
+      const exportBtn = document.createElement('button');
+      exportBtn.className = 'btn secondary';
+      exportBtn.textContent = 'Export CSV';
+      exportBtn.addEventListener('click', () => download(id.replace('Table', '') + '.csv', tableToCsv(getTableData(id))));
+      const reset = document.createElement('button');
+      reset.className = 'btn dark';
+      reset.textContent = 'Reset';
+      reset.addEventListener('click', () => {
+        if (confirm('Reset this table to the starting template?')) {
+          localStorage.removeItem(STORAGE_PREFIX + id);
+          renderTable(id);
+        }
+      });
+      holder.append(add, exportBtn, reset);
+    }
+
+    function initTabs() {
+      document.querySelectorAll('#tabs button').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('#tabs button').forEach(btn => btn.classList.remove('active'));
+          document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+          button.classList.add('active');
+          document.getElementById(button.dataset.tab).classList.add('active');
+        });
+      });
+    }
+
+    function initReport() {
+      const report = document.getElementById('weeklyReport');
+      report.value = localStorage.getItem(STORAGE_PREFIX + 'weeklyReport') || defaultReport;
+      document.getElementById('saveReport').addEventListener('click', () => {
+        localStorage.setItem(STORAGE_PREFIX + 'weeklyReport', report.value);
+      });
+      document.getElementById('copyReport').addEventListener('click', async () => {
+        await navigator.clipboard.writeText(report.value);
+      });
+    }
+
+    function initApp() {
+      initTabs();
+      Object.keys(defaults).forEach(id => {
+        renderTable(id);
+        wireTableActions(id);
+      });
+      initReport();
+    }
+  </script>
+</body>
+</html>
