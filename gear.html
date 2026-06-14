@@ -592,28 +592,16 @@ footer {
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   padding:32px 24px; min-height:440px;
 }
-.hat-flip-card { width:100%; perspective:1200px; cursor:pointer; }
-.hat-flip-inner {
-  position:relative; width:100%;
-  transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);
-  transform-style:preserve-3d;
+.hat-side-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; width:100%; }
+.hat-side-grid img {
+  width:100%; max-width:240px; object-fit:contain;
+  display:block; margin:0 auto; cursor:zoom-in; transition:transform 0.3s;
 }
-.hat-flip-card.flipped .hat-flip-inner { transform:rotateY(180deg); }
-.hat-flip-front, .hat-flip-back {
-  width:100%; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+.hat-side-grid img:hover { transform:scale(1.06); }
+.hat-view-label {
+  font-size:10px; color:var(--muted); letter-spacing:3px;
+  text-transform:uppercase; margin-top:8px; font-weight:700; text-align:center;
 }
-.hat-flip-back { position:absolute; top:0; left:0; transform:rotateY(180deg); }
-.hat-flip-front img, .hat-flip-back img {
-  width:100%; max-width:340px; object-fit:contain; display:block; margin:0 auto;
-}
-#hat-spin-btn {
-  margin-top:16px; background:transparent;
-  border:1px solid var(--orange); color:var(--orange);
-  padding:9px 22px; border-radius:7px;
-  font-size:12px; font-weight:900; letter-spacing:2px;
-  text-transform:uppercase; cursor:pointer; transition:all 0.2s;
-}
-#hat-spin-btn:hover { background:var(--orange); color:#fff; }
 #hat-info-panel { padding:32px 28px; display:flex; flex-direction:column; }
 .hat-swatch-grid {
   display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:22px;
@@ -747,7 +735,7 @@ footer {
       <div style="background:var(--card);border:1px solid var(--orange);overflow:hidden;display:flex;flex-direction:column;position:relative;box-shadow:0 0 80px rgba(244,120,32,0.15);">
         <div onclick="openProduct('hoodie-black-gas')" style="background:#0a0a0c;display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;overflow:hidden;cursor:zoom-in;position:relative;">
           <div style="position:absolute;top:12px;left:12px;background:var(--orange);font-family:var(--heading);font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#fff;padding:4px 10px;">Most Popular · #1</div>
-          <img src="assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png" alt="SNG Black Hoodie" style="width:78%;object-fit:contain;display:block;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+          <img src="assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png" alt="SNG Black Hoodie" style="max-height:92%;max-width:82%;object-fit:contain;display:block;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''">
           <div style="position:absolute;bottom:8px;right:10px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);">Click to Zoom</div>
         </div>
         <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
@@ -1037,18 +1025,16 @@ footer {
     <button id="hat-modal-close" onclick="closeHatModal()">×</button>
 
     <div id="hat-img-panel">
-      <div class="hat-flip-card" id="hat-flip-card">
-        <div class="hat-flip-inner">
-          <div class="hat-flip-front">
-            <img id="hat-viewer-img" src="assets/payhip/merch-ready/hat-sng-classic.png" alt="SNG Hat Front" onclick="toggleHatZoom()" style="cursor:zoom-in;">
-          </div>
-          <div class="hat-flip-back">
-            <img id="hat-viewer-img-back" src="assets/payhip/merch-ready/hat-back-sng-classic.svg" alt="SNG Hat Back" onclick="toggleHatZoom()" style="cursor:zoom-in;">
-          </div>
+      <div class="hat-side-grid">
+        <div>
+          <img id="hat-viewer-img" src="assets/payhip/merch-ready/hat-sng-classic.png" alt="SNG Hat Front">
+          <div class="hat-view-label">FRONT</div>
+        </div>
+        <div>
+          <img id="hat-viewer-img-back" src="assets/payhip/merch-ready/hat-back-sng-classic.svg" alt="SNG Hat Back">
+          <div class="hat-view-label">BACK</div>
         </div>
       </div>
-      <div style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;">Tap image to zoom · use button to flip</div>
-      <button id="hat-spin-btn" onclick="flipHat()">↩ VIEW BACK</button>
     </div>
 
     <div id="hat-info-panel">
@@ -1404,16 +1390,12 @@ function openHatModal() {
 function closeHatModal() {
   document.getElementById('hat-modal').classList.remove('open');
   document.body.style.overflow = '';
-  document.getElementById('hat-flip-card').classList.remove('flipped');
-  document.getElementById('hat-spin-btn').textContent = '↩ VIEW BACK';
 }
 
 function selectHatColor(colorway, el) {
   hatSelectedColor = colorway;
   document.getElementById('hat-viewer-img').src = colorway.img;
   document.getElementById('hat-viewer-img-back').src = colorway.back;
-  document.getElementById('hat-flip-card').classList.remove('flipped');
-  document.getElementById('hat-spin-btn').textContent = '↩ VIEW BACK';
   document.getElementById('hat-color-label').textContent = colorway.label;
   document.querySelectorAll('.hat-swatch').forEach(function(s){ s.classList.remove('active'); });
   el.classList.add('active');
@@ -1423,22 +1405,6 @@ function selectHatSize(size) {
   hatSelectedSize = size;
   document.querySelectorAll('.hat-size-btn').forEach(function(b){ b.classList.remove('active'); });
   document.getElementById(size === 'S/M' ? 'hatsz-sm' : 'hatsz-lxl').classList.add('active');
-}
-
-function toggleHatZoom() {
-  var flipped = document.getElementById('hat-flip-card').classList.contains('flipped');
-  var img = document.getElementById(flipped ? 'hat-viewer-img-back' : 'hat-viewer-img');
-  img.classList.toggle('zoomed');
-  document.getElementById('hat-viewer-wrap').style.cursor = img.classList.contains('zoomed') ? 'zoom-out' : 'zoom-in';
-}
-
-function spinHat360() { flipHat(); }
-function flipHat() {
-  var card = document.getElementById('hat-flip-card');
-  document.getElementById('hat-viewer-img').classList.remove('zoomed');
-  document.getElementById('hat-viewer-img-back').classList.remove('zoomed');
-  card.classList.toggle('flipped');
-  document.getElementById('hat-spin-btn').textContent = card.classList.contains('flipped') ? '↩ VIEW FRONT' : '↩ VIEW BACK';
 }
 
 function orderBuilderHat() {
