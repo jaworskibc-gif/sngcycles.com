@@ -594,24 +594,20 @@ footer {
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   padding:32px 24px; min-height:440px;
 }
-#hat-viewer-wrap {
-  width:100%; cursor:zoom-in; border-radius:12px;
-  display:flex; align-items:center; justify-content:center;
-  overflow:hidden; perspective:900px;
+.hat-flip-card { width:100%; perspective:1200px; cursor:pointer; }
+.hat-flip-inner {
+  position:relative; width:100%;
+  transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  transform-style:preserve-3d;
 }
-#hat-viewer-img {
-  width:100%; max-width:340px; object-fit:contain;
-  transition:transform 0.35s ease; transform-origin:center center;
+.hat-flip-card.flipped .hat-flip-inner { transform:rotateY(180deg); }
+.hat-flip-front, .hat-flip-back {
+  width:100%; backface-visibility:hidden; -webkit-backface-visibility:hidden;
 }
-#hat-viewer-img.zoomed { transform:scale(2.4); cursor:zoom-out; }
-@keyframes hatSpin360 {
-  0%   { transform:rotateY(0deg) scale(1); }
-  25%  { transform:rotateY(90deg) scale(0.65); }
-  50%  { transform:rotateY(180deg) scale(1); }
-  75%  { transform:rotateY(270deg) scale(0.65); }
-  100% { transform:rotateY(360deg) scale(1); }
+.hat-flip-back { position:absolute; top:0; left:0; transform:rotateY(180deg); }
+.hat-flip-front img, .hat-flip-back img {
+  width:100%; max-width:340px; object-fit:contain; display:block; margin:0 auto;
 }
-#hat-viewer-img.spinning { animation:hatSpin360 1.6s ease-in-out; }
 #hat-spin-btn {
   margin-top:16px; background:transparent;
   border:1px solid var(--orange); color:var(--orange);
@@ -1058,11 +1054,18 @@ footer {
     <button id="hat-modal-close" onclick="closeHatModal()">×</button>
 
     <div id="hat-img-panel">
-      <div id="hat-viewer-wrap" onclick="toggleHatZoom()">
-        <img id="hat-viewer-img" src="assets/payhip/merch-ready/hat-sng-classic.png" alt="SNG Builder Series Hat">
+      <div class="hat-flip-card" id="hat-flip-card" onclick="flipHat()">
+        <div class="hat-flip-inner">
+          <div class="hat-flip-front">
+            <img id="hat-viewer-img" src="assets/payhip/merch-ready/hat-sng-classic.png" alt="SNG Hat Front">
+          </div>
+          <div class="hat-flip-back">
+            <img id="hat-viewer-img-back" src="assets/payhip/merch-ready/mockup-sng-classic.png" alt="SNG Hat Back">
+          </div>
+        </div>
       </div>
-      <div style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;">Tap image to zoom · tap again to zoom out</div>
-      <button id="hat-spin-btn" onclick="spinHat360()">⟳ 360° SPIN</button>
+      <div style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;">Click image or button to flip • see front &amp; back</div>
+      <button id="hat-spin-btn" onclick="flipHat()">↩ VIEW BACK</button>
     </div>
 
     <div id="hat-info-panel">
@@ -1320,13 +1323,13 @@ var PRODUCTS = {
 
 /* ── HAT VIEWER ── */
 var HAT_COLORWAYS = [
-  { label:'SNG Classic',    img:'assets/payhip/merch-ready/hat-sng-classic.png' },
-  { label:'Black / Orange', img:'assets/payhip/merch-ready/hat-black-orange.png' },
-  { label:'Navy / Hi-Vis',  img:'assets/payhip/merch-ready/hat-navy-hiviz.png' },
-  { label:'Red / White',    img:'assets/payhip/merch-ready/hat-red-white.png' },
-  { label:'Black / Green',  img:'assets/payhip/merch-ready/hat-black-green.png' },
-  { label:'Black / Yellow', img:'assets/payhip/merch-ready/hat-black-yellow.png' },
-  { label:'Blue / White',   img:'assets/payhip/merch-ready/hat-blue-white.png' }
+  { label:'SNG Classic',    img:'assets/payhip/merch-ready/hat-sng-classic.png',  back:'assets/payhip/merch-ready/mockup-sng-classic.png' },
+  { label:'Black / Orange', img:'assets/payhip/merch-ready/hat-black-orange.png', back:'assets/payhip/merch-ready/mockup-black-orange.png' },
+  { label:'Navy / Hi-Vis',  img:'assets/payhip/merch-ready/hat-navy-hiviz.png',   back:'assets/payhip/merch-ready/mockup-navy-hiviz.png' },
+  { label:'Red / White',    img:'assets/payhip/merch-ready/hat-red-white.png',    back:'assets/payhip/merch-ready/mockup-red-white.png' },
+  { label:'Black / Green',  img:'assets/payhip/merch-ready/hat-black-green.png',  back:'assets/payhip/merch-ready/mockup-black-green.png' },
+  { label:'Black / Yellow', img:'assets/payhip/merch-ready/hat-black-yellow.png', back:'assets/payhip/merch-ready/mockup-black-yellow.png' },
+  { label:'Blue / White',   img:'assets/payhip/merch-ready/hat-blue-white.png',   back:'assets/payhip/merch-ready/mockup-blue-white.png' }
 ];
 var hatSelectedColor = HAT_COLORWAYS[0];
 var hatSelectedSize = null;
@@ -1335,10 +1338,10 @@ function openHatModal() {
   hatSelectedColor = HAT_COLORWAYS[0];
   hatSelectedSize = null;
   document.getElementById('hat-viewer-img').src = hatSelectedColor.img;
-  document.getElementById('hat-viewer-img').classList.remove('zoomed','spinning');
-  document.getElementById('hat-viewer-img').style.animation = '';
+  document.getElementById('hat-viewer-img-back').src = hatSelectedColor.back;
+  document.getElementById('hat-flip-card').classList.remove('flipped');
+  document.getElementById('hat-spin-btn').textContent = '↩ VIEW BACK';
   document.getElementById('hat-color-label').textContent = hatSelectedColor.label;
-  document.getElementById('hat-viewer-wrap').style.cursor = 'zoom-in';
   document.querySelectorAll('.hat-size-btn').forEach(function(b){ b.classList.remove('active'); });
   var grid = document.getElementById('hat-swatches');
   grid.innerHTML = '';
@@ -1360,19 +1363,17 @@ function openHatModal() {
 function closeHatModal() {
   document.getElementById('hat-modal').classList.remove('open');
   document.body.style.overflow = '';
-  var img = document.getElementById('hat-viewer-img');
-  img.classList.remove('zoomed','spinning');
-  img.style.animation = '';
+  document.getElementById('hat-flip-card').classList.remove('flipped');
+  document.getElementById('hat-spin-btn').textContent = '↩ VIEW BACK';
 }
 
 function selectHatColor(colorway, el) {
   hatSelectedColor = colorway;
-  var img = document.getElementById('hat-viewer-img');
-  img.classList.remove('zoomed','spinning');
-  img.style.animation = '';
-  img.src = colorway.img;
+  document.getElementById('hat-viewer-img').src = colorway.img;
+  document.getElementById('hat-viewer-img-back').src = colorway.back;
+  document.getElementById('hat-flip-card').classList.remove('flipped');
+  document.getElementById('hat-spin-btn').textContent = '↩ VIEW BACK';
   document.getElementById('hat-color-label').textContent = colorway.label;
-  document.getElementById('hat-viewer-wrap').style.cursor = 'zoom-in';
   document.querySelectorAll('.hat-swatch').forEach(function(s){ s.classList.remove('active'); });
   el.classList.add('active');
 }
@@ -1390,16 +1391,11 @@ function toggleHatZoom() {
   document.getElementById('hat-viewer-wrap').style.cursor = img.classList.contains('zoomed') ? 'zoom-out' : 'zoom-in';
 }
 
-function spinHat360() {
-  var img = document.getElementById('hat-viewer-img');
-  var wrap = document.getElementById('hat-viewer-wrap');
-  if (img.classList.contains('spinning')) return;
-  img.classList.remove('zoomed');
-  img.style.animation = 'none';
-  img.offsetHeight;
-  wrap.style.overflow = 'visible';
-  img.classList.add('spinning');
-  setTimeout(function() { img.classList.remove('spinning'); wrap.style.overflow = 'hidden'; }, 1700);
+function spinHat360() { flipHat(); }
+function flipHat() {
+  var card = document.getElementById('hat-flip-card');
+  card.classList.toggle('flipped');
+  document.getElementById('hat-spin-btn').textContent = card.classList.contains('flipped') ? '↩ VIEW FRONT' : '↩ VIEW BACK';
 }
 
 function orderBuilderHat() {
