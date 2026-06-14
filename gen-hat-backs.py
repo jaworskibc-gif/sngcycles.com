@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Generate clean back-view SVGs for each SNG hat colorway."""
+"""Generate hat back SVGs matching the real SNG snapback back view."""
 import os
 
 COLORWAYS = [
-    { 'key': 'sng-classic',   'shell': '#111316', 'brim': '#0d0f11', 'strap': '#1a1d20', 'thread': '#ffffff', 'label': 'SNG Classic',   'snap': '#888' },
-    { 'key': 'black-orange',  'shell': '#111316', 'brim': '#0d0f11', 'strap': '#1a1d20', 'thread': '#f47820', 'label': 'Black / Orange', 'snap': '#888' },
-    { 'key': 'blue-white',    'shell': '#1c5fb4', 'brim': '#163f78', 'strap': '#1a3a6a', 'thread': '#ffffff', 'label': 'Blue / White',   'snap': '#aaa' },
-    { 'key': 'red-white',     'shell': '#c8202b', 'brim': '#8a1018', 'strap': '#a01520', 'thread': '#ffffff', 'label': 'Red / White',    'snap': '#aaa' },
-    { 'key': 'navy-hiviz',    'shell': '#1a2742', 'brim': '#111a2e', 'strap': '#16213a', 'thread': '#d8ff00', 'label': 'Navy / Hi-Vis',  'snap': '#888' },
-    { 'key': 'black-green',   'shell': '#111316', 'brim': '#0d0f11', 'strap': '#1a1d20', 'thread': '#2ecc40', 'label': 'Black / Green',  'snap': '#888' },
-    { 'key': 'black-yellow',  'shell': '#111316', 'brim': '#0d0f11', 'strap': '#1a1d20', 'thread': '#ffd400', 'label': 'Black / Yellow', 'snap': '#888' },
+    { 'key': 'sng-classic',  'shell': '#111316', 'brim': '#0d0f11', 'strap': '#1e2124', 'thread': '#ffffff', 'label': 'SNG Classic · Black / White'   },
+    { 'key': 'black-orange', 'shell': '#111316', 'brim': '#0d0f11', 'strap': '#1e2124', 'thread': '#f47820', 'label': 'Black / Orange · KTM'           },
+    { 'key': 'blue-white',   'shell': '#1c5fb4', 'brim': '#163f78', 'strap': '#183a6e', 'thread': '#ffffff', 'label': 'Blue / White · Yamaha'          },
+    { 'key': 'red-white',    'shell': '#c8202b', 'brim': '#8a1018', 'strap': '#961820', 'thread': '#ffffff', 'label': 'Red / White · Honda'            },
+    { 'key': 'navy-hiviz',   'shell': '#1a2742', 'brim': '#111a2e', 'strap': '#161f38', 'thread': '#d8ff00', 'label': 'Dark Blue / Hi-Vis · Husqvarna' },
+    { 'key': 'black-green',  'shell': '#111316', 'brim': '#0d0f11', 'strap': '#1e2124', 'thread': '#2ecc40', 'label': 'Black / Green · Kawasaki'       },
+    { 'key': 'black-yellow', 'shell': '#111316', 'brim': '#0d0f11', 'strap': '#1e2124', 'thread': '#ffd400', 'label': 'Black / Yellow · Sur-Ron'       },
 ]
 
 def gen_svg(c):
@@ -17,108 +17,85 @@ def gen_svg(c):
     brim   = c['brim']
     strap  = c['strap']
     thread = c['thread']
-    snap   = c['snap']
-    label  = c['label']
+
+    # darken shell slightly for shadow/depth
+    def hex_darken(h, amt=25):
+        r = max(0, int(h[1:3], 16) - amt)
+        g = max(0, int(h[3:5], 16) - amt)
+        b = max(0, int(h[5:7], 16) - amt)
+        return f'#{r:02x}{g:02x}{b:02x}'
+
+    dark = hex_darken(shell, 30)
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
-
-  <!-- background -->
+  <!-- page bg -->
   <rect width="900" height="900" fill="#0c0d10"/>
 
-  <!-- ── CROWN (back view — rounded trapezoid) ── -->
-  <path d="M175 540 C155 300 280 120 450 120 C620 120 745 300 725 540 Z"
-        fill="{shell}" stroke="#00000080" stroke-width="3"/>
+  <!-- ── CROWN — clean dome from behind ── -->
+  <!-- shadow/depth ellipse under crown -->
+  <ellipse cx="450" cy="580" rx="340" ry="28" fill="#000" opacity="0.35"/>
 
-  <!-- crown seam (center back) -->
-  <line x1="450" y1="120" x2="450" y2="540" stroke="#00000040" stroke-width="2.5"/>
+  <!-- main crown body -->
+  <path d="M152 555
+           C140 310 268 110 450 108
+           C632 108 760 310 748 555
+           Z"
+        fill="{shell}"/>
 
-  <!-- side panel seams -->
-  <path d="M450 140 C370 200 320 360 330 540" fill="none" stroke="#00000030" stroke-width="1.8"/>
-  <path d="M450 140 C530 200 580 360 570 540" fill="none" stroke="#00000030" stroke-width="1.8"/>
+  <!-- subtle left/right panel shading -->
+  <path d="M152 555 C140 310 268 110 450 108"
+        fill="none" stroke="{dark}" stroke-width="1.5" opacity="0.6"/>
+  <path d="M748 555 C760 310 632 110 450 108"
+        fill="none" stroke="{dark}" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- center back seam -->
+  <line x1="450" y1="110" x2="450" y2="556"
+        stroke="{dark}" stroke-width="2" opacity="0.5"/>
+
+  <!-- subtle side seams -->
+  <path d="M450 130 C374 195 328 360 336 556"
+        fill="none" stroke="{dark}" stroke-width="1.2" opacity="0.35"/>
+  <path d="M450 130 C526 195 572 360 564 556"
+        fill="none" stroke="{dark}" stroke-width="1.2" opacity="0.35"/>
 
   <!-- top button -->
-  <circle cx="450" cy="132" r="20" fill="{shell}" stroke="{thread}" stroke-width="3.5" stroke-opacity="0.9"/>
-  <circle cx="450" cy="132" r="10" fill="{thread}" fill-opacity="0.25"/>
+  <circle cx="450" cy="120" r="18" fill="{dark}" stroke="{hex_darken(shell,10)}" stroke-width="2"/>
 
-  <!-- ── SNG CYCLES EMBROIDERY (centered on back crown) ── -->
-  <!-- shark fin mark above text -->
-  <path d="M450 295 C450 295 435 318 432 334 C438 329 444 333 450 335 C456 333 462 329 468 334 C465 318 450 295 450 295 Z"
-        fill="{thread}" opacity="0.95"/>
-  <line x1="427" y1="335" x2="473" y2="335" stroke="{thread}" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  <!-- ── BRIM — flat, back edge ── -->
+  <path d="M136 557 Q450 475 764 557 Q764 598 450 612 Q136 598 136 557 Z"
+        fill="{brim}" stroke="#00000060" stroke-width="2.5"/>
+  <!-- brim stitching -->
+  <path d="M136 557 Q450 475 764 557"
+        fill="none" stroke="{thread}" stroke-width="3.5"
+        stroke-dasharray="12 9" opacity="0.5"/>
 
-  <!-- SNG -->
-  <text x="450" y="395"
+  <!-- ── SNAPBACK STRAP ── -->
+  <rect x="268" y="594" width="364" height="34" rx="6"
+        fill="{strap}" stroke="#00000055" stroke-width="1.5"/>
+
+  <!-- ── SNG WOVEN TAG (small, centered on strap) ── -->
+  <rect x="410" y="596" width="80" height="30" rx="4"
+        fill="{hex_darken(shell,15)}" stroke="{thread}" stroke-width="1.8" opacity="0.95"/>
+
+  <!-- shark fin inside tag -->
+  <path d="M450 601 C450 601 444 610 443 615 C446 613 448 615 450 616 C452 615 454 613 457 615 C456 610 450 601 450 601 Z"
+        fill="{thread}" opacity="0.9"/>
+
+  <!-- SNG text inside tag -->
+  <text x="450" y="623"
         text-anchor="middle"
         font-family="Arial Black, Arial, sans-serif"
         font-weight="900"
-        font-size="72"
-        fill="{thread}"
-        letter-spacing="6"
-        opacity="0.97">SNG</text>
-
-  <!-- CYCLES -->
-  <text x="450" y="448"
-        text-anchor="middle"
-        font-family="Arial Black, Arial, sans-serif"
-        font-weight="900"
-        font-size="30"
-        fill="{thread}"
-        letter-spacing="10"
-        opacity="0.92">CYCLES</text>
-
-  <!-- thin rule under CYCLES -->
-  <line x1="340" y1="462" x2="560" y2="462" stroke="{thread}" stroke-width="1.5" opacity="0.35"/>
-
-  <!-- ── BRIM (flat brim — back edge) ── -->
-  <path d="M160 542 Q450 460 740 542 Q740 610 450 628 Q160 610 160 542 Z"
-        fill="{brim}" stroke="#00000060" stroke-width="3"/>
-
-  <!-- brim stitching line -->
-  <path d="M160 542 Q450 460 740 542"
-        fill="none" stroke="{thread}" stroke-width="4.5"
-        stroke-dasharray="14 10" opacity="0.75"/>
-
-  <!-- ── SNAPBACK ADJUSTMENT STRAP ── -->
-  <rect x="300" y="478" width="300" height="38" rx="7"
-        fill="{strap}" stroke="#00000060" stroke-width="1.5"/>
-
-  <!-- left snap piece -->
-  <rect x="310" y="485" width="58" height="24" rx="5"
-        fill="{shell}" stroke="#55555a" stroke-width="1.2"/>
-  <circle cx="339" cy="497" r="8.5" fill="#222228" stroke="#55555a" stroke-width="1.5"/>
-  <circle cx="339" cy="497" r="3.5" fill="#3a3a42"/>
-
-  <!-- SNAPBACK label -->
-  <text x="450" y="502"
-        text-anchor="middle"
-        font-family="Arial, sans-serif"
-        font-weight="700"
         font-size="9"
-        fill="#666"
-        letter-spacing="3.5">SNAPBACK · ONE SIZE</text>
-
-  <!-- right snap piece -->
-  <rect x="532" y="485" width="58" height="24" rx="5"
-        fill="{shell}" stroke="#55555a" stroke-width="1.2"/>
-  <circle cx="561" cy="497" r="8.5" fill="#222228" stroke="#55555a" stroke-width="1.5"/>
-  <circle cx="561" cy="497" r="3.5" fill="#3a3a42"/>
-
-  <!-- ── COLORWAY LABEL (bottom) ── -->
-  <text x="450" y="700"
-        text-anchor="middle"
-        font-family="Arial Black, Arial, sans-serif"
-        font-weight="900"
-        font-size="26"
-        fill="#d8dae0">{label}</text>
-
-  <text x="450" y="736"
-        text-anchor="middle"
-        font-family="Arial, sans-serif"
-        font-weight="700"
-        font-size="12"
         fill="{thread}"
-        letter-spacing="4"
-        opacity="0.8">SNG CYCLES · BUILDER'S SERIES</text>
+        letter-spacing="1.5"
+        opacity="0.92">SNG</text>
+
+  <!-- snap buttons on each side of tag -->
+  <circle cx="382" cy="611" r="9" fill="{hex_darken(shell,20)}" stroke="#44444a" stroke-width="1.2"/>
+  <circle cx="382" cy="611" r="4" fill="{hex_darken(shell,35)}"/>
+  <circle cx="518" cy="611" r="9" fill="{hex_darken(shell,20)}" stroke="#44444a" stroke-width="1.2"/>
+  <circle cx="518" cy="611" r="4" fill="{hex_darken(shell,35)}"/>
 
 </svg>'''
 
