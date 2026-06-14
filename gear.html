@@ -539,6 +539,27 @@ footer {
   border:1px solid var(--border); border-radius:8px; font-size:14px;
   font-weight:700; margin-bottom:12px; cursor:pointer;
 }
+.modal-selector-label {
+  font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--muted); margin-bottom:8px; display:block;
+}
+.size-btn-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+.size-btn {
+  background:transparent; border:1.5px solid var(--border); color:var(--text);
+  padding:7px 12px; border-radius:6px; font-family:var(--heading); font-size:12px;
+  font-weight:900; letter-spacing:0.5px; cursor:pointer; transition:all 0.15s;
+  min-width:40px; text-align:center;
+}
+.size-btn:hover { border-color:var(--orange); color:var(--orange); }
+.size-btn.active { background:var(--orange); border-color:var(--orange); color:#fff; }
+.color-tag-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+.color-tag {
+  background:transparent; border:1.5px solid var(--border); color:var(--muted);
+  padding:6px 12px; border-radius:999px; font-size:11px; font-weight:700;
+  cursor:pointer; transition:all 0.15s; letter-spacing:0.3px;
+}
+.color-tag:hover { border-color:var(--orange); color:var(--text); }
+.color-tag.active { border-color:var(--orange); color:var(--orange); background:rgba(244,120,32,0.08); }
 #modal-order-btn {
   width:100%; background:var(--orange); color:#fff; border:none;
   padding:14px; border-radius:8px; font-weight:900; font-size:15px;
@@ -1582,13 +1603,39 @@ function openProduct(id) {
   document.getElementById('modal-order-btn').textContent = p.orderLabel;
   var sel = document.getElementById('modal-selectors');
   sel.innerHTML = '';
-  if (p.selectors.indexOf('size') > -1) sel.innerHTML += buildSelect('modal-size', '— Select Size —', SIZES);
-  if (p.selectors.indexOf('jacket-size') > -1) sel.innerHTML += buildSelect('modal-size', '— Select Jacket Size —', SIZES);
-  if (p.selectors.indexOf('hat-colorway') > -1) sel.innerHTML += buildSelect('modal-hat-color', '— Select Colorway —', HAT_COLORS);
+  modalSelectedSize = ''; modalSelectedColor = ''; modalSelectedSide = ''; modalSelectedTeeColor = '';
+  if (p.selectors.indexOf('size') > -1) sel.innerHTML += buildSizeBtns('SIZE', SIZES, 'modalSelectedSize');
+  if (p.selectors.indexOf('jacket-size') > -1) sel.innerHTML += buildSizeBtns('JACKET SIZE', SIZES, 'modalSelectedSize');
+  if (p.selectors.indexOf('hat-colorway') > -1) sel.innerHTML += buildColorTags('COLORWAY', HAT_COLORS, 'modalSelectedColor');
   if (p.selectors.indexOf('hat-side') > -1) sel.innerHTML += buildSelect('modal-hat-side', '— Side Embroidery (Optional, Free) —', HAT_SIDE);
-  if (p.selectors.indexOf('tee-color') > -1) sel.innerHTML += buildSelect('modal-tee-color', '— Preferred Color —', TEE_COLORS);
+  if (p.selectors.indexOf('tee-color') > -1) sel.innerHTML += buildColorTags('COLOR', TEE_COLORS, 'modalSelectedTeeColor');
   document.getElementById('product-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+var modalSelectedSize = '', modalSelectedColor = '', modalSelectedSide = '', modalSelectedTeeColor = '';
+
+function buildSizeBtns(label, options, varName) {
+  var html = '<span class="modal-selector-label">' + label + '</span><div class="size-btn-row">';
+  options.forEach(function(s) {
+    html += '<button type="button" class="size-btn" onclick="pickModalOpt(this,\'' + varName + '\',\'' + s + '\')">' + s + '</button>';
+  });
+  return html + '</div>';
+}
+
+function buildColorTags(label, options, varName) {
+  var html = '<span class="modal-selector-label">' + label + '</span><div class="color-tag-row">';
+  options.forEach(function(c) {
+    html += '<button type="button" class="color-tag" onclick="pickModalOpt(this,\'' + varName + '\',\'' + c.replace(/'/g,"&#39;") + '\')">' + c + '</button>';
+  });
+  return html + '</div>';
+}
+
+function pickModalOpt(el, varName, val) {
+  var row = el.parentElement;
+  row.querySelectorAll('.size-btn,.color-tag').forEach(function(b){ b.classList.remove('active'); });
+  el.classList.add('active');
+  window[varName] = val;
 }
 
 function buildSelect(id, placeholder, options) {
@@ -1608,10 +1655,10 @@ function toggleZoom() {
 
 function modalOrder() {
   var p = currentProduct.product;
-  var size = document.getElementById('modal-size') ? document.getElementById('modal-size').value : '';
-  var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+  var size = modalSelectedSize;
+  var hatColor = modalSelectedColor;
   var hatSide = document.getElementById('modal-hat-side') ? document.getElementById('modal-hat-side').value : '';
-  var teeColor = document.getElementById('modal-tee-color') ? document.getElementById('modal-tee-color').value : '';
+  var teeColor = modalSelectedTeeColor;
   if (p.selectors.indexOf('size') > -1 && !size) { alert('Please select a size.'); return; }
   if (p.selectors.indexOf('jacket-size') > -1 && !size) { alert('Please select a jacket size.'); return; }
   if (p.selectors.indexOf('hat-colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
