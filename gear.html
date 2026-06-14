@@ -102,7 +102,7 @@ nav.scrolled {
   );
   z-index: 1;
 }
-.hero-main > * { position: relative; z-index: 2; }
+.hero-main > *:not(.hero-video-bg) { position: relative; z-index: 2; }
 .hero-main::before {
   content: '';
   position: absolute;
@@ -711,8 +711,9 @@ footer {
 
       <!-- WHITE HOODIE -->
       <div style="background:var(--card);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="background:#0a0a0c;display:flex;align-items:center;justify-content:center;min-height:300px;overflow:hidden;">
+        <div onclick="openProduct('hoodie-white')" style="background:#0a0a0c;display:flex;align-items:center;justify-content:center;min-height:300px;overflow:hidden;cursor:zoom-in;position:relative;">
           <img src="hoodie-white-ltsb.png" alt="SNG Leave The School Behind White Hoodie" style="width:100%;max-width:300px;object-fit:contain;display:block;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+          <div style="position:absolute;bottom:8px;right:10px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Click to Zoom</div>
         </div>
         <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
           <div style="font-family:var(--heading);font-size:11px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;">Great White Series · Clean White</div>
@@ -726,8 +727,9 @@ footer {
       <!-- HOODIE — center, featured -->
       <div style="background:var(--card);border:1px solid var(--orange);overflow:hidden;display:flex;flex-direction:column;position:relative;box-shadow:0 0 80px rgba(244,120,32,0.15);">
         <div style="font-family:var(--heading);background:var(--orange);padding:10px 16px;text-align:center;font-size:12px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#fff;">Most Popular</div>
-        <div style="background:#0a0a0c;display:flex;align-items:center;justify-content:center;min-height:300px;overflow:hidden;">
+        <div onclick="openProduct('hoodie-black-gas')" style="background:#0a0a0c;display:flex;align-items:center;justify-content:center;min-height:300px;overflow:hidden;cursor:zoom-in;position:relative;">
           <img src="assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png" alt="SNG Black Hoodie" style="width:100%;max-width:300px;object-fit:contain;display:block;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+          <div style="position:absolute;bottom:8px;right:10px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Click to Zoom</div>
         </div>
         <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
           <div style="font-family:var(--heading);font-size:11px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;">First Funny Drop · Embroidered Front</div>
@@ -740,8 +742,9 @@ footer {
 
       <!-- TEE -->
       <div id="shirts" style="background:var(--card);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <div style="background:#0a0a0c;display:flex;align-items:center;justify-content:center;min-height:300px;overflow:hidden;">
+        <div onclick="openProduct('tee-black-gas')" style="background:#0a0a0c;display:flex;align-items:center;justify-content:center;min-height:300px;overflow:hidden;cursor:zoom-in;position:relative;">
           <img src="assets/tonight-mvp/02-black-tee-use-ta-have-gas.png" alt="SNG Black Tee" style="width:100%;max-width:300px;object-fit:contain;display:block;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+          <div style="position:absolute;bottom:8px;right:10px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Click to Zoom</div>
         </div>
         <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
           <div style="font-family:var(--heading);font-size:11px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;">First Funny Drop · Bella+Canvas</div>
@@ -1077,7 +1080,7 @@ footer {
     <div style="font-size:28px;font-weight:900;line-height:1.2;margin-bottom:6px;">Black Tip GT Gear</div>
     <div style="font-size:14px;color:var(--muted);margin-bottom:20px;">Drive it. Rep it. Black and gold. GT vehicle graphic. "Leave the School Behind."</div>
     <img src="black-tip-gt-gear.png" alt="Black Tip GT Gear" style="width:100%;border-radius:12px;display:block;margin-bottom:20px;">
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
       <div class="shop-card" onclick="openProduct('bt-gt-tee')" style="background:var(--card);border:1px solid #c9a84c;border-radius:12px;padding:20px;cursor:pointer;">
         <div style="font-size:10px;color:#c9a84c;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Black Tip GT · Tee</div>
         <div style="font-size:15px;font-weight:900;text-transform:uppercase;margin-bottom:12px;">GT T-Shirt — $30</div>
@@ -1086,12 +1089,6 @@ footer {
           <option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option>
         </select>
         <button onclick="event.stopPropagation();orderItem('Black Tip GT T-Shirt','size-bt-gt-tee',30)" style="width:100%;background:#c9a84c;color:#000;border:none;padding:10px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $30</button>
-      </div>
-      <div class="shop-card" onclick="openProduct('bt-gt-hat')" style="background:var(--card);border:1px solid #c9a84c;border-radius:12px;padding:20px;cursor:pointer;">
-        <div style="font-size:10px;color:#c9a84c;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Black Tip GT · Hat</div>
-        <div style="font-size:15px;font-weight:900;text-transform:uppercase;margin-bottom:12px;">GT Snapback — $40</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">One Size · Black/Gold Fin</div>
-        <button onclick="event.stopPropagation();orderItem('Black Tip GT Snapback Hat','size-none',40)" style="width:100%;background:#c9a84c;color:#000;border:none;padding:10px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $40</button>
       </div>
       <div class="shop-card" onclick="openProduct('bt-gt-hoodie')" style="background:var(--card);border:1px solid #c9a84c;border-radius:12px;padding:20px;cursor:pointer;">
         <div style="font-size:10px;color:#c9a84c;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Black Tip GT · Hoodie</div>
@@ -1111,7 +1108,7 @@ footer {
     <div style="font-size:28px;font-weight:900;line-height:1.2;margin-bottom:6px;">Black Tip Apex Gear</div>
     <div style="font-size:14px;color:var(--muted);margin-bottom:20px;">Ride it. Rep it. Apex vehicle graphic. "Drive It. Or Ride It. Leave the School Behind."</div>
     <img src="black-tip-apex-gear.png" alt="Black Tip Apex Gear" style="width:100%;border-radius:12px;display:block;margin-bottom:20px;">
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
       <div class="shop-card" onclick="openProduct('bt-apex-tee')" style="background:var(--card);border:1px solid #c9a84c;border-radius:12px;padding:20px;cursor:pointer;">
         <div style="font-size:10px;color:#c9a84c;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Black Tip Apex · Tee</div>
         <div style="font-size:15px;font-weight:900;text-transform:uppercase;margin-bottom:12px;">Apex T-Shirt — $30</div>
@@ -1120,12 +1117,6 @@ footer {
           <option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option>
         </select>
         <button onclick="event.stopPropagation();orderItem('Black Tip Apex T-Shirt','size-bt-apex-tee',30)" style="width:100%;background:#c9a84c;color:#000;border:none;padding:10px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $30</button>
-      </div>
-      <div class="shop-card" onclick="openProduct('bt-apex-hat')" style="background:var(--card);border:1px solid #c9a84c;border-radius:12px;padding:20px;cursor:pointer;">
-        <div style="font-size:10px;color:#c9a84c;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Black Tip Apex · Hat</div>
-        <div style="font-size:15px;font-weight:900;text-transform:uppercase;margin-bottom:12px;">Apex Snapback — $40</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">One Size · Black/Gold Fin</div>
-        <button onclick="event.stopPropagation();orderItem('Black Tip Apex Snapback Hat','size-none',40)" style="width:100%;background:#c9a84c;color:#000;border:none;padding:10px;border-radius:7px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $40</button>
       </div>
       <div class="shop-card" onclick="openProduct('bt-apex-hoodie')" style="background:var(--card);border:1px solid #c9a84c;border-radius:12px;padding:20px;cursor:pointer;">
         <div style="font-size:10px;color:#c9a84c;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Black Tip Apex · Hoodie</div>
@@ -1354,7 +1345,7 @@ var PRODUCTS = {
   'hoodie-black-gas': {
     badge:'First Funny Drop · Most Popular', name:'SNG Black Hoodie', sub:'I Use Ta Have Gas. Now I Just Haul Ass.',
     price:'$65', image:'assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png',
-    desc:'The hoodie version of the first SNG funny drop.\n\nFront: big SNG shark logo.\nBack: I USE TA HAVE GAS. NOW I JUST HAUL ASS.\n\nBuilt for riders, builders, garage nights, pit days, and anyone who gets the joke without needing it explained. This is SNG before it gets polished by anybody else.\n\nFlorida-built. Rider-owned. Shark Not Goldfish. Up to 2XLT.',
+    desc:'The hoodie version of the first SNG funny drop.\n\nFront: SNG shark fin logo — EMBROIDERED, not printed. That\'s why it\'s $65.\nBack: I USE TA HAVE GAS. NOW I JUST HAUL ASS.\n\nBuilt for riders, builders, garage nights, pit days, and anyone who gets the joke without needing it explained. This is SNG before it gets polished by anybody else.\n\nFlorida-built. Rider-owned. Shark Not Goldfish. Up to 2XLT.',
     selectors:['size'], orderLabel:'Order Hoodie — $65', orderItem:'SNG Black Hoodie — I Use Ta Have Gas',
     payhipUrl:'https://payhip.com/b/mf3R4'
   },
@@ -1407,7 +1398,8 @@ var PRODUCTS = {
     badge:'SNG Cycles Hoodie', name:'Leave the School Behind', sub:'White · SNG Cycles · $60',
     price:'$60', image:'hoodie-white-ltsb.png',
     desc:'Premium heavyweight hoodie. White. Front graphic: rider on the road, ocean, SNG gear ring. Back: SNG Cycles — Leave the School Behind. SNG4LIFE. Tall sizes available through 2XLT.',
-    selectors:['size'], orderLabel:'Order Now — $60', orderItem:'SNG Cycles White Hoodie — Leave the School Behind'
+    selectors:['size'], orderLabel:'Order Now — $60', orderItem:'SNG Cycles White Hoodie — Leave the School Behind',
+    payhipUrl:'https://payhip.com/b/ojElF'
   },
   'core-3pack': {
     badge:'Tee Pack · $30', name:'Core 3-Pack', sub:'White · Red · Black',
