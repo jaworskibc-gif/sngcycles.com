@@ -626,7 +626,7 @@ footer {
   aspect-ratio:1;
 }
 .hat-swatch.active { border-color:var(--orange); box-shadow:0 0 0 2px rgba(244,120,32,0.4); }
-.hat-swatch img { width:100%; height:100%; object-fit:cover; display:block; }
+.hat-swatch img { width:100%; height:100%; object-fit:contain; background:#111; display:block; }
 .hat-size-btn {
   flex:1; padding:13px; background:#1a1f2e;
   border:2px solid var(--border); border-radius:8px;
@@ -669,7 +669,7 @@ footer {
   </a>
   <div class="nav-links">
     <a href="index.html" style="color:var(--muted);font-size:13px;">← Home</a>
-    <a onclick="openHatModal();return false;" href="#">Hats</a>
+    <a href="#hats">Hats</a>
     <a href="#shop-hoodies">Hoodies</a>
     <a href="#shirts">Shirts</a>
     <a href="cycles.html">SNG Models</a>
@@ -691,7 +691,7 @@ footer {
     <a href="cycles.html" class="btn-ghost">SNG Models</a>
   </div>
   <div class="hero-category-strip">
-    <a onclick="openHatModal();return false;" href="#">Hats</a>
+    <a href="#hats">Hats</a>
     <a href="#shop-hoodies">Hoodies</a>
     <a href="#shirts">Shirts</a>
     <a href="cycles.html">SNG Models →</a>
@@ -814,6 +814,24 @@ footer {
     </div>
   </div>
 
+  <!-- RIDER TEAM COLORS HATS -->
+  <div id="hats" style="padding:60px 48px;border-top:1px solid var(--border);scroll-margin-top:80px;">
+    <div style="font-family:var(--heading);font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">SNG Apparel</div>
+    <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:#fff;margin-bottom:40px;">SNG<br>HATS</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1100px;">
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+        <img src="hat-team-colors-sheet.jpg" alt="SNG Rider Team Colors Hat" style="width:100%;display:block;">
+      </div>
+      <div>
+        <div style="font-family:var(--heading);font-size:11px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;">Rider Team Colors · 7 Colorways</div>
+        <div style="font-family:var(--heading);font-size:clamp(28px,3.5vw,44px);font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:16px;line-height:1.05;">SNG Rider<br>Snapback</div>
+        <div style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:22px;">Embroidered SNG fin logo. Florida garage built. Match your bike. Match your brand.<br><br>SNG Classic · Black/Orange (KTM) · Navy/Hi-Vis (Husqvarna) · Red/White (Honda) · Black/Green (Kawasaki) · Black/Yellow (Sur-Ron) · Blue/White</div>
+        <div style="font-family:var(--heading);font-size:40px;font-weight:900;color:var(--orange);margin-bottom:22px;">$35</div>
+        <button onclick="openHatModal()" style="font-family:var(--heading);background:var(--orange);color:#fff;border:none;padding:16px 40px;font-weight:900;font-size:16px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background 0.2s;" onmouseover="this.style.background='#e06810'" onmouseout="this.style.background='var(--orange)'">Choose Your Color →</button>
+      </div>
+    </div>
+  </div>
+
   <!-- SHIRTS -->
   <div style="padding:60px 48px;border-top:1px solid var(--border);">
     <div style="font-family:var(--heading);font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">SNG Apparel</div>
@@ -883,60 +901,60 @@ footer {
       <div style="font-size:15px;color:var(--muted);margin-bottom:48px;">All electric. All built different. Reserve yours now — production slots go to the list first.</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;">
 
-        <div onclick="openProduct('mako')" style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <a href="cycles.html#mako" style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;text-decoration:none;display:block;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
           <img src="mako.png" alt="SNG Mako" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
           <div style="padding:24px;">
             <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Cycles · Flagship</div>
             <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Mako</div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">Electric Supermoto — 27kW · WP XACT Forks · Built for tall riders</div>
             <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$21,000 – $30,000</div>
-            <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Mako →</button>
+            <div style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;">Leave a Deposit →</div>
           </div>
-        </div>
+        </a>
 
-        <div onclick="openProduct('megalodon')" style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <a href="cycles.html#megalodon" style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;text-decoration:none;display:block;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
           <img src="megalodon.png" alt="SNG Megalodon 520E" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
           <div style="padding:24px;">
             <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Cycles · 52kW Supermoto</div>
             <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Megalodon 520E</div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">52kW Peak · 100+ MPH · 120+ Mile Range · Street Legal</div>
             <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$26,495</div>
-            <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Megalodon →</button>
+            <div style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;">Leave a Deposit →</div>
           </div>
-        </div>
+        </a>
 
-        <div onclick="openProduct('great-white')" style="background:var(--card);border:2px solid #3399FF;border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='#3399FF'">
+        <a href="cycles.html#great-white" style="background:var(--card);border:2px solid #3399FF;border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;text-decoration:none;display:block;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='#3399FF'">
           <img src="great-white-clean.png" alt="SNG Great White" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
           <div style="padding:24px;">
             <div style="font-size:10px;color:#3399FF;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Cycles · Stunt Platform</div>
             <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Great White</div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">100 HP Peak · Shark Jaw™ Front End · 300 LB Stunt Platforms</div>
             <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$35,000 – $40,000</div>
-            <button style="width:100%;background:#3399FF;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Great White →</button>
+            <div style="width:100%;background:#3399FF;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;">Leave a Deposit →</div>
           </div>
-        </div>
+        </a>
 
-        <div onclick="openProduct('platinum-520e')" style="background:linear-gradient(135deg,#1a1a1a,#2a2010);border:2px solid #c9a84c;border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='#c9a84c'">
+        <a href="cycles.html#platinum" style="background:linear-gradient(135deg,#1a1a1a,#2a2010);border:2px solid #c9a84c;border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;text-decoration:none;display:block;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='#c9a84c'">
           <img src="platinum-520e.png" alt="Platinum 520E" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
           <div style="padding:24px;">
             <div style="font-size:10px;color:#c9a84c;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Limited · 30 Units Worldwide</div>
             <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Platinum 520E</div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">52kW · Collector Box · Serialized · Once gone, gone forever</div>
             <div style="font-size:20px;font-weight:900;color:#c9a84c;margin-bottom:16px;">Reserve Now</div>
-            <button style="width:100%;background:#c9a84c;color:#000;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Platinum 520E →</button>
+            <div style="width:100%;background:#c9a84c;color:#000;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;">Leave a Deposit →</div>
           </div>
-        </div>
+        </a>
 
-        <div onclick="openProduct('sand-shark')" style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <a href="cycles.html#sand-shark" style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;text-decoration:none;display:block;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
           <img src="sand-shark.png" alt="SNG Sand Shark" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
           <div style="padding:24px;">
             <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Motors · Entry Level</div>
             <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Sand Shark</div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">Electric Tadpole · 20kW · 83 MPH · 2 Passengers</div>
             <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$15,990</div>
-            <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Reserve Your Sand Shark →</button>
+            <div style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;">Leave a Deposit →</div>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
@@ -1027,7 +1045,7 @@ footer {
             <img id="hat-viewer-img" src="assets/payhip/merch-ready/hat-sng-classic.png" alt="SNG Hat Front">
           </div>
           <div class="hat-flip-back">
-            <img id="hat-viewer-img-back" src="assets/payhip/merch-ready/mockup-sng-classic.png" alt="SNG Hat Back">
+            <img id="hat-viewer-img-back" src="hat-back-patch.jpg" alt="SNG Hat Back">
           </div>
         </div>
       </div>
@@ -1224,7 +1242,7 @@ var PRODUCTS = {
   'core-3pack': {
     badge:'3-Tee Bundle', name:'3-Tee Bundle', sub:'White · Red · Black',
     price:'$60', image:'sng-tee-collection.png',
-    desc:'Stuntin Aint Easy · SNG Cycles · Stuntin Is A Habit. Premium embroidery. Woven hem label. Three colorways, one order. Tall sizes available.',
+    desc:'3 shirts, 3 colorways — $20 each. White · Red · Black. All with the "I Use Ta Have Gas. Now I Just Haul Ass." design. Bella+Canvas premium unisex tee. S–3XL. Save vs. singles.',
     selectors:['size'], orderLabel:'Order Core 3-Pack — $30', orderItem:'Core 3-Pack (White/Red/Black)',
     payhipUrl:'https://payhip.com/b/M2TDN'
   },
@@ -1245,7 +1263,7 @@ var PRODUCTS = {
   'light-5pack': {
     badge:'5-Tee Bundle · Best Value', name:'5-Tee Bundle', sub:'White · Hunter Green · Sand · Burgundy · Red',
     price:'$90', image:'sng-tee-collection.png',
-    desc:'5 shirts, 5 colorways — $5 each. Stuntin Aint Easy · Stuntin Is A Habit · Leave The School Behind · For The Riders The Market Forgot · SNG Cycles. The full statement.',
+    desc:'5 shirts, 5 colorways — $18 each. White · Hunter Green · Burgundy · Red · Navy. All with the "I Use Ta Have Gas. Now I Just Haul Ass." design. Bella+Canvas premium unisex tee. S–3XL. Save vs. singles.',
     selectors:['size'], orderLabel:'Order Light 5-Pack — $25', orderItem:'Light 5-Pack (White/Hunter Green/Sand/Burgundy/Red)',
     payhipUrl:'https://payhip.com/b/M7VCP'
   },
