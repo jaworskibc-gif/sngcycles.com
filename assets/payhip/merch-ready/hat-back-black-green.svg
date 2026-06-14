@@ -1,94 +1,101 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
-  <defs>
-    <linearGradient id="cr_black-green" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#111316"/>
-      <stop offset="1" stop-color="#000" stop-opacity="0.45"/>
-    </linearGradient>
-    <linearGradient id="patch_black-green" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#020407"/>
-      <stop offset="1" stop-color="#000000"/>
-    </linearGradient>
-  </defs>
 
   <!-- background -->
   <rect width="900" height="900" fill="#0c0d10"/>
 
-  <!-- series label -->
-  <text x="450" y="58" text-anchor="middle"
-        font-family="Arial, sans-serif" font-weight="900" font-size="16"
-        fill="#ff5a00" letter-spacing="5">SNG CYCLES · BUILDER'S SERIES</text>
+  <!-- ── CROWN (back view — rounded trapezoid) ── -->
+  <path d="M175 540 C155 300 280 120 450 120 C620 120 745 300 725 540 Z"
+        fill="#111316" stroke="#00000080" stroke-width="3"/>
 
-  <!-- hat shadow -->
-  <ellipse cx="450" cy="624" rx="330" ry="22" fill="#000" opacity="0.3"/>
+  <!-- crown seam (center back) -->
+  <line x1="450" y1="120" x2="450" y2="540" stroke="#00000040" stroke-width="2.5"/>
 
-  <!-- flat brim back view -->
-  <path d="M84 534 Q450 452 816 534 Q816 602 450 618 Q84 602 84 534 Z"
-        fill="#111316" stroke="#000a" stroke-width="3.5"/>
-  <!-- brim stitching -->
-  <path d="M84 534 Q450 452 816 534"
-        fill="none" stroke="#2ecc40" stroke-width="5" stroke-dasharray="12 9" opacity="0.9"/>
-
-  <!-- crown -->
-  <path d="M168 528 C150 288 288 132 450 132 C612 132 750 288 732 528 Z"
-        fill="url(#cr_black-green)" stroke="#000a" stroke-width="3.5"/>
-
-  <!-- center back seam (prominent from behind) -->
-  <path d="M450 132 L450 528" stroke="#0009" stroke-width="3"/>
   <!-- side panel seams -->
-  <path d="M450 156 C354 210 300 360 312 528" stroke="#0005" stroke-width="2" fill="none"/>
-  <path d="M450 156 C546 210 600 360 588 528" stroke="#0005" stroke-width="2" fill="none"/>
+  <path d="M450 140 C370 200 320 360 330 540" fill="none" stroke="#00000030" stroke-width="1.8"/>
+  <path d="M450 140 C530 200 580 360 570 540" fill="none" stroke="#00000030" stroke-width="1.8"/>
 
   <!-- top button -->
-  <circle cx="450" cy="144" r="19" fill="#111316" stroke="#2ecc40" stroke-width="3"/>
+  <circle cx="450" cy="132" r="20" fill="#111316" stroke="#2ecc40" stroke-width="3.5" stroke-opacity="0.9"/>
+  <circle cx="450" cy="132" r="10" fill="#2ecc40" fill-opacity="0.25"/>
 
-  <!-- SNAP CLOSURE / ADJUSTMENT STRAP -->
-  <rect x="318" y="472" width="264" height="34" rx="6" fill="#000000" stroke="#000" stroke-width="1.5"/>
-  <!-- left snap block -->
-  <rect x="328" y="479" width="50" height="20" rx="4" fill="#111316" stroke="#44444a" stroke-width="1.2"/>
-  <circle cx="353" cy="489" r="7" fill="#2e2e35" stroke="#555560" stroke-width="1.5"/>
-  <circle cx="353" cy="489" r="3" fill="#444450"/>
-  <!-- size text -->
-  <text x="450" y="493" text-anchor="middle" font-family="Arial, sans-serif"
-        font-weight="700" font-size="9" fill="#666" letter-spacing="3">SNAPBACK · ONE SIZE</text>
-  <!-- right snap block -->
-  <rect x="522" y="479" width="50" height="20" rx="4" fill="#111316" stroke="#44444a" stroke-width="1.2"/>
-  <circle cx="547" cy="489" r="7" fill="#2e2e35" stroke="#555560" stroke-width="1.5"/>
-  <circle cx="547" cy="489" r="3" fill="#444450"/>
+  <!-- ── SNG CYCLES EMBROIDERY (centered on back crown) ── -->
+  <!-- shark fin mark above text -->
+  <path d="M450 295 C450 295 435 318 432 334 C438 329 444 333 450 335 C456 333 462 329 468 334 C465 318 450 295 450 295 Z"
+        fill="#2ecc40" opacity="0.95"/>
+  <line x1="427" y1="335" x2="473" y2="335" stroke="#2ecc40" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
 
-  <!-- SNG BACK PATCH (woven label) -->
-  <rect x="404" y="320" width="92" height="116" rx="5" fill="url(#patch_black-green)" stroke="#2ecc40" stroke-width="2" opacity="0.95"/>
-  <rect x="408" y="324" width="84" height="108" rx="3" fill="none" stroke="#2ecc40" stroke-width="0.7" opacity="0.35"/>
-  <!-- Shark fin shape -->
-  <path d="M450 338 C450 338 437 358 435 374 C440 370 444 374 450 376 C456 374 460 370 465 374 C463 358 450 338 450 338 Z"
-        fill="#2ecc40"/>
-  <line x1="432" y1="376" x2="468" y2="376" stroke="#2ecc40" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- SNG text -->
-  <text x="450" y="400" text-anchor="middle" font-family="Arial Black, Arial, sans-serif"
-        font-weight="900" font-size="21" fill="#2ecc40" letter-spacing="2">SNG</text>
-  <text x="450" y="415" text-anchor="middle" font-family="Arial, sans-serif"
-        font-weight="700" font-size="9.5" fill="#2ecc40" letter-spacing="4" opacity="0.85">CYCLES</text>
-  <text x="450" y="428" text-anchor="middle" font-family="Arial, sans-serif"
-        font-size="7.5" fill="#2ecc40" letter-spacing="2.5" opacity="0.45">BACK</text>
+  <!-- SNG -->
+  <text x="450" y="395"
+        text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900"
+        font-size="72"
+        fill="#2ecc40"
+        letter-spacing="6"
+        opacity="0.97">SNG</text>
 
-  <!-- colorway label -->
-  <text x="450" y="688" text-anchor="middle"
-        font-family="Arial Black, Arial, sans-serif" font-weight="900"
-        font-size="28" fill="#e9eaed">Black / Green</text>
-  <text x="450" y="722" text-anchor="middle"
-        font-family="Arial, sans-serif" font-weight="900" font-size="14"
-        fill="#ff5a00" letter-spacing="4">KAWASAKI · BACK</text>
+  <!-- CYCLES -->
+  <text x="450" y="448"
+        text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900"
+        font-size="30"
+        fill="#2ecc40"
+        letter-spacing="10"
+        opacity="0.92">CYCLES</text>
 
-  <!-- swatches -->
-  <rect x="386" y="742" width="44" height="44" rx="8" fill="#111316" stroke="#0007" stroke-width="1.5"/>
-  <text x="408" y="806" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#9aa0aa">shell</text>
-  <rect x="470" y="742" width="44" height="44" rx="8" fill="#2ecc40" stroke="#0007" stroke-width="1.5"/>
-  <text x="492" y="806" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#9aa0aa">thread</text>
+  <!-- thin rule under CYCLES -->
+  <line x1="340" y1="462" x2="560" y2="462" stroke="#2ecc40" stroke-width="1.5" opacity="0.35"/>
 
-  <!-- price -->
-  <text x="450" y="856" text-anchor="middle"
-        font-family="Arial Black, Arial, sans-serif" font-weight="900"
-        font-size="26" fill="#ff5a00">SNG Rider Hat — $35</text>
-  <text x="450" y="886" text-anchor="middle"
-        font-family="Arial, sans-serif" font-size="14"
-        fill="#9aa0aa" letter-spacing="2">Flat Brim Snapback</text>
+  <!-- ── BRIM (flat brim — back edge) ── -->
+  <path d="M160 542 Q450 460 740 542 Q740 610 450 628 Q160 610 160 542 Z"
+        fill="#0d0f11" stroke="#00000060" stroke-width="3"/>
+
+  <!-- brim stitching line -->
+  <path d="M160 542 Q450 460 740 542"
+        fill="none" stroke="#2ecc40" stroke-width="4.5"
+        stroke-dasharray="14 10" opacity="0.75"/>
+
+  <!-- ── SNAPBACK ADJUSTMENT STRAP ── -->
+  <rect x="300" y="478" width="300" height="38" rx="7"
+        fill="#1a1d20" stroke="#00000060" stroke-width="1.5"/>
+
+  <!-- left snap piece -->
+  <rect x="310" y="485" width="58" height="24" rx="5"
+        fill="#111316" stroke="#55555a" stroke-width="1.2"/>
+  <circle cx="339" cy="497" r="8.5" fill="#222228" stroke="#55555a" stroke-width="1.5"/>
+  <circle cx="339" cy="497" r="3.5" fill="#3a3a42"/>
+
+  <!-- SNAPBACK label -->
+  <text x="450" y="502"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-weight="700"
+        font-size="9"
+        fill="#666"
+        letter-spacing="3.5">SNAPBACK · ONE SIZE</text>
+
+  <!-- right snap piece -->
+  <rect x="532" y="485" width="58" height="24" rx="5"
+        fill="#111316" stroke="#55555a" stroke-width="1.2"/>
+  <circle cx="561" cy="497" r="8.5" fill="#222228" stroke="#55555a" stroke-width="1.5"/>
+  <circle cx="561" cy="497" r="3.5" fill="#3a3a42"/>
+
+  <!-- ── COLORWAY LABEL (bottom) ── -->
+  <text x="450" y="700"
+        text-anchor="middle"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900"
+        font-size="26"
+        fill="#d8dae0">Black / Green</text>
+
+  <text x="450" y="736"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-weight="700"
+        font-size="12"
+        fill="#2ecc40"
+        letter-spacing="4"
+        opacity="0.8">SNG CYCLES · BUILDER'S SERIES</text>
+
 </svg>
