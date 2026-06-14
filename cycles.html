@@ -515,6 +515,13 @@ footer {
 
 <!-- MODEL OVERVIEW GRID -->
 <div class="model-grid">
+  <a href="#mako" class="model-grid-card">
+    <img src="mako.png" alt="Mako">
+    <div class="mgc-label" style="color:var(--orange);">SNG Cycles · Flagship</div>
+    <div class="mgc-name">Mako</div>
+    <div class="mgc-price" style="color:var(--orange);">$21,000+</div>
+    <div class="mgc-cta">Explore →</div>
+  </a>
   <a href="#megalodon" class="model-grid-card">
     <img src="megalodon.png" alt="Megalodon 520E">
     <div class="mgc-label" style="color:var(--orange);">52kW Supermoto</div>
@@ -550,6 +557,29 @@ footer {
     <div class="mgc-price" style="color:#c9a84c;">Reserve Now</div>
     <div class="mgc-cta" style="color:#c9a84c;">Explore →</div>
   </a>
+</div>
+
+<!-- MAKO -->
+<div class="vehicle" id="mako">
+  <div class="vehicle-inner">
+    <div class="vehicle-img">
+      <span class="vehicle-badge" style="background:var(--orange);color:#fff;">Flagship</span>
+      <img src="mako.png" alt="SNG Mako">
+    </div>
+    <div class="vehicle-info">
+      <div class="vehicle-division" style="color:var(--orange);">SNG Cycles · Electric Supermoto</div>
+      <div class="vehicle-name">Mako</div>
+      <div class="vehicle-tagline">The Hunter. 27kW mid-drive. WP XACT forks. Built for riders 6'0"–7'0"+. The machine nobody else would build for tall riders.</div>
+      <div class="vehicle-specs">
+        <div class="spec-item"><div class="spec-label">Power</div><div class="spec-val">27kW</div></div>
+        <div class="spec-item"><div class="spec-label">Suspension</div><div class="spec-val">WP XACT</div></div>
+        <div class="spec-item"><div class="spec-label">Seat Height</div><div class="spec-val">39"–43"</div></div>
+        <div class="spec-item"><div class="spec-label">Built For</div><div class="spec-val">Tall Riders</div></div>
+      </div>
+      <div class="vehicle-price" style="color:var(--orange);">$21,000 – $30,000</div>
+      <button class="reserve-btn" style="background:var(--orange);" onclick="openDeposit('Mako','$21,000 – $30,000')">Leave a Deposit — Mako →</button>
+    </div>
+  </div>
 </div>
 
 <!-- MEGALODON 520E -->
@@ -831,6 +861,12 @@ function submitReserve() {
 /* ── PRODUCT MODAL ── */
 var currentProduct = null;
 var PRODUCTS = {
+  'mako': {
+    badge:'SNG Cycles · Flagship', name:'Mako', sub:'Electric Supermoto — The Hunter',
+    price:'$21,000 – $30,000', image:'mako.png',
+    desc:'27kW mid-drive. WP XACT forks. 39"–43" adjustable seat height. Built for riders 6\'0"–7\'0"+. Black and gold flagship edition. #99. Leave the School Behind.',
+    orderLabel:'Reserve Your Mako', orderItem:'Mako Reservation'
+  },
   'megalodon': {
     badge:'SNG Cycles · 52kW Supermoto', name:'Megalodon 520E', sub:'Leave the School Behind™',
     price:'$26,495', image:'megalodon.png',
@@ -891,6 +927,7 @@ function modalOrder() {
 
 /* ── DEPOSIT MODAL ── */
 var DEPOSIT_INFO = {
+  'Mako':                    { deposit: '$10,500',  full: 'Full price from $21,000 · Balance due at delivery' },
   'Megalodon 520E':          { deposit: '$13,248',  full: 'Full price $26,495 · Balance due at delivery' },
   'Great White':             { deposit: '$17,500',  full: 'Full price from $35,000 · Balance due at delivery' },
   'Platinum 520E — Limited': { deposit: '$20,000',  full: 'Full price $40,000 · Balance due at delivery · Limited 30 units' },
