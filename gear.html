@@ -12,12 +12,12 @@
 
 :root {
   --orange: #f47820;
-  --dark: #28283a;
-  --card: #32324a;
-  --card2: #3a3a56;
-  --border: #48485e;
-  --text: #ffffff;
-  --muted: #9090a8;
+  --dark: #f3f3f8;
+  --card: #ffffff;
+  --card2: #e8e8f2;
+  --border: #1a1a2a;
+  --text: #0d0d18;
+  --muted: #686890;
   --heading: 'Barlow Condensed', sans-serif;
 }
 
@@ -52,16 +52,16 @@ nav.scrolled {
 .nav-logo-text {
   font-family: var(--heading);
   font-size: 22px; font-weight: 900;
-  color: var(--text); letter-spacing: 2px; text-transform: uppercase;
+  color: #fff; letter-spacing: 2px; text-transform: uppercase;
 }
 .nav-links { display: flex; gap: 40px; align-items: center; }
 .nav-links a {
   font-family: var(--heading);
-  color: rgba(255,255,255,0.7); text-decoration: none;
+  color: rgba(255,255,255,0.85); text-decoration: none;
   font-size: 15px; font-weight: 700; letter-spacing: 2px;
   text-transform: uppercase; transition: color 0.2s;
 }
-.nav-links a:hover { color: #fff; }
+.nav-links a:hover { color: var(--orange); }
 .nav-cta {
   font-family: var(--heading) !important;
   background: var(--orange); color: #fff !important;
@@ -83,7 +83,7 @@ nav.scrolled {
   padding: 100px 40px 80px;
   position: relative;
   overflow: hidden;
-  background: var(--dark);
+  background: #0a0a10;
 }
 .hero-video-bg {
   position: absolute; inset: 0;
@@ -98,7 +98,7 @@ nav.scrolled {
     rgba(5,5,7,0.55) 0%,
     rgba(5,5,7,0.25) 40%,
     rgba(5,5,7,0.80) 80%,
-    var(--dark) 100%
+    #0a0a10 100%
   );
   z-index: 1;
 }
@@ -455,35 +455,33 @@ footer {
 .popup-fine { font-size:11px; color:var(--muted); margin-top:14px; letter-spacing:1px; }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  /* Apparel header: stack */
+  #apparel-header > div { flex-direction: column !important; align-items: flex-start !important; }
+  /* Hats section: stack image + text */
+  #hats > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+}
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .builder-inner { grid-template-columns: 1fr !important; gap: 40px !important; padding: 60px 20px !important; }
   footer { flex-direction: column; text-align: center; }
-  section { padding: 60px 20px !important; }
-  .waitlist-section { padding: 60px 20px !important; }
-  .hero-main { padding: 80px 24px 60px; }
-  #email-popup-inner { padding: 40px 24px; }
-
-  /* Hero 3-panel → single column */
-  #hero-panels { grid-template-columns: 1fr !important; gap: 16px !important; padding: 0 4px !important; }
-
-  /* Apparel header banner → stack, hide decorative image */
-  #apparel-header { grid-template-columns: 1fr !important; padding: 24px 20px !important; gap: 16px !important; }
-  #apparel-header-img { display: none !important; }
-
-  /* Shop / hats / hoodies inner padding */
-  #shop { padding: 40px 20px 32px !important; }
-  #hats-inner { padding: 36px 20px !important; }
-  #hoodies-inner { padding: 36px 20px !important; }
-
-  /* CTA footer banner → stack */
-  #apparel-cta-banner { flex-direction: column !important; align-items: flex-start !important; padding: 28px 20px !important; gap: 16px !important; }
-  #apparel-cta-banner > img { display: none !important; }
-  #apparel-cta-banner > div:last-child { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
-
-  /* Signup form inputs stack */
+  .hero-main { padding: 80px 20px 60px; }
+  #email-popup-inner { padding: 40px 20px; }
   #signup-grid { grid-template-columns: 1fr !important; }
+  /* Reduce section padding on mobile */
+  #apparel-grid { padding: 40px 20px !important; }
+  #shop-hoodies { padding: 40px 20px !important; }
+  #hats { padding: 40px 20px !important; }
+  #hats > div { gap: 24px !important; }
+  #lineup { padding: 40px 20px !important; }
+  #about { padding: 40px 20px !important; }
+  #waitlist { padding: 40px 20px !important; }
+  /* Apparel header */
+  #apparel-header { padding: 40px 20px 28px !important; }
+  /* Footer banner: stack */
+  #apparel > div[style*="background:#1a1a2a"] { grid-template-columns: 1fr !important; gap: 16px !important; padding: 28px 20px !important; }
+  /* Shirts section */
+  #shirts-section { padding: 40px 20px !important; }
 }
 
 /* Hide old product card sections now that 4-panel grid is active */
@@ -700,7 +698,7 @@ footer {
 
 
 <!-- ── DIAGONAL BREAK ── -->
-<div style="background:var(--dark);height:60px;clip-path:polygon(0 0,100% 0,100% 100%,0 40%);margin-top:-30px;position:relative;z-index:3;"></div>
+<div style="background:var(--dark);height:60px;clip-path:polygon(0 0,100% 0,100% 100%,0 40%);margin-top:-30px;position:relative;z-index:3;border-top:3px solid var(--border);"></div>
 
 <!-- ── APPAREL ── -->
 <div id="apparel" style="border-top:2px solid var(--orange);">
@@ -711,7 +709,7 @@ footer {
     <div style="max-width:1200px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;">
       <div>
         <div style="font-family:var(--heading);font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">First Drop · Florida Garage Built</div>
-        <div style="font-family:var(--heading);font-size:clamp(52px,8vw,100px);font-weight:900;line-height:0.9;text-transform:uppercase;color:#fff;">SNG<br>APPAREL</div>
+        <div style="font-family:var(--heading);font-size:clamp(52px,8vw,100px);font-weight:900;line-height:0.9;text-transform:uppercase;color:var(--text);">SNG<br>APPAREL</div>
       </div>
       <div style="max-width:360px;">
         <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:20px;">Not corporate moto merch. Florida garage-built rider gear from the same shop that built the 270E past stock.</p>
@@ -738,7 +736,7 @@ footer {
         </div>
         <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
           <div style="font-family:var(--heading);font-size:11px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;">Great White Series · Clean White</div>
-          <div style="font-family:var(--heading);font-size:32px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:8px;line-height:1;">Leave The School Behind</div>
+          <div style="font-family:var(--heading);font-size:32px;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:8px;line-height:1;">Leave The School Behind</div>
           <div style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6;flex:1;">White premium hoodie. Front: the road, the tide, the tire. Back: Leave The School Behind. SNG4LIFE. Tall sizes through 2XLT.</div>
           <div style="font-family:var(--heading);font-size:44px;font-weight:900;color:var(--orange);margin-bottom:20px;line-height:1;">$60</div>
           <button onclick="window.open('https://payhip.com/b/ojElF','_blank')" style="font-family:var(--heading);width:100%;background:var(--orange);color:#fff;border:none;padding:16px;font-weight:900;font-size:17px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background 0.2s;" onmouseover="this.style.background='#e06810'" onmouseout="this.style.background='var(--orange)'">Order Now →</button>
@@ -755,7 +753,7 @@ footer {
         </div>
         <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
           <div style="font-family:var(--heading);font-size:11px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;">First Funny Drop · Embroidered Front</div>
-          <div style="font-family:var(--heading);font-size:32px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:8px;line-height:1;">SNG Black Hoodie</div>
+          <div style="font-family:var(--heading);font-size:32px;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:8px;line-height:1;">SNG Black Hoodie</div>
           <div style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6;flex:1;">SNG shark fin embroidered front. "I Use Ta Have Gas." printed back. Premium Gildan heavyweight. S–3XL.</div>
           <div style="font-family:var(--heading);font-size:44px;font-weight:900;color:var(--orange);margin-bottom:20px;line-height:1;">$65</div>
           <button onclick="window.open('https://payhip.com/b/mf3R4','_blank')" style="font-family:var(--heading);width:100%;background:var(--orange);color:#fff;border:none;padding:16px;font-weight:900;font-size:17px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background 0.2s;" onmouseover="this.style.background='#e06810'" onmouseout="this.style.background='var(--orange)'">Order Now →</button>
@@ -771,7 +769,7 @@ footer {
         </div>
         <div style="padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;">
           <div style="font-family:var(--heading);font-size:11px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;">First Funny Drop · Bella+Canvas</div>
-          <div style="font-family:var(--heading);font-size:32px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:8px;line-height:1;">SNG Black Tee</div>
+          <div style="font-family:var(--heading);font-size:32px;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:8px;line-height:1;">SNG Black Tee</div>
           <div style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6;flex:1;">Small SNG chest logo. "I Use Ta Have Gas." on the back. Premium Bella+Canvas unisex. S–3XL.</div>
           <div style="font-family:var(--heading);font-size:44px;font-weight:900;color:var(--orange);margin-bottom:20px;line-height:1;">$30</div>
           <button onclick="window.open('https://payhip.com/b/euj5H','_blank')" style="font-family:var(--heading);width:100%;background:var(--orange);color:#fff;border:none;padding:16px;font-weight:900;font-size:17px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background 0.2s;" onmouseover="this.style.background='#e06810'" onmouseout="this.style.background='var(--orange)'">Order Now →</button>
@@ -782,21 +780,21 @@ footer {
   </div>
 
   <!-- LIFESTYLE CALLOUT -->
-  <div style="padding:80px 48px 80px;background:var(--card);clip-path:polygon(0 3%,100% 0,100% 97%,0 100%);margin:-2px 0;text-align:center;">
+  <div style="padding:80px 48px 80px;background:#1a1a2a;clip-path:polygon(0 3%,100% 0,100% 97%,0 100%);margin:-2px 0;text-align:center;">
     <div style="font-family:var(--heading);font-size:clamp(52px,9vw,120px);font-weight:900;text-transform:uppercase;line-height:0.88;color:#fff;letter-spacing:-1px;">LEAVE THE<br><span style="color:var(--orange);">SCHOOL BEHIND.</span></div>
   </div>
 
   <!-- HOODIES -->
   <div id="shop-hoodies" style="padding:60px 48px;border-top:1px solid var(--border);scroll-margin-top:80px;">
     <div style="font-family:var(--heading);font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Great White Series</div>
-    <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:#fff;margin-bottom:48px;">SNG<br>HOODIES</div>
+    <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:var(--text);margin-bottom:48px;">SNG<br>HOODIES</div>
 
     <div style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">GREAT WHITE SERIES</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
       <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
         <img src="hoodie-gw-stuntin-habit.png" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;" alt="Stuntin Is A Habit">
         <div style="padding:16px;">
-          <div style="font-weight:900;color:#fff;font-size:14px;margin-bottom:4px;">Stuntin Is A Habit</div>
+          <div style="font-weight:900;color:var(--text);font-size:14px;margin-bottom:4px;">Stuntin Is A Habit</div>
           <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Blue Tie-Dye</div>
           <select id="size-hoodie-1b" style="width:100%;padding:8px;background:var(--dark);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;margin-bottom:8px;cursor:pointer;"><option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option></select>
           <button onclick="orderItem('Great White Hoodie — Stuntin Is A Habit (Blue Tie-Dye)','size-hoodie-1b','60')" style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $60</button>
@@ -805,7 +803,7 @@ footer {
       <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
         <img src="hoodie-gw-stuntin-easy.png" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;" alt="Stuntin Aint Easy">
         <div style="padding:16px;">
-          <div style="font-weight:900;color:#fff;font-size:14px;margin-bottom:4px;">Stuntin Ain't Easy</div>
+          <div style="font-weight:900;color:var(--text);font-size:14px;margin-bottom:4px;">Stuntin Ain't Easy</div>
           <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Blue Tie-Dye</div>
           <select id="size-hoodie-2b" style="width:100%;padding:8px;background:var(--dark);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;margin-bottom:8px;cursor:pointer;"><option value="">— Size —</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>LT</option><option>XLT</option><option>2XLT</option></select>
           <button onclick="window.open('https://payhip.com/b/lu38x','_blank')" style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order — $60</button>
@@ -817,14 +815,14 @@ footer {
   <!-- RIDER TEAM COLORS HATS -->
   <div id="hats" style="padding:60px 48px;border-top:1px solid var(--border);scroll-margin-top:80px;">
     <div style="font-family:var(--heading);font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">SNG Apparel</div>
-    <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:#fff;margin-bottom:40px;">SNG<br>HATS</div>
+    <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:var(--text);margin-bottom:40px;">SNG<br>HATS</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1100px;">
       <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);">
         <img src="hat-team-colors-sheet.jpg" alt="SNG Rider Team Colors Hat" style="width:100%;display:block;">
       </div>
       <div>
         <div style="font-family:var(--heading);font-size:11px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;">Rider Team Colors · 7 Colorways</div>
-        <div style="font-family:var(--heading);font-size:clamp(28px,3.5vw,44px);font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:16px;line-height:1.05;">SNG Rider<br>Snapback</div>
+        <div style="font-family:var(--heading);font-size:clamp(28px,3.5vw,44px);font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:16px;line-height:1.05;">SNG Rider<br>Snapback</div>
         <div style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:22px;">Embroidered SNG fin logo. Florida garage built. Match your bike. Match your brand.<br><br>SNG Classic · Black/Orange (KTM) · Navy/Hi-Vis (Husqvarna) · Red/White (Honda) · Black/Green (Kawasaki) · Black/Yellow (Sur-Ron) · Blue/White</div>
         <div style="font-family:var(--heading);font-size:40px;font-weight:900;color:var(--orange);margin-bottom:22px;">$35</div>
         <button onclick="openHatModal()" style="font-family:var(--heading);background:var(--orange);color:#fff;border:none;padding:16px 40px;font-weight:900;font-size:16px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background 0.2s;" onmouseover="this.style.background='#e06810'" onmouseout="this.style.background='var(--orange)'">Choose Your Color →</button>
@@ -835,14 +833,14 @@ footer {
   <!-- SHIRTS -->
   <div style="padding:60px 48px;border-top:1px solid var(--border);">
     <div style="font-family:var(--heading);font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">SNG Apparel</div>
-    <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:#fff;margin-bottom:48px;">SNG<br>TEES</div>
+    <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:var(--text);margin-bottom:48px;">SNG<br>TEES</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
 
       <div onclick="openProduct('tee-black-gas')" style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
         <img src="assets/tonight-mvp/02-black-tee-use-ta-have-gas.png" style="width:100%;display:block;aspect-ratio:4/5;object-fit:contain;background:#0a0a0c;" alt="SNG Black Tee">
         <div style="padding:16px;">
           <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">First Funny Drop</div>
-          <div style="font-weight:900;color:#fff;font-size:16px;margin-bottom:4px;">SNG Black Tee</div>
+          <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">SNG Black Tee</div>
           <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">I Use Ta Have Gas. Now I Just Haul Ass.</div>
           <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:12px;">$30</div>
           <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now →</button>
@@ -853,7 +851,7 @@ footer {
         <img src="sng-tee-packs-3-5.png" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;" alt="SNG 3-Tee Bundle">
         <div style="padding:16px;">
           <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Bundle · Best Value</div>
-          <div style="font-weight:900;color:#fff;font-size:16px;margin-bottom:4px;">3-Tee Bundle</div>
+          <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">3-Tee Bundle</div>
           <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">White · Red · Black</div>
           <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:12px;">$60</div>
           <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now →</button>
@@ -864,7 +862,7 @@ footer {
         <img src="sng-tee-packs-light-dark.png" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;" alt="SNG 5-Tee Bundle">
         <div style="padding:16px;">
           <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Bundle · Best Value</div>
-          <div style="font-weight:900;color:#fff;font-size:16px;margin-bottom:4px;">5-Tee Bundle</div>
+          <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">5-Tee Bundle</div>
           <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">White · Hunter Green · Sand · Burgundy · Red</div>
           <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:12px;">$90</div>
           <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now →</button>
@@ -875,7 +873,7 @@ footer {
   </div>
 
   <!-- FOOTER BANNER -->
-  <div style="background:var(--card2);border-top:1px solid var(--border);padding:36px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;">
+  <div style="background:#1a1a2a;border-top:3px solid var(--border);padding:36px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;">
     <div style="display:flex;align-items:center;gap:20px;">
       <img src="sng-merch-display.png" alt="SNG Merch" style="width:120px;height:80px;object-fit:cover;object-position:center top;border-radius:6px;">
       <div>
@@ -894,7 +892,7 @@ footer {
   </div>
 
   <!-- ── BIKE LINEUP ── -->
-  <div id="lineup" style="background:var(--bg);border-top:3px solid var(--orange);padding:60px 40px;">
+  <div id="lineup" style="background:var(--dark);border-top:3px solid var(--orange);padding:60px 40px;">
     <div style="max-width:1200px;margin:0 auto;">
       <div style="font-size:11px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;">SNG Cycles · The Lineup</div>
       <div style="font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">The Bikes.</div>
@@ -905,7 +903,7 @@ footer {
           <img src="megalodon.png" alt="SNG Megalodon 520E" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
           <div style="padding:24px;">
             <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Cycles · 52kW Supermoto</div>
-            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Megalodon 520E</div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:4px;">Megalodon 520E</div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">52kW Peak · 100+ MPH · 120+ Mile Range · Street Legal</div>
             <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$26,495</div>
             <div style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;">Leave a Deposit →</div>
@@ -916,7 +914,7 @@ footer {
           <img src="great-white-clean.png" alt="SNG Great White" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
           <div style="padding:24px;">
             <div style="font-size:10px;color:#3399FF;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Cycles · Stunt Platform</div>
-            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Great White</div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:4px;">Great White</div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">100 HP Peak · Shark Jaw™ Front End · Full Stunt Cage · Fold-Down Front Deck</div>
             <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$35,000 – $40,000</div>
             <div style="width:100%;background:#3399FF;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;">Leave a Deposit →</div>
@@ -927,7 +925,7 @@ footer {
           <img src="platinum-520e.png" alt="Platinum 520E" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
           <div style="padding:24px;">
             <div style="font-size:10px;color:#c9a84c;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Limited · 30 Units Worldwide</div>
-            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Platinum 520E</div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:4px;">Platinum 520E</div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">52kW · Collector Box · Serialized · Once gone, gone forever</div>
             <div style="font-size:20px;font-weight:900;color:#c9a84c;margin-bottom:16px;">$40,000</div>
             <div style="width:100%;background:#c9a84c;color:#000;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;">Leave a Deposit →</div>
@@ -938,7 +936,7 @@ footer {
           <img src="sand-shark.png" alt="SNG Sand Shark" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
           <div style="padding:24px;">
             <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">SNG Motors · Entry Level</div>
-            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:4px;">Sand Shark</div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:4px;">Sand Shark</div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:16px;">Electric Tadpole · 20kW · 83 MPH · 2 Passengers</div>
             <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:16px;">$15,990</div>
             <div style="width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:8px;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;">Leave a Deposit →</div>
@@ -1084,6 +1082,23 @@ footer {
   </div>
 </div>
 
+<!-- ── EMAIL SIGNUP POPUP ── -->
+<div id="email-signup-popup" onclick="if(event.target===this)closeEmailSignupPopup()" style="display:none;position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#111318;border:1px solid rgba(255,255,255,0.08);border-radius:4px;max-width:480px;width:100%;padding:48px 40px;position:relative;text-align:center;">
+    <button onclick="closeEmailSignupPopup()" style="position:absolute;top:14px;right:18px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;line-height:1;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">×</button>
+    <img src="sng-logo-orange.jpeg" alt="SNG Cycles" style="height:44px;width:44px;object-fit:contain;border-radius:50%;margin-bottom:20px;">
+    <div style="font-family:var(--heading);font-size:26px;font-weight:900;color:#fff;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">Access Exclusive Drops</div>
+    <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:28px;">Subscribe to get early access to new colorways, limited builds, and <strong style="color:#fff;text-decoration:underline;">first dibs on bike reservations</strong>.</p>
+    <div id="email-signup-success" style="display:none;background:rgba(244,120,32,0.1);border:1px solid var(--orange);padding:18px;margin-bottom:20px;">
+      <div style="font-family:var(--heading);font-size:18px;font-weight:900;color:var(--orange);letter-spacing:2px;">YOU'RE IN. SNG4LIFE.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;">Check your inbox — we'll be in touch.</div>
+    </div>
+    <input type="email" id="email-signup-input" placeholder="Enter your email address" style="width:100%;padding:16px 18px;background:#fff;border:none;font-size:15px;margin-bottom:12px;outline:none;color:#0d0d18;border-radius:2px;">
+    <button onclick="submitEmailSignup()" style="width:100%;font-family:var(--heading);background:var(--orange);color:#fff;border:none;padding:18px;font-size:17px;font-weight:900;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background 0.2s;" onmouseover="this.style.background='#e06810'" onmouseout="this.style.background='var(--orange)'">Subscribe →</button>
+    <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:14px;letter-spacing:1px;">No spam. Unsubscribe anytime. Rider-owned brand.</div>
+  </div>
+</div>
+
 <!-- ── FIRST-TIME SHOPPER POPUP ── -->
 <div id="email-popup" onclick="if(event.target===this)closeEmailPopup()">
   <div id="email-popup-inner">
@@ -1148,9 +1163,50 @@ function submitEmailPopup() {
   document.getElementById('popup-submit-btn').style.display = 'none';
   localStorage.setItem('sng_popup_seen', '1');
 }
-/* Show popup after 4s on first visit */
+/* Show 15% phone popup after 4s on first visit */
 if (!localStorage.getItem('sng_popup_seen')) {
   setTimeout(openEmailPopup, 4000);
+}
+
+/* ── EMAIL SIGNUP POPUP ── */
+function openEmailSignupPopup() {
+  document.getElementById('email-signup-popup').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeEmailSignupPopup() {
+  document.getElementById('email-signup-popup').style.display = 'none';
+  document.body.style.overflow = '';
+  localStorage.setItem('sng_email_signup_seen', '1');
+}
+function submitEmailSignup() {
+  var email = document.getElementById('email-signup-input').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('email-signup-input').style.outline = '2px solid #f85149';
+    return;
+  }
+  var subject = encodeURIComponent('SNG Email Signup');
+  var body = encodeURIComponent('New email subscriber: ' + email);
+  window.open('mailto:sales@sngcycles.com?subject=' + subject + '&body=' + body);
+  document.getElementById('email-signup-success').style.display = 'block';
+  document.getElementById('email-signup-input').style.display = 'none';
+  document.querySelector('#email-signup-popup button[onclick="submitEmailSignup()"]').style.display = 'none';
+  localStorage.setItem('sng_email_signup_seen', '1');
+  setTimeout(closeEmailSignupPopup, 3000);
+}
+/* Show email signup popup on exit intent (mouse leaves top of viewport) */
+if (!localStorage.getItem('sng_email_signup_seen')) {
+  document.addEventListener('mouseleave', function(e) {
+    if (e.clientY <= 0) {
+      openEmailSignupPopup();
+      document.removeEventListener('mouseleave', arguments.callee);
+    }
+  });
+  /* Fallback: show after 30s if still on page */
+  setTimeout(function() {
+    if (!localStorage.getItem('sng_email_signup_seen') && document.getElementById('email-signup-popup').style.display === 'none') {
+      openEmailSignupPopup();
+    }
+  }, 30000);
 }
 
 /* ── PRODUCT MODAL DATA ── */
