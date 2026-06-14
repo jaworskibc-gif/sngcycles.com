@@ -805,21 +805,132 @@ footer {
 
   <!-- RIDER TEAM COLORS HATS -->
   <div id="hats" style="padding:60px 48px;border-top:1px solid var(--border);scroll-margin-top:80px;">
-    <div style="font-family:var(--heading);font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">SNG Apparel</div>
-    <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:var(--text);margin-bottom:40px;">SNG<br>HATS</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1100px;">
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:border-color 0.2s;" onclick="openHatModal()" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <img src="hat-team-colors-sheet.jpg" alt="SNG Rider Team Colors Hat" style="width:100%;display:block;">
-      </div>
-      <div>
-        <div style="font-family:var(--heading);font-size:11px;color:var(--orange);font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;">Rider Team Colors · 7 Colorways</div>
-        <div style="font-family:var(--heading);font-size:clamp(28px,3.5vw,44px);font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:16px;line-height:1.05;">SNG Rider<br>Snapback</div>
-        <div style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:22px;">Embroidered SNG fin logo. Florida garage built. Match your bike. Match your brand.<br><br>SNG Classic · Black/Orange (KTM) · Navy/Hi-Vis (Husqvarna) · Red/White (Honda) · Black/Green (Kawasaki) · Black/Yellow (Sur-Ron) · Blue/White</div>
-        <div style="font-family:var(--heading);font-size:40px;font-weight:900;color:var(--orange);margin-bottom:22px;">$35</div>
-        <button onclick="openHatModal()" style="font-family:var(--heading);background:var(--orange);color:#fff;border:none;padding:16px 40px;font-weight:900;font-size:16px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background 0.2s;" onmouseover="this.style.background='#e06810'" onmouseout="this.style.background='var(--orange)'">Choose Your Color →</button>
-      </div>
-    </div>
+    <div style="font-family:var(--heading);font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">SNG Apparel · Rider Team Colors</div>
+    <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:var(--text);margin-bottom:12px;">SNG<br>HATS</div>
+    <div style="font-size:15px;color:var(--muted);margin-bottom:48px;max-width:560px;line-height:1.7;">Embroidered SNG fin logo. Flat brim snapback. 7 team colorways — match your bike, your brand, or your personality. <strong style="color:var(--text);">$35 each.</strong></div>
 
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(480px,1fr));gap:28px;">
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="background:#0a0a0c;"><img src="assets/payhip/merch-ready/hat-sng-classic.png" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+          <div style="background:#0d0d10;"><img src="assets/payhip/merch-ready/hat-back-sng-classic.svg" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+        </div>
+        <div style="padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:9px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;">SNG Classic</div>
+            <div style="font-weight:900;color:var(--text);font-size:15px;">Black / White</div>
+          </div>
+          <select style="padding:8px 10px;background:var(--dark);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;cursor:pointer;">
+            <option value="">— Size —</option><option>S/M</option><option>L/XL</option>
+          </select>
+          <button onclick="orderHat('SNG Classic — Black/White',this)" style="background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="background:#0a0a0c;"><img src="assets/payhip/merch-ready/hat-black-orange.png" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+          <div style="background:#0d0d10;"><img src="assets/payhip/merch-ready/hat-back-black-orange.svg" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+        </div>
+        <div style="padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:9px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;">KTM Match</div>
+            <div style="font-weight:900;color:var(--text);font-size:15px;">Black / Orange</div>
+          </div>
+          <select style="padding:8px 10px;background:var(--dark);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;cursor:pointer;">
+            <option value="">— Size —</option><option>S/M</option><option>L/XL</option>
+          </select>
+          <button onclick="orderHat('Black / Orange (KTM)',this)" style="background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="background:#0a0a0c;"><img src="assets/payhip/merch-ready/hat-navy-hiviz.png" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+          <div style="background:#0d0d10;"><img src="assets/payhip/merch-ready/hat-back-navy-hiviz.svg" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+        </div>
+        <div style="padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:9px;color:#d8ff00;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;">Husqvarna Match</div>
+            <div style="font-weight:900;color:var(--text);font-size:15px;">Navy / Hi-Vis</div>
+          </div>
+          <select style="padding:8px 10px;background:var(--dark);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;cursor:pointer;">
+            <option value="">— Size —</option><option>S/M</option><option>L/XL</option>
+          </select>
+          <button onclick="orderHat('Navy / Hi-Vis (Husqvarna)',this)" style="background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="background:#0a0a0c;"><img src="assets/payhip/merch-ready/hat-red-white.png" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+          <div style="background:#0d0d10;"><img src="assets/payhip/merch-ready/hat-back-red-white.svg" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+        </div>
+        <div style="padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:9px;color:#e03030;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;">Honda Match</div>
+            <div style="font-weight:900;color:var(--text);font-size:15px;">Red / White</div>
+          </div>
+          <select style="padding:8px 10px;background:var(--dark);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;cursor:pointer;">
+            <option value="">— Size —</option><option>S/M</option><option>L/XL</option>
+          </select>
+          <button onclick="orderHat('Red / White (Honda)',this)" style="background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="background:#0a0a0c;"><img src="assets/payhip/merch-ready/hat-black-green.png" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+          <div style="background:#0d0d10;"><img src="assets/payhip/merch-ready/hat-back-black-green.svg" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+        </div>
+        <div style="padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:9px;color:#2ecc40;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;">Kawasaki Match</div>
+            <div style="font-weight:900;color:var(--text);font-size:15px;">Black / Green</div>
+          </div>
+          <select style="padding:8px 10px;background:var(--dark);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;cursor:pointer;">
+            <option value="">— Size —</option><option>S/M</option><option>L/XL</option>
+          </select>
+          <button onclick="orderHat('Black / Green (Kawasaki)',this)" style="background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="background:#0a0a0c;"><img src="assets/payhip/merch-ready/hat-black-yellow.png" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+          <div style="background:#0d0d10;"><img src="assets/payhip/merch-ready/hat-back-black-yellow.svg" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+        </div>
+        <div style="padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:9px;color:#ffd400;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;">Sur-Ron Match</div>
+            <div style="font-weight:900;color:var(--text);font-size:15px;">Black / Yellow</div>
+          </div>
+          <select style="padding:8px 10px;background:var(--dark);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;cursor:pointer;">
+            <option value="">— Size —</option><option>S/M</option><option>L/XL</option>
+          </select>
+          <button onclick="orderHat('Black / Yellow (Sur-Ron)',this)" style="background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="background:#0a0a0c;"><img src="assets/payhip/merch-ready/hat-blue-white.png" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+          <div style="background:#0d0d10;"><img src="assets/payhip/merch-ready/hat-back-blue-white.svg" style="width:100%;aspect-ratio:4/5;object-fit:contain;display:block;"></div>
+        </div>
+        <div style="padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:9px;color:#1c5fb4;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:3px;">Yamaha Match</div>
+            <div style="font-weight:900;color:var(--text);font-size:15px;">Blue / White</div>
+          </div>
+          <select style="padding:8px 10px;background:var(--dark);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:12px;cursor:pointer;">
+            <option value="">— Size —</option><option>S/M</option><option>L/XL</option>
+          </select>
+          <button onclick="orderHat('Blue / White (Yamaha)',this)" style="background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Order — $35</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <!-- SHIRTS -->
@@ -1413,7 +1524,17 @@ function selectHatSize(size) {
 
 function orderBuilderHat() {
   if (!hatSelectedSize) { alert('Please select a size: S/M or L/XL'); return; }
-  window.open('https://payhip.com/b/ojElF', '_blank');
+  window.open('https://payhip.com/b/Ra5WY', '_blank');
+}
+
+function orderHat(colorway, btn) {
+  var card = btn.closest('[style]');
+  var sel = card ? card.querySelector('select') : null;
+  var size = sel ? sel.value : '';
+  if (!size) { alert('Please select a size: S/M or L/XL'); return; }
+  var subject = encodeURIComponent('SNG Hat Order — ' + colorway);
+  var body = encodeURIComponent('Item: SNG Rider Snapback\nColorway: ' + colorway + '\nSize: ' + size + '\n\nName:\nShipping Address:\nPhone:');
+  window.location.href = 'mailto:sales@sngcycles.com?subject=' + subject + '&body=' + body;
 }
 
 var currentProduct = null;
