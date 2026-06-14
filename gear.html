@@ -1028,22 +1028,22 @@ footer {
     <button id="hat-modal-close" onclick="closeHatModal()">×</button>
 
     <div id="hat-img-panel">
-      <div class="hat-flip-card" id="hat-flip-card" onclick="flipHat()">
+      <div class="hat-flip-card" id="hat-flip-card">
         <div class="hat-flip-inner">
           <div class="hat-flip-front">
-            <img id="hat-viewer-img" src="assets/payhip/merch-ready/hat-sng-classic.png" alt="SNG Hat Front">
+            <img id="hat-viewer-img" src="assets/payhip/merch-ready/hat-sng-classic.png" alt="SNG Hat Front" onclick="toggleHatZoom()" style="cursor:zoom-in;">
           </div>
           <div class="hat-flip-back">
-            <img id="hat-viewer-img-back" src="hat-back-patch.jpg" alt="SNG Hat Back">
+            <img id="hat-viewer-img-back" src="assets/payhip/merch-ready/hat-back-sng-classic.svg" alt="SNG Hat Back" onclick="toggleHatZoom()" style="cursor:zoom-in;">
           </div>
         </div>
       </div>
-      <div style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;">Click image or button to flip • see front &amp; back</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;">Tap image to zoom · use button to flip</div>
       <button id="hat-spin-btn" onclick="flipHat()">↩ VIEW BACK</button>
     </div>
 
     <div id="hat-info-panel">
-      <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">Builder's Series · Flat Brim FlexFit®</div>
+      <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">Builder's Series · Flat Brim Snapback</div>
       <div style="font-size:26px;font-weight:900;text-transform:uppercase;color:#fff;line-height:1.15;margin-bottom:6px;">SNG Builder<br>Series Hat</div>
       <div style="font-size:13px;color:var(--muted);margin-bottom:24px;">Embroidered SNG fin logo. Florida garage built. 7 colorways.</div>
 
@@ -1258,7 +1258,7 @@ var PRODUCTS = {
     payhipUrl:'https://payhip.com/b/saFet'
   },
   'hat': {
-    badge:'Flat Brim FlexFit® · $35', name:'SNG Rider Hat', sub:'7 Colorways — Pick Your Brand',
+    badge:'Flat Brim Snapback · $35', name:'SNG Rider Hat', sub:'7 Colorways — Pick Your Brand',
     price:'$35', image:'sng-hat-collection.png',
     desc:'"I Use Ta Have Gas. Now I Just Haul Ass." — E-bike riders get it. Gas riders think it\'s hilarious. 7 colorways matching every major brand. Optional side embroidery at no charge.',
     selectors:['hat-colorway','hat-side'], orderLabel:'Order Hat — $35', orderItem:'SNG Flat Brim Hat'
@@ -1291,13 +1291,13 @@ var PRODUCTS = {
 
 /* ── HAT VIEWER ── */
 var HAT_COLORWAYS = [
-  { label:'SNG Classic',    img:'assets/payhip/merch-ready/hat-sng-classic.png',  back:'hat-back-patch.jpg' },
-  { label:'Black / Orange', img:'assets/payhip/merch-ready/hat-black-orange.png', back:'hat-back-patch.jpg' },
-  { label:'Navy / Hi-Vis',  img:'assets/payhip/merch-ready/hat-navy-hiviz.png',   back:'hat-back-patch.jpg' },
-  { label:'Red / White',    img:'assets/payhip/merch-ready/hat-red-white.png',    back:'hat-back-patch.jpg' },
-  { label:'Black / Green',  img:'assets/payhip/merch-ready/hat-black-green.png',  back:'hat-back-patch.jpg' },
-  { label:'Black / Yellow', img:'assets/payhip/merch-ready/hat-black-yellow.png', back:'hat-back-patch.jpg' },
-  { label:'Blue / White',   img:'assets/payhip/merch-ready/hat-blue-white.png',   back:'hat-back-patch.jpg' }
+  { label:'SNG Classic',    img:'assets/payhip/merch-ready/hat-sng-classic.png',  back:'assets/payhip/merch-ready/hat-back-sng-classic.svg'  },
+  { label:'Black / Orange', img:'assets/payhip/merch-ready/hat-black-orange.png', back:'assets/payhip/merch-ready/hat-back-black-orange.svg' },
+  { label:'Navy / Hi-Vis',  img:'assets/payhip/merch-ready/hat-navy-hiviz.png',   back:'assets/payhip/merch-ready/hat-back-navy-hiviz.svg'   },
+  { label:'Red / White',    img:'assets/payhip/merch-ready/hat-red-white.png',    back:'assets/payhip/merch-ready/hat-back-red-white.svg'    },
+  { label:'Black / Green',  img:'assets/payhip/merch-ready/hat-black-green.png',  back:'assets/payhip/merch-ready/hat-back-black-green.svg'  },
+  { label:'Black / Yellow', img:'assets/payhip/merch-ready/hat-black-yellow.png', back:'assets/payhip/merch-ready/hat-back-black-yellow.svg' },
+  { label:'Blue / White',   img:'assets/payhip/merch-ready/hat-blue-white.png',   back:'assets/payhip/merch-ready/hat-back-blue-white.svg'   }
 ];
 var hatSelectedColor = HAT_COLORWAYS[0];
 var hatSelectedSize = null;
@@ -1353,8 +1353,8 @@ function selectHatSize(size) {
 }
 
 function toggleHatZoom() {
-  var img = document.getElementById('hat-viewer-img');
-  if (img.classList.contains('spinning')) return;
+  var flipped = document.getElementById('hat-flip-card').classList.contains('flipped');
+  var img = document.getElementById(flipped ? 'hat-viewer-img-back' : 'hat-viewer-img');
   img.classList.toggle('zoomed');
   document.getElementById('hat-viewer-wrap').style.cursor = img.classList.contains('zoomed') ? 'zoom-out' : 'zoom-in';
 }
@@ -1362,6 +1362,8 @@ function toggleHatZoom() {
 function spinHat360() { flipHat(); }
 function flipHat() {
   var card = document.getElementById('hat-flip-card');
+  document.getElementById('hat-viewer-img').classList.remove('zoomed');
+  document.getElementById('hat-viewer-img-back').classList.remove('zoomed');
   card.classList.toggle('flipped');
   document.getElementById('hat-spin-btn').textContent = card.classList.contains('flipped') ? '↩ VIEW FRONT' : '↩ VIEW BACK';
 }
@@ -1484,7 +1486,7 @@ function orderHat() {
   if (!color) { alert('Please select a colorway first.'); return; }
   var subject = encodeURIComponent('SNG Hat Order — $35');
   var body = encodeURIComponent(
-    'Item: SNG Flat Brim FlexFit Hat\nColorway: ' + color +
+    'Item: SNG Flat Brim Snapback Hat\nColorway: ' + color +
     '\nSide Embroidery: ' + embroidery +
     '\nPrice: $35\n\nName:\nShipping Address:\nPhone:\n\nI understand payment details will be sent to complete this order.'
   );
