@@ -12,10 +12,10 @@
 
 :root {
   --orange: #f47820;
-  --dark: #1e1e28;
-  --card: #26263a;
-  --card2: #2e2e44;
-  --border: #3a3a52;
+  --dark: #28283a;
+  --card: #32324a;
+  --card2: #3a3a56;
+  --border: #48485e;
   --text: #ffffff;
   --muted: #9090a8;
   --heading: 'Barlow Condensed', sans-serif;
@@ -597,7 +597,7 @@ footer {
 #hat-viewer-wrap {
   width:100%; cursor:zoom-in; border-radius:12px;
   display:flex; align-items:center; justify-content:center;
-  overflow:hidden;
+  overflow:hidden; perspective:900px;
 }
 #hat-viewer-img {
   width:100%; max-width:340px; object-fit:contain;
@@ -1317,23 +1317,19 @@ function toggleHatZoom() {
 
 function spinHat360() {
   var img = document.getElementById('hat-viewer-img');
+  var wrap = document.getElementById('hat-viewer-wrap');
   if (img.classList.contains('spinning')) return;
   img.classList.remove('zoomed');
   img.style.animation = 'none';
   img.offsetHeight;
+  wrap.style.overflow = 'visible';
   img.classList.add('spinning');
-  setTimeout(function() { img.classList.remove('spinning'); }, 1700);
+  setTimeout(function() { img.classList.remove('spinning'); wrap.style.overflow = 'hidden'; }, 1700);
 }
 
 function orderBuilderHat() {
   if (!hatSelectedSize) { alert('Please select a size: S/M or L/XL'); return; }
-  var subject = encodeURIComponent('SNG Hat Order — Builder\'s Series — $35');
-  var body = encodeURIComponent(
-    'Item: SNG Builder\'s Series Hat\nColorway: ' + hatSelectedColor.label +
-    '\nSize: ' + hatSelectedSize +
-    '\nPrice: $35\n\nName:\nShipping Address:\nPhone:\n\nI understand payment details will be sent to complete this order.'
-  );
-  window.location.href = 'mailto:sales@sngcycles.com?subject=' + subject + '&body=' + body;
+  window.open('https://payhip.com/b/ojElF', '_blank');
 }
 
 var currentProduct = null;
