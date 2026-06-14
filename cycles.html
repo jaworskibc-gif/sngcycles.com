@@ -220,7 +220,7 @@ nav.scrolled { background:rgba(5,5,7,0.97); backdrop-filter:blur(16px); border-b
 /* ── VEHICLE CARDS ── */
 /* ── MODEL OVERVIEW GRID ── */
 .model-grid {
-  display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+  display:grid; grid-template-columns:repeat(6,1fr); gap:0;
   border-top:2px solid var(--orange); border-bottom:1px solid var(--border);
   background:var(--card);
 }
@@ -550,6 +550,13 @@ footer {
     <div class="mgc-price" style="color:var(--orange);">$15,990</div>
     <div class="mgc-cta">Explore →</div>
   </a>
+  <a href="#black-tip" class="model-grid-card" style="background:linear-gradient(135deg,#0d0d10,#1a150a);">
+    <img src="sng-black-tip.png" alt="SNG Black Tip">
+    <div class="mgc-label" style="color:#c9a84c;">SNG Motors · Electric Performance</div>
+    <div class="mgc-name" style="color:#c9a84c;">Black<br>Tip</div>
+    <div class="mgc-price" style="color:#c9a84c;">Reserve Now</div>
+    <div class="mgc-cta" style="color:#c9a84c;">Explore →</div>
+  </a>
 </div>
 
 <!-- MAKO -->
@@ -665,6 +672,41 @@ footer {
       </div>
       <div class="vehicle-price" style="color:var(--orange);">$15,990</div>
       <button class="reserve-btn" style="background:var(--orange);" onclick="openDeposit('Sand Shark','$15,990')">Leave a Deposit — Sand Shark →</button>
+    </div>
+  </div>
+</div>
+
+<!-- BLACK TIP -->
+<div class="vehicle" id="black-tip" style="background:linear-gradient(135deg,#0a0a0c 0%,#141008 100%);">
+  <div class="vehicle-inner flip">
+    <div class="vehicle-img" style="position:relative;">
+      <span class="vehicle-badge" style="background:#c9a84c;color:#000;">Electric Performance</span>
+      <img src="sng-black-tip.png" alt="SNG Black Tip" style="object-position:center;">
+    </div>
+    <div class="vehicle-info" style="background:linear-gradient(135deg,#0d0d10,#1a150a);">
+      <div class="vehicle-division" style="color:#c9a84c;">SNG Motors · 3-Wheel Tadpole</div>
+      <div class="vehicle-name" style="color:#c9a84c;">Black<br>Tip</div>
+      <div class="vehicle-tagline">0–60 in 3.8 sec. 135 HP. 115+ MPH. EMRAX 228 axial flux motor. Tadpole layout — two wheels up front, one in back. Street legal. No crash test. No compromise.</div>
+      <div class="vehicle-specs" style="border-color:#2a2010;">
+        <div class="spec-item" style="border-color:#2a2010;"><div class="spec-label">0–60</div><div class="spec-val" style="color:#c9a84c;">3.8 SEC</div></div>
+        <div class="spec-item" style="border-color:#2a2010;"><div class="spec-label">Peak Power</div><div class="spec-val" style="color:#c9a84c;">135 HP</div></div>
+        <div class="spec-item" style="border-color:#2a2010;"><div class="spec-label">Top Speed</div><div class="spec-val" style="color:#c9a84c;">115+ MPH</div></div>
+        <div class="spec-item" style="border-color:#2a2010;"><div class="spec-label">Range</div><div class="spec-val" style="color:#c9a84c;">100–130 MI</div></div>
+        <div class="spec-item" style="border-color:#2a2010;"><div class="spec-label">Motor</div><div class="spec-val" style="color:#c9a84c;">EMRAX 228</div></div>
+        <div class="spec-item" style="border-color:#2a2010;"><div class="spec-label">Weight</div><div class="spec-val" style="color:#c9a84c;">~960 LBS</div></div>
+        <div class="spec-item" style="border-color:#2a2010;"><div class="spec-label">Battery</div><div class="spec-val" style="color:#c9a84c;">18 kWh 400V</div></div>
+        <div class="spec-item" style="border-color:#2a2010;"><div class="spec-label">Drive</div><div class="spec-val" style="color:#c9a84c;">RWD · Electric</div></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+        <div style="font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#c9a84c;border:1px solid #c9a84c44;padding:5px 10px;border-radius:4px;">Street Legal</div>
+        <div style="font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#c9a84c;border:1px solid #c9a84c44;padding:5px 10px;border-radius:4px;">DC Fast Charge</div>
+        <div style="font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#c9a84c;border:1px solid #c9a84c44;padding:5px 10px;border-radius:4px;">Regen Braking</div>
+        <div style="font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#c9a84c;border:1px solid #c9a84c44;padding:5px 10px;border-radius:4px;">App Connected</div>
+        <div style="font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#c9a84c;border:1px solid #c9a84c44;padding:5px 10px;border-radius:4px;">Shark Fin Door Light</div>
+        <div style="font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#c9a84c;border:1px solid #c9a84c44;padding:5px 10px;border-radius:4px;">5-Point Harness</div>
+      </div>
+      <div class="vehicle-price" style="color:#c9a84c;">Reserve Now</div>
+      <button class="reserve-btn" style="background:#c9a84c;color:#000;" onclick="openDeposit('Black Tip','Contact for pricing')">Leave a Deposit — Black Tip →</button>
     </div>
   </div>
 </div>
