@@ -831,6 +831,27 @@ footer {
         </div>
       </div>
 
+      <div onclick="openProduct('core-3pack')" style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <img src="sng-tee-packs-3-5.png" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;" alt="SNG 3-Tee Bundle">
+        <div style="padding:16px;">
+          <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Bundle · Best Value</div>
+          <div style="font-weight:900;color:#fff;font-size:16px;margin-bottom:4px;">3-Tee Bundle</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">White · Red · Black</div>
+          <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:12px;">$60</div>
+          <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now →</button>
+        </div>
+      </div>
+
+      <div onclick="openProduct('light-5pack')" style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+        <img src="sng-tee-packs-light-dark.png" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;" alt="SNG 5-Tee Bundle">
+        <div style="padding:16px;">
+          <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Bundle · Best Value</div>
+          <div style="font-weight:900;color:#fff;font-size:16px;margin-bottom:4px;">5-Tee Bundle</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">White · Hunter Green · Sand · Burgundy · Red</div>
+          <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:12px;">$90</div>
+          <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now →</button>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -1201,8 +1222,8 @@ var PRODUCTS = {
     payhipUrl:'https://payhip.com/b/ojElF'
   },
   'core-3pack': {
-    badge:'Tee Pack · $30', name:'Core 3-Pack', sub:'White · Red · Black',
-    price:'$30', image:'sng-tee-collection.png',
+    badge:'3-Tee Bundle', name:'3-Tee Bundle', sub:'White · Red · Black',
+    price:'$60', image:'sng-tee-collection.png',
     desc:'Stuntin Aint Easy · SNG Cycles · Stuntin Is A Habit. Premium embroidery. Woven hem label. Three colorways, one order. Tall sizes available.',
     selectors:['size'], orderLabel:'Order Core 3-Pack — $30', orderItem:'Core 3-Pack (White/Red/Black)',
     payhipUrl:'https://payhip.com/b/M2TDN'
@@ -1222,8 +1243,8 @@ var PRODUCTS = {
     payhipUrl:'https://payhip.com/b/9nXKh'
   },
   'light-5pack': {
-    badge:'Tee Pack · $25 · Best Value', name:'Light Pack', sub:'White · Hunter Green · Sand · Burgundy · Red',
-    price:'$25', image:'sng-tee-collection.png',
+    badge:'5-Tee Bundle · Best Value', name:'5-Tee Bundle', sub:'White · Hunter Green · Sand · Burgundy · Red',
+    price:'$90', image:'sng-tee-collection.png',
     desc:'5 shirts, 5 colorways — $5 each. Stuntin Aint Easy · Stuntin Is A Habit · Leave The School Behind · For The Riders The Market Forgot · SNG Cycles. The full statement.',
     selectors:['size'], orderLabel:'Order Light 5-Pack — $25', orderItem:'Light 5-Pack (White/Hunter Green/Sand/Burgundy/Red)',
     payhipUrl:'https://payhip.com/b/M7VCP'
