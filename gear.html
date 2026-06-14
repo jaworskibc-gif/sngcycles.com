@@ -580,8 +580,8 @@ footer {
 #hat-modal.open { display:flex; }
 #hat-modal-inner {
   background:#0f1219; border:1px solid var(--border); border-radius:20px;
-  max-width:940px; width:100%; max-height:92vh; overflow-y:auto;
-  display:grid; grid-template-columns:1fr 1fr; position:relative;
+  max-width:1200px; width:100%; max-height:92vh; overflow-y:auto;
+  display:grid; grid-template-columns:3fr 2fr; position:relative;
 }
 #hat-modal-close {
   position:absolute; top:14px; right:18px; background:none; border:none;
@@ -592,12 +592,12 @@ footer {
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   padding:32px 24px; min-height:440px;
 }
-.hat-side-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; width:100%; }
+.hat-side-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; width:100%; }
 .hat-side-grid img {
-  width:100%; max-width:240px; object-fit:contain;
-  display:block; margin:0 auto; cursor:zoom-in; transition:transform 0.3s;
+  width:100%; object-fit:contain;
+  display:block; cursor:zoom-in; transition:transform 0.3s;
 }
-.hat-side-grid img:hover { transform:scale(1.06); }
+.hat-side-grid img:hover { transform:scale(1.04); }
 .hat-view-label {
   font-size:10px; color:var(--muted); letter-spacing:3px;
   text-transform:uppercase; margin-top:8px; font-weight:700; text-align:center;
@@ -808,7 +808,7 @@ footer {
     <div style="font-family:var(--heading);font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">SNG Apparel</div>
     <div style="font-family:var(--heading);font-size:clamp(44px,6vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;color:var(--text);margin-bottom:40px;">SNG<br>HATS</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1100px;">
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:border-color 0.2s;" onclick="openHatModal()" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
         <img src="hat-team-colors-sheet.jpg" alt="SNG Rider Team Colors Hat" style="width:100%;display:block;">
       </div>
       <div>
