@@ -18,43 +18,42 @@
         fill="none" stroke="#ffd400" stroke-width="2.2"
         stroke-dasharray="10 7" opacity="0.28"/>
 
-  <!-- ── FRONT PANEL (structured 6-panel snapback) ── -->
-  <!-- More upright / arch-shaped — not a round dome -->
+  <!-- ── FRONT PANEL (structured 6-panel snapback — vertical sides, arch top) ── -->
   <path d="
-    M 172 686
-    L 148 490
-    C 145 285 265 210 450 206
-    C 635 210 755 285 752 490
-    L 728 686
+    M 178 686
+    L 178 390
+    C 178 248 298 200 450 197
+    C 602 200 722 248 722 390
+    L 722 686
     Z"
     fill="#111316"/>
 
   <!-- Left side-panel shadow band (gives depth to the 6-panel seam) -->
   <path d="
-    M 172 686
-    L 148 490
-    C 145 285 265 210 340 218
-    L 318 686
+    M 178 686
+    L 178 390
+    C 178 248 298 200 348 208
+    L 335 686
     Z"
-    fill="#000000" opacity="0.13"/>
+    fill="#000000" opacity="0.14"/>
 
   <!-- Right side-panel shadow band -->
   <path d="
-    M 728 686
-    L 752 490
-    C 755 285 635 210 560 218
-    L 582 686
+    M 722 686
+    L 722 390
+    C 722 248 602 200 552 208
+    L 565 686
     Z"
-    fill="#000000" opacity="0.13"/>
+    fill="#000000" opacity="0.14"/>
 
   <!-- Left panel seam -->
-  <path d="M 172 686 L 148 490 C 145 285 265 210 450 206"
+  <path d="M 178 686 L 178 390 C 178 248 298 200 450 197"
         fill="none" stroke="#000000" stroke-width="1.8" opacity="0.45"/>
   <!-- Right panel seam -->
-  <path d="M 728 686 L 752 490 C 755 285 635 210 450 206"
+  <path d="M 722 686 L 722 390 C 722 248 602 200 450 197"
         fill="none" stroke="#000000" stroke-width="1.8" opacity="0.45"/>
   <!-- Center seam (very faint) -->
-  <line x1="450" y1="208" x2="450" y2="686"
+  <line x1="450" y1="200" x2="450" y2="686"
         stroke="#000000" stroke-width="1.2" opacity="0.22"/>
 
   <!-- Sweatband seam at base -->
@@ -62,13 +61,13 @@
         fill="none" stroke="#000002" stroke-width="2.5" opacity="0.35"/>
 
   <!-- Crown top button -->
-  <circle cx="450" cy="210" r="20" fill="#000002" stroke="#000000" stroke-width="2.5"/>
-  <circle cx="450" cy="210" r="9"  fill="#000000"/>
+  <circle cx="450" cy="201" r="18" fill="#000002" stroke="#000000" stroke-width="2.5"/>
+  <circle cx="450" cy="201" r="8"  fill="#000000"/>
 
   <!-- Eyelets (air vents on side panels) -->
-  <ellipse cx="240" cy="428" rx="7" ry="9"
+  <ellipse cx="242" cy="440" rx="7" ry="9"
            fill="#000000" stroke="#07090c" stroke-width="1.5"/>
-  <ellipse cx="660" cy="428" rx="7" ry="9"
+  <ellipse cx="658" cy="440" rx="7" ry="9"
            fill="#000000" stroke="#07090c" stroke-width="1.5"/>
 
   <!-- ── EMBROIDERY LOGO ── -->
