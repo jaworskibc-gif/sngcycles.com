@@ -1125,28 +1125,6 @@ footer {
         </div>
       </div>
 
-      <div onclick="openProduct('core-3pack')" style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <img src="sng-tee-packs-3-5.png" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;" alt="SNG 3-Tee Bundle">
-        <div style="padding:16px;">
-          <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Best Value</div>
-          <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">3-Tee School</div>
-          <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">White · Red · Black</div>
-          <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:12px;">$60</div>
-          <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now →</button>
-        </div>
-      </div>
-
-      <div onclick="openProduct('light-5pack')" style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
-        <img src="sng-tee-packs-light-dark.png" style="width:100%;display:block;aspect-ratio:4/5;object-fit:cover;" alt="SNG 5-Tee Bundle">
-        <div style="padding:16px;">
-          <div style="font-size:10px;color:var(--orange);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Best Value</div>
-          <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">5-Tee School</div>
-          <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">White · Hunter Green · Sand · Burgundy · Red</div>
-          <div style="font-size:20px;font-weight:900;color:var(--orange);margin-bottom:12px;">$90</div>
-          <button style="width:100%;background:var(--orange);color:#fff;border:none;padding:10px;border-radius:6px;font-weight:900;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Order Now →</button>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -1571,13 +1549,6 @@ var PRODUCTS = {
     selectors:['size'], orderLabel:'Order Now — $60', orderItem:'SNG Cycles White Hoodie — Leave the School Behind',
     payhipUrl:'https://payhip.com/b/ojElF'
   },
-  'core-3pack': {
-    badge:'3-Tee School · Best Value', name:'3-Tee School', sub:'White · Red · Black',
-    price:'$60', image:'sng-tee-packs-3-5.png',
-    desc:'3 shirts, 3 colorways — $20 each. White · Red · Black. All with the "I Use Ta Have Gas. Now I Just Haul Ass." design. Bella+Canvas premium unisex tee. S–3XL. Save vs. singles.',
-    selectors:['size'], orderLabel:'Order 3-Tee School — $60', orderItem:'3-Tee School (White/Red/Black)',
-    payhipUrl:'https://payhip.com/b/M2TDN'
-  },
   'dark-3pack': {
     badge:'Dark 3-Tee · $30', name:'Dark 3-Tee', sub:'Black · Charcoal · Navy',
     price:'$30', image:'sng-tee-packs-3-5.png',
@@ -1591,13 +1562,6 @@ var PRODUCTS = {
     desc:'Stuntin Is A Habit · Leave The School Behind · Stuntin Aint Easy. Cut-off sleeves. Premium embroidery. Built for track days and dune runs.',
     selectors:['size'], orderLabel:'Order Cut-Off 3-Tee — $30', orderItem:'Cut-Off 3-Tee (Black/Hunter Green/Burgundy)',
     payhipUrl:'https://payhip.com/b/9nXKh'
-  },
-  'light-5pack': {
-    badge:'5-Tee School · Best Value', name:'5-Tee School', sub:'White · Hunter Green · Sand · Burgundy · Red',
-    price:'$90', image:'sng-tee-packs-light-dark.png',
-    desc:'5 shirts, 5 colorways — $18 each. White · Hunter Green · Burgundy · Red · Navy. All with the "I Use Ta Have Gas. Now I Just Haul Ass." design. Bella+Canvas premium unisex tee. S–3XL. Save vs. singles.',
-    selectors:['size'], orderLabel:'Order 5-Tee School — $90', orderItem:'5-Tee School (White/Hunter Green/Sand/Burgundy/Red)',
-    payhipUrl:'https://payhip.com/b/M7VCP'
   },
   'single-tee': {
     badge:'Single Tee · $15', name:'Pick Your Tee', sub:'Choose your color + slogan',
