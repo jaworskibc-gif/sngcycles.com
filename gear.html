@@ -1783,19 +1783,6 @@ function orderFridayDeal(option) {
   window.location.href = 'mailto:sales@sngcycles.com?subject=' + subject + '&body=' + body;
 }
 
-function orderHat() {
-  var color = document.getElementById('hat-color').value;
-  var embroidery = document.getElementById('hat-embroidery').value;
-  if (!color) { alert('Please select a colorway first.'); return; }
-  var subject = encodeURIComponent('SNG Hat Order — $35');
-  var body = encodeURIComponent(
-    'Item: SNG Flat Brim Snapback Hat\nColorway: ' + color +
-    '\nSide Embroidery: ' + embroidery +
-    '\nPrice: $35\n\nName:\nShipping Address:\nPhone:\n\nI understand payment details will be sent to complete this order.'
-  );
-  window.location.href = 'mailto:sales@sngcycles.com?subject=' + subject + '&body=' + body;
-}
-
 function orderItem(item, sizeId, price) {
   var size = document.getElementById(sizeId).value;
   if (!size) { alert('Please select a size first.'); return; }
