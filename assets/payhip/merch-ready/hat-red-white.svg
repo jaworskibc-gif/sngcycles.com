@@ -3,92 +3,106 @@
   <!-- page bg -->
   <rect width="900" height="900" fill="#0c0d10"/>
 
-  <!-- ── CROWN ── -->
-  <!-- outer glow/shadow -->
-  <ellipse cx="450" cy="720" rx="310" ry="24" fill="#000" opacity="0.4"/>
+  <!-- floor shadow -->
+  <ellipse cx="450" cy="805" rx="335" ry="18" fill="#000" opacity="0.60"/>
 
-  <!-- main crown shape — rounded trapezoid, wider at base -->
+  <!-- ── BRIM (flat snapback — straight horizontal bill) ── -->
+  <!-- Brim face: nearly a straight rectangle, flat bill -->
+  <path d="M 80 688 L 820 688 L 820 720 L 80 720 Z"
+        fill="#8a1018"/>
+  <!-- Brim underside strip (dark edge at front) -->
+  <path d="M 80 720 L 820 720 L 820 733 L 80 733 Z"
+        fill="#9e0001" opacity="0.75"/>
+  <!-- Brim top stitching row -->
+  <path d="M 108 694 L 792 694"
+        fill="none" stroke="#ffffff" stroke-width="2.2"
+        stroke-dasharray="10 7" opacity="0.28"/>
+
+  <!-- ── FRONT PANEL (structured 6-panel snapback) ── -->
+  <!-- More upright / arch-shaped — not a round dome -->
   <path d="
-    M160 680
-    C120 480 170 200 450 160
-    C730 200 780 480 740 680
+    M 172 686
+    L 148 490
+    C 145 285 265 210 450 206
+    C 635 210 755 285 752 490
+    L 728 686
     Z"
     fill="#c8202b"/>
 
-  <!-- crown top highlight (subtle) -->
+  <!-- Left side-panel shadow band (gives depth to the 6-panel seam) -->
   <path d="
-    M310 200
-    C340 175 410 162 450 160
-    C490 162 560 175 590 200
-    C560 185 500 175 450 172
-    C400 175 340 185 310 200 Z"
-    fill="#b9111c" opacity="0.4"/>
+    M 172 686
+    L 148 490
+    C 145 285 265 210 340 218
+    L 318 686
+    Z"
+    fill="#9e0001" opacity="0.13"/>
 
-  <!-- left panel seam -->
-  <path d="M160 680 C138 560 160 340 248 240"
-        fill="none" stroke="#a50008" stroke-width="2" opacity="0.5"/>
-  <!-- right panel seam -->
-  <path d="M740 680 C762 560 740 340 652 240"
-        fill="none" stroke="#a50008" stroke-width="2" opacity="0.5"/>
-  <!-- center seam (subtle) -->
-  <path d="M450 165 L450 680"
-        fill="none" stroke="#a50008" stroke-width="1.5" opacity="0.3"/>
+  <!-- Right side-panel shadow band -->
+  <path d="
+    M 728 686
+    L 752 490
+    C 755 285 635 210 560 218
+    L 582 686
+    Z"
+    fill="#9e0001" opacity="0.13"/>
 
-  <!-- top button -->
-  <circle cx="450" cy="172" r="22" fill="#b9111c" stroke="#c31b26" stroke-width="3"/>
-  <circle cx="450" cy="172" r="10" fill="#a50008" opacity="0.6"/>
+  <!-- Left panel seam -->
+  <path d="M 172 686 L 148 490 C 145 285 265 210 450 206"
+        fill="none" stroke="#9e0001" stroke-width="1.8" opacity="0.45"/>
+  <!-- Right panel seam -->
+  <path d="M 728 686 L 752 490 C 755 285 635 210 450 206"
+        fill="none" stroke="#9e0001" stroke-width="1.8" opacity="0.45"/>
+  <!-- Center seam (very faint) -->
+  <line x1="450" y1="208" x2="450" y2="686"
+        stroke="#9e0001" stroke-width="1.2" opacity="0.22"/>
 
-  <!-- eyelets (air holes) -->
-  <ellipse cx="320" cy="295" rx="7" ry="9" fill="#a50008" stroke="#c31b26" stroke-width="1.5"/>
-  <ellipse cx="580" cy="295" rx="7" ry="9" fill="#a50008" stroke="#c31b26" stroke-width="1.5"/>
+  <!-- Sweatband seam at base -->
+  <path d="M 172 686 Q 450 694 728 686"
+        fill="none" stroke="#b40c17" stroke-width="2.5" opacity="0.35"/>
 
-  <!-- ── SNG CYCLES EMBROIDERY ── -->
-  <!-- shark fin -->
-  <path d="M450 370
-           C450 370 424 410 420 436
-           C430 428 440 434 450 438
-           C460 434 470 428 480 436
-           C476 410 450 370 450 370 Z"
-        fill="#ffffff" opacity="0.97"/>
-  <!-- fin base line -->
-  <line x1="414" y1="438" x2="486" y2="438"
-        stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.95"/>
+  <!-- Crown top button -->
+  <circle cx="450" cy="210" r="20" fill="#b40c17" stroke="#9e0001" stroke-width="2.5"/>
+  <circle cx="450" cy="210" r="9"  fill="#9e0001"/>
 
-  <!-- SNG -->
-  <text x="450" y="548"
+  <!-- Eyelets (air vents on side panels) -->
+  <ellipse cx="240" cy="428" rx="7" ry="9"
+           fill="#9e0001" stroke="#be1621" stroke-width="1.5"/>
+  <ellipse cx="660" cy="428" rx="7" ry="9"
+           fill="#9e0001" stroke="#be1621" stroke-width="1.5"/>
+
+  <!-- ── EMBROIDERY LOGO ── -->
+
+  <!-- Shark fin (clean angular outline, filled) -->
+  <path d="
+    M 450 328
+    C 448 328 420 378 416 412
+    C 428 403 440 409 450 414
+    C 460 409 472 403 484 412
+    C 480 378 452 328 450 328 Z"
+    fill="#ffffff" opacity="0.97"/>
+  <!-- Fin base rule -->
+  <line x1="408" y1="414" x2="492" y2="414"
+        stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.95"/>
+
+  <!-- SNG (large bold) -->
+  <text x="450" y="545"
         text-anchor="middle"
         font-family="Arial Black, Arial, sans-serif"
         font-weight="900"
-        font-size="110"
+        font-size="122"
         fill="#ffffff"
-        letter-spacing="6"
+        letter-spacing="3"
         opacity="0.97">SNG</text>
 
-  <!-- CYCLES -->
-  <text x="450" y="604"
+  <!-- CYCLES (small caps, tracked wide) -->
+  <text x="450" y="608"
         text-anchor="middle"
         font-family="Arial Black, Arial, sans-serif"
         font-weight="900"
-        font-size="38"
+        font-size="41"
         fill="#ffffff"
-        letter-spacing="12"
+        letter-spacing="14"
         opacity="0.88">CYCLES</text>
-
-  <!-- ── BRIM ── -->
-  <!-- brim underside shadow -->
-  <ellipse cx="450" cy="698" rx="300" ry="18" fill="#000" opacity="0.5"/>
-
-  <!-- main brim — flat, extends wider than crown -->
-  <path d="M90 685 Q450 645 810 685 L810 715 Q450 710 90 715 Z"
-        fill="#8a1018" stroke="#a50008" stroke-width="2"/>
-
-  <!-- brim top stitching -->
-  <path d="M105 686 Q450 648 795 686"
-        fill="none" stroke="#ffffff" stroke-width="3"
-        stroke-dasharray="12 8" opacity="0.4"/>
-
-  <!-- brim front edge -->
-  <path d="M90 715 Q450 720 810 715"
-        fill="none" stroke="#a50008" stroke-width="2.5" opacity="0.6"/>
 
 </svg>
