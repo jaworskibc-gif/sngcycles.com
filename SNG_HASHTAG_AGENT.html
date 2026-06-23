@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>if(!sessionStorage.getItem('sng_auth')){sessionStorage.setItem('sng_return',location.href);location.href='sng-login.html';}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG — Hashtag Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0c0d10;--bg2:#111318;--bg3:#181b22;--card:#1a1b22;--border:#252630;
+  --orange:#f47820;--green:#2ecc71;--blue:#3399ff;--muted:#6a6d80;--text:#e8e9f0;
+  --head:'Barlow Condensed',sans-serif;--body:'Barlow',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;}
+.topbar{background:var(--bg2);border-bottom:2px solid var(--orange);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;}
+.brand{font-family:var(--head);font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:#fff;}
+.brand span{color:var(--orange);}
+.back-link{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:7px 14px;border-radius:6px;transition:border-color .15s;}
+.back-link:hover{border-color:var(--orange);color:var(--orange);}
+.main{max-width:760px;margin:0 auto;padding:40px 24px 80px;}
+.page-title{font-family:var(--head);font-size:48px;font-weight:900;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:6px;}
+.page-title span{color:var(--orange);}
+.page-sub{font-size:14px;color:var(--muted);margin-bottom:32px;}
+.sh{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.sh::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* POST TYPE GRID */
+.type-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:28px;}
+.type-btn{
+  background:var(--bg3);border:2px solid var(--border);border-radius:10px;padding:16px;
+  cursor:pointer;transition:all .15s;text-align:left;
+}
+.type-btn:hover{border-color:var(--orange);background:rgba(244,120,32,0.06);}
+.type-btn.active{border-color:var(--orange);background:rgba(244,120,32,0.1);}
+.type-icon{font-size:24px;margin-bottom:8px;}
+.type-name{font-family:var(--head);font-size:14px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:3px;}
+.type-desc{font-size:11px;color:var(--muted);line-height:1.4;}
+
+/* PLATFORM */
+.plat-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+.plat-btn{
+  font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:9px 18px;border:2px solid var(--border);border-radius:8px;color:var(--muted);
+  cursor:pointer;transition:all .15s;background:transparent;
+}
+.plat-btn.active{border-color:var(--orange);color:#fff;background:rgba(244,120,32,0.1);}
+
+/* INPUT */
+.input-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px;}
+label{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;}
+textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;font-family:var(--body);font-size:14px;color:var(--text);resize:vertical;min-height:80px;outline:none;transition:border-color .15s;margin-bottom:16px;}
+textarea:focus{border-color:var(--orange);}
+.btn{font-family:var(--head);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;border:none;border-radius:8px;background:var(--orange);color:#fff;cursor:pointer;transition:opacity .15s;width:100%;}
+.btn:hover{opacity:0.85;}
+.btn:disabled{opacity:0.4;cursor:not-allowed;}
+
+/* OUTPUT */
+.output-section{display:none;}
+.output-section.show{display:block;}
+.stack-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px;}
+.stack-label{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+.stack-desc{font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5;}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.hash-tag{background:rgba(244,120,32,0.1);border:1px solid rgba(244,120,32,0.25);color:var(--orange);font-family:var(--head);font-size:12px;font-weight:700;padding:4px 10px;border-radius:4px;letter-spacing:0.5px;}
+.copy-btn{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;}
+.copy-btn:hover{border-color:var(--orange);color:var(--orange);}
+.copy-btn.copied{border-color:var(--green);color:var(--green);}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:8px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* SAVED STACKS */
+.saved-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px;}
+.saved-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.saved-type{font-family:var(--head);font-size:12px;font-weight:700;text-transform:uppercase;color:var(--orange);letter-spacing:1px;}
+.saved-date{font-size:11px;color:var(--muted);}
+.saved-tags{font-size:12px;color:#9090a8;line-height:1.6;}
+.del-btn{font-size:10px;color:var(--muted);border:none;background:none;cursor:pointer;padding:3px 6px;border-radius:4px;}
+.del-btn:hover{color:#e03535;}
+
+/* API KEY */
+.api-row{display:flex;gap:10px;margin-bottom:8px;}
+.api-input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-family:monospace;font-size:12px;color:var(--text);outline:none;}
+.api-input:focus{border-color:var(--orange);}
+.api-btn{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:10px 16px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .15s;}
+.api-btn:hover{border-color:var(--orange);color:var(--orange);}
+.api-status{font-size:12px;color:var(--muted);}
+.api-status.ok{color:var(--green);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">SNG <span>Hashtag Agent</span></div>
+  <a class="back-link" href="SNG_HUB.html">← Hub</a>
+</div>
+
+<div class="main">
+  <div class="page-title">Hashtag<br><span>Agent</span></div>
+  <div class="page-sub">Pick your post type and platform → get a tuned hashtag stack optimized for reach and the right audience. Every stack is built around the SNG buyer: electric moto, supermoto, tall riders, premium builders.</div>
+
+  <!-- API KEY -->
+  <div class="sh">Claude API Key</div>
+  <div class="input-card" style="margin-bottom:28px;">
+    <label>API Key</label>
+    <div class="api-row">
+      <input class="api-input" type="password" id="apiKey" placeholder="sk-ant-api03-...">
+      <button class="api-btn" onclick="saveKey()">Save</button>
+      <button class="api-btn" onclick="clearKey()">Clear</button>
+    </div>
+    <div class="api-status" id="apiStatus">No key saved</div>
+  </div>
+
+  <!-- POST TYPE -->
+  <div class="sh">Post Type</div>
+  <div class="type-grid">
+    <div class="type-btn active" data-type="build" onclick="selectType(this)">
+      <div class="type-icon">🔧</div>
+      <div class="type-name">Build Post</div>
+      <div class="type-desc">Transformation, garage, parts, process</div>
+    </div>
+    <div class="type-btn" data-type="spec" onclick="selectType(this)">
+      <div class="type-icon">⚡</div>
+      <div class="type-name">Spec / Price</div>
+      <div class="type-desc">270E, numbers, weight, performance</div>
+    </div>
+    <div class="type-btn" data-type="founder" onclick="selectType(this)">
+      <div class="type-icon">👤</div>
+      <div class="type-name">Founder Story</div>
+      <div class="type-desc">6'7", built not bought, missed rides</div>
+    </div>
+    <div class="type-btn" data-type="holochrome" onclick="selectType(this)">
+      <div class="type-icon">✨</div>
+      <div class="type-name">Visual Flex</div>
+      <div class="type-desc">Holochrome, gold, limited edition</div>
+    </div>
+    <div class="type-btn" data-type="merch" onclick="selectType(this)">
+      <div class="type-icon">👕</div>
+      <div class="type-name">Merch / Gear</div>
+      <div class="type-desc">Hats, hoodies, tees, apparel drops</div>
+    </div>
+    <div class="type-btn" data-type="tallrider" onclick="selectType(this)">
+      <div class="type-icon">📏</div>
+      <div class="type-name">Tall Rider</div>
+      <div class="type-desc">Height, fit, nobody built this for you</div>
+    </div>
+  </div>
+
+  <!-- PLATFORM -->
+  <div class="sh">Platform</div>
+  <div class="plat-row">
+    <button class="plat-btn active" data-plat="tiktok" onclick="selectPlat(this)">TikTok</button>
+    <button class="plat-btn" data-plat="instagram" onclick="selectPlat(this)">Instagram</button>
+    <button class="plat-btn" data-plat="youtube" onclick="selectPlat(this)">YouTube Shorts</button>
+    <button class="plat-btn" data-plat="both" onclick="selectPlat(this)">TikTok + IG</button>
+  </div>
+
+  <!-- OPTIONAL HOOK -->
+  <div class="sh">Post Hook (Optional)</div>
+  <div class="input-card">
+    <label>Paste your hook or caption for more targeted hashtags</label>
+    <textarea id="hookInput" placeholder="Optional — paste your opening hook or caption here for a more targeted stack..."></textarea>
+    <button class="btn" id="genBtn" onclick="generateHashtags()">Generate Hashtag Stack</button>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-section" id="outputSection">
+    <div class="sh">Your Hashtag Stacks</div>
+
+    <div class="stack-card">
+      <div class="stack-label">Stack A — Core Reach</div>
+      <div class="stack-desc">High-volume tags that put you in front of the widest relevant audience.</div>
+      <div class="tag-cloud" id="stackA"></div>
+      <button class="copy-btn" onclick="copyStack('A')">Copy Stack A</button>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-label">Stack B — Niche + Buyer-Intent</div>
+      <div class="stack-desc">Smaller, hotter communities — electric moto builders, supermoto enthusiasts, tall rider searches.</div>
+      <div class="tag-cloud" id="stackB"></div>
+      <button class="copy-btn" onclick="copyStack('B')">Copy Stack B</button>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-label">Stack C — Combined (TikTok 30-tag limit)</div>
+      <div class="stack-desc">Best mix of reach and targeting. Use this if you only pick one.</div>
+      <div class="tag-cloud" id="stackC"></div>
+      <button class="copy-btn" onclick="copyStack('C')">Copy Stack C</button>
+    </div>
+
+    <div style="margin-top:12px;text-align:center;">
+      <button class="copy-btn" onclick="saveCurrentStack()">Save This Stack</button>
+    </div>
+  </div>
+
+  <!-- SAVED STACKS -->
+  <div id="savedSection" style="display:none;margin-top:40px;">
+    <div class="sh">Saved Stacks</div>
+    <div id="savedList"></div>
+  </div>
+
+</div>
+
+<script>
+const SYSTEM_PROMPT = `You are a hashtag strategist for SNG Cycles — a premium Florida-built electric supermoto brand.
+
+Target buyer: BMW S1000R owner, Ducati Multistrada rider, ex-motocross racer aged 28-48, someone who appreciates hand-built craftsmanship and doesn't need a brand to explain itself.
+
+SNG identity: 6'7" founder, built not bought, VIN-stamped, 202 lbs, Florida-assembled, numbered limited run, Shark Not Goldfish, Leave The School Behind.
+
+Generate exactly 3 hashtag stacks labeled STACK_A, STACK_B, STACK_C separated by ---STACK_BREAK---:
+STACK_A: 15 high-volume core reach tags
+STACK_B: 15 niche buyer-intent tags specific to the post type
+STACK_C: 25 best combined tags for platform limits
+
+Format each hashtag prefixed with #, space-separated, no line breaks within a stack.
+Include always in at least one stack: #SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought
+Tailor the rest to the post type and platform provided.`;
+
+let selectedType = 'build';
+let selectedPlat = 'tiktok';
+let stackData = {A:'',B:'',C:''};
+
+function selectType(el){
+  document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  selectedType = el.dataset.type;
+}
+function selectPlat(el){
+  document.querySelectorAll('.plat-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  selectedPlat = el.dataset.plat;
+}
+
+function loadKey(){
+  const k = localStorage.getItem('sng_claude_key')||'';
+  if(k){
+    document.getElementById('apiKey').value=k;
+    document.getElementById('apiStatus').textContent='✓ Key saved';
+    document.getElementById('apiStatus').className='api-status ok';
+  }
+}
+function saveKey(){
+  const k=document.getElementById('apiKey').value.trim();
+  if(!k)return;
+  localStorage.setItem('sng_claude_key',k);
+  document.getElementById('apiStatus').textContent='✓ Key saved';
+  document.getElementById('apiStatus').className='api-status ok';
+}
+function clearKey(){
+  localStorage.removeItem('sng_claude_key');
+  document.getElementById('apiKey').value='';
+  document.getElementById('apiStatus').textContent='Key cleared';
+  document.getElementById('apiStatus').className='api-status';
+}
+
+async function generateHashtags(){
+  const key=localStorage.getItem('sng_claude_key');
+  if(!key){alert('Enter your Claude API key first.');return;}
+  const hook=document.getElementById('hookInput').value.trim();
+  const btn=document.getElementById('genBtn');
+  btn.innerHTML='<span class="spinner"></span>Generating...';
+  btn.disabled=true;
+
+  const msg = `Post type: ${selectedType}\nPlatform: ${selectedPlat}\n${hook?'Hook/caption: '+hook:''}`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:500,system:SYSTEM_PROMPT,messages:[{role:'user',content:msg}]})
+    });
+    if(!res.ok){const e=await res.json();throw new Error(e.error?.message||'API error');}
+    const data=await res.json();
+    const text=data.content[0].text;
+    const parts=text.split('---STACK_BREAK---');
+
+    ['A','B','C'].forEach((l,i)=>{
+      const raw=(parts[i]||'').trim();
+      const tags=raw.replace(/^STACK_[ABC]:?\s*/i,'').trim();
+      stackData[l]=tags;
+      const cloud=document.getElementById('stack'+l);
+      cloud.innerHTML='';
+      tags.split(/\s+/).filter(t=>t.startsWith('#')).forEach(t=>{
+        const span=document.createElement('span');
+        span.className='hash-tag';
+        span.textContent=t;
+        cloud.appendChild(span);
+      });
+    });
+
+    document.getElementById('outputSection').classList.add('show');
+    document.getElementById('outputSection').scrollIntoView({behavior:'smooth',block:'start'});
+  }catch(e){alert('Error: '+e.message);}
+  finally{btn.innerHTML='Generate Hashtag Stack';btn.disabled=false;}
+}
+
+function copyStack(l){
+  navigator.clipboard.writeText(stackData[l]).then(()=>{
+    const btns=document.querySelectorAll('.copy-btn');
+    const idx={'A':0,'B':1,'C':2}[l];
+    btns[idx].textContent='✓ Copied!';
+    btns[idx].classList.add('copied');
+    setTimeout(()=>{btns[idx].textContent='Copy Stack '+l;btns[idx].classList.remove('copied');},2000);
+  });
+}
+
+function saveCurrentStack(){
+  const saved=JSON.parse(localStorage.getItem('sng_hashtag_saved')||'[]');
+  saved.unshift({type:selectedType,plat:selectedPlat,stacks:stackData,date:new Date().toLocaleDateString()});
+  if(saved.length>10)saved.splice(10);
+  localStorage.setItem('sng_hashtag_saved',JSON.stringify(saved));
+  renderSaved();
+}
+
+function renderSaved(){
+  const saved=JSON.parse(localStorage.getItem('sng_hashtag_saved')||'[]');
+  const sec=document.getElementById('savedSection');
+  const list=document.getElementById('savedList');
+  if(!saved.length){sec.style.display='none';return;}
+  sec.style.display='block';
+  list.innerHTML='';
+  saved.forEach((s,i)=>{
+    const d=document.createElement('div');
+    d.className='saved-card';
+    d.innerHTML=`<div class="saved-meta"><span class="saved-type">${s.type} · ${s.plat}</span><span class="saved-date">${s.date} <button class="del-btn" onclick="deleteSaved(${i})">✕</button></span></div><div class="saved-tags">${(s.stacks.C||s.stacks.A).substring(0,200)}...</div>`;
+    list.appendChild(d);
+  });
+}
+
+function deleteSaved(i){
+  const saved=JSON.parse(localStorage.getItem('sng_hashtag_saved')||'[]');
+  saved.splice(i,1);
+  localStorage.setItem('sng_hashtag_saved',JSON.stringify(saved));
+  renderSaved();
+}
+
+loadKey();
+renderSaved();
+</script>
+</body>
+</html>
