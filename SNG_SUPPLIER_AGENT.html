@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>if(!sessionStorage.getItem('sng_auth')){sessionStorage.setItem('sng_return',location.href);location.href='sng-login.html';}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG — Supplier Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0c0d10;--bg2:#111318;--bg3:#181b22;--card:#1a1b22;--border:#252630;
+  --orange:#f47820;--green:#2ecc71;--blue:#3399ff;--yellow:#f4c842;--red:#e03535;
+  --muted:#6a6d80;--text:#e8e9f0;
+  --head:'Barlow Condensed',sans-serif;--body:'Barlow',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;}
+.topbar{background:var(--bg2);border-bottom:2px solid var(--orange);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.brand{font-family:var(--head);font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:#fff;}
+.brand span{color:var(--orange);}
+.back-link{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:7px 14px;border-radius:6px;transition:border-color .15s;}
+.back-link:hover{border-color:var(--orange);color:var(--orange);}
+.main{max-width:960px;margin:0 auto;padding:40px 24px 80px;}
+.page-title{font-family:var(--head);font-size:48px;font-weight:900;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:6px;}
+.page-title span{color:var(--orange);}
+.page-sub{font-size:14px;color:var(--muted);margin-bottom:32px;}
+.sh{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.sh::after{content:'';flex:1;height:1px;background:var(--border);}
+.tab-row{display:flex;gap:0;margin-bottom:32px;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.tab-btn{flex:1;font-family:var(--head);font-size:14px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:14px;border:none;background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;border-right:1px solid var(--border);}
+.tab-btn:last-child{border-right:none;}
+.tab-btn.active{background:var(--orange);color:#fff;}
+
+/* SUPPLIER CARDS */
+.supplier-grid{display:grid;gap:16px;}
+.supplier-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .15s;}
+.supplier-card:hover{border-color:rgba(244,120,32,.4);}
+.supplier-header{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--border);}
+.supplier-name{font-family:var(--head);font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:1px;margin-bottom:4px;}
+.supplier-type{font-size:12px;color:var(--muted);}
+.tier-badge{font-family:var(--head);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap;}
+.tier-1{background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);color:var(--green);}
+.tier-2{background:rgba(244,200,66,.1);border:1px solid rgba(244,200,66,.25);color:var(--yellow);}
+.tier-3{background:rgba(51,153,255,.1);border:1px solid rgba(51,153,255,.25);color:var(--blue);}
+.supplier-body{padding:20px 24px;}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:16px;}
+.spec-item{background:var(--bg3);border-radius:8px;padding:10px 12px;}
+.spec-label{font-size:10px;font-family:var(--head);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.spec-val{font-size:13px;color:var(--text);font-weight:600;}
+.spec-val.good{color:var(--green);}
+.spec-val.warn{color:var(--yellow);}
+.supplier-notes{font-size:13px;color:#9090a8;line-height:1.7;margin-bottom:16px;}
+.action-row{display:flex;gap:10px;flex-wrap:wrap;}
+.action-btn{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:9px 18px;border-radius:7px;text-decoration:none;transition:all .15s;display:inline-block;}
+.btn-primary{background:var(--orange);color:#fff;border:1px solid var(--orange);}
+.btn-primary:hover{opacity:.85;}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange);}
+.skip-card{background:rgba(224,53,53,.06);border:1px solid rgba(224,53,53,.2);border-radius:10px;padding:16px 20px;margin-top:8px;}
+.skip-title{font-family:var(--head);font-size:13px;font-weight:700;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+.skip-item{font-size:12px;color:var(--muted);line-height:1.8;display:flex;gap:10px;align-items:flex-start;}
+.skip-item::before{content:'✕';color:var(--red);flex-shrink:0;}
+.action-plan{background:rgba(244,120,32,.07);border:1px solid rgba(244,120,32,.25);border-radius:12px;padding:22px 24px;margin-top:32px;}
+.action-plan-title{font-family:var(--head);font-size:16px;font-weight:900;text-transform:uppercase;color:var(--orange);margin-bottom:14px;letter-spacing:2px;}
+.action-step{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(244,120,32,.15);}
+.action-step:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.step-num{font-family:var(--head);font-size:22px;font-weight:900;color:var(--orange);line-height:1;flex-shrink:0;width:28px;}
+.step-text{font-size:13px;color:#c0b0a0;line-height:1.7;}
+.step-text strong{color:#fff;}
+.section{display:none;}
+.section.active{display:block;}
+.updated-badge{font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:24px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">SNG <span>Supplier Agent</span></div>
+  <a class="back-link" href="SNG_HUB.html">← Hub</a>
+</div>
+
+<div class="main">
+  <div class="page-title">Supplier<br><span>Agent</span></div>
+  <div class="page-sub">Vetted dropship and wholesale leads for SNG rider gear. Leather jackets + Kevlar jeans — researched and ranked.</div>
+
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="showTab('kevlar')">🦺 Kevlar Jeans</button>
+    <button class="tab-btn" onclick="showTab('jacket')">🧥 Leather Jackets</button>
+  </div>
+
+  <!-- ══ KEVLAR JEANS ══ -->
+  <div class="section active" id="tab-kevlar">
+    <div class="updated-badge">Research completed June 16, 2026 · 8 leads found</div>
+
+    <div class="sh">Tier 1 — Ready to Order (Established Programs)</div>
+    <div class="supplier-grid">
+
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">Bull-it</div><div class="supplier-type">Wholesale Dealer Program · via Moto Machines USA</div></div>
+          <span class="tier-badge tier-1">Tier 1 — Best Bet</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val">Wholesale Dealer</div></div>
+            <div class="spec-item"><div class="spec-label">MOQ</div><div class="spec-val warn">$499 first order</div></div>
+            <div class="spec-item"><div class="spec-label">MSRP</div><div class="spec-val">$160–$250/pair</div></div>
+            <div class="spec-item"><div class="spec-label">CE Rating</div><div class="spec-val good">CE AAA (highest)</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val warn">No — Bull-it only</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Yes</div></div>
+          </div>
+          <div class="supplier-notes">Uses proprietary Covec material — strongest CE protection on the market. MAP pricing enforced. Valid website/commercial presence required to qualify. Exclusive US importer is Moto Machines.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="https://www.motomachines.com/become-a-dealer" target="_blank">Apply — Moto Machines</a>
+            <a class="action-btn btn-ghost" href="https://www.bull-it.com" target="_blank">bull-it.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">Pando Moto</div><div class="supplier-type">Selective Wholesale Retailer Program</div></div>
+          <span class="tier-badge tier-1">Tier 1</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val">Wholesale Retailer</div></div>
+            <div class="spec-item"><div class="spec-label">MOQ</div><div class="spec-val warn">Inquiry required</div></div>
+            <div class="spec-item"><div class="spec-label">MSRP</div><div class="spec-val">$150–$220/pair</div></div>
+            <div class="spec-item"><div class="spec-label">CE Rating</div><div class="spec-val good">Level 1 + Level 2</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val warn">No — Pando Moto only</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Yes (EU warehouse)</div></div>
+          </div>
+          <div class="supplier-notes">Lithuania-based, ships from Europe (longer lead time to US). Carried by Cycle Gear in the US — proven distribution. Growing 20% YoY. Strong brand that fits electric moto aesthetic.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="mailto:retailer@pandomoto.com">Email retailer@pandomoto.com</a>
+            <a class="action-btn btn-ghost" href="https://pandomoto.com/become-our-retailer/" target="_blank">Retailer Page</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">uglyBROS USA</div><div class="supplier-type">Authorized Dealer Program · LA-based</div></div>
+          <span class="tier-badge tier-1">Tier 1</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val">Authorized Dealer</div></div>
+            <div class="spec-item"><div class="spec-label">MOQ</div><div class="spec-val warn">Inquiry required</div></div>
+            <div class="spec-item"><div class="spec-label">MSRP</div><div class="spec-val">$130–$200/pair</div></div>
+            <div class="spec-item"><div class="spec-label">CE Rating</div><div class="spec-val good">Yes — Kevlar/aramid</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val warn">No — uglyBROS only</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Yes — LA based</div></div>
+          </div>
+          <div class="supplier-notes">LA-based US operation — no overseas logistics headache. Cafe racer/moto lifestyle aesthetic fits electric brand well. Contact via Instagram @uglybros_usa or website.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="https://www.uglybrosusa.com/pages/retailers" target="_blank">Retailer Application</a>
+            <a class="action-btn btn-ghost" href="https://www.uglybrosusa.com" target="_blank">uglybrosusa.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sh" style="margin-top:32px;">Tier 2 — Premium (SA1NT)</div>
+    <div class="supplier-grid">
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">SA1NT</div><div class="supplier-type">Premium Australian brand · Dyneema (stronger than Kevlar)</div></div>
+          <span class="tier-badge tier-2">Tier 2 — Premium</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val warn">No public wholesale</div></div>
+            <div class="spec-item"><div class="spec-label">MSRP</div><div class="spec-val">$220–$350/pair</div></div>
+            <div class="spec-item"><div class="spec-label">CE Rating</div><div class="spec-val good">Level 1 + Level 2</div></div>
+            <div class="spec-item"><div class="spec-label">Material</div><div class="spec-val good">Dyneema (superior)</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val warn">No</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Yes — US store</div></div>
+          </div>
+          <div class="supplier-notes">No public dealer program but small brands sometimes do wholesale quietly. Worth a direct email — their Dyneema jeans would sit well next to a $20k+ electric motorcycle.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="https://us.saint.cc" target="_blank">Contact via us.saint.cc</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh" style="margin-top:32px;">Tier 3 — OEM / Private Label (SNG-Branded Jeans)</div>
+    <div class="supplier-grid">
+
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">Saribco Industries</div><div class="supplier-type">OEM + Private Label · Sialkot, Pakistan</div></div>
+          <span class="tier-badge tier-3">Tier 3 — Custom Brand</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val good">OEM + Private Label</div></div>
+            <div class="spec-item"><div class="spec-label">Price Range</div><div class="spec-val">~$70/pair wholesale</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val good">Yes — full custom</div></div>
+            <div class="spec-item"><div class="spec-label">CE Rating</div><div class="spec-val warn">Verify on inquiry</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Yes</div></div>
+            <div class="spec-item"><div class="spec-label">Contact</div><div class="spec-val">WhatsApp available</div></div>
+          </div>
+          <div class="supplier-notes">Most retail-ready Pakistan OEM. Custom labels, hangtags, embroidery, patches all in-house. AQL 2.5 QC. Best starting point for SNG-branded jeans. WhatsApp: +92 331 676 3475.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="mailto:info@saribcoindustries.com">Email info@saribcoindustries.com</a>
+            <a class="action-btn btn-ghost" href="https://saribcoindustries.com" target="_blank">saribcoindustries.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">Maxler Motosport</div><div class="supplier-type">OEM + Custom Design · Sialkot, Pakistan</div></div>
+          <span class="tier-badge tier-3">Tier 3 — Custom Brand</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val good">OEM + Custom design</div></div>
+            <div class="spec-item"><div class="spec-label">CE Rating</div><div class="spec-val good">Level 1 + Level 2</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val good">Yes — turnkey</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Yes — 50+ countries</div></div>
+          </div>
+          <div class="supplier-notes">Best choice for a fully custom "designed for SNG Cycles" product with CE documentation. Positions itself as OEM partner for global brands. Email: info@maxlermotosport.com.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="mailto:info@maxlermotosport.com">Email Maxler</a>
+            <a class="action-btn btn-ghost" href="https://maxlermotosport.com" target="_blank">maxlermotosport.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="skip-card">
+      <div class="skip-title">Skip These</div>
+      <div class="skip-item">Draggin Jeans USA — US operations closed 2022. In limbo.</div>
+      <div class="skip-item">Hornee — Australian/UK focused, no US wholesale infrastructure.</div>
+      <div class="skip-item">Covec — Materials manufacturer only, not a finished-goods supplier.</div>
+    </div>
+
+    <div class="action-plan">
+      <div class="action-plan-title">Recommended Action Plan — Kevlar Jeans</div>
+      <div class="action-step"><div class="step-num">1</div><div class="step-text"><strong>Quick win:</strong> Contact Bull-it (via Moto Machines) and Pando Moto simultaneously. Both have real dealer programs, ship to US, CE-rated. Stock 3–5 SKUs to anchor the gear section without inventory risk.</div></div>
+      <div class="action-step"><div class="step-num">2</div><div class="step-text"><strong>Medium term (branded):</strong> Contact Saribco Industries and Maxler for OEM quotes on "SNG Cycles" branded Kevlar jeans. MOQs of 50–200 units realistic. Start with one unisex black style.</div></div>
+      <div class="action-step"><div class="step-num">3</div><div class="step-text"><strong>Premium tier:</strong> Reach out to SA1NT for wholesale — their Dyneema jeans at $220–$350 sit perfectly next to a $20k+ electric motorcycle brand.</div></div>
+    </div>
+  </div>
+
+  <!-- ══ LEATHER JACKETS ══ -->
+  <div class="section" id="tab-jacket">
+    <div class="updated-badge">Research completed June 16, 2026 · 8 leads found · Target: CFE Racer Jacket $295 retail, kangaroo leather, SNG embroidery</div>
+
+    <div class="sh">Top Pick — Confirm This First (Previous SNG Lead)</div>
+    <div class="supplier-grid">
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">Dropleather</div><div class="supplier-type">POD Dropship · Custom Leather · Shopify/WooCommerce integration</div></div>
+          <span class="tier-badge tier-1">Confirm First</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val good">POD Dropship</div></div>
+            <div class="spec-item"><div class="spec-label">MOQ</div><div class="spec-val good">1 piece</div></div>
+            <div class="spec-item"><div class="spec-label">Platform fee</div><div class="spec-val good">Free / $1/mo</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val good">Yes — logo + packaging</div></div>
+            <div class="spec-item"><div class="spec-label">Kangaroo leather</div><div class="spec-val warn">Unconfirmed — ask</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Worldwide (&lt;7 days)</div></div>
+          </div>
+          <div class="supplier-notes">SNG's previous lead. Platform confirmed active at dropleather.com. Shopify/WooCommerce integration + blind white-label shipping. Ask directly: café racer moto style, kangaroo leather availability, and per-unit cost at SNG's $295 retail target.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="mailto:contact@dropleather.com">Email contact@dropleather.com</a>
+            <a class="action-btn btn-ghost" href="https://dropleather.com" target="_blank">dropleather.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh" style="margin-top:32px;">Best Confirmed Dropship Infrastructure</div>
+    <div class="supplier-grid">
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">Leather Skin Shop</div><div class="supplier-type">Dedicated Dropship Program · Custom embroidery + white label</div></div>
+          <span class="tier-badge tier-1">Tier 1 — Best Ops</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val good">Dedicated Dropship</div></div>
+            <div class="spec-item"><div class="spec-label">MOQ</div><div class="spec-val good">1 piece</div></div>
+            <div class="spec-item"><div class="spec-label">Retail price</div><div class="spec-val">$249–$325</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val good">Yes — embroidery, packaging</div></div>
+            <div class="spec-item"><div class="spec-label">Kangaroo leather</div><div class="spec-val warn">Unconfirmed — ask</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Free worldwide · DHL/FedEx</div></div>
+          </div>
+          <div class="supplier-notes">Most operational dropship infrastructure of all leads. Partner pricing (below retail) available. Production 5–15 days then 2–5 day delivery. Moto/racing/café racer styles confirmed. US phone: +1-360-362-5920.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="mailto:support@leatherskinshop.com">Email support@leatherskinshop.com</a>
+            <a class="action-btn btn-ghost" href="https://leatherskinshop.com/pages/dropshipping" target="_blank">Dropship Program</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">Vance Leathers</div><div class="supplier-type">Formal Dropship Program · $5/order · Blind ship · Florida-based</div></div>
+          <span class="tier-badge tier-1">Tier 1 — US-Based</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val good">Dropship ($5/order)</div></div>
+            <div class="spec-item"><div class="spec-label">MOQ</div><div class="spec-val good">1 piece</div></div>
+            <div class="spec-item"><div class="spec-label">Price range</div><div class="spec-val">$80–$300 (catalog)</div></div>
+            <div class="spec-item"><div class="spec-label">Blind ship</div><div class="spec-val good">Yes — your name as sender</div></div>
+            <div class="spec-item"><div class="spec-label">Kangaroo leather</div><div class="spec-val warn">Not listed</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">US-based · fast</div></div>
+          </div>
+          <div class="supplier-notes">Florida-based — same state as SNG. Formal dropship infrastructure with blind shipping. No custom SNG branding confirmed but worth calling. Best for catalog fulfillment. Phone: (386) 236-0413.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="mailto:sales@vance-leather.com">Email sales@vance-leather.com</a>
+            <a class="action-btn btn-ghost" href="https://wholesale.vanceleathers.com/pages/drop-ship-with-vance-leathers-inc" target="_blank">Dropship Program</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh" style="margin-top:32px;">Confirmed Kangaroo Leather + SNG Embroidery</div>
+    <div class="supplier-grid">
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">RJ Moto Leather</div><div class="supplier-type">Custom moto jackets · Kangaroo confirmed · Full embroidery</div></div>
+          <span class="tier-badge tier-2">Kangaroo Confirmed</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Program</div><div class="spec-val warn">Wholesale — inquire</div></div>
+            <div class="spec-item"><div class="spec-label">Base price (kangaroo)</div><div class="spec-val">~$499</div></div>
+            <div class="spec-item"><div class="spec-label">Kangaroo leather</div><div class="spec-val good">Confirmed (+$150)</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val good">Full embroidery + patches</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Free worldwide</div></div>
+          </div>
+          <div class="supplier-notes">Best confirmed kangaroo + SNG embroidery combo. At ~$499 base, needs a white-label/reseller rate to pencil at $295 retail. Ask directly for wholesale pricing — this is the quality level SNG needs.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="mailto:info@rjmotoleather.com">Email info@rjmotoleather.com</a>
+            <a class="action-btn btn-ghost" href="https://rjmotoleather.com" target="_blank">rjmotoleather.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">Leather Collection</div><div class="supplier-type">CE-rated kangaroo · Made-to-order · Quote-based</div></div>
+          <span class="tier-badge tier-2">CE + Kangaroo</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Kangaroo leather</div><div class="spec-val good">CE-rated — confirmed</div></div>
+            <div class="spec-item"><div class="spec-label">CE Rating</div><div class="spec-val good">Yes</div></div>
+            <div class="spec-item"><div class="spec-label">MOQ</div><div class="spec-val good">1 piece (made to order)</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Free over $699</div></div>
+          </div>
+          <div class="supplier-notes">CE-rated kangaroo leather confirmed. No explicit dropship program — pitch a white-label arrangement. Lead time: standard 10–15 days; made-to-measure 4–6 weeks.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="https://leathercollection.com/custom-motorcycle-jackets" target="_blank">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh" style="margin-top:32px;">US Manufacturer — Branded Run (No Kangaroo)</div>
+    <div class="supplier-grid">
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div><div class="supplier-name">Daniel Smart MFG</div><div class="supplier-type">US manufacturer · Custom club/brand jackets · MOQ 10–12</div></div>
+          <span class="tier-badge tier-2">US-Made Option</span>
+        </div>
+        <div class="supplier-body">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">MOQ</div><div class="spec-val warn">10–12 pieces (custom)</div></div>
+            <div class="spec-item"><div class="spec-label">Price</div><div class="spec-val">$349–$399</div></div>
+            <div class="spec-item"><div class="spec-label">Custom Brand</div><div class="spec-val good">Full embroidery + patches</div></div>
+            <div class="spec-item"><div class="spec-label">Kangaroo leather</div><div class="spec-val warn">Not available</div></div>
+            <div class="spec-item"><div class="spec-label">Ships to US</div><div class="spec-val good">Free over $99 · Domestic</div></div>
+          </div>
+          <div class="supplier-notes">Domestic US manufacturer since 1992. Full-grain cowhide. 10–12 piece MOQ is achievable. No kangaroo — use for a cowhide entry-level SKU or as backup.</div>
+          <div class="action-row">
+            <a class="action-btn btn-primary" href="https://danielsmartmfg.com/collections/custom-builder" target="_blank">Custom Builder</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-plan">
+      <div class="action-plan-title">Recommended Action Plan — Leather Jackets</div>
+      <div class="action-step"><div class="step-num">1</div><div class="step-text"><strong>Confirm Dropleather first</strong> — SNG's previous lead. Email contact@dropleather.com, ask about café racer moto style, kangaroo leather, and per-unit cost at $295 retail target.</div></div>
+      <div class="action-step"><div class="step-num">2</div><div class="step-text"><strong>Get Leather Skin Shop partner pricing</strong> — best dropship infrastructure. If they can do kangaroo, this is the easiest operational setup for launch.</div></div>
+      <div class="action-step"><div class="step-num">3</div><div class="step-text"><strong>Ask RJ Moto Leather for wholesale rate</strong> — kangaroo + SNG embroidery both confirmed, but base ~$499 needs to compress. One email could unlock this.</div></div>
+      <div class="action-step"><div class="step-num">4</div><div class="step-text"><strong>Run parallel Alibaba search</strong> — "café racer leather jacket dropship kangaroo" filtered by Verified Supplier + Trade Assurance. Order 2–3 samples at $150–200 each to compare quality.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
