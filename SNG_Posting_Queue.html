@@ -38,7 +38,8 @@ a.btn.secondary{background:#263140;color:#eceff3}
   <section class="status">
     <div class="pill">Ready today: yes</div>
     <div class="pill">GenViral API: not connected</div>
-    <div class="pill">Best first post: Transformation Proof</div>
+    <div class="pill">Transformation: posted</div>
+    <div class="pill">Next post: Unboxing / Garage Proof</div>
     <div class="pill">Story arc: white -> orange -> gold</div>
   </section>
   <p class="note">Open the media, upload it to TikTok/IG, copy the caption, add trending sound, post. Core build story: tiny white one, orange one, then gold 270E.</p>
@@ -47,7 +48,7 @@ a.btn.secondary{background:#263140;color:#eceff3}
 <script>
 const posts = [
   {
-    title: "01 - Transformation Proof",
+    title: "01 - Transformation Proof - Posted",
     media: "assets/inbound-content/manual-queue/07-transformation.mp4",
     type: "video",
     hook: "It started as a Sur-Ron. By the time I was done, it was not one anymore.",
@@ -59,37 +60,39 @@ Built not bought. Florida-built. VIN-stamped. Made for riders.
 
 Reserve your numbered 270E. Link in bio.
 
-#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #ebike #florida`
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #ebike #florida`,
+    posted: "2026-06-19"
   },
   {
-    title: "02 - What It Costs",
+    title: "02 - Unboxing / Garage Proof",
+    media: "assets/inbound-content/manual-queue/10-unboxing.mp4",
+    type: "video",
+    hook: "This is the part nobody sees.",
+    caption: `This is the part nobody sees.
+
+The boxes. The waiting. The wrong parts. The decisions that finally made the bike right.
+
+No factory shortcut. No catalog build. Just one machine getting built the hard way.
+
+Built not bought. SNG4LIFE.
+
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #florida`
+  },
+  {
+    title: "03 - Build Receipts - Hold / Recut",
     media: "assets/inbound-content/manual-queue/09-what-it-costs.mp4",
     type: "video",
-    hook: "Everybody asks why it costs $21k. Here is what is actually in it.",
-    caption: `No secrets. This is what a real electric supermoto costs to build.
+    hook: "Every part on this bike had to earn its place.",
+    caption: `Every part on this bike had to earn its place.
 
-WP, Lewis 6/8-piston brakes, Warp9, Sotion, BAC8000, jackshaft, tall-rider geometry, and months of mistakes paid for in cash.
+The brakes. The wheels. The geometry. The finish. The way it fits a rider who never fit anything else.
 
-$16,430 in parts before the labor. Imagine what it costs to not have to build it yourself.
+This is not a kit with a logo on it. It is a machine built around decisions.
 
-270E pre-orders are open. Link in bio.
+Built not bought. SNG4LIFE.
 
-#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #surron #florida`
-  },
-  {
-    title: "03 - Holochrome Flex",
-    media: "assets/inbound-content/manual-queue/08-holochrome.mp4",
-    type: "video",
-    hook: "Your phone cannot catch this color right.",
-    caption: `Gold on top. Holo underneath.
-
-Your phone cannot even catch this color right. You have to see it moving in real light.
-
-Holochrome edition. 300 numbered units ever.
-
-Built not bought. Reserve yours. Link in bio.
-
-#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #emoto #florida`
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #florida`,
+    hold: true
   },
   {
     title: "04 - Founder Scale Proof",
@@ -137,17 +140,18 @@ Pre-orders are open now. Reserve your unit. Link in bio.
 #SharkNotGoldfish #SNGCycles #SNG4LIFE #supermoto #electricmotorcycle #ebike #emoto #florida`
   },
   {
-    title: "07 - Number 22 Detail",
+    title: "07 - Number 22 Detail - Hold Until Wrap Returns",
     media: "assets/inbound-content/manual-queue/05-holo-detail-number-22.jpg",
     type: "image",
-    hook: "Gold on top. Holo underneath. Number 22 out front.",
-    caption: `Gold on top. Holo underneath. Number 22 out front.
+    hook: "Hold until the new wrap is back on the bike.",
+    caption: `Hold this one until the new wrap is back on the bike.
 
 Not a kit. Not a catalog bike.
 
 Built in a garage, one piece at a time.
 
-#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #emoto #florida`
+#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #emoto #florida`,
+    hold: true
   },
   {
     title: "08 - Unboxing / Parts Receipts",
