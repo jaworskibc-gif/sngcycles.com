@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>if(!sessionStorage.getItem('sng_auth')){sessionStorage.setItem('sng_return',location.href);location.href='sng-login.html';}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SNG Cycles — Master Growth Strategy | June 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0c0d10;
+      --bg2:       #111318;
+      --bg3:       #181b22;
+      --border:    #1e2230;
+      --orange:    #f47820;
+      --orange-dim: #b85a14;
+      --white:     #f0f0f0;
+      --muted:     #8a8fa0;
+      --danger:    #e03535;
+      --green:     #2ecc71;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--bg2);
+      border-bottom: 2px solid var(--orange);
+      padding: 48px 32px 36px;
+      text-align: center;
+    }
+
+    .shark-badge {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid var(--orange);
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(38px, 6vw, 72px);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    header h1 span { color: var(--orange); }
+
+    header .sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .meta-row span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .meta-row span strong { color: var(--orange); }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    nav a {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 14px 20px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(28px, 4vw, 48px);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 36px;
+    }
+
+    h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+
+    p { color: #c0c4d0; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT / PULLQUOTE ── */
+    .callout {
+      background: var(--bg3);
+      border-left: 4px solid var(--orange);
+      padding: 20px 24px;
+      margin: 28px 0;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    .callout em { color: var(--orange); font-style: normal; }
+
+    /* ── CARDS GRID ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 28px;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+    }
+
+    .card.green::before { background: var(--green); }
+    .card.red::before   { background: var(--danger); }
+    .card.dim::before   { background: var(--border); }
+
+    /* ── BULLET LISTS ── */
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.clean li {
+      padding: 10px 0 10px 24px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      color: #c0c4d0;
+      font-size: 15px;
+    }
+
+    ul.clean li:last-child { border-bottom: none; }
+
+    ul.clean li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    ul.clean li strong { color: var(--white); }
+
+    /* ── SCORE BAR ── */
+    .score-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .score-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      width: 220px;
+      flex-shrink: 0;
+    }
+
+    .score-bar-wrap {
+      flex: 1;
+      background: var(--border);
+      height: 8px;
+      position: relative;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      background: var(--orange);
+      transition: width 0.3s;
+    }
+
+    .score-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--orange);
+      width: 36px;
+      text-align: right;
+    }
+
+    /* ── 30-DAY PLAYBOOK TABLE ── */
+    .playbook-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .phase {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--orange);
+      padding: 24px;
+    }
+
+    .phase-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .phase h3 { margin-bottom: 18px; }
+
+    table.content-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    table.content-table th {
+      background: var(--bg3);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.content-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      color: #c0c4d0;
+      vertical-align: top;
+    }
+
+    table.content-table tr:last-child td { border-bottom: none; }
+
+    table.content-table td strong { color: var(--white); }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      background: var(--bg3);
+      color: var(--orange);
+      border: 1px solid var(--orange-dim);
+      margin: 2px 2px 2px 0;
+    }
+
+    .tag.green { color: var(--green); border-color: #1a6640; }
+    .tag.muted { color: var(--muted); border-color: var(--border); }
+
+    /* ── AI TOOLS TABLE ── */
+    .tools-table-wrap { overflow-x: auto; margin-top: 24px; }
+
+    table.tools-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      min-width: 700px;
+    }
+
+    table.tools-table th {
+      background: var(--bg3);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.tools-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: #c0c4d0;
+      vertical-align: top;
+    }
+
+    table.tools-table tr:last-child td { border-bottom: none; }
+    table.tools-table td strong { color: var(--white); }
+    table.tools-table tr:hover td { background: #13161e; }
+
+    /* ── PRIORITY ACTIONS ── */
+    .action-list { margin-top: 28px; }
+
+    .action-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 20px;
+      align-items: start;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 22px 24px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .action-item:hover { border-color: var(--orange); }
+
+    .action-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+    }
+
+    .action-item:nth-child(1) .action-num,
+    .action-item:nth-child(2) .action-num,
+    .action-item:nth-child(3) .action-num { color: var(--orange); }
+
+    .action-body h4 { margin-bottom: 6px; }
+    .action-body p { font-size: 14px; margin: 0; }
+
+    .action-who {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      white-space: nowrap;
+      height: fit-content;
+    }
+
+    .action-who.bryan { color: var(--orange); border-color: var(--orange-dim); }
+    .action-who.agent { color: var(--green); border-color: #1a6640; }
+
+    /* ── HOOK LIBRARY ── */
+    .hook-item {
+      background: var(--bg3);
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .hook-item .hook-note {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 0;
+    }
+
+    /* ── COMPETITOR TABLE ── */
+    table.comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 24px;
+    }
+
+    table.comp-table th {
+      background: var(--bg3);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.comp-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: #c0c4d0;
+      font-size: 14px;
+    }
+
+    table.comp-table td strong { color: var(--white); }
+
+    .verdict { font-weight: 600; }
+    .verdict.open  { color: var(--green); }
+    .verdict.watch { color: var(--orange); }
+    .verdict.clear { color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    footer p span { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .action-item { grid-template-columns: 40px 1fr; }
+      .action-who { grid-column: 2; }
+      .score-label { width: 150px; font-size: 12px; }
+      nav a { padding: 12px 14px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════ -->
+<header>
+  <div class="shark-badge">Shark Not Goldfish</div>
+  <h1>SNG <span>Cycles</span></h1>
+  <div class="sub">Master Growth Strategy &mdash; June 2026</div>
+  <div class="meta-row">
+    <span>Founder: <strong>Bryan Jaworski</strong></span>
+    <span>Location: <strong>Royal Palm Beach, FL</strong></span>
+    <span>Hero Product: <strong>270E — 27kW Street-Legal Supermoto</strong></span>
+    <span>Document: <strong>v3.0 — Compiled June 2026</strong></span>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="#exec">Executive Summary</a>
+  <a href="#position">Market Position</a>
+  <a href="#playbook">30-Day Playbook</a>
+  <a href="#hooks">Hook Library</a>
+  <a href="#tools">AI Tool Stack</a>
+  <a href="#actions">Priority Actions</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1: EXECUTIVE SUMMARY
+═══════════════════════════════════════════ -->
+<section id="exec">
+  <div class="container">
+    <div class="section-label">Section 01 / What Changed</div>
+    <h2>Executive Summary</h2>
+
+    <div class="callout">
+      The lane is more open than the June 2026 report projected. Five new findings upgraded the opportunity score across every category. <em>The window is now, not later.</em>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h4>01 — BMW &amp; Ducati Confirmed Out</h4>
+        <p>Both brands have publicly stated no near-term electric plans. Their loyalists — the exact SNG buyer — have nowhere to go. This is the single biggest strategic confirmation of the year. SNG does not need to out-market anyone; it needs to exist visibly in the space those buyers are already searching.</p>
+      </div>
+      <div class="card">
+        <h4>02 — LAND Moto Is The Closest Competitor</h4>
+        <p>LAND Moto (Cleveland, $11K–$13K ADV) is the only independent American builder with structural overlap. Critical difference: ADV touring, not supermoto. The premium street-legal electric supermoto slot in America is still unclaimed. SNG owns it by default if it moves.</p>
+      </div>
+      <div class="card">
+        <h4>03 — Tall-Rider Gap Is Documented &amp; Unclaimed</h4>
+        <p>GritShift's "circus monkey on your Surron" article proves the demand exists and is vocal. No brand — gas or electric — has built an identity around tall riders. At 6'7", Bryan is the most credible founder in this lane. This is a zero-competition content territory.</p>
+      </div>
+      <div class="card">
+        <h4>04 — Auto-Reply Agent Is The Highest-ROI Build</h4>
+        <p>The original report recommended Manychat. Fresh research confirms the first viral trigger will almost certainly come from a comment, not the post. Comment velocity is an algorithmic signal. The Auto-Reply Agent (NapoleonCat immediately, custom build next) is now Priority 2 behind only getting footage posted.</p>
+      </div>
+      <div class="card">
+        <h4>05 — Iridescent/Holochrome Wrap Trend Is Mainstream In 2026</h4>
+        <p>Chameleon and dark iridescent wraps are trending across powersports. No electric moto brand has claimed the aesthetic. The Black Hologram Edition and its tagline — "You had to earn seeing that" — can own this category before anyone else arrives. The window for first-mover claim is open right now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 2: MARKET POSITION
+═══════════════════════════════════════════ -->
+<section id="position">
+  <div class="container">
+    <div class="section-label">Section 02 / The Lane</div>
+    <h2>Market Position</h2>
+
+    <p style="font-size:17px; color:#d0d4e0; max-width:780px;">SNG Cycles occupies a specific, defensible lane. The strategy only works if the lane stays defined. Every content decision, every caption, every product drop should be legible to one buyer archetype and invisible to everyone outside it.</p>
+
+    <div class="callout">
+      "Fox and Alpinestars were built on gas. <em>SNG is built for lithium.</em>"
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-top:32px;">
+      <div class="card green">
+        <h4>SNG Is For</h4>
+        <ul class="clean" style="margin-top:8px;">
+          <li>Ducati and BMW owners who are watching electric and waiting for something worthy</li>
+          <li>Riders who want street-legal, VIN-stamped, insurable — not a pit bike loop</li>
+          <li>Tall riders (6'+) who are tired of compromising on geometry and fit</li>
+          <li>Buyers drawn to bespoke hardware: Lewis brakes, WPS Pro wheels, CNC swingarm</li>
+          <li>People who see the wrap as a statement, not a color option</li>
+          <li>The buyer who spends $4K on gear before they spend $1 on a bike</li>
+        </ul>
+      </div>
+      <div class="card red">
+        <h4>SNG Is NOT For</h4>
+        <ul class="clean" style="margin-top:8px;">
+          <li>Surron/Talaria crowd — budget entry, social flex, stunt content</li>
+          <li>Gaming and streetwear crossover buyers</li>
+          <li>MX and track riders — Stark Varg owns that lane (80hp, $9K, purpose-built)</li>
+          <li>ADV touring buyers — LAND Moto ($11–13K) has that covered</li>
+          <li>Ultra-luxury aesthetics-only buyers — Tarform ($48K) serves them</li>
+          <li>Anyone whose first question is "how fast?" not "how is it built?"</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:52px; margin-bottom:20px;">Competitive Landscape</h3>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Buyer Profile</th>
+          <th>Overlap with SNG</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>LAND Moto</strong></td>
+          <td>$11K–$13K</td>
+          <td>ADV / Dual Sport</td>
+          <td>Independent builder, premium electric</td>
+          <td><span class="verdict watch">WATCH — closest structural overlap, different segment</span></td>
+        </tr>
+        <tr>
+          <td><strong>Stark Varg MX 1.2</strong></td>
+          <td>~$9K</td>
+          <td>MX / Track</td>
+          <td>Performance rider, circuit/MX</td>
+          <td><span class="verdict clear">CLEAR — different lane entirely</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarform Luna</strong></td>
+          <td>$48K</td>
+          <td>Luxury / Design-led</td>
+          <td>Aesthetics buyer, not performance</td>
+          <td><span class="verdict clear">CLEAR — price and intent are both different</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarform Vera</strong></td>
+          <td>$16K</td>
+          <td>Lifestyle electric</td>
+          <td>Design-first, city/commute</td>
+          <td><span class="verdict clear">CLEAR — SNG buyer wants track DNA on the street</span></td>
+        </tr>
+        <tr>
+          <td><strong>Surron / Talaria</strong></td>
+          <td>$3K–$5K</td>
+          <td>Light electric off-road</td>
+          <td>Entry-level, youth, stunt</td>
+          <td><span class="verdict clear">CLEAR — intentionally different buyer</span></td>
+        </tr>
+        <tr>
+          <td><strong>BMW / Ducati (gas)</strong></td>
+          <td>$15K–$30K+</td>
+          <td>Premium gas moto</td>
+          <td>Loyalists, performance-focused</td>
+          <td><span class="verdict open">OPEN — no electric offering confirmed. This is SNG's recruiting pool.</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:52px; margin-bottom:20px;">Opportunity Scores (Updated June 2026)</h3>
+    <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Scores reflect attainability × audience size × competition gap. Max 100.</p>
+
+    <div class="score-row"><div class="score-label">Build Proof Content</div><div class="score-bar-wrap"><div class="score-bar-fill" style="width:96%"></div></div><div class="score-val">96</div></div>
+    <div class="score-row"><div class="score-label">Lithium Gear Identity</div><div class="score-bar-wrap"><div class="score-bar-fill" style="width:91%"></div></div><div class="score-val">91</div></div>
+    <div class="score-row"><div class="score-label">Tall-Rider Fit Content</div><div class="score-bar-wrap"><div class="score-bar-fill" style="width:88%"></div></div><div class="score-val">88</div></div>
+    <div class="score-row"><div class="score-label">Holochrome / Black Hologram Drop</div><div class="score-bar-wrap"><div class="score-bar-fill" style="width:82%"></div></div><div class="score-val">82</div></div>
+    <div class="score-row"><div class="score-label">BMW/Ducati Crossover Targeting</div><div class="score-bar-wrap"><div class="score-bar-fill" style="width:79%"></div></div><div class="score-val">79</div></div>
+    <div class="score-row"><div class="score-label">Bike EXIF Feature Pursuit</div><div class="score-bar-wrap"><div class="score-bar-fill" style="width:74%"></div></div><div class="score-val">74</div></div>
+    <div class="score-row"><div class="score-label">Pure Logo Merch</div><div class="score-bar-wrap"><div class="score-bar-fill" style="width:36%"></div></div><div class="score-val">36</div></div>
+
+    <div class="callout" style="margin-top:40px;">
+      <em>Bike EXIF has never featured an independent American bespoke electric supermoto.</em> That placement is attainable and should be treated as a Q3 media target, not a long-shot.
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 3: 30-DAY CONTENT PLAYBOOK
+═══════════════════════════════════════════ -->
+<section id="playbook">
+  <div class="container">
+    <div class="section-label">Section 03 / Execution</div>
+    <h2>30-Day Content Playbook</h2>
+
+    <p style="font-size:17px; color:#d0d4e0; max-width:780px; margin-bottom:12px;">The series format is the fastest path from zero to 10K followers. Number every post. Momentum compounds when the audience knows the next episode is coming. The cadence is front-loaded by design — velocity in week one is what triggers the algorithm.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin: 32px 0;">
+      <div style="background:var(--bg3); border:1px solid var(--border); padding:20px; text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:48px; font-weight:900; color:var(--orange);">3x</div>
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted);">Posts/Day — Days 1–7</div>
+      </div>
+      <div style="background:var(--bg3); border:1px solid var(--border); padding:20px; text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:48px; font-weight:900; color:var(--orange);">2x</div>
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted);">Posts/Day — Days 8–21</div>
+      </div>
+      <div style="background:var(--bg3); border:1px solid var(--border); padding:20px; text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:48px; font-weight:900; color:var(--orange);">2x</div>
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted);">Best Format — Days 22–30</div>
+      </div>
+    </div>
+
+    <div class="playbook-grid">
+
+      <!-- PHASE 1 -->
+      <div class="phase">
+        <div class="phase-label">Phase 1 / Days 1–7 / 3 Posts Per Day</div>
+        <h3>Ignition — Introduce The Machine</h3>
+        <p style="color:var(--muted); font-size:14px; margin-bottom:16px;">Goal: establish the series, flood the algorithm, set the visual tone. Every post is numbered. Every post ends with a question or a hook to the next episode.</p>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Post #</th>
+              <th>Format</th>
+              <th>Platform Primary</th>
+              <th>Content</th>
+              <th>Hook Angle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Day 1 / Post 1</strong></td>
+              <td><span class="tag">Reel</span></td>
+              <td>TikTok + IG</td>
+              <td>The 270E reveal — no context, no intro. Just the bike, moving, in the best light you have.</td>
+              <td>"The Build — Day 1 of 30. You've never seen a supermoto built like this."</td>
+            </tr>
+            <tr>
+              <td><strong>Day 1 / Post 2</strong></td>
+              <td><span class="tag">Reel</span></td>
+              <td>TikTok</td>
+              <td>Parts table — Lewis brakes, WPS Pro wheels laid out. No narration. Text overlay only.</td>
+              <td>"She's got Louis Vuitton. I got Lewis brakes."</td>
+            </tr>
+            <tr>
+              <td><strong>Day 1 / Post 3</strong></td>
+              <td><span class="tag">Story</span></td>
+              <td>IG Stories</td>
+              <td>Poll: "Built for the track or built for the street?" Use to gather feedback and seed algorithm.</td>
+              <td>Engagement signal — drives replies to the auto-reply agent.</td>
+            </tr>
+            <tr>
+              <td><strong>Days 2–3</strong></td>
+              <td><span class="tag">Reel</span> <span class="tag muted">Carousel</span></td>
+              <td>TikTok + IG</td>
+              <td>Tall rider POV: Bryan on the 270E. Text overlay: "6'7". Every other bike felt like a toy."</td>
+              <td>Tall-rider identity hook. First post explicitly targeting the gap no one else owns.</td>
+            </tr>
+            <tr>
+              <td><strong>Days 4–5</strong></td>
+              <td><span class="tag">Reel</span></td>
+              <td>TikTok + IG</td>
+              <td>Silent power clip. No music during the ride, then hard cut to beat. Text: "This is what 27kW sounds like — nothing."</td>
+              <td>Cross-niche hook. Electric skeptic bait. Will pull comments from gas riders.</td>
+            </tr>
+            <tr>
+              <td><strong>Days 6–7</strong></td>
+              <td><span class="tag muted">YT Long</span></td>
+              <td>YouTube ONLY</td>
+              <td>Full build cost breakdown. Part by part — CNC swingarm, Lewis EP8/EP6, WPS Pro wheels, controller, total hours. Real numbers, no holding back. This is the format people subscribe to YouTube for.</td>
+              <td>YouTube build audiences WANT the cost breakdown — it's education, not flex. TikTok/IG: never explain the price. YouTube: that IS the content. Bryan watches these videos himself — he knows the format.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="phase" style="border-left-color: #5a6080;">
+        <div class="phase-label">Phase 2 / Days 8–21 / 2 Posts Per Day</div>
+        <h3>Build Depth — Credibility &amp; Story</h3>
+        <p style="color:var(--muted); font-size:14px; margin-bottom:16px;">Goal: expand beyond early followers, develop the three core content pillars, begin testing gear content. Watch comments daily — the first viral trigger will come from here.</p>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Content Pillar</th>
+              <th>Format</th>
+              <th>Frequency</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Build Proof</strong></td>
+              <td><span class="tag">Reel</span> <span class="tag muted">YT Short</span></td>
+              <td>Daily — primary post</td>
+              <td>Component breakdowns, fabrication process, shop footage. Must show hands working, not just finished product.</td>
+            </tr>
+            <tr>
+              <td><strong>Lithium Gear Identity</strong></td>
+              <td><span class="tag">Reel</span> <span class="tag muted">Carousel</span></td>
+              <td>Every other day — secondary post</td>
+              <td>"Fox and Alpinestars were built on gas. SNG is built for lithium." Side-by-sides. Gear worn on the 270E only.</td>
+            </tr>
+            <tr>
+              <td><strong>Tall Rider Content</strong></td>
+              <td><span class="tag">Story</span> <span class="tag">Reel</span></td>
+              <td>2x per week</td>
+              <td>Fit comparison shots. Bryan on the 270E vs. stock photo of 6'7" person on a standard bike. Ask audience: "What's the tallest you've ever ridden?"</td>
+            </tr>
+            <tr>
+              <td><strong>Luxury Comparison Hooks</strong></td>
+              <td><span class="tag">Reel</span></td>
+              <td>1x per week</td>
+              <td>"She's got Louis Vuitton. I got Lewis brakes." That's it. No price tag. No explanation. The people who know, know. The people who don't will find out.</td>
+            </tr>
+            <tr>
+              <td><strong>BMW / Ducati Crossover</strong></td>
+              <td><span class="tag">Story Poll</span> <span class="tag muted">Reel</span></td>
+              <td>1x per week</td>
+              <td>"If you rode a Ducati, you understand why we built this." Direct recruiting of the target buyer. Use IG Stories for the poll, convert warm responders with DM auto-reply.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="phase" style="border-left-color: var(--green);">
+        <div class="phase-label">Phase 3 / Days 22–30 / Double Down</div>
+        <h3>Amplify — Scale What Worked</h3>
+        <p style="color:var(--muted); font-size:14px; margin-bottom:16px;">Goal: identify the top 2 performing formats from Phase 1–2. Double the output of those formats only. This is not a time to experiment — it's a time to press the advantage.</p>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Tool</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Pull top-performing posts from Metricool</strong></td>
+              <td>Metricool (free)</td>
+              <td>Identify top 2 formats by saves + shares (not likes)</td>
+            </tr>
+            <tr>
+              <td><strong>OpusClip — re-cut best footage into 5 new clips</strong></td>
+              <td>OpusClip ($49/mo)</td>
+              <td>Extend best content without shooting new footage</td>
+            </tr>
+            <tr>
+              <td><strong>Launch the Holochrome / Black Hologram tease</strong></td>
+              <td>CapCut + Canva</td>
+              <td>"You had to earn seeing that." — first product drop teaser if timing is right</td>
+            </tr>
+            <tr>
+              <td><strong>Submit to Bike EXIF</strong></td>
+              <td>Direct pitch email</td>
+              <td>High-resolution build photos + 500-word builder statement. Target Q3 feature.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="callout" style="margin-top:36px;">
+      Content mix target: <em>70% bike / build proof</em> — 30% gear and lifestyle. Do not invert this ratio. The gear content only works because the bike is real. The moment the feed looks like a gear brand, you lose the premium moto buyer.
+    </div>
+
+    <h3 style="margin-top:48px; margin-bottom:16px;">Channel Roles</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>TikTok — Discovery Engine</h4>
+        <p>Primary distribution channel. Every piece of content goes here first. Algorithm rewards series format and comment velocity. Post 3x/day in week one specifically to trigger distribution. Auto-reply agent lives here first.</p>
+      </div>
+      <div class="card">
+        <h4>IG Reels — Polish &amp; Proof</h4>
+        <p>Repurpose TikTok content but optimize the thumbnail and caption for IG tone. BMW/Ducati crossover buyers discover here. This is where the premium brand perception is built visually.</p>
+      </div>
+      <div class="card">
+        <h4>IG Stories — Feedback Loop</h4>
+        <p>Polls, questions, behind-the-scenes. Stories are the testing ground for hooks before they become Reels. Use poll responses to decide which content to double down on in Phase 3.</p>
+      </div>
+      <div class="card">
+        <h4>YouTube Shorts — Long-Tail Search</h4>
+        <p>Searchable content: "electric supermoto build," "tall rider electric motorcycle," "Lewis EP8 brakes review." Not for velocity — for discoverability over time. Post the build cost breakdown and spec videos here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 4: HOOK LIBRARY
+═══════════════════════════════════════════ -->
+<section id="hooks">
+  <div class="container">
+    <div class="section-label">Section 04 / Copy</div>
+    <h2>Proven Hook Library</h2>
+
+    <p style="color:#c0c4d0; max-width:720px; margin-bottom:32px;">These are Bryan's words, not templates. The ones that came out of real conversation are the ones that work. Don't rewrite them — use them.</p>
+
+    <h4 style="margin-bottom:12px;">Hardware / Craft — TikTok &amp; IG</h4>
+    <div class="hook-item">
+      "She's got Louis Vuitton. I got Lewis brakes."
+      <div class="hook-note">Bryan said this in conversation. Post it exactly like that. People who ride at this level know what Lewis costs. Everyone else Googles it. Never explain it.</div>
+    </div>
+    <div class="hook-item">
+      "3 prototypes. 14 months. $50k of my own money. Nobody asked me to."
+      <div class="hook-note">Let it land. No follow-up explanation needed. The audience fills in the rest themselves.</div>
+    </div>
+    <div class="hook-item">
+      "Most builders cut corners. We didn't."
+      <div class="hook-note">Slow parts pan, no narration. People at this level know what they're looking at.</div>
+    </div>
+
+    <h4 style="margin-top:28px; margin-bottom:12px;">YouTube ONLY — Cost Breakdown (Bryan's Voice)</h4>
+    <div class="hook-item">
+      "Yeah the Lewis brakes aren't cheap. Would I do it again? Without question."
+      <div class="hook-note">YouTube opener. This is how Bryan actually talks. Then walk through the build part by part — real numbers, nothing held back. YouTube audiences come specifically for this. It's education, not a flex. Never put this on TikTok or IG.</div>
+    </div>
+    <div class="hook-item">
+      "I'm not gonna lie — went with the Lewis EP8s to save weight. But to run them on WPS Pros you need an adapter. Let me show you."
+      <div class="hook-note">Bryan said almost exactly this in real conversation. That's the video. Walk through it on camera exactly the way you explained it. Chapter format: part → why you chose it → what it ran you → where to get it.</div>
+    </div>
+    <div class="hook-item">
+      "People always ask about the brakes. Here's the honest answer."
+      <div class="hook-note">YouTube intro line. Simple, no hype, opens into the full cost walkthrough.</div>
+    </div>
+
+    <h4 style="margin-top:28px; margin-bottom:12px;">Electric / Silent Power</h4>
+    <div class="hook-item">
+      "This is what 27kW sounds like — nothing."
+      <div class="hook-note">POV ride, no music during the ride, hard cut to beat. Gas-skeptic bait. Those comments drive distribution.</div>
+    </div>
+    <div class="hook-item">
+      "BMW said no. Ducati said not yet. I said let's go."
+      <div class="hook-note">BMW and Ducati have both publicly confirmed no near-term electric plans. Their buyers have nowhere to go. This line recruits them directly.</div>
+    </div>
+
+    <h4 style="margin-top:28px; margin-bottom:12px;">Tall Rider</h4>
+    <div class="hook-item">
+      "I'm 6'7". Every bike out there was built for someone 5'10". So I built my own."
+      <div class="hook-note">One clip of Bryan sitting naturally on the 270E — full rider triangle visible. Nobody has made this content for tall riders in e-moto. Post it and watch tall rider communities share it.</div>
+    </div>
+    <div class="hook-item">
+      "If you've never fit right on a bike — this one's for you."
+      <div class="hook-note">IG caption closer or carousel slide. Follow with: "What size are you and what do you currently ride?" in the comments.</div>
+    </div>
+
+    <h4 style="margin-top:28px; margin-bottom:12px;">Build Series</h4>
+    <div class="hook-item">
+      "Day [X] of 30. Here's where we're at."
+      <div class="hook-note">Simple. Numbered. Bryan's energy — no fluff, just the update. End each one with a peek at tomorrow.</div>
+    </div>
+    <div class="hook-item">
+      "Fox and Alpinestars were built on gas. SNG is built for lithium."
+      <div class="hook-note">Core brand line. Caption closer, text overlay, IG bio. Don't over-use it — save it for the right moment.</div>
+    </div>
+
+    <h4 style="margin-top:28px; margin-bottom:12px;">Black Hologram Drop</h4>
+    <div class="hook-item">
+      "You had to earn seeing that."
+      <div class="hook-note">Black Hologram Edition tagline. Bryan's words. Post text-only first, then reveal the bike. Let people ask what it means before you show them.</div>
+    </div>
+    <div class="hook-item">
+      "You won't see it in a photo. You gotta see it move."
+      <div class="hook-note">Iridescent wrap reveal. Moving camera in direct sunlight. The wrap does the work — just shoot it right.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 5: AI TOOL STACK
+═══════════════════════════════════════════ -->
+<section id="tools">
+  <div class="container">
+    <div class="section-label">Section 05 / Infrastructure</div>
+    <h2>AI Tool Stack</h2>
+
+    <p style="font-size:17px; color:#d0d4e0; max-width:780px; margin-bottom:36px;">Two tiers: tools that operate now with zero setup time, and custom builds using Claude API + n8n that unlock automation Bryan cannot buy off-the-shelf. Start tier one immediately. Build tier two in sequence by ROI.</p>
+
+    <h3 style="margin-bottom:16px;">Tier 1 — Operate Now (Off-The-Shelf)</h3>
+
+    <div class="tools-table-wrap">
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Cost</th>
+            <th>Role</th>
+            <th>Why This One</th>
+            <th>Start</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>CapCut</strong></td>
+            <td>Free</td>
+            <td>Video editing, auto-captions, beat sync</td>
+            <td>Direct TikTok publish, beat-sync is algorithmically favored, auto-captions boost retention</td>
+            <td><span class="tag green">Day 1</span></td>
+          </tr>
+          <tr>
+            <td><strong>Metricool</strong></td>
+            <td>Free tier</td>
+            <td>Scheduling + competitor tracking</td>
+            <td>Tracks LAND Moto and other competitors' post timing. Identifies best windows without guessing.</td>
+            <td><span class="tag green">Day 1</span></td>
+          </tr>
+          <tr>
+            <td><strong>OpusClip</strong></td>
+            <td>$49/mo</td>
+            <td>Long footage → short clips</td>
+            <td>Best content multiplier available. One 10-minute ride becomes 5 short-form posts. Reduces production bottleneck.</td>
+            <td><span class="tag green">Day 1</span></td>
+          </tr>
+          <tr>
+            <td><strong>NapoleonCat</strong></td>
+            <td>$27/mo</td>
+            <td>TikTok comment auto-reply</td>
+            <td>Keyword-rule replies. The auto-reply agent has the highest ROI of any tool. This is the off-the-shelf version until B2 is built.</td>
+            <td><span class="tag green">Day 1</span></td>
+          </tr>
+          <tr>
+            <td><strong>PostQuickAI</strong></td>
+            <td>Free</td>
+            <td>Caption variations in 10+ tones</td>
+            <td>Zero build time. Paste the hook, get 10 caption versions. A/B test tone: aggressive vs. technical vs. aspirational.</td>
+            <td><span class="tag green">Day 1</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sprites.ai</strong></td>
+            <td>Free</td>
+            <td>Trending TikTok sound discovery</td>
+            <td>Identifies fastest-growing sounds in motorsport + premium lifestyle before they peak. Beat-to-niche alignment accelerates reach.</td>
+            <td><span class="tag green">Day 1</span></td>
+          </tr>
+          <tr>
+            <td><strong>Later</strong></td>
+            <td>$25/mo</td>
+            <td>Scheduling + best-time AI</td>
+            <td>AI-predicted best posting windows for IG. Use alongside Metricool for cross-platform scheduling.</td>
+            <td><span class="tag">Week 2</span></td>
+          </tr>
+          <tr>
+            <td><strong>Adobe Firefly</strong></td>
+            <td>$5/mo</td>
+            <td>Commercial-safe AI graphics</td>
+            <td>Text overlays, banner graphics, carousel backgrounds. Commercially licensed — safe for product drops and merch mockups.</td>
+            <td><span class="tag">Week 2</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:52px; margin-bottom:16px;">Tier 2 — Custom Builds (Claude API + n8n)</h3>
+    <p style="color:var(--muted); font-size:14px; margin-bottom:4px;">Estimated infrastructure cost: ~$95/month (n8n + Claude API). Build in sequence — do not skip B2.</p>
+    <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">B5 has a zero-build version available today at Claude.ai — use it immediately while the full stack is being set up.</p>
+
+    <div class="cards">
+      <div class="card" style="border-left: 4px solid var(--orange); padding-left: 24px;">
+        <h4>B1 — Daily Caption Bot</h4>
+        <p>Pulls the day from the 30-day content calendar, generates 3 hook variations in SNG tone. Bryan picks one, posts. Built with Claude API + Google Sheets. Eliminates daily creative block.</p>
+        <div style="margin-top:12px;"><span class="tag">3–4 hrs to build</span> <span class="tag muted">Week 2</span></div>
+      </div>
+      <div class="card" style="border-left: 4px solid var(--green); padding-left: 24px;">
+        <h4>B2 — Auto-Reply Agent <span style="color:var(--orange); font-size:11px; vertical-align:top; margin-left:4px;">HIGHEST ROI</span></h4>
+        <p>Monitors TikTok and IG comments. Fires on-brand replies automatically for keyword triggers. Queues nuanced or sales-intent comments for Bryan's personal reply. Comment velocity = algorithmic distribution signal.</p>
+        <div style="margin-top:12px;"><span class="tag green">Priority Build</span> <span class="tag muted">Week 2–3</span></div>
+      </div>
+      <div class="card">
+        <h4>B3 — One-Video-to-Five-Captions</h4>
+        <p>Paste a video link. Get: TikTok hook, IG caption, carousel caption, YouTube Shorts description, Twitter/X line — all formatted correctly. Eliminates format-switching friction.</p>
+        <div style="margin-top:12px;"><span class="tag">3–5 hrs to build</span> <span class="tag muted">Week 3</span></div>
+      </div>
+      <div class="card">
+        <h4>B4 — Drop Announcement Generator</h4>
+        <p>Mark a product "READY TO DROP" in the master sheet. System auto-generates all announcement copy: TikTok script, IG caption, Stories text, email subject line. Designed for the Holochrome drop.</p>
+        <div style="margin-top:12px;"><span class="tag">4–6 hrs to build</span> <span class="tag muted">Week 4</span></div>
+      </div>
+      <div class="card">
+        <h4>B5 — Caption Proof-Check</h4>
+        <p>Claude scores any hook 1–10, rewrites it two ways, flags any ad-copy language that will trigger platform suppression. Zero-build version works today at Claude.ai — just paste and ask. Full automation build is optional.</p>
+        <div style="margin-top:12px;"><span class="tag green">Use Today — Zero Build</span></div>
+      </div>
+      <div class="card">
+        <h4>B6 — Trending Audio Report</h4>
+        <p>Weekly brief on fastest-growing TikTok sounds in motorsport + premium lifestyle niches. Delivered as a Notion page or Google Doc every Monday. Feeds directly into the week's content planning session.</p>
+        <div style="margin-top:12px;"><span class="tag">4–5 hrs to build</span> <span class="tag muted">Month 2</span></div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:40px;">
+      The six custom builds together form the <em>AI Growth Operator</em> — a system that handles daily caption generation, comment management, content repurposing, drop announcement, and competitive audio intelligence. It replaces a part-time social media manager at a fraction of the cost.
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 6: PRIORITY ACTIONS
+═══════════════════════════════════════════ -->
+<section id="actions">
+  <div class="container">
+    <div class="section-label">Section 06 / What Happens Next</div>
+    <h2>Priority Actions — Ranked</h2>
+
+    <p style="font-size:17px; color:#d0d4e0; max-width:780px; margin-bottom:36px;">Actions 1–3 are the critical path. Everything else accelerates an already-moving machine. Do not begin Action 4 until Action 2 is live. The auto-reply agent has to be running before the content volume in week one generates comments you cannot manually handle.</p>
+
+    <div class="action-list">
+
+      <div class="action-item">
+        <div class="action-num">01</div>
+        <div class="action-body">
+          <h4>Post Day 1 Content Today — Three Posts, Numbered Series</h4>
+          <p>Bike reveal Reel on TikTok. Parts table Reel (Lewis brakes, WPS wheels). IG Stories poll. Label everything "The Build — Day 1 of 30." Do not wait for perfect footage — the series momentum starts with the first post. CapCut for editing. Sprites.ai for trending audio.</p>
+        </div>
+        <div class="action-who bryan">Bryan</div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">02</div>
+        <div class="action-body">
+          <h4>Set Up NapoleonCat Auto-Reply Before Day 3</h4>
+          <p>Configure keyword triggers: "price," "where can I buy," "how much," "tall rider," "how fast," "sounds like." Write 5 on-brand reply templates. The auto-reply system must be live before comment volume outpaces manual response. Comment velocity is an algorithmic distribution signal — every unanswered comment is lost reach.</p>
+        </div>
+        <div class="action-who bryan">Bryan</div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">03</div>
+        <div class="action-body">
+          <h4>Subscribe to OpusClip — Re-Cut Existing Footage Immediately</h4>
+          <p>$49/mo. Upload every ride clip, shop clip, and parts clip you already have. OpusClip AI identifies the best moments and cuts them to short-form format automatically. Goal: have 15 pieces of content in the queue before Day 1 posts go live. This eliminates the production bottleneck before it starts.</p>
+        </div>
+        <div class="action-who bryan">Bryan</div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">04</div>
+        <div class="action-body">
+          <h4>Build B2 Auto-Reply Agent (Claude API + n8n) — Week 2–3</h4>
+          <p>This replaces NapoleonCat for full on-brand intelligence. Monitors comments, fires auto-replies for standard keywords, and routes sales-intent comments ("how do I order," "I want one," "what's the wait time") to Bryan's approval queue. Estimated 6–8 hours to build and configure. Highest ROI of any custom build.</p>
+        </div>
+        <div class="action-who agent">Build — Claude API + n8n</div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">05</div>
+        <div class="action-body">
+          <h4>Shoot the Tall Rider Comparison Content — Week 1</h4>
+          <p>Bryan on the 270E, full riding position, with height reference in frame. Side-by-side or sequential: Bryan on a standard bike vs. on the 270E. Caption: "6'7". Every other motorcycle felt like a circus act. We fixed that." This is zero-competition positioning. No brand — gas or electric — has claimed this. Shoot it before someone does.</p>
+        </div>
+        <div class="action-who bryan">Bryan</div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">06</div>
+        <div class="action-body">
+          <h4>Build B1 Daily Caption Bot — Week 2</h4>
+          <p>Claude API + Google Sheets. Pulls the day from the 30-day calendar, generates 3 hook options in SNG voice, sends to Bryan for selection. Eliminates the daily friction of starting a caption from scratch. Without this, content cadence typically degrades by Day 10. 3–4 hours to build.</p>
+        </div>
+        <div class="action-who agent">Build — Claude API + Google Sheets</div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">07</div>
+        <div class="action-body">
+          <h4>Prepare Bike EXIF Submission Package — Target Q3 2026</h4>
+          <p>Bike EXIF has never featured an independent American bespoke electric supermoto. The 270E qualifies. Required: 20+ high-resolution photos (natural light, studio-quality if possible), 500-word builder statement from Bryan in first person, spec sheet with sourcing for key components. This is an attainable media placement that will pull premium buyers no amount of TikTok spend can reach.</p>
+        </div>
+        <div class="action-who bryan">Bryan</div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">08</div>
+        <div class="action-body">
+          <h4>Plan and Tease the Black Hologram Edition Drop — Day 22–30</h4>
+          <p>Chameleon/dark iridescent wraps are trending in powersports 2026. No electric moto brand has claimed the aesthetic. The drop tease starts with a text-only post: "You had to earn seeing that." — then a 3-day reveal cadence before the wrap is shown. Build this into the Day 22–30 content calendar. The Drop Announcement Generator (B4) handles all copy once built.</p>
+        </div>
+        <div class="action-who bryan">Bryan</div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">09</div>
+        <div class="action-body">
+          <h4>Build B3 One-Video-to-Five-Captions — Week 3</h4>
+          <p>Paste video link, receive: TikTok hook, IG caption, carousel caption, YouTube Shorts description, Twitter/X one-liner — all formatted correctly for each platform. 3–5 hours to build. Removes the format-switching friction that causes most creators to under-distribute content they've already shot.</p>
+        </div>
+        <div class="action-who agent">Build — Claude API</div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">10</div>
+        <div class="action-body">
+          <h4>Audit Week 1 Performance on Day 8 — Double Down on Top Format</h4>
+          <p>Pull Metricool data on Day 8. Look at saves and shares, not likes. Likes are vanity — saves signal intent to buy or return. The format with the highest saves-to-views ratio gets doubled in frequency for the rest of the 30-day period. Do not continue a format that isn't performing just because it took time to shoot.</p>
+        </div>
+        <div class="action-who bryan">Bryan</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <p><span>SNG Cycles</span> — Shark Not Goldfish / Leave The School Behind</p>
+    <p style="margin-top:8px;">Royal Palm Beach, FL &mdash; Master Strategy v3.0 &mdash; Compiled June 2026</p>
+    <p style="margin-top:8px; font-size:11px;">Internal document. Not for distribution.</p>
+  </div>
+</footer>
+
+</body>
+</html>
