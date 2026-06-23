@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>if(!sessionStorage.getItem('sng_auth')){sessionStorage.setItem('sng_return',location.href);location.href='sng-login.html';}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNG Cycles — June 2026 Strategy Brief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0c0d10;
+      --surface: #13151a;
+      --border: #1e2028;
+      --orange: #f47820;
+      --orange-dim: #b85a14;
+      --text: #e8e9ec;
+      --muted: #7a7d8a;
+      --green: #3ecf6a;
+      --blue: #4a9eff;
+      --yellow: #f5c842;
+    }
+
+    html { background: var(--bg); }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 11pt;
+      line-height: 1.5;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 40px 48px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 16px;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 28pt;
+      letter-spacing: 0.04em;
+      color: var(--orange);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .header-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 11pt;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .header-meta {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10pt;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .header-meta strong {
+      display: block;
+      color: var(--text);
+      font-size: 11pt;
+      font-weight: 600;
+    }
+
+    /* ── CORE THESIS STRIP ── */
+    .thesis {
+      background: var(--orange);
+      color: #0c0d10;
+      padding: 12px 20px;
+      margin-bottom: 28px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13pt;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .thesis span {
+      font-weight: 400;
+      font-size: 10pt;
+      display: block;
+      margin-top: 3px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* ── SECTION HEADERS ── */
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 15pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      margin-top: 28px;
+    }
+
+    h2:first-of-type { margin-top: 0; }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    /* ── TWO COLUMN LAYOUT ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 0;
+    }
+
+    /* ── 30-DAY ACTION LIST ── */
+    .action-list {
+      counter-reset: actions;
+      list-style: none;
+    }
+
+    .action-list li {
+      counter-increment: actions;
+      display: flex;
+      gap: 14px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+
+    .action-list li::before {
+      content: counter(actions);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 20pt;
+      color: var(--orange);
+      line-height: 1;
+      min-width: 24px;
+      text-align: center;
+    }
+
+    .action-body strong {
+      display: block;
+      font-weight: 600;
+      font-size: 10.5pt;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+
+    .action-body span {
+      font-size: 9.5pt;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 7.5pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-right: 4px;
+      font-weight: 600;
+    }
+
+    .tag-free { background: #1a2e1a; color: var(--green); }
+    .tag-week { background: #1a1f2e; color: var(--blue); }
+    .tag-now { background: #2e1f0a; color: var(--orange); }
+
+    /* ── TOOL STACK TABLE ── */
+    .tool-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+      margin-top: 4px;
+    }
+
+    .tool-table thead tr {
+      background: var(--surface);
+    }
+
+    .tool-table th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 9pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .tool-table th:nth-child(1) { color: var(--green); }
+    .tool-table th:nth-child(2) { color: var(--yellow); }
+    .tool-table th:nth-child(3) { color: var(--orange); }
+
+    .tool-table td {
+      padding: 6px 10px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.4;
+    }
+
+    .tool-table tr:last-child td { border-bottom: none; }
+
+    .tool-table td:first-child {
+      font-weight: 600;
+      font-size: 9pt;
+      white-space: nowrap;
+    }
+
+    .tool-table td .tool-use {
+      display: block;
+      color: var(--muted);
+      font-size: 8.5pt;
+      margin-top: 1px;
+    }
+
+    .col-free td:first-child { color: var(--green); }
+    .col-paid td:first-child { color: var(--yellow); }
+    .col-custom td:first-child { color: var(--orange); }
+
+    .col-sep td {
+      background: var(--surface);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 4px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── INFLUENCER LIST ── */
+    .inf-list {
+      list-style: none;
+    }
+
+    .inf-list li {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .inf-list li:last-child { border-bottom: none; }
+
+    .inf-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 13pt;
+      color: var(--orange-dim);
+      min-width: 20px;
+      line-height: 1.1;
+    }
+
+    .inf-name {
+      font-weight: 600;
+      font-size: 10pt;
+      color: var(--text);
+    }
+
+    .inf-strat {
+      font-size: 9pt;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* ── DAILY USE SECTION ── */
+    .daily-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .daily-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--orange);
+      padding: 12px 14px;
+    }
+
+    .daily-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 10pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+
+    .daily-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .daily-card ul li {
+      font-size: 9pt;
+      color: var(--text);
+      padding: 3px 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.4;
+    }
+
+    .daily-card ul li:last-child { border-bottom: none; }
+
+    .daily-card ul li::before {
+      content: "→ ";
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .decisions {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      padding: 14px 18px;
+      margin-top: 14px;
+    }
+
+    .decisions-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 10pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .decisions ol {
+      padding-left: 18px;
+    }
+
+    .decisions ol li {
+      font-size: 10pt;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .decisions ol li strong {
+      color: var(--orange);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8.5pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body {
+        background: #0c0d10 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 20px 32px;
+        font-size: 10pt;
+      }
+
+      .daily-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .two-col { grid-template-columns: 1fr 1fr; }
+
+      h2 { margin-top: 18px; }
+
+      @page {
+        size: letter;
+        margin: 0.5in 0.6in;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="header-brand">SNG Cycles</div>
+      <div class="header-sub">Market Strategy Brief — June 2026</div>
+    </div>
+    <div class="header-meta">
+      <strong>Executive Action Brief</strong>
+      Founder: Bryan Jaworski<br>
+      Confidential / Internal Use
+    </div>
+  </div>
+
+  <!-- CORE THESIS -->
+  <div class="thesis">
+    Bike credibility first. Gear identity second. The 270E earns the apparel.
+    <span>"Fox and Alpinestars were built on gas. SNG is built for lithium." — Use this line.</span>
+  </div>
+
+  <!-- FIRST 30 DAYS -->
+  <h2>First 30 Days — 5 Actions</h2>
+  <ol class="action-list">
+    <li>
+      <div class="action-body">
+        <strong>Shoot the 270E as the proof asset. <span class="tag tag-now">Do this week</span></strong>
+        <span>Film 3–5 short clips: motor reveal, fork/billet hardware close-up, controller shot, tall-rider stance. These become the hooks for every post this month. No apparel posts without at least one bike frame.</span>
+      </div>
+    </li>
+    <li>
+      <div class="action-body">
+        <strong>Set up the SNG Growth OS in Google Sheets. <span class="tag tag-free">Free</span></strong>
+        <span>Four tabs: Post Tracker (hook, asset, platform, views, comments, saves, next action) — Creator CRM (account, platform, followers, outreach date, result) — Keyword Watchlist (Sur-Ron, Talaria, Stark, big-bike stance, tall rider, electric supermoto) — Lead Sheet (name, source, tag: apparel/270E/collab). This is the system before any paid tool.</span>
+      </div>
+    </li>
+    <li>
+      <div class="action-body">
+        <strong>Launch on TikTok and Instagram with the 70/30 mix. <span class="tag tag-week">Week 1</span></strong>
+        <span>70% bike/build proof content, 30% gear. Post a build clip on TikTok first — sharp first frame, 3-second hook. Repost to Reels as a polished edit. Use IG Stories for hat vs. hoodie polls and tall-rider sizing questions. Target: 3 posts per week, every week.</span>
+      </div>
+    </li>
+    <li>
+      <div class="action-body">
+        <strong>Drop the hoodie and hat as the first hero products. <span class="tag tag-week">Week 2</span></strong>
+        <span>Don't launch all products at once. Lead with hoodie and hat — photograph them on or beside the 270E, not a model alone. Create a Payhip drop page with color options, zoom, and sizing. Link in bio. Make a "DROP" comment trigger ready for Manychat (add this in month 2).</span>
+      </div>
+    </li>
+    <li>
+      <div class="action-body">
+        <strong>Identify and engage 5 target creators this month. <span class="tag tag-free">Free</span></strong>
+        <span>From the influencer watch list: follow Sur Ronster, GritShift, Charged Cycle Works, Talaria Boys, and one local garage builder micro-creator. Comment with real value — answer a question, add a spec, share a build angle. Do not pitch. Log every interaction in your Creator CRM.</span>
+      </div>
+    </li>
+  </ol>
+
+  <!-- TOOL STACK + INFLUENCERS -->
+  <div class="two-col" style="margin-top: 28px;">
+
+    <!-- LEFT: TOOL STACK -->
+    <div>
+      <h2 style="margin-top: 0;">Tool Stack</h2>
+      <table class="tool-table">
+        <thead>
+          <tr>
+            <th>Free Now</th>
+            <th>Paid Next</th>
+            <th>Build with Claude</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="col-sep">
+            <td colspan="3">Scheduling &amp; Analytics</td>
+          </tr>
+          <tr>
+            <td class="col-free">Metricool / Buffer
+              <span class="tool-use">Schedule posts, track reach &amp; timing</span>
+            </td>
+            <td class="col-paid">Sprout Social
+              <span class="tool-use">Multi-platform analytics + listening</span>
+            </td>
+            <td class="col-custom">Post Tracker Sheet
+              <span class="tool-use">Hook, views, saves, next action per post</span>
+            </td>
+          </tr>
+          <tr class="col-sep">
+            <td colspan="3">Content Creation</td>
+          </tr>
+          <tr>
+            <td class="col-free">CapCut + Canva Free
+              <span class="tool-use">Edits, covers, captions, product graphics</span>
+            </td>
+            <td class="col-paid">OpusClip
+              <span class="tool-use">Auto-clips long video into Shorts/Reels</span>
+            </td>
+            <td class="col-custom">Prompt Library
+              <span class="tool-use">10 hooks + 3 captions + 2 repost angles per asset</span>
+            </td>
+          </tr>
+          <tr class="col-sep">
+            <td colspan="3">Audience &amp; Leads</td>
+          </tr>
+          <tr>
+            <td class="col-free">Native TikTok/IG Analytics
+              <span class="tool-use">Views, saves, audience, best times</span>
+            </td>
+            <td class="col-paid">Manychat
+              <span class="tool-use">Comment "BUILD" / "DROP" → DM flow</span>
+            </td>
+            <td class="col-custom">Lead Scorer
+              <span class="tool-use">Tag leads: apparel / 270E / collab / tire-kicker</span>
+            </td>
+          </tr>
+          <tr class="col-sep">
+            <td colspan="3">CRM &amp; Creator Outreach</td>
+          </tr>
+          <tr>
+            <td class="col-free">Google Sheets CRM
+              <span class="tool-use">Creator CRM + lead sheet, all free</span>
+            </td>
+            <td class="col-paid">Klaviyo / HubSpot
+              <span class="tool-use">Email CRM for buyers and reservation leads</span>
+            </td>
+            <td class="col-custom">Weekly Report Agent
+              <span class="tool-use">Winners, losers, next-week calendar, shoot list</span>
+            </td>
+          </tr>
+          <tr class="col-sep">
+            <td colspan="3">Listening &amp; Discovery</td>
+          </tr>
+          <tr>
+            <td class="col-free">Manual Keyword Watchlist
+              <span class="tool-use">Daily scan: Sur-Ron, Stark, tall rider terms</span>
+            </td>
+            <td class="col-paid">Brand24 / Brandwatch
+              <span class="tool-use">Keyword monitoring, trend detection alerts</span>
+            </td>
+            <td class="col-custom">Trend Agent
+              <span class="tool-use">Daily digest of top hooks &amp; competitor moves</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RIGHT: INFLUENCERS -->
+    <div>
+      <h2 style="margin-top: 0;">Top 5 Influencers to Watch</h2>
+      <ul class="inf-list">
+        <li>
+          <div class="inf-num">1</div>
+          <div>
+            <div class="inf-name">Sur Ronster</div>
+            <div class="inf-strat">Largest e-moto audience. Stitch their popular clips with the 270E angle. Avoid associating with reckless rideout content — focus on build/spec comparisons only.</div>
+          </div>
+        </li>
+        <li>
+          <div class="inf-num">2</div>
+          <div>
+            <div class="inf-name">GritShift</div>
+            <div class="inf-strat">Hardcore parts culture. This is the most aligned community. Lead with billet hardware, brakes, and swingarm story. Comment with real spec knowledge — don't pitch.</div>
+          </div>
+        </li>
+        <li>
+          <div class="inf-num">3</div>
+          <div>
+            <div class="inf-name">Charged Cycle Works</div>
+            <div class="inf-strat">Parts educator audience. Use "clear proof language" — cite your controller, motor, and brake specs. Their audience asks questions SNG should be answering in comments.</div>
+          </div>
+        </li>
+        <li>
+          <div class="inf-num">4</div>
+          <div>
+            <div class="inf-name">Talaria Boys</div>
+            <div class="inf-strat">Comparison-focused content. Position SNG as the finished, tall-rider, lithium-built lane vs. their stock comparison framing. Use their comment sections for sizing/stance hooks.</div>
+          </div>
+        </li>
+        <li>
+          <div class="inf-num">5</div>
+          <div>
+            <div class="inf-name">Local Garage Builder Micro-Creators</div>
+            <div class="inf-strat">Seed hats and hoodies. Repost their garage proof with SNG gear visible. These reposts build credibility faster than any paid placement and cost only product + shipping.</div>
+          </div>
+        </li>
+      </ul>
+
+      <!-- MARKET POSITION BOX -->
+      <div style="background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--orange); padding: 12px 14px; margin-top: 16px;">
+        <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px;">Opportunity Scores</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; font-size: 9pt;">
+          <div style="display: flex; justify-content: space-between;"><span>Build Proof / Stance</span><strong style="color: var(--orange);">96</strong></div>
+          <div style="display: flex; justify-content: space-between;"><span>Lithium Gear Identity</span><strong style="color: var(--orange);">91</strong></div>
+          <div style="display: flex; justify-content: space-between;"><span>Tall-Rider Fit</span><strong style="color: var(--yellow);">86</strong></div>
+          <div style="display: flex; justify-content: space-between;"><span>Holochrome Drop</span><strong style="color: var(--muted);">78</strong></div>
+          <div style="display: flex; justify-content: space-between;"><span style="color: var(--muted);">Pure Logo Merch</span><span style="color: var(--muted);">36 — avoid</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY DRIVER SECTION -->
+  <h2>Daily Driver — What to Open Every Morning</h2>
+
+  <div class="daily-grid">
+    <div class="daily-card">
+      <div class="daily-card-title">Open First</div>
+      <ul>
+        <li>Metricool or Buffer — check yesterday's post metrics (views, saves, comments)</li>
+        <li>TikTok &amp; IG notifications — any comments or DMs from the keyword accounts</li>
+        <li>Google Sheets Post Tracker — log yesterday's numbers, flag anything worth reposting</li>
+        <li>Keyword Watchlist — scan Sur-Ron, Stark, "tall rider," "electric supermoto" manually for 5 min</li>
+      </ul>
+    </div>
+    <div class="daily-card">
+      <div class="daily-card-title">Do Next</div>
+      <ul>
+        <li>Pick one post idea from the overnight trends or comment cluster</li>
+        <li>Run it through your Claude prompt library — generate 10 hooks, pick the sharpest first frame</li>
+        <li>Log any new DMs or comments that qualify as leads into the Lead Sheet with a tag</li>
+        <li>Reply to one creator comment with a real answer (not a pitch)</li>
+        <li>Add to Creator CRM if you discovered a new account worth watching</li>
+      </ul>
+    </div>
+    <div class="daily-card">
+      <div class="daily-card-title">End of Session</div>
+      <ul>
+        <li>Schedule the post (or queue it for shoot day if it needs new footage)</li>
+        <li>Update Post Tracker with hook used, asset, scheduled time</li>
+        <li>Flag any 270E or premium buyer leads for follow-up with right script</li>
+        <li>Weekly: pull metrics, note this week's winner and one thing to cut</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="decisions">
+    <div class="decisions-title">3 Decisions to Make Before Every Post</div>
+    <ol>
+      <li><strong>Bike first?</strong> If this post doesn't start with the 270E, a build moment, or a hardware close-up — it doesn't go out until it does. No standalone logo posts.</li>
+      <li><strong>What's the hook?</strong> Decide the exact first 3 seconds before you post. TikTok algorithm rewards replays — the hook earns the replay. Choose from your 10 generated options, don't wing it.</li>
+      <li><strong>What do I want them to do?</strong> Comment a trigger word ("BUILD," "DROP," "FIT"), click the link, DM for sizing, or save for later. Pick one CTA per post. Post it, log it, watch what happens.</li>
+    </ol>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>SNG Cycles — Confidential Strategy Brief</div>
+    <div>June 2026 &nbsp;|&nbsp; Internal Use Only &nbsp;|&nbsp; Do Not Distribute</div>
+    <div>270E Platform &nbsp;·&nbsp; Lithium Lane</div>
+  </div>
+
+</body>
+</html>
