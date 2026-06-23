@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Cycles — Full Social & Viral Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange: #f47820;
+    --orange-dim: rgba(244,120,32,0.15);
+    --dark: #0c0d10;
+    --card: #14151a;
+    --card2: #1a1b22;
+    --border: #2a2b35;
+    --text: #ffffff;
+    --muted: #8888a0;
+    --green: #2ecc40;
+    --blue: #3399ff;
+    --gold: #c9a84c;
+    --heading: 'Barlow Condensed', sans-serif;
+    --body: 'Barlow', sans-serif;
+  }
+  body { background: var(--dark); color: var(--text); font-family: var(--body); line-height: 1.6; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0a0b0e 0%, #1a0a00 50%, #0a0b0e 100%);
+    border-bottom: 3px solid var(--orange);
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '🦈';
+    position: absolute; right: 60px; top: 40px;
+    font-size: 180px; opacity: 0.06;
+  }
+  .hero-eyebrow { font-family: var(--heading); font-size: 13px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+  .hero h1 { font-family: var(--heading); font-size: clamp(60px, 8vw, 110px); font-weight: 900; text-transform: uppercase; line-height: 0.88; color: #fff; margin-bottom: 24px; }
+  .hero h1 span { color: var(--orange); }
+  .hero-sub { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 40px; }
+  .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+  .hstat { text-align: center; }
+  .hstat-num { font-family: var(--heading); font-size: 42px; font-weight: 900; color: var(--orange); line-height: 1; }
+  .hstat-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+  /* ── LAYOUT ── */
+  .section { padding: 72px 60px; border-bottom: 1px solid var(--border); }
+  .section-alt { background: var(--card); }
+  .section-eyebrow { font-family: var(--heading); font-size: 11px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .section-title { font-family: var(--heading); font-size: clamp(40px, 5vw, 72px); font-weight: 900; text-transform: uppercase; line-height: 0.9; margin-bottom: 32px; }
+  .section-title span { color: var(--orange); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .two-col, .three-col, .four-col { grid-template-columns: 1fr; } .section { padding: 48px 24px; } .hero { padding: 48px 24px; } }
+
+  /* ── CARDS ── */
+  .card { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+  .card-orange { border-color: var(--orange); box-shadow: 0 0 40px rgba(244,120,32,0.1); }
+  .card h3 { font-family: var(--heading); font-size: 22px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .tag { display: inline-block; font-family: var(--heading); font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; margin-bottom: 10px; }
+  .tag-orange { background: var(--orange); color: #fff; }
+  .tag-green { background: var(--green); color: #fff; }
+  .tag-blue { background: var(--blue); color: #fff; }
+  .tag-gold { background: var(--gold); color: #000; }
+  .tag-muted { background: var(--border); color: var(--muted); }
+
+  /* ── FORMULA STEPS ── */
+  .formula { display: flex; gap: 0; margin: 32px 0; }
+  .fstep { flex: 1; background: var(--card2); border: 1px solid var(--border); padding: 24px 20px; text-align: center; position: relative; }
+  .fstep:not(:last-child)::after { content: '→'; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); font-size: 22px; color: var(--orange); z-index: 2; }
+  .fstep-num { font-family: var(--heading); font-size: 48px; font-weight: 900; color: var(--orange); opacity: 0.25; line-height: 1; }
+  .fstep-label { font-family: var(--heading); font-size: 18px; font-weight: 900; text-transform: uppercase; color: #fff; margin: 4px 0; }
+  .fstep-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ── HOOKS ── */
+  .hook-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
+  .hook { background: var(--card2); border-left: 3px solid var(--orange); border-radius: 0 8px 8px 0; padding: 16px 20px; }
+  .hook-num { font-family: var(--heading); font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--orange); text-transform: uppercase; margin-bottom: 6px; }
+  .hook-name { font-family: var(--heading); font-size: 18px; font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 6px; }
+  .hook-template { font-size: 13px; color: var(--muted); font-style: italic; }
+
+  /* ── REEL CARDS ── */
+  .reel { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+  .reel-header { background: var(--orange); padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .reel-num { font-family: var(--heading); font-size: 36px; font-weight: 900; color: #fff; opacity: 0.4; line-height: 1; }
+  .reel-title { font-family: var(--heading); font-size: 22px; font-weight: 900; text-transform: uppercase; color: #fff; }
+  .reel-star { font-size: 18px; }
+  .reel-body { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .reel-section-label { font-family: var(--heading); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+  .reel-text { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .reel-caption { background: #0a0b0e; border-radius: 8px; padding: 14px 16px; font-size: 13px; color: var(--text); line-height: 1.7; font-style: italic; border-left: 2px solid var(--orange); margin-top: 8px; }
+  .reel-why { background: rgba(244,120,32,0.08); border-radius: 8px; padding: 14px 16px; font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 8px; }
+  .reel-why strong { color: var(--orange); }
+  @media (max-width: 700px) { .reel-body { grid-template-columns: 1fr; } }
+
+  /* ── CALENDAR ── */
+  .cal { width: 100%; border-collapse: collapse; margin-top: 24px; }
+  .cal th { background: var(--orange); font-family: var(--heading); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 12px 16px; text-align: left; color: #fff; }
+  .cal td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--muted); vertical-align: top; }
+  .cal tr:hover td { background: rgba(244,120,32,0.04); }
+  .cal td:first-child { font-family: var(--heading); font-size: 20px; font-weight: 900; color: var(--orange); width: 60px; }
+  .cal .post-title { color: var(--text); font-weight: 700; display: block; margin-bottom: 3px; }
+  .cal .platforms { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  .plat { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; }
+  .plat-tiktok { background: #010101; border: 1px solid #69c9d0; color: #69c9d0; }
+  .plat-ig { background: rgba(131,58,180,0.2); border: 1px solid #833ab4; color: #c678dd; }
+  .plat-yt { background: rgba(255,0,0,0.15); border: 1px solid #ff0000; color: #ff5555; }
+  .plat-fb { background: rgba(24,119,242,0.15); border: 1px solid #1877f2; color: #1877f2; }
+
+  /* ── BAR CHART ── */
+  .bar-chart { margin: 24px 0; }
+  .bar-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .bar-label { font-family: var(--heading); font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text); width: 180px; flex-shrink: 0; }
+  .bar-track { flex: 1; background: var(--border); border-radius: 4px; height: 28px; overflow: hidden; position: relative; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 12px; font-family: var(--heading); font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #fff; transition: width 1s ease; }
+  .bar-val { font-family: var(--heading); font-size: 13px; font-weight: 700; color: var(--orange); width: 80px; text-align: right; flex-shrink: 0; }
+
+  /* ── PLATFORM CIRCLES ── */
+  .platform-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 24px; }
+  .plat-card { background: var(--card2); border: 1px solid var(--border); border-radius: 16px; padding: 28px 20px; text-align: center; }
+  .plat-icon { font-size: 40px; margin-bottom: 12px; }
+  .plat-name { font-family: var(--heading); font-size: 20px; font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 6px; }
+  .plat-priority { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+  .plat-stat { font-family: var(--heading); font-size: 28px; font-weight: 900; color: var(--orange); line-height: 1; }
+  .plat-stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+  /* ── ANCHOR CARDS ── */
+  .anchor { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .anchor:last-child { border-bottom: none; }
+  .anchor-num { font-family: var(--heading); font-size: 64px; font-weight: 900; color: var(--orange); opacity: 0.2; line-height: 1; flex-shrink: 0; width: 64px; text-align: right; }
+  .anchor-body h4 { font-family: var(--heading); font-size: 22px; font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 4px; }
+  .anchor-body p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ── TARGET TABLE ── */
+  .target-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .target-table th { background: var(--card); font-family: var(--heading); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 10px 14px; text-align: left; color: var(--orange); border-bottom: 1px solid var(--border); }
+  .target-table td { padding: 12px 14px; border-bottom: 1px solid rgba(42,43,53,0.5); font-size: 13px; color: var(--muted); vertical-align: top; }
+  .target-table td:first-child { color: var(--text); font-weight: 700; }
+  .target-table tr:hover td { background: rgba(244,120,32,0.03); }
+  .roi-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+  .roi-high { background: var(--green); }
+  .roi-mid { background: var(--orange); }
+  .roi-low { background: var(--muted); }
+
+  /* ── COMMENT TEMPLATES ── */
+  .template { background: var(--card2); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; border-left: 3px solid transparent; }
+  .template-1 { border-color: var(--orange); }
+  .template-2 { border-color: var(--blue); }
+  .template-3 { border-color: var(--green); }
+  .template-4 { border-color: var(--gold); }
+  .template-use { font-family: var(--heading); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .template-text { font-size: 14px; color: var(--text); line-height: 1.7; font-style: italic; }
+
+  /* ── HASHTAG ── */
+  .hashtag-cloud { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .hashtag { font-family: var(--heading); font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; border: 1px solid; cursor: default; }
+  .ht-core { background: rgba(244,120,32,0.12); border-color: var(--orange); color: var(--orange); }
+  .ht-reach { background: rgba(51,153,255,0.08); border-color: var(--blue); color: var(--blue); }
+  .ht-local { background: rgba(46,204,64,0.08); border-color: var(--green); color: var(--green); }
+
+  /* ── ASSET MAP ── */
+  .asset-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 24px; }
+  .asset-card { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .asset-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: #111; }
+  .asset-info { padding: 14px 16px; }
+  .asset-num { font-family: var(--heading); font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--orange); text-transform: uppercase; margin-bottom: 4px; }
+  .asset-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .asset-type { font-size: 11px; color: var(--muted); }
+
+  /* ── LINE BANK ── */
+  .line-bank { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+  .line { background: var(--card2); border-left: 3px solid var(--orange); padding: 14px 18px; border-radius: 0 8px 8px 0; font-family: var(--heading); font-size: 18px; font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 1px; }
+
+  /* ── TODAY BOX ── */
+  .today-box { background: linear-gradient(135deg, rgba(244,120,32,0.12), rgba(244,120,32,0.04)); border: 2px solid var(--orange); border-radius: 16px; padding: 40px; margin-top: 32px; }
+  .today-box h3 { font-family: var(--heading); font-size: 36px; font-weight: 900; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
+  .today-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid rgba(244,120,32,0.15); }
+  .today-item:last-child { border-bottom: none; }
+  .today-num { font-family: var(--heading); font-size: 32px; font-weight: 900; color: var(--orange); line-height: 1; flex-shrink: 0; width: 40px; }
+  .today-body h4 { font-family: var(--heading); font-size: 18px; font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 4px; }
+  .today-body p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── FUNNEL ── */
+  .funnel { display: flex; flex-direction: column; gap: 0; align-items: center; margin: 32px auto; max-width: 560px; }
+  .funnel-step { width: 100%; text-align: center; padding: 18px 24px; position: relative; }
+  .f1 { background: var(--orange); clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%); }
+  .f2 { background: #c9601a; clip-path: polygon(10% 0, 90% 0, 80% 100%, 20% 100%); margin-top: -2px; }
+  .f3 { background: #9a4912; clip-path: polygon(20% 0, 80% 0, 68% 100%, 32% 100%); margin-top: -2px; }
+  .f4 { background: #6e3410; clip-path: polygon(32% 0, 68% 0, 56% 100%, 44% 100%); margin-top: -2px; }
+  .funnel-step h4 { font-family: var(--heading); font-size: 18px; font-weight: 900; text-transform: uppercase; color: #fff; }
+  .funnel-step p { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+  /* ── VOICE BOX ── */
+  .voice-box { background: #0a0b0e; border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+  .voice-row { display: flex; gap: 24px; margin-bottom: 12px; align-items: flex-start; }
+  .voice-never { color: #f85149; font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; width: 60px; flex-shrink: 0; margin-top: 2px; }
+  .voice-always { color: var(--green); font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; width: 60px; flex-shrink: 0; margin-top: 2px; }
+  .voice-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ── TOC ── */
+  .toc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px 0; }
+  .toc-item { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; display: flex; gap: 12px; align-items: center; cursor: pointer; transition: border-color 0.2s; }
+  .toc-item:hover { border-color: var(--orange); }
+  .toc-num { font-family: var(--heading); font-size: 28px; font-weight: 900; color: var(--orange); opacity: 0.4; line-height: 1; }
+  .toc-label { font-family: var(--heading); font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--text); }
+
+  /* page break hint for print */
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">SNG Cycles · Shark Not Goldfish · Florida Garage Built · Est. 2024</div>
+  <h1>Full Social &amp;<br><span>Viral Playbook</span></h1>
+  <p class="hero-sub">Everything you need to turn strangers into deposits. The formula, the reels, the targets, the captions — one doc, ready to execute.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num">10</div><div class="hstat-label">Reels Scripted</div></div>
+    <div class="hstat"><div class="hstat-num">10</div><div class="hstat-label">Media Files Ready</div></div>
+    <div class="hstat"><div class="hstat-num">14</div><div class="hstat-label">Day Calendar</div></div>
+    <div class="hstat"><div class="hstat-num">4</div><div class="hstat-label">Platforms</div></div>
+    <div class="hstat"><div class="hstat-num">100+</div><div class="hstat-label">Target Accounts</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TABLE OF CONTENTS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-eyebrow">Navigation</div>
+  <div class="section-title">What's<br><span>Inside</span></div>
+  <div class="toc">
+    <div class="toc-item"><div class="toc-num">01</div><div class="toc-label">Brand Identity &amp; 5 Anchors</div></div>
+    <div class="toc-item"><div class="toc-num">02</div><div class="toc-label">The Viral Formula</div></div>
+    <div class="toc-item"><div class="toc-num">03</div><div class="toc-label">Brand Voice</div></div>
+    <div class="toc-item"><div class="toc-num">04</div><div class="toc-label">The 7 Hook Templates</div></div>
+    <div class="toc-item"><div class="toc-num">05</div><div class="toc-label">10 Scripted Reels</div></div>
+    <div class="toc-item"><div class="toc-num">06</div><div class="toc-label">14-Day Calendar</div></div>
+    <div class="toc-item"><div class="toc-num">07</div><div class="toc-label">Platform Strategy</div></div>
+    <div class="toc-item"><div class="toc-num">08</div><div class="toc-label">Target Accounts</div></div>
+    <div class="toc-item"><div class="toc-num">09</div><div class="toc-label">Hashtag Strategy</div></div>
+    <div class="toc-item"><div class="toc-num">10</div><div class="toc-label">Comment Templates</div></div>
+    <div class="toc-item"><div class="toc-num">11</div><div class="toc-label">Media Asset Map</div></div>
+    <div class="toc-item"><div class="toc-num">12</div><div class="toc-label">Do This Today</div></div>
+    <div class="toc-item"><div class="toc-num">13</div><div class="toc-label">Market Gap &amp; Opportunity Scores</div></div>
+    <div class="toc-item"><div class="toc-num">14</div><div class="toc-label">Premium Buyer Lane</div></div>
+    <div class="toc-item"><div class="toc-num">15</div><div class="toc-label">Tool Stack &amp; Manychat</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     01 — BRAND IDENTITY
+══════════════════════════════════════════ -->
+<div class="section section-alt" id="s01">
+  <div class="section-eyebrow">Section 01</div>
+  <div class="section-title">Brand Identity<br>&amp; <span>5 Anchors</span></div>
+  <p style="color:var(--muted);max-width:600px;margin-bottom:48px;font-size:15px;">Every post, caption, and reel lives or dies by these 5 anchors. Memorize them. They are not talking points — they are the entire reason SNG exists and why a buyer writes a deposit check.</p>
+
+  <div class="two-col">
+    <div>
+      <div class="anchor">
+        <div class="anchor-num">1</div>
+        <div class="anchor-body">
+          <h4>6'7" Founder Built It Himself</h4>
+          <p>Nobody else would. The entire origin story lives here. Every industry spec sheet stops at 5'10". Bryan didn't wait for someone else to solve it — he built it. That's the moat.</p>
+        </div>
+      </div>
+      <div class="anchor">
+        <div class="anchor-num">2</div>
+        <div class="anchor-body">
+          <h4>Florida Assembled + VIN-Stamped</h4>
+          <p>Real, titled, street-legal. NOT a kit bike off Alibaba. This kills the single biggest objection before anyone asks. Hammer it every time.</p>
+        </div>
+      </div>
+      <div class="anchor">
+        <div class="anchor-num">3</div>
+        <div class="anchor-body">
+          <h4>202 lbs — 73 lbs Lighter Than Stark VARG</h4>
+          <p>"The Stark Eater." A named competitor with a number is a weapon. 73 lbs lighter on a supermoto isn't a spec — it's a completely different machine in your hands.</p>
+        </div>
+      </div>
+      <div class="anchor">
+        <div class="anchor-num">4</div>
+        <div class="anchor-body">
+          <h4>Numbered, Limited Run — Scarcity Is Real</h4>
+          <p>Not marketing. Not FOMO theater. When a production run closes, it's closed. Get a number or wait for the resale market. That's the deposit trigger.</p>
+        </div>
+      </div>
+      <div class="anchor">
+        <div class="anchor-num">5</div>
+        <div class="anchor-body">
+          <h4>No Gas. Hauls Ass.</h4>
+          <p>The whole brand in 4 words. Use it to end every post. It's a line that gas riders laugh at and electric riders tattoo on their chest.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="assets/inbound-content/manual-queue/01-gold-270e-side-garage.jpg" style="width:100%;border-radius:16px;display:block;margin-bottom:16px;">
+      <img src="assets/inbound-content/manual-queue/04-founder-scale-garage.jpg" style="width:100%;border-radius:16px;display:block;">
+    </div>
+  </div>
+
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">The Build Evolution Story</div>
+    <p style="color:var(--muted);margin-bottom:24px;font-size:14px;">Use this as the spine of the launch. This order makes the brand feel earned instead of random.</p>
+    <div class="three-col">
+      <div class="card">
+        <div class="tag tag-muted">Prototype 01</div>
+        <h3>Tiny White One</h3>
+        <p>The first attempt. Every bike felt too small. This is where the mission was born — not where it was finished.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-muted">Prototype 02</div>
+        <h3>Orange One</h3>
+        <p>Almost made it. Then it got torn down too. This is the grind part — the part nobody sees. Use it for founder authenticity content.</p>
+      </div>
+      <div class="card card-orange">
+        <div class="tag tag-orange">Current · Unit 001</div>
+        <h3>Gold 270E</h3>
+        <p>What came out the other side. 14 months. 3 prototypes. $50k of his own money. The bike nobody else would build — built.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     02 — THE VIRAL FORMULA
+══════════════════════════════════════════ -->
+<div class="section" id="s02">
+  <div class="section-eyebrow">Section 02</div>
+  <div class="section-title">The Viral<br><span>Formula</span></div>
+  <p style="color:var(--muted);max-width:600px;margin-bottom:8px;font-size:15px;">Every single post obeys this 4-step structure. If it doesn't have all 4, it's not done. This is the repeatable machine that turns a clip or photo into a deposit-driver.</p>
+
+  <div class="formula">
+    <div class="fstep">
+      <div class="fstep-num">1</div>
+      <div class="fstep-label">Hook</div>
+      <div class="fstep-desc">First 1.5 sec. A punch in the face. Number, claim, or flex. They decide to keep watching HERE.</div>
+    </div>
+    <div class="fstep">
+      <div class="fstep-num">2</div>
+      <div class="fstep-label">Tension</div>
+      <div class="fstep-desc">The problem. The struggle. The "nobody else does this." Build the stakes.</div>
+    </div>
+    <div class="fstep">
+      <div class="fstep-num">3</div>
+      <div class="fstep-label">Payoff</div>
+      <div class="fstep-desc">The reveal. The proof. The gold bike. The satisfying moment that earns the share.</div>
+    </div>
+    <div class="fstep">
+      <div class="fstep-num">4</div>
+      <div class="fstep-label">CTA</div>
+      <div class="fstep-desc">Numbered units. Florida-built. Reserve yours. Link in bio. Always. Every post.</div>
+    </div>
+  </div>
+
+  <!-- Conversion funnel -->
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">The Deposit Funnel</div>
+    <div class="two-col" style="align-items:center;">
+      <div class="funnel">
+        <div class="funnel-step f1"><h4>Stop the Scroll</h4><p>Story · Size · Silence</p></div>
+        <div class="funnel-step f2"><h4>Build Trust</h4><p>VIN-stamped · Florida-built · Real components</p></div>
+        <div class="funnel-step f3"><h4>Create Urgency</h4><p>Numbered units · Run closes when gone</p></div>
+        <div class="funnel-step f4"><h4>Deposit</h4><p>Reserve your number · Link in bio</p></div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:16px;">
+          <div class="tag tag-orange">Law #1</div>
+          <h3>First 1.5 Seconds</h3>
+          <p>Is 90% of the job. Lead with the hook frame — never a slow build. The algorithm decides if it's worth showing to more people in the first 3 seconds.</p>
+        </div>
+        <div class="card" style="margin-bottom:16px;">
+          <div class="tag tag-blue">Law #2</div>
+          <h3>Post the Receipts</h3>
+          <p>Numbers go viral. Vibes don't. "$16,430 in parts" outperforms "premium quality" every time. Specific proof is the currency of trust.</p>
+        </div>
+        <div class="card">
+          <div class="tag tag-green">Law #3</div>
+          <h3>Reply First Hour</h3>
+          <p>The algorithm watches engagement velocity in the first hour. Reply to every comment. Every comment is a free algorithmic boost.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     03 — BRAND VOICE
+══════════════════════════════════════════ -->
+<div class="section section-alt" id="s03">
+  <div class="section-eyebrow">Section 03</div>
+  <div class="section-title">Brand<br><span>Voice</span></div>
+  <div class="two-col">
+    <div>
+      <p style="color:var(--muted);margin-bottom:24px;font-size:15px;">SNG has a specific voice. It's earned, not performed. Blue-collar. No fluff. A little cocky because it's warranted. Talk like texting your boy — not like a press release.</p>
+      <div class="voice-box">
+        <div class="voice-row"><div class="voice-never">NEVER</div><div class="voice-text">"We are excited to announce..." / "We are proud to share..." / "Thrilled to introduce..." — this is corporate speak. SNG never touches it.</div></div>
+        <div class="voice-row"><div class="voice-never">NEVER</div><div class="voice-text">Long sentences. If it takes more than 8 words to make a point, cut it in half.</div></div>
+        <div class="voice-row"><div class="voice-never">NEVER</div><div class="voice-text">More than one emoji per post. The 🦈 is the only one that belongs here.</div></div>
+        <div class="voice-row"><div class="voice-always">ALWAYS</div><div class="voice-text">Short punchy lines. One idea per sentence. Drop to a new line after every beat.</div></div>
+        <div class="voice-row"><div class="voice-always">ALWAYS</div><div class="voice-text">Land on a brand line to close: Built not bought · No gas hauls ass · Florida-built, VIN-stamped · Shark Not Goldfish</div></div>
+        <div class="voice-row"><div class="voice-always">ALWAYS</div><div class="voice-text">Lowercase energy is fine on TikTok. IG gets proper caps. Either way, the voice stays the same.</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="background:#0a0b0e;border-radius:12px;padding:28px;margin-bottom:20px;">
+        <div style="font-size:11px;color:var(--orange);font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">✓ SNG Voice — Example</div>
+        <p style="font-size:15px;color:var(--text);line-height:1.9;">3 prototypes.<br>1,000 hours.<br>$50k of my own money.<br><br>Then I searched online to see who else had done it.<br><br>Nobody.<br><br>Not once. In a world where everything's been done — I did something first.<br><br>Built not bought. 🦈</p>
+      </div>
+      <div style="background:#0a0b0e;border-radius:12px;padding:28px;">
+        <div style="font-size:11px;color:#f85149;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">✗ Not SNG Voice — Example</div>
+        <p style="font-size:15px;color:var(--muted);line-height:1.9;text-decoration:line-through;">We are thrilled to introduce the SNG 270E electric supermoto, crafted with precision engineering and premium components to deliver an unparalleled riding experience for enthusiasts of all backgrounds.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     04 — 7 HOOK TEMPLATES
+══════════════════════════════════════════ -->
+<div class="section" id="s04">
+  <div class="section-eyebrow">Section 04</div>
+  <div class="section-title">The 7<br><span>Hook Templates</span></div>
+  <p style="color:var(--muted);max-width:580px;margin-bottom:8px;font-size:15px;">Pick one per post. Fill the blank. Every hook is designed to get someone to stop scrolling in the first 1.5 seconds. These are battle-tested content patterns — SNG flavored.</p>
+  <div class="hook-grid">
+    <div class="hook">
+      <div class="hook-num">Hook 01</div>
+      <div class="hook-name">The Number</div>
+      <div class="hook-template">"$____ on just the ____. That's a whole Sur-Ron."</div>
+    </div>
+    <div class="hook">
+      <div class="hook-num">Hook 02</div>
+      <div class="hook-name">The Size</div>
+      <div class="hook-template">"I'm 6'7". Every bike was built for someone 5'10". So I ____."</div>
+    </div>
+    <div class="hook">
+      <div class="hook-num">Hook 03</div>
+      <div class="hook-name">The Flex</div>
+      <div class="hook-template">"You can't buy this off the shelf. At any price."</div>
+    </div>
+    <div class="hook">
+      <div class="hook-num">Hook 04</div>
+      <div class="hook-name">The Struggle</div>
+      <div class="hook-template">"I was $___ short. Couldn't even ____. So I ____."</div>
+    </div>
+    <div class="hook">
+      <div class="hook-num">Hook 05</div>
+      <div class="hook-name">The Callout</div>
+      <div class="hook-template">"Goldfish ____. Sharks ____."</div>
+    </div>
+    <div class="hook">
+      <div class="hook-num">Hook 06</div>
+      <div class="hook-name">The Impossible</div>
+      <div class="hook-template">"Your phone can't even ____. You have to see it in person."</div>
+    </div>
+    <div class="hook">
+      <div class="hook-num">Hook 07</div>
+      <div class="hook-name">The Transformation</div>
+      <div class="hook-template">"This was a ____. Watch what it became."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     05 — 10 SCRIPTED REELS
+══════════════════════════════════════════ -->
+<div class="section section-alt" id="s05">
+  <div class="section-eyebrow">Section 05</div>
+  <div class="section-title">10 Scripted<br><span>Reels</span></div>
+  <p style="color:var(--muted);max-width:600px;margin-bottom:40px;font-size:15px;">Fully written. Hook, script, on-screen text, caption, and why it works — all ready. Shoot these in this order. Reel 01 is your biggest play — lead with it.</p>
+
+  <!-- REEL 01 -->
+  <div class="reel">
+    <div class="reel-header">
+      <div class="reel-num">01</div>
+      <div><div class="reel-title">Gym Pull-Up <span class="reel-star">⭐ LEAD WITH THIS</span></div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">TikTok · IG Reels · YT Shorts</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">Silent roll-up to a gym. No engine — just whirr + tire crunch. Heads turn. 6'7" Bryan swings a leg over, both feet flat. Cut to bystander mouthing "what IS that." Homie rolls up loud on a gas 450, kills it. Looks at his bike. Looks at yours.<br><br><strong style="color:#fff;">On-Screen Text:</strong> "Used ta have gas. Now I just haul ass."<br><br><strong style="color:#fff;">End Card:</strong> Fin logo → "Florida-built. VIN-stamped. Reserve yours."</div>
+        <div class="reel-why"><strong>Why it works:</strong> Silence is the hook gas guys can't fake. Size contrast = the whole brand in one frame. The 450 homie farms the gas-vs-electric comment war for FREE.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">6'7" and I finally fit a bike. Built it myself in a Florida garage 'cause nobody else would.<br><br>No gas. Hauls ass. 🦈<br><br>Numbered units — pre-orders open, link in bio.<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #supermoto #electricmotorcycle #ebike #florida</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 02 -->
+  <div class="reel">
+    <div class="reel-header" style="background:#c9601a;">
+      <div class="reel-num">02</div>
+      <div><div class="reel-title">The $50 Gas Tank</div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">TikTok · IG Reels</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">Hold up a rusty salvaged Husqvarna tank. "Everybody else 3D-prints a plastic box. I paid $50 for this at a junkyard." Fast cuts — cutting it, clay/baking-soda mold, mounting it. Time-lapse. Reveal: it looks OEM.<br><br><strong style="color:#fff;">On-Screen Text:</strong> "Patent pending. Zero examples of this anywhere online."<br><br><strong style="color:#fff;">End Card:</strong> "Built different. Florida. Reserve yours."</div>
+        <div class="reel-why"><strong>Why it works:</strong> Process content = trust. The cheap-input/premium-output story ($50 junkyard → OEM look) is inherently viral. Builders stop scrolling for this.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">A $50 junkyard tank became the cleanest battery enclosure in electric moto.<br><br>This is what 'built different' actually means. 🦈<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #ebike #surron #florida</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 03 -->
+  <div class="reel">
+    <div class="reel-header" style="background:#1a5f9e;">
+      <div class="reel-num">03</div>
+      <div><div class="reel-title">73 Pounds — The Stark Eater</div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">TikTok · IG · YT</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">Two bikes side by side. "This is a $12,900 Stark VARG. This is mine. Watch." You lift/flick the Mako one-handed. Spec text slams on screen: <strong style="color:#fff;">202 lbs vs 275 lbs.</strong><br><br>"73 pounds lighter. On a supermoto, that's not a number — that's a different machine in your hands."<br><br><strong style="color:#fff;">End Card:</strong> "The Stark Eater. Reserve yours."</div>
+        <div class="reel-why"><strong>Why it works:</strong> Named competitor = algorithm reach + debate. Spec comparison is satisfying. The weight flick is a physical proof that makes people believe the number. This post finds Stark VARG followers.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">They built it for 5'10". I built it 73 lbs lighter AND for a 6'7" rider.<br><br>Physics isn't subtle. 🦈<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #starkvarg #supermoto #electricmotorcycle #emoto #florida</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 04 -->
+  <div class="reel">
+    <div class="reel-header" style="background:#2d6a2d;">
+      <div class="reel-num">04</div>
+      <div><div class="reel-title">Built for 5'10". I'm Not.</div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">TikTok · IG</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">You next to homie's stock bike — knees in your chest, folded like a jackknife. "Every bike ever made fits this guy." Cut to your Mako — feet flat, upright, comfortable.<br><br>"Not me. So I built mine."<br><br><strong style="color:#fff;">End Card:</strong> "39" seat. Built for tall riders. Florida. Reserve yours."</div>
+        <div class="reel-why"><strong>Why it works:</strong> The tall-rider niche IS the moat. This post finds every 6'2"+ rider scrolling every platform. They share it. They tag their tall friends. This one has organic network effects built in.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">The industry designs to 5'10". I'm 6'7".<br><br>For my whole life every bike folded me in half.<br><br>Not anymore. 🦈<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #tallrider #supermoto #electricmotorcycle #ebike #florida</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 05 -->
+  <div class="reel">
+    <div class="reel-header" style="background:#7b2d8a;">
+      <div class="reel-num">05</div>
+      <div><div class="reel-title">The Holochrome — Can't Be Photographed</div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">IG first · TikTok</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">"They told me you can't photograph this. They're right. Watch anyway." Slow pan in changing light — wrap shifts blue → green → gold → purple.<br><br>"Phone can't catch it. You have to see it in person. 300 units. Ever."<br><br><strong style="color:#fff;">End Card:</strong> "Holochrome edition. Reserve yours."</div>
+        <div class="reel-why"><strong>Why it works:</strong> "You can't capture this" makes people watch twice AND want to see it IRL. Every share is a discovery. 300 numbered units creates genuine scarcity. This drives event/demo attendance.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">Iridescent shift wrap that the camera literally can't capture.<br><br>300 numbered units. After that it's gone. 🦈<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #holochrome #supermoto #electricmotorcycle #emoto #florida</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 06 -->
+  <div class="reel">
+    <div class="reel-header" style="background:#8a6d00;">
+      <div class="reel-num">06</div>
+      <div><div class="reel-title">VIN Stamped — The Trust Post 📌 PIN THIS</div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">TikTok (PIN) · IG</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">Close-up of the VIN being stamped / showing the plate. "'Is this even legal?' Yeah. Watch." "Every SNG is assembled and VIN-stamped right here in Florida. Titled. Registered. Street legal. DOT." "This isn't a kit bike off Alibaba. It's a real motorcycle with real paperwork."<br><br><strong style="color:#fff;">End Card:</strong> "Florida-built. VIN-stamped. Reserve yours."</div>
+        <div class="reel-why"><strong>Why it works:</strong> Kills the single biggest objection that stops a deposit. "Is it even legal?" is question #1 on every comment thread. Pin this on TikTok and let it work forever. Every new viewer gets their objection handled before they even ask.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">The #1 question I get: 'is it legal?'<br><br>Yes. VIN-stamped and assembled in Florida. Real title, real plate, real bike. 🦈<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #florida</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 07 -->
+  <div class="reel">
+    <div class="reel-header" style="background:#444;">
+      <div class="reel-num">07</div>
+      <div><div class="reel-title">I Searched and Found Nothing</div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">TikTok · IG · YT — Start here for warmup</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">You on your phone. "I finished the bike. Then I searched online to see who else did it." Empty search results on screen. "Nobody. Not once. In a world where everything's been done — I did something first."<br><br><strong style="color:#fff;">End Card:</strong> "Unit 001. Florida. Reserve yours."</div>
+        <div class="reel-why"><strong>Why it works:</strong> Founder authenticity + the "first" emotion. This makes people believe in YOU, not just the bike. Use it as the opening post — it establishes who you are before they've seen the machine.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">3 prototypes. 1,000 hours. $50k of my own money.<br><br>Then I searched and found out nobody had ever done it. 🦈<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #florida</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 08 -->
+  <div class="reel">
+    <div class="reel-header" style="background:#444;">
+      <div class="reel-num">08</div>
+      <div><div class="reel-title">Gas Station Flex</div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">TikTok — quick funny, infinitely repeatable</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">Pull into a gas station. Ride straight past the pumps. Park by the door. "Wrong building." Walk in for a Gatorade.<br><br><strong style="color:#fff;">End Card:</strong> "No gas. Hauls ass. Reserve yours."</div>
+        <div class="reel-why"><strong>Why it works:</strong> Short, funny, infinitely repeatable. Ends on the brand line every time. Perfect for when you need a quick post between bigger reels. Low effort, high entertainment, good comment engagement from gas riders.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">Haven't stopped here for gas in months.<br><br>Wrong building. 🦈⛽🚫<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #nogashaulsass #electricmotorcycle #supermoto</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 09 -->
+  <div class="reel">
+    <div class="reel-header" style="background:#444;">
+      <div class="reel-num">09</div>
+      <div><div class="reel-title">Shark Not Goldfish — The Philosophy Post</div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">IG + TikTok — brand identity</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">Knuckle tattoos on camera — "SNG4LIFE." "This isn't a brand. It's tattooed on my hands." "A goldfish panics when the water changes. A shark's been thriving 450 million years because it changes. The electric wave is here. I didn't wait."<br><br><strong style="color:#fff;">End Card:</strong> "Shark Not Goldfish. Leave the school behind."</div>
+        <div class="reel-why"><strong>Why it works:</strong> Brand-identity post — this is what turns buyers into a MOVEMENT. People share philosophy content when it articulates something they already believe. This post finds the people who will wear SNG, not just ride it.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">Goldfish follow the school. I left it.<br><br>Built the bike nobody else would, for the rider nobody else built for. 🦈<br><br>SNG4LIFE — pre-orders open.<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #LeaveTheSchoolBehind #supermoto #electricmotorcycle</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REEL 10 -->
+  <div class="reel">
+    <div class="reel-header" style="background:#8a0000;">
+      <div class="reel-num">10</div>
+      <div><div class="reel-title">The Number — Scarcity Close</div><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">ALL platforms — the hard close</div></div>
+    </div>
+    <div class="reel-body">
+      <div>
+        <div class="reel-section-label">Script</div>
+        <div class="reel-text">Hold the numbered plate — "001 / 030." "30 Megalodons. 100 520E Blacks. 100 Platinums. 300 Holochromes. Each one numbered. When a run closes, it's closed." "Pre-orders fund the build. Get a number or wait for the resale market."<br><br><strong style="color:#fff;">End Card:</strong> "Reserve your unit. Link in bio."</div>
+        <div class="reel-why"><strong>Why it works:</strong> The direct-ask closer. Scarcity is the deposit trigger. This is what you post after you've built enough trust through the previous reels. Don't lead with this — earn it.</div>
+      </div>
+      <div>
+        <div class="reel-section-label">Caption (copy-paste)</div>
+        <div class="reel-caption">These aren't restocking.<br><br>Numbered runs. When they're gone they're gone.<br><br>Get your number. 🦈<br><br>#SharkNotGoldfish #SNGCycles #SNG4LIFE #supermoto #electricmotorcycle #emoto #florida</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     06 — 14-DAY CALENDAR
+══════════════════════════════════════════ -->
+<div class="section" id="s06">
+  <div class="section-eyebrow">Section 06</div>
+  <div class="section-title">14-Day<br><span>Posting Calendar</span></div>
+  <p style="color:var(--muted);max-width:600px;margin-bottom:8px;font-size:15px;">Post CTA in the caption every single time. Pin Reel 06 (VIN) on TikTok immediately after posting. Pin the Origin carousel on IG. Post windows: 12pm, 6pm, or 9pm EST.</p>
+  <table class="cal">
+    <tr><th>Day</th><th>Post</th><th>Platforms</th></tr>
+    <tr><td>1</td><td><span class="post-title">Reel 07 — "I Searched, Found Nothing"</span>Who you are before they've seen the bike. Warmup / intro.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span><span class="plat plat-ig">IG</span></div></td></tr>
+    <tr><td>2</td><td><span class="post-title">Pinned Origin Carousel</span>"I'm 6'7". Every bike was built for 5'10". So after 3 prototypes and $50k..." — 6 slides. PIN IT.</td><td><div class="platforms"><span class="plat plat-ig">IG (PIN)</span></div></td></tr>
+    <tr><td>3</td><td><span class="post-title">⭐ Reel 01 — Gym Pull-Up</span>Your biggest play. Lead with silence. The comment war earns you reach for free.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span><span class="plat plat-ig">IG</span><span class="plat plat-yt">YT Shorts</span></div></td></tr>
+    <tr><td>4</td><td><span class="post-title">Reel 06 — VIN Stamped 📌 PIN ON TIKTOK</span>Kills the "is it legal?" objection. Pin it immediately. Let it work forever.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok (PIN)</span></div></td></tr>
+    <tr><td>5</td><td><span class="post-title">Reel 02 — $50 Gas Tank</span>Process content. Builders stop for this. The cheap-input / premium-output loop.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span><span class="plat plat-ig">IG</span></div></td></tr>
+    <tr><td>6</td><td><span class="post-title">Reel 04 — Built for 5'10", I'm Not</span>Tall-rider niche. Every 6'2"+ on any platform will tag someone in this.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span><span class="plat plat-ig">IG</span></div></td></tr>
+    <tr><td>7</td><td><span class="post-title">Reel 08 — Gas Station Flex</span>Light and funny. Gives the algorithm and the audience a breath between heavy posts.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span></div></td></tr>
+    <tr><td>8</td><td><span class="post-title">Reel 03 — 73 lbs / The Stark Eater</span>Named competitor. Debate content. Stark VARG followers flood the comments. Farm it.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span><span class="plat plat-ig">IG</span><span class="plat plat-yt">YT</span></div></td></tr>
+    <tr><td>9</td><td><span class="post-title">Reel 09 — Shark Not Goldfish Philosophy</span>Brand identity. This finds the people who become SNG for life, not just a buyer.</td><td><div class="platforms"><span class="plat plat-ig">IG</span><span class="plat plat-tiktok">TikTok</span></div></td></tr>
+    <tr><td>10</td><td><span class="post-title">Reel 05 — Holochrome</span>Visual flex. IG first. The phone-can't-catch-it hook makes everyone watch twice.</td><td><div class="platforms"><span class="plat plat-ig">IG</span><span class="plat plat-tiktok">TikTok</span></div></td></tr>
+    <tr><td>11</td><td><span class="post-title">BTS — Garage / Wrenching B-Roll</span>Raw authenticity. Handheld garage footage + a one-liner in the caption. Low effort, high trust.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span></div></td></tr>
+    <tr><td>12</td><td><span class="post-title">Reel 10 — The Number (Hard Pre-Order Close)</span>Now you've earned the right to ask. Post the scarcity close.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span><span class="plat plat-ig">IG</span><span class="plat plat-yt">YT</span><span class="plat plat-fb">FB</span></div></td></tr>
+    <tr><td>13</td><td><span class="post-title">Repost Best Performer + Reply on Camera</span>Stitch or duet your best comment. Reply to top questions on video. Algorithm boost.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span><span class="plat plat-ig">IG</span></div></td></tr>
+    <tr><td>14</td><td><span class="post-title">Q&amp;A Reel — Answer the Week's Comments</span>Read the best comments out loud. Answer on camera. This shows the community you're listening.</td><td><div class="platforms"><span class="plat plat-tiktok">TikTok</span></div></td></tr>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════
+     07 — PLATFORM STRATEGY
+══════════════════════════════════════════ -->
+<div class="section section-alt" id="s07">
+  <div class="section-eyebrow">Section 07</div>
+  <div class="section-title">Platform<br><span>Strategy</span></div>
+
+  <div class="platform-grid">
+    <div class="plat-card" style="border-color:#69c9d0;">
+      <div class="plat-icon">📱</div>
+      <div class="plat-name">TikTok</div>
+      <div class="plat-priority">Priority #1 — Lead Platform</div>
+      <div class="plat-stat">#1</div>
+      <div class="plat-stat-label">Volume + Discovery</div>
+      <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;">Fastest discovery. Comment sections become free marketing. Algorithm rewards consistency. Post natively — add trending audio IN-APP for max reach. Daily at 12pm or 9pm EST.</div>
+    </div>
+    <div class="plat-card" style="border-color:#833ab4;">
+      <div class="plat-icon">📸</div>
+      <div class="plat-name">Instagram</div>
+      <div class="plat-priority">Priority #2 — Brand Presence</div>
+      <div class="plat-stat">#2</div>
+      <div class="plat-stat-label">Brand + Credibility</div>
+      <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;">Profile grid = the brand bible. Pin the origin carousel. Visual content hits harder here. Cross-post from TikTok but optimize separately. High-income buyers research brands on IG.</div>
+    </div>
+    <div class="plat-card" style="border-color:#ff0000;">
+      <div class="plat-icon">▶️</div>
+      <div class="plat-name">YouTube</div>
+      <div class="plat-priority">Priority #3 — Long-Term SEO</div>
+      <div class="plat-stat">#3</div>
+      <div class="plat-stat-label">SEO + Deep Funnel</div>
+      <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;">Shorts for reach. Long-form for trust. "SNG Cycles electric supermoto" needs to own search results. Every build video becomes a forever asset. 1 long-form build doc per month minimum.</div>
+    </div>
+    <div class="plat-card" style="border-color:#1877f2;">
+      <div class="plat-icon">👥</div>
+      <div class="plat-name">Facebook</div>
+      <div class="plat-priority">Priority #4 — Community Mining</div>
+      <div class="plat-stat">#4</div>
+      <div class="plat-stat-label">Groups + Older Buyers</div>
+      <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;">Don't post on the profile — mine the groups. Sur Ron Owners (50k+), Supermoto Nation (150k+), Electric Moto Enthusiasts. The 35-55 buyer with money is in these groups, not on TikTok.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">Platform Priority by Goal</div>
+    <div class="bar-chart" style="margin-top:24px;">
+      <div class="bar-row"><div class="bar-label">TikTok</div><div class="bar-track"><div class="bar-fill" style="width:95%;background:linear-gradient(90deg,#69c9d0,#3a9aa0);">Discovery</div></div><div class="bar-val">Highest ROI</div></div>
+      <div class="bar-row"><div class="bar-label">Instagram</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:linear-gradient(90deg,#833ab4,#c13584);">Brand Depth</div></div><div class="bar-val">High ROI</div></div>
+      <div class="bar-row"><div class="bar-label">YouTube Shorts</div><div class="bar-track"><div class="bar-fill" style="width:65%;background:linear-gradient(90deg,#ff0000,#cc0000);">SEO Power</div></div><div class="bar-val">Mid ROI</div></div>
+      <div class="bar-row"><div class="bar-label">Facebook Groups</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:linear-gradient(90deg,#1877f2,#0d5dbf);">Warm Leads</div></div><div class="bar-val">Mid ROI</div></div>
+      <div class="bar-row"><div class="bar-label">Reddit</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:linear-gradient(90deg,#ff4500,#cc3700);">Intent Traffic</div></div><div class="bar-val">Niche ROI</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     08 — TARGET ACCOUNTS
+══════════════════════════════════════════ -->
+<div class="section" id="s08">
+  <div class="section-eyebrow">Section 08</div>
+  <div class="section-title">Target<br><span>Accounts</span></div>
+  <p style="color:var(--muted);max-width:600px;margin-bottom:8px;font-size:15px;">These are not accounts to spam. They're communities where your buyer already lives. Engage genuinely as a rider — not as a brand. Comment, reply, add value. The SNG plug comes LAST, and only when someone directly asks.</p>
+
+  <div class="three-col" style="margin-top:32px;gap:32px;">
+    <div>
+      <div style="font-family:var(--heading);font-size:18px;font-weight:900;text-transform:uppercase;color:#ff0000;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:8px;">YouTube — High Value</div>
+      <table class="target-table">
+        <tr><th>Channel</th><th>Why</th></tr>
+        <tr><td>Luna Cycle</td><td><span class="roi-dot roi-high"></span>Sur Ron modders = warmest leads</td></tr>
+        <tr><td>Stark Future Official</td><td><span class="roi-dot roi-high"></span>Direct overlap — VARG buyers</td></tr>
+        <tr><td>ElectricBikeReview</td><td><span class="roi-dot roi-high"></span>EV-converted buyers already</td></tr>
+        <tr><td>Electrified Moto</td><td><span class="roi-dot roi-mid"></span>Custom build showcases</td></tr>
+        <tr><td>Bikes and Beards</td><td><span class="roi-dot roi-mid"></span>Build culture, craft-focused</td></tr>
+        <tr><td>Moto Madness</td><td><span class="roi-dot roi-mid"></span>Supermoto tribe at scale</td></tr>
+        <tr><td>RideApart</td><td><span class="roi-dot roi-mid"></span>Active researchers</td></tr>
+        <tr><td>CAKE (archived)</td><td><span class="roi-dot roi-mid"></span>"What's next" threads</td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="font-family:var(--heading);font-size:18px;font-weight:900;text-transform:uppercase;color:#833ab4;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:8px;">Instagram — Prime Targets</div>
+      <table class="target-table">
+        <tr><th>Handle</th><th>Why</th></tr>
+        <tr><td>@surron_usa</td><td><span class="roi-dot roi-high"></span>Warmest leads on IG</td></tr>
+        <tr><td>@zeromotorcycles</td><td><span class="roi-dot roi-high"></span>EV buyers in buying mode</td></tr>
+        <tr><td>@starkfuture</td><td><span class="roi-dot roi-high"></span>Premium EV buyers</td></tr>
+        <tr><td>@motomadness_official</td><td><span class="roi-dot roi-mid"></span>Supermoto at scale</td></tr>
+        <tr><td>@supermoto_addicts</td><td><span class="roi-dot roi-mid"></span>Core tribe</td></tr>
+        <tr><td>@uncrate</td><td><span class="roi-dot roi-mid"></span>High income, early adopter</td></tr>
+        <tr><td>@ktm_official</td><td><span class="roi-dot roi-low"></span>Target audience only</td></tr>
+        <tr><td>Small builder accounts</td><td><span class="roi-dot roi-mid"></span>Peer-to-peer culture</td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="font-family:var(--heading);font-size:18px;font-weight:900;text-transform:uppercase;color:#69c9d0;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:8px;">Communities — Gold Mines</div>
+      <table class="target-table">
+        <tr><th>Community</th><th>Size</th></tr>
+        <tr><td>r/ElectricMotorcycles</td><td><span class="roi-dot roi-high"></span>20k–50k — highest intent</td></tr>
+        <tr><td>Sur Ron Owners (FB)</td><td><span class="roi-dot roi-high"></span>50k–100k — warmest leads</td></tr>
+        <tr><td>r/SurRon</td><td><span class="roi-dot roi-high"></span>30k–60k — maxed builders</td></tr>
+        <tr><td>Supermoto Nation (FB)</td><td><span class="roi-dot roi-mid"></span>50k–150k — core tribe</td></tr>
+        <tr><td>r/supermoto</td><td><span class="roi-dot roi-mid"></span>50k–100k — electric threads</td></tr>
+        <tr><td>Ducati Hypermotard (FB)</td><td><span class="roi-dot roi-mid"></span>10k–30k — exact buyer</td></tr>
+        <tr><td>KTM Duke & Supermoto (FB)</td><td><span class="roi-dot roi-mid"></span>20k–50k — same DNA</td></tr>
+        <tr><td>r/electricvehicles</td><td><span class="roi-dot roi-low"></span>300k–500k — noisy</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;background:#1a0505;border:1px solid #3a1a1a;border-radius:12px;padding:24px;">
+    <div style="font-family:var(--heading);font-size:16px;font-weight:900;text-transform:uppercase;color:#f85149;margin-bottom:16px;">🚫 Accounts to AVOID</div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <span style="background:#1a0505;border:1px solid #3a1a1a;border-radius:6px;padding:6px 14px;font-size:13px;color:var(--muted);">Commuter e-bike channels (RadPower, Lectric)</span>
+      <span style="background:#1a0505;border:1px solid #3a1a1a;border-radius:6px;padding:6px 14px;font-size:13px;color:var(--muted);">Teen Sur Ron content (under 22)</span>
+      <span style="background:#1a0505;border:1px solid #3a1a1a;border-radius:6px;padding:6px 14px;font-size:13px;color:var(--muted);">Gas-bike hardliner / anti-EV accounts</span>
+      <span style="background:#1a0505;border:1px solid #3a1a1a;border-radius:6px;padding:6px 14px;font-size:13px;color:var(--muted);">Long-distance EV touring (range objections)</span>
+      <span style="background:#1a0505;border:1px solid #3a1a1a;border-radius:6px;padding:6px 14px;font-size:13px;color:var(--muted);">Beginner "first motorcycle" communities</span>
+      <span style="background:#1a0505;border:1px solid #3a1a1a;border-radius:6px;padding:6px 14px;font-size:13px;color:var(--muted);">Commercial fleet EV accounts</span>
+      <span style="background:#1a0505;border:1px solid #3a1a1a;border-radius:6px;padding:6px 14px;font-size:13px;color:var(--muted);">Mass-market scooter/moped communities</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     09 — HASHTAG STRATEGY
+══════════════════════════════════════════ -->
+<div class="section" id="s09">
+  <div class="section-eyebrow">Section 09</div>
+  <div class="section-title">Hashtag<br><span>Strategy</span></div>
+  <p style="color:var(--muted);max-width:560px;margin-bottom:32px;font-size:15px;">Formula: 3 Core + 4 Reach + 1 Local per post. Rotate the reach hashtags. Never use all of them at once — it reads as spam. Core hashtags go in every single post, no exceptions.</p>
+
+  <div class="two-col">
+    <div>
+      <div style="font-family:var(--heading);font-size:16px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:16px;">Instagram</div>
+      <div style="font-family:var(--heading);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Core — Use Every Post</div>
+      <div class="hashtag-cloud">
+        <span class="hashtag ht-core">#SharkNotGoldfish</span>
+        <span class="hashtag ht-core">#SNGCycles</span>
+        <span class="hashtag ht-core">#SNG4LIFE</span>
+        <span class="hashtag ht-core">#LeaveTheSchoolBehind</span>
+      </div>
+      <div style="font-family:var(--heading);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin:16px 0 10px;">Reach — Rotate 4 Per Post</div>
+      <div class="hashtag-cloud">
+        <span class="hashtag ht-reach">#supermoto</span>
+        <span class="hashtag ht-reach">#electricmotorcycle</span>
+        <span class="hashtag ht-reach">#ebike</span>
+        <span class="hashtag ht-reach">#emoto</span>
+        <span class="hashtag ht-reach">#surron</span>
+        <span class="hashtag ht-reach">#starkvarg</span>
+        <span class="hashtag ht-reach">#motovlog</span>
+        <span class="hashtag ht-reach">#customs</span>
+        <span class="hashtag ht-reach">#builtnotbought</span>
+        <span class="hashtag ht-reach">#SupermotoLife</span>
+        <span class="hashtag ht-reach">#ElectricSupermoto</span>
+        <span class="hashtag ht-reach">#HooliganMoto</span>
+        <span class="hashtag ht-reach">#NoGasHaulsAss</span>
+      </div>
+      <div style="font-family:var(--heading);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin:16px 0 10px;">Local — 1 Per Post</div>
+      <div class="hashtag-cloud">
+        <span class="hashtag ht-local">#florida</span>
+        <span class="hashtag ht-local">#southflorida</span>
+        <span class="hashtag ht-local">#royalpalmbeach</span>
+        <span class="hashtag ht-local">#flrider</span>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:var(--heading);font-size:16px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:16px;">TikTok</div>
+      <div style="font-family:var(--heading);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Core — Use Every Post</div>
+      <div class="hashtag-cloud">
+        <span class="hashtag ht-core">#SharkNotGoldfish</span>
+        <span class="hashtag ht-core">#SNGCycles</span>
+        <span class="hashtag ht-core">#SNG4LIFE</span>
+      </div>
+      <div style="font-family:var(--heading);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin:16px 0 10px;">Reach — Rotate 4 Per Post</div>
+      <div class="hashtag-cloud">
+        <span class="hashtag ht-reach">#ElectricMotorcycle</span>
+        <span class="hashtag ht-reach">#Supermoto</span>
+        <span class="hashtag ht-reach">#MotoTok</span>
+        <span class="hashtag ht-reach">#SurRon</span>
+        <span class="hashtag ht-reach">#StarkVarg</span>
+        <span class="hashtag ht-reach">#SupermotoLife</span>
+        <span class="hashtag ht-reach">#MotoBuilder</span>
+        <span class="hashtag ht-reach">#HooliganMoto</span>
+        <span class="hashtag ht-reach">#NoGasHaulsAss</span>
+        <span class="hashtag ht-reach">#GarageLife</span>
+        <span class="hashtag ht-reach">#BikeLife</span>
+        <span class="hashtag ht-reach">#ElectricMoto</span>
+      </div>
+      <div style="margin-top:24px;background:var(--card2);border-radius:10px;padding:20px;">
+        <div style="font-family:var(--heading);font-size:13px;font-weight:700;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">The Mix Formula</div>
+        <div style="font-size:14px;color:var(--muted);line-height:1.9;">
+          <strong style="color:#fff;">3 Core</strong> → #SharkNotGoldfish #SNGCycles #SNG4LIFE<br>
+          <strong style="color:#fff;">4 Reach</strong> → pick 4 from the bank above (rotate)<br>
+          <strong style="color:#fff;">1 Local</strong> → #florida (or more specific)<br><br>
+          Total: 8 hashtags max on TikTok. 8–12 on IG. Don't stuff.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     10 — COMMENT TEMPLATES
+══════════════════════════════════════════ -->
+<div class="section section-alt" id="s10">
+  <div class="section-eyebrow">Section 10</div>
+  <div class="section-title">Comment<br><span>Templates</span></div>
+  <p style="color:var(--muted);max-width:600px;margin-bottom:32px;font-size:15px;">Use these in other people's comment sections. Must pass the "would a real rider say this" test. Never sound like a brand. Engage as a builder and a rider. The SNG name comes LAST and only when someone directly asks.</p>
+
+  <div class="template template-1">
+    <div class="template-use">Use on: first-ride reactions, dyno results, acceleration clips</div>
+    <div class="template-text">"That launch is exactly what gas riders don't expect. Instant torque at zero RPM changes what 'fast' means on a supermoto. The handling conversation always comes after — once you ride it you stop caring what's powering it."</div>
+  </div>
+
+  <div class="template template-2">
+    <div class="template-use">Use on: custom build reveals, fabrication process, small brand spotlights</div>
+    <div class="template-text">"The detail work on that frame is serious. You can tell someone spent time with that — the kind of thing you lose when production scales too fast. Small-batch building is the only way to keep that level of craft."</div>
+  </div>
+
+  <div class="template template-3">
+    <div class="template-use">Use on: spec discussions, "is it fast enough" debates</div>
+    <div class="template-text">"Real question — what's the weight distribution with the battery pack? On a supermoto the balance point matters as much as the power number. Curious how it feels through tight corners vs the power delivery on the straights."</div>
+  </div>
+
+  <div class="template template-4">
+    <div class="template-use">Use on: maxed-out Sur Ron builds, "what's next" threads — warmest leads</div>
+    <div class="template-text">"You've already done the work — that Sur Ron is worth more in mods than some complete bikes. At some point the question becomes whether you keep stacking upgrades on the platform or step into something built from the ground up for that performance level. Genuinely curious where you go next."</div>
+  </div>
+
+  <div class="template template-1">
+    <div class="template-use">Use on: riding lifestyle content, sunrise/sunset rips, garage life</div>
+    <div class="template-text">"This is the version of riding I want every morning. No warmup, no fumes in the garage, just twist and go. Gas bikes are fun but the ritual of electric is something else."</div>
+  </div>
+
+  <div class="template" style="border-color:#f85149;">
+    <div class="template-use" style="color:#f85149;">⚠️ Use SPARINGLY — only when someone DIRECTLY asks "who's building X" or "where to find custom electric supermoto"</div>
+    <div class="template-text">"There's a small builder in Florida called SNG Cycles doing exactly this — Shark Not Goldfish, hand-built electric supermotos. Not mass production, not a kit bike. I've been watching their build process and the attention to detail is real. Worth a look if you're serious about the category: @SNGCycles"</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     11 — MEDIA ASSET MAP
+══════════════════════════════════════════ -->
+<div class="section" id="s11">
+  <div class="section-eyebrow">Section 11</div>
+  <div class="section-title">Media<br><span>Asset Map</span></div>
+  <p style="color:var(--muted);max-width:600px;margin-bottom:8px;font-size:15px;">All 10 files are sitting at <code style="background:var(--card2);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--orange);">sng-cycles/assets/inbound-content/manual-queue/</code> and ready to post. No editing needed to get started — shoot natively on TikTok/IG, add trending audio in-app.</p>
+
+  <div class="asset-grid" style="margin-top:24px;">
+    <div class="asset-card">
+      <img class="asset-img" src="assets/inbound-content/manual-queue/01-gold-270e-side-garage.jpg" alt="Gold 270E Garage">
+      <div class="asset-info">
+        <div class="asset-num">Asset 01 · Photo</div>
+        <div class="asset-name">Gold 270E — Side Garage</div>
+        <div class="asset-type">Use: Hero / Pin / PFP / Reveal frame</div>
+      </div>
+    </div>
+    <div class="asset-card">
+      <img class="asset-img" src="assets/inbound-content/manual-queue/02-gold-270e-beauty-shot.jpg" alt="270E Beauty Shot">
+      <div class="asset-info">
+        <div class="asset-num">Asset 02 · Photo</div>
+        <div class="asset-name">Gold 270E — Beauty Shot</div>
+        <div class="asset-type">Use: IG feed anchor / pre-order carousel</div>
+      </div>
+    </div>
+    <div class="asset-card">
+      <img class="asset-img" src="assets/inbound-content/manual-queue/03-prototype-number-22-front.jpg" alt="Prototype 22">
+      <div class="asset-info">
+        <div class="asset-num">Asset 03 · Photo</div>
+        <div class="asset-name">Prototype #22 — Front</div>
+        <div class="asset-type">Use: Evolution story carousel / holochrome</div>
+      </div>
+    </div>
+    <div class="asset-card">
+      <img class="asset-img" src="assets/inbound-content/manual-queue/04-founder-scale-garage.jpg" alt="Founder Scale">
+      <div class="asset-info">
+        <div class="asset-num">Asset 04 · Photo</div>
+        <div class="asset-name">Founder Scale — Garage</div>
+        <div class="asset-type">Use: Reel 04 / Pin if comments care about height</div>
+      </div>
+    </div>
+    <div class="asset-card">
+      <img class="asset-img" src="assets/inbound-content/manual-queue/05-holo-detail-number-22.jpg" alt="Holo Detail">
+      <div class="asset-info">
+        <div class="asset-num">Asset 05 · Photo</div>
+        <div class="asset-name">Holochrome Detail — #22</div>
+        <div class="asset-type">Use: IG story / TikTok photo post / Reel 05</div>
+      </div>
+    </div>
+    <div class="asset-card">
+      <img class="asset-img" src="assets/inbound-content/manual-queue/06-founder-on-bike-vertical.jpg" alt="Founder on Bike">
+      <div class="asset-info">
+        <div class="asset-num">Asset 06 · Photo</div>
+        <div class="asset-name">Founder on Bike — Vertical</div>
+        <div class="asset-type">Use: Reel 09 / Founder story / "I missed the rides"</div>
+      </div>
+    </div>
+    <div class="asset-card" style="border-color:var(--orange);">
+      <div style="aspect-ratio:16/9;background:#1a0a00;display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;"><div style="font-size:32px;">🎬</div><div style="font-family:var(--heading);font-size:14px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-top:8px;">Video · 07</div></div>
+      </div>
+      <div class="asset-info">
+        <div class="asset-num">Asset 07 · Video</div>
+        <div class="asset-name">Transformation — Sur-Ron → 270E</div>
+        <div class="asset-type">Use: Reel 01 / Pin candidate / Launch post</div>
+      </div>
+    </div>
+    <div class="asset-card" style="border-color:var(--orange);">
+      <div style="aspect-ratio:16/9;background:#1a0a00;display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;"><div style="font-size:32px;">🎬</div><div style="font-family:var(--heading);font-size:14px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-top:8px;">Video · 08</div></div>
+      </div>
+      <div class="asset-info">
+        <div class="asset-num">Asset 08 · Video</div>
+        <div class="asset-name">Holochrome — In Motion</div>
+        <div class="asset-type">Use: Reel 05 / IG visual flex / post tonight</div>
+      </div>
+    </div>
+    <div class="asset-card" style="border-color:var(--orange);">
+      <div style="aspect-ratio:16/9;background:#1a0a00;display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;"><div style="font-size:32px;">🎬</div><div style="font-family:var(--heading);font-size:14px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-top:8px;">Video · 09</div></div>
+      </div>
+      <div class="asset-info">
+        <div class="asset-num">Asset 09 · Video</div>
+        <div class="asset-name">What It Costs — Parts Breakdown</div>
+        <div class="asset-type">Use: Reel 02 / Day 5 post / Pin if price debated</div>
+      </div>
+    </div>
+    <div class="asset-card" style="border-color:var(--orange);">
+      <div style="aspect-ratio:16/9;background:#1a0a00;display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;"><div style="font-size:32px;">🎬</div><div style="font-family:var(--heading);font-size:14px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-top:8px;">Video · 10</div></div>
+      </div>
+      <div class="asset-info">
+        <div class="asset-num">Asset 10 · Video</div>
+        <div class="asset-name">Unboxing — 14 Months of Parts</div>
+        <div class="asset-type">Use: "The boxes. The waiting." founder grind post</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     LINE BANK
+══════════════════════════════════════════ -->
+<div class="section section-alt">
+  <div class="section-eyebrow">The Line Bank</div>
+  <div class="section-title">Drop These<br><span>Into Any Post</span></div>
+  <div class="line-bank">
+    <div class="line">"Used ta have gas. Now I just haul ass."</div>
+    <div class="line">"No gas. Hauls ass."</div>
+    <div class="line">"Built for 5'10". I'm not."</div>
+    <div class="line">"The Stark Eater."</div>
+    <div class="line">"Goldfish follow the school. I left it."</div>
+    <div class="line">"Loudest thing here is the silence."</div>
+    <div class="line">"You can't photograph it. You have to see it."</div>
+    <div class="line">"When the run closes, it's closed."</div>
+    <div class="line">"Real VIN. Real title. Florida-built. Not a kit bike."</div>
+    <div class="line">"3 prototypes. 1,000 hours. $50k of my own money."</div>
+    <div class="line">"Built not bought."</div>
+    <div class="line">"Shark Not Goldfish. SNG4LIFE."</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     12 — DO THIS TODAY
+══════════════════════════════════════════ -->
+<div class="section" id="s12">
+  <div class="section-eyebrow">Section 12 — Action Items</div>
+  <div class="section-title">Do This<br><span>Today</span></div>
+
+  <div class="today-box">
+    <h3>Right Now — Before Anything Else</h3>
+    <div class="today-item">
+      <div class="today-num">1</div>
+      <div class="today-body">
+        <h4>Set @sngcycles on every platform</h4>
+        <p>TikTok, Instagram, YouTube — same handle everywhere. Bio: "Florida-built electric supermoto. VIN-stamped. Numbered runs. Shark Not Goldfish 🦈 → [link]"</p>
+      </div>
+    </div>
+    <div class="today-item">
+      <div class="today-num">2</div>
+      <div class="today-body">
+        <h4>Post Reel 07 — "I Searched, Found Nothing"</h4>
+        <p>Use Asset 07 (transformation.mp4). Add trending audio natively in TikTok app. Copy-paste the caption from Section 05. Post now while you're ready to reply.</p>
+      </div>
+    </div>
+    <div class="today-item">
+      <div class="today-num">3</div>
+      <div class="today-body">
+        <h4>Post Holochrome tonight (8:30–10pm EST)</h4>
+        <p>Use Asset 08 (holochrome.mp4). IG first, then TikTok. Caption from Section 05, Reel 05.</p>
+      </div>
+    </div>
+    <div class="today-item">
+      <div class="today-num">4</div>
+      <div class="today-body">
+        <h4>Reply to every comment in the first hour</h4>
+        <p>The algorithm watches velocity. Every reply is a free boost. Set a timer. Don't let comments sit.</p>
+      </div>
+    </div>
+    <div class="today-item">
+      <div class="today-num">5</div>
+      <div class="today-body">
+        <h4>Pin VIN post immediately after posting it (Day 4)</h4>
+        <p>Reel 06 should be pinned on TikTok permanently. It answers question #1 before anyone asks.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">Shot List — Bank These Next Ride</div>
+    <p style="color:var(--muted);margin-bottom:24px;font-size:14px;">Real footage multiplies everything above. AI mocks build hype. Real footage builds deposits. These 8 shots give you a month of content.</p>
+    <div class="four-col">
+      <div class="card"><span class="tag tag-orange">Shot 1</span><h3>Silent Roll-Up</h3><p>Pull up to a gym or store. Heads turn. No engine sound. This is Reel 01.</p></div>
+      <div class="card"><span class="tag tag-orange">Shot 2</span><h3>Feet Flat + Full Body</h3><p>Side profile, feet flat on ground. This is the size contrast shot. Worth 10 posts.</p></div>
+      <div class="card"><span class="tag tag-orange">Shot 3</span><h3>VIN Close-Up</h3><p>Tight shot of the VIN plate. This is Reel 06 and it pins forever.</p></div>
+      <div class="card"><span class="tag tag-orange">Shot 4</span><h3>Holochrome in Light</h3><p>Slow pan in moving sunlight. Phone can't catch it = the hook.</p></div>
+      <div class="card"><span class="tag tag-blue">Shot 5</span><h3>One-Hand Weight Flick</h3><p>Lift or flick the bike one-handed. Proof of the 202-lb spec.</p></div>
+      <div class="card"><span class="tag tag-blue">Shot 6</span><h3>Junkyard Tank → Mounted</h3><p>Time-lapse of the $50 tank build. Process content = trust.</p></div>
+      <div class="card"><span class="tag tag-blue">Shot 7</span><h3>Knuckle Tattoos</h3><p>SNG4LIFE on camera. Reel 09. The philosophy post starts here.</p></div>
+      <div class="card"><span class="tag tag-blue">Shot 8</span><h3>Numbered Plate</h3><p>"001 / 030" in hand. The scarcity close. Reel 10.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     13 — MARKET GAP & OPPORTUNITY SCORES
+══════════════════════════════════════════ -->
+<div class="section section-alt" id="s13">
+  <div class="section-eyebrow">Section 13 — Market Research</div>
+  <div class="section-title">Market Gap &amp;<br><span>Opportunity Scores</span></div>
+
+  <!-- The Core Line -->
+  <div style="background:linear-gradient(135deg,rgba(244,120,32,0.15),rgba(244,120,32,0.05));border:2px solid var(--orange);border-radius:16px;padding:36px 40px;margin-bottom:48px;">
+    <div style="font-family:var(--heading);font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">The Core Line — Use This Everywhere</div>
+    <div style="font-family:var(--heading);font-size:clamp(28px,4vw,52px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1.1;">"Fox and Alpinestars were<br>built on gas.<br><span style="color:var(--orange);">SNG is built for lithium."</span></div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:48px;">
+    <div>
+      <div class="section-eyebrow">The Gap Nobody Has Filled</div>
+      <p style="color:var(--muted);margin-bottom:24px;font-size:15px;line-height:1.8;">E-moto riders are stuck between three bad options: gas motocross gear that doesn't fit the culture, MTB/downhill gear that doesn't fit the vibe, and generic merch that has no credibility. <strong style="color:#fff;">SNG can own "garage uniform for lithium riders"</strong> — but only if the content keeps proving it from the build outward. Gear second. Bike credibility first, always.</p>
+      <div class="three-col" style="gap:16px;">
+        <div style="background:var(--card2);border:1px solid #3a1a1a;border-radius:10px;padding:20px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">🪖</div>
+          <div style="font-family:var(--heading);font-size:14px;font-weight:700;text-transform:uppercase;color:#f85149;margin-bottom:6px;">Fox / Alpinestars</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Gas heritage. Race authority. They own trust but not the lithium lane.</div>
+        </div>
+        <div style="background:var(--card2);border:1px solid #1a2a3a;border-radius:10px;padding:20px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">🚵</div>
+          <div style="font-family:var(--heading);font-size:14px;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:6px;">MTB / Downhill Gear</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Wrong culture, wrong identity. Built for pedal bikes not lithium machines.</div>
+        </div>
+        <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:8px;">👕</div>
+          <div style="font-family:var(--heading);font-size:14px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Generic Merch</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">No credibility. No story. Logo on a blank hoodie. SNG is the opposite.</div>
+        </div>
+      </div>
+      <div style="background:rgba(244,120,32,0.08);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:20px 24px;margin-top:20px;">
+        <div style="font-family:var(--heading);font-size:14px;font-weight:700;text-transform:uppercase;color:var(--orange);margin-bottom:6px;">SNG Owns This Lane</div>
+        <div style="font-size:14px;color:var(--text);line-height:1.7;">Quiet speed · Garage-built customs · Street-to-track fit · Tall-rider stance · Lithium culture · Florida-built with real hardware proof</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-eyebrow">Opportunity Scores</div>
+      <p style="color:var(--muted);margin-bottom:20px;font-size:13px;">Strategic priority scores from the agent research — not sales data. Where to aim content first.</p>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label">Build Proof / Stance</div><div class="bar-track"><div class="bar-fill" style="width:96%;background:var(--orange);">Lead here</div></div><div class="bar-val">96</div></div>
+        <div class="bar-row"><div class="bar-label">Lithium Gear Identity</div><div class="bar-track"><div class="bar-fill" style="width:91%;background:var(--blue);">Own this</div></div><div class="bar-val">91</div></div>
+        <div class="bar-row"><div class="bar-label">Tall-Rider Fit</div><div class="bar-track"><div class="bar-fill" style="width:86%;background:var(--green);">Niche moat</div></div><div class="bar-val">86</div></div>
+        <div class="bar-row"><div class="bar-label">Holochrome Limited Drop</div><div class="bar-track"><div class="bar-fill" style="width:78%;background:#7b2d8a);">Visual flex</div></div><div class="bar-val">78</div></div>
+        <div class="bar-row"><div class="bar-label">Pure Logo Merch</div><div class="bar-track"><div class="bar-fill" style="width:36%;background:#5a4a00;">Weakest play</div></div><div class="bar-val">36</div></div>
+      </div>
+
+      <div style="margin-top:32px;">
+        <div class="section-eyebrow">Product Drop Priority</div>
+        <div class="bar-chart" style="margin-top:16px;">
+          <div class="bar-row"><div class="bar-label">Hoodie</div><div class="bar-track"><div class="bar-fill" style="width:94%;background:var(--orange);">Hero product</div></div><div class="bar-val">94</div></div>
+          <div class="bar-row"><div class="bar-label">Hat</div><div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--blue);">Entry point</div></div><div class="bar-val">88</div></div>
+          <div class="bar-row"><div class="bar-label">T-Shirt</div><div class="bar-track"><div class="bar-fill" style="width:74%;background:var(--green);">Slogan layer</div></div><div class="bar-val">74</div></div>
+          <div class="bar-row"><div class="bar-label">Jacket</div><div class="bar-track"><div class="bar-fill" style="width:70%;background:#7b2d8a;">Premium future</div></div><div class="bar-val">70</div></div>
+          <div class="bar-row"><div class="bar-label">Random Graphics</div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#5a4a00;">Avoid</div></div><div class="bar-val">30</div></div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px;">Hoodie + hat first because they appear naturally in build/garage video. Tee for slogans and entry pricing. Jacket is the future premium layer — not yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hardware Content Series -->
+  <div style="margin-top:8px;">
+    <div class="section-eyebrow">Hardware Content Series — The Content Calendar Inside the Content Calendar</div>
+    <p style="color:var(--muted);margin-bottom:24px;font-size:15px;">The research identified the brake/wheel content and holochrome fork content as outlier performers versus generic bike shots. Run these as named series — each "day" is its own post that builds on the last.</p>
+    <div class="four-col">
+      <div class="card card-orange">
+        <span class="tag tag-orange">Series 1</span>
+        <h3>Fork Day</h3>
+        <p>The holochrome SNG forks up close. Show in changing light — they shift colors. "Your phone can't catch what these forks do in sunlight." TikTok + IG. Use the actual fork photos from the research report.</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-blue">Series 2</span>
+        <h3>Brake Day</h3>
+        <p>The brake/wheel close-up series. Multi-angle unboxing → install → mounted. "Most builds stop at controller + wheels. Here's where SNG kept going." Already showing outlier potential.</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">Series 3</span>
+        <h3>Motor Day</h3>
+        <p>Motor reveal, wiring, the spec story. "Most e-bikes stop at a stock motor. This is what's actually in here." Comparison against stock Sur-Ron platform. Builders stop for this.</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-gold">Series 4</span>
+        <h3>Controller Story</h3>
+        <p>The controller choice reveal. "The controller is the brain of the bike. Here's why I chose this one and what most builds get wrong." Process + proof = trust content.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 70/30 Content Mix -->
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">70/30 Content Mix — Non-Negotiable Rule</div>
+    <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:20px;">
+      <div style="flex:1;min-width:280px;">
+        <div style="background:var(--card2);border-radius:16px;overflow:hidden;">
+          <div style="background:var(--orange);padding:20px;font-family:var(--heading);font-size:48px;font-weight:900;text-align:center;color:#fff;line-height:1;">70%</div>
+          <div style="padding:20px;">
+            <div style="font-family:var(--heading);font-size:20px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:8px;">Bike / Build Proof</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.7;">Motor · Forks · Controller · Brakes · Stance · Rider fit · Colorway · VIN · Build story · Founder content · Hardware series</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px;">
+        <div style="background:var(--card2);border-radius:16px;overflow:hidden;">
+          <div style="background:var(--blue);padding:20px;font-family:var(--heading);font-size:48px;font-weight:900;text-align:center;color:#fff;line-height:1;">20%</div>
+          <div style="padding:20px;">
+            <div style="font-family:var(--heading);font-size:20px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:8px;">Gear / Community</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.7;">Hoodie in garage videos · Hat worn naturally · "If the bike is different, the gear has to be different" · IG Story polls: hat vs hoodie, black vs holo</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px;">
+        <div style="background:var(--card2);border-radius:16px;overflow:hidden;">
+          <div style="background:#2d6a2d;padding:20px;font-family:var(--heading);font-size:48px;font-weight:900;text-align:center;color:#fff;line-height:1;">10%</div>
+          <div style="padding:20px;">
+            <div style="font-family:var(--heading);font-size:20px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:8px;">Direct Product</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.7;">Hard close · "Reserve yours" · Scarcity post · The Number reel · Pre-order open announcements. Never lead with this.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#0a0b0e;border:1px solid var(--border);border-radius:10px;padding:18px 24px;margin-top:16px;font-size:13px;color:var(--muted);">This ratio keeps SNG from looking like it abandoned the bikes to sell shirts. The moment the feed becomes more gear than build, the credibility that makes the gear worth buying starts to erode.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     14 — PREMIUM BUYER LANE
+══════════════════════════════════════════ -->
+<div class="section" id="s14">
+  <div class="section-eyebrow">Section 14 — Premium Strategy</div>
+  <div class="section-title">Premium<br><span>Buyer Lane</span></div>
+  <p style="color:var(--muted);max-width:620px;margin-bottom:48px;font-size:15px;">The Platinum 520E and premium builds attract a different buyer than the Sur-Ron/Talaria mod crowd. These buyers don't just buy speed — they buy confidence, engineering, status, finish, and emotional identity. Different buyer = different content tone.</p>
+
+  <div class="three-col" style="margin-bottom:48px;">
+    <div class="card">
+      <div class="tag tag-blue">BMW-Style Buyer</div>
+      <h3>Practical Premium</h3>
+      <p style="margin-bottom:16px;">Engineering, technology, reliability, finished ownership. They want the machine to feel complete and rationally justified. Adult brand voice.</p>
+      <div style="background:#0a0b0e;border-radius:8px;padding:14px;font-size:13px;color:var(--text);font-style:italic;line-height:1.7;border-left:2px solid var(--blue);">"Every spec has a reason. Full-size geometry, chain drive, WP forks, controller choice, brakes, and tall-rider fit are part of a finished system."</div>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted);">Content: spec explainer · clean walkaround · controller story · tech cockpit shots</div>
+    </div>
+    <div class="card card-orange">
+      <div class="tag tag-orange">Ducati-Style Buyer</div>
+      <h3>Emotional Premium</h3>
+      <p style="margin-bottom:16px;">Design, exclusivity, identity, special components, the feeling of joining a high-status rider tribe. Responds to immersive experiences and bespoke customization.</p>
+      <div style="background:#0a0b0e;border-radius:8px;padding:14px;font-size:13px;color:var(--text);font-style:italic;line-height:1.7;border-left:2px solid var(--orange);">"The 270E is not another bolt-on Sur-Ron. It is a custom electric supermoto with identity, presence, colorway, stance, and a build story."</div>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted);">Content: holochrome · gold/orange colorway · big-bike stance · numbered drops</div>
+    </div>
+    <div class="card">
+      <div class="tag tag-green">KTM/Husky Buyer</div>
+      <h3>Performance Premium</h3>
+      <p style="margin-bottom:16px;">Suspension, chassis feel, tall-rider fit, aggressive stance. Already moto-literate. Needs hardware proof, not education. Show, don't explain.</p>
+      <div style="background:#0a0b0e;border-radius:8px;padding:14px;font-size:13px;color:var(--text);font-style:italic;line-height:1.7;border-left:2px solid var(--green);">"The stance, fit, motor, forks, and brakes changed the whole bike."</div>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted);">Content: side profile · fork/brake detail · rider fit · garage proof</div>
+    </div>
+  </div>
+
+  <!-- Premium rule callout -->
+  <div style="background:rgba(244,120,32,0.06);border:1px solid rgba(244,120,32,0.3);border-radius:10px;padding:20px 28px;margin-bottom:48px;">
+    <div style="font-family:var(--heading);font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">Premium Content Rule</div>
+    <div style="font-size:15px;color:var(--text);line-height:1.7;">Use less slang on BMW/Ducati-style posts. Keep the Florida/shop voice, but make it controlled: <strong>proof, restraint, and confidence.</strong> Save the street energy for the TikTok crowd. A Ducati buyer reading your caption should feel like you earned the price tag.</div>
+  </div>
+
+  <!-- BMW/Ducati Adaptation Table -->
+  <div>
+    <div class="section-eyebrow">BMW/Ducati Adaptation Model — Apply These Patterns to SNG</div>
+    <table class="target-table" style="margin-top:20px;">
+      <tr><th>Pattern</th><th>BMW/Ducati Does</th><th>SNG Does</th></tr>
+      <tr><td>Tribe Not Transaction</td><td>Ducati Official Clubs: membership, factory access, MotoGP hospitality, belonging.</td><td>Create "SNG Founders" or "SNG Works Riders" — build numbers, private drops, first-look colorways, garage nights. Owner gets a build number, not just a bike.</td></tr>
+      <tr><td>Experience-First</td><td>World Ducati Week makes the bike the anchor for events, parades, riding, and community.</td><td>Shop nights, owner handoffs, build reveal days, local route tests, invite-only launch rides. Film the handoff. The moment someone rides their unit for the first time is content.</td></tr>
+      <tr><td>Engineering Confidence</td><td>BMW GS centers competence, ergonomics, accessories, and real-use capability.</td><td>Show lights, tires, range planning, charging, braking, weathered use, and "proof ride" loops. The bike does real things. Show the real things.</td></tr>
+      <tr><td>Personalization Without Chaos</td><td>Ducati Unica packages bespoke custom work as rare, curated, high-touch, limited output.</td><td>Package options as curated editions: Shark White · Desert Black · Works Raw · Street Legal Pack · Trail Pack · Signature Holo. Named options feel premium. Random options feel cheap.</td></tr>
+      <tr><td>Value Proof Under Scrutiny</td><td>Luxury buyers are pushing back on price without creativity, quality, or clear value.</td><td>Make labor visible: wiring, fitment, testing, torque specs, suspension setup, serviceability, final inspection. A buyer paying $26k needs to feel the hours in the bike before they wire the deposit.</td></tr>
+      <tr><td>Safety and Legality</td><td>E-moto growth creates public-safety tension when fast bikes are used illegally.</td><td>Position SNG as grown-up e-moto culture: premium, helmet-on, legal-aware, VIN-stamped, built right, serious brakes and tires. SNG is NOT the reckless rideout channel.</td></tr>
+    </table>
+  </div>
+
+  <!-- 30-Day Community Test -->
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">30-Day Premium Community Test</div>
+    <p style="color:var(--muted);margin-bottom:24px;font-size:14px;">Run this alongside the 14-day social calendar. The community test builds the offline credibility that makes the online content believable.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="card"><div style="font-family:var(--heading);font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:6px;">Days 1–3</div><h3 style="font-size:16px;">Build the Promise</h3><p>SNG Owner Circle promise, build sheet, parts/spec disclosure, inspection checklist, plain warranty/service terms. Premium buyers need trust receipts before they believe the price.</p></div>
+      <div class="card"><div style="font-family:var(--heading);font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:6px;">Days 4–7</div><h3 style="font-size:16px;">Launch Build 001 Content</h3><p>Motor · Controller · Wiring · Brakes · Forks · Walkaround · First proof movement. Turns the bike into a serial story instead of random posts. Film all of it.</p></div>
+      <div class="card"><div style="font-family:var(--heading);font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:6px;">Days 8–14</div><h3 style="font-size:16px;">Shop Night 001</h3><p>Bike on stand. Parts walkthrough. Q&amp;A. Controlled demo. Film visitor reactions. Creates ritual, access, and proof that SNG is a real local builder lane.</p></div>
+      <div class="card"><div style="font-family:var(--heading);font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:6px;">Days 15–21</div><h3 style="font-size:16px;">SNG Drop 001</h3><p>3–5 slots, one named package, build sheet, inspection checklist, honest delivery window. Limited by build capacity, not fake scarcity. Real waitlist = real leverage.</p></div>
+      <div class="card" style="grid-column:1/-1;"><div style="font-family:var(--heading);font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:6px;">Days 22–30</div><h3 style="font-size:16px;">Proof Ride Saturday</h3><p>Appointment slots · Waiver · Route · Mechanic brief · Feedback form · Filmed rider reactions. Real riders asking real questions on camera is stronger than any ad copy you could write. This is the deposit trigger.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     15 — TOOL STACK & MANYCHAT
+══════════════════════════════════════════ -->
+<div class="section section-alt" id="s15">
+  <div class="section-eyebrow">Section 15 — Systems</div>
+  <div class="section-title">Tool Stack &amp;<br><span>Manychat</span></div>
+  <p style="color:var(--muted);max-width:600px;margin-bottom:48px;font-size:15px;">Don't buy the biggest tool first. Start with a manual SNG Growth OS — post tracker, creator CRM, keyword watchlist, DM lead sheet, weekly report. Once this proves traction, upgrade only where the bottleneck is real. Everything below is free until you outgrow it.</p>
+
+  <!-- Manychat -->
+  <div style="background:linear-gradient(135deg,rgba(244,120,32,0.12),rgba(244,120,32,0.04));border:2px solid var(--orange);border-radius:16px;padding:36px;margin-bottom:48px;">
+    <div class="section-eyebrow">Manychat — Set These Up the Moment Comments Start</div>
+    <div style="font-family:var(--heading);font-size:28px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:20px;">Comment Keywords → Auto-DM Flow</div>
+    <p style="color:var(--muted);margin-bottom:28px;font-size:14px;">Anyone who comments one of these exact words on any post automatically receives a DM with more info. Zero extra effort from you after setup. This converts comment engagement into a lead list while you sleep.</p>
+    <div class="four-col">
+      <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:20px;text-align:center;">
+        <div style="font-family:var(--heading);font-size:32px;font-weight:900;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">BUILD</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">DM sends: build sheet, spec breakdown, where to follow the build story. Attracts moto builders and garage culture.</div>
+      </div>
+      <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:20px;text-align:center;">
+        <div style="font-family:var(--heading);font-size:32px;font-weight:900;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">DROP</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">DM sends: what's dropping, when, how to get on the list. Use on all gear posts and limited edition announcements.</div>
+      </div>
+      <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:20px;text-align:center;">
+        <div style="font-family:var(--heading);font-size:32px;font-weight:900;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">270E</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">DM sends: bike specs, price, deposit info, reservation link. Direct buyer capture on every bike post.</div>
+      </div>
+      <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:20px;text-align:center;">
+        <div style="font-family:var(--heading);font-size:32px;font-weight:900;color:var(--orange);text-transform:uppercase;margin-bottom:8px;">BRAKES</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">DM sends: the full brake spec breakdown, hardware choices, why they matter. Filters for serious moto buyers and builders.</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;background:rgba(0,0,0,0.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);">Free tier: 25 active contacts/month, 2 channels, 4 active automations. <strong style="color:#fff;">Pay Manychat ($14/mo) only when comment keyword flows are producing more leads than you can manually reply to.</strong> Don't pay for it before comments are coming in consistently.</div>
+  </div>
+
+  <!-- Tool Stack Table -->
+  <div>
+    <div class="section-eyebrow">Recommended Tool Stack — Free First</div>
+    <table class="target-table" style="margin-top:20px;">
+      <tr><th>Stage</th><th>Tool</th><th>Free Tier</th><th>When to Pay</th></tr>
+      <tr>
+        <td style="color:var(--green);font-weight:700;">NOW</td>
+        <td>Metricool or Buffer</td>
+        <td>Metricool: 1 brand, 20 posts/mo, 5 competitor profiles, 30-day analytics, AI assist. Buffer: 3 channels, 10 posts/channel.</td>
+        <td>Pay when you need unlimited publishing or more competitor tracking.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--green);font-weight:700;">NOW</td>
+        <td>CapCut + Canva</td>
+        <td>Free edits, captions, cover frames, templates, mobile-first clips, basic product/drop design.</td>
+        <td>Canva Pro for brand kit; CapCut Pro only if premium export is blocking workflow.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--green);font-weight:700;">NOW</td>
+        <td>Klaviyo (email/SMS)</td>
+        <td>Up to 250 active profiles, 500 emails/month, 150 SMS credits. Start building the list immediately.</td>
+        <td>Pay when list exceeds 250 contacts or you need reliable volume campaigns.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--orange);font-weight:700;">NEXT</td>
+        <td>Manychat</td>
+        <td>25 active contacts, 2 channels, 4 automations. Enough to test the keyword triggers above.</td>
+        <td>$14/mo when comment "BUILD/DROP/270E/BRAKES" is producing more leads than manual replies handle.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted);font-weight:700;">LATER</td>
+        <td>Shopify Collabs / Modash</td>
+        <td>Manual creator list + discount codes = free before launch.</td>
+        <td>When apparel samples are ready for creator seeding and affiliate tracking.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted);font-weight:700;">LATER</td>
+        <td>Brand24 / SparkToro</td>
+        <td>Manual substitute: Google alerts + TikTok/IG searches + Reddit/YouTube comment mining.</td>
+        <td>When keywords/mentions are too high volume to track manually.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- IG Stories as market research -->
+  <div style="margin-top:48px;">
+    <div class="section-eyebrow">Instagram Stories — Free Market Research</div>
+    <p style="color:var(--muted);margin-bottom:20px;font-size:14px;">Run these polls in IG Stories this week. Every vote is a data point that replaces a formal survey — and the algorithm rewards the engagement.</p>
+    <div class="four-col">
+      <div class="card"><h3 style="font-size:16px;">Hat vs Hoodie</h3><p>Which drop first? The results decide your launch order. Share the result as a follow-up story.</p></div>
+      <div class="card"><h3 style="font-size:16px;">Black vs Holochrome</h3><p>Classic or chrome? Tests appetite for the premium colorway before you price it.</p></div>
+      <div class="card"><h3 style="font-size:16px;">Tall-Fit vs Standard</h3><p>Do people care about the tall-rider sizing? If 60%+ say yes, double down on that content lane.</p></div>
+      <div class="card"><h3 style="font-size:16px;">Gas vs Lithium</h3><p>"What do you ride?" Flames the debate and farms comments on your next bike reel.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<div style="background:#080809;border-top:3px solid var(--orange);padding:48px 60px;text-align:center;">
+  <div style="font-family:var(--heading);font-size:48px;font-weight:900;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">Shark Not Goldfish.</div>
+  <div style="font-family:var(--heading);font-size:24px;font-weight:700;text-transform:uppercase;color:var(--muted);">Leave The School Behind. SNG4LIFE. 🦈</div>
+  <div style="margin-top:24px;font-size:13px;color:#333;">SNG Cycles · Florida Garage Built · Est. 2024 · sngcycles.com</div>
+</div>
+
+</body>
+</html>
