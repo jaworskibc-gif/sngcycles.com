@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>if(!sessionStorage.getItem('sng_auth')){sessionStorage.setItem('sng_return',location.href);location.href='sng-login.html';}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG — Reply Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0c0d10;--bg2:#111318;--bg3:#181b22;--card:#1a1b22;--border:#252630;
+  --orange:#f47820;--green:#2ecc71;--muted:#6a6d80;--text:#e8e9f0;
+  --head:'Barlow Condensed',sans-serif;--body:'Barlow',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;}
+.topbar{background:var(--bg2);border-bottom:2px solid var(--orange);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;}
+.brand{font-family:var(--head);font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:#fff;}
+.brand span{color:var(--orange);}
+.back-link{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:7px 14px;border-radius:6px;transition:border-color .15s;}
+.back-link:hover{border-color:var(--orange);color:var(--orange);}
+.main{max-width:760px;margin:0 auto;padding:40px 24px 80px;}
+.page-title{font-family:var(--head);font-size:48px;font-weight:900;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:6px;}
+.page-title span{color:var(--orange);}
+.page-sub{font-size:14px;color:var(--muted);margin-bottom:32px;letter-spacing:0.5px;}
+.sh{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.sh::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* INPUT AREA */
+.input-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px;}
+label{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;}
+textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;font-family:var(--body);font-size:14px;color:var(--text);resize:vertical;min-height:100px;outline:none;transition:border-color .15s;}
+textarea:focus{border-color:var(--orange);}
+select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-family:var(--body);font-size:14px;color:var(--text);outline:none;cursor:pointer;margin-bottom:16px;}
+.btn{font-family:var(--head);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;border:none;border-radius:8px;background:var(--orange);color:#fff;cursor:pointer;transition:opacity .15s;width:100%;}
+.btn:hover{opacity:0.85;}
+.btn:disabled{opacity:0.4;cursor:not-allowed;}
+
+/* OUTPUT */
+.output-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px;display:none;}
+.output-card.show{display:block;}
+.output-label{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
+.reply-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px;font-size:14px;color:var(--text);line-height:1.7;white-space:pre-wrap;word-break:break-word;margin-bottom:12px;}
+.copy-btn{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;}
+.copy-btn:hover{border-color:var(--orange);color:var(--orange);}
+.copy-btn.copied{border-color:var(--green);color:var(--green);}
+
+/* QUICK TRIGGERS */
+.trigger-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:24px;}
+.trigger-btn{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--muted);cursor:pointer;transition:all .15s;text-align:left;font-family:var(--body);}
+.trigger-btn:hover{border-color:var(--orange);color:#fff;background:rgba(244,120,32,0.08);}
+.trigger-label{font-family:var(--head);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px;}
+
+/* API KEY */
+.api-row{display:flex;gap:10px;margin-bottom:8px;}
+.api-input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-family:monospace;font-size:12px;color:var(--text);outline:none;}
+.api-input:focus{border-color:var(--orange);}
+.api-btn{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:10px 16px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .15s;}
+.api-btn:hover{border-color:var(--orange);color:var(--orange);}
+.api-status{font-size:12px;color:var(--muted);}
+.api-status.ok{color:var(--green);}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:8px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">SNG <span>Reply Agent</span></div>
+  <a class="back-link" href="SNG_HUB.html">← Hub</a>
+</div>
+
+<div class="main">
+  <div class="page-title">Reply<br><span>Agent</span></div>
+  <div class="page-sub">Paste a comment → get an on-brand SNG reply in seconds. Fires on price, tall rider, speed, availability, and competitor triggers.</div>
+
+  <!-- API KEY -->
+  <div class="sh">Claude API Key</div>
+  <div class="input-card" style="margin-bottom:24px;">
+    <label>API Key (stored in browser — never transmitted except to Anthropic)</label>
+    <div class="api-row">
+      <input class="api-input" type="password" id="apiKey" placeholder="sk-ant-api03-...">
+      <button class="api-btn" onclick="saveKey()">Save</button>
+      <button class="api-btn" onclick="clearKey()">Clear</button>
+    </div>
+    <div class="api-status" id="apiStatus">No key saved — get one at console.anthropic.com → API Keys</div>
+  </div>
+
+  <!-- QUICK TRIGGERS -->
+  <div class="sh">Quick Trigger Comments</div>
+  <div class="trigger-grid">
+    <div class="trigger-btn" onclick="setComment('How much does it cost?')"><div class="trigger-label">Price</div>How much does it cost?</div>
+    <div class="trigger-btn" onclick="setComment('How fast does it go?')"><div class="trigger-label">Speed</div>How fast does it go?</div>
+    <div class="trigger-btn" onclick="setComment('I\\'m 6\\'4\\" and never found a bike that fits')"><div class="trigger-label">Tall Rider</div>I'm 6'4" and never found a bike that fits</div>
+    <div class="trigger-btn" onclick="setComment('Where can I buy one?')"><div class="trigger-label">Buy Intent</div>Where can I buy one?</div>
+    <div class="trigger-btn" onclick="setComment('Why not just get a Sur-Ron?')"><div class="trigger-label">Competitor</div>Why not just get a Sur-Ron?</div>
+    <div class="trigger-btn" onclick="setComment('This is overpriced')"><div class="trigger-label">Price Pushback</div>This is overpriced</div>
+    <div class="trigger-btn" onclick="setComment('How is this street legal?')"><div class="trigger-label">Legal</div>How is this street legal?</div>
+    <div class="trigger-btn" onclick="setComment('Is this an electric bike?')"><div class="trigger-label">Curious</div>Is this an electric bike?</div>
+  </div>
+
+  <!-- INPUT -->
+  <div class="sh">Comment Input</div>
+  <div class="input-card">
+    <label>Paste the comment here</label>
+    <textarea id="commentInput" placeholder="Paste the comment you received..."></textarea>
+    <div style="margin-top:16px;">
+      <label>Post context (helps the agent match tone)</label>
+      <select id="postContext">
+        <option value="build">Build / transformation post</option>
+        <option value="spec">Spec / price post</option>
+        <option value="founder">Founder story post</option>
+        <option value="holochrome">Holochrome / visual flex post</option>
+        <option value="merch">Merch / gear post</option>
+        <option value="general">General</option>
+      </select>
+    </div>
+    <button class="btn" id="genBtn" onclick="generateReply()">Generate Reply</button>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-card" id="outputCard">
+    <div class="output-label">Reply Option 1 — Direct & On-Brand</div>
+    <div class="reply-box" id="reply1"></div>
+    <button class="copy-btn" onclick="copyReply(1)">Copy</button>
+
+    <div style="height:20px;"></div>
+
+    <div class="output-label">Reply Option 2 — Longer / Builds Curiosity</div>
+    <div class="reply-box" id="reply2"></div>
+    <button class="copy-btn" onclick="copyReply(2)">Copy</button>
+
+    <div style="height:20px;"></div>
+
+    <div class="output-label">Reply Option 3 — CTA / Move to DMs or Link</div>
+    <div class="reply-box" id="reply3"></div>
+    <button class="copy-btn" onclick="copyReply(3)">Copy</button>
+  </div>
+
+</div>
+
+<script>
+const SYSTEM_PROMPT = `You are the reply agent for SNG Cycles — a premium Florida-built electric supermoto brand founded by Bryan Jaworski (6'7", former gas rider).
+
+Brand voice: direct, confident, no fluff, no corporate speak. Short sentences. Lowercase is fine. Never defensive. Never explain the flex. The bike speaks for itself.
+
+Brand anchors to weave in naturally (not all at once):
+- 6'7" founder built it himself because nobody else would
+- Florida-assembled, VIN-stamped, street-legal — NOT a kit bike
+- 202 lbs — 73 lbs lighter than a Stark VARG
+- Numbered limited run — scarcity is real
+- "Built not bought" / "SNG4LIFE" / "Shark Not Goldfish" / "Leave The School Behind"
+- The tagline for buyers who ask about price: "She's got Louis Vuitton. I got Lewis brakes."
+
+Rules:
+- NEVER argue with price pushback. Acknowledge and redirect.
+- NEVER compare negatively to Sur-Ron by name — SNG evolved past it, that's it.
+- Tall rider comments: this is your best lead, respond warmly and with specifics (39" seat, 6'7" founder, etc.)
+- "Where to buy" → always end with "Link in bio" or "DM me"
+- Keep replies SHORT for TikTok (1-3 sentences). IG can be slightly longer.
+- Never use hashtags in replies.
+- Reply as Bryan, first person, casual.
+
+Generate exactly 3 reply options separated by the delimiter ---REPLY_BREAK---:
+Option 1: Short and direct (1-2 sentences)
+Option 2: Medium, builds curiosity (2-3 sentences)
+Option 3: Ends with a CTA — "DM me", "link in bio", or "drop your height and I'll break it down"`;
+
+function loadKey(){
+  const k = localStorage.getItem('sng_claude_key') || '';
+  if(k){
+    document.getElementById('apiKey').value = k;
+    document.getElementById('apiStatus').textContent = '✓ Key saved';
+    document.getElementById('apiStatus').className = 'api-status ok';
+  }
+}
+
+function saveKey(){
+  const k = document.getElementById('apiKey').value.trim();
+  if(!k){return;}
+  localStorage.setItem('sng_claude_key', k);
+  document.getElementById('apiStatus').textContent = '✓ Key saved';
+  document.getElementById('apiStatus').className = 'api-status ok';
+}
+
+function clearKey(){
+  localStorage.removeItem('sng_claude_key');
+  document.getElementById('apiKey').value = '';
+  document.getElementById('apiStatus').textContent = 'Key cleared';
+  document.getElementById('apiStatus').className = 'api-status';
+}
+
+function setComment(txt){
+  document.getElementById('commentInput').value = txt;
+}
+
+async function generateReply(){
+  const key = localStorage.getItem('sng_claude_key');
+  if(!key){alert('Enter your Claude API key first.');return;}
+  const comment = document.getElementById('commentInput').value.trim();
+  if(!comment){alert('Paste a comment first.');return;}
+  const context = document.getElementById('postContext').value;
+
+  const btn = document.getElementById('genBtn');
+  btn.innerHTML = '<span class="spinner"></span>Generating...';
+  btn.disabled = true;
+
+  const userMsg = `Post context: ${context}\n\nComment: "${comment}"\n\nGenerate 3 reply options.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key': key,
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
+      body: JSON.stringify({
+        model:'claude-haiku-4-5-20251001',
+        max_tokens:600,
+        system: SYSTEM_PROMPT,
+        messages:[{role:'user',content:userMsg}]
+      })
+    });
+
+    if(!res.ok){
+      const err = await res.json();
+      if(err.error?.type === 'authentication_error'){
+        localStorage.removeItem('sng_claude_key');
+        document.getElementById('apiStatus').textContent = 'Key invalid — cleared. Get a new one at console.anthropic.com';
+        document.getElementById('apiStatus').className = 'api-status';
+      }
+      throw new Error(err.error?.message || 'API error');
+    }
+
+    const data = await res.json();
+    const text = data.content[0].text;
+    const parts = text.split('---REPLY_BREAK---');
+
+    document.getElementById('reply1').textContent = (parts[0]||'').trim();
+    document.getElementById('reply2').textContent = (parts[1]||'').trim();
+    document.getElementById('reply3').textContent = (parts[2]||'').trim();
+    document.getElementById('outputCard').classList.add('show');
+    document.getElementById('outputCard').scrollIntoView({behavior:'smooth',block:'start'});
+
+  } catch(e){
+    alert('Error: ' + e.message);
+  } finally {
+    btn.innerHTML = 'Generate Reply';
+    btn.disabled = false;
+  }
+}
+
+function copyReply(n){
+  const txt = document.getElementById('reply'+n).textContent;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const btns = document.querySelectorAll('.copy-btn');
+    btns[n-1].textContent = '✓ Copied!';
+    btns[n-1].classList.add('copied');
+    setTimeout(()=>{btns[n-1].textContent='Copy';btns[n-1].classList.remove('copied');},2000);
+  });
+}
+
+loadKey();
+</script>
+</body>
+</html>
