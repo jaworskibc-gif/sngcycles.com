@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -268,7 +268,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Checkerboard Cap -->
     <div class="product-card" onclick="openProduct('bt-apex-hat')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-checkerboard-hats-views.jpg" class="product-card-img" alt="SNG Checkerboard Snapback">
+        <img src="images/hat-coll-cell2.png" class="product-card-img" alt="SNG Checkerboard Snapback">
         <div class="product-card-badge">6 Colors</div>
       </div>
       <div class="product-card-body">
@@ -317,7 +317,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Race Day Hoodie -->
     <div class="product-card" onclick="openProduct('bt-apex-hoodie')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-raceday-mockups.jpg" class="product-card-img" alt="Race Day Hoodie" style="object-position: right top;">
+        <img src="images/hoodie-platform-front.png" class="product-card-img" alt="Race Day Hoodie" style="object-position: right top;">
       </div>
       <div class="product-card-body">
         <div class="product-card-tag">Hoodies</div>
@@ -364,7 +364,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Women's Checkerboard Cap -->
     <div class="product-card" onclick="openProduct('w-bt-apex-hat')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-checkerboard-hats-views.jpg" class="product-card-img" alt="Women's Checkerboard Snapback">
+        <img src="images/hat-coll-cell2.png" class="product-card-img" alt="Women's Checkerboard Snapback">
         <div class="product-card-badge">6 Colors</div>
       </div>
       <div class="product-card-body">
@@ -413,7 +413,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Women's Race Day Hoodie -->
     <div class="product-card" onclick="openProduct('w-bt-apex-hoodie')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-raceday-mockups.jpg" class="product-card-img" alt="Women's Race Day Hoodie" style="object-position: right top;">
+        <img src="images/hoodie-platform-front.png" class="product-card-img" alt="Women's Race Day Hoodie" style="object-position: right top;">
       </div>
       <div class="product-card-body">
         <div class="product-card-tag">Hoodies</div>
@@ -501,7 +501,7 @@ var ECOM_CONFIG = {
 var PRODUCTS = {
   'bt-apex-hat': {
     badge: 'Race Day Collection', name: 'SNG Checkerboard Snapback', sub: 'Circular Logo & Checkered Visor Cap',
-    price: '$40.00', image: 'images/sng-checkerboard-hats-views.jpg',
+    price: '$40.00', image: 'images/hat-coll-cell2.png',
     desc: 'Race Day Collection Checkerboard Snapback. Structured 6-panel fit, raised embroidered circular SNG logo, checkered visor underbrim details. Available in 6 custom checkered colorways.',
     selectors: ['checkerboard-colorway'], orderLabel: 'Buy Checkerboard Cap — $40.00', orderItem: 'SNG Checkerboard Snapback',
     shopifyUrl: {
@@ -530,7 +530,7 @@ var PRODUCTS = {
   },
   'bt-apex-hoodie': {
     badge: 'Race Day Collection', name: 'Race Day Hoodie', sub: 'Checkerboard Hood Liner Edition',
-    price: '$65.00', image: 'images/sng-raceday-mockups.jpg',
+    price: '$65.00', image: 'images/hoodie-platform-front.png',
     desc: 'Official Race Day Collection Hoodie. Heavyweight black fleece. Front chest features the SNG Cycles fin logo in yellow. Sleek yellow/black checkerboard patterned hood liner and custom side sleeve SNG print. Fits like Carhartt. Sized S to 3XL.',
     selectors: ['size'], orderLabel: 'Buy Race Day Hoodie — $65.00', orderItem: 'Race Day Hoodie',
     shopifyUrl: {
@@ -563,10 +563,10 @@ var PRODUCTS = {
 
 // Copy women's specific specs dynamically into PRODUCTS
 var w_items = {
-  'w-bt-apex-hat': { name: "Women's Checkerboard Snapback", base: "bt-apex-hat", img: "images/sng-checkerboard-hats-views.jpg" },
+  'w-bt-apex-hat': { name: "Women's Checkerboard Snapback", base: "bt-apex-hat", img: "images/hat-coll-cell2.png" },
   'w-bt-apex-hat-side': { name: "Women's Checkerboard Side Snapback", base: "bt-apex-hat-side", img: "images/sng-raceday-side-checkered.jpg" },
   'w-bt-apex-hat-front': { name: "Women's Checkerboard Front Snapback", base: "bt-apex-hat-front", img: "images/sng-raceday-front-checkered.jpg" },
-  'w-bt-apex-hoodie': { name: "Women's Race Day Hoodie", base: "bt-apex-hoodie", img: "images/sng-raceday-mockups.jpg", shopifyUrl: '46000000000026:1' },
+  'w-bt-apex-hoodie': { name: "Women's Race Day Hoodie", base: "bt-apex-hoodie", img: "images/hoodie-platform-front.png", shopifyUrl: '46000000000026:1' },
   'w-bt-apex-denim': { name: "Women's Race Day Denim", base: "bt-apex-denim", img: "images/sng-raceday-denim.jpg", shopifyUrl: '46000000000027:1' }
 };
 
@@ -592,20 +592,20 @@ for (var wKey in w_items) {
 /* ── INTERACTIVE ZOOMS ── */
 var COLOR_ZOOM_COORDS = {
   'bt-apex-hat': {
-    'Black/White': { x: 0, y: 100, size: '600% 500%' },
-    'Black/Orange': { x: 20, y: 100, size: '600% 500%' },
-    'Black/Blue': { x: 40, y: 100, size: '600% 500%' },
-    'Black/Red': { x: 60, y: 100, size: '600% 500%' },
-    'Black/Neon Yellow': { x: 80, y: 100, size: '600% 500%' },
-    'Black/Yellow': { x: 100, y: 100, size: '600% 500%' }
+    'Black/White': 'images/hat-coll-cell2.png',
+    'Black/Orange': 'images/hat-coll-cell3.png',
+    'Black/Blue': 'images/hat-coll-cell4.png',
+    'Black/Red': 'images/hat-coll-cell5.png',
+    'Black/Neon Yellow': 'images/hat-coll-cell6.png',
+    'Black/Yellow': 'images/hat-coll-cell1.png'
   },
   'w-bt-apex-hat': {
-    'Black/White': { x: 0, y: 100, size: '600% 500%' },
-    'Black/Orange': { x: 20, y: 100, size: '600% 500%' },
-    'Black/Blue': { x: 40, y: 100, size: '600% 500%' },
-    'Black/Red': { x: 60, y: 100, size: '600% 500%' },
-    'Black/Neon Yellow': { x: 80, y: 100, size: '600% 500%' },
-    'Black/Yellow': { x: 100, y: 100, size: '600% 500%' }
+    'Black/White': 'images/hat-coll-cell2.png',
+    'Black/Orange': 'images/hat-coll-cell3.png',
+    'Black/Blue': 'images/hat-coll-cell4.png',
+    'Black/Red': 'images/hat-coll-cell5.png',
+    'Black/Neon Yellow': 'images/hat-coll-cell6.png',
+    'Black/Yellow': 'images/hat-coll-cell1.png'
   }
 };
 
@@ -702,15 +702,21 @@ document.getElementById('modal-selectors').addEventListener('change', function(e
   if (e.target && e.target.id === 'modal-hat-color') {
     var val = e.target.value;
     var imgCrop = document.getElementById('modal-img');
+    imgCrop.classList.remove('zoomed');
+    
     if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
-      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
-      if (coords) {
-        imgCrop.classList.remove('zoomed');
-        imgCrop.style.backgroundSize = coords.size;
-        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+      var target = COLOR_ZOOM_COORDS[currentProduct.id][val];
+      if (typeof target === 'string') {
+        imgCrop.style.backgroundImage = "url('" + target + "')";
+        imgCrop.style.backgroundSize = 'contain';
+        imgCrop.style.backgroundPosition = 'center';
+      } else if (target && typeof target === 'object') {
+        imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
+        imgCrop.style.backgroundSize = target.size;
+        imgCrop.style.backgroundPosition = target.x + '% ' + target.y + '%';
       }
     } else {
-      imgCrop.classList.remove('zoomed');
+      imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
       imgCrop.style.backgroundSize = 'contain';
       imgCrop.style.backgroundPosition = 'center';
     }
