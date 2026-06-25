@@ -250,8 +250,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <div class="product-card" onclick="openProduct('sng-classic-hat')">
       <div class="product-card-img-wrap">
         <span class="product-card-badge">Classic</span>
-        <!-- Cropped SNG Classic Hat -->
-        <div class="product-card-img" style="background: url('images/sng-conversion-series.jpg') no-repeat; background-size: 260% 180%; background-position: 8% 28%; width: 100%; height: 100%;"></div>
+        <img src="images/hat-sng-classic.png" class="product-card-img" alt="SNG Classic Snapback">
       </div>
       <div class="product-card-body">
         <span class="product-card-tag">Hats</span>
@@ -268,8 +267,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <div class="product-card" onclick="openProduct('conversion-hats')">
       <div class="product-card-img-wrap">
         <span class="product-card-badge">New Release</span>
-        <!-- Cropped row of 6 Hats -->
-        <div class="product-card-img" style="background: url('images/sng-conversion-series.jpg') no-repeat; background-size: 200% 400%; background-position: 0% 75%; width: 100%; height: 100%;"></div>
+        <img src="images/hat-black-orange.png" class="product-card-img" alt="Conversion Series Hats">
       </div>
       <div class="product-card-body">
         <span class="product-card-tag">Hats</span>
@@ -301,8 +299,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <div class="product-card" onclick="openProduct('conversion-shirt')">
       <div class="product-card-img-wrap">
         <span class="product-card-badge">Featured</span>
-        <!-- Cropped front/back shirt -->
-        <div class="product-card-img" style="background: url('images/sng-conversion-series.jpg') no-repeat; background-size: 200% 180%; background-position: 98% 10%; width: 100%; height: 100%;"></div>
+        <img src="images/conversion-shirt-black-front.png" class="product-card-img" alt="Conversion Series Shirt">
       </div>
       <div class="product-card-body">
         <span class="product-card-tag">Tees</span>
@@ -319,8 +316,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <div class="product-card" onclick="openProduct('start-static-tee')">
       <div class="product-card-img-wrap">
         <span class="product-card-badge">New Release</span>
-        <!-- "BUILT DIFFERENT. START STATIC." Slogan Tee mockup -->
-        <div class="product-card-img" style="background: url('images/sng-tee-start-static.jpg') no-repeat; background-size: contain; background-position: center; width: 100%; height: 100%;"></div>
+        <img src="images/sng-tee-start-static.jpg" class="product-card-img" alt="SNG Start Static Tee">
       </div>
       <div class="product-card-body">
         <span class="product-card-tag">Tees</span>
@@ -337,13 +333,12 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <div class="product-card" onclick="openProduct('sng-shirt-collection')">
       <div class="product-card-img-wrap">
         <span class="product-card-badge">Collection</span>
-        <!-- Cropped row of 5 shirts -->
-        <div class="product-card-img" style="background: url('images/sng-conversion-series.jpg') no-repeat; background-size: 200% 400%; background-position: 100% 75%; width: 100%; height: 100%;"></div>
+        <img src="images/conversion-shirt-all.png" class="product-card-img" alt="SNG Slogan Shirt Collection">
       </div>
       <div class="product-card-body">
         <span class="product-card-tag">Tees</span>
         <h4 class="product-card-name">SNG Slogan Shirt Collection</h4>
-        <p class="product-card-desc">Garage cotton tees available in 5 slogans: Stuntin is a Habit, Stuntin Ain't Easy, Swim Without, For the Riders, and Have Gas.</p>
+        <p class="product-card-desc">Garage cotton tees available in 5 slogans: Stuntin is a Habit, Stuntin Ain\'t Easy, Swim Without, For the Riders, and Have Gas.</p>
         <div class="product-card-footer">
           <span class="product-card-price">$30.00</span>
           <button class="product-card-btn">Quick View</button>
@@ -420,31 +415,30 @@ var ECOM_CONFIG = {
 var PRODUCTS = {
   'sng-classic-hat': {
     badge: 'Classic Drop', name: 'SNG Classic Snapback', sub: 'Structured Flat Brim Cap',
-    price: '$40.00', image: 'images/sng-conversion-series.jpg',
+    price: '$40.00', image: 'images/hat-sng-classic.png',
     desc: 'Structured flat-brim black cap. Raised white embroidered SNG fin logo on front, snapback enclosure, premium woven hem tag, and standard "GET OUT AND RIDE!" side panel embroidery.',
     selectors: ['embroidery'],
     shopifyUrl: '45592416092339:1' // Fallback Shopify variant ID
   },
   'conversion-hats': {
-    badge: 'Conversion Drop', name: 'Conversion Series Snapbacks', sub: 'Structured Caps in 6 Colorways',
-    price: '$40.00', image: 'images/sng-conversion-series.jpg',
-    desc: 'Conversion Series structured caps. Features bold colored panels, raise embroidered SNG fin logo on front, "GET OUT AND RIDE!" side print, and adjustable snapback enclosure.',
+    badge: 'Conversion Drop', name: 'Conversion Series Snapbacks', sub: 'Structured Caps in 5 Colorways',
+    price: '$40.00', image: 'images/hat-black-orange.png',
+    desc: 'Conversion Series structured caps. Features bold colored panels, raised embroidered SNG fin logo on front, "GET OUT AND RIDE!" side print, and adjustable snapback enclosure.',
     selectors: ['colorway', 'embroidery'],
     shopifyUrl: {
       'Black/Orange': '45592416125107:1',
-      'Blue/Yellow': '45592416092339:1', // Variant ID placeholders
-      'Red/Gold': '45592416092339:1',
+      'Navy/Hi-Vis': '45592416092339:1', // Variant ID placeholders
+      'Red/White': '45592416092339:1',
       'Black/Yellow': '45592416092339:1',
-      'Blue/White': '45592416092339:1',
       'Black/Green': '45592416092339:1',
-      'default': '45592416092339:1'
+      'default': '45592416125107:1'
     }
   },
   'conversion-shirt': {
     badge: 'Builder Series', name: 'Conversion Series Shirt', sub: 'Heavyweight Slogan Riding Tee',
-    price: '$30.00', image: 'images/sng-conversion-series.jpg',
+    price: '$30.00', image: 'images/conversion-shirt-black-front.png',
     desc: 'Premium combed cotton flat-black tee. Front features SNG Cycles chest print, side sleeve print, and the bold statement back graphic: "I USE TA HAVE GAS. NOW I JUST HAUL ASS." Sized S to 3XL.',
-    selectors: ['size'],
+    selectors: ['shirt-colorway', 'size'],
     shopifyUrl: {
       'S': '45592416944307:1', 'M': '45592416977075:1', 'L': '45592417009843:1',
       'XL': '45592417042611:1', '2XL': '45592417075379:1', '3XL': '45592417108147:1',
@@ -464,7 +458,8 @@ var PRODUCTS = {
   },
   'sng-shirt-collection': {
     badge: 'Slogan Drop', name: 'SNG Slogan Shirt Collection', sub: 'Heavyweight Riding Tees',
-    price: '$30.00', image: 'images/sng-conversion-series.jpg',
+    price: '$30.00', image: 'images/conversion-shirt-all.png',
+    sheetImage: 'images/sng-conversion-series.jpg',
     desc: 'Premium heavyweight cotton riding tees featuring SNG\'s official slogans. Built tough for the garage. Select your slogan and size.',
     selectors: ['slogan', 'size'],
     shopifyUrl: {
@@ -475,28 +470,30 @@ var PRODUCTS = {
   }
 };
 
-// Crop coordinates for single-item product display within the composite image
+// Crop coordinates or direct file swaps for single-item product display
 var COLOR_ZOOM_COORDS = {
   'sng-classic-hat': {
-    'default': { x: 8, y: 28, size: '260% 180%' }
+    'default': 'images/hat-sng-classic.png'
   },
   'conversion-hats': {
-    'default': { x: 0, y: 75, size: '200% 400%' },
-    'Black/Orange': { x: 5, y: 72, size: '1000% 400%' },
-    'Blue/Yellow': { x: 13.5, y: 72, size: '1000% 400%' },
-    'Red/Gold': { x: 21.5, y: 72, size: '1000% 400%' },
-    'Black/Yellow': { x: 30.2, y: 72, size: '1000% 400%' },
-    'Blue/White': { x: 38, y: 72, size: '1000% 400%' },
-    'Black/Green': { x: 45.8, y: 72, size: '1000% 400%' }
+    'default': 'images/hat-black-orange.png',
+    'Black/Orange': 'images/hat-black-orange.png',
+    'Navy/Hi-Vis': 'images/hat-navy-hiviz.png',
+    'Red/White': 'images/hat-red-white.png',
+    'Black/Yellow': 'images/hat-black-yellow.png',
+    'Black/Green': 'images/hat-black-green.png'
   },
   'conversion-shirt': {
-    'default': { x: 98, y: 10, size: '200% 180%' }
+    'default': 'images/conversion-shirt-black-front.png',
+    'Black': 'images/conversion-shirt-black-front.png',
+    'Navy': 'images/conversion-shirt-navy-front.png',
+    'Grey': 'images/conversion-shirt-grey-front.png'
   },
   'start-static-tee': {
-    'default': { x: 50, y: 50, size: '100% 100%' }
+    'default': 'images/sng-tee-start-static.jpg'
   },
   'sng-shirt-collection': {
-    'default': { x: 100, y: 75, size: '200% 400%' },
+    'default': 'images/conversion-shirt-all.png',
     'Stuntin is a Habit': { x: 52.8, y: 75, size: '900% 360%' },
     'Stuntin Ain\'t Easy': { x: 63.3, y: 75, size: '900% 360%' },
     'Swim Without Leave the School Behind': { x: 73.8, y: 75, size: '900% 360%' },
@@ -519,15 +516,22 @@ function openProduct(key) {
   document.getElementById('modal-desc').textContent = p.desc;
   
   var imgCrop = document.getElementById('modal-img');
-  imgCrop.style.backgroundImage = "url('" + p.image + "')";
   imgCrop.classList.remove('zoomed');
   
-  // Set default crop coordinates
+  // Set default crop coordinates or file path
   var coords = COLOR_ZOOM_COORDS[key]['default'];
   if (coords) {
-    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-    imgCrop.style.backgroundSize = coords.size;
+    if (typeof coords === 'string') {
+      imgCrop.style.backgroundImage = "url('" + coords + "')";
+      imgCrop.style.backgroundPosition = 'center';
+      imgCrop.style.backgroundSize = 'contain';
+    } else {
+      imgCrop.style.backgroundImage = "url('" + (p.sheetImage || p.image) + "')";
+      imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+      imgCrop.style.backgroundSize = coords.size;
+    }
   } else {
+    imgCrop.style.backgroundImage = "url('" + p.image + "')";
     imgCrop.style.backgroundPosition = 'center';
     imgCrop.style.backgroundSize = 'contain';
   }
@@ -545,18 +549,25 @@ function openProduct(key) {
       html += '</select>';
     } else if (sel === 'colorway') {
       html += '<div class="modal-label">Available Colorways</div>';
-      html += '<select class="modal-select" id="modal-hat-color" onchange="updateHatColorCrop(this.value)">';
+      html += '<select class="modal-select" id="modal-hat-color">';
       html += '  <option value="">-- Choose Colorway --</option>';
       html += '  <option value="Black/Orange">Black / Orange</option>';
-      html += '  <option value="Blue/Yellow">Blue / Yellow</option>';
-      html += '  <option value="Red/Gold">Red / Gold</option>';
+      html += '  <option value="Navy/Hi-Vis">Navy / Hi-Vis</option>';
+      html += '  <option value="Red/White">Red / White</option>';
       html += '  <option value="Black/Yellow">Black / Yellow</option>';
-      html += '  <option value="Blue/White">Blue / White</option>';
       html += '  <option value="Black/Green">Black / Green</option>';
+      html += '</select>';
+    } else if (sel === 'shirt-colorway') {
+      html += '<div class="modal-label">Available Colors</div>';
+      html += '<select class="modal-select" id="modal-shirt-color">';
+      html += '  <option value="">-- Choose Color --</option>';
+      html += '  <option value="Black">Black</option>';
+      html += '  <option value="Navy">Navy</option>';
+      html += '  <option value="Grey">Grey</option>';
       html += '</select>';
     } else if (sel === 'slogan') {
       html += '<div class="modal-label">Select Graphic Slogan</div>';
-      html += '<select class="modal-select" id="modal-shirt-slogan" onchange="updateShirtSloganCrop(this.value)">';
+      html += '<select class="modal-select" id="modal-shirt-slogan">';
       html += '  <option value="">-- Choose Slogan --</option>';
       html += '  <option value="Stuntin is a Habit">Stuntin is a Habit</option>';
       html += '  <option value="Stuntin Ain\'t Easy">Stuntin Ain\'t Easy</option>';
@@ -582,32 +593,6 @@ function openProduct(key) {
   document.body.style.overflow = 'hidden';
 }
 
-function updateHatColorCrop(color) {
-  var imgCrop = document.getElementById('modal-img');
-  if (color && COLOR_ZOOM_COORDS['conversion-hats'][color]) {
-    var coords = COLOR_ZOOM_COORDS['conversion-hats'][color];
-    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-    imgCrop.style.backgroundSize = coords.size;
-  } else {
-    var coords = COLOR_ZOOM_COORDS['conversion-hats']['default'];
-    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-    imgCrop.style.backgroundSize = coords.size;
-  }
-}
-
-function updateShirtSloganCrop(slogan) {
-  var imgCrop = document.getElementById('modal-img');
-  if (slogan && COLOR_ZOOM_COORDS['sng-shirt-collection'][slogan]) {
-    var coords = COLOR_ZOOM_COORDS['sng-shirt-collection'][slogan];
-    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-    imgCrop.style.backgroundSize = coords.size;
-  } else {
-    var coords = COLOR_ZOOM_COORDS['sng-shirt-collection']['default'];
-    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-    imgCrop.style.backgroundSize = coords.size;
-  }
-}
-
 function closeModal() {
   document.getElementById('product-modal').classList.remove('open');
   document.body.style.overflow = '';
@@ -628,20 +613,35 @@ function toggleZoom(e) {
     // Restore crop coordinates based on dropdown selects
     var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
     var slogan = document.getElementById('modal-shirt-slogan') ? document.getElementById('modal-shirt-slogan').value : '';
+    var shirtColor = document.getElementById('modal-shirt-color') ? document.getElementById('modal-shirt-color').value : '';
     var key = currentProduct.id;
     
-    var val = hatColor || slogan || 'default';
+    var val = hatColor || slogan || shirtColor || 'default';
     if (COLOR_ZOOM_COORDS[key][val]) {
       var coords = COLOR_ZOOM_COORDS[key][val];
-      imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-      imgCrop.style.backgroundSize = coords.size;
+      if (typeof coords === 'string') {
+        imgCrop.style.backgroundImage = "url('" + coords + "')";
+        imgCrop.style.backgroundPosition = 'center';
+        imgCrop.style.backgroundSize = 'contain';
+      } else {
+        imgCrop.style.backgroundImage = "url('" + (currentProduct.product.sheetImage || currentProduct.product.image) + "')";
+        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+        imgCrop.style.backgroundSize = coords.size;
+      }
       return;
     }
     
     var coords = COLOR_ZOOM_COORDS[key]['default'];
     if (coords) {
-      imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-      imgCrop.style.backgroundSize = coords.size;
+      if (typeof coords === 'string') {
+        imgCrop.style.backgroundImage = "url('" + coords + "')";
+        imgCrop.style.backgroundPosition = 'center';
+        imgCrop.style.backgroundSize = 'contain';
+      } else {
+        imgCrop.style.backgroundImage = "url('" + (currentProduct.product.sheetImage || currentProduct.product.image) + "')";
+        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+        imgCrop.style.backgroundSize = coords.size;
+      }
     }
   }
 }
@@ -662,14 +662,61 @@ document.getElementById('modal-img').addEventListener('mousemove', function(e) {
   updateZoomOrigin(e);
 });
 
+// Generic selector change handler for direct image swapping and CSS cropping
+document.getElementById('modal-selectors').addEventListener('change', function(e) {
+  if (e.target && e.target.classList.contains('modal-select')) {
+    var val = e.target.value;
+    var imgCrop = document.getElementById('modal-img');
+    imgCrop.classList.remove('zoomed');
+    
+    var key = currentProduct.id;
+    if (val && currentProduct && COLOR_ZOOM_COORDS[key]) {
+      var target = COLOR_ZOOM_COORDS[key][val];
+      if (typeof target === 'string') {
+        imgCrop.style.backgroundImage = "url('" + target + "')";
+        imgCrop.style.backgroundPosition = 'center';
+        imgCrop.style.backgroundSize = 'contain';
+        return;
+      } else if (target && typeof target === 'object') {
+        var sheetImage = currentProduct.product.sheetImage || currentProduct.product.image;
+        imgCrop.style.backgroundImage = "url('" + sheetImage + "')";
+        imgCrop.style.backgroundPosition = target.x + '% ' + target.y + '%';
+        imgCrop.style.backgroundSize = target.size;
+        return;
+      }
+    }
+    
+    // Fallback to default product image
+    var coords = COLOR_ZOOM_COORDS[key]['default'];
+    if (coords) {
+      if (typeof coords === 'string') {
+        imgCrop.style.backgroundImage = "url('" + coords + "')";
+        imgCrop.style.backgroundPosition = 'center';
+        imgCrop.style.backgroundSize = 'contain';
+      } else {
+        var sheetImage = currentProduct.product.sheetImage || currentProduct.product.image;
+        imgCrop.style.backgroundImage = "url('" + sheetImage + "')";
+        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+        imgCrop.style.backgroundSize = coords.size;
+      }
+    } else {
+      imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
+      imgCrop.style.backgroundPosition = 'center';
+      imgCrop.style.backgroundSize = 'contain';
+    }
+  }
+});
+
 function modalOrder() {
   var p = currentProduct.product;
   var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+  var shirtColor = document.getElementById('modal-shirt-color') ? document.getElementById('modal-shirt-color').value : '';
   var size = document.getElementById('modal-size') ? document.getElementById('modal-size').value : '';
   var slogan = document.getElementById('modal-shirt-slogan') ? document.getElementById('modal-shirt-slogan').value : '';
   var embroidery = document.getElementById('modal-side-embroidery') ? document.getElementById('modal-side-embroidery').value : '';
   
   if (p.selectors.indexOf('colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
+  if (p.selectors.indexOf('shirt-colorway') > -1 && !shirtColor) { alert('Please select a color.'); return; }
   if (p.selectors.indexOf('slogan') > -1 && !slogan) { alert('Please select a slogan.'); return; }
   if (p.selectors.indexOf('size') > -1 && !size) { alert('Please select a size.'); return; }
   
