@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Cycles — Leave The School Behind</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:ital,wght=0,400;0,700;0,900;1,400;1,700;1,900&family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0a0a0a;
+  --dark: #020202;
+  --gray-bg: #121212;
+  --cyan: #00f0ff;
+  --cyan-light: #66f5ff;
+  --white: #ffffff;
+  --off-white: #f5f5f5;
+  --border: #00f0ff;
+  --text: #ffffff;
+  --text-muted: #8899a6;
+  --head: 'Barlow Condensed', sans-serif;
+  --oswald: 'Oswald', sans-serif;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--black);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1, h2, h3, .section-title, .brand, .apparel-name, .nav-logo-text {
+  font-family: var(--head);
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--dark);
+  border-bottom: 3px solid var(--border);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 40px; width: 40px; object-fit: contain; }
+.nav-logo-text { font-size: 24px; color: var(--white); letter-spacing: 1.5px; }
+.nav-logo-text span { color: var(--cyan); }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { font-family: var(--head); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--cyan); }
+.nav-cta {
+  background: var(--cyan);
+  color: var(--dark) !important;
+  padding: 8px 18px;
+  border-radius: 0;
+  border: 2px solid var(--dark);
+  font-family: var(--head);
+  font-weight: 900;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--cyan-light); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+  background: linear-gradient(rgba(2,2,2,0.85), rgba(2,2,2,0.95)), url('images/sng-ltsb-booth-display.jpg') no-repeat center center;
+  background-size: cover;
+  border-bottom: 3px solid var(--border);
+  position: relative;
+}
+.hero-tag {
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-size: clamp(30px, 5.5vw, 68px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 0.95;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.hero h1 span.cyan { color: var(--cyan); }
+.hero-sub {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--cyan);
+  margin: 0 auto 24px;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  background: var(--dark);
+  padding: 30px 40px;
+}
+.section-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.section-title { font-size: clamp(24px, 4vw, 40px); color: var(--white); line-height: 1; }
+.section-subtitle { font-size: 14px; color: var(--cyan); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+/* ── PRODUCT CARDS ── */
+.product-grid-section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.product-card {
+  background: var(--gray-bg);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover { transform: translateY(-4px); border-color: var(--white); }
+.product-card-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--dark); border-bottom: 2px solid var(--border); position: relative; }
+.product-card-img { width: 100%; height: 100%; object-fit: cover; }
+.product-card-badge { position: absolute; top: 12px; left: 12px; background: var(--cyan); color: var(--dark); font-family: var(--head); font-weight: 900; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid var(--border); }
+.product-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.product-card-tag { font-family: var(--head); font-weight: 700; font-size: 10px; color: var(--cyan); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.product-card-name { font-family: var(--oswald); font-weight: 600; font-size: 16px; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.product-card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; }
+.product-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.product-card-price { font-family: var(--oswald); font-weight: 700; font-size: 18px; color: var(--cyan); }
+.product-card-btn { background: var(--cyan); color: var(--dark); border: none; padding: 8px 16px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.product-card:hover .product-card-btn { background: var(--white); color: var(--dark); }
+
+/* ── MODALS ── */
+.modal-wrap { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 16px; }
+.modal-wrap.open { display: flex; }
+.modal { background: var(--gray-bg); border: 3px solid var(--border); width: 90%; max-width: 860px; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; position: relative; color: var(--white); }
+.modal-close { position: absolute; top: 12px; right: 12px; background: var(--cyan); color: var(--dark); border: none; width: 32px; height: 32px; font-size: 20px; font-weight: 700; cursor: pointer; z-index: 10; }
+.modal-img-wrap { background: var(--dark); border-right: 3px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+.modal-img-crop { width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: contain; transition: transform 0.25s ease-out; transform-origin: center center; cursor: zoom-in; }
+.modal-img-crop.zoomed { transform: scale(2.2); cursor: zoom-out; transition: transform 0.25s ease-out; }
+.modal-body { padding: 32px 28px; display: flex; flex-direction: column; }
+.modal-badge { font-size: 10px; color: var(--cyan); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.modal-name { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+.modal-price { font-family: var(--oswald); font-size: 26px; font-weight: 700; color: var(--cyan); margin-bottom: 16px; }
+.modal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+.modal-label { font-family: var(--head); font-size: 11px; color: var(--cyan); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 700; }
+.modal-select { width: 100%; padding: 10px 14px; background: var(--dark); border: 2px solid var(--border); color: var(--white); font-size: 13px; font-weight: 700; margin-bottom: 14px; outline: none; cursor: pointer; }
+.modal-add-btn { width: 100%; background: var(--cyan); color: var(--dark); border: 2px solid var(--border); padding: 14px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: auto; }
+.modal-add-btn:hover { background: var(--white); color: var(--dark); }
+.modal-zoom-hint { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 10px; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark); border-top: 3px solid var(--border); padding: 48px 40px; color: var(--text-muted); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.footer-logo { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); }
+.footer-logo span { color: var(--cyan); }
+.footer-tagline { font-family: var(--head); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; text-transform: uppercase; font-family: var(--head); font-weight: 700; letter-spacing: 1px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 40px; border-top: 1px solid var(--gray-bg); padding-top: 20px; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .modal { grid-template-columns: 1fr; }
+  .modal-img-wrap { border-right: none; border-bottom: 3px solid var(--border); min-height: 240px; }
+  footer { padding: 32px 20px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="sng-logo-orange.jpeg" alt="SNG Cycles">
+    <span class="nav-logo-text">SNG <span>◆</span> Cycles</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#showroom">Showroom</a>
+    <a href="florida-grown.html">FL Grown</a>
+    <a href="mako-gold.html">Mako Gold</a>
+    <a href="ltsb.html" style="color:var(--cyan);">LTSB</a>
+    <a href="race-day.html">Race Day</a>
+    <a href="conversion.html">Conversion</a>
+    <a href="index.html#mens-gear">Men's</a>
+    <a href="index.html#womens-gear">Women's</a>
+    <a href="index.html#waitlist" class="nav-cta">Join the Crew</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-tag">SNG Collections</div>
+  <h1>LEAVE THE SCHOOL <span class="cyan">BEHIND</span></h1>
+  <div class="hero-sub">The SNG Slogan Series & Core Basics</div>
+  <div class="hero-divider"></div>
+  <p style="font-size: 15px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+    Cyan outline graphics, Great White shark sketches, and raw street-builder slogans. Built for the crew. Shark not goldfish.
+  </p>
+</div>
+
+<!-- ── MEN'S SECTION HEADER ── -->
+<div class="section-header" id="mens-section">
+  <div class="section-header-inner">
+    <div>
+      <div class="section-subtitle">LTSB Drop — Men's</div>
+      <h2 class="section-title">Men's LTSB Apparel</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ── MEN'S PRODUCTS GRID ── -->
+<div class="product-grid-section">
+  <div class="product-grid">
+    <!-- LTSB Tee -->
+    <div class="product-card" onclick="openProduct('tee-ltsb')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-ltsb-tee-mockup.jpg" class="product-card-img" alt="Leave The School Behind Tee">
+        <div class="product-card-badge">LTSB Core</div>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Tees</div>
+        <h4 class="product-card-name">Leave The School Behind Tee</h4>
+        <p class="product-card-desc">Cyan blue shark outline drop. Heavyweight combed cotton construction.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$30.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SNG Black Tee -->
+    <div class="product-card" onclick="openProduct('tee-black-gas')">
+      <div class="product-card-img-wrap">
+        <img src="assets/tonight-mvp/02-black-tee-use-ta-have-gas.png" class="product-card-img" alt="SNG Black Tee">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Tees</div>
+        <h4 class="product-card-name">SNG Black Tee</h4>
+        <p class="product-card-desc">"I Use Ta Have Gas. Now I Just Haul Ass." back print. Street rep tee.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$30.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SNG Black Hoodie -->
+    <div class="product-card" onclick="openProduct('hoodie-black-gas')">
+      <div class="product-card-img-wrap">
+        <img src="assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png" class="product-card-img" alt="SNG Black Hoodie">
+        <div class="product-card-badge">Fleece</div>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hoodies</div>
+        <h4 class="product-card-name">SNG Black Hoodie</h4>
+        <p class="product-card-desc">Premium fleece hoodie. Fits like Carhartt. Orange fin chest print, slogan back.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$65.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── WOMEN'S SECTION HEADER ── -->
+<div class="section-header" id="womens-section">
+  <div class="section-header-inner">
+    <div>
+      <div class="section-subtitle">LTSB Drop — Women's</div>
+      <h2 class="section-title">Women's LTSB Apparel</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ── WOMEN'S PRODUCTS GRID ── -->
+<div class="product-grid-section">
+  <div class="product-grid">
+    <!-- Women's LTSB Tee -->
+    <div class="product-card" onclick="openProduct('w-tee-ltsb')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-womens-design-sheet.jpg" class="product-card-img" alt="Women's LTSB Tee">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Tees</div>
+        <h4 class="product-card-name">Women's LTSB Tee</h4>
+        <p class="product-card-desc">Women's edition Leave The School Behind. Combed tailored fit, cyan fin.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$30.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Women's Black Tee -->
+    <div class="product-card" onclick="openProduct('w-tee-black-gas')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-womens-mockup-crop.jpg" class="product-card-img" alt="Women's Black Tee">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Tees</div>
+        <h4 class="product-card-name">Women's Black Tee</h4>
+        <p class="product-card-desc">Tailored women's crop relaxed fit with "I Use Ta Have Gas" back slogan print.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$30.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Women's Black Hoodie -->
+    <div class="product-card" onclick="openProduct('w-hoodie-black-gas')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-womens-mockup-crop.jpg" class="product-card-img" alt="Women's SNG Black Hoodie">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hoodies</div>
+        <h4 class="product-card-name">Women's SNG Black Hoodie</h4>
+        <p class="product-card-desc">Tailored women's crop hoodie. Heavyweight black fleece, orange fin chest logo.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$65.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PACKS & DEALS SECTION ── -->
+<div class="section-header" id="packs-deals">
+  <div class="section-header-inner">
+    <div>
+      <div style="font-family:var(--mono); font-size:11px; color:var(--cyan); font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:10px;">[ SNG GEAR // BUNDLE PACKS ]</div>
+      <h2 style="font-size:clamp(32px,5vw,56px); font-weight:900; letter-spacing:1px; text-transform:uppercase; line-height:1; font-style:italic; color:#fff;">Packs & Deals</h2>
+      <div style="font-size:15px; color:var(--text-muted); margin-top:8px;">Stock up on SNG essentials. Save big on official bundle packs.</div>
+    </div>
+  </div>
+</div>
+
+<div class="product-grid-section" style="padding-top:0;">
+  <div class="product-grid">
+    <!-- 3-PACK -->
+    <div class="product-card" onclick="openProduct('ltsb-3pack')">
+      <div class="product-card-img-wrap">
+        <div class="product-card-badge">Bundle Deal</div>
+        <img src="images/sng-packs-3-5.jpg" class="product-card-img" alt="LTSB T-Shirt 3-Pack" style="object-fit: cover; object-position: top center; height: 100%;">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">3 Premium Shirts</div>
+        <h4 class="product-card-name">LTSB T-Shirt 3-Pack</h4>
+        <p class="product-card-desc">Includes Black, Navy, and Charcoal/Dark Grey graphic tees.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$80.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5-PACK -->
+    <div class="product-card" onclick="openProduct('ltsb-5pack')">
+      <div class="product-card-img-wrap">
+        <div class="product-card-badge">Best Value</div>
+        <img src="images/sng-packs-3-5.jpg" class="product-card-img" alt="LTSB T-Shirt 5-Pack" style="object-fit: cover; object-position: bottom center; height: 100%;">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">5 Premium Shirts</div>
+        <h4 class="product-card-name">LTSB T-Shirt 5-Pack</h4>
+        <p class="product-card-desc">Includes Black, Charcoal, Navy, Light Grey, and White graphic tees.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$120.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">SNG <span>◆</span> Cycles</div>
+      <div class="footer-tagline">Leave the school behind — sngcycles.com</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#showroom">Showroom</a>
+      <a href="florida-grown.html">FL Grown</a>
+      <a href="mako-gold.html">Mako Gold</a>
+      <a href="ltsb.html">LTSB</a>
+      <a href="race-day.html">Race Day</a>
+      <a href="conversion.html">Conversion</a>
+      <a href="builds.html">Builds</a>
+      <a href="https://tiktok.com/@sngcycles" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sngcycles" target="_blank">Instagram</a>
+      <a href="mailto:sales@sngcycles.com">Contact</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    © 2026 SNG Customs / Complete Care Marketing Inc. · Royal Palm Beach, FL · Powered by Shopify + Printful
+  </div>
+</footer>
+
+<!-- ── PRODUCT MODAL ── -->
+<div class="modal-wrap" id="product-modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img-wrap">
+      <div id="modal-img" class="modal-img-crop" onclick="toggleZoom(event)"></div>
+    </div>
+    <div class="modal-body">
+      <div id="modal-badge" class="modal-badge"></div>
+      <div id="modal-name" class="modal-name"></div>
+      <div id="modal-sub" class="modal-sub"></div>
+      <div id="modal-price" class="modal-price"></div>
+      <div id="modal-desc" class="modal-desc"></div>
+      <div id="modal-selectors"></div>
+      <button id="modal-order-btn" class="modal-add-btn" onclick="modalOrder()">Buy Now</button>
+      <div id="modal-zoom-hint" class="modal-zoom-hint">Click image to zoom in · move mouse to pan</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── E-COMMERCE CONFIGURATION ── */
+var ECOM_CONFIG = {
+  platform: 'shopify',
+  shopifyStoreDomain: 'r4tpmi-xj.myshopify.com',
+  orderEmail: 'sales@sngcycles.com'
+};
+
+/* ── PRODUCT MODAL DATA ── */
+var PRODUCTS = {
+  'tee-ltsb': {
+    badge: 'LTSB Collection', name: 'Leave The School Behind Tee', sub: 'LTSB Shark Graphic Tee',
+    price: '$30.00', image: 'images/sng-mens-design-sheet.jpg',
+    desc: 'Leave The School Behind Collection Tee. Features a back graphic of a great white shark and cyan blue details.',
+    selectors: ['size', 'ltsb-colorway'], orderLabel: 'Buy LTSB Tee — $30.00', orderItem: 'Leave The School Behind Tee',
+    shopifyUrl: {
+      'Black / S': '45592418746547:1', 'Black / M': '45592418779315:1', 'Black / L': '45592418812083:1',
+      'Black / XL': '45592418844851:1', 'Black / 2XL': '45592418877619:1', 'Black / 3XL': '45592418910387:1',
+      'Navy / S': '45592418943155:1', 'Navy / M': '45592418975923:1', 'Navy / L': '45592419008691:1',
+      'Navy / XL': '45592419041459:1', 'Navy / 2XL': '45592419074227:1', 'Navy / 3XL': '45592419106995:1',
+      'Charcoal / S': '45592419139763:1', 'Charcoal / M': '45592419172531:1', 'Charcoal / L': '45592419205299:1',
+      'Charcoal / XL': '45592419238067:1', 'Charcoal / 2XL': '45592419270835:1', 'Charcoal / 3XL': '45592419303603:1',
+      'default': '45592418779315:1'
+    }
+  },
+  'tee-black-gas': {
+    badge: 'Core Slogan', name: 'SNG Black Tee', sub: 'I Use Ta Have Gas. Now I Just Haul Ass.',
+    price: '$30.00', image: 'assets/tonight-mvp/02-black-tee-use-ta-have-gas.png',
+    desc: 'Heavyweight combed cotton black tee. Front SNG logo, bold slogan back print.',
+    selectors: ['size'], orderLabel: 'Buy Tee — $30.00', orderItem: 'SNG Black Tee',
+    shopifyUrl: {
+      'S': '45592416944307:1', 'M': '45592416977075:1', 'L': '45592417009843:1',
+      'XL': '45592417042611:1', '2XL': '45592417075379:1', '3XL': '45592417108147:1',
+      'default': '45592416977075:1'
+    }
+  },
+  'ltsb-3pack': {
+    badge: 'Bundle Deal', name: 'LTSB T-Shirt 3-Pack', sub: 'Black · Navy · Charcoal',
+    price: '$80.00', image: 'images/sng-packs-3-5.jpg',
+    desc: 'Get the SNG core collection in a 3-pack bundle. Includes three premium heavyweight cotton tees in Black, Navy, and Charcoal/Dark Grey. Standard fit. Sized S to 3XL.',
+    selectors: ['size'], orderLabel: 'Buy 3-Pack — $80.00', orderItem: 'LTSB T-Shirt 3-Pack',
+    shopifyUrl: {
+      'S': '4600000000082:1', 'M': '4600000000083:1', 'L': '4600000000084:1',
+      'XL': '4600000000085:1', '2XL': '4600000000086:1', '3XL': '4600000000087:1',
+      'default': '4600000000083:1'
+    },
+    crop: { x: 50, y: 0, size: '100% 200%' }
+  },
+  'ltsb-5pack': {
+    badge: 'Best Value', name: 'LTSB T-Shirt 5-Pack', sub: 'Black · Charcoal · Navy · Grey · White',
+    price: '$120.00', image: 'images/sng-packs-3-5.jpg',
+    desc: 'The ultimate builder collection. 5 premium heavyweight cotton tees in our official colors: Black, Charcoal, Navy, Light Grey, and White. Save big with this bundle. Sized S to 3XL.',
+    selectors: ['size'], orderLabel: 'Buy 5-Pack — $120.00', orderItem: 'LTSB T-Shirt 5-Pack',
+    shopifyUrl: {
+      'S': '4600000000088:1', 'M': '4600000000089:1', 'L': '4600000000090:1',
+      'XL': '4600000000091:1', '2XL': '4600000000092:1', '3XL': '4600000000093:1',
+      'default': '4600000000089:1'
+    },
+    crop: { x: 50, y: 100, size: '100% 200%' }
+  },
+  'hoodie-black-gas': {
+    badge: 'Builder Series', name: 'SNG Black Hoodie', sub: 'I Use Ta Have Gas. Now I Just Haul Ass.',
+    price: '$65.00', image: 'assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png',
+    desc: 'Premium heavyweight fleece hoodie. Fits like Carhartt. SNG Orange Fin front print. Slogan back graphic.',
+    selectors: ['size'], orderLabel: 'Buy Hoodie — $65.00', orderItem: 'SNG Black Hoodie',
+    shopifyUrl: {
+      'S': '45592416551091:1', 'M': '45592416583859:1', 'L': '45592416616627:1',
+      'XL': '45592416649395:1', '2XL': '45592416682163:1', '3XL': '45592416714931:1',
+      'default': '45592416583859:1'
+    }
+  }
+};
+
+// Copy women's specific specs dynamically into PRODUCTS
+var w_items = {
+  'w-tee-ltsb': { name: "Women's LTSB Tee", base: "tee-ltsb", img: "images/sng-womens-design-sheet.jpg" },
+  'w-tee-black-gas': { name: "Women's Black Tee", base: "tee-black-gas", img: "images/sng-womens-mockup-crop.jpg" },
+  'w-hoodie-black-gas': { name: "Women's SNG Black Hoodie", base: "hoodie-black-gas", img: "images/sng-womens-mockup-crop.jpg" }
+};
+
+for (var wKey in w_items) {
+  var base = PRODUCTS[w_items[wKey].base];
+  if (base) {
+    PRODUCTS[wKey] = {
+      badge: base.badge + " · Women's",
+      name: w_items[wKey].name,
+      sub: base.sub,
+      price: base.price,
+      image: w_items[wKey].img,
+      desc: base.desc.replace('heavyweight', "tailored women's crop").replace('combed cotton', "tailored relaxed fit"),
+      selectors: base.selectors,
+      orderLabel: 'Buy ' + w_items[wKey].name + ' — ' + base.price,
+      orderItem: w_items[wKey].name,
+      shopifyUrl: base.shopifyUrl
+    };
+  }
+}
+
+/* ── INTERACTIVE ZOOMS ── */
+var COLOR_ZOOM_COORDS = {
+  'tee-ltsb': {
+    'Black': { x: 0, y: 50, size: '300% 100%' },
+    'Navy': { x: 50, y: 50, size: '300% 100%' },
+    'Charcoal': { x: 100, y: 50, size: '300% 100%' }
+  },
+  'w-tee-ltsb': {
+    'Black': { x: 0, y: 50, size: '300% 100%' },
+    'Navy': { x: 50, y: 50, size: '300% 100%' },
+    'Charcoal': { x: 100, y: 50, size: '300% 100%' }
+  }
+};
+
+var currentProduct = null;
+var SIZES = ['S','M','L','XL','2XL','3XL'];
+var TEE_LTSB_COLORS = ['Black', 'Navy', 'Charcoal'];
+
+function openProduct(id) {
+  var p = PRODUCTS[id];
+  if (!p) return;
+  currentProduct = { id:id, product:p };
+  document.getElementById('modal-badge').textContent = p.badge;
+  document.getElementById('modal-name').textContent = p.name;
+  document.getElementById('modal-sub').textContent = p.sub;
+  document.getElementById('modal-price').textContent = p.price;
+  document.getElementById('modal-desc').textContent = p.desc;
+  
+  var imgCrop = document.getElementById('modal-img');
+  imgCrop.style.backgroundImage = "url('" + p.image + "')";
+  imgCrop.classList.remove('zoomed');
+  if (p.crop) {
+    imgCrop.style.backgroundSize = p.crop.size;
+    imgCrop.style.backgroundPosition = p.crop.x + '% ' + p.crop.y + '%';
+  } else {
+    imgCrop.style.backgroundSize = 'contain';
+    imgCrop.style.backgroundPosition = 'center';
+  }
+  
+  document.getElementById('modal-order-btn').textContent = p.orderLabel;
+  var sel = document.getElementById('modal-selectors');
+  sel.innerHTML = '';
+  if (p.selectors.indexOf('size') > -1) sel.innerHTML += buildSelect('modal-size', '— Select Size —', SIZES);
+  if (p.selectors.indexOf('ltsb-colorway') > -1) sel.innerHTML += buildSelect('modal-hat-color', '— Select Colorway —', TEE_LTSB_COLORS);
+  
+  document.getElementById('product-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  if (!window.location.hash.includes('product-')) {
+    history.pushState({ modalOpen: id }, '', '#product-' + id);
+  }
+}
+
+function buildSelect(id, placeholder, options) {
+  var html = '<select id="' + id + '" class="modal-select"><option value="">' + placeholder + '</option>';
+  options.forEach(function(o){ html += '<option>' + o + '</option>'; });
+  return html + '</select>';
+}
+
+function closeModal(fromPopState) {
+  document.getElementById('product-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  if (!fromPopState && window.location.hash.startsWith('#product-')) {
+    history.back();
+  }
+}
+
+function toggleZoom(e) {
+  var imgCrop = document.getElementById('modal-img');
+  var isZoomed = imgCrop.classList.contains('zoomed');
+  
+  if (!isZoomed) {
+    imgCrop.classList.add('zoomed');
+    if (e) {
+      updateZoomOrigin(e);
+    }
+  } else {
+    imgCrop.classList.remove('zoomed');
+    var val = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+    if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
+      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
+      if (coords) {
+        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+        imgCrop.style.backgroundSize = coords.size;
+        return;
+      }
+    }
+    if (currentProduct && currentProduct.product.crop) {
+      imgCrop.style.backgroundPosition = currentProduct.product.crop.x + '% ' + currentProduct.product.crop.y + '%';
+      imgCrop.style.backgroundSize = currentProduct.product.crop.size;
+      return;
+    }
+    imgCrop.style.backgroundSize = 'contain';
+    imgCrop.style.backgroundPosition = 'center';
+  }
+}
+
+function updateZoomOrigin(e) {
+  var imgCrop = document.getElementById('modal-img');
+  if (imgCrop.classList.contains('zoomed')) {
+    var rect = imgCrop.getBoundingClientRect();
+    var x = ((e.clientX - rect.left) / rect.width) * 100;
+    var y = ((e.clientY - rect.top) / rect.height) * 100;
+    x = Math.max(0, Math.min(100, x));
+    y = Math.max(0, Math.min(100, y));
+    imgCrop.style.transformOrigin = x + '% ' + y + '%';
+  }
+}
+
+document.getElementById('modal-img').addEventListener('mousemove', function(e) {
+  updateZoomOrigin(e);
+});
+
+// Dropdown Auto-Crop and Zoom
+document.getElementById('modal-selectors').addEventListener('change', function(e) {
+  if (e.target && e.target.id === 'modal-hat-color') {
+    var val = e.target.value;
+    var imgCrop = document.getElementById('modal-img');
+    if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
+      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
+      if (coords) {
+        imgCrop.classList.remove('zoomed');
+        imgCrop.style.backgroundSize = coords.size;
+        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+      }
+    } else {
+      imgCrop.classList.remove('zoomed');
+      imgCrop.style.backgroundSize = 'contain';
+      imgCrop.style.backgroundPosition = 'center';
+    }
+  }
+});
+
+function modalOrder() {
+  var p = currentProduct.product;
+  var size = document.getElementById('modal-size') ? document.getElementById('modal-size').value : '';
+  var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+  
+  if (p.selectors.indexOf('size') > -1 && !size) { alert('Please select a size.'); return; }
+  if (p.selectors.indexOf('ltsb-colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
+  
+  if (ECOM_CONFIG.platform === 'shopify') {
+    var checkoutUrl = '';
+    if (p.shopifyUrl) {
+      if (typeof p.shopifyUrl === 'object') {
+        var key = '';
+        if (size && hatColor) {
+          key = hatColor + ' / ' + size;
+        } else {
+          key = size || hatColor || 'default';
+        }
+        checkoutUrl = p.shopifyUrl[key] || p.shopifyUrl['default'] || '';
+      } else {
+        checkoutUrl = p.shopifyUrl;
+      }
+    }
+    if (checkoutUrl) {
+      if (!checkoutUrl.startsWith('http')) {
+        checkoutUrl = 'https://' + ECOM_CONFIG.shopifyStoreDomain + '/cart/' + checkoutUrl;
+      }
+      window.open(checkoutUrl, '_blank');
+      return;
+    }
+  }
+}
+
+// Browser navigation history popstate listener
+window.addEventListener('popstate', function(event) {
+  var modal = document.getElementById('product-modal');
+  var isOpen = modal && modal.classList.contains('open');
+  if (isOpen) {
+    closeModal(true);
+  } else if (event.state && event.state.modalOpen) {
+    openProduct(event.state.modalOpen);
+  }
+});
+
+// Auto-open product hash
+window.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash && window.location.hash.startsWith('#product-')) {
+    var productId = window.location.hash.replace('#product-', '');
+    setTimeout(function() {
+      if (PRODUCTS[productId]) {
+        openProduct(productId);
+      }
+    }, 200);
+  }
+});
+</script>
+</body>
+</html>
