@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -256,7 +256,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Florida Grown Tee -->
     <div class="product-card" onclick="openProduct('tee-fl-grown')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-flgrown-mens-collection.jpg" class="product-card-img" alt="Florida Grown Tee">
+        <img src="images/tee-fl-grown-black-front.png" class="product-card-img" alt="Florida Grown Tee">
         <div class="product-card-badge">New Drop</div>
       </div>
       <div class="product-card-body">
@@ -273,7 +273,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Rider Cap -->
     <div class="product-card" onclick="openProduct('hat-rider-colors')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-rider-hats-grid-5way.jpg" class="product-card-img" alt="SNG Rider Team Colors Snapback">
+        <img src="images/hat-rider-color1.png" class="product-card-img" alt="SNG Rider Team Colors Snapback">
         <div class="product-card-badge">7 Colors</div>
       </div>
       <div class="product-card-body">
@@ -305,7 +305,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Women's Florida Grown Tee -->
     <div class="product-card" onclick="openProduct('w-tee-fl-grown')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-flgrown-womens-apparel.jpg" class="product-card-img" alt="Women's Florida Grown Tee">
+        <img src="images/w-tee-fl-grown-black-front.png" class="product-card-img" alt="Women's Florida Grown Tee">
       </div>
       <div class="product-card-body">
         <div class="product-card-tag">Tees</div>
@@ -321,7 +321,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Women's Rider Colors Snapback -->
     <div class="product-card" onclick="openProduct('w-hat-rider-colors')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-rider-hats-grid-frontback.png" class="product-card-img" alt="Women's Rider Colors Snapback">
+        <img src="images/hat-rider-color1.png" class="product-card-img" alt="Women's Rider Colors Snapback">
         <div class="product-card-badge">7 Colors</div>
       </div>
       <div class="product-card-body">
@@ -394,7 +394,7 @@ var ECOM_CONFIG = {
 var PRODUCTS = {
   'hat-rider-colors': {
     badge: 'SNG Rider Series', name: 'SNG Rider Team Colors Snapback', sub: 'Structured Twill Cap',
-    price: '$35.00', image: 'images/sng-rider-hats-grid-5way.jpg',
+    price: '$35.00', image: 'images/hat-rider-color1.png',
     desc: 'Premium Rider Series twill snapback. Mid-profile structured 6-panel fit. Embroidered SNG fin logo on front. Available in 7 team colorways: SNG Classic, KTM, Yamaha, Honda, Husqvarna, Kawasaki, and Sur-Ron.',
     selectors: ['hat-colorway'], orderLabel: 'Buy Rider Cap — $35.00', orderItem: 'SNG Rider Team Colors Snapback',
     shopifyUrl: {
@@ -410,7 +410,7 @@ var PRODUCTS = {
   },
   'tee-fl-grown': {
     badge: 'Florida Grown Collection', name: 'Florida Grown Tee', sub: 'Shark Not Goldfish Tee',
-    price: '$30.00', image: 'images/sng-flgrown-mens-collection.jpg',
+    price: '$30.00', image: 'images/tee-fl-grown-black-front.png',
     desc: 'Florida Grown Collection Tee. Features the custom back graphic silhouette of Florida with palm trees and shark fin logo. Chest pocket print.',
     selectors: ['size', 'fl-grown-colorway'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee',
     shopifyUrl: {
@@ -427,8 +427,8 @@ var PRODUCTS = {
 
 // Copy women's specific specs dynamically into PRODUCTS
 var w_items = {
-  'w-hat-rider-colors': { name: "Women's Rider Colors Snapback", base: "hat-rider-colors", img: "images/sng-rider-hats-grid-frontback.png" },
-  'w-tee-fl-grown': { name: "Women's Florida Grown Tee", base: "tee-fl-grown", img: "images/sng-flgrown-womens-apparel.jpg" }
+  'w-hat-rider-colors': { name: "Women's Rider Colors Snapback", base: "hat-rider-colors", img: "images/hat-rider-color1.png" },
+  'w-tee-fl-grown': { name: "Women's Florida Grown Tee", base: "tee-fl-grown", img: "images/w-tee-fl-grown-black-front.png" }
 };
 
 for (var wKey in w_items) {
@@ -576,15 +576,21 @@ document.getElementById('modal-selectors').addEventListener('change', function(e
   if (e.target && e.target.id === 'modal-hat-color') {
     var val = e.target.value;
     var imgCrop = document.getElementById('modal-img');
+    imgCrop.classList.remove('zoomed');
+    
     if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
-      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
-      if (coords) {
-        imgCrop.classList.remove('zoomed');
-        imgCrop.style.backgroundSize = coords.size;
-        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+      var target = COLOR_ZOOM_COORDS[currentProduct.id][val];
+      if (typeof target === 'string') {
+        imgCrop.style.backgroundImage = "url('" + target + "')";
+        imgCrop.style.backgroundSize = 'contain';
+        imgCrop.style.backgroundPosition = 'center';
+      } else if (target && typeof target === 'object') {
+        imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
+        imgCrop.style.backgroundSize = target.size;
+        imgCrop.style.backgroundPosition = target.x + '% ' + target.y + '%';
       }
     } else {
-      imgCrop.classList.remove('zoomed');
+      imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
       imgCrop.style.backgroundSize = 'contain';
       imgCrop.style.backgroundPosition = 'center';
     }
