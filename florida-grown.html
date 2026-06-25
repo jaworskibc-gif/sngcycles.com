@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Cycles — Florida Grown Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:ital,wght=0,400;0,700;0,900;1,400;1,700;1,900&family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #111111;
+  --dark: #0a0a0a;
+  --gray-bg: #1a1a1a;
+  --teal: #00c7b7;
+  --teal-light: #33d7c7;
+  --coral: #ff6b7a;
+  --purple: #9b59d1;
+  --white: #ffffff;
+  --off-white: #f5f5f5;
+  --border: #00c7b7;
+  --text: #ffffff;
+  --text-muted: #aaaaaa;
+  --head: 'Barlow Condensed', sans-serif;
+  --oswald: 'Oswald', sans-serif;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--black);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1, h2, h3, .section-title, .brand, .apparel-name, .nav-logo-text {
+  font-family: var(--head);
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--dark);
+  border-bottom: 3px solid var(--border);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 40px; width: 40px; object-fit: contain; }
+.nav-logo-text { font-size: 24px; color: var(--white); letter-spacing: 1.5px; }
+.nav-logo-text span { color: var(--teal); }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { font-family: var(--head); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--teal); }
+.nav-cta {
+  background: var(--teal);
+  color: var(--dark) !important;
+  padding: 8px 18px;
+  border-radius: 0;
+  border: 2px solid var(--dark);
+  font-family: var(--head);
+  font-weight: 900;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--teal-light); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+  background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.95)), url('images/sng-flgrown-collection-banner.jpg') no-repeat center center;
+  background-size: cover;
+  border-bottom: 3px solid var(--border);
+  position: relative;
+}
+.hero-tag {
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 0.95;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.hero h1 span.teal { color: var(--teal); }
+.hero h1 span.coral { color: var(--coral); }
+.hero-sub {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--teal);
+  margin: 0 auto 24px;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  background: var(--dark);
+  padding: 30px 40px;
+}
+.section-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.section-title { font-size: clamp(24px, 4vw, 40px); color: var(--white); line-height: 1; }
+.section-subtitle { font-size: 14px; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+/* ── PRODUCT CARDS ── */
+.product-grid-section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.product-card {
+  background: var(--gray-bg);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover { transform: translateY(-4px); border-color: var(--coral); }
+.product-card-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--dark); border-bottom: 2px solid var(--border); position: relative; }
+.product-card-img { width: 100%; height: 100%; object-fit: cover; }
+.product-card-badge { position: absolute; top: 12px; left: 12px; background: var(--coral); color: var(--dark); font-family: var(--head); font-weight: 900; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid var(--border); }
+.product-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.product-card-tag { font-family: var(--head); font-weight: 700; font-size: 10px; color: var(--teal); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.product-card-name { font-family: var(--oswald); font-weight: 600; font-size: 16px; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.product-card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; }
+.product-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.product-card-price { font-family: var(--oswald); font-weight: 700; font-size: 18px; color: var(--teal); }
+.product-card-btn { background: var(--teal); color: var(--dark); border: none; padding: 8px 16px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.product-card:hover .product-card-btn { background: var(--coral); }
+
+/* ── MODALS ── */
+.modal-wrap { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 16px; }
+.modal-wrap.open { display: flex; }
+.modal { background: var(--gray-bg); border: 3px solid var(--border); width: 90%; max-width: 860px; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; position: relative; color: var(--white); }
+.modal-close { position: absolute; top: 12px; right: 12px; background: var(--teal); color: var(--dark); border: none; width: 32px; height: 32px; font-size: 20px; font-weight: 700; cursor: pointer; z-index: 10; }
+.modal-img-wrap { background: var(--dark); border-right: 3px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+.modal-img-crop { width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: contain; transition: transform 0.25s ease-out; transform-origin: center center; cursor: zoom-in; }
+.modal-img-crop.zoomed { transform: scale(2.2); cursor: zoom-out; transition: transform 0.25s ease-out; }
+.modal-body { padding: 32px 28px; display: flex; flex-direction: column; }
+.modal-badge { font-size: 10px; color: var(--coral); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.modal-name { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+.modal-price { font-family: var(--oswald); font-size: 26px; font-weight: 700; color: var(--teal); margin-bottom: 16px; }
+.modal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+.modal-label { font-family: var(--head); font-size: 11px; color: var(--teal); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 700; }
+.modal-select { width: 100%; padding: 10px 14px; background: var(--dark); border: 2px solid var(--border); color: var(--white); font-size: 13px; font-weight: 700; margin-bottom: 14px; outline: none; cursor: pointer; }
+.modal-add-btn { width: 100%; background: var(--teal); color: var(--dark); border: 2px solid var(--border); padding: 14px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: auto; }
+.modal-add-btn:hover { background: var(--coral); }
+.modal-zoom-hint { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 10px; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark); border-top: 3px solid var(--border); padding: 48px 40px; color: var(--text-muted); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.footer-logo { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); }
+.footer-logo span { color: var(--teal); }
+.footer-tagline { font-family: var(--head); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; text-transform: uppercase; font-family: var(--head); font-weight: 700; letter-spacing: 1px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 40px; border-top: 1px solid var(--gray-bg); padding-top: 20px; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .modal { grid-template-columns: 1fr; }
+  .modal-img-wrap { border-right: none; border-bottom: 3px solid var(--border); min-height: 240px; }
+  footer { padding: 32px 20px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="sng-logo-orange.jpeg" alt="SNG Cycles">
+    <span class="nav-logo-text">SNG <span>◆</span> Cycles</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#showroom">Showroom</a>
+    <a href="florida-grown.html" style="color:var(--teal);">FL Grown</a>
+    <a href="mako-gold.html">Mako Gold</a>
+    <a href="ltsb.html">LTSB</a>
+    <a href="race-day.html">Race Day</a>
+    <a href="conversion.html">Conversion</a>
+    <a href="index.html#mens-gear">Men's</a>
+    <a href="index.html#womens-gear">Women's</a>
+    <a href="index.html#waitlist" class="nav-cta">Join the Crew</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-tag">SNG Collections</div>
+  <h1>FLORIDA <span class="teal">GROWN</span></h1>
+  <div class="hero-sub">Coast-to-Coast Supermoto Culture</div>
+  <div class="hero-divider"></div>
+  <p style="font-size: 15px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+    A tribute to the coast, the culture, and the mindset that sets Florida riders apart. Born in Royal Palm Beach. Shark not goldfish.
+  </p>
+</div>
+
+<!-- ── MEN'S SECTION HEADER ── -->
+<div class="section-header" id="mens-section">
+  <div class="section-header-inner">
+    <div>
+      <div class="section-subtitle">Florida Grown Drop — Men's</div>
+      <h2 class="section-title">Men's Florida Grown Grid</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ── MEN'S PRODUCTS GRID ── -->
+<div class="product-grid-section">
+  <div class="product-grid">
+    <!-- Florida Grown Tee -->
+    <div class="product-card" onclick="openProduct('tee-fl-grown')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-flgrown-mens-collection.jpg" class="product-card-img" alt="Florida Grown Tee">
+        <div class="product-card-badge">New Drop</div>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Tees</div>
+        <h4 class="product-card-name">Florida Grown Tee</h4>
+        <p class="product-card-desc">Tropical reef backprint, Florida silhouette shark layout. Short sleeve cotton tee.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$30.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rider Cap -->
+    <div class="product-card" onclick="openProduct('hat-rider-colors')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-rider-hats-grid-5way.jpg" class="product-card-img" alt="SNG Rider Team Colors Snapback">
+        <div class="product-card-badge">7 Colors</div>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hats</div>
+        <h4 class="product-card-name">SNG Rider Team Colors Snapback</h4>
+        <p class="product-card-desc">Embroidered Twill Snapback matching KTM, Honda, Yamaha, Kawasaki, Sur-ron, Husqvarna.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$35.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── WOMEN'S SECTION HEADER ── -->
+<div class="section-header" id="womens-section">
+  <div class="section-header-inner">
+    <div>
+      <div class="section-subtitle">Florida Grown Drop — Women's</div>
+      <h2 class="section-title">Women's Florida Grown Grid</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ── WOMEN'S PRODUCTS GRID ── -->
+<div class="product-grid-section">
+  <div class="product-grid">
+    <!-- Women's Florida Grown Tee -->
+    <div class="product-card" onclick="openProduct('w-tee-fl-grown')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-flgrown-womens-apparel.jpg" class="product-card-img" alt="Women's Florida Grown Tee">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Tees</div>
+        <h4 class="product-card-name">Women's Florida Grown Tee</h4>
+        <p class="product-card-desc">Florida state palm backprint. Relaxed tailored cropped fit in premium cotton.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$30.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Women's Rider Colors Snapback -->
+    <div class="product-card" onclick="openProduct('w-hat-rider-colors')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-rider-hats-grid-frontback.png" class="product-card-img" alt="Women's Rider Colors Snapback">
+        <div class="product-card-badge">7 Colors</div>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hats</div>
+        <h4 class="product-card-name">Women's Rider Colors Snapback</h4>
+        <p class="product-card-desc">Structured twill snapback, tailored women's fit, matching all major brand colorways.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$35.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">SNG <span>◆</span> Cycles</div>
+      <div class="footer-tagline">Leave the school behind — sngcycles.com</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#showroom">Showroom</a>
+      <a href="florida-grown.html">FL Grown</a>
+      <a href="mako-gold.html">Mako Gold</a>
+      <a href="ltsb.html">LTSB</a>
+      <a href="race-day.html">Race Day</a>
+      <a href="conversion.html">Conversion</a>
+      <a href="builds.html">Builds</a>
+      <a href="https://tiktok.com/@sngcycles" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sngcycles" target="_blank">Instagram</a>
+      <a href="mailto:sales@sngcycles.com">Contact</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    © 2026 SNG Customs / Complete Care Marketing Inc. · Royal Palm Beach, FL · Powered by Shopify + Printful
+  </div>
+</footer>
+
+<!-- ── PRODUCT MODAL ── -->
+<div class="modal-wrap" id="product-modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img-wrap">
+      <div id="modal-img" class="modal-img-crop" onclick="toggleZoom(event)"></div>
+    </div>
+    <div class="modal-body">
+      <div id="modal-badge" class="modal-badge"></div>
+      <div id="modal-name" class="modal-name"></div>
+      <div id="modal-sub" class="modal-sub"></div>
+      <div id="modal-price" class="modal-price"></div>
+      <div id="modal-desc" class="modal-desc"></div>
+      <div id="modal-selectors"></div>
+      <button id="modal-order-btn" class="modal-add-btn" onclick="modalOrder()">Buy Now</button>
+      <div id="modal-zoom-hint" class="modal-zoom-hint">Click image to zoom in · move mouse to pan</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── E-COMMERCE CONFIGURATION ── */
+var ECOM_CONFIG = {
+  platform: 'shopify',
+  shopifyStoreDomain: 'r4tpmi-xj.myshopify.com',
+  orderEmail: 'sales@sngcycles.com'
+};
+
+/* ── PRODUCT MODAL DATA ── */
+var PRODUCTS = {
+  'hat-rider-colors': {
+    badge: 'SNG Rider Series', name: 'SNG Rider Team Colors Snapback', sub: 'Structured Twill Cap',
+    price: '$35.00', image: 'images/sng-rider-hats-grid-5way.jpg',
+    desc: 'Premium Rider Series twill snapback. Mid-profile structured 6-panel fit. Embroidered SNG fin logo on front. Available in 7 team colorways: SNG Classic, KTM, Yamaha, Honda, Husqvarna, Kawasaki, and Sur-Ron.',
+    selectors: ['hat-colorway'], orderLabel: 'Buy Rider Cap — $35.00', orderItem: 'SNG Rider Team Colors Snapback',
+    shopifyUrl: {
+      'SNG Classic — Black/White': '45592416288947:1',
+      'Black/Orange': '45592416321715:1',
+      'Blue/White': '45592416354483:1',
+      'Red/White': '45592416387251:1',
+      'Dark Blue/Hi-Vis Yellow': '45592416420019:1',
+      'Black/Green': '45592416452787:1',
+      'Black/Yellow': '45592416485555:1',
+      'default': '45592416288947:1'
+    }
+  },
+  'tee-fl-grown': {
+    badge: 'Florida Grown Collection', name: 'Florida Grown Tee', sub: 'Shark Not Goldfish Tee',
+    price: '$30.00', image: 'images/sng-flgrown-mens-collection.jpg',
+    desc: 'Florida Grown Collection Tee. Features the custom back graphic silhouette of Florida with palm trees and shark fin logo. Chest pocket print.',
+    selectors: ['size', 'fl-grown-colorway'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee',
+    shopifyUrl: {
+      'Black / S': '45592417861811:1', 'Black / M': '45592417894579:1', 'Black / L': '45592417927347:1',
+      'Black / XL': '45592417960115:1', 'Black / 2XL': '45592417992883:1', 'Black / 3XL': '45592418025651:1',
+      'Navy / S': '45592418058419:1', 'Navy / M': '45592418091187:1', 'Navy / L': '45592418123955:1',
+      'Navy / XL': '45592418156723:1', 'Navy / 2XL': '45592418189491:1', 'Navy / 3XL': '45592418222259:1',
+      'Dark Grey / S': '45592418255027:1', 'Dark Grey / M': '45592418287795:1', 'Dark Grey / L': '45592418320563:1',
+      'Dark Grey / XL': '45592418353331:1', 'Dark Grey / 2XL': '45592418386099:1', 'Dark Grey / 3XL': '45592418418867:1',
+      'default': '45592417894579:1'
+    }
+  }
+};
+
+// Copy women's specific specs dynamically into PRODUCTS
+var w_items = {
+  'w-hat-rider-colors': { name: "Women's Rider Colors Snapback", base: "hat-rider-colors", img: "images/sng-rider-hats-grid-frontback.png" },
+  'w-tee-fl-grown': { name: "Women's Florida Grown Tee", base: "tee-fl-grown", img: "images/sng-flgrown-womens-apparel.jpg" }
+};
+
+for (var wKey in w_items) {
+  var base = PRODUCTS[w_items[wKey].base];
+  if (base) {
+    PRODUCTS[wKey] = {
+      badge: base.badge + " · Women's",
+      name: w_items[wKey].name,
+      sub: base.sub,
+      price: base.price,
+      image: w_items[wKey].img,
+      desc: base.desc.replace('heavyweight', "tailored women's crop").replace('combed cotton', "tailored relaxed fit"),
+      selectors: base.selectors,
+      orderLabel: 'Buy ' + w_items[wKey].name + ' — ' + base.price,
+      orderItem: w_items[wKey].name,
+      shopifyUrl: base.shopifyUrl
+    };
+  }
+}
+
+/* ── INTERACTIVE ZOOMS ── */
+var COLOR_ZOOM_COORDS = {
+  'hat-rider-colors': {
+    'SNG Classic — Black/White': { x: 0, y: 100, size: '700% 500%' },
+    'Black/Orange': { x: 16.67, y: 100, size: '700% 500%' },
+    'Blue/White': { x: 33.33, y: 100, size: '700% 500%' },
+    'Red/White': { x: 50, y: 100, size: '700% 500%' },
+    'Dark Blue/Hi-Vis Yellow': { x: 66.67, y: 100, size: '700% 500%' },
+    'Black/Green': { x: 83.33, y: 100, size: '700% 500%' },
+    'Black/Yellow': { x: 100, y: 100, size: '700% 500%' }
+  },
+  'w-hat-rider-colors': {
+    'SNG Classic — Black/White': { x: 0, y: 100, size: '700% 500%' },
+    'Black/Orange': { x: 16.67, y: 100, size: '700% 500%' },
+    'Blue/White': { x: 33.33, y: 100, size: '700% 500%' },
+    'Red/White': { x: 50, y: 100, size: '700% 500%' },
+    'Dark Blue/Hi-Vis Yellow': { x: 66.67, y: 100, size: '700% 500%' },
+    'Black/Green': { x: 83.33, y: 100, size: '700% 500%' },
+    'Black/Yellow': { x: 100, y: 100, size: '700% 500%' }
+  },
+  'tee-fl-grown': {
+    'Black': { x: 0, y: 50, size: '300% 100%' },
+    'Navy': { x: 50, y: 50, size: '300% 100%' },
+    'Dark Grey': { x: 100, y: 50, size: '300% 100%' }
+  },
+  'w-tee-fl-grown': {
+    'Black': { x: 0, y: 50, size: '300% 100%' },
+    'Navy': { x: 50, y: 50, size: '300% 100%' },
+    'Dark Grey': { x: 100, y: 50, size: '300% 100%' }
+  }
+};
+
+var currentProduct = null;
+var SIZES = ['S','M','L','XL','2XL','3XL'];
+var HAT_COLORS = ['SNG Classic — Black/White','Black/Orange','Blue/White','Red/White','Dark Blue/Hi-Vis Yellow','Black/Green','Black/Yellow'];
+var TEE_FL_GROWN_COLORS = ['Black', 'Navy', 'Dark Grey'];
+
+function openProduct(id) {
+  var p = PRODUCTS[id];
+  if (!p) return;
+  currentProduct = { id:id, product:p };
+  document.getElementById('modal-badge').textContent = p.badge;
+  document.getElementById('modal-name').textContent = p.name;
+  document.getElementById('modal-sub').textContent = p.sub;
+  document.getElementById('modal-price').textContent = p.price;
+  document.getElementById('modal-desc').textContent = p.desc;
+  
+  var imgCrop = document.getElementById('modal-img');
+  imgCrop.style.backgroundImage = "url('" + p.image + "')";
+  imgCrop.classList.remove('zoomed');
+  imgCrop.style.backgroundSize = 'contain';
+  imgCrop.style.backgroundPosition = 'center';
+  
+  document.getElementById('modal-order-btn').textContent = p.orderLabel;
+  var sel = document.getElementById('modal-selectors');
+  sel.innerHTML = '';
+  if (p.selectors.indexOf('size') > -1) sel.innerHTML += buildSelect('modal-size', '— Select Size —', SIZES);
+  if (p.selectors.indexOf('hat-colorway') > -1) sel.innerHTML += buildSelect('modal-hat-color', '— Select Colorway —', HAT_COLORS);
+  if (p.selectors.indexOf('fl-grown-colorway') > -1) sel.innerHTML += buildSelect('modal-hat-color', '— Select Colorway —', TEE_FL_GROWN_COLORS);
+  
+  document.getElementById('product-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  if (!window.location.hash.includes('product-')) {
+    history.pushState({ modalOpen: id }, '', '#product-' + id);
+  }
+}
+
+function buildSelect(id, placeholder, options) {
+  var html = '<select id="' + id + '" class="modal-select"><option value="">' + placeholder + '</option>';
+  options.forEach(function(o){ html += '<option>' + o + '</option>'; });
+  return html + '</select>';
+}
+
+function closeModal(fromPopState) {
+  document.getElementById('product-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  if (!fromPopState && window.location.hash.startsWith('#product-')) {
+    history.back();
+  }
+}
+
+function toggleZoom(e) {
+  var imgCrop = document.getElementById('modal-img');
+  var isZoomed = imgCrop.classList.contains('zoomed');
+  
+  if (!isZoomed) {
+    imgCrop.classList.add('zoomed');
+    if (e) {
+      updateZoomOrigin(e);
+    }
+  } else {
+    imgCrop.classList.remove('zoomed');
+    var val = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+    if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
+      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
+      if (coords) {
+        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+        imgCrop.style.backgroundSize = coords.size;
+        return;
+      }
+    }
+    imgCrop.style.backgroundSize = 'contain';
+    imgCrop.style.backgroundPosition = 'center';
+  }
+}
+
+function updateZoomOrigin(e) {
+  var imgCrop = document.getElementById('modal-img');
+  if (imgCrop.classList.contains('zoomed')) {
+    var rect = imgCrop.getBoundingClientRect();
+    var x = ((e.clientX - rect.left) / rect.width) * 100;
+    var y = ((e.clientY - rect.top) / rect.height) * 100;
+    x = Math.max(0, Math.min(100, x));
+    y = Math.max(0, Math.min(100, y));
+    imgCrop.style.transformOrigin = x + '% ' + y + '%';
+  }
+}
+
+document.getElementById('modal-img').addEventListener('mousemove', function(e) {
+  updateZoomOrigin(e);
+});
+
+document.getElementById('modal-selectors').addEventListener('change', function(e) {
+  if (e.target && e.target.id === 'modal-hat-color') {
+    var val = e.target.value;
+    var imgCrop = document.getElementById('modal-img');
+    if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
+      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
+      if (coords) {
+        imgCrop.classList.remove('zoomed');
+        imgCrop.style.backgroundSize = coords.size;
+        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+      }
+    } else {
+      imgCrop.classList.remove('zoomed');
+      imgCrop.style.backgroundSize = 'contain';
+      imgCrop.style.backgroundPosition = 'center';
+    }
+  }
+});
+
+function modalOrder() {
+  var p = currentProduct.product;
+  var size = document.getElementById('modal-size') ? document.getElementById('modal-size').value : '';
+  var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+  
+  if (p.selectors.indexOf('size') > -1 && !size) { alert('Please select a size.'); return; }
+  if (p.selectors.indexOf('hat-colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
+  if (p.selectors.indexOf('fl-grown-colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
+  
+  if (ECOM_CONFIG.platform === 'shopify') {
+    var checkoutUrl = '';
+    if (p.shopifyUrl) {
+      if (typeof p.shopifyUrl === 'object') {
+        var key = '';
+        if (size && hatColor) {
+          key = hatColor + ' / ' + size;
+        } else {
+          key = size || hatColor || 'default';
+        }
+        checkoutUrl = p.shopifyUrl[key] || p.shopifyUrl['default'] || '';
+      } else {
+        checkoutUrl = p.shopifyUrl;
+      }
+    }
+    if (checkoutUrl) {
+      if (!checkoutUrl.startsWith('http')) {
+        checkoutUrl = 'https://' + ECOM_CONFIG.shopifyStoreDomain + '/cart/' + checkoutUrl;
+      }
+      window.open(checkoutUrl, '_blank');
+      return;
+    }
+  }
+}
+
+// Browser navigation history popstate listener
+window.addEventListener('popstate', function(event) {
+  var modal = document.getElementById('product-modal');
+  var isOpen = modal && modal.classList.contains('open');
+  if (isOpen) {
+    closeModal(true);
+  } else if (event.state && event.state.modalOpen) {
+    openProduct(event.state.modalOpen);
+  }
+});
+
+// Auto-open product hash
+window.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash && window.location.hash.startsWith('#product-')) {
+    var productId = window.location.hash.replace('#product-', '');
+    setTimeout(function() {
+      if (PRODUCTS[productId]) {
+        openProduct(productId);
+      }
+    }, 200);
+  }
+});
+</script>
+</body>
+</html>
