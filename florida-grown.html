@@ -1,38 +1,36 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SNG Cycles — Florida Grown Collection</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:ital,wght=0,400;0,700;0,900;1,400;1,700;1,900&family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
   --black: #111111;
   --dark: #0a0a0a;
-  --gray-bg: #1a1a1a;
-  --teal: #00c7b7;
-  --teal-light: #33d7c7;
-  --coral: #ff6b7a;
-  --purple: #9b59d1;
+  --teal: #008f83;
+  --teal-light: #00b0a2;
   --white: #ffffff;
-  --off-white: #f5f5f5;
-  --border: #00c7b7;
-  --text: #ffffff;
-  --text-muted: #aaaaaa;
+  --off-white: #fafafa;
+  --light-gray: #f1f1f1;
+  --border: #008f83;
+  --text-dark: #111111;
+  --text-muted: #555555;
   --head: 'Barlow Condensed', sans-serif;
   --oswald: 'Oswald', sans-serif;
 }
 
 body {
   font-family: 'Barlow', sans-serif;
-  background: var(--black);
-  color: var(--text);
+  background: var(--off-white);
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
-h1, h2, h3, .section-title, .brand, .apparel-name, .nav-logo-text {
+h1, h2, h3, h4, .section-title, .brand, .apparel-name, .nav-logo-text {
   font-family: var(--head);
   font-style: italic;
   font-weight: 900;
@@ -45,7 +43,7 @@ nav {
   position: sticky;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: var(--dark);
+  background: var(--white);
   border-bottom: 3px solid var(--border);
   padding: 0 40px;
   height: 64px;
@@ -55,17 +53,17 @@ nav {
 }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-logo img { height: 40px; width: 40px; object-fit: contain; }
-.nav-logo-text { font-size: 24px; color: var(--white); letter-spacing: 1.5px; }
+.nav-logo-text { font-size: 24px; color: var(--text-dark); letter-spacing: 1.5px; }
 .nav-logo-text span { color: var(--teal); }
 .nav-links { display: flex; gap: 24px; align-items: center; }
 .nav-links a { font-family: var(--head); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
 .nav-links a:hover { color: var(--teal); }
 .nav-cta {
   background: var(--teal);
-  color: var(--dark) !important;
+  color: #fff !important;
   padding: 8px 18px;
   border-radius: 0;
-  border: 2px solid var(--dark);
+  border: 2px solid var(--border);
   font-family: var(--head);
   font-weight: 900;
   font-size: 12px;
@@ -78,14 +76,14 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  min-height: 50vh;
+  min-height: 45vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 80px 40px;
-  background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.95)), url('images/sng-flgrown-collection-banner.jpg') no-repeat center center;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/sng-flgrown-collection-banner.jpg') no-repeat center center;
   background-size: cover;
   border-bottom: 3px solid var(--border);
   position: relative;
@@ -96,8 +94,9 @@ nav {
   font-size: 12px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--teal);
+  color: #fff;
   margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 .hero h1 {
   font-size: clamp(36px, 6vw, 72px);
@@ -105,90 +104,326 @@ nav {
   letter-spacing: 2px;
   line-height: 0.95;
   margin-bottom: 8px;
-  color: var(--white);
+  color: #fff;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
-.hero h1 span.teal { color: var(--teal); }
-.hero h1 span.coral { color: var(--coral); }
+.hero h1 span.teal { color: #fff; }
 .hero-sub {
   font-size: clamp(16px, 2.5vw, 20px);
   font-weight: 700;
-  color: var(--text-muted);
+  color: #fff;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 24px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 .hero-divider {
   width: 80px;
   height: 4px;
-  background: var(--teal);
+  background: #fff;
   margin: 0 auto 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ── TABS ── */
+.collection-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 60px auto 20px;
+  max-width: 600px;
+  padding: 0 20px;
+}
+.tab-btn {
+  background: var(--white);
+  border: 2px solid var(--border);
+  color: var(--text-dark);
+  padding: 12px 32px;
+  font-family: var(--head);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab-btn.active, .tab-btn:hover {
+  background: var(--border);
+  color: var(--white);
+}
+
+.grid-container {
+  display: none;
+}
+.grid-container.active {
+  display: block;
 }
 
 /* ── SECTION HEADER ── */
 .section-header {
   border-top: 2px solid var(--border);
   border-bottom: 2px solid var(--border);
-  background: var(--dark);
-  padding: 30px 40px;
+  background: var(--white);
+  padding: 24px 40px;
+  margin-bottom: 40px;
 }
 .section-header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 16px;
 }
-.section-title { font-size: clamp(24px, 4vw, 40px); color: var(--white); line-height: 1; }
-.section-subtitle { font-size: 14px; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+.section-title { font-size: clamp(24px, 4vw, 36px); color: var(--text-dark); line-height: 1; }
+.section-subtitle { font-size: 13px; color: var(--teal); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; font-weight: 700; }
 
 /* ── PRODUCT CARDS ── */
-.product-grid-section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; }
+.product-grid-section { padding: 0 40px 60px 40px; max-width: 1200px; margin: 0 auto; }
 .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
 .product-card {
-  background: var(--gray-bg);
+  background: var(--white);
   border: 2px solid var(--border);
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
 }
-.product-card:hover { transform: translateY(-4px); border-color: var(--coral); }
-.product-card-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--dark); border-bottom: 2px solid var(--border); position: relative; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,143,131,0.15); }
+.product-card-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--light-gray); border-bottom: 2px solid var(--border); position: relative; }
 .product-card-img { width: 100%; height: 100%; object-fit: cover; }
-.product-card-badge { position: absolute; top: 12px; left: 12px; background: var(--coral); color: var(--dark); font-family: var(--head); font-weight: 900; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid var(--border); }
+.product-card-badge { position: absolute; top: 12px; left: 12px; background: var(--teal); color: var(--white); font-family: var(--head); font-weight: 900; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid var(--border); }
 .product-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
 .product-card-tag { font-family: var(--head); font-weight: 700; font-size: 10px; color: var(--teal); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
-.product-card-name { font-family: var(--oswald); font-weight: 600; font-size: 16px; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.product-card-name { font-family: var(--oswald); font-weight: 600; font-size: 16px; text-transform: uppercase; color: var(--text-dark); margin-bottom: 4px; }
 .product-card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; }
 .product-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
-.product-card-price { font-family: var(--oswald); font-weight: 700; font-size: 18px; color: var(--teal); }
-.product-card-btn { background: var(--teal); color: var(--dark); border: none; padding: 8px 16px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
-.product-card:hover .product-card-btn { background: var(--coral); }
+.product-card-price { font-family: var(--oswald); font-weight: 700; font-size: 18px; color: var(--text-dark); }
+.product-card-btn { background: var(--border); color: var(--white); border: none; padding: 8px 16px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.product-card:hover .product-card-btn { background: var(--teal-light); }
+
+/* ── BOTTOM WIDGETS ── */
+.bottom-widget {
+  padding: 60px 40px;
+  border-top: 2px solid var(--border);
+  text-align: center;
+}
+.widget-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.widget-tag {
+  font-family: var(--head);
+  font-size: 12px;
+  color: var(--teal);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.widget-title {
+  font-family: var(--oswald);
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--text-dark);
+}
+.widget-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+  line-height: 1.5;
+}
+
+/* Timer */
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.timer-box {
+  background: var(--white);
+  border: 2px solid var(--border);
+  padding: 10px 16px;
+  text-align: center;
+  min-width: 75px;
+}
+.timer-box span {
+  display: block;
+  font-family: var(--oswald);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1;
+}
+.timer-box label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+.timer-divider {
+  font-family: var(--oswald);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--border);
+}
+
+/* Coupon Loop */
+.coupon-ticker {
+  background: var(--border);
+  color: var(--white);
+  overflow: hidden;
+  padding: 14px 0;
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+}
+.ticker-wrap {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 30s linear infinite;
+}
+.ticker-item {
+  display: inline-block;
+  padding: 0 45px;
+  font-family: var(--head);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.ticker-item span {
+  color: #ffda79;
+}
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Collector Box */
+.collector-box-widget {
+  background: var(--white);
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  padding: 80px 40px;
+}
+.collector-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+  text-align: left;
+}
+.collector-img-side img {
+  width: 100%;
+  border: 2px solid var(--border);
+  background: var(--light-gray);
+  display: block;
+}
+.collector-text-side {
+  display: flex;
+  flex-direction: column;
+}
+.collector-price {
+  font-family: var(--oswald);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+.widget-btn {
+  background: var(--border);
+  color: var(--white);
+  border: none;
+  padding: 14px 28px;
+  font-family: var(--head);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: fit-content;
+}
+.widget-btn:hover {
+  background: var(--teal-light);
+}
+
+@media (max-width: 768px) {
+  .collector-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  .widget-btn {
+    margin: 0 auto;
+  }
+}
+
+/* Waitlist */
+.waitlist-widget {
+  background: var(--off-white);
+}
+.waitlist-form {
+  display: flex;
+  max-width: 500px;
+  margin: 20px auto 0 auto;
+  border: 2px solid var(--border);
+}
+.waitlist-form input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+.waitlist-form button {
+  background: var(--border);
+  color: var(--white);
+  border: none;
+  padding: 0 24px;
+  font-family: var(--head);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.waitlist-form button:hover {
+  background: var(--teal-light);
+}
 
 /* ── MODALS ── */
 .modal-wrap { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 16px; }
 .modal-wrap.open { display: flex; }
-.modal { background: var(--gray-bg); border: 3px solid var(--border); width: 90%; max-width: 860px; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; position: relative; color: var(--white); }
-.modal-close { position: absolute; top: 12px; right: 12px; background: var(--teal); color: var(--dark); border: none; width: 32px; height: 32px; font-size: 20px; font-weight: 700; cursor: pointer; z-index: 10; }
-.modal-img-wrap { background: var(--dark); border-right: 3px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+.modal { background: var(--white); border: 3px solid var(--border); width: 90%; max-width: 860px; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; position: relative; color: var(--text-dark); }
+.modal-close { position: absolute; top: 12px; right: 12px; background: var(--border); color: var(--white); border: none; width: 32px; height: 32px; font-size: 20px; font-weight: 700; cursor: pointer; z-index: 10; }
+.modal-img-wrap { background: var(--light-gray); border-right: 3px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
 .modal-img-crop { width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: contain; transition: transform 0.25s ease-out; transform-origin: center center; cursor: zoom-in; }
 .modal-img-crop.zoomed { transform: scale(2.2); cursor: zoom-out; transition: transform 0.25s ease-out; }
 .modal-body { padding: 32px 28px; display: flex; flex-direction: column; }
-.modal-badge { font-size: 10px; color: var(--coral); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
-.modal-name { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.modal-badge { font-size: 10px; color: var(--teal); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.modal-name { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--text-dark); margin-bottom: 4px; }
 .modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
 .modal-price { font-family: var(--oswald); font-size: 26px; font-weight: 700; color: var(--teal); margin-bottom: 16px; }
 .modal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
-.modal-label { font-family: var(--head); font-size: 11px; color: var(--teal); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 700; }
-.modal-select { width: 100%; padding: 10px 14px; background: var(--dark); border: 2px solid var(--border); color: var(--white); font-size: 13px; font-weight: 700; margin-bottom: 14px; outline: none; cursor: pointer; }
-.modal-add-btn { width: 100%; background: var(--teal); color: var(--dark); border: 2px solid var(--border); padding: 14px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: auto; }
-.modal-add-btn:hover { background: var(--coral); }
+.modal-select { width: 100%; padding: 10px 14px; background: var(--white); border: 2px solid var(--border); color: var(--text-dark); font-size: 13px; font-weight: 700; margin-bottom: 14px; outline: none; cursor: pointer; }
+.modal-add-btn { width: 100%; background: var(--border); color: var(--white); border: 2px solid var(--border); padding: 14px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: auto; }
+.modal-add-btn:hover { background: var(--teal-light); }
 .modal-zoom-hint { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 10px; }
 
+@media (max-width: 768px) {
+  .modal { grid-template-columns: 1fr; }
+  .modal-img-wrap { border-right: none; border-bottom: 3px solid var(--border); min-height: 240px; }
+}
+
 /* ── FOOTER ── */
-footer { background: var(--dark); border-top: 3px solid var(--border); padding: 48px 40px; color: var(--text-muted); }
+footer { background: var(--black); border-top: 3px solid var(--border); padding: 48px 40px; color: var(--text-muted); }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
 .footer-logo { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); }
 .footer-logo span { color: var(--teal); }
@@ -196,16 +431,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
 .footer-links { display: flex; gap: 24px; }
 .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; text-transform: uppercase; font-family: var(--head); font-weight: 700; letter-spacing: 1px; transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
-.footer-copy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 40px; border-top: 1px solid var(--gray-bg); padding-top: 20px; }
-
-@media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .modal { grid-template-columns: 1fr; }
-  .modal-img-wrap { border-right: none; border-bottom: 3px solid var(--border); min-height: 240px; }
-  footer { padding: 32px 20px; }
-  .footer-inner { flex-direction: column; text-align: center; }
-}
+.footer-copy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 40px; border-top: 1px solid #222; padding-top: 20px; }
 </style>
 </head>
 <body>
@@ -219,12 +445,9 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
   <div class="nav-links">
     <a href="index.html#showroom">Showroom</a>
     <a href="florida-grown.html" style="color:var(--teal);">FL Grown</a>
-    <a href="mako-gold.html">Mako Gold</a>
-    <a href="ltsb.html">LTSB</a>
+    <a href="fun-in-the-sun.html">Fun in the Sun</a>
     <a href="race-day.html">Race Day</a>
-    <a href="conversion.html">Conversion</a>
-    <a href="index.html#mens-gear">Men's</a>
-    <a href="index.html#womens-gear">Women's</a>
+    <a href="conversion.html">Conversion Series</a>
     <a href="index.html#waitlist" class="nav-cta">Join the Crew</a>
   </div>
 </nav>
@@ -235,137 +458,271 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
   <h1>FLORIDA <span class="teal">GROWN</span></h1>
   <div class="hero-sub">Coast-to-Coast Supermoto Culture</div>
   <div class="hero-divider"></div>
-  <p style="font-size: 15px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+  <p style="font-size: 15px; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 4px rgba(0,0,0,0.6);">
     A tribute to the coast, the culture, and the mindset that sets Florida riders apart. Born in Royal Palm Beach. Shark not goldfish.
   </p>
 </div>
 
-<!-- ── MEN'S SECTION HEADER ── -->
-<div class="section-header" id="mens-section">
-  <div class="section-header-inner">
-    <div>
+<!-- ── COLLECTION TABS ── -->
+<div class="collection-tabs">
+  <button class="tab-btn active" onclick="switchTab('mens')">Men's Gear</button>
+  <button class="tab-btn" onclick="switchTab('womens')">Women's Gear</button>
+</div>
+
+<!-- ── MEN'S SECTION ── -->
+<div id="mens-grid-container" class="grid-container active">
+  <div class="section-header">
+    <div class="section-header-inner">
       <div class="section-subtitle">Florida Grown Drop — Men's</div>
       <h2 class="section-title">Men's Florida Grown Grid</h2>
     </div>
   </div>
-</div>
-
-<!-- ── MEN'S PRODUCTS GRID ── -->
-<div class="product-grid-section">
-  <div class="product-grid">
-    <!-- Florida Grown Tee -->
-    <div class="product-card" onclick="openProduct('tee-fl-grown')">
-      <div class="product-card-img-wrap">
-        <img src="images/tee-fl-grown-black-front.png" class="product-card-img" alt="Florida Grown Tee">
-        <div class="product-card-badge">New Drop</div>
-      </div>
-      <div class="product-card-body">
-        <div class="product-card-tag">Tees</div>
-        <h4 class="product-card-name">Florida Grown Tee</h4>
-        <p class="product-card-desc">Tropical reef backprint, Florida silhouette shark layout. Short sleeve cotton tee.</p>
-        <div class="product-card-footer">
-          <span class="product-card-price">$30.00</span>
-          <button class="product-card-btn">Quick View</button>
+  
+  <div class="product-grid-section">
+    <div class="product-grid">
+      <!-- Black Tee -->
+      <div class="product-card" onclick="openProduct('tee-fl-grown-black')">
+        <div class="product-card-img-wrap">
+          <img src="images/tee-fl-grown-black-front.png" class="product-card-img" alt="Florida Grown Tee - Black">
+          <div class="product-card-badge">New Drop</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">Florida Grown Tee - Black</h4>
+          <p class="product-card-desc">Tropical reef backprint, Florida silhouette shark layout. Combed cotton tee in Black.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Rider Cap -->
-    <div class="product-card" onclick="openProduct('hat-rider-colors')">
-      <div class="product-card-img-wrap">
-        <img src="images/hat-rider-color1.png" class="product-card-img" alt="SNG Rider Team Colors Snapback">
-        <div class="product-card-badge">7 Colors</div>
+      <!-- Navy Tee -->
+      <div class="product-card" onclick="openProduct('tee-fl-grown-navy')">
+        <div class="product-card-img-wrap">
+          <img src="images/tee-fl-grown-navy-front.png" class="product-card-img" alt="Florida Grown Tee - Navy">
+          <div class="product-card-badge">New Drop</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">Florida Grown Tee - Navy</h4>
+          <p class="product-card-desc">Tropical reef backprint, Florida silhouette shark layout. Combed cotton tee in Navy Blue.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
       </div>
-      <div class="product-card-body">
-        <div class="product-card-tag">Hats</div>
-        <h4 class="product-card-name">SNG Rider Team Colors Snapback</h4>
-        <p class="product-card-desc">Embroidered Twill Snapback matching KTM, Honda, Yamaha, Kawasaki, Sur-ron, Husqvarna.</p>
-        <div class="product-card-footer">
-          <span class="product-card-price">$35.00</span>
-          <button class="product-card-btn">Quick View</button>
+
+      <!-- Grey Tee -->
+      <div class="product-card" onclick="openProduct('tee-fl-grown-grey')">
+        <div class="product-card-img-wrap">
+          <img src="images/tee-fl-grown-grey-front.png" class="product-card-img" alt="Florida Grown Tee - Grey">
+          <div class="product-card-badge">New Drop</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">Florida Grown Tee - Dark Grey</h4>
+          <p class="product-card-desc">Tropical reef backprint, Florida silhouette shark layout. Combed cotton tee in Charcoal Grey.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Long Sleeve -->
+      <div class="product-card" onclick="openProduct('fl-grown-longsleeve')">
+        <div class="product-card-img-wrap">
+          <img src="images/sng-flgrown-mens-collection.jpg" class="product-card-img" alt="Florida Grown Long Sleeve">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Apparel</div>
+          <h4 class="product-card-name">Florida Grown Long Sleeve</h4>
+          <p class="product-card-desc">Premium heavyweight long sleeve tee with forearm SNG branding and Florida back graphic.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$45.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reef Hat -->
+      <div class="product-card" onclick="openProduct('reef-hat')">
+        <div class="product-card-img-wrap">
+          <img src="images/sng-flgrown-art-spec.jpg" class="product-card-img" alt="Florida Reef Hat">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Hats</div>
+          <h4 class="product-card-name">Florida Reef Snapback</h4>
+          <p class="product-card-desc">Embroidered tropical reef layout flat bill snapback. Premium structured twill.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$35.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── WOMEN'S SECTION HEADER ── -->
-<div class="section-header" id="womens-section">
-  <div class="section-header-inner">
-    <div>
+<!-- ── WOMEN'S SECTION ── -->
+<div id="womens-grid-container" class="grid-container">
+  <div class="section-header">
+    <div class="section-header-inner">
       <div class="section-subtitle">Florida Grown Drop — Women's</div>
       <h2 class="section-title">Women's Florida Grown Grid</h2>
     </div>
   </div>
-</div>
-
-<!-- ── WOMEN'S PRODUCTS GRID ── -->
-<div class="product-grid-section">
-  <div class="product-grid">
-    <!-- Women's Florida Grown Tee -->
-    <div class="product-card" onclick="openProduct('w-tee-fl-grown')">
-      <div class="product-card-img-wrap">
-        <img src="images/w-tee-fl-grown-black-front.png" class="product-card-img" alt="Women's Florida Grown Tee">
+  
+  <div class="product-grid-section">
+    <div class="product-grid">
+      <!-- Black Tee -->
+      <div class="product-card" onclick="openProduct('w-tee-fl-grown-black')">
+        <div class="product-card-img-wrap">
+          <img src="images/w-tee-fl-grown-black.jpg" class="product-card-img" alt="Women's Florida Grown Tee - Black">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">Women's Florida Grown Tee - Black</h4>
+          <p class="product-card-desc">Florida silhouette backprint. Premium combed cotton in a tailored women's fit.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
       </div>
-      <div class="product-card-body">
-        <div class="product-card-tag">Tees</div>
-        <h4 class="product-card-name">Women's Florida Grown Tee</h4>
-        <p class="product-card-desc">Florida state palm backprint. Relaxed tailored cropped fit in premium cotton.</p>
-        <div class="product-card-footer">
-          <span class="product-card-price">$30.00</span>
-          <button class="product-card-btn">Quick View</button>
+
+      <!-- Navy Tee -->
+      <div class="product-card" onclick="openProduct('w-tee-fl-grown-navy')">
+        <div class="product-card-img-wrap">
+          <img src="images/w-tee-fl-grown-navy.jpg" class="product-card-img" alt="Women's Florida Grown Tee - Navy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">Women's Florida Grown Tee - Navy</h4>
+          <p class="product-card-desc">Florida silhouette backprint. Premium combed cotton in a tailored women's Navy fit.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grey Tee -->
+      <div class="product-card" onclick="openProduct('w-tee-fl-grown-grey')">
+        <div class="product-card-img-wrap">
+          <img src="images/w-tee-fl-grown-grey.jpg" class="product-card-img" alt="Women's Florida Grown Tee - Grey">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">Women's Florida Grown Tee - Grey</h4>
+          <p class="product-card-desc">Florida silhouette backprint. Premium combed cotton in a tailored women's Grey fit.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leggings -->
+      <div class="product-card" onclick="openProduct('reef-leggings')">
+        <div class="product-card-img-wrap">
+          <img src="images/sng-flgrown-womens-leggings.jpg" class="product-card-img" alt="Tropical Reef Leggings">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Apparel</div>
+          <h4 class="product-card-name">Tropical Reef Leggings</h4>
+          <p class="product-card-desc">Premium all-over tropical palm print high-waisted compression leggings.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$45.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reef Hat (Unisex) -->
+      <div class="product-card" onclick="openProduct('reef-hat')">
+        <div class="product-card-img-wrap">
+          <img src="images/sng-flgrown-art-spec.jpg" class="product-card-img" alt="Florida Reef Hat">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Hats</div>
+          <h4 class="product-card-name">Florida Reef Snapback</h4>
+          <p class="product-card-desc">Embroidered tropical reef layout flat bill snapback. Premium structured twill.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$35.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- Women's Rider Colors Snapback -->
-    <div class="product-card" onclick="openProduct('w-hat-rider-colors')">
-      <div class="product-card-img-wrap">
-        <img src="images/hat-rider-color1.png" class="product-card-img" alt="Women's Rider Colors Snapback">
-        <div class="product-card-badge">7 Colors</div>
-      </div>
-      <div class="product-card-body">
-        <div class="product-card-tag">Hats</div>
-        <h4 class="product-card-name">Women's Rider Colors Snapback</h4>
-        <p class="product-card-desc">Structured twill snapback, tailored women's fit, matching all major brand colorways.</p>
-        <div class="product-card-footer">
-          <span class="product-card-price">$35.00</span>
-          <button class="product-card-btn">Quick View</button>
-        </div>
-      </div>
+<!-- ── WIDGET 1: FLASH DEAL ── -->
+<div class="bottom-widget">
+  <div class="widget-inner">
+    <div class="widget-tag">Friday Flash Deal</div>
+    <h3 class="widget-title">Weekly Friday Flash Sale</h3>
+    <p class="widget-desc">Get our signature gear at 25% off. Deal expires at midnight. Zero compromise.</p>
+    <div class="countdown-timer" id="countdown-timer">
+      <div class="timer-box"><span id="timer-hours">12</span><label>Hrs</label></div>
+      <div class="timer-divider">:</div>
+      <div class="timer-box"><span id="timer-minutes">44</span><label>Min</label></div>
+      <div class="timer-divider">:</div>
+      <div class="timer-box"><span id="timer-seconds">05</span><label>Sec</label></div>
     </div>
   </div>
 </div>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">SNG <span>◆</span> Cycles</div>
-      <div class="footer-tagline">Leave the school behind — sngcycles.com</div>
+<!-- ── WIDGET 2: BFF COUPON LOOP ── -->
+<div class="bottom-widget coupon-ticker">
+  <div class="ticker-wrap">
+    <div class="ticker-item">◆ USE CODE <span>SNG10</span> FOR 10% OFF YOUR FIRST ORDER ◆</div>
+    <div class="ticker-item">◆ LEAVE THE SCHOOL BEHIND ◆</div>
+    <div class="ticker-item">◆ FLORIDA GROWN MOTO CULTURE ◆</div>
+    <div class="ticker-item">◆ ZERO POWER. ZERO COMPROMISE. ◆</div>
+    <div class="ticker-item">◆ USE CODE <span>SNG10</span> FOR 10% OFF YOUR FIRST ORDER ◆</div>
+    <div class="ticker-item">◆ LEAVE THE SCHOOL BEHIND ◆</div>
+    <div class="ticker-item">◆ FLORIDA GROWN MOTO CULTURE ◆</div>
+    <div class="ticker-item">◆ ZERO POWER. ZERO COMPROMISE. ◆</div>
+  </div>
+</div>
+
+<!-- ── WIDGET 3: MEGALODON COLLECTOR BOX ── -->
+<div class="collector-box-widget">
+  <div class="collector-inner">
+    <div class="collector-img-side">
+      <img src="images/apparel-meg-box.png" alt="Megalodon Collector Box">
     </div>
-    <div class="footer-links">
-      <a href="index.html#showroom">Showroom</a>
-      <a href="florida-grown.html">FL Grown</a>
-      <a href="mako-gold.html">Mako Gold</a>
-      <a href="ltsb.html">LTSB</a>
-      <a href="race-day.html">Race Day</a>
-      <a href="conversion.html">Conversion</a>
-      <a href="builds.html">Builds</a>
-      <a href="https://tiktok.com/@sngcycles" target="_blank">TikTok</a>
-      <a href="https://instagram.com/sngcycles" target="_blank">Instagram</a>
-      <a href="mailto:sales@sngcycles.com">Contact</a>
+    <div class="collector-text-side">
+      <div class="widget-tag">Limited Premium</div>
+      <h3 class="widget-title">Megalodon Collector Box</h3>
+      <p class="widget-desc">Our serialized limited release. Includes a custom printed collector box, premium hoodie, checkerboard snapback, stickers, and a serialized certificate of authenticity. Strictly limited to 100 boxes worldwide.</p>
+      <div class="collector-price">$150.00</div>
+      <button class="widget-btn" onclick="openProduct('ltsb-5pack')">Claim Collector Box</button>
     </div>
   </div>
-  <div class="footer-copy">
-    © 2026 SNG Customs / Complete Care Marketing Inc. · Royal Palm Beach, FL · Powered by Shopify + Printful
+</div>
+
+<!-- ── WIDGET 4: CREW WAITLIST FORM ── -->
+<div class="bottom-widget waitlist-widget" id="waitlist">
+  <div class="widget-inner">
+    <div class="widget-tag">Join the Crew</div>
+    <h3 class="widget-title">Waitlist & Drops</h3>
+    <p class="widget-desc">Sign up to get notified first about next apparel drops, stunt riding events, and custom bike reservations.</p>
+    <div class="waitlist-form">
+      <input type="email" placeholder="Enter your email address" id="waitlist-email-input">
+      <button onclick="submitWaitlist()">Join Waitlist</button>
+    </div>
   </div>
-</footer>
+</div>
 
 <!-- ── PRODUCT MODAL ── -->
 <div class="modal-wrap" id="product-modal" onclick="if(event.target===this)closeModal()">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
+    <button class="modal-close" onclick="closeModal()">×</button>
     <div class="modal-img-wrap">
       <div id="modal-img" class="modal-img-crop" onclick="toggleZoom(event)"></div>
     </div>
@@ -382,6 +739,25 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
   </div>
 </div>
 
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">SNG <span>◆</span> Cycles</div>
+      <div class="footer-tagline">Leave the school behind — sngcycles.com</div>
+    </div>
+    <div class="footer-links">
+      <a href="florida-grown.html">FL Grown</a>
+      <a href="fun-in-the-sun.html">Fun in the Sun</a>
+      <a href="race-day.html">Race Day</a>
+      <a href="conversion.html">Conversion Series</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    © 2026 SNG Customs / Complete Care Marketing Inc. · Royal Palm Beach, FL · Powered by Shopify + Printful
+  </div>
+</footer>
+
 <script>
 /* ── E-COMMERCE CONFIGURATION ── */
 var ECOM_CONFIG = {
@@ -390,45 +766,90 @@ var ECOM_CONFIG = {
   orderEmail: 'sales@sngcycles.com'
 };
 
+var SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL'];
+
 /* ── PRODUCT MODAL DATA ── */
 var PRODUCTS = {
-  'hat-rider-colors': {
-    badge: 'SNG Rider Series', name: 'SNG Rider Team Colors Snapback', sub: 'Structured Twill Cap',
-    price: '$35.00', image: 'images/hat-rider-color1.png',
-    desc: 'Premium Rider Series twill snapback. Mid-profile structured 6-panel fit. Embroidered SNG fin logo on front. Available in 7 team colorways: SNG Classic, KTM, Yamaha, Honda, Husqvarna, Kawasaki, and Sur-Ron.',
-    selectors: ['hat-colorway'], orderLabel: 'Buy Rider Cap — $35.00', orderItem: 'SNG Rider Team Colors Snapback',
+  'tee-fl-grown-black': {
+    badge: 'Florida Grown', name: 'Florida Grown Tee - Black', sub: 'Shark Not Goldfish Tee',
+    price: '$30.00', image: 'images/tee-fl-grown-black-front.png',
+    desc: 'Florida Grown Collection Tee. Features the custom back graphic silhouette of Florida with palm trees and shark fin logo. Combed cotton in black.',
+    selectors: ['size'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee - Black',
     shopifyUrl: {
-      'SNG Classic — Black/White': '45592416288947:1',
-      'Black/Orange': '45592416321715:1',
-      'Blue/White': '45592416354483:1',
-      'Red/White': '45592416387251:1',
-      'Dark Blue/Hi-Vis Yellow': '45592416420019:1',
-      'Black/Green': '45592416452787:1',
-      'Black/Yellow': '45592416485555:1',
-      'default': '45592416288947:1'
+      'S': '45592417861811:1', 'M': '45592417894579:1', 'L': '45592417927347:1',
+      'XL': '45592417960115:1', '2XL': '45592417992883:1', '3XL': '45592418025651:1',
+      'default': '45592417894579:1'
     }
   },
-  'tee-fl-grown': {
-    badge: 'Florida Grown Collection', name: 'Florida Grown Tee', sub: 'Shark Not Goldfish Tee',
-    price: '$30.00', image: 'images/tee-fl-grown-black-front.png',
-    desc: 'Florida Grown Collection Tee. Features the custom back graphic silhouette of Florida with palm trees and shark fin logo. Chest pocket print.',
-    selectors: ['size', 'fl-grown-colorway'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee',
+  'tee-fl-grown-navy': {
+    badge: 'Florida Grown', name: 'Florida Grown Tee - Navy', sub: 'Shark Not Goldfish Tee',
+    price: '$30.00', image: 'images/tee-fl-grown-navy-front.png',
+    desc: 'Florida Grown Collection Tee. Features the custom back graphic silhouette of Florida with palm trees and shark fin logo. Combed cotton in Navy Blue.',
+    selectors: ['size'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee - Navy',
     shopifyUrl: {
-      'Black / S': '45592417861811:1', 'Black / M': '45592417894579:1', 'Black / L': '45592417927347:1',
-      'Black / XL': '45592417960115:1', 'Black / 2XL': '45592417992883:1', 'Black / 3XL': '45592418025651:1',
-      'Navy / S': '45592418058419:1', 'Navy / M': '45592418091187:1', 'Navy / L': '45592418123955:1',
-      'Navy / XL': '45592418156723:1', 'Navy / 2XL': '45592418189491:1', 'Navy / 3XL': '45592418222259:1',
-      'Dark Grey / S': '45592418255027:1', 'Dark Grey / M': '45592418287795:1', 'Dark Grey / L': '45592418320563:1',
-      'Dark Grey / XL': '45592418353331:1', 'Dark Grey / 2XL': '45592418386099:1', 'Dark Grey / 3XL': '45592418418867:1',
-      'default': '45592417894579:1'
+      'S': '45592418058419:1', 'M': '45592418091187:1', 'L': '45592418123955:1',
+      'XL': '45592418156723:1', '2XL': '45592418189491:1', '3XL': '45592418222259:1',
+      'default': '45592418091187:1'
+    }
+  },
+  'tee-fl-grown-grey': {
+    badge: 'Florida Grown', name: 'Florida Grown Tee - Dark Grey', sub: 'Shark Not Goldfish Tee',
+    price: '$30.00', image: 'images/tee-fl-grown-grey-front.png',
+    desc: 'Florida Grown Collection Tee. Features the custom back graphic silhouette of Florida with palm trees and shark fin logo. Combed cotton in Charcoal Grey.',
+    selectors: ['size'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee - Grey',
+    shopifyUrl: {
+      'S': '45592418255027:1', 'M': '45592418287795:1', 'L': '45592418320563:1',
+      'XL': '45592418353331:1', '2XL': '45592418386099:1', '3XL': '45592418418867:1',
+      'default': '45592418287795:1'
+    }
+  },
+  'fl-grown-longsleeve': {
+    badge: 'Florida Grown', name: 'Florida Grown Long Sleeve', sub: 'Coastal Long Sleeve Apparel',
+    price: '$45.00', image: 'images/sng-flgrown-mens-collection.jpg',
+    desc: 'Florida Grown heavy-duty long sleeve t-shirt. SNG branding details printed down the sleeves, palm fin back graphic.',
+    selectors: ['size'], orderLabel: 'Buy Long Sleeve — $45.00', orderItem: 'Florida Grown Long Sleeve',
+    shopifyUrl: {
+      'S': '45592416551091:1', 'M': '45592416583859:1', 'L': '45592416616627:1',
+      'XL': '45592416649395:1', '2XL': '45592416682163:1', '3XL': '45592416714931:1',
+      'default': '45592416583859:1'
+    }
+  },
+  'reef-hat': {
+    badge: 'Florida Grown', name: 'Florida Reef Snapback', sub: 'Embroidered Custom Twill Snapback',
+    price: '$35.00', image: 'images/sng-flgrown-art-spec.jpg',
+    desc: 'Unisex structured snapback with raised embroidery of our Florida Palm Reef logo. Features flat bill visor and 6-panel styling.',
+    selectors: [], orderLabel: 'Buy Snapback — $35.00', orderItem: 'Florida Reef Snapback',
+    shopifyUrl: '45592416288947:1'
+  },
+  'reef-leggings': {
+    badge: 'Florida Grown', name: 'Tropical Reef Leggings', sub: 'High-Waist Compression Leggings',
+    price: '$45.00', image: 'images/sng-flgrown-womens-leggings.jpg',
+    desc: 'Women\'s performance activewear compression leggings. Squat-proof, 4-way stretch material with custom all-over tropical palm print.',
+    selectors: ['size'], orderLabel: 'Buy Leggings — $45.00', orderItem: 'Tropical Reef Leggings',
+    shopifyUrl: {
+      'S': '45592419565747:1', 'M': '45592419598515:1', 'L': '45592419631283:1',
+      'XL': '45592419664051:1', '2XL': '45592419696819:1', '3XL': '45592419729587:1',
+      'default': '45592419598515:1'
+    }
+  },
+  'ltsb-5pack': {
+    badge: 'Special Drop', name: 'Megalodon Collector Box', sub: 'Limited Edition Serialized Box Set',
+    price: '$150.00', image: 'images/apparel-meg-box.png',
+    desc: 'SNG Cycles official limited collector box. Includes printed collector box, premium hoodie, checkerboard snapback, decal pack, and serialized certificate.',
+    selectors: ['size'], orderLabel: 'Claim Collector Box — $150.00', orderItem: 'Megalodon Collector Box',
+    shopifyUrl: {
+      'S': '4600000000088:1', 'M': '4600000000089:1', 'L': '4600000000090:1',
+      'XL': '4600000000091:1', '2XL': '4600000000092:1', '3XL': '4600000000093:1',
+      'default': '4600000000089:1'
     }
   }
 };
 
-// Copy women's specific specs dynamically into PRODUCTS
+// Clone to women's specific mappings dynamically
 var w_items = {
-  'w-hat-rider-colors': { name: "Women's Rider Colors Snapback", base: "hat-rider-colors", img: "images/hat-rider-color1.png" },
-  'w-tee-fl-grown': { name: "Women's Florida Grown Tee", base: "tee-fl-grown", img: "images/w-tee-fl-grown-black-front.png" }
+  'w-tee-fl-grown-black': { name: "Women's Florida Grown Tee - Black", base: "tee-fl-grown-black", img: "images/w-tee-fl-grown-black.jpg" },
+  'w-tee-fl-grown-navy': { name: "Women's Florida Grown Tee - Navy", base: "tee-fl-grown-navy", img: "images/w-tee-fl-grown-navy.jpg" },
+  'w-tee-fl-grown-grey': { name: "Women's Florida Grown Tee - Grey", base: "tee-fl-grown-grey", img: "images/w-tee-fl-grown-grey.jpg" }
 };
 
 for (var wKey in w_items) {
@@ -440,7 +861,7 @@ for (var wKey in w_items) {
       sub: base.sub,
       price: base.price,
       image: w_items[wKey].img,
-      desc: base.desc.replace('heavyweight', "tailored women's crop").replace('combed cotton', "tailored relaxed fit"),
+      desc: base.desc.replace('combed cotton', "tailored women's crop combed cotton"),
       selectors: base.selectors,
       orderLabel: 'Buy ' + w_items[wKey].name + ' — ' + base.price,
       orderItem: w_items[wKey].name,
@@ -449,42 +870,7 @@ for (var wKey in w_items) {
   }
 }
 
-/* ── INTERACTIVE ZOOMS ── */
-var COLOR_ZOOM_COORDS = {
-  'hat-rider-colors': {
-    'SNG Classic — Black/White': { x: 0, y: 100, size: '700% 500%' },
-    'Black/Orange': { x: 16.67, y: 100, size: '700% 500%' },
-    'Blue/White': { x: 33.33, y: 100, size: '700% 500%' },
-    'Red/White': { x: 50, y: 100, size: '700% 500%' },
-    'Dark Blue/Hi-Vis Yellow': { x: 66.67, y: 100, size: '700% 500%' },
-    'Black/Green': { x: 83.33, y: 100, size: '700% 500%' },
-    'Black/Yellow': { x: 100, y: 100, size: '700% 500%' }
-  },
-  'w-hat-rider-colors': {
-    'SNG Classic — Black/White': { x: 0, y: 100, size: '700% 500%' },
-    'Black/Orange': { x: 16.67, y: 100, size: '700% 500%' },
-    'Blue/White': { x: 33.33, y: 100, size: '700% 500%' },
-    'Red/White': { x: 50, y: 100, size: '700% 500%' },
-    'Dark Blue/Hi-Vis Yellow': { x: 66.67, y: 100, size: '700% 500%' },
-    'Black/Green': { x: 83.33, y: 100, size: '700% 500%' },
-    'Black/Yellow': { x: 100, y: 100, size: '700% 500%' }
-  },
-  'tee-fl-grown': {
-    'Black': { x: 0, y: 50, size: '300% 100%' },
-    'Navy': { x: 50, y: 50, size: '300% 100%' },
-    'Dark Grey': { x: 100, y: 50, size: '300% 100%' }
-  },
-  'w-tee-fl-grown': {
-    'Black': { x: 0, y: 50, size: '300% 100%' },
-    'Navy': { x: 50, y: 50, size: '300% 100%' },
-    'Dark Grey': { x: 100, y: 50, size: '300% 100%' }
-  }
-};
-
 var currentProduct = null;
-var SIZES = ['S','M','L','XL','2XL','3XL'];
-var HAT_COLORS = ['SNG Classic — Black/White','Black/Orange','Blue/White','Red/White','Dark Blue/Hi-Vis Yellow','Black/Green','Black/Yellow'];
-var TEE_FL_GROWN_COLORS = ['Black', 'Navy', 'Dark Grey'];
 
 function openProduct(id) {
   var p = PRODUCTS[id];
@@ -506,8 +892,6 @@ function openProduct(id) {
   var sel = document.getElementById('modal-selectors');
   sel.innerHTML = '';
   if (p.selectors.indexOf('size') > -1) sel.innerHTML += buildSelect('modal-size', '— Select Size —', SIZES);
-  if (p.selectors.indexOf('hat-colorway') > -1) sel.innerHTML += buildSelect('modal-hat-color', '— Select Colorway —', HAT_COLORS);
-  if (p.selectors.indexOf('fl-grown-colorway') > -1) sel.innerHTML += buildSelect('modal-hat-color', '— Select Colorway —', TEE_FL_GROWN_COLORS);
   
   document.getElementById('product-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -518,9 +902,10 @@ function openProduct(id) {
 }
 
 function buildSelect(id, placeholder, options) {
-  var html = '<select id="' + id + '" class="modal-select"><option value="">' + placeholder + '</option>';
+  var html = '<div class="modal-select-wrap"><span class="modal-label">' + placeholder.replace('—','').replace('—','') + '</span>';
+  html += '<select id="' + id + '" class="modal-select"><option value="">' + placeholder + '</option>';
   options.forEach(function(o){ html += '<option>' + o + '</option>'; });
-  return html + '</select>';
+  return html + '</select></div>';
 }
 
 function closeModal(fromPopState) {
@@ -537,20 +922,9 @@ function toggleZoom(e) {
   
   if (!isZoomed) {
     imgCrop.classList.add('zoomed');
-    if (e) {
-      updateZoomOrigin(e);
-    }
+    if (e) updateZoomOrigin(e);
   } else {
     imgCrop.classList.remove('zoomed');
-    var val = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
-    if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
-      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
-      if (coords) {
-        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-        imgCrop.style.backgroundSize = coords.size;
-        return;
-      }
-    }
     imgCrop.style.backgroundSize = 'contain';
     imgCrop.style.backgroundPosition = 'center';
   }
@@ -572,51 +946,17 @@ document.getElementById('modal-img').addEventListener('mousemove', function(e) {
   updateZoomOrigin(e);
 });
 
-document.getElementById('modal-selectors').addEventListener('change', function(e) {
-  if (e.target && e.target.id === 'modal-hat-color') {
-    var val = e.target.value;
-    var imgCrop = document.getElementById('modal-img');
-    imgCrop.classList.remove('zoomed');
-    
-    if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
-      var target = COLOR_ZOOM_COORDS[currentProduct.id][val];
-      if (typeof target === 'string') {
-        imgCrop.style.backgroundImage = "url('" + target + "')";
-        imgCrop.style.backgroundSize = 'contain';
-        imgCrop.style.backgroundPosition = 'center';
-      } else if (target && typeof target === 'object') {
-        imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
-        imgCrop.style.backgroundSize = target.size;
-        imgCrop.style.backgroundPosition = target.x + '% ' + target.y + '%';
-      }
-    } else {
-      imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
-      imgCrop.style.backgroundSize = 'contain';
-      imgCrop.style.backgroundPosition = 'center';
-    }
-  }
-});
-
 function modalOrder() {
   var p = currentProduct.product;
   var size = document.getElementById('modal-size') ? document.getElementById('modal-size').value : '';
-  var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
   
   if (p.selectors.indexOf('size') > -1 && !size) { alert('Please select a size.'); return; }
-  if (p.selectors.indexOf('hat-colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
-  if (p.selectors.indexOf('fl-grown-colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
   
   if (ECOM_CONFIG.platform === 'shopify') {
     var checkoutUrl = '';
     if (p.shopifyUrl) {
       if (typeof p.shopifyUrl === 'object') {
-        var key = '';
-        if (size && hatColor) {
-          key = hatColor + ' / ' + size;
-        } else {
-          key = size || hatColor || 'default';
-        }
-        checkoutUrl = p.shopifyUrl[key] || p.shopifyUrl['default'] || '';
+        checkoutUrl = p.shopifyUrl[size] || p.shopifyUrl['default'] || '';
       } else {
         checkoutUrl = p.shopifyUrl;
       }
@@ -629,6 +969,55 @@ function modalOrder() {
       return;
     }
   }
+}
+
+/* ── TAB CONTROLLER ── */
+function switchTab(gender) {
+  document.querySelectorAll('.tab-btn').forEach(function(btn) { btn.classList.remove('active'); });
+  document.querySelectorAll('.grid-container').forEach(function(grid) { grid.classList.remove('active'); });
+  
+  if (gender === 'mens') {
+    document.querySelector('[onclick="switchTab(\'mens\')"]').classList.add('active');
+    document.getElementById('mens-grid-container').classList.add('active');
+  } else {
+    document.querySelector('[onclick="switchTab(\'womens\')"]').classList.add('active');
+    document.getElementById('womens-grid-container').classList.add('active');
+  }
+}
+
+/* ── COUNTDOWN TIMER ── */
+function startCountdown() {
+  function updateTimer() {
+    var now = new Date();
+    var midnight = new Date();
+    midnight.setHours(24, 0, 0, 0);
+    var diff = midnight - now;
+    
+    if (diff <= 0) {
+      document.getElementById('timer-hours').textContent = '00';
+      document.getElementById('timer-minutes').textContent = '00';
+      document.getElementById('timer-seconds').textContent = '00';
+      return;
+    }
+    
+    var hours = Math.floor(diff / 3600000);
+    var minutes = Math.floor((diff % 3600000) / 60000);
+    var seconds = Math.floor((diff % 60000) / 1000);
+    
+    document.getElementById('timer-hours').textContent = hours < 10 ? '0' + hours : hours;
+    document.getElementById('timer-minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+    document.getElementById('timer-seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+  }
+  updateTimer();
+  setInterval(updateTimer, 1000);
+}
+startCountdown();
+
+function submitWaitlist() {
+  var email = document.getElementById('waitlist-email-input').value.trim();
+  if (!email) { alert('Please enter a valid email address.'); return; }
+  alert('You have been added to the waitlist! SNG Cycles updates will be sent to: ' + email);
+  document.getElementById('waitlist-email-input').value = '';
 }
 
 // Browser navigation history popstate listener
