@@ -116,9 +116,12 @@ footer { border-top: 1px solid var(--border); padding: 48px 40px; display: flex;
     <span class="nav-logo-text">SNG Cycles</span>
   </a>
   <div class="nav-links">
-    <a href="index.html#shop">Shop</a>
-    <a href="index.html#hats">Hats</a>
-    <a href="index.html#hoodies">Hoodies</a>
+    <a href="index.html#showroom">Showroom</a>
+    <a href="florida-grown.html">FL Grown</a>
+    <a href="mako-gold.html">Mako Gold</a>
+    <a href="ltsb.html">LTSB</a>
+    <a href="race-day.html">Race Day</a>
+    <a href="conversion.html">Conversion</a>
     <a href="builds.html" class="active">Builds</a>
     <a href="index.html#waitlist" class="nav-cta">Join the Crew</a>
   </div>
@@ -157,133 +160,45 @@ footer { border-top: 1px solid var(--border); padding: 48px 40px; display: flex;
 <!-- LINEUP -->
 <section id="lineup">
   <div class="section-label">The Lineup</div>
-  <div class="section-title">Built Different.<br>For Every Road.</div>
-  <div class="section-desc">Five electric vehicles. Two divisions. One brand. SNG Cycles handles 2-wheel. SNG Motors handles everything else. All engineered in Florida, one at a time.</div>
-  <div class="lineup-grid">
+  <div class="section-title">Built Different.<br>One Machine.</div>
+  <div class="section-desc">Florida-engineered electric supermoto. One real bike. SNG Cycles handles the complete engineering, custom geometries, and hand assembly. Built in a garage for the riders the market forgot.</div>
+  <div class="lineup-grid" style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap;">
 
-    <!-- MAKO -->
-    <div class="model-card" onclick="openProduct('mako')">
-      <img class="model-img" src="mako-flagship.png" alt="Mako" onerror="this.src='comic bike.png';">
+    <!-- MAKO 270E -->
+    <div class="model-card" onclick="openProduct('mako')" style="max-width:380px; width:100%;">
+      <img class="model-img" src="images/sng-270e-showroom.jpg" alt="SNG 270E Supermoto" style="object-position:center;">
       <div class="model-body">
         <div class="model-division">SNG Cycles</div>
-        <div class="model-name">Mako</div>
-        <div class="model-tagline">Electric Supermoto — The Hunter</div>
+        <div class="model-name">SNG 270E (Mako)</div>
+        <div class="model-tagline">Electric Supermoto — The Flagship</div>
         <div class="model-specs">
           <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">27kW Mid-Drive</span></div>
-          <div class="model-spec"><span class="model-spec-label">Seat Height</span><span class="model-spec-val">39"–43" Adjustable</span></div>
-          <div class="model-spec"><span class="model-spec-label">Suspension</span><span class="model-spec-val">WP XACT Forks</span></div>
-          <div class="model-spec"><span class="model-spec-label">Target Rider</span><span class="model-spec-val">6'0"–7'0"+</span></div>
+          <div class="model-spec"><span class="model-spec-label">Controller</span><span class="model-spec-val">EBMX / Fardriver</span></div>
+          <div class="model-spec"><span class="model-spec-label">Suspension</span><span class="model-spec-val">WP Front Forks</span></div>
+          <div class="model-spec"><span class="model-spec-label">Rims / Seat</span><span class="model-spec-val">Gold Excel / GUTS</span></div>
+          <div class="model-spec"><span class="model-spec-label">Target Rider</span><span class="model-spec-val">6'0"–7'0"+ Geometry</span></div>
         </div>
         <div class="model-price">$21,000 – $30,000</div>
-        <div class="model-status">Limited · 300 units</div>
+        <div class="model-status">Real Build · Reserve Now</div>
       </div>
     </div>
 
-    <!-- GREAT WHITE -->
-    <div class="model-card" onclick="openProduct('great-white')">
-      <img class="model-img" src="great-white-clean.png" alt="Great White">
+    <!-- E-520 -->
+    <div class="model-card" onclick="openProduct('e520')" style="max-width:380px; width:100%;">
+      <img class="model-img" src="images/sng-e520-clean.jpg" alt="SNG E-520 Supermoto" style="object-position:center;">
       <div class="model-body">
         <div class="model-division">SNG Cycles</div>
-        <div class="model-name">Great White</div>
-        <div class="model-tagline">Electric Stunt Platform — Shark Jaw™</div>
+        <div class="model-name">SNG E-520</div>
+        <div class="model-tagline">Electric Supermoto — Coming Soon</div>
         <div class="model-specs">
-          <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">100 HP Peak</span></div>
-          <div class="model-spec"><span class="model-spec-label">Frame</span><span class="model-spec-val">Lattice Stunt Chassis</span></div>
-          <div class="model-spec"><span class="model-spec-label">Platforms</span><span class="model-spec-val">300 LB Rated</span></div>
-          <div class="model-spec"><span class="model-spec-label">System</span><span class="model-spec-val">Shark Jaw™ Front End</span></div>
+          <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">52kW Mid-Drive</span></div>
+          <div class="model-spec"><span class="model-spec-label">Controller</span><span class="model-spec-val">EBMX / Fardriver</span></div>
+          <div class="model-spec"><span class="model-spec-label">Suspension</span><span class="model-spec-val">WP Race Suspension</span></div>
+          <div class="model-spec"><span class="model-spec-label">Rims / Seat</span><span class="model-spec-val">Gold Excel / Race Custom</span></div>
+          <div class="model-spec"><span class="model-spec-label">Target Rider</span><span class="model-spec-val">6'0"–7'0"+ Geometry</span></div>
         </div>
-        <div class="model-price">$35,000 – $40,000</div>
-        <div class="model-status">Coming Soon · Reserve Now</div>
-      </div>
-    </div>
-
-    <!-- MEGALODON 520E -->
-    <div class="model-card" onclick="openProduct('megalodon')">
-      <img class="model-img" src="megalodon-render.jpg" alt="Megalodon 520E" style="object-position:center top;">
-      <div class="model-body">
-        <div class="model-division">SNG Cycles</div>
-        <div class="model-name">Megalodon 520E</div>
-        <div class="model-tagline">Electric Supermoto — 52kW Street Legal</div>
-        <div class="model-specs">
-          <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">52kW · 70 HP Peak</span></div>
-          <div class="model-spec"><span class="model-spec-label">Top Speed</span><span class="model-spec-val">100+ MPH</span></div>
-          <div class="model-spec"><span class="model-spec-label">Seat Height</span><span class="model-spec-val">37.6" · Tall Rider</span></div>
-          <div class="model-spec"><span class="model-spec-label">Range</span><span class="model-spec-val">120+ Miles</span></div>
-        </div>
-        <div class="model-price">$26,495</div>
-        <div class="model-status">Includes Jacket + Hat · Reserve Now</div>
-      </div>
-    </div>
-
-    <!-- PLATINUM 520E -->
-    <div class="model-card" onclick="openProduct('platinum-520e')" style="border-color:var(--orange);">
-      <img class="model-img" src="platinum-520e.png" alt="Platinum 520E" onerror="this.src='platinum-520e-spec.png';">
-      <div class="model-body">
-        <div class="model-division" style="color:var(--orange);">SNG Cycles · Limited 30 Units</div>
-        <div class="model-name">Platinum 520E</div>
-        <div class="model-tagline">Built Different. Made to Stand Out.</div>
-        <div class="model-specs">
-          <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">52kW · 96V Liquid Cooled</span></div>
-          <div class="model-spec"><span class="model-spec-label">Dash</span><span class="model-spec-val">7" Smart · Apple CarPlay</span></div>
-          <div class="model-spec"><span class="model-spec-label">Wrap</span><span class="model-spec-val">Platinum Silver</span></div>
-          <div class="model-spec"><span class="model-spec-label">Units</span><span class="model-spec-val">30 Total · Ever</span></div>
-        </div>
-        <div class="model-price" style="color:var(--orange);">Reserve Now</div>
-        <div class="model-status" style="color:var(--orange);font-weight:900;">30 Units Worldwide · 001/030</div>
-      </div>
-    </div>
-
-    <!-- SAND SHARK -->
-    <div class="model-card" onclick="openProduct('sand-shark')">
-      <img class="model-img" src="sand-shark.png" alt="Sand Shark">
-      <div class="model-body">
-        <div class="model-division">SNG Motors</div>
-        <div class="model-name">Sand Shark</div>
-        <div class="model-tagline">Electric Tadpole — Entry Level Beast</div>
-        <div class="model-specs">
-          <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">20kW Mid-Drive</span></div>
-          <div class="model-spec"><span class="model-spec-label">Layout</span><span class="model-spec-val">Tadpole 2F / 1R</span></div>
-          <div class="model-spec"><span class="model-spec-label">Top Speed</span><span class="model-spec-val">83 MPH</span></div>
-          <div class="model-spec"><span class="model-spec-label">Seating</span><span class="model-spec-val">2 Passengers</span></div>
-        </div>
-        <div class="model-price">$15,990</div>
-        <div class="model-status">Coming July 2026</div>
-      </div>
-    </div>
-
-    <!-- BLACK TIP GT -->
-    <div class="model-card" onclick="openProduct('black-tip-gt')">
-      <img class="model-img" src="black-tip-gt.png" alt="Black Tip GT">
-      <div class="model-body">
-        <div class="model-division">SNG Motors</div>
-        <div class="model-name">Black Tip GT</div>
-        <div class="model-tagline">Electric Performance — "Drive It"</div>
-        <div class="model-specs">
-          <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">165 HP · 220 Nm</span></div>
-          <div class="model-spec"><span class="model-spec-label">0–60</span><span class="model-spec-val">3.8 Seconds</span></div>
-          <div class="model-spec"><span class="model-spec-label">Top Speed</span><span class="model-spec-val">120 MPH</span></div>
-          <div class="model-spec"><span class="model-spec-label">Range</span><span class="model-spec-val">120–160 Miles</span></div>
-        </div>
-        <div class="model-price">$49,995</div>
-        <div class="model-status">Coming Soon · Reserve Now</div>
-      </div>
-    </div>
-
-    <!-- BLACK TIP APEX -->
-    <div class="model-card" onclick="openProduct('black-tip-apex')">
-      <img class="model-img" src="black-tip-apex.png" alt="Black Tip Apex">
-      <div class="model-body">
-        <div class="model-division">SNG Motors</div>
-        <div class="model-name">Black Tip Apex</div>
-        <div class="model-tagline">Halo Model — "Ride It"</div>
-        <div class="model-specs">
-          <div class="model-spec"><span class="model-spec-label">Power</span><span class="model-spec-val">180 HP · 240 Nm</span></div>
-          <div class="model-spec"><span class="model-spec-label">0–60</span><span class="model-spec-val">3.3 Seconds</span></div>
-          <div class="model-spec"><span class="model-spec-label">Top Speed</span><span class="model-spec-val">130 MPH</span></div>
-          <div class="model-spec"><span class="model-spec-label">Range</span><span class="model-spec-val">130–180 Miles</span></div>
-        </div>
-        <div class="model-price">$59,900</div>
-        <div class="model-status">Coming Soon · Reserve Now</div>
+        <div class="model-price">Coming Soon</div>
+        <div class="model-status">Coming Soon · R&amp;D Phase</div>
       </div>
     </div>
 
@@ -321,6 +236,16 @@ footer { border-top: 1px solid var(--border); padding: 48px 40px; display: flex;
 </section>
 </div>
 
+<!-- BUILDER GEAR CTA -->
+<div style="background:linear-gradient(135deg,#0a1018,#080b10); border-top:2px solid var(--orange); border-bottom:2px solid var(--border); padding:60px 40px; text-align:center;">
+  <div style="max-width:800px; margin:0 auto;">
+    <div style="font-size:11px; font-weight:800; letter-spacing:3px; color:var(--orange); text-transform:uppercase; margin-bottom:12px;">Not Ready for a Bike Yet?</div>
+    <h2 style="font-size:clamp(28px,4vw,48px); font-weight:900; letter-spacing:2px; text-transform:uppercase; color:#fff; margin-bottom:16px; font-style:italic;">Start with the Gear.</h2>
+    <p style="font-size:16px; color:var(--muted); margin-bottom:32px; max-width:600px; margin-left:auto; margin-right:auto;">Grab the official SNG Conversion Series apparel — custom embroidered hats and slogan tees built for the garage.</p>
+    <a href="conversion.html" style="display:inline-block; background:var(--orange); color:#fff; padding:16px 40px; border-radius:8px; font-weight:900; font-size:15px; letter-spacing:1px; text-transform:uppercase; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#e06810'" onmouseout="this.style.background='var(--orange)'">Explore Conversion Series Apparel →</a>
+  </div>
+</div>
+
 <!-- PRODUCT MODAL -->
 <div id="product-modal" onclick="if(event.target===this)closeModal()">
   <div id="modal-inner">
@@ -346,10 +271,16 @@ footer { border-top: 1px solid var(--border); padding: 48px 40px; display: flex;
     <div class="footer-tagline">Shark Not Goldfish · Leave the School Behind</div>
   </div>
   <div class="footer-links">
-    <a href="index.html#shop">Shop Apparel</a>
+    <a href="index.html#showroom">Showroom</a>
+    <a href="florida-grown.html">FL Grown</a>
+    <a href="mako-gold.html">Mako Gold</a>
+    <a href="ltsb.html">LTSB</a>
+    <a href="race-day.html">Race Day</a>
+    <a href="conversion.html">Conversion</a>
+    <a href="builds.html">Builds</a>
     <a href="https://tiktok.com/@sngcycles" target="_blank">TikTok</a>
     <a href="https://instagram.com/sngcycles" target="_blank">Instagram</a>
-    <a href="mailto:sharknotgoldfish@gmail.com">Contact</a>
+    <a href="mailto:sales@sngcycles.com">Contact</a>
   </div>
   <div class="footer-copy">© 2026 SNG Customs · Royal Palm Beach, FL</div>
 </footer>
@@ -357,46 +288,16 @@ footer { border-top: 1px solid var(--border); padding: 48px 40px; display: flex;
 <script>
 var PRODUCTS = {
   'mako': {
-    badge:'SNG Cycles · Flagship', name:'Mako', sub:'Electric Supermoto — The Hunter',
-    price:'$21,000 – $30,000', image:'mako-flagship.png',
-    desc:'27kW mid-drive. WP XACT forks. 39"–43" adjustable seat height. Built for riders 6\'0"–7\'0"+. Black and gold flagship edition. #99. Leave the School Behind.',
-    selectors:[], orderLabel:'Reserve Your Mako', orderItem:'Mako Reservation'
+    badge:'SNG Cycles · Flagship', name:'SNG 270E (Mako)', sub:'Electric Supermoto — The Flagship',
+    price:'$21,000 – $30,000', image:'images/sng-270e-showroom.jpg',
+    desc:'Florida-engineered electric supermoto. Built with a mid-drive 27kW peak power motor, WP front forks, gold Excel spoke wheels, and a custom GUTS racing seat. Features a custom-tuned EBMX or Fardriver controller. Bespoke geometry designed for tall riders (6\'0" to 7\'0"+). No gas, all speed.',
+    selectors:[], orderLabel:'Reserve Your SNG 270E', orderItem:'SNG 270E Reservation'
   },
-  'great-white': {
-    badge:'SNG Cycles · Stunt Platform', name:'Great White', sub:'Electric Stunt Platform — Shark Jaw™',
-    price:'$35,000 – $40,000', image:'great-white-clean.png',
-    desc:'100 HP peak. White and blue lattice stunt chassis. Shark Jaw™ front end. 300 LB rated stunt platforms. Blue hub accents. SNG supermoto tires. Built for the stunt community — the machine nobody else had the nerve to build.',
-    selectors:[], orderLabel:'Reserve Your Great White', orderItem:'Great White Reservation'
-  },
-  'megalodon': {
-    badge:'SNG Cycles · 52kW Supermoto', name:'Megalodon 520E', sub:'Leave the School Behind™',
-    price:'$26,495', image:'megalodon-render.jpg',
-    desc:'52kW Peak · 84V · 70 HP Peak · 100+ MPH · 120+ Mile Range · Instant Torque · Street Legal · WP Front Suspension · Adjustable Rear Shock · Hydraulic Disc Brakes · 7" Smart Display · Extended Swingarm · Tall Rider Geometry · Seat Height 37.6" · Est. Weight 200 lbs · Fast Charge 2–3 hrs.',
-    selectors:[], orderLabel:'Reserve Your Megalodon 520E — $26,495', orderItem:'Megalodon 520E Reservation'
-  },
-  'platinum-520e': {
-    badge:'SNG Cycles · Limited 30 Units · Worldwide', name:'Platinum 520E', sub:'Built Different. Made to Stand Out.',
-    price:'Reserve Now', image:'platinum-520e.png',
-    desc:'52kW · 96V 60Ah Lithium · Advanced Liquid Cooled · 7" Smart Dash Apple CarPlay · Platinum Finish Wrap · Fully Adjustable Suspension · Supermoto Wheels. Box Set: Bike (001/030 serialized) · Premium Platinum Hoodie · Snapback Hat · Metal Keychain · Certificate of Authenticity · Premium Collector Box with LED Lights. Limited to 30 units worldwide.',
-    selectors:[], orderLabel:'Reserve Your Platinum 520E', orderItem:'Platinum 520E Reservation'
-  },
-  'sand-shark': {
-    badge:'SNG Motors · Entry Level', name:'Sand Shark', sub:'Electric Tadpole — Entry Level Beast',
-    price:'$15,990', image:'sand-shark.png',
-    desc:'20kW mid-drive. Tadpole 2F/1R layout. 83 MPH top speed. 2 passengers. Deep Sea edition wrap. WP suspension. SNG-NCS air design. The most accessible vehicle in the lineup — still a beast.',
-    selectors:[], orderLabel:'Reserve Your Sand Shark', orderItem:'Sand Shark Reservation'
-  },
-  'black-tip-gt': {
-    badge:'SNG Motors · Electric Performance', name:'Black Tip GT', sub:'"Drive It" — The Premium Street Version',
-    price:'$49,995', image:'black-tip-gt.png',
-    desc:'EMRAX 228 Axial Flux · RWD · 165 HP · 220 Nm · 0-60: 3.8s · 120 MPH · 21kWh Lithium NMC · 120-160 mile range · DC fast charge · Independent double wishbone front · Adjustable coilovers · 7" Digital display · Shark fin puddle light · White underglow · Premium diamond-stitched seat · 4-point harness · ~1,100 lbs.',
-    selectors:[], orderLabel:'Reserve Your Black Tip GT — $49,995', orderItem:'Black Tip GT Reservation'
-  },
-  'black-tip-apex': {
-    badge:'SNG Motors · Halo Model', name:'Black Tip Apex', sub:'"Ride It" — Built for SNG Cycles Riders',
-    price:'$59,900', image:'black-tip-apex.png',
-    desc:'EMRAX 228 High Output · RWD · 180 HP · 240 Nm · 0-60: 3.3s · 130 MPH · 25kWh Lithium NMC · 130-180 mile range · Performance cooling · Lower ride height · Wider track width · Motorcycle controls · Shark fin puddle light · White underglow · Tall diamond-stitched seat · 5-point racing harness · ~1,050 lbs.',
-    selectors:[], orderLabel:'Reserve Your Black Tip Apex — $59,900', orderItem:'Black Tip Apex Reservation'
+  'e520': {
+    badge:'SNG Cycles · Coming Soon', name:'SNG E-520', sub:'Electric Supermoto — Coming Soon',
+    price:'Coming Soon', image:'images/sng-e520-clean.jpg',
+    desc:'Our next-generation heavy hitter supermoto. Featuring a monstrous 52kW liquid-cooled motor, custom race controller, WP racing suspension, and Excel gold rims. Engineered and optimized in Florida for maximum street-legal performance.',
+    selectors:[], orderLabel:'Reserve Future Slot', orderItem:'SNG E-520 Interest'
   }
 };
 
