@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Cycles — Race Day Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:ital,wght=0,400;0,700;0,900;1,400;1,700;1,900&family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #111111;
+  --dark: #000000;
+  --gray-bg: #1e1e1e;
+  --yellow: #ffe600;
+  --yellow-light: #fff066;
+  --white: #ffffff;
+  --off-white: #f5f5f5;
+  --border: #ffe600;
+  --text: #ffffff;
+  --text-muted: #aaaaaa;
+  --head: 'Barlow Condensed', sans-serif;
+  --oswald: 'Oswald', sans-serif;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--black);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1, h2, h3, .section-title, .brand, .apparel-name, .nav-logo-text {
+  font-family: var(--head);
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Checkered board decoration pattern */
+.checkered-stripe {
+  height: 12px;
+  background-image: linear-gradient(45deg, #000 25%, transparent 25%), 
+                    linear-gradient(-45deg, #000 25%, transparent 25%), 
+                    linear-gradient(45deg, transparent 75%, #000 75%), 
+                    linear-gradient(-45deg, transparent 75%, #000 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+  background-color: var(--yellow);
+  border-bottom: 2px solid var(--dark);
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--dark);
+  border-bottom: 3px solid var(--border);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 40px; width: 40px; object-fit: contain; }
+.nav-logo-text { font-size: 24px; color: var(--white); letter-spacing: 1.5px; }
+.nav-logo-text span { color: var(--yellow); }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { font-family: var(--head); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--yellow); }
+.nav-cta {
+  background: var(--yellow);
+  color: var(--dark) !important;
+  padding: 8px 18px;
+  border-radius: 0;
+  border: 2px solid var(--dark);
+  font-family: var(--head);
+  font-weight: 900;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--yellow-light); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.55)), url('images/sng-raceday-hero-banner.jpg') no-repeat center center;
+  background-size: cover;
+  border-bottom: 3px solid var(--border);
+  position: relative;
+}
+.hero-tag {
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 0.95;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.hero h1 span.yellow { color: var(--yellow); }
+.hero-sub {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--yellow);
+  margin: 0 auto 24px;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  background: var(--dark);
+  padding: 30px 40px;
+}
+.section-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.section-title { font-size: clamp(24px, 4vw, 40px); color: var(--white); line-height: 1; }
+.section-subtitle { font-size: 14px; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+/* ── PRODUCT CARDS ── */
+.product-grid-section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.product-card {
+  background: var(--gray-bg);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover { transform: translateY(-4px); border-color: var(--white); }
+.product-card-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--dark); border-bottom: 2px solid var(--border); position: relative; }
+.product-card-img { width: 100%; height: 100%; object-fit: cover; }
+.product-card-badge { position: absolute; top: 12px; left: 12px; background: var(--yellow); color: var(--dark); font-family: var(--head); font-weight: 900; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid var(--border); }
+.product-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.product-card-tag { font-family: var(--head); font-weight: 700; font-size: 10px; color: var(--yellow); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.product-card-name { font-family: var(--oswald); font-weight: 600; font-size: 16px; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.product-card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; }
+.product-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.product-card-price { font-family: var(--oswald); font-weight: 700; font-size: 18px; color: var(--yellow); }
+.product-card-btn { background: var(--yellow); color: var(--dark); border: none; padding: 8px 16px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.product-card:hover .product-card-btn { background: var(--white); color: var(--dark); }
+
+/* ── MODALS ── */
+.modal-wrap { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 16px; }
+.modal-wrap.open { display: flex; }
+.modal { background: var(--gray-bg); border: 3px solid var(--border); width: 90%; max-width: 860px; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; position: relative; color: var(--white); }
+.modal-close { position: absolute; top: 12px; right: 12px; background: var(--yellow); color: var(--dark); border: none; width: 32px; height: 32px; font-size: 20px; font-weight: 700; cursor: pointer; z-index: 10; }
+.modal-img-wrap { background: var(--dark); border-right: 3px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+.modal-img-crop { width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: contain; transition: transform 0.25s ease-out; transform-origin: center center; cursor: zoom-in; }
+.modal-img-crop.zoomed { transform: scale(2.2); cursor: zoom-out; transition: transform 0.25s ease-out; }
+.modal-body { padding: 32px 28px; display: flex; flex-direction: column; }
+.modal-badge { font-size: 10px; color: var(--yellow); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.modal-name { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+.modal-price { font-family: var(--oswald); font-size: 26px; font-weight: 700; color: var(--yellow); margin-bottom: 16px; }
+.modal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+.modal-label { font-family: var(--head); font-size: 11px; color: var(--yellow); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 700; }
+.modal-select { width: 100%; padding: 10px 14px; background: var(--dark); border: 2px solid var(--border); color: var(--white); font-size: 13px; font-weight: 700; margin-bottom: 14px; outline: none; cursor: pointer; }
+.modal-add-btn { width: 100%; background: var(--yellow); color: var(--dark); border: 2px solid var(--border); padding: 14px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: auto; }
+.modal-add-btn:hover { background: var(--white); color: var(--dark); }
+.modal-zoom-hint { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 10px; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark); border-top: 3px solid var(--border); padding: 48px 40px; color: var(--text-muted); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.footer-logo { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); }
+.footer-logo span { color: var(--yellow); }
+.footer-tagline { font-family: var(--head); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; text-transform: uppercase; font-family: var(--head); font-weight: 700; letter-spacing: 1px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 40px; border-top: 1px solid var(--gray-bg); padding-top: 20px; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .modal { grid-template-columns: 1fr; }
+  .modal-img-wrap { border-right: none; border-bottom: 3px solid var(--border); min-height: 240px; }
+  footer { padding: 32px 20px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="checkered-stripe"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="sng-logo-orange.jpeg" alt="SNG Cycles">
+    <span class="nav-logo-text">SNG <span>◆</span> Cycles</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#showroom">Showroom</a>
+    <a href="florida-grown.html">FL Grown</a>
+    <a href="mako-gold.html">Mako Gold</a>
+    <a href="ltsb.html">LTSB</a>
+    <a href="race-day.html" style="color:var(--yellow);">Race Day</a>
+    <a href="conversion.html">Conversion</a>
+    <a href="index.html#mens-gear">Men's</a>
+    <a href="index.html#womens-gear">Women's</a>
+    <a href="index.html#waitlist" class="nav-cta">Join the Crew</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-tag">SNG Collections</div>
+  <h1>RACE <span class="yellow">DAY</span></h1>
+  <div class="hero-sub">Team Colorways & Raised Embroidery Visor Art</div>
+  <div class="hero-divider"></div>
+  <p style="font-size: 15px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+    The official Race Day series. Heavy 3D raise stitch, checkered flag accents, and colorways configured for KTM, Sur-Ron, Yamaha, Honda, Husqvarna, and Kawasaki.
+  </p>
+</div>
+
+<!-- ── MEN'S SECTION HEADER ── -->
+<div class="section-header" id="mens-section">
+  <div class="section-header-inner">
+    <div>
+      <div class="section-subtitle">Race Day Drop — Men's</div>
+      <h2 class="section-title">Men's Checkerboard Series</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ── MEN'S PRODUCTS GRID ── -->
+<div class="product-grid-section">
+  <div class="product-grid">
+    <!-- Checkerboard Cap -->
+    <div class="product-card" onclick="openProduct('bt-apex-hat')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-checkerboard-hats-views.jpg" class="product-card-img" alt="SNG Checkerboard Snapback">
+        <div class="product-card-badge">6 Colors</div>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hats</div>
+        <h4 class="product-card-name">SNG Checkerboard Snapback</h4>
+        <p class="product-card-desc">Checkered raised logo cap with custom side script. Premium 6-panel design.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$40.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkerboard Side Snapback -->
+    <div class="product-card" onclick="openProduct('bt-apex-hat-side')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-raceday-side-checkered.jpg" class="product-card-img" alt="SNG Checkerboard Side Snapback">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hats</div>
+        <h4 class="product-card-name">SNG Checkerboard Side Snapback</h4>
+        <p class="product-card-desc">Solid black front panel with white logo, black and white checkered side/back panels.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$40.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkerboard Front Snapback -->
+    <div class="product-card" onclick="openProduct('bt-apex-hat-front')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-raceday-front-checkered.jpg" class="product-card-img" alt="SNG Checkerboard Front Snapback">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hats</div>
+        <h4 class="product-card-name">SNG Checkerboard Front Snapback</h4>
+        <p class="product-card-desc">Checkered front panel with white logo, solid black side/back panels.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$40.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Race Day Hoodie -->
+    <div class="product-card" onclick="openProduct('bt-apex-hoodie')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-raceday-mockups.jpg" class="product-card-img" alt="Race Day Hoodie" style="object-position: right top;">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hoodies</div>
+        <h4 class="product-card-name">Race Day Hoodie</h4>
+        <p class="product-card-desc">Heavyweight black fleece with yellow SNG chest print and checkered pattern hood liner.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$65.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Race Day Denim -->
+    <div class="product-card" onclick="openProduct('bt-apex-denim')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-raceday-denim.jpg" class="product-card-img" alt="SNG Race Day Denim">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Riding Gear</div>
+        <h4 class="product-card-name">SNG Race Day Denim</h4>
+        <p class="product-card-desc">Riding jeans with built-in low-profile knee protection, checker stretch panels, and slim fit.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$120.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── WOMEN'S SECTION HEADER ── -->
+<div class="section-header" id="womens-section">
+  <div class="section-header-inner">
+    <div>
+      <div class="section-subtitle">Race Day Drop — Women's</div>
+      <h2 class="section-title">Women's Checkerboard Series</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ── WOMEN'S PRODUCTS GRID ── -->
+<div class="product-grid-section">
+  <div class="product-grid">
+    <!-- Women's Checkerboard Cap -->
+    <div class="product-card" onclick="openProduct('w-bt-apex-hat')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-checkerboard-hats-views.jpg" class="product-card-img" alt="Women's Checkerboard Snapback">
+        <div class="product-card-badge">6 Colors</div>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hats</div>
+        <h4 class="product-card-name">Women's Checkerboard Snapback</h4>
+        <p class="product-card-desc">Structured checkered flag cap, tailored women's fit, raised embroidery.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$40.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Women's Checkerboard Side Snapback -->
+    <div class="product-card" onclick="openProduct('w-bt-apex-hat-side')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-raceday-side-checkered.jpg" class="product-card-img" alt="Women's Checkerboard Side Snapback">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hats</div>
+        <h4 class="product-card-name">Women's Checkerboard Side Snapback</h4>
+        <p class="product-card-desc">Solid black front panel, checkered side and back panels, tailored women's fit.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$40.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Women's Checkerboard Front Snapback -->
+    <div class="product-card" onclick="openProduct('w-bt-apex-hat-front')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-raceday-front-checkered.jpg" class="product-card-img" alt="Women's Checkerboard Front Snapback">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hats</div>
+        <h4 class="product-card-name">Women's Checkerboard Front Snapback</h4>
+        <p class="product-card-desc">Checkered front panel with white logo, solid black back, tailored women's fit.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$40.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Women's Race Day Hoodie -->
+    <div class="product-card" onclick="openProduct('w-bt-apex-hoodie')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-raceday-mockups.jpg" class="product-card-img" alt="Women's Race Day Hoodie" style="object-position: right top;">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Hoodies</div>
+        <h4 class="product-card-name">Women's Race Day Hoodie</h4>
+        <p class="product-card-desc">Tailored women's crop black fleece with yellow SNG print and checkered patterns.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$65.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Women's Race Day Denim -->
+    <div class="product-card" onclick="openProduct('w-bt-apex-denim')">
+      <div class="product-card-img-wrap">
+        <img src="images/sng-raceday-denim.jpg" class="product-card-img" alt="Women's Race Day Denim">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Riding Gear</div>
+        <h4 class="product-card-name">Women's Race Day Denim</h4>
+        <p class="product-card-desc">Riding jeans with built-in knee protection, checker stretch panels, tailored women's fit.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$120.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">SNG <span>◆</span> Cycles</div>
+      <div class="footer-tagline">Leave the school behind — sngcycles.com</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#showroom">Showroom</a>
+      <a href="florida-grown.html">FL Grown</a>
+      <a href="mako-gold.html">Mako Gold</a>
+      <a href="ltsb.html">LTSB</a>
+      <a href="race-day.html">Race Day</a>
+      <a href="conversion.html">Conversion</a>
+      <a href="builds.html">Builds</a>
+      <a href="https://tiktok.com/@sngcycles" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sngcycles" target="_blank">Instagram</a>
+      <a href="mailto:sales@sngcycles.com">Contact</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    © 2026 SNG Customs / Complete Care Marketing Inc. · Royal Palm Beach, FL · Powered by Shopify + Printful
+  </div>
+</footer>
+
+<!-- ── PRODUCT MODAL ── -->
+<div class="modal-wrap" id="product-modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img-wrap">
+      <div id="modal-img" class="modal-img-crop" onclick="toggleZoom(event)"></div>
+    </div>
+    <div class="modal-body">
+      <div id="modal-badge" class="modal-badge"></div>
+      <div id="modal-name" class="modal-name"></div>
+      <div id="modal-sub" class="modal-sub"></div>
+      <div id="modal-price" class="modal-price"></div>
+      <div id="modal-desc" class="modal-desc"></div>
+      <div id="modal-selectors"></div>
+      <button id="modal-order-btn" class="modal-add-btn" onclick="modalOrder()">Buy Now</button>
+      <div id="modal-zoom-hint" class="modal-zoom-hint">Click image to zoom in · move mouse to pan</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── E-COMMERCE CONFIGURATION ── */
+var ECOM_CONFIG = {
+  platform: 'shopify',
+  shopifyStoreDomain: 'r4tpmi-xj.myshopify.com',
+  orderEmail: 'sales@sngcycles.com'
+};
+
+/* ── PRODUCT MODAL DATA ── */
+var PRODUCTS = {
+  'bt-apex-hat': {
+    badge: 'Race Day Collection', name: 'SNG Checkerboard Snapback', sub: 'Circular Logo & Checkered Visor Cap',
+    price: '$40.00', image: 'images/sng-checkerboard-hats-views.jpg',
+    desc: 'Race Day Collection Checkerboard Snapback. Structured 6-panel fit, raised embroidered circular SNG logo, checkered visor underbrim details. Available in 6 custom checkered colorways.',
+    selectors: ['checkerboard-colorway'], orderLabel: 'Buy Checkerboard Cap — $40.00', orderItem: 'SNG Checkerboard Snapback',
+    shopifyUrl: {
+      'Black/White': '45592416092339:1',
+      'Black/Orange': '45592416125107:1',
+      'Black/Blue': '45592416157875:1',
+      'Black/Red': '45592416190643:1',
+      'Black/Neon Yellow': '45592416223411:1',
+      'Black/Yellow': '45592416256179:1',
+      'default': '45592416092339:1'
+    }
+  },
+  'bt-apex-hat-side': {
+    badge: 'Race Day Collection', name: 'SNG Checkerboard Side Snapback', sub: 'Solid Black Front & Checkerboard Side Panels',
+    price: '$40.00', image: 'images/sng-raceday-side-checkered.jpg',
+    desc: 'Checkerboard Side Snapback. Features a solid black front panel with white embroidered SNG Cycles fin logo, side and back checkered panels, custom side embroidery "GET OUT AND RIDE!", and classic adjustable snapback enclosure.',
+    selectors: [], orderLabel: 'Buy Side Checkered Cap — $40.00', orderItem: 'SNG Checkerboard Side Snapback',
+    shopifyUrl: '45592416092339:1'
+  },
+  'bt-apex-hat-front': {
+    badge: 'Race Day Collection', name: 'SNG Checkerboard Front Snapback', sub: 'Checkerboard Front & Solid Black Back Panels',
+    price: '$40.00', image: 'images/sng-raceday-front-checkered.jpg',
+    desc: 'Checkerboard Front Snapback. Features a black and white checkerboard front panel with white embroidered SNG Cycles fin logo, solid black side and back panels, custom embroidered "GET OUT AND RIDE!" side script, and classic adjustable snapback enclosure.',
+    selectors: [], orderLabel: 'Buy Front Checkered Cap — $40.00', orderItem: 'SNG Checkerboard Front Snapback',
+    shopifyUrl: '45592416092339:1'
+  },
+  'bt-apex-hoodie': {
+    badge: 'Race Day Collection', name: 'Race Day Hoodie', sub: 'Checkerboard Hood Liner Edition',
+    price: '$65.00', image: 'images/sng-raceday-mockups.jpg',
+    desc: 'Official Race Day Collection Hoodie. Heavyweight black fleece. Front chest features the SNG Cycles fin logo in yellow. Sleek yellow/black checkerboard patterned hood liner and custom side sleeve SNG print. Fits like Carhartt. Sized S to 3XL.',
+    selectors: ['size'], orderLabel: 'Buy Race Day Hoodie — $65.00', orderItem: 'Race Day Hoodie',
+    shopifyUrl: {
+      'S': '4600000000034:1',
+      'M': '4600000000035:1',
+      'L': '4600000000036:1',
+      'XL': '4600000000037:1',
+      '2XL': '4600000000038:1',
+      '3XL': '4600000000039:1',
+      'default': '4600000000035:1'
+    }
+  },
+  'bt-apex-denim': {
+    badge: 'Race Day Collection', name: 'SNG Race Day Denim', sub: 'Riding Jeans with Built-in Knee Protection',
+    price: '$120.00', image: 'images/sng-raceday-denim.jpg',
+    desc: 'Professional-grade riding jeans. Features built-in low-profile high-impact knee protection, checkered stretch knee panels, metal-reinforced knee holds, custom SNG back pocket embroidery, and stretch denim slim fit. Sized 30 to 40.',
+    selectors: ['size'], orderLabel: 'Buy Race Day Denim — $120.00', orderItem: 'SNG Race Day Denim',
+    sizeOptions: ['30','32','34','36','38','40'],
+    shopifyUrl: {
+      '30': '4600000000040:1',
+      '32': '4600000000041:1',
+      '34': '4600000000042:1',
+      '36': '4600000000043:1',
+      '38': '4600000000044:1',
+      '40': '4600000000045:1',
+      'default': '4600000000042:1'
+    }
+  }
+};
+
+// Copy women's specific specs dynamically into PRODUCTS
+var w_items = {
+  'w-bt-apex-hat': { name: "Women's Checkerboard Snapback", base: "bt-apex-hat", img: "images/sng-checkerboard-hats-views.jpg" },
+  'w-bt-apex-hat-side': { name: "Women's Checkerboard Side Snapback", base: "bt-apex-hat-side", img: "images/sng-raceday-side-checkered.jpg" },
+  'w-bt-apex-hat-front': { name: "Women's Checkerboard Front Snapback", base: "bt-apex-hat-front", img: "images/sng-raceday-front-checkered.jpg" },
+  'w-bt-apex-hoodie': { name: "Women's Race Day Hoodie", base: "bt-apex-hoodie", img: "images/sng-raceday-mockups.jpg", shopifyUrl: '46000000000026:1' },
+  'w-bt-apex-denim': { name: "Women's Race Day Denim", base: "bt-apex-denim", img: "images/sng-raceday-denim.jpg", shopifyUrl: '46000000000027:1' }
+};
+
+for (var wKey in w_items) {
+  var base = PRODUCTS[w_items[wKey].base];
+  if (base) {
+    PRODUCTS[wKey] = {
+      badge: base.badge + " · Women's",
+      name: w_items[wKey].name,
+      sub: base.sub,
+      price: base.price,
+      image: w_items[wKey].img,
+      desc: base.desc.replace('heavyweight', "tailored women's crop").replace('combed cotton', "tailored relaxed fit"),
+      selectors: base.selectors,
+      sizeOptions: base.sizeOptions,
+      orderLabel: 'Buy ' + w_items[wKey].name + ' — ' + base.price,
+      orderItem: w_items[wKey].name,
+      shopifyUrl: w_items[wKey].shopifyUrl || base.shopifyUrl
+    };
+  }
+}
+
+/* ── INTERACTIVE ZOOMS ── */
+var COLOR_ZOOM_COORDS = {
+  'bt-apex-hat': {
+    'Black/White': { x: 0, y: 100, size: '600% 500%' },
+    'Black/Orange': { x: 20, y: 100, size: '600% 500%' },
+    'Black/Blue': { x: 40, y: 100, size: '600% 500%' },
+    'Black/Red': { x: 60, y: 100, size: '600% 500%' },
+    'Black/Neon Yellow': { x: 80, y: 100, size: '600% 500%' },
+    'Black/Yellow': { x: 100, y: 100, size: '600% 500%' }
+  },
+  'w-bt-apex-hat': {
+    'Black/White': { x: 0, y: 100, size: '600% 500%' },
+    'Black/Orange': { x: 20, y: 100, size: '600% 500%' },
+    'Black/Blue': { x: 40, y: 100, size: '600% 500%' },
+    'Black/Red': { x: 60, y: 100, size: '600% 500%' },
+    'Black/Neon Yellow': { x: 80, y: 100, size: '600% 500%' },
+    'Black/Yellow': { x: 100, y: 100, size: '600% 500%' }
+  }
+};
+
+var currentProduct = null;
+var SIZES = ['S','M','L','XL','2XL','3XL'];
+var CHECKERBOARD_COLORS = ['Black/White','Black/Orange','Black/Blue','Black/Red','Black/Neon Yellow','Black/Yellow'];
+
+function openProduct(id) {
+  var p = PRODUCTS[id];
+  if (!p) return;
+  currentProduct = { id:id, product:p };
+  document.getElementById('modal-badge').textContent = p.badge;
+  document.getElementById('modal-name').textContent = p.name;
+  document.getElementById('modal-sub').textContent = p.sub;
+  document.getElementById('modal-price').textContent = p.price;
+  document.getElementById('modal-desc').textContent = p.desc;
+  
+  var imgCrop = document.getElementById('modal-img');
+  imgCrop.style.backgroundImage = "url('" + p.image + "')";
+  imgCrop.classList.remove('zoomed');
+  imgCrop.style.backgroundSize = 'contain';
+  imgCrop.style.backgroundPosition = 'center';
+  
+  document.getElementById('modal-order-btn').textContent = p.orderLabel;
+  var sel = document.getElementById('modal-selectors');
+  sel.innerHTML = '';
+  if (p.selectors.indexOf('size') > -1) sel.innerHTML += buildSelect('modal-size', '— Select Size —', p.sizeOptions || SIZES);
+  if (p.selectors.indexOf('checkerboard-colorway') > -1) sel.innerHTML += buildSelect('modal-hat-color', '— Select Colorway —', CHECKERBOARD_COLORS);
+  
+  document.getElementById('product-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  if (!window.location.hash.includes('product-')) {
+    history.pushState({ modalOpen: id }, '', '#product-' + id);
+  }
+}
+
+function buildSelect(id, placeholder, options) {
+  var html = '<select id="' + id + '" class="modal-select"><option value="">' + placeholder + '</option>';
+  options.forEach(function(o){ html += '<option>' + o + '</option>'; });
+  return html + '</select>';
+}
+
+function closeModal(fromPopState) {
+  document.getElementById('product-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  if (!fromPopState && window.location.hash.startsWith('#product-')) {
+    history.back();
+  }
+}
+
+function toggleZoom(e) {
+  var imgCrop = document.getElementById('modal-img');
+  var isZoomed = imgCrop.classList.contains('zoomed');
+  
+  if (!isZoomed) {
+    imgCrop.classList.add('zoomed');
+    if (e) {
+      updateZoomOrigin(e);
+    }
+  } else {
+    imgCrop.classList.remove('zoomed');
+    var val = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+    if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
+      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
+      if (coords) {
+        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+        imgCrop.style.backgroundSize = coords.size;
+        return;
+      }
+    }
+    imgCrop.style.backgroundSize = 'contain';
+    imgCrop.style.backgroundPosition = 'center';
+  }
+}
+
+function updateZoomOrigin(e) {
+  var imgCrop = document.getElementById('modal-img');
+  if (imgCrop.classList.contains('zoomed')) {
+    var rect = imgCrop.getBoundingClientRect();
+    var x = ((e.clientX - rect.left) / rect.width) * 100;
+    var y = ((e.clientY - rect.top) / rect.height) * 100;
+    x = Math.max(0, Math.min(100, x));
+    y = Math.max(0, Math.min(100, y));
+    imgCrop.style.transformOrigin = x + '% ' + y + '%';
+  }
+}
+
+document.getElementById('modal-img').addEventListener('mousemove', function(e) {
+  updateZoomOrigin(e);
+});
+
+document.getElementById('modal-selectors').addEventListener('change', function(e) {
+  if (e.target && e.target.id === 'modal-hat-color') {
+    var val = e.target.value;
+    var imgCrop = document.getElementById('modal-img');
+    if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
+      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
+      if (coords) {
+        imgCrop.classList.remove('zoomed');
+        imgCrop.style.backgroundSize = coords.size;
+        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+      }
+    } else {
+      imgCrop.classList.remove('zoomed');
+      imgCrop.style.backgroundSize = 'contain';
+      imgCrop.style.backgroundPosition = 'center';
+    }
+  }
+});
+
+function modalOrder() {
+  var p = currentProduct.product;
+  var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+  var size = document.getElementById('modal-size') ? document.getElementById('modal-size').value : '';
+  
+  if (p.selectors.indexOf('checkerboard-colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
+  if (p.selectors.indexOf('size') > -1 && !size) { alert('Please select a size.'); return; }
+  
+  if (ECOM_CONFIG.platform === 'shopify') {
+    var checkoutUrl = '';
+    if (p.shopifyUrl) {
+      if (typeof p.shopifyUrl === 'object') {
+        var key = size || hatColor || 'default';
+        checkoutUrl = p.shopifyUrl[key] || p.shopifyUrl['default'] || '';
+      } else {
+        checkoutUrl = p.shopifyUrl;
+      }
+    }
+    if (checkoutUrl) {
+      if (!checkoutUrl.startsWith('http')) {
+        checkoutUrl = 'https://' + ECOM_CONFIG.shopifyStoreDomain + '/cart/' + checkoutUrl;
+      }
+      window.open(checkoutUrl, '_blank');
+      return;
+    }
+  }
+}
+
+// Browser navigation history popstate listener
+window.addEventListener('popstate', function(event) {
+  var modal = document.getElementById('product-modal');
+  var isOpen = modal && modal.classList.contains('open');
+  if (isOpen) {
+    closeModal(true);
+  } else if (event.state && event.state.modalOpen) {
+    openProduct(event.state.modalOpen);
+  }
+});
+
+// Auto-open product hash
+window.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash && window.location.hash.startsWith('#product-')) {
+    var productId = window.location.hash.replace('#product-', '');
+    setTimeout(function() {
+      if (PRODUCTS[productId]) {
+        openProduct(productId);
+      }
+    }, 200);
+  }
+});
+</script>
+</body>
+</html>
