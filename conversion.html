@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Cycles — Conversion Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:ital,wght=0,400;0,700;0,900;1,400;1,700;1,900&family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #080b10;
+  --dark: #000000;
+  --gray-bg: #0e1520;
+  --red: #e53e3e;
+  --red-light: #fc8181;
+  --white: #ffffff;
+  --off-white: #f5f5f5;
+  --border: #1e2d45;
+  --text: #ffffff;
+  --text-muted: #8b949e;
+  --head: 'Barlow Condensed', sans-serif;
+  --oswald: 'Oswald', sans-serif;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--black);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1, h2, h3, .section-title, .brand, .apparel-name, .nav-logo-text {
+  font-family: var(--head);
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--dark);
+  border-bottom: 3px solid var(--red);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 40px; width: 40px; object-fit: contain; }
+.nav-logo-text { font-size: 24px; color: var(--white); letter-spacing: 1.5px; }
+.nav-logo-text span { color: var(--red); }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { font-family: var(--head); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--red); }
+.nav-cta {
+  background: var(--red);
+  color: var(--white) !important;
+  padding: 8px 18px;
+  border-radius: 0;
+  border: 2px solid var(--dark);
+  font-family: var(--head);
+  font-weight: 900;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--red-light); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px;
+  background: linear-gradient(rgba(8,11,16,0.65), rgba(8,11,16,0.85)), url('images/sng-conversion-series.jpg') no-repeat center center;
+  background-size: cover;
+  border-bottom: 3px solid var(--red);
+  position: relative;
+}
+.hero-tag {
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 0.95;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.hero h1 span.red { color: var(--red); }
+.hero-sub {
+  font-size: clamp(14px, 2.5vw, 18px);
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--red);
+  margin: 0 auto 24px;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  background: var(--dark);
+  padding: 30px 40px;
+}
+.section-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.section-title { font-size: clamp(24px, 4vw, 40px); color: var(--white); line-height: 1; }
+.section-subtitle { font-size: 14px; color: var(--red); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+/* ── PRODUCT CARDS ── */
+.product-grid-section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; justify-content: center; }
+.product-card {
+  background: var(--gray-bg);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover { transform: translateY(-4px); border-color: var(--red); }
+.product-card-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--dark); border-bottom: 2px solid var(--border); position: relative; }
+.product-card-img { width: 100%; height: 100%; object-fit: cover; }
+.product-card-badge { position: absolute; top: 12px; left: 12px; background: var(--red); color: var(--white); font-family: var(--head); font-weight: 900; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid var(--red); }
+.product-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.product-card-tag { font-family: var(--head); font-weight: 700; font-size: 10px; color: var(--red); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.product-card-name { font-family: var(--oswald); font-weight: 600; font-size: 16px; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.product-card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; }
+.product-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.product-card-price { font-family: var(--oswald); font-weight: 700; font-size: 18px; color: var(--red); }
+.product-card-btn { background: var(--red); color: var(--white); border: none; padding: 8px 16px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.product-card:hover .product-card-btn { background: var(--white); color: var(--dark); }
+
+/* ── MODALS ── */
+.modal-wrap { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 16px; }
+.modal-wrap.open { display: flex; }
+.modal { background: var(--gray-bg); border: 3px solid var(--border); width: 90%; max-width: 860px; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; position: relative; color: var(--white); }
+.modal-close { position: absolute; top: 12px; right: 12px; background: var(--red); color: var(--white); border: none; width: 32px; height: 32px; font-size: 20px; font-weight: 700; cursor: pointer; z-index: 10; }
+.modal-img-wrap { background: var(--dark); border-right: 3px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+.modal-img-crop { width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: contain; transition: transform 0.25s ease-out; transform-origin: center center; cursor: zoom-in; }
+.modal-img-crop.zoomed { transform: scale(2.2); cursor: zoom-out; transition: transform 0.25s ease-out; }
+.modal-body { padding: 32px 28px; display: flex; flex-direction: column; }
+.modal-badge { font-size: 10px; color: var(--red); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.modal-name { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+.modal-price { font-family: var(--oswald); font-size: 26px; font-weight: 700; color: var(--red); margin-bottom: 16px; }
+.modal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+.modal-label { font-family: var(--head); font-size: 11px; color: var(--red); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 700; }
+.modal-select { width: 100%; padding: 10px 14px; background: var(--dark); border: 2px solid var(--border); color: var(--white); font-size: 13px; font-weight: 700; margin-bottom: 14px; outline: none; cursor: pointer; }
+.modal-add-btn { width: 100%; background: var(--red); color: var(--white); border: 2px solid var(--border); padding: 14px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: auto; }
+.modal-add-btn:hover { background: var(--white); color: var(--dark); }
+.modal-zoom-hint { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 10px; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark); border-top: 3px solid var(--border); padding: 48px 40px; color: var(--text-muted); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.footer-logo { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); }
+.footer-logo span { color: var(--red); }
+.footer-tagline { font-family: var(--head); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; text-transform: uppercase; font-family: var(--head); font-weight: 700; letter-spacing: 1px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .modal { grid-template-columns: 1fr; }
+  .modal-img-wrap { border-right: none; border-bottom: 3px solid var(--border); min-height: 240px; }
+  footer { padding: 32px 20px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="sng-logo-orange.jpeg" alt="SNG Cycles">
+    <span class="nav-logo-text">SNG <span>◆</span> Cycles</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#showroom">Showroom</a>
+    <a href="florida-grown.html">FL Grown</a>
+    <a href="mako-gold.html">Mako Gold</a>
+    <a href="ltsb.html">LTSB</a>
+    <a href="race-day.html">Race Day</a>
+    <a href="conversion.html" style="color:var(--red);">Conversion</a>
+    <a href="builds.html">Builds</a>
+    <a href="index.html#waitlist" class="nav-cta">Join the Crew</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-tag">SNG Collections</div>
+  <h1>CONVERSION <span class="red">SERIES</span></h1>
+  <div class="hero-sub">Lil' somethin' for all you gas-to-electric conversion folks.</div>
+  <div class="hero-divider"></div>
+</div>
+
+<!-- ── HATS SECTION HEADER ── -->
+<div class="section-header" id="hats-section">
+  <div class="section-header-inner">
+    <div>
+      <div class="section-subtitle">Cap Drop</div>
+      <h2 class="section-title">Conversion Series Hats</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ── HATS GRID ── -->
+<div class="product-grid-section">
+  <div class="product-grid">
+    <!-- SNG CLASSIC HAT -->
+    <div class="product-card" onclick="openProduct('sng-classic-hat')">
+      <div class="product-card-img-wrap">
+        <span class="product-card-badge">Classic</span>
+        <!-- Cropped SNG Classic Hat -->
+        <div class="product-card-img" style="background: url('images/sng-conversion-series.jpg') no-repeat; background-size: 260% 180%; background-position: 8% 28%; width: 100%; height: 100%;"></div>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-tag">Hats</span>
+        <h4 class="product-card-name">SNG Classic Snapback</h4>
+        <p class="product-card-desc">Flat-brim structured black cap. Raised white embroidered SNG fin logo. Custom side embroidery available.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$40.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONVERSION SERIES HATS -->
+    <div class="product-card" onclick="openProduct('conversion-hats')">
+      <div class="product-card-img-wrap">
+        <span class="product-card-badge">New Release</span>
+        <!-- Cropped row of 6 Hats -->
+        <div class="product-card-img" style="background: url('images/sng-conversion-series.jpg') no-repeat; background-size: 200% 400%; background-position: 0% 75%; width: 100%; height: 100%;"></div>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-tag">Hats</span>
+        <h4 class="product-card-name">Conversion Series Hats</h4>
+        <p class="product-card-desc">Structured snapback caps available in 6 bold colorways. SNG logo front, custom side embroidery options.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$40.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── APPAREL SECTION HEADER ── -->
+<div class="section-header" id="apparel-section">
+  <div class="section-header-inner">
+    <div>
+      <div class="section-subtitle">Streetwear Drop</div>
+      <h2 class="section-title">Apparel & Riding Tees</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ── APPAREL GRID ── -->
+<div class="product-grid-section">
+  <div class="product-grid">
+    <!-- CONVERSION SERIES SHIRT -->
+    <div class="product-card" onclick="openProduct('conversion-shirt')">
+      <div class="product-card-img-wrap">
+        <span class="product-card-badge">Featured</span>
+        <!-- Cropped front/back shirt -->
+        <div class="product-card-img" style="background: url('images/sng-conversion-series.jpg') no-repeat; background-size: 200% 180%; background-position: 98% 10%; width: 100%; height: 100%;"></div>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-tag">Tees</span>
+        <h4 class="product-card-name">Conversion Series Shirt</h4>
+        <p class="product-card-desc">Flat-black heavyweight tee. Clean front logo, sleeve script, and bold back statement: "I Use Ta Have Gas. Now I Just Haul Ass."</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$30.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- START STATIC TEE -->
+    <div class="product-card" onclick="openProduct('start-static-tee')">
+      <div class="product-card-img-wrap">
+        <span class="product-card-badge">New Release</span>
+        <!-- "BUILT DIFFERENT. START STATIC." Slogan Tee mockup -->
+        <div class="product-card-img" style="background: url('images/sng-tee-start-static.jpg') no-repeat; background-size: contain; background-position: center; width: 100%; height: 100%;"></div>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-tag">Tees</span>
+        <h4 class="product-card-name">SNG Start Static Tee</h4>
+        <p class="product-card-desc">Features clean front pocket SNG logo and back graphic print: "BUILT DIFFERENT. START STATIC. REAL POWER. ZERO COMPROMISE."</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$30.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SNG SHIRT COLLECTION -->
+    <div class="product-card" onclick="openProduct('sng-shirt-collection')">
+      <div class="product-card-img-wrap">
+        <span class="product-card-badge">Collection</span>
+        <!-- Cropped row of 5 shirts -->
+        <div class="product-card-img" style="background: url('images/sng-conversion-series.jpg') no-repeat; background-size: 200% 400%; background-position: 100% 75%; width: 100%; height: 100%;"></div>
+      </div>
+      <div class="product-card-body">
+        <span class="product-card-tag">Tees</span>
+        <h4 class="product-card-name">SNG Slogan Shirt Collection</h4>
+        <p class="product-card-desc">Garage cotton tees available in 5 slogans: Stuntin is a Habit, Stuntin Ain't Easy, Swim Without, For the Riders, and Have Gas.</p>
+        <div class="product-card-footer">
+          <span class="product-card-price">$30.00</span>
+          <button class="product-card-btn">Quick View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BUILDER BIKES CTA ── -->
+<div style="background:linear-gradient(135deg,#0a1018,#080b10); border-top:2px solid var(--red); border-bottom:2px solid var(--border); padding:60px 40px; text-align:center;">
+  <div style="max-width:800px; margin:0 auto;">
+    <div style="font-size:11px; font-weight:800; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:12px;">Already wearing the gear?</div>
+    <h2 style="font-size:clamp(28px,4vw,48px); font-weight:900; letter-spacing:2px; text-transform:uppercase; color:#fff; margin-bottom:16px; font-style:italic;">Check out the Builds.</h2>
+    <p style="font-size:16px; color:var(--text-muted); margin-bottom:32px; max-width:600px; margin-left:auto; margin-right:auto;">Explore our hand-built, Florida-engineered electric supermoto — SNG 270E.</p>
+    <a href="builds.html" style="display:inline-block; background:var(--red); color:#fff; padding:16px 40px; border-radius:0; font-weight:900; font-size:15px; letter-spacing:1px; text-transform:uppercase; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='var(--red)'">View Bikes & Builds →</a>
+  </div>
+</div>
+
+<!-- ── DETAIL MODAL ── -->
+<div id="product-modal" class="modal-wrap" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img-wrap">
+      <div id="modal-img" class="modal-img-crop" onclick="toggleZoom(event)"></div>
+    </div>
+    <div class="modal-body">
+      <div id="modal-badge" class="modal-badge"></div>
+      <h3 id="modal-name" class="modal-name"></h3>
+      <div id="modal-sub" class="modal-sub"></div>
+      <div id="modal-price" class="modal-price"></div>
+      <div id="modal-desc" class="modal-desc"></div>
+      
+      <div id="modal-selectors"></div>
+      
+      <button id="modal-add-btn" class="modal-add-btn" onclick="modalOrder()">Buy Now</button>
+      <div class="modal-zoom-hint">Hover / Move mouse over image to zoom · Click to magnify</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">SNG <span>◆</span> Cycles</div>
+      <div class="footer-tagline">Leave the School Behind · Get Out & Ride</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#showroom">Showroom</a>
+      <a href="florida-grown.html">FL Grown</a>
+      <a href="mako-gold.html">Mako Gold</a>
+      <a href="ltsb.html">LTSB</a>
+      <a href="race-day.html">Race Day</a>
+      <a href="conversion.html">Conversion</a>
+      <a href="builds.html">Builds</a>
+      <a href="https://tiktok.com/@sngcycles" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sngcycles" target="_blank">Instagram</a>
+      <a href="mailto:sales@sngcycles.com">Contact</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    © 2026 SNG Cycles · Royal Palm Beach, FL · Powered by Shopify
+  </div>
+</footer>
+
+<script>
+var ECOM_CONFIG = {
+  platform: 'shopify',
+  shopifyStoreDomain: 'r4tpmi-xj.myshopify.com',
+  orderEmail: 'sales@sngcycles.com'
+};
+
+var PRODUCTS = {
+  'sng-classic-hat': {
+    badge: 'Classic Drop', name: 'SNG Classic Snapback', sub: 'Structured Flat Brim Cap',
+    price: '$40.00', image: 'images/sng-conversion-series.jpg',
+    desc: 'Structured flat-brim black cap. Raised white embroidered SNG fin logo on front, snapback enclosure, premium woven hem tag, and standard "GET OUT AND RIDE!" side panel embroidery.',
+    selectors: ['embroidery'],
+    shopifyUrl: '45592416092339:1' // Fallback Shopify variant ID
+  },
+  'conversion-hats': {
+    badge: 'Conversion Drop', name: 'Conversion Series Snapbacks', sub: 'Structured Caps in 6 Colorways',
+    price: '$40.00', image: 'images/sng-conversion-series.jpg',
+    desc: 'Conversion Series structured caps. Features bold colored panels, raise embroidered SNG fin logo on front, "GET OUT AND RIDE!" side print, and adjustable snapback enclosure.',
+    selectors: ['colorway', 'embroidery'],
+    shopifyUrl: {
+      'Black/Orange': '45592416125107:1',
+      'Blue/Yellow': '45592416092339:1', // Variant ID placeholders
+      'Red/Gold': '45592416092339:1',
+      'Black/Yellow': '45592416092339:1',
+      'Blue/White': '45592416092339:1',
+      'Black/Green': '45592416092339:1',
+      'default': '45592416092339:1'
+    }
+  },
+  'conversion-shirt': {
+    badge: 'Builder Series', name: 'Conversion Series Shirt', sub: 'Heavyweight Slogan Riding Tee',
+    price: '$30.00', image: 'images/sng-conversion-series.jpg',
+    desc: 'Premium combed cotton flat-black tee. Front features SNG Cycles chest print, side sleeve print, and the bold statement back graphic: "I USE TA HAVE GAS. NOW I JUST HAUL ASS." Sized S to 3XL.',
+    selectors: ['size'],
+    shopifyUrl: {
+      'S': '45592416944307:1', 'M': '45592416977075:1', 'L': '45592417009843:1',
+      'XL': '45592417042611:1', '2XL': '45592417075379:1', '3XL': '45592417108147:1',
+      'default': '45592416977075:1'
+    }
+  },
+  'start-static-tee': {
+    badge: 'New Release', name: 'SNG Start Static Tee', sub: 'Built Different. Start Static.',
+    price: '$30.00', image: 'images/sng-tee-start-static.jpg',
+    desc: 'Official SNG Start Static slogan graphic tee. Premium heavyweight cotton, front SNG pocket logo, and the signature back graphic: "BUILT DIFFERENT. START STATIC. REAL POWER. ZERO COMPROMISE." Sized S to 3XL.',
+    selectors: ['size'],
+    shopifyUrl: {
+      'S': '45592416944307:1', 'M': '45592416977075:1', 'L': '45592417009843:1',
+      'XL': '45592417042611:1', '2XL': '45592417075379:1', '3XL': '45592417108147:1',
+      'default': '45592416977075:1'
+    }
+  },
+  'sng-shirt-collection': {
+    badge: 'Slogan Drop', name: 'SNG Slogan Shirt Collection', sub: 'Heavyweight Riding Tees',
+    price: '$30.00', image: 'images/sng-conversion-series.jpg',
+    desc: 'Premium heavyweight cotton riding tees featuring SNG\'s official slogans. Built tough for the garage. Select your slogan and size.',
+    selectors: ['slogan', 'size'],
+    shopifyUrl: {
+      'S': '45592416944307:1', 'M': '45592416977075:1', 'L': '45592417009843:1',
+      'XL': '45592417042611:1', '2XL': '45592417075379:1', '3XL': '45592417108147:1',
+      'default': '45592416977075:1'
+    }
+  }
+};
+
+// Crop coordinates for single-item product display within the composite image
+var COLOR_ZOOM_COORDS = {
+  'sng-classic-hat': {
+    'default': { x: 8, y: 28, size: '260% 180%' }
+  },
+  'conversion-hats': {
+    'default': { x: 0, y: 75, size: '200% 400%' },
+    'Black/Orange': { x: 5, y: 72, size: '1000% 400%' },
+    'Blue/Yellow': { x: 13.5, y: 72, size: '1000% 400%' },
+    'Red/Gold': { x: 21.5, y: 72, size: '1000% 400%' },
+    'Black/Yellow': { x: 30.2, y: 72, size: '1000% 400%' },
+    'Blue/White': { x: 38, y: 72, size: '1000% 400%' },
+    'Black/Green': { x: 45.8, y: 72, size: '1000% 400%' }
+  },
+  'conversion-shirt': {
+    'default': { x: 98, y: 10, size: '200% 180%' }
+  },
+  'start-static-tee': {
+    'default': { x: 50, y: 50, size: '100% 100%' }
+  },
+  'sng-shirt-collection': {
+    'default': { x: 100, y: 75, size: '200% 400%' },
+    'Stuntin is a Habit': { x: 52.8, y: 75, size: '900% 360%' },
+    'Stuntin Ain\'t Easy': { x: 63.3, y: 75, size: '900% 360%' },
+    'Swim Without Leave the School Behind': { x: 73.8, y: 75, size: '900% 360%' },
+    'For the Riders the Market Forgot': { x: 84.3, y: 75, size: '900% 360%' },
+    'I Use Ta Have Gas. Now I Just Haul Ass.': { x: 94.8, y: 75, size: '900% 360%' }
+  }
+};
+
+var currentProduct = null;
+
+function openProduct(key) {
+  var p = PRODUCTS[key];
+  if (!p) return;
+  currentProduct = { id: key, product: p };
+  
+  document.getElementById('modal-badge').textContent = p.badge;
+  document.getElementById('modal-name').textContent = p.name;
+  document.getElementById('modal-sub').textContent = p.sub;
+  document.getElementById('modal-price').textContent = p.price;
+  document.getElementById('modal-desc').textContent = p.desc;
+  
+  var imgCrop = document.getElementById('modal-img');
+  imgCrop.style.backgroundImage = "url('" + p.image + "')";
+  imgCrop.classList.remove('zoomed');
+  
+  // Set default crop coordinates
+  var coords = COLOR_ZOOM_COORDS[key]['default'];
+  if (coords) {
+    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+    imgCrop.style.backgroundSize = coords.size;
+  } else {
+    imgCrop.style.backgroundPosition = 'center';
+    imgCrop.style.backgroundSize = 'contain';
+  }
+  
+  // Build dynamic selectors
+  var html = '';
+  p.selectors.forEach(function(sel) {
+    if (sel === 'embroidery') {
+      html += '<div class="modal-label">Optional Side Embroidery</div>';
+      html += '<select class="modal-select" id="modal-side-embroidery">';
+      html += '  <option value="Classic">NONE (CLASSIC - GET OUT AND RIDE!)</option>';
+      html += '  <option value="Shark Not Goldfish">SHARK NOT GOLDFISH</option>';
+      html += '  <option value="Leave The School Behind">LEAVE THE SCHOOL BEHIND</option>';
+      html += '  <option value="Haul Ass">I USE TA HAVE GAS. NOW I JUST HAUL ASS.</option>';
+      html += '</select>';
+    } else if (sel === 'colorway') {
+      html += '<div class="modal-label">Available Colorways</div>';
+      html += '<select class="modal-select" id="modal-hat-color" onchange="updateHatColorCrop(this.value)">';
+      html += '  <option value="">-- Choose Colorway --</option>';
+      html += '  <option value="Black/Orange">Black / Orange</option>';
+      html += '  <option value="Blue/Yellow">Blue / Yellow</option>';
+      html += '  <option value="Red/Gold">Red / Gold</option>';
+      html += '  <option value="Black/Yellow">Black / Yellow</option>';
+      html += '  <option value="Blue/White">Blue / White</option>';
+      html += '  <option value="Black/Green">Black / Green</option>';
+      html += '</select>';
+    } else if (sel === 'slogan') {
+      html += '<div class="modal-label">Select Graphic Slogan</div>';
+      html += '<select class="modal-select" id="modal-shirt-slogan" onchange="updateShirtSloganCrop(this.value)">';
+      html += '  <option value="">-- Choose Slogan --</option>';
+      html += '  <option value="Stuntin is a Habit">Stuntin is a Habit</option>';
+      html += '  <option value="Stuntin Ain\'t Easy">Stuntin Ain\'t Easy</option>';
+      html += '  <option value="Swim Without Leave the School Behind">Swim Without / Leave the School Behind</option>';
+      html += '  <option value="For the Riders the Market Forgot">For the Riders the Market Forgot</option>';
+      html += '  <option value="I Use Ta Have Gas. Now I Just Haul Ass.">I Use Ta Have Gas. Now I Just Haul Ass.</option>';
+      html += '</select>';
+    } else if (sel === 'size') {
+      html += '<div class="modal-label">Size Selection</div>';
+      html += '<select class="modal-select" id="modal-size">';
+      html += '  <option value="S">Small</option>';
+      html += '  <option value="M" selected>Medium</option>';
+      html += '  <option value="L">Large</option>';
+      html += '  <option value="XL">X-Large</option>';
+      html += '  <option value="2XL">2X-Large</option>';
+      html += '  <option value="3XL">3X-Large</option>';
+      html += '</select>';
+    }
+  });
+  
+  document.getElementById('modal-selectors').innerHTML = html;
+  document.getElementById('product-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateHatColorCrop(color) {
+  var imgCrop = document.getElementById('modal-img');
+  if (color && COLOR_ZOOM_COORDS['conversion-hats'][color]) {
+    var coords = COLOR_ZOOM_COORDS['conversion-hats'][color];
+    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+    imgCrop.style.backgroundSize = coords.size;
+  } else {
+    var coords = COLOR_ZOOM_COORDS['conversion-hats']['default'];
+    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+    imgCrop.style.backgroundSize = coords.size;
+  }
+}
+
+function updateShirtSloganCrop(slogan) {
+  var imgCrop = document.getElementById('modal-img');
+  if (slogan && COLOR_ZOOM_COORDS['sng-shirt-collection'][slogan]) {
+    var coords = COLOR_ZOOM_COORDS['sng-shirt-collection'][slogan];
+    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+    imgCrop.style.backgroundSize = coords.size;
+  } else {
+    var coords = COLOR_ZOOM_COORDS['sng-shirt-collection']['default'];
+    imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+    imgCrop.style.backgroundSize = coords.size;
+  }
+}
+
+function closeModal() {
+  document.getElementById('product-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleZoom(e) {
+  var imgCrop = document.getElementById('modal-img');
+  var isZoomed = imgCrop.classList.contains('zoomed');
+  
+  if (!isZoomed) {
+    imgCrop.classList.add('zoomed');
+    if (e) {
+      updateZoomOrigin(e);
+    }
+  } else {
+    imgCrop.classList.remove('zoomed');
+    
+    // Restore crop coordinates based on dropdown selects
+    var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+    var slogan = document.getElementById('modal-shirt-slogan') ? document.getElementById('modal-shirt-slogan').value : '';
+    var key = currentProduct.id;
+    
+    var val = hatColor || slogan || 'default';
+    if (COLOR_ZOOM_COORDS[key][val]) {
+      var coords = COLOR_ZOOM_COORDS[key][val];
+      imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+      imgCrop.style.backgroundSize = coords.size;
+      return;
+    }
+    
+    var coords = COLOR_ZOOM_COORDS[key]['default'];
+    if (coords) {
+      imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+      imgCrop.style.backgroundSize = coords.size;
+    }
+  }
+}
+
+function updateZoomOrigin(e) {
+  var imgCrop = document.getElementById('modal-img');
+  if (imgCrop.classList.contains('zoomed')) {
+    var rect = imgCrop.getBoundingClientRect();
+    var x = ((e.clientX - rect.left) / rect.width) * 100;
+    var y = ((e.clientY - rect.top) / rect.height) * 100;
+    x = Math.max(0, Math.min(100, x));
+    y = Math.max(0, Math.min(100, y));
+    imgCrop.style.transformOrigin = x + '% ' + y + '%';
+  }
+}
+
+document.getElementById('modal-img').addEventListener('mousemove', function(e) {
+  updateZoomOrigin(e);
+});
+
+function modalOrder() {
+  var p = currentProduct.product;
+  var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
+  var size = document.getElementById('modal-size') ? document.getElementById('modal-size').value : '';
+  var slogan = document.getElementById('modal-shirt-slogan') ? document.getElementById('modal-shirt-slogan').value : '';
+  var embroidery = document.getElementById('modal-side-embroidery') ? document.getElementById('modal-side-embroidery').value : '';
+  
+  if (p.selectors.indexOf('colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
+  if (p.selectors.indexOf('slogan') > -1 && !slogan) { alert('Please select a slogan.'); return; }
+  if (p.selectors.indexOf('size') > -1 && !size) { alert('Please select a size.'); return; }
+  
+  if (ECOM_CONFIG.platform === 'shopify') {
+    var checkoutUrl = '';
+    if (p.shopifyUrl) {
+      if (typeof p.shopifyUrl === 'object') {
+        var key = size || hatColor || 'default';
+        checkoutUrl = p.shopifyUrl[key] || p.shopifyUrl['default'] || '';
+      } else {
+        checkoutUrl = p.shopifyUrl;
+      }
+    }
+    if (checkoutUrl) {
+      if (!checkoutUrl.startsWith('http')) {
+        checkoutUrl = 'https://' + ECOM_CONFIG.shopifyStoreDomain + '/cart/' + checkoutUrl;
+      }
+      window.open(checkoutUrl, '_blank');
+      return;
+    }
+  }
+}
+</script>
+</body>
+</html>
