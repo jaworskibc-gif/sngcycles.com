@@ -83,7 +83,7 @@ nav {
   justify-content: center;
   text-align: center;
   padding: 80px 40px;
-  background: linear-gradient(rgba(2,2,2,0.85), rgba(2,2,2,0.95)), url('images/sng-ltsb-booth-display.jpg') no-repeat center center;
+  background: linear-gradient(rgba(2,2,2,0.85), rgba(2,2,2,0.95)), url('images/sng-merch-booth.png') no-repeat center center;
   background-size: cover;
   border-bottom: 3px solid var(--border);
   position: relative;
@@ -318,7 +318,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Women's LTSB Tee -->
     <div class="product-card" onclick="openProduct('w-tee-ltsb')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-womens-design-sheet.jpg" class="product-card-img" alt="Women's LTSB Tee">
+        <img src="images/w-tee-ltsb-black-front.png" class="product-card-img" alt="Women's LTSB Tee">
       </div>
       <div class="product-card-body">
         <div class="product-card-tag">Tees</div>
@@ -334,7 +334,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Women's Black Tee -->
     <div class="product-card" onclick="openProduct('w-tee-black-gas')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-womens-mockup-crop.jpg" class="product-card-img" alt="Women's Black Tee">
+        <img src="images/w-tee-black-gas-single.jpg" class="product-card-img" alt="Women's Black Tee">
       </div>
       <div class="product-card-body">
         <div class="product-card-tag">Tees</div>
@@ -350,7 +350,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <!-- Women's Black Hoodie -->
     <div class="product-card" onclick="openProduct('w-hoodie-black-gas')">
       <div class="product-card-img-wrap">
-        <img src="images/sng-womens-mockup-crop.jpg" class="product-card-img" alt="Women's SNG Black Hoodie">
+        <img src="images/w-hoodie-black-gas-single.jpg" class="product-card-img" alt="Women's SNG Black Hoodie">
       </div>
       <div class="product-card-body">
         <div class="product-card-tag">Hoodies</div>
@@ -382,7 +382,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <div class="product-card" onclick="openProduct('ltsb-3pack')">
       <div class="product-card-img-wrap">
         <div class="product-card-badge">Bundle Deal</div>
-        <img src="images/sng-packs-3-5.jpg" class="product-card-img" alt="LTSB T-Shirt 3-Pack" style="object-fit: cover; object-position: top center; height: 100%;">
+        <img src="images/sng-tee-packs-3-5.png" class="product-card-img" alt="LTSB T-Shirt 3-Pack" style="object-fit: cover; object-position: top center; height: 100%;">
       </div>
       <div class="product-card-body">
         <div class="product-card-tag">3 Premium Shirts</div>
@@ -399,7 +399,7 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
     <div class="product-card" onclick="openProduct('ltsb-5pack')">
       <div class="product-card-img-wrap">
         <div class="product-card-badge">Best Value</div>
-        <img src="images/sng-packs-3-5.jpg" class="product-card-img" alt="LTSB T-Shirt 5-Pack" style="object-fit: cover; object-position: bottom center; height: 100%;">
+        <img src="images/sng-tee-packs-3-5.png" class="product-card-img" alt="LTSB T-Shirt 5-Pack" style="object-fit: cover; object-position: bottom center; height: 100%;">
       </div>
       <div class="product-card-body">
         <div class="product-card-tag">5 Premium Shirts</div>
@@ -471,7 +471,7 @@ var ECOM_CONFIG = {
 var PRODUCTS = {
   'tee-ltsb': {
     badge: 'LTSB Collection', name: 'Leave The School Behind Tee', sub: 'LTSB Shark Graphic Tee',
-    price: '$30.00', image: 'images/sng-mens-design-sheet.jpg',
+    price: '$30.00', image: 'images/tee-ltsb-black-front.png',
     desc: 'Leave The School Behind Collection Tee. Features a back graphic of a great white shark and cyan blue details.',
     selectors: ['size', 'ltsb-colorway'], orderLabel: 'Buy LTSB Tee — $30.00', orderItem: 'Leave The School Behind Tee',
     shopifyUrl: {
@@ -497,7 +497,7 @@ var PRODUCTS = {
   },
   'ltsb-3pack': {
     badge: 'Bundle Deal', name: 'LTSB T-Shirt 3-Pack', sub: 'Black · Navy · Charcoal',
-    price: '$80.00', image: 'images/sng-packs-3-5.jpg',
+    price: '$80.00', image: 'images/sng-tee-packs-3-5.png',
     desc: 'Get the SNG core collection in a 3-pack bundle. Includes three premium heavyweight cotton tees in Black, Navy, and Charcoal/Dark Grey. Standard fit. Sized S to 3XL.',
     selectors: ['size'], orderLabel: 'Buy 3-Pack — $80.00', orderItem: 'LTSB T-Shirt 3-Pack',
     shopifyUrl: {
@@ -509,7 +509,7 @@ var PRODUCTS = {
   },
   'ltsb-5pack': {
     badge: 'Best Value', name: 'LTSB T-Shirt 5-Pack', sub: 'Black · Charcoal · Navy · Grey · White',
-    price: '$120.00', image: 'images/sng-packs-3-5.jpg',
+    price: '$120.00', image: 'images/sng-tee-packs-3-5.png',
     desc: 'The ultimate builder collection. 5 premium heavyweight cotton tees in our official colors: Black, Charcoal, Navy, Light Grey, and White. Save big with this bundle. Sized S to 3XL.',
     selectors: ['size'], orderLabel: 'Buy 5-Pack — $120.00', orderItem: 'LTSB T-Shirt 5-Pack',
     shopifyUrl: {
@@ -534,9 +534,9 @@ var PRODUCTS = {
 
 // Copy women's specific specs dynamically into PRODUCTS
 var w_items = {
-  'w-tee-ltsb': { name: "Women's LTSB Tee", base: "tee-ltsb", img: "images/sng-womens-design-sheet.jpg" },
-  'w-tee-black-gas': { name: "Women's Black Tee", base: "tee-black-gas", img: "images/sng-womens-mockup-crop.jpg" },
-  'w-hoodie-black-gas': { name: "Women's SNG Black Hoodie", base: "hoodie-black-gas", img: "images/sng-womens-mockup-crop.jpg" }
+  'w-tee-ltsb': { name: "Women's LTSB Tee", base: "tee-ltsb", img: "images/w-tee-ltsb-black-front.png" },
+  'w-tee-black-gas': { name: "Women's Black Tee", base: "tee-black-gas", img: "images/w-tee-black-gas-single.jpg" },
+  'w-hoodie-black-gas': { name: "Women's SNG Black Hoodie", base: "hoodie-black-gas", img: "images/w-hoodie-black-gas-single.jpg" }
 };
 
 for (var wKey in w_items) {
@@ -560,14 +560,14 @@ for (var wKey in w_items) {
 /* ── INTERACTIVE ZOOMS ── */
 var COLOR_ZOOM_COORDS = {
   'tee-ltsb': {
-    'Black': { x: 0, y: 50, size: '300% 100%' },
-    'Navy': { x: 50, y: 50, size: '300% 100%' },
-    'Charcoal': { x: 100, y: 50, size: '300% 100%' }
+    'Black': 'images/tee-ltsb-black-front.png',
+    'Navy': 'images/tee-ltsb-navy-front.png',
+    'Charcoal': 'images/tee-ltsb-charcoal-front.png'
   },
   'w-tee-ltsb': {
-    'Black': { x: 0, y: 50, size: '300% 100%' },
-    'Navy': { x: 50, y: 50, size: '300% 100%' },
-    'Charcoal': { x: 100, y: 50, size: '300% 100%' }
+    'Black': 'images/w-tee-ltsb-black-front.png',
+    'Navy': 'images/w-tee-ltsb-navy-front.png',
+    'Charcoal': 'images/w-tee-ltsb-charcoal-front.png'
   }
 };
 
@@ -675,15 +675,21 @@ document.getElementById('modal-selectors').addEventListener('change', function(e
   if (e.target && e.target.id === 'modal-hat-color') {
     var val = e.target.value;
     var imgCrop = document.getElementById('modal-img');
+    imgCrop.classList.remove('zoomed');
+    
     if (val && currentProduct && COLOR_ZOOM_COORDS[currentProduct.id]) {
-      var coords = COLOR_ZOOM_COORDS[currentProduct.id][val];
-      if (coords) {
-        imgCrop.classList.remove('zoomed');
-        imgCrop.style.backgroundSize = coords.size;
-        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
+      var target = COLOR_ZOOM_COORDS[currentProduct.id][val];
+      if (typeof target === 'string') {
+        imgCrop.style.backgroundImage = "url('" + target + "')";
+        imgCrop.style.backgroundSize = 'contain';
+        imgCrop.style.backgroundPosition = 'center';
+      } else if (target && typeof target === 'object') {
+        imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
+        imgCrop.style.backgroundSize = target.size;
+        imgCrop.style.backgroundPosition = target.x + '% ' + target.y + '%';
       }
     } else {
-      imgCrop.classList.remove('zoomed');
+      imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
       imgCrop.style.backgroundSize = 'contain';
       imgCrop.style.backgroundPosition = 'center';
     }
