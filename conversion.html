@@ -3,34 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SNG Cycles — Conversion Series</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:ital,wght=0,400;0,700;0,900;1,400;1,700;1,900&family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>SNG Cycles — Conversion Series Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Barlow:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --black: #080b10;
-  --dark: #000000;
-  --gray-bg: #0e1520;
-  --red: #e53e3e;
-  --red-light: #fc8181;
+  --black: #111111;
+  --dark: #0a0a0a;
+  --yellow: #ffe600;
+  --yellow-light: #fff066;
   --white: #ffffff;
-  --off-white: #f5f5f5;
-  --border: #1e2d45;
-  --text: #ffffff;
-  --text-muted: #8b949e;
+  --off-white: #fafafa;
+  --light-gray: #f1f1f1;
+  --border: #ffe600;
+  --text-dark: #111111;
+  --text-muted: #555555;
   --head: 'Barlow Condensed', sans-serif;
   --oswald: 'Oswald', sans-serif;
 }
 
 body {
   font-family: 'Barlow', sans-serif;
-  background: var(--black);
-  color: var(--text);
+  background: var(--off-white);
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
-h1, h2, h3, .section-title, .brand, .apparel-name, .nav-logo-text {
+h1, h2, h3, h4, .section-title, .brand, .apparel-name, .nav-logo-text {
   font-family: var(--head);
   font-style: italic;
   font-weight: 900;
@@ -43,8 +43,8 @@ nav {
   position: sticky;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: var(--dark);
-  border-bottom: 3px solid var(--red);
+  background: var(--white);
+  border-bottom: 3px solid var(--border);
   padding: 0 40px;
   height: 64px;
   display: flex;
@@ -53,17 +53,17 @@ nav {
 }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-logo img { height: 40px; width: 40px; object-fit: contain; }
-.nav-logo-text { font-size: 24px; color: var(--white); letter-spacing: 1.5px; }
-.nav-logo-text span { color: var(--red); }
+.nav-logo-text { font-size: 24px; color: var(--text-dark); letter-spacing: 1.5px; }
+.nav-logo-text span { color: var(--border); }
 .nav-links { display: flex; gap: 24px; align-items: center; }
 .nav-links a { font-family: var(--head); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
-.nav-links a:hover { color: var(--red); }
+.nav-links a:hover { color: var(--border); }
 .nav-cta {
-  background: var(--red);
-  color: var(--white) !important;
+  background: var(--border);
+  color: var(--black) !important;
   padding: 8px 18px;
   border-radius: 0;
-  border: 2px solid var(--dark);
+  border: 2px solid var(--black);
   font-family: var(--head);
   font-weight: 900;
   font-size: 12px;
@@ -72,7 +72,7 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
 }
-.nav-cta:hover { background: var(--red-light); }
+.nav-cta:hover { background: var(--yellow-light); }
 
 /* ── HERO ── */
 .hero {
@@ -82,10 +82,10 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 60px 40px;
-  background: linear-gradient(rgba(8,11,16,0.65), rgba(8,11,16,0.85)), url('images/sng-conversion-series.jpg') no-repeat center center;
+  padding: 80px 40px;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.55)), url('images/sng-conversion-series.jpg') no-repeat center center;
   background-size: cover;
-  border-bottom: 3px solid var(--red);
+  border-bottom: 3px solid var(--border);
   position: relative;
 }
 .hero-tag {
@@ -94,8 +94,9 @@ nav {
   font-size: 12px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--yellow);
   margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 .hero h1 {
   font-size: clamp(36px, 6vw, 72px);
@@ -103,106 +104,336 @@ nav {
   letter-spacing: 2px;
   line-height: 0.95;
   margin-bottom: 8px;
-  color: var(--white);
+  color: #fff;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
-.hero h1 span.red { color: var(--red); }
+.hero h1 span.yellow { color: var(--yellow); }
 .hero-sub {
-  font-size: clamp(14px, 2.5vw, 18px);
+  font-size: clamp(16px, 2.5vw, 20px);
   font-weight: 700;
-  color: var(--text-muted);
+  color: #fff;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 24px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 .hero-divider {
   width: 80px;
   height: 4px;
-  background: var(--red);
+  background: var(--yellow);
   margin: 0 auto 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ── TABS ── */
+.collection-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 60px auto 20px;
+  max-width: 600px;
+  padding: 0 20px;
+}
+.tab-btn {
+  background: var(--white);
+  border: 2px solid var(--black);
+  color: var(--text-dark);
+  padding: 12px 32px;
+  font-family: var(--head);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab-btn.active, .tab-btn:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.grid-container {
+  display: none;
+}
+.grid-container.active {
+  display: block;
 }
 
 /* ── SECTION HEADER ── */
 .section-header {
-  border-top: 2px solid var(--border);
-  border-bottom: 2px solid var(--border);
-  background: var(--dark);
-  padding: 30px 40px;
+  border-top: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+  background: var(--white);
+  padding: 24px 40px;
+  margin-bottom: 40px;
 }
 .section-header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 16px;
 }
-.section-title { font-size: clamp(24px, 4vw, 40px); color: var(--white); line-height: 1; }
-.section-subtitle { font-size: 14px; color: var(--red); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+.section-title { font-size: clamp(24px, 4vw, 36px); color: var(--text-dark); line-height: 1; }
+.section-subtitle { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; font-weight: 700; }
 
 /* ── PRODUCT CARDS ── */
-.product-grid-section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; justify-content: center; }
+.product-grid-section { padding: 0 40px 60px 40px; max-width: 1200px; margin: 0 auto; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
 .product-card {
-  background: var(--gray-bg);
-  border: 2px solid var(--border);
+  background: var(--white);
+  border: 2px solid var(--black);
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
 }
-.product-card:hover { transform: translateY(-4px); border-color: var(--red); }
-.product-card-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--dark); border-bottom: 2px solid var(--border); position: relative; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.product-card-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--light-gray); border-bottom: 2px solid var(--black); position: relative; }
 .product-card-img { width: 100%; height: 100%; object-fit: cover; }
-.product-card-badge { position: absolute; top: 12px; left: 12px; background: var(--red); color: var(--white); font-family: var(--head); font-weight: 900; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid var(--red); }
+.product-card-badge { position: absolute; top: 12px; left: 12px; background: var(--black); color: var(--white); font-family: var(--head); font-weight: 900; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid var(--border); }
 .product-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-.product-card-tag { font-family: var(--head); font-weight: 700; font-size: 10px; color: var(--red); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
-.product-card-name { font-family: var(--oswald); font-weight: 600; font-size: 16px; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.product-card-tag { font-family: var(--head); font-weight: 700; font-size: 10px; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.product-card-name { font-family: var(--oswald); font-weight: 600; font-size: 16px; text-transform: uppercase; color: var(--text-dark); margin-bottom: 4px; }
 .product-card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; }
 .product-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
-.product-card-price { font-family: var(--oswald); font-weight: 700; font-size: 18px; color: var(--red); }
-.product-card-btn { background: var(--red); color: var(--white); border: none; padding: 8px 16px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
-.product-card:hover .product-card-btn { background: var(--white); color: var(--dark); }
+.product-card-price { font-family: var(--oswald); font-weight: 700; font-size: 18px; color: var(--text-dark); }
+.product-card-btn { background: var(--black); color: var(--white); border: none; padding: 8px 16px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.product-card:hover .product-card-btn { background: var(--yellow); color: var(--black); }
+
+/* ── BOTTOM WIDGETS ── */
+.bottom-widget {
+  padding: 60px 40px;
+  border-top: 2px solid var(--black);
+  text-align: center;
+}
+.widget-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.widget-tag {
+  font-family: var(--head);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.widget-title {
+  font-family: var(--oswald);
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--text-dark);
+}
+.widget-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+  line-height: 1.5;
+}
+
+/* Timer */
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.timer-box {
+  background: var(--white);
+  border: 2px solid var(--black);
+  padding: 10px 16px;
+  text-align: center;
+  min-width: 75px;
+}
+.timer-box span {
+  display: block;
+  font-family: var(--oswald);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1;
+}
+.timer-box label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+.timer-divider {
+  font-family: var(--oswald);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+/* Coupon Loop */
+.coupon-ticker {
+  background: var(--black);
+  color: var(--white);
+  overflow: hidden;
+  padding: 14px 0;
+  border-top: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+}
+.ticker-wrap {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 30s linear infinite;
+}
+.ticker-item {
+  display: inline-block;
+  padding: 0 45px;
+  font-family: var(--head);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.ticker-item span {
+  color: var(--yellow);
+}
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Collector Box */
+.collector-box-widget {
+  background: var(--white);
+  border-top: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+  padding: 80px 40px;
+}
+.collector-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+  text-align: left;
+}
+.collector-img-side img {
+  width: 100%;
+  border: 2px solid var(--black);
+  background: var(--light-gray);
+  display: block;
+}
+.collector-text-side {
+  display: flex;
+  flex-direction: column;
+}
+.collector-price {
+  font-family: var(--oswald);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.widget-btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 14px 28px;
+  font-family: var(--head);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: fit-content;
+}
+.widget-btn:hover {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+@media (max-width: 768px) {
+  .collector-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  .widget-btn {
+    margin: 0 auto;
+  }
+}
+
+/* Waitlist */
+.waitlist-widget {
+  background: var(--off-white);
+}
+.waitlist-form {
+  display: flex;
+  max-width: 500px;
+  margin: 20px auto 0 auto;
+  border: 2px solid var(--black);
+}
+.waitlist-form input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+.waitlist-form button {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 0 24px;
+  font-family: var(--head);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.waitlist-form button:hover {
+  background: var(--yellow);
+  color: var(--black);
+}
 
 /* ── MODALS ── */
 .modal-wrap { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 16px; }
 .modal-wrap.open { display: flex; }
-.modal { background: var(--gray-bg); border: 3px solid var(--border); width: 90%; max-width: 860px; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; position: relative; color: var(--white); }
-.modal-close { position: absolute; top: 12px; right: 12px; background: var(--red); color: var(--white); border: none; width: 32px; height: 32px; font-size: 20px; font-weight: 700; cursor: pointer; z-index: 10; }
-.modal-img-wrap { background: var(--dark); border-right: 3px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+.modal { background: var(--white); border: 3px solid var(--black); width: 90%; max-width: 860px; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; position: relative; color: var(--text-dark); }
+.modal-close { position: absolute; top: 12px; right: 12px; background: var(--black); color: var(--white); border: none; width: 32px; height: 32px; font-size: 20px; font-weight: 700; cursor: pointer; z-index: 10; }
+.modal-img-wrap { background: var(--light-gray); border-right: 3px solid var(--black); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
 .modal-img-crop { width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: contain; transition: transform 0.25s ease-out; transform-origin: center center; cursor: zoom-in; }
 .modal-img-crop.zoomed { transform: scale(2.2); cursor: zoom-out; transition: transform 0.25s ease-out; }
 .modal-body { padding: 32px 28px; display: flex; flex-direction: column; }
-.modal-badge { font-size: 10px; color: var(--red); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
-.modal-name { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+.modal-badge { font-size: 10px; color: var(--text-muted); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.modal-name { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--text-dark); margin-bottom: 4px; }
 .modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
-.modal-price { font-family: var(--oswald); font-size: 26px; font-weight: 700; color: var(--red); margin-bottom: 16px; }
+.modal-price { font-family: var(--oswald); font-size: 26px; font-weight: 700; color: var(--text-dark); margin-bottom: 16px; }
 .modal-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
-.modal-label { font-family: var(--head); font-size: 11px; color: var(--red); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 700; }
-.modal-select { width: 100%; padding: 10px 14px; background: var(--dark); border: 2px solid var(--border); color: var(--white); font-size: 13px; font-weight: 700; margin-bottom: 14px; outline: none; cursor: pointer; }
-.modal-add-btn { width: 100%; background: var(--red); color: var(--white); border: 2px solid var(--border); padding: 14px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: auto; }
-.modal-add-btn:hover { background: var(--white); color: var(--dark); }
+.modal-select { width: 100%; padding: 10px 14px; background: var(--white); border: 2px solid var(--black); color: var(--text-dark); font-size: 13px; font-weight: 700; margin-bottom: 14px; outline: none; cursor: pointer; }
+.modal-add-btn { width: 100%; background: var(--black); color: var(--white); border: 2px solid var(--black); padding: 14px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: auto; }
+.modal-add-btn:hover { background: var(--yellow); color: var(--black); }
 .modal-zoom-hint { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 10px; }
 
+@media (max-width: 768px) {
+  .modal { grid-template-columns: 1fr; }
+  .modal-img-wrap { border-right: none; border-bottom: 3px solid var(--black); min-height: 240px; }
+}
+
 /* ── FOOTER ── */
-footer { background: var(--dark); border-top: 3px solid var(--border); padding: 48px 40px; color: var(--text-muted); }
+footer { background: var(--dark); border-top: 3px solid var(--black); padding: 48px 40px; color: var(--text-muted); }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
 .footer-logo { font-family: var(--oswald); font-size: 26px; font-weight: 700; text-transform: uppercase; color: var(--white); }
-.footer-logo span { color: var(--red); }
+.footer-logo span { color: var(--yellow); }
 .footer-tagline { font-family: var(--head); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
 .footer-links { display: flex; gap: 24px; }
 .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; text-transform: uppercase; font-family: var(--head); font-weight: 700; letter-spacing: 1px; transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
-.footer-copy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px; }
-
-@media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .modal { grid-template-columns: 1fr; }
-  .modal-img-wrap { border-right: none; border-bottom: 3px solid var(--border); min-height: 240px; }
-  footer { padding: 32px 20px; }
-  .footer-inner { flex-direction: column; text-align: center; }
-}
+.footer-copy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 40px; border-top: 1px solid #222; padding-top: 20px; }
 </style>
 </head>
 <body>
@@ -216,11 +447,9 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
   <div class="nav-links">
     <a href="index.html#showroom">Showroom</a>
     <a href="florida-grown.html">FL Grown</a>
-    <a href="mako-gold.html">Mako Gold</a>
-    <a href="ltsb.html">LTSB</a>
+    <a href="fun-in-the-sun.html">Fun in the Sun</a>
     <a href="race-day.html">Race Day</a>
-    <a href="conversion.html" style="color:var(--red);">Conversion</a>
-    <a href="builds.html">Builds</a>
+    <a href="conversion.html" style="color:var(--border);">Conversion Series</a>
     <a href="index.html#waitlist" class="nav-cta">Join the Crew</a>
   </div>
 </nav>
@@ -228,154 +457,333 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
 <!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-tag">SNG Collections</div>
-  <h1>CONVERSION <span class="red">SERIES</span></h1>
-  <div class="hero-sub">Lil' somethin' for all you gas-to-electric conversion folks.</div>
+  <h1>CONVERSION <span class="yellow">SERIES</span></h1>
+  <div class="hero-sub">Builders & Custom Stunt Conversions</div>
   <div class="hero-divider"></div>
+  <p style="font-size: 15px; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 4px rgba(0,0,0,0.6);">
+    Built for gas-to-electric conversion builders. Slogan apparel, stunt hoodies, custom snapbacks, and the custom 270E Electric Supermoto.
+  </p>
 </div>
 
-<!-- ── HATS SECTION HEADER ── -->
-<div class="section-header" id="hats-section">
-  <div class="section-header-inner">
-    <div>
-      <div class="section-subtitle">Cap Drop</div>
-      <h2 class="section-title">Conversion Series Hats</h2>
+<!-- ── COLLECTION TABS ── -->
+<div class="collection-tabs">
+  <button class="tab-btn active" onclick="switchTab('mens')">Men's Gear</button>
+  <button class="tab-btn" onclick="switchTab('womens')">Women's Gear</button>
+</div>
+
+<!-- ── MEN'S SECTION ── -->
+<div id="mens-grid-container" class="grid-container active">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div class="section-subtitle">Builder Series Drop — Men's</div>
+      <h2 class="section-title">Men's Conversion Series</h2>
+    </div>
+  </div>
+  
+  <div class="product-grid-section">
+    <div class="product-grid">
+      <!-- Custom 270E Yellow Bike -->
+      <div class="product-card" onclick="openProduct('custom-270e-yellow')">
+        <div class="product-card-img-wrap">
+          <img src="images/rd-gold-270e-complete-front.jpg" class="product-card-img" alt="Custom 270E Yellow Bike">
+          <div class="product-card-badge">27kW Supermoto</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Bikes</div>
+          <h4 class="product-card-name">Custom 270E Yellow Bike</h4>
+          <p class="product-card-desc">Bespoke electric supermoto custom build. Gold Excel spokes, WP front suspension, Fardriver setup.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$21,000</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slogan Tee - Black -->
+      <div class="product-card" onclick="openProduct('slogan-tee-black')">
+        <div class="product-card-img-wrap">
+          <img src="images/conversion-shirt-black-front.png" class="product-card-img" alt="SNG Classic Slogan Tee - Black">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">SNG Classic Slogan Tee - Black</h4>
+          <p class="product-card-desc">"I Use Ta Have Gas. Now I Just Haul Ass." back print. Premium black heavyweight cotton.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slogan Tee - Grey -->
+      <div class="product-card" onclick="openProduct('slogan-tee-grey')">
+        <div class="product-card-img-wrap">
+          <img src="images/conversion-shirt-grey-front.png" class="product-card-img" alt="SNG Classic Slogan Tee - Grey">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">SNG Classic Slogan Tee - Grey</h4>
+          <p class="product-card-desc">"I Use Ta Have Gas. Now I Just Haul Ass." back print. Premium gray heavyweight cotton.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slogan Tee - Navy -->
+      <div class="product-card" onclick="openProduct('slogan-tee-navy')">
+        <div class="product-card-img-wrap">
+          <img src="images/conversion-shirt-navy-front.png" class="product-card-img" alt="SNG Classic Slogan Tee - Navy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">SNG Classic Slogan Tee - Navy</h4>
+          <p class="product-card-desc">"I Use Ta Have Gas. Now I Just Haul Ass." back print. Premium navy heavyweight cotton.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stuntin Hoodie -->
+      <div class="product-card" onclick="openProduct('stuntin-hoodie')">
+        <div class="product-card-img-wrap">
+          <img src="images/sng-hoodie-shark-single.png" class="product-card-img" alt="Stuntin is a Habit Hoodie">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Hoodies</div>
+          <h4 class="product-card-name">Stuntin' is a Habit Hoodie</h4>
+          <p class="product-card-desc">Heavyweight premium black fleece stunt hoodie. Bold stunt series rear shark layout.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$65.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SNG4 Life Shorts -->
+      <div class="product-card" onclick="openProduct('sng4life-shorts')">
+        <div class="product-card-img-wrap">
+          <img src="images/sng-packs-3-5.jpg" class="product-card-img" alt="SNG4 Life Shorts">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Shorts</div>
+          <h4 class="product-card-name">SNG4 Life Shorts</h4>
+          <p class="product-card-desc">Custom active riding shorts in black. Built for stunt track utility and durability.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$40.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SNG Custom Snapback -->
+      <div class="product-card" onclick="openProduct('custom-snapback')">
+        <div class="product-card-img-wrap">
+          <img src="images/hat-black-yellow.png" class="product-card-img" alt="SNG Custom Snapback">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Hats</div>
+          <h4 class="product-card-name">SNG Custom Snapback</h4>
+          <p class="product-card-desc">Black and yellow custom flat visor snapback. Structured twill cap with embroidered fin.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$35.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ── HATS GRID ── -->
-<div class="product-grid-section">
-  <div class="product-grid">
-    <!-- SNG CLASSIC HAT -->
-    <div class="product-card" onclick="openProduct('sng-classic-hat')">
-      <div class="product-card-img-wrap">
-        <span class="product-card-badge">Classic</span>
-        <img src="images/hat-sng-classic.png" class="product-card-img" alt="SNG Classic Snapback">
-      </div>
-      <div class="product-card-body">
-        <span class="product-card-tag">Hats</span>
-        <h4 class="product-card-name">SNG Classic Snapback</h4>
-        <p class="product-card-desc">Flat-brim structured black cap. Raised white embroidered SNG fin logo. Custom side embroidery available.</p>
-        <div class="product-card-footer">
-          <span class="product-card-price">$40.00</span>
-          <button class="product-card-btn">Quick View</button>
+<!-- ── WOMEN'S SECTION ── -->
+<div id="womens-grid-container" class="grid-container">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div class="section-subtitle">Builder Series Drop — Women's</div>
+      <h2 class="section-title">Women's Conversion Series</h2>
+    </div>
+  </div>
+  
+  <div class="product-grid-section">
+    <div class="product-grid">
+      <!-- Custom 270E Yellow Bike -->
+      <div class="product-card" onclick="openProduct('custom-270e-yellow')">
+        <div class="product-card-img-wrap">
+          <img src="images/rd-gold-270e-complete-front.jpg" class="product-card-img" alt="Custom 270E Yellow Bike">
+          <div class="product-card-badge">27kW Supermoto</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Bikes</div>
+          <h4 class="product-card-name">Custom 270E Yellow Bike</h4>
+          <p class="product-card-desc">Bespoke electric supermoto custom build. Gold Excel spokes, WP front suspension, Fardriver setup.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$21,000</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- CONVERSION SERIES HATS -->
-    <div class="product-card" onclick="openProduct('conversion-hats')">
-      <div class="product-card-img-wrap">
-        <span class="product-card-badge">New Release</span>
-        <img src="images/hat-black-orange.png" class="product-card-img" alt="Conversion Series Hats">
+      <!-- Women's Slogan Tee - Black -->
+      <div class="product-card" onclick="openProduct('w-slogan-tee-black')">
+        <div class="product-card-img-wrap">
+          <img src="images/w-tee-black-gas-single.jpg" class="product-card-img" alt="Women's Slogan Tee - Black">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Tees</div>
+          <h4 class="product-card-name">Women's Slogan Tee - Black</h4>
+          <p class="product-card-desc">Cropped tailored fit slogan tee. "I Use Ta Have Gas. Now I Just Haul Ass." back print.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$30.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
       </div>
-      <div class="product-card-body">
-        <span class="product-card-tag">Hats</span>
-        <h4 class="product-card-name">Conversion Series Hats</h4>
-        <p class="product-card-desc">Structured snapback caps available in 6 bold colorways. SNG logo front, custom side embroidery options.</p>
-        <div class="product-card-footer">
-          <span class="product-card-price">$40.00</span>
-          <button class="product-card-btn">Quick View</button>
+
+      <!-- Women's SNG Black Hoodie -->
+      <div class="product-card" onclick="openProduct('w-slogan-hoodie')">
+        <div class="product-card-img-wrap">
+          <img src="images/w-hoodie-black-gas-single.jpg" class="product-card-img" alt="Women's SNG Black Hoodie">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Hoodies</div>
+          <h4 class="product-card-name">Women's SNG Black Hoodie</h4>
+          <p class="product-card-desc">Tailored cropped slogan hoodie. Heavyweight black fleece, front fin logo, rear slogan.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$65.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stuntin Hoodie -->
+      <div class="product-card" onclick="openProduct('stuntin-hoodie')">
+        <div class="product-card-img-wrap">
+          <img src="images/sng-hoodie-shark-single.png" class="product-card-img" alt="Stuntin is a Habit Hoodie">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Hoodies</div>
+          <h4 class="product-card-name">Stuntin' is a Habit Hoodie</h4>
+          <p class="product-card-desc">Heavyweight premium black fleece stunt hoodie. Bold stunt series rear shark layout.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$65.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SNG4 Life Shorts -->
+      <div class="product-card" onclick="openProduct('sng4life-shorts')">
+        <div class="product-card-img-wrap">
+          <img src="images/sng-packs-3-5.jpg" class="product-card-img" alt="SNG4 Life Shorts">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Shorts</div>
+          <h4 class="product-card-name">SNG4 Life Shorts</h4>
+          <p class="product-card-desc">Custom active riding shorts in black. Built for stunt track utility and durability.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$40.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SNG Custom Snapback -->
+      <div class="product-card" onclick="openProduct('custom-snapback')">
+        <div class="product-card-img-wrap">
+          <img src="images/hat-black-yellow.png" class="product-card-img" alt="SNG Custom Snapback">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Hats</div>
+          <h4 class="product-card-name">SNG Custom Snapback</h4>
+          <p class="product-card-desc">Black and yellow custom flat visor snapback. Structured twill cap with embroidered fin.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$35.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── APPAREL SECTION HEADER ── -->
-<div class="section-header" id="apparel-section">
-  <div class="section-header-inner">
-    <div>
-      <div class="section-subtitle">Streetwear Drop</div>
-      <h2 class="section-title">Apparel & Riding Tees</h2>
+<!-- ── WIDGET 1: FLASH DEAL ── -->
+<div class="bottom-widget">
+  <div class="widget-inner">
+    <div class="widget-tag">Friday Flash Deal</div>
+    <h3 class="widget-title">Weekly Friday Flash Sale</h3>
+    <p class="widget-desc">Get our signature gear at 25% off. Deal expires at midnight. Zero compromise.</p>
+    <div class="countdown-timer" id="countdown-timer">
+      <div class="timer-box"><span id="timer-hours">12</span><label>Hrs</label></div>
+      <div class="timer-divider">:</div>
+      <div class="timer-box"><span id="timer-minutes">44</span><label>Min</label></div>
+      <div class="timer-divider">:</div>
+      <div class="timer-box"><span id="timer-seconds">05</span><label>Sec</label></div>
     </div>
   </div>
 </div>
 
-<!-- ── APPAREL GRID ── -->
-<div class="product-grid-section">
-  <div class="product-grid">
-    <!-- CONVERSION SERIES SHIRT -->
-    <div class="product-card" onclick="openProduct('conversion-shirt')">
-      <div class="product-card-img-wrap">
-        <span class="product-card-badge">Featured</span>
-        <img src="images/conversion-shirt-black-front.png" class="product-card-img" alt="Conversion Series Shirt">
-      </div>
-      <div class="product-card-body">
-        <span class="product-card-tag">Tees</span>
-        <h4 class="product-card-name">Conversion Series Shirt</h4>
-        <p class="product-card-desc">Flat-black heavyweight tee. Clean front logo, sleeve script, and bold back statement: "I Use Ta Have Gas. Now I Just Haul Ass."</p>
-        <div class="product-card-footer">
-          <span class="product-card-price">$30.00</span>
-          <button class="product-card-btn">Quick View</button>
-        </div>
-      </div>
-    </div>
+<!-- ── WIDGET 2: BFF COUPON LOOP ── -->
+<div class="bottom-widget coupon-ticker">
+  <div class="ticker-wrap">
+    <div class="ticker-item">◆ USE CODE <span>SNG10</span> FOR 10% OFF YOUR FIRST ORDER ◆</div>
+    <div class="ticker-item">◆ LEAVE THE SCHOOL BEHIND ◆</div>
+    <div class="ticker-item">◆ BUILDER SERIES & CONVERSIONS ◆</div>
+    <div class="ticker-item">◆ ZERO POWER. ZERO COMPROMISE. ◆</div>
+    <div class="ticker-item">◆ USE CODE <span>SNG10</span> FOR 10% OFF YOUR FIRST ORDER ◆</div>
+    <div class="ticker-item">◆ LEAVE THE SCHOOL BEHIND ◆</div>
+    <div class="ticker-item">◆ BUILDER SERIES & CONVERSIONS ◆</div>
+    <div class="ticker-item">◆ ZERO POWER. ZERO COMPROMISE. ◆</div>
+  </div>
+</div>
 
-    <!-- START STATIC TEE -->
-    <div class="product-card" onclick="openProduct('start-static-tee')">
-      <div class="product-card-img-wrap">
-        <span class="product-card-badge">New Release</span>
-        <img src="images/sng-tee-start-static.jpg" class="product-card-img" alt="SNG Start Static Tee">
-      </div>
-      <div class="product-card-body">
-        <span class="product-card-tag">Tees</span>
-        <h4 class="product-card-name">SNG Start Static Tee</h4>
-        <p class="product-card-desc">Features clean front pocket SNG logo and back graphic print: "BUILT DIFFERENT. START STATIC. REAL POWER. ZERO COMPROMISE."</p>
-        <div class="product-card-footer">
-          <span class="product-card-price">$30.00</span>
-          <button class="product-card-btn">Quick View</button>
-        </div>
-      </div>
+<!-- ── WIDGET 3: MEGALODON COLLECTOR BOX ── -->
+<div class="collector-box-widget">
+  <div class="collector-inner">
+    <div class="collector-img-side">
+      <img src="images/apparel-meg-box.png" alt="Megalodon Collector Box">
     </div>
-
-    <!-- SNG SHIRT COLLECTION -->
-    <div class="product-card" onclick="openProduct('sng-shirt-collection')">
-      <div class="product-card-img-wrap">
-        <span class="product-card-badge">Collection</span>
-        <img src="images/conversion-shirt-all.png" class="product-card-img" alt="SNG Slogan Shirt Collection">
-      </div>
-      <div class="product-card-body">
-        <span class="product-card-tag">Tees</span>
-        <h4 class="product-card-name">SNG Slogan Shirt Collection</h4>
-        <p class="product-card-desc">Garage cotton tees available in 5 slogans: Stuntin is a Habit, Stuntin Ain\'t Easy, Swim Without, For the Riders, and Have Gas.</p>
-        <div class="product-card-footer">
-          <span class="product-card-price">$30.00</span>
-          <button class="product-card-btn">Quick View</button>
-        </div>
-      </div>
+    <div class="collector-text-side">
+      <div class="widget-tag">Limited Premium</div>
+      <h3 class="widget-title">Megalodon Collector Box</h3>
+      <p class="widget-desc">Our serialized limited release. Includes a custom printed collector box, premium hoodie, checkerboard snapback, stickers, and a serialized certificate of authenticity. Strictly limited to 100 boxes worldwide.</p>
+      <div class="collector-price">$150.00</div>
+      <button class="widget-btn" onclick="openProduct('ltsb-5pack')">Claim Collector Box</button>
     </div>
   </div>
 </div>
 
-<!-- ── BUILDER BIKES CTA ── -->
-<div style="background:linear-gradient(135deg,#0a1018,#080b10); border-top:2px solid var(--red); border-bottom:2px solid var(--border); padding:60px 40px; text-align:center;">
-  <div style="max-width:800px; margin:0 auto;">
-    <div style="font-size:11px; font-weight:800; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:12px;">Already wearing the gear?</div>
-    <h2 style="font-size:clamp(28px,4vw,48px); font-weight:900; letter-spacing:2px; text-transform:uppercase; color:#fff; margin-bottom:16px; font-style:italic;">Check out the Builds.</h2>
-    <p style="font-size:16px; color:var(--text-muted); margin-bottom:32px; max-width:600px; margin-left:auto; margin-right:auto;">Explore our hand-built, Florida-engineered electric supermoto — SNG 270E.</p>
-    <a href="builds.html" style="display:inline-block; background:var(--red); color:#fff; padding:16px 40px; border-radius:0; font-weight:900; font-size:15px; letter-spacing:1px; text-transform:uppercase; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='var(--red)'">View Bikes & Builds →</a>
+<!-- ── WIDGET 4: CREW WAITLIST FORM ── -->
+<div class="bottom-widget waitlist-widget" id="waitlist">
+  <div class="widget-inner">
+    <div class="widget-tag">Join the Crew</div>
+    <h3 class="widget-title">Waitlist & Drops</h3>
+    <p class="widget-desc">Sign up to get notified first about next apparel drops, stunt riding events, and custom bike reservations.</p>
+    <div class="waitlist-form">
+      <input type="email" placeholder="Enter your email address" id="waitlist-email-input">
+      <button onclick="submitWaitlist()">Join Waitlist</button>
+    </div>
   </div>
 </div>
 
-<!-- ── DETAIL MODAL ── -->
-<div id="product-modal" class="modal-wrap" onclick="if(event.target===this)closeModal()">
+<!-- ── PRODUCT MODAL ── -->
+<div class="modal-wrap" id="product-modal" onclick="if(event.target===this)closeModal()">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
+    <button class="modal-close" onclick="closeModal()">×</button>
     <div class="modal-img-wrap">
       <div id="modal-img" class="modal-img-crop" onclick="toggleZoom(event)"></div>
     </div>
     <div class="modal-body">
       <div id="modal-badge" class="modal-badge"></div>
-      <h3 id="modal-name" class="modal-name"></h3>
+      <div id="modal-name" class="modal-name"></div>
       <div id="modal-sub" class="modal-sub"></div>
       <div id="modal-price" class="modal-price"></div>
       <div id="modal-desc" class="modal-desc"></div>
-      
       <div id="modal-selectors"></div>
-      
-      <button id="modal-add-btn" class="modal-add-btn" onclick="modalOrder()">Buy Now</button>
-      <div class="modal-zoom-hint">Hover / Move mouse over image to zoom · Click to magnify</div>
+      <button id="modal-order-btn" class="modal-add-btn" onclick="modalOrder()">Buy Now</button>
+      <div id="modal-zoom-hint" class="modal-zoom-hint">Click image to zoom in · move mouse to pan</div>
     </div>
   </div>
 </div>
@@ -384,131 +792,148 @@ footer { background: var(--dark); border-top: 3px solid var(--border); padding: 
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">SNG <span>◆</span> Cycles</div>
-      <div class="footer-tagline">Leave the School Behind · Get Out & Ride</div>
+      <div class="footer-logo">SNG ◆ Cycles</div>
+      <div class="footer-tagline">Leave the school behind — sngcycles.com</div>
     </div>
     <div class="footer-links">
-      <a href="index.html#showroom">Showroom</a>
       <a href="florida-grown.html">FL Grown</a>
-      <a href="mako-gold.html">Mako Gold</a>
-      <a href="ltsb.html">LTSB</a>
+      <a href="fun-in-the-sun.html">Fun in the Sun</a>
       <a href="race-day.html">Race Day</a>
-      <a href="conversion.html">Conversion</a>
-      <a href="builds.html">Builds</a>
-      <a href="https://tiktok.com/@sngcycles" target="_blank">TikTok</a>
-      <a href="https://instagram.com/sngcycles" target="_blank">Instagram</a>
-      <a href="mailto:sales@sngcycles.com">Contact</a>
+      <a href="conversion.html">Conversion Series</a>
     </div>
   </div>
   <div class="footer-copy">
-    © 2026 SNG Cycles · Royal Palm Beach, FL · Powered by Shopify
+    © 2026 SNG Customs / Complete Care Marketing Inc. · Royal Palm Beach, FL · Powered by Shopify + Printful
   </div>
 </footer>
 
 <script>
+/* ── E-COMMERCE CONFIGURATION ── */
 var ECOM_CONFIG = {
   platform: 'shopify',
   shopifyStoreDomain: 'r4tpmi-xj.myshopify.com',
   orderEmail: 'sales@sngcycles.com'
 };
 
+var SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL'];
+
+/* ── PRODUCT MODAL DATA ── */
 var PRODUCTS = {
-  'sng-classic-hat': {
-    badge: 'Classic Drop', name: 'SNG Classic Snapback', sub: 'Structured Flat Brim Cap',
-    price: '$40.00', image: 'images/hat-sng-classic.png',
-    desc: 'Structured flat-brim black cap. Raised white embroidered SNG fin logo on front, snapback enclosure, premium woven hem tag, and standard "GET OUT AND RIDE!" side panel embroidery.',
-    selectors: ['embroidery'],
-    shopifyUrl: '45592416092339:1' // Fallback Shopify variant ID
+  'custom-270e-yellow': {
+    badge: 'Custom E-Bike', name: 'Custom 270E Yellow Bike', sub: '27kW Peak Power Custom Supermoto',
+    price: '$21,000.00', image: 'images/rd-gold-270e-complete-front.jpg',
+    desc: 'Bespoke custom electric supermoto 27kW peak power build. Gold Excel spokewheels, WP front forks, custom GUTS racing seat, Fardriver/EBMX controller. Fully handbuilt to order.',
+    selectors: [], orderLabel: 'Reserve Production Slot — $1,000.00 Deposit', orderItem: 'Custom 270E Yellow Reservation',
+    shopifyUrl: '4600000000088:1'
   },
-  'conversion-hats': {
-    badge: 'Conversion Drop', name: 'Conversion Series Snapbacks', sub: 'Structured Caps in 5 Colorways',
-    price: '$40.00', image: 'images/hat-black-orange.png',
-    desc: 'Conversion Series structured caps. Features bold colored panels, raised embroidered SNG fin logo on front, "GET OUT AND RIDE!" side print, and adjustable snapback enclosure.',
-    selectors: ['colorway', 'embroidery'],
-    shopifyUrl: {
-      'Black/Orange': '45592416125107:1',
-      'Navy/Hi-Vis': '45592416092339:1', // Variant ID placeholders
-      'Red/White': '45592416092339:1',
-      'Black/Yellow': '45592416092339:1',
-      'Black/Green': '45592416092339:1',
-      'default': '45592416125107:1'
-    }
-  },
-  'conversion-shirt': {
-    badge: 'Builder Series', name: 'Conversion Series Shirt', sub: 'Heavyweight Slogan Riding Tee',
+  'slogan-tee-black': {
+    badge: 'Conversion Series', name: 'SNG Classic Slogan Tee - Black', sub: 'Slogan Heavy Cotton Tee',
     price: '$30.00', image: 'images/conversion-shirt-black-front.png',
-    desc: 'Premium combed cotton flat-black tee. Front features SNG Cycles chest print, side sleeve print, and the bold statement back graphic: "I USE TA HAVE GAS. NOW I JUST HAUL ASS." Sized S to 3XL.',
-    selectors: ['shirt-colorway', 'size'],
+    desc: 'Heavyweight black combed cotton slogan tee. Front SNG logo, bold slogan back print: "I Use Ta Have Gas. Now I Just Haul Ass."',
+    selectors: ['size'], orderLabel: 'Buy Black Tee — $30.00', orderItem: 'SNG Classic Slogan Tee - Black',
     shopifyUrl: {
       'S': '45592416944307:1', 'M': '45592416977075:1', 'L': '45592417009843:1',
       'XL': '45592417042611:1', '2XL': '45592417075379:1', '3XL': '45592417108147:1',
       'default': '45592416977075:1'
     }
   },
-  'start-static-tee': {
-    badge: 'New Release', name: 'SNG Start Static Tee', sub: 'Built Different. Start Static.',
-    price: '$30.00', image: 'images/sng-tee-start-static.jpg',
-    desc: 'Official SNG Start Static slogan graphic tee. Premium heavyweight cotton, front SNG pocket logo, and the signature back graphic: "BUILT DIFFERENT. START STATIC. REAL POWER. ZERO COMPROMISE." Sized S to 3XL.',
-    selectors: ['size'],
+  'slogan-tee-grey': {
+    badge: 'Conversion Series', name: 'SNG Classic Slogan Tee - Grey', sub: 'Slogan Heavy Cotton Tee',
+    price: '$30.00', image: 'images/conversion-shirt-grey-front.png',
+    desc: 'Heavyweight gray combed cotton slogan tee. Front SNG logo, bold slogan back print: "I Use Ta Have Gas. Now I Just Haul Ass."',
+    selectors: ['size'], orderLabel: 'Buy Grey Tee — $30.00', orderItem: 'SNG Classic Slogan Tee - Grey',
     shopifyUrl: {
       'S': '45592416944307:1', 'M': '45592416977075:1', 'L': '45592417009843:1',
       'XL': '45592417042611:1', '2XL': '45592417075379:1', '3XL': '45592417108147:1',
       'default': '45592416977075:1'
     }
   },
-  'sng-shirt-collection': {
-    badge: 'Slogan Drop', name: 'SNG Slogan Shirt Collection', sub: 'Heavyweight Riding Tees',
-    price: '$30.00', image: 'images/conversion-shirt-all.png',
-    sheetImage: 'images/sng-conversion-series.jpg',
-    desc: 'Premium heavyweight cotton riding tees featuring SNG\'s official slogans. Built tough for the garage. Select your slogan and size.',
-    selectors: ['slogan', 'size'],
+  'slogan-tee-navy': {
+    badge: 'Conversion Series', name: 'SNG Classic Slogan Tee - Navy', sub: 'Slogan Heavy Cotton Tee',
+    price: '$30.00', image: 'images/conversion-shirt-navy-front.png',
+    desc: 'Heavyweight navy combed cotton slogan tee. Front SNG logo, bold slogan back print: "I Use Ta Have Gas. Now I Just Haul Ass."',
+    selectors: ['size'], orderLabel: 'Buy Navy Tee — $30.00', orderItem: 'SNG Classic Slogan Tee - Navy',
     shopifyUrl: {
       'S': '45592416944307:1', 'M': '45592416977075:1', 'L': '45592417009843:1',
       'XL': '45592417042611:1', '2XL': '45592417075379:1', '3XL': '45592417108147:1',
       'default': '45592416977075:1'
+    }
+  },
+  'stuntin-hoodie': {
+    badge: 'Conversion Series', name: 'Stuntin\' is a Habit Hoodie', sub: 'Premium Stunt Fleece Hoodie',
+    price: '$65.00', image: 'images/sng-hoodie-shark-single.png',
+    desc: 'Heavyweight premium black fleece. Orange fin front print, bold stunt logo back print. Fits like Carhartt.',
+    selectors: ['size'], orderLabel: 'Buy Stuntin Hoodie — $65.00', orderItem: 'Stuntin\' is a Habit Hoodie',
+    shopifyUrl: {
+      'S': '45592416551091:1', 'M': '45592416583859:1', 'L': '45592416616627:1',
+      'XL': '45592416649395:1', '2XL': '45592416682163:1', '3XL': '45592416714931:1',
+      'default': '45592416583859:1'
+    }
+  },
+  'sng4life-shorts': {
+    badge: 'Conversion Series', name: 'SNG4 Life Shorts', sub: 'Premium Summer Riding Shorts',
+    price: '$40.00', image: 'images/sng-packs-3-5.jpg',
+    desc: 'Heavy-duty summer riding shorts in black. Printed SNG fin details. Deep secure zip pockets designed for active riders.',
+    selectors: ['size'], orderLabel: 'Buy SNG4 Life Shorts — $40.00', orderItem: 'SNG4 Life Shorts',
+    shopifyUrl: {
+      'S': '45592416551091:1', 'M': '45592416583859:1', 'L': '45592416616627:1',
+      'XL': '45592416649395:1', '2XL': '45592416682163:1', '3XL': '45592416714931:1',
+      'default': '45592416583859:1'
+    }
+  },
+  'custom-snapback': {
+    badge: 'Conversion Series', name: 'SNG Custom Snapback', sub: 'Structured Twill Cap',
+    price: '$35.00', image: 'images/hat-black-yellow.png',
+    desc: 'Structured twill snapback in Black and Yellow colorway. Mid-profile structured 6-panel fit. Embroidered SNG fin logo on front.',
+    selectors: [], orderLabel: 'Buy Custom Snapback — $35.00', orderItem: 'SNG Custom Snapback',
+    shopifyUrl: '45592416288947:1'
+  },
+  'w-slogan-tee-black': {
+    badge: 'Conversion Series • Women\'s', name: 'Women\'s Slogan Tee - Black', sub: 'Slogan Cropped Tee',
+    price: '$30.00', image: 'images/w-tee-black-gas-single.jpg',
+    desc: 'Cropped tailored women\'s cotton tee with front fin logo and rear slogan: "I Use Ta Have Gas. Now I Just Haul Ass."',
+    selectors: ['size'], orderLabel: 'Buy Crop Tee — $30.00', orderItem: 'Women\'s Slogan Tee - Black',
+    shopifyUrl: {
+      'S': '45592416944307:1', 'M': '45592416977075:1', 'L': '45592417009843:1',
+      'XL': '45592417042611:1', '2XL': '45592417075379:1', '3XL': '45592417108147:1',
+      'default': '45592416977075:1'
+    }
+  },
+  'w-slogan-hoodie': {
+    badge: 'Conversion Series • Women\'s', name: 'Women\'s SNG Black Hoodie', sub: 'Slogan Cropped Hoodie',
+    price: '$65.00', image: 'images/w-hoodie-black-gas-single.jpg',
+    desc: 'Cropped tailored women\'s black fleece slogan hoodie with front SNG print and back slogan.',
+    selectors: ['size'], orderLabel: 'Buy Crop Hoodie — $65.00', orderItem: 'Women\'s SNG Black Hoodie',
+    shopifyUrl: {
+      'S': '45592416551091:1', 'M': '45592416583859:1', 'L': '45592416616627:1',
+      'XL': '45592416649395:1', '2XL': '45592416682163:1', '3XL': '45592416714931:1',
+      'default': '45592416583859:1'
+    }
+  },
+  'ltsb-5pack': {
+    badge: 'Special Drop', name: 'Megalodon Collector Box', sub: 'Limited Edition Serialized Box Set',
+    price: '$150.00', image: 'images/apparel-meg-box.png',
+    desc: 'SNG Cycles official limited collector box. Includes printed collector box, premium hoodie, checkerboard snapback, decal pack, and serialized certificate.',
+    selectors: ['size'], orderLabel: 'Claim Collector Box — $150.00', orderItem: 'Megalodon Collector Box',
+    shopifyUrl: {
+      'S': '4600000000088:1', 'M': '4600000000089:1', 'L': '4600000000090:1',
+      'XL': '4600000000091:1', '2XL': '4600000000092:1', '3XL': '4600000000093:1',
+      'default': '4600000000089:1'
     }
   }
 };
 
-// Crop coordinates or direct file swaps for single-item product display
-var COLOR_ZOOM_COORDS = {
-  'sng-classic-hat': {
-    'default': 'images/hat-sng-classic.png'
-  },
-  'conversion-hats': {
-    'default': 'images/hat-black-orange.png',
-    'Black/Orange': 'images/hat-black-orange.png',
-    'Navy/Hi-Vis': 'images/hat-navy-hiviz.png',
-    'Red/White': 'images/hat-red-white.png',
-    'Black/Yellow': 'images/hat-black-yellow.png',
-    'Black/Green': 'images/hat-black-green.png'
-  },
-  'conversion-shirt': {
-    'default': 'images/conversion-shirt-black-front.png',
-    'Black': 'images/conversion-shirt-black-front.png',
-    'Navy': 'images/conversion-shirt-navy-front.png',
-    'Grey': 'images/conversion-shirt-grey-front.png'
-  },
-  'start-static-tee': {
-    'default': 'images/sng-tee-start-static.jpg'
-  },
-  'sng-shirt-collection': {
-    'default': 'images/conversion-shirt-all.png',
-    'Stuntin is a Habit': { x: 52.8, y: 75, size: '900% 360%' },
-    'Stuntin Ain\'t Easy': { x: 63.3, y: 75, size: '900% 360%' },
-    'Swim Without Leave the School Behind': { x: 73.8, y: 75, size: '900% 360%' },
-    'For the Riders the Market Forgot': { x: 84.3, y: 75, size: '900% 360%' },
-    'I Use Ta Have Gas. Now I Just Haul Ass.': { x: 94.8, y: 75, size: '900% 360%' }
-  }
-};
+// Map unisex items to women's grid dynamically
+PRODUCTS['w-stuntin-hoodie'] = PRODUCTS['stuntin-hoodie'];
+PRODUCTS['w-sng4life-shorts'] = PRODUCTS['sng4life-shorts'];
+PRODUCTS['w-custom-snapback'] = PRODUCTS['custom-snapback'];
 
 var currentProduct = null;
 
-function openProduct(key) {
-  var p = PRODUCTS[key];
+function openProduct(id) {
+  var p = PRODUCTS[id];
   if (!p) return;
-  currentProduct = { id: key, product: p };
-  
+  currentProduct = { id:id, product:p };
   document.getElementById('modal-badge').textContent = p.badge;
   document.getElementById('modal-name').textContent = p.name;
   document.getElementById('modal-sub').textContent = p.sub;
@@ -516,86 +941,37 @@ function openProduct(key) {
   document.getElementById('modal-desc').textContent = p.desc;
   
   var imgCrop = document.getElementById('modal-img');
+  imgCrop.style.backgroundImage = "url('" + p.image + "')";
   imgCrop.classList.remove('zoomed');
+  imgCrop.style.backgroundSize = 'contain';
+  imgCrop.style.backgroundPosition = 'center';
   
-  // Set default crop coordinates or file path
-  var coords = COLOR_ZOOM_COORDS[key]['default'];
-  if (coords) {
-    if (typeof coords === 'string') {
-      imgCrop.style.backgroundImage = "url('" + coords + "')";
-      imgCrop.style.backgroundPosition = 'center';
-      imgCrop.style.backgroundSize = 'contain';
-    } else {
-      imgCrop.style.backgroundImage = "url('" + (p.sheetImage || p.image) + "')";
-      imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-      imgCrop.style.backgroundSize = coords.size;
-    }
-  } else {
-    imgCrop.style.backgroundImage = "url('" + p.image + "')";
-    imgCrop.style.backgroundPosition = 'center';
-    imgCrop.style.backgroundSize = 'contain';
-  }
+  document.getElementById('modal-order-btn').textContent = p.orderLabel;
+  var sel = document.getElementById('modal-selectors');
+  sel.innerHTML = '';
+  if (p.selectors.indexOf('size') > -1) sel.innerHTML += buildSelect('modal-size', '— Select Size —', SIZES);
   
-  // Build dynamic selectors
-  var html = '';
-  p.selectors.forEach(function(sel) {
-    if (sel === 'embroidery') {
-      html += '<div class="modal-label">Optional Side Embroidery</div>';
-      html += '<select class="modal-select" id="modal-side-embroidery">';
-      html += '  <option value="Classic">NONE (CLASSIC - GET OUT AND RIDE!)</option>';
-      html += '  <option value="Shark Not Goldfish">SHARK NOT GOLDFISH</option>';
-      html += '  <option value="Leave The School Behind">LEAVE THE SCHOOL BEHIND</option>';
-      html += '  <option value="Haul Ass">I USE TA HAVE GAS. NOW I JUST HAUL ASS.</option>';
-      html += '</select>';
-    } else if (sel === 'colorway') {
-      html += '<div class="modal-label">Available Colorways</div>';
-      html += '<select class="modal-select" id="modal-hat-color">';
-      html += '  <option value="">-- Choose Colorway --</option>';
-      html += '  <option value="Black/Orange">Black / Orange</option>';
-      html += '  <option value="Navy/Hi-Vis">Navy / Hi-Vis</option>';
-      html += '  <option value="Red/White">Red / White</option>';
-      html += '  <option value="Black/Yellow">Black / Yellow</option>';
-      html += '  <option value="Black/Green">Black / Green</option>';
-      html += '</select>';
-    } else if (sel === 'shirt-colorway') {
-      html += '<div class="modal-label">Available Colors</div>';
-      html += '<select class="modal-select" id="modal-shirt-color">';
-      html += '  <option value="">-- Choose Color --</option>';
-      html += '  <option value="Black">Black</option>';
-      html += '  <option value="Navy">Navy</option>';
-      html += '  <option value="Grey">Grey</option>';
-      html += '</select>';
-    } else if (sel === 'slogan') {
-      html += '<div class="modal-label">Select Graphic Slogan</div>';
-      html += '<select class="modal-select" id="modal-shirt-slogan">';
-      html += '  <option value="">-- Choose Slogan --</option>';
-      html += '  <option value="Stuntin is a Habit">Stuntin is a Habit</option>';
-      html += '  <option value="Stuntin Ain\'t Easy">Stuntin Ain\'t Easy</option>';
-      html += '  <option value="Swim Without Leave the School Behind">Swim Without / Leave the School Behind</option>';
-      html += '  <option value="For the Riders the Market Forgot">For the Riders the Market Forgot</option>';
-      html += '  <option value="I Use Ta Have Gas. Now I Just Haul Ass.">I Use Ta Have Gas. Now I Just Haul Ass.</option>';
-      html += '</select>';
-    } else if (sel === 'size') {
-      html += '<div class="modal-label">Size Selection</div>';
-      html += '<select class="modal-select" id="modal-size">';
-      html += '  <option value="S">Small</option>';
-      html += '  <option value="M" selected>Medium</option>';
-      html += '  <option value="L">Large</option>';
-      html += '  <option value="XL">X-Large</option>';
-      html += '  <option value="2XL">2X-Large</option>';
-      html += '  <option value="3XL">3X-Large</option>';
-      html += '</select>';
-    }
-  });
-  
-  document.getElementById('modal-selectors').innerHTML = html;
   document.getElementById('product-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  if (!window.location.hash.includes('product-')) {
+    history.pushState({ modalOpen: id }, '', '#product-' + id);
+  }
 }
 
-function closeModal() {
+function buildSelect(id, placeholder, options) {
+  var html = '<div class="modal-select-wrap"><span class="modal-label">' + placeholder.replace('—','').replace('—','') + '</span>';
+  html += '<select id="' + id + '" class="modal-select"><option value="">' + placeholder + '</option>';
+  options.forEach(function(o){ html += '<option>' + o + '</option>'; });
+  return html + '</select></div>';
+}
+
+function closeModal(fromPopState) {
   document.getElementById('product-modal').classList.remove('open');
   document.body.style.overflow = '';
+  if (!fromPopState && window.location.hash.startsWith('#product-')) {
+    history.back();
+  }
 }
 
 function toggleZoom(e) {
@@ -604,45 +980,11 @@ function toggleZoom(e) {
   
   if (!isZoomed) {
     imgCrop.classList.add('zoomed');
-    if (e) {
-      updateZoomOrigin(e);
-    }
+    if (e) updateZoomOrigin(e);
   } else {
     imgCrop.classList.remove('zoomed');
-    
-    // Restore crop coordinates based on dropdown selects
-    var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
-    var slogan = document.getElementById('modal-shirt-slogan') ? document.getElementById('modal-shirt-slogan').value : '';
-    var shirtColor = document.getElementById('modal-shirt-color') ? document.getElementById('modal-shirt-color').value : '';
-    var key = currentProduct.id;
-    
-    var val = hatColor || slogan || shirtColor || 'default';
-    if (COLOR_ZOOM_COORDS[key][val]) {
-      var coords = COLOR_ZOOM_COORDS[key][val];
-      if (typeof coords === 'string') {
-        imgCrop.style.backgroundImage = "url('" + coords + "')";
-        imgCrop.style.backgroundPosition = 'center';
-        imgCrop.style.backgroundSize = 'contain';
-      } else {
-        imgCrop.style.backgroundImage = "url('" + (currentProduct.product.sheetImage || currentProduct.product.image) + "')";
-        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-        imgCrop.style.backgroundSize = coords.size;
-      }
-      return;
-    }
-    
-    var coords = COLOR_ZOOM_COORDS[key]['default'];
-    if (coords) {
-      if (typeof coords === 'string') {
-        imgCrop.style.backgroundImage = "url('" + coords + "')";
-        imgCrop.style.backgroundPosition = 'center';
-        imgCrop.style.backgroundSize = 'contain';
-      } else {
-        imgCrop.style.backgroundImage = "url('" + (currentProduct.product.sheetImage || currentProduct.product.image) + "')";
-        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-        imgCrop.style.backgroundSize = coords.size;
-      }
-    }
+    imgCrop.style.backgroundSize = 'contain';
+    imgCrop.style.backgroundPosition = 'center';
   }
 }
 
@@ -662,70 +1004,17 @@ document.getElementById('modal-img').addEventListener('mousemove', function(e) {
   updateZoomOrigin(e);
 });
 
-// Generic selector change handler for direct image swapping and CSS cropping
-document.getElementById('modal-selectors').addEventListener('change', function(e) {
-  if (e.target && e.target.classList.contains('modal-select')) {
-    var val = e.target.value;
-    var imgCrop = document.getElementById('modal-img');
-    imgCrop.classList.remove('zoomed');
-    
-    var key = currentProduct.id;
-    if (val && currentProduct && COLOR_ZOOM_COORDS[key]) {
-      var target = COLOR_ZOOM_COORDS[key][val];
-      if (typeof target === 'string') {
-        imgCrop.style.backgroundImage = "url('" + target + "')";
-        imgCrop.style.backgroundPosition = 'center';
-        imgCrop.style.backgroundSize = 'contain';
-        return;
-      } else if (target && typeof target === 'object') {
-        var sheetImage = currentProduct.product.sheetImage || currentProduct.product.image;
-        imgCrop.style.backgroundImage = "url('" + sheetImage + "')";
-        imgCrop.style.backgroundPosition = target.x + '% ' + target.y + '%';
-        imgCrop.style.backgroundSize = target.size;
-        return;
-      }
-    }
-    
-    // Fallback to default product image
-    var coords = COLOR_ZOOM_COORDS[key]['default'];
-    if (coords) {
-      if (typeof coords === 'string') {
-        imgCrop.style.backgroundImage = "url('" + coords + "')";
-        imgCrop.style.backgroundPosition = 'center';
-        imgCrop.style.backgroundSize = 'contain';
-      } else {
-        var sheetImage = currentProduct.product.sheetImage || currentProduct.product.image;
-        imgCrop.style.backgroundImage = "url('" + sheetImage + "')";
-        imgCrop.style.backgroundPosition = coords.x + '% ' + coords.y + '%';
-        imgCrop.style.backgroundSize = coords.size;
-      }
-    } else {
-      imgCrop.style.backgroundImage = "url('" + currentProduct.product.image + "')";
-      imgCrop.style.backgroundPosition = 'center';
-      imgCrop.style.backgroundSize = 'contain';
-    }
-  }
-});
-
 function modalOrder() {
   var p = currentProduct.product;
-  var hatColor = document.getElementById('modal-hat-color') ? document.getElementById('modal-hat-color').value : '';
-  var shirtColor = document.getElementById('modal-shirt-color') ? document.getElementById('modal-shirt-color').value : '';
   var size = document.getElementById('modal-size') ? document.getElementById('modal-size').value : '';
-  var slogan = document.getElementById('modal-shirt-slogan') ? document.getElementById('modal-shirt-slogan').value : '';
-  var embroidery = document.getElementById('modal-side-embroidery') ? document.getElementById('modal-side-embroidery').value : '';
   
-  if (p.selectors.indexOf('colorway') > -1 && !hatColor) { alert('Please select a colorway.'); return; }
-  if (p.selectors.indexOf('shirt-colorway') > -1 && !shirtColor) { alert('Please select a color.'); return; }
-  if (p.selectors.indexOf('slogan') > -1 && !slogan) { alert('Please select a slogan.'); return; }
   if (p.selectors.indexOf('size') > -1 && !size) { alert('Please select a size.'); return; }
   
   if (ECOM_CONFIG.platform === 'shopify') {
     var checkoutUrl = '';
     if (p.shopifyUrl) {
       if (typeof p.shopifyUrl === 'object') {
-        var key = size || hatColor || 'default';
-        checkoutUrl = p.shopifyUrl[key] || p.shopifyUrl['default'] || '';
+        checkoutUrl = p.shopifyUrl[size] || p.shopifyUrl['default'] || '';
       } else {
         checkoutUrl = p.shopifyUrl;
       }
@@ -739,6 +1028,78 @@ function modalOrder() {
     }
   }
 }
+
+/* ── TAB CONTROLLER ── */
+function switchTab(gender) {
+  document.querySelectorAll('.tab-btn').forEach(function(btn) { btn.classList.remove('active'); });
+  document.querySelectorAll('.grid-container').forEach(function(grid) { grid.classList.remove('active'); });
+  
+  if (gender === 'mens') {
+    document.querySelector('[onclick="switchTab(\'mens\')"]').classList.add('active');
+    document.getElementById('mens-grid-container').classList.add('active');
+  } else {
+    document.querySelector('[onclick="switchTab(\'womens\')"]').classList.add('active');
+    document.getElementById('womens-grid-container').classList.add('active');
+  }
+}
+
+/* ── COUNTDOWN TIMER ── */
+function startCountdown() {
+  function updateTimer() {
+    var now = new Date();
+    var midnight = new Date();
+    midnight.setHours(24, 0, 0, 0);
+    var diff = midnight - now;
+    
+    if (diff <= 0) {
+      document.getElementById('timer-hours').textContent = '00';
+      document.getElementById('timer-minutes').textContent = '00';
+      document.getElementById('timer-seconds').textContent = '00';
+      return;
+    }
+    
+    var hours = Math.floor(diff / 3600000);
+    var minutes = Math.floor((diff % 3600000) / 60000);
+    var seconds = Math.floor((diff % 60000) / 1000);
+    
+    document.getElementById('timer-hours').textContent = hours < 10 ? '0' + hours : hours;
+    document.getElementById('timer-minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+    document.getElementById('timer-seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+  }
+  updateTimer();
+  setInterval(updateTimer, 1000);
+}
+startCountdown();
+
+function submitWaitlist() {
+  var email = document.getElementById('waitlist-email-input').value.trim();
+  if (!email) { alert('Please enter a valid email address.'); return; }
+  alert('You have been added to the waitlist! SNG Cycles updates will be sent to: ' + email);
+  document.getElementById('waitlist-email-input').value = '';
+}
+
+// Browser navigation history popstate listener
+window.addEventListener('popstate', function(event) {
+  var modal = document.getElementById('product-modal');
+  var isOpen = modal && modal.classList.contains('open');
+  if (isOpen) {
+    closeModal(true);
+  } else if (event.state && event.state.modalOpen) {
+    openProduct(event.state.modalOpen);
+  }
+});
+
+// Auto-open product hash
+window.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash && window.location.hash.startsWith('#product-')) {
+    var productId = window.location.hash.replace('#product-', '');
+    setTimeout(function() {
+      if (PRODUCTS[productId]) {
+        openProduct(productId);
+      }
+    }, 200);
+  }
+});
 </script>
 </body>
 </html>
