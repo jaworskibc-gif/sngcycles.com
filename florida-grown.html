@@ -204,7 +204,6 @@ nav {
 .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,143,131,0.15); }
 .product-card-img-wrap { width: 100%; aspect-ratio: 4 / 5; overflow: hidden; background: var(--light-gray); border-bottom: 2px solid var(--border); position: relative; }
 .product-card-img { width: 100%; height: 100%; object-fit: cover; }
-.product-card-img.board-top { object-position: center top; }
 .product-card-badge { position: absolute; top: 12px; left: 12px; background: var(--teal); color: var(--white); font-family: var(--head); font-weight: 900; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid var(--border); }
 .product-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
 .product-card-tag { font-family: var(--head); font-weight: 700; font-size: 10px; color: var(--teal); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
@@ -433,6 +432,28 @@ nav {
 .modal-add-btn { width: 100%; background: var(--border); color: var(--white); border: 2px solid var(--border); padding: 14px; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: auto; }
 .modal-add-btn:hover { background: var(--teal-light); }
 .modal-zoom-hint { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 10px; }
+.modal-view-switcher {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.modal-view-btn {
+  background: var(--white);
+  border: 2px solid var(--border);
+  color: var(--text-dark);
+  padding: 10px 8px;
+  font-family: var(--head);
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.modal-view-btn.active {
+  background: var(--border);
+  color: var(--white);
+}
 
 @media (max-width: 768px) {
   .modal { grid-template-columns: 1fr; }
@@ -504,13 +525,13 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
     <div class="product-grid">
       <div class="product-card" onclick="openProduct('tee-fl-grown-black')">
         <div class="product-card-img-wrap">
-          <img src="fl-grown-tee-black.png" class="product-card-img board-top" alt="Florida Grown Graphic Tee - Black">
+          <img src="fl-grown-tee-black-front-crop.png" class="product-card-img" alt="Florida Grown Graphic Tee - Black">
           <div class="product-card-badge">New Drop</div>
         </div>
         <div class="product-card-body">
           <div class="product-card-tag">Tees</div>
           <h4 class="product-card-name">Florida Grown Graphic Tee</h4>
-          <p class="product-card-desc">Black short sleeve with chest logo, full Florida Grown shark back graphic, 3-angle board, and collection color spec.</p>
+          <p class="product-card-desc">Black short sleeve with chest logo and full Florida Grown shark back graphic.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$30.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -520,13 +541,13 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
 
       <div class="product-card" onclick="openProduct('tee-fl-grown-grey')">
         <div class="product-card-img-wrap">
-          <img src="fl-grown-tee-charcoal.png" class="product-card-img board-top" alt="Florida Grown Chest Logo Tee - Charcoal">
+          <img src="fl-grown-tee-charcoal-front-crop.png" class="product-card-img" alt="Florida Grown Chest Logo Tee - Charcoal">
           <div class="product-card-badge">Core Logo</div>
         </div>
         <div class="product-card-body">
           <div class="product-card-tag">Tees</div>
           <h4 class="product-card-name">Florida Grown Chest Logo Tee</h4>
-          <p class="product-card-desc">Charcoal short sleeve with minimalist chest hit, 3-angle board, and full FL Grown swatch set.</p>
+          <p class="product-card-desc">Charcoal short sleeve with minimalist chest logo treatment.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$30.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -536,13 +557,13 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
 
       <div class="product-card" onclick="openProduct('fl-grown-longsleeve')">
         <div class="product-card-img-wrap">
-          <img src="fl-grown-ls-static.png" class="product-card-img board-top" alt="Florida Grown Start Static Long Sleeve">
+          <img src="fl-grown-ls-static-front-crop.png" class="product-card-img" alt="Florida Grown Start Static Long Sleeve">
           <div class="product-card-badge">Long Sleeve</div>
         </div>
         <div class="product-card-body">
           <div class="product-card-tag">Long Sleeves</div>
           <h4 class="product-card-name">Built Different Start Static</h4>
-          <p class="product-card-desc">Black long sleeve with sleeve wordmarks, chest logo, and back shark wheel graphic board.</p>
+          <p class="product-card-desc">Black long sleeve with sleeve wordmarks, chest logo, and back shark wheel graphic.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$45.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -552,13 +573,13 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
 
       <div class="product-card" onclick="openProduct('fl-grown-longsleeve-circle')">
         <div class="product-card-img-wrap">
-          <img src="fl-grown-ls-circle.png" class="product-card-img board-top" alt="Florida Grown Shark Not Goldfish Long Sleeve">
+          <img src="fl-grown-ls-circle-front-crop.png" class="product-card-img" alt="Florida Grown Shark Not Goldfish Long Sleeve">
           <div class="product-card-badge">Long Sleeve</div>
         </div>
         <div class="product-card-body">
           <div class="product-card-tag">Long Sleeves</div>
           <h4 class="product-card-name">Shark Not Goldfish Long Sleeve</h4>
-          <p class="product-card-desc">Black long sleeve with circular back seal, sleeve graphics, chest logo, and full 3-angle presentation board.</p>
+          <p class="product-card-desc">Black long sleeve with circular back seal, sleeve graphics, and chest logo.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$45.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -735,6 +756,7 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
       <div id="modal-sub" class="modal-sub"></div>
       <div id="modal-price" class="modal-price"></div>
       <div id="modal-desc" class="modal-desc"></div>
+      <div id="modal-view-switcher" class="modal-view-switcher"></div>
       <div id="modal-selectors"></div>
       <button id="modal-order-btn" class="modal-add-btn" onclick="modalOrder()">Buy Now</button>
       <div id="modal-zoom-hint" class="modal-zoom-hint">Click image to zoom in · move mouse to pan</div>
@@ -775,9 +797,14 @@ var SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL'];
 var PRODUCTS = {
   'tee-fl-grown-black': {
     badge: 'Florida Grown', name: 'Florida Grown Graphic Tee', sub: 'Black Short Sleeve',
-    price: '$30.00', image: 'fl-grown-tee-black.png',
-    desc: 'Black short sleeve with front chest logo and full Florida Grown shark back graphic. Product board includes 3 angles, art assets, and collection swatches.',
-    imageMode: 'board-top',
+    price: '$30.00', image: 'fl-grown-tee-black-front-crop.png',
+    desc: 'Black short sleeve with front chest logo and full Florida Grown shark back graphic.',
+    imageMode: 'gallery',
+    gallery: [
+      { label: 'Front', image: 'fl-grown-tee-black-front-crop.png' },
+      { label: 'Back', image: 'fl-grown-tee-black-back-crop.png' },
+      { label: 'Angle', image: 'fl-grown-tee-black-angle-crop.png' }
+    ],
     selectors: ['size'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee - Black',
     shopifyUrl: {
       'S': '45592417861811:1', 'M': '45592417894579:1', 'L': '45592417927347:1',
@@ -798,9 +825,14 @@ var PRODUCTS = {
   },
   'tee-fl-grown-grey': {
     badge: 'Florida Grown', name: 'Florida Grown Chest Logo Tee', sub: 'Charcoal Short Sleeve',
-    price: '$30.00', image: 'fl-grown-tee-charcoal.png',
-    desc: 'Charcoal short sleeve with minimalist front chest branding. Product board includes 3 angles and the FL Grown palette.',
-    imageMode: 'board-top',
+    price: '$30.00', image: 'fl-grown-tee-charcoal-front-crop.png',
+    desc: 'Charcoal short sleeve with minimalist front chest branding.',
+    imageMode: 'gallery',
+    gallery: [
+      { label: 'Front', image: 'fl-grown-tee-charcoal-front-crop.png' },
+      { label: 'Back', image: 'fl-grown-tee-charcoal-back-crop.png' },
+      { label: 'Angle', image: 'fl-grown-tee-charcoal-angle-crop.png' }
+    ],
     selectors: ['size'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee - Grey',
     shopifyUrl: {
       'S': '45592418255027:1', 'M': '45592418287795:1', 'L': '45592418320563:1',
@@ -810,9 +842,14 @@ var PRODUCTS = {
   },
   'fl-grown-longsleeve': {
     badge: 'Florida Grown', name: 'Built Different Start Static', sub: 'Black Long Sleeve',
-    price: '$45.00', image: 'fl-grown-ls-static.png',
-    desc: 'Black long sleeve with sleeve wordmarks, chest logo, and back shark wheel graphic. Displayed as a 3-angle FL Grown board.',
-    imageMode: 'board-top',
+    price: '$45.00', image: 'fl-grown-ls-static-front-crop.png',
+    desc: 'Black long sleeve with sleeve wordmarks, chest logo, and back shark wheel graphic.',
+    imageMode: 'gallery',
+    gallery: [
+      { label: 'Front', image: 'fl-grown-ls-static-front-crop.png' },
+      { label: 'Back', image: 'fl-grown-ls-static-back-crop.png' },
+      { label: 'Angle', image: 'fl-grown-ls-static-angle-crop.png' }
+    ],
     selectors: ['size'], orderLabel: 'Buy Long Sleeve — $45.00', orderItem: 'Florida Grown Long Sleeve',
     shopifyUrl: {
       'S': '45592416551091:1', 'M': '45592416583859:1', 'L': '45592416616627:1',
@@ -822,9 +859,14 @@ var PRODUCTS = {
   },
   'fl-grown-longsleeve-circle': {
     badge: 'Florida Grown', name: 'Shark Not Goldfish Long Sleeve', sub: 'Black Long Sleeve',
-    price: '$45.00', image: 'fl-grown-ls-circle.png',
-    desc: 'Black long sleeve with circular Shark Not Goldfish back seal, sleeve graphics, chest logo, and 3 clean product angles.',
-    imageMode: 'board-top',
+    price: '$45.00', image: 'fl-grown-ls-circle-front-crop.png',
+    desc: 'Black long sleeve with circular Shark Not Goldfish back seal, sleeve graphics, and chest logo.',
+    imageMode: 'gallery',
+    gallery: [
+      { label: 'Front', image: 'fl-grown-ls-circle-front-crop.png' },
+      { label: 'Back', image: 'fl-grown-ls-circle-back-crop.png' },
+      { label: 'Angle', image: 'fl-grown-ls-circle-angle-crop.png' }
+    ],
     selectors: ['size'], orderLabel: 'Buy Long Sleeve — $45.00', orderItem: 'Shark Not Goldfish Long Sleeve',
     shopifyUrl: {
       'S': '45592416551091:1', 'M': '45592416583859:1', 'L': '45592416616627:1',
@@ -889,6 +931,23 @@ for (var wKey in w_items) {
 }
 
 var currentProduct = null;
+var currentViewIndex = 0;
+
+function setProductView(index) {
+  if (!currentProduct || !currentProduct.product) return;
+  var p = currentProduct.product;
+  var gallery = p.gallery || [];
+  var imgCrop = document.getElementById('modal-img');
+  currentViewIndex = index;
+  if (gallery[index]) {
+    imgCrop.style.backgroundImage = "url('" + gallery[index].image + "')";
+    imgCrop.style.backgroundSize = 'contain';
+    imgCrop.style.backgroundPosition = 'center';
+  }
+  document.querySelectorAll('.modal-view-btn').forEach(function(btn, i) {
+    btn.classList.toggle('active', i === index);
+  });
+}
 
 function openProduct(id) {
   var p = PRODUCTS[id];
@@ -901,23 +960,28 @@ function openProduct(id) {
   document.getElementById('modal-desc').textContent = p.desc;
   
   var imgCrop = document.getElementById('modal-img');
-  var imgWrap = document.querySelector('.modal-img-wrap');
   imgCrop.style.backgroundImage = "url('" + p.image + "')";
   imgCrop.classList.remove('zoomed');
-  if (p.imageMode === 'board-top') {
-    imgWrap.classList.add('board-top-mode');
-    imgCrop.style.backgroundSize = 'cover';
-    imgCrop.style.backgroundPosition = 'center top';
+  if (p.imageMode === 'gallery') {
+    imgCrop.style.backgroundSize = 'contain';
+    imgCrop.style.backgroundPosition = 'center';
   } else {
-    imgWrap.classList.remove('board-top-mode');
     imgCrop.style.backgroundSize = 'contain';
     imgCrop.style.backgroundPosition = 'center';
   }
   
   document.getElementById('modal-order-btn').textContent = p.orderLabel;
+  var viewSwitcher = document.getElementById('modal-view-switcher');
+  viewSwitcher.innerHTML = '';
+  if (p.gallery && p.gallery.length) {
+    p.gallery.forEach(function(view, index) {
+      viewSwitcher.innerHTML += '<button type="button" class="modal-view-btn' + (index === 0 ? ' active' : '') + '" onclick="setProductView(' + index + ')">' + view.label + '</button>';
+    });
+  }
   var sel = document.getElementById('modal-selectors');
   sel.innerHTML = '';
   if (p.selectors.indexOf('size') > -1) sel.innerHTML += buildSelect('modal-size', '— Select Size —', SIZES);
+  currentViewIndex = 0;
   
   document.getElementById('product-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
