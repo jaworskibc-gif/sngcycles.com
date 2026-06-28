@@ -67,6 +67,28 @@ nav {
 .nav-hub-link:hover {
   opacity: 1;
 }
+.hub-fab {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 140;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  background: var(--warm-white);
+  color: var(--brown-dk);
+  text-decoration: none;
+  font-size: 24px;
+  box-shadow: 0 10px 24px rgba(17,17,17,0.16);
+}
+.hub-fab:hover {
+  color: var(--red);
+  transform: translateY(-1px);
+}
 .nav-cta {
   background: var(--red);
   color: #fff !important;
@@ -446,6 +468,7 @@ footer { background: var(--brown-dk); border-top: 3px solid var(--red); padding:
     <a href="hub.html" class="nav-hub-link" title="SNG Hub" aria-label="Open SNG Hub">🦈</a>
   </div>
 </nav>
+<a href="hub.html" class="hub-fab" title="SNG Hub" aria-label="Open SNG Hub">🦈</a>
 
 <!-- ── HERO ── -->
 <h1 class="seo-only">SNG Cycles — Leave The School Behind</h1>
