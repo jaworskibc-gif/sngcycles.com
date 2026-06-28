@@ -622,15 +622,15 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
   
   <div class="product-grid-section">
     <div class="product-grid">
-      <!-- Black Tee -->
       <div class="product-card" onclick="openProduct('w-tee-fl-grown-black')">
         <div class="product-card-img-wrap">
-          <img src="images/w-tee-fl-grown-black.jpg" class="product-card-img" alt="Women's Florida Grown Tee - Black">
+          <img src="fl-grown-womens-tee-front-crop.png" class="product-card-img" alt="Women's Florida Grown Tee">
+          <div class="product-card-badge">Women's Tee</div>
         </div>
         <div class="product-card-body">
           <div class="product-card-tag">Tees</div>
-          <h4 class="product-card-name">Women's Florida Grown Tee - Black</h4>
-          <p class="product-card-desc">Florida silhouette backprint. Premium combed cotton in a tailored women's fit.</p>
+          <h4 class="product-card-name">Women's Florida Grown Tee</h4>
+          <p class="product-card-desc">Women’s black tee with chest logo and full Florida Grown shark back graphic.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$30.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -638,47 +638,15 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
         </div>
       </div>
 
-      <!-- Navy Tee -->
-      <div class="product-card" onclick="openProduct('w-tee-fl-grown-navy')">
-        <div class="product-card-img-wrap">
-          <img src="images/w-tee-fl-grown-navy.jpg" class="product-card-img" alt="Women's Florida Grown Tee - Navy">
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-tag">Tees</div>
-          <h4 class="product-card-name">Women's Florida Grown Tee - Navy</h4>
-          <p class="product-card-desc">Florida silhouette backprint. Premium combed cotton in a tailored women's Navy fit.</p>
-          <div class="product-card-footer">
-            <span class="product-card-price">$30.00</span>
-            <button class="product-card-btn">Quick View</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Grey Tee -->
-      <div class="product-card" onclick="openProduct('w-tee-fl-grown-grey')">
-        <div class="product-card-img-wrap">
-          <img src="images/w-tee-fl-grown-grey.jpg" class="product-card-img" alt="Women's Florida Grown Tee - Grey">
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-tag">Tees</div>
-          <h4 class="product-card-name">Women's Florida Grown Tee - Grey</h4>
-          <p class="product-card-desc">Florida silhouette backprint. Premium combed cotton in a tailored women's Grey fit.</p>
-          <div class="product-card-footer">
-            <span class="product-card-price">$30.00</span>
-            <button class="product-card-btn">Quick View</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Leggings -->
       <div class="product-card" onclick="openProduct('reef-leggings')">
         <div class="product-card-img-wrap">
-          <img src="images/sng-flgrown-womens-leggings.jpg" class="product-card-img" alt="Tropical Reef Leggings">
+          <img src="fl-grown-womens-leggings-front-crop.png" class="product-card-img" alt="Women's Florida Grown Leggings">
+          <div class="product-card-badge">Leggings</div>
         </div>
         <div class="product-card-body">
-          <div class="product-card-tag">Apparel</div>
-          <h4 class="product-card-name">Tropical Reef Leggings</h4>
-          <p class="product-card-desc">Premium all-over tropical palm print high-waisted compression leggings.</p>
+          <div class="product-card-tag">Women's Apparel</div>
+          <h4 class="product-card-name">Florida Grown Leggings</h4>
+          <p class="product-card-desc">High-waist Florida Grown leggings with tropical reef side print and SNG leg branding.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$45.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -686,15 +654,15 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
         </div>
       </div>
 
-      <!-- Reef Hat (Unisex) -->
-      <div class="product-card" onclick="openProduct('reef-hat')">
+      <div class="product-card" onclick="openProduct('reef-hat-womens')">
         <div class="product-card-img-wrap">
-          <img src="images/sng-flgrown-art-spec.jpg" class="product-card-img" alt="Florida Reef Hat">
+          <img src="fl-grown-womens-hat-front-crop.png" class="product-card-img" alt="Women's Florida Reef Hat">
+          <div class="product-card-badge">Hat</div>
         </div>
         <div class="product-card-body">
           <div class="product-card-tag">Hats</div>
-          <h4 class="product-card-name">Florida Reef Snapback</h4>
-          <p class="product-card-desc">Embroidered tropical reef layout flat bill snapback. Premium structured twill.</p>
+          <h4 class="product-card-name">Women's Florida Reef Hat</h4>
+          <p class="product-card-desc">Floral reef trucker hat with front patch, rear fin detail, and custom underbrim artwork.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$35.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -908,10 +876,29 @@ var PRODUCTS = {
     selectors: [], orderLabel: 'Buy Snapback — $35.00', orderItem: 'Florida Grown Snapback',
     shopifyUrl: '45592416288947:1'
   },
+  'reef-hat-womens': {
+    badge: 'Florida Grown · Women\'s', name: 'Women\'s Florida Reef Hat', sub: 'Floral Reef Trucker Hat',
+    price: '$35.00', image: 'fl-grown-womens-hat-front-crop.png',
+    desc: 'Women’s Florida Reef hat with tropical floral crown print, back fin detail, and custom Build Up underbrim.',
+    imageMode: 'gallery',
+    gallery: [
+      { label: 'Front', image: 'fl-grown-womens-hat-front-crop.png' },
+      { label: 'Back', image: 'fl-grown-womens-hat-back-crop.png' },
+      { label: 'Under', image: 'fl-grown-womens-hat-under-crop.png' }
+    ],
+    selectors: [], orderLabel: 'Buy Hat — $35.00', orderItem: 'Women\'s Florida Reef Hat',
+    shopifyUrl: '45592416288947:1'
+  },
   'reef-leggings': {
-    badge: 'Florida Grown', name: 'Tropical Reef Leggings', sub: 'High-Waist Compression Leggings',
-    price: '$45.00', image: 'images/sng-flgrown-womens-leggings.jpg',
-    desc: 'Women\'s performance activewear compression leggings. Squat-proof, 4-way stretch material with custom all-over tropical palm print.',
+    badge: 'Florida Grown · Women\'s', name: 'Florida Grown Leggings', sub: 'High-Waist Performance Leggings',
+    price: '$45.00', image: 'fl-grown-womens-leggings-front-crop.png',
+    desc: 'Women\'s performance leggings with tropical reef side print, SNG leg branding, and high-waist support.',
+    imageMode: 'gallery',
+    gallery: [
+      { label: 'Front', image: 'fl-grown-womens-leggings-front-crop.png' },
+      { label: 'Back', image: 'fl-grown-womens-leggings-back-crop.png' },
+      { label: 'Detail', image: 'fl-grown-womens-leggings-detail-crop.png' }
+    ],
     selectors: ['size'], orderLabel: 'Buy Leggings — $45.00', orderItem: 'Tropical Reef Leggings',
     shopifyUrl: {
       'S': '45592419565747:1', 'M': '45592419598515:1', 'L': '45592419631283:1',
@@ -944,14 +931,19 @@ for (var wKey in w_items) {
   if (base) {
     PRODUCTS[wKey] = {
       badge: base.badge + " · Women's",
-      name: w_items[wKey].name,
-      sub: base.sub,
+      name: "Women's Florida Grown Tee",
+      sub: 'Black Short Sleeve',
       price: base.price,
-      image: w_items[wKey].img,
-      desc: base.desc.replace('combed cotton', "tailored women's crop combed cotton"),
+      image: 'fl-grown-womens-tee-front-crop.png',
+      desc: 'Women\'s black tee with chest logo and full Florida Grown shark back graphic.',
+      imageMode: 'gallery',
+      gallery: [
+        { label: 'Front', image: 'fl-grown-womens-tee-front-crop.png' },
+        { label: 'Back', image: 'fl-grown-womens-tee-back-crop.png' }
+      ],
       selectors: base.selectors,
-      orderLabel: 'Buy ' + w_items[wKey].name + ' — ' + base.price,
-      orderItem: w_items[wKey].name,
+      orderLabel: 'Buy Women\'s Florida Grown Tee — ' + base.price,
+      orderItem: 'Women\'s Florida Grown Tee',
       shopifyUrl: base.shopifyUrl
     };
   }
