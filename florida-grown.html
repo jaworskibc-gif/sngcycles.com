@@ -159,6 +159,21 @@ nav {
 .grid-container.active {
   display: block;
 }
+.hero-entry-section {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 40px;
+}
+.hero-entry-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0,143,131,0.10);
+}
+.hero-entry-img {
+  width: 100%;
+  display: block;
+}
 
 /* ── SECTION HEADER ── */
 .section-header {
@@ -471,25 +486,29 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
 
 <!-- ── MEN'S SECTION ── -->
 <div id="mens-grid-container" class="grid-container active">
+  <div class="hero-entry-section">
+    <div class="hero-entry-card">
+      <img src="fl-grown-mens-hero.png" class="hero-entry-img" alt="Florida Grown Men's Hero">
+    </div>
+  </div>
   <div class="section-header">
     <div class="section-header-inner">
       <div class="section-subtitle">Florida Grown Drop — Men's</div>
-      <h2 class="section-title">Men's Florida Grown Grid</h2>
+      <h2 class="section-title">Men's Florida Grown Lineup</h2>
     </div>
   </div>
   
   <div class="product-grid-section">
     <div class="product-grid">
-      <!-- Black Tee -->
       <div class="product-card" onclick="openProduct('tee-fl-grown-black')">
         <div class="product-card-img-wrap">
-          <img src="images/tee-fl-grown-black-front.png" class="product-card-img" alt="Florida Grown Tee - Black">
+          <img src="fl-grown-tee-black.png" class="product-card-img" alt="Florida Grown Graphic Tee - Black">
           <div class="product-card-badge">New Drop</div>
         </div>
         <div class="product-card-body">
           <div class="product-card-tag">Tees</div>
-          <h4 class="product-card-name">Florida Grown Tee - Black</h4>
-          <p class="product-card-desc">Tropical reef backprint, Florida silhouette shark layout. Combed cotton tee in Black.</p>
+          <h4 class="product-card-name">Florida Grown Graphic Tee</h4>
+          <p class="product-card-desc">Black short sleeve with chest logo, full Florida Grown shark back graphic, 3-angle board, and collection color spec.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$30.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -497,33 +516,15 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
         </div>
       </div>
 
-      <!-- Navy Tee -->
-      <div class="product-card" onclick="openProduct('tee-fl-grown-navy')">
-        <div class="product-card-img-wrap">
-          <img src="images/tee-fl-grown-navy-front.png" class="product-card-img" alt="Florida Grown Tee - Navy">
-          <div class="product-card-badge">New Drop</div>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-tag">Tees</div>
-          <h4 class="product-card-name">Florida Grown Tee - Navy</h4>
-          <p class="product-card-desc">Tropical reef backprint, Florida silhouette shark layout. Combed cotton tee in Navy Blue.</p>
-          <div class="product-card-footer">
-            <span class="product-card-price">$30.00</span>
-            <button class="product-card-btn">Quick View</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Grey Tee -->
       <div class="product-card" onclick="openProduct('tee-fl-grown-grey')">
         <div class="product-card-img-wrap">
-          <img src="images/tee-fl-grown-grey-front.png" class="product-card-img" alt="Florida Grown Tee - Grey">
-          <div class="product-card-badge">New Drop</div>
+          <img src="fl-grown-tee-charcoal.png" class="product-card-img" alt="Florida Grown Chest Logo Tee - Charcoal">
+          <div class="product-card-badge">Core Logo</div>
         </div>
         <div class="product-card-body">
           <div class="product-card-tag">Tees</div>
-          <h4 class="product-card-name">Florida Grown Tee - Dark Grey</h4>
-          <p class="product-card-desc">Tropical reef backprint, Florida silhouette shark layout. Combed cotton tee in Charcoal Grey.</p>
+          <h4 class="product-card-name">Florida Grown Chest Logo Tee</h4>
+          <p class="product-card-desc">Charcoal short sleeve with minimalist chest hit, 3-angle board, and full FL Grown swatch set.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$30.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -531,15 +532,15 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
         </div>
       </div>
 
-      <!-- Long Sleeve -->
       <div class="product-card" onclick="openProduct('fl-grown-longsleeve')">
         <div class="product-card-img-wrap">
-          <img src="images/sng-flgrown-mens-collection.jpg" class="product-card-img" alt="Florida Grown Long Sleeve">
+          <img src="fl-grown-ls-static.png" class="product-card-img" alt="Florida Grown Start Static Long Sleeve">
+          <div class="product-card-badge">Long Sleeve</div>
         </div>
         <div class="product-card-body">
-          <div class="product-card-tag">Apparel</div>
-          <h4 class="product-card-name">Florida Grown Long Sleeve</h4>
-          <p class="product-card-desc">Premium heavyweight long sleeve tee with forearm SNG branding and Florida back graphic.</p>
+          <div class="product-card-tag">Long Sleeves</div>
+          <h4 class="product-card-name">Built Different Start Static</h4>
+          <p class="product-card-desc">Black long sleeve with sleeve wordmarks, chest logo, and back shark wheel graphic board.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$45.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -547,15 +548,31 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
         </div>
       </div>
 
-      <!-- Reef Hat -->
+      <div class="product-card" onclick="openProduct('fl-grown-longsleeve')">
+        <div class="product-card-img-wrap">
+          <img src="fl-grown-ls-circle.png" class="product-card-img" alt="Florida Grown Shark Not Goldfish Long Sleeve">
+          <div class="product-card-badge">Long Sleeve</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Long Sleeves</div>
+          <h4 class="product-card-name">Shark Not Goldfish Long Sleeve</h4>
+          <p class="product-card-desc">Black long sleeve with circular back seal, sleeve graphics, chest logo, and full 3-angle presentation board.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$45.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
+
       <div class="product-card" onclick="openProduct('reef-hat')">
         <div class="product-card-img-wrap">
-          <img src="images/sng-flgrown-art-spec.jpg" class="product-card-img" alt="Florida Reef Hat">
+          <img src="fl-grown-mens-hero.png" class="product-card-img" alt="Florida Grown Mens Hat Pending Board">
+          <div class="product-card-badge">Hat Pending</div>
         </div>
         <div class="product-card-body">
           <div class="product-card-tag">Hats</div>
-          <h4 class="product-card-name">Florida Reef Snapback</h4>
-          <p class="product-card-desc">Embroidered tropical reef layout flat bill snapback. Premium structured twill.</p>
+          <h4 class="product-card-name">Florida Grown Hat</h4>
+          <p class="product-card-desc">Mens FL Grown hat is in the lineup, but the final dedicated product board file has not been loaded into this page yet.</p>
           <div class="product-card-footer">
             <span class="product-card-price">$35.00</span>
             <button class="product-card-btn">Quick View</button>
@@ -771,9 +788,9 @@ var SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL'];
 /* ── PRODUCT MODAL DATA ── */
 var PRODUCTS = {
   'tee-fl-grown-black': {
-    badge: 'Florida Grown', name: 'Florida Grown Tee - Black', sub: 'Shark Not Goldfish Tee',
-    price: '$30.00', image: 'images/tee-fl-grown-black-front.png',
-    desc: 'Florida Grown Collection Tee. Features the custom back graphic silhouette of Florida with palm trees and shark fin logo. Combed cotton in black.',
+    badge: 'Florida Grown', name: 'Florida Grown Graphic Tee', sub: 'Black Short Sleeve',
+    price: '$30.00', image: 'fl-grown-tee-black.png',
+    desc: 'Black short sleeve with front chest logo and full Florida Grown shark back graphic. Product board includes 3 angles, art assets, and collection swatches.',
     selectors: ['size'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee - Black',
     shopifyUrl: {
       'S': '45592417861811:1', 'M': '45592417894579:1', 'L': '45592417927347:1',
@@ -793,9 +810,9 @@ var PRODUCTS = {
     }
   },
   'tee-fl-grown-grey': {
-    badge: 'Florida Grown', name: 'Florida Grown Tee - Dark Grey', sub: 'Shark Not Goldfish Tee',
-    price: '$30.00', image: 'images/tee-fl-grown-grey-front.png',
-    desc: 'Florida Grown Collection Tee. Features the custom back graphic silhouette of Florida with palm trees and shark fin logo. Combed cotton in Charcoal Grey.',
+    badge: 'Florida Grown', name: 'Florida Grown Chest Logo Tee', sub: 'Charcoal Short Sleeve',
+    price: '$30.00', image: 'fl-grown-tee-charcoal.png',
+    desc: 'Charcoal short sleeve with minimalist front chest branding. Product board includes 3 angles and the FL Grown palette.',
     selectors: ['size'], orderLabel: 'Buy Florida Grown Tee — $30.00', orderItem: 'Florida Grown Tee - Grey',
     shopifyUrl: {
       'S': '45592418255027:1', 'M': '45592418287795:1', 'L': '45592418320563:1',
@@ -804,9 +821,9 @@ var PRODUCTS = {
     }
   },
   'fl-grown-longsleeve': {
-    badge: 'Florida Grown', name: 'Florida Grown Long Sleeve', sub: 'Coastal Long Sleeve Apparel',
-    price: '$45.00', image: 'images/sng-flgrown-mens-collection.jpg',
-    desc: 'Florida Grown heavy-duty long sleeve t-shirt. SNG branding details printed down the sleeves, palm fin back graphic.',
+    badge: 'Florida Grown', name: 'Built Different Start Static', sub: 'Black Long Sleeve',
+    price: '$45.00', image: 'fl-grown-ls-static.png',
+    desc: 'Black long sleeve with sleeve wordmarks, chest logo, and back shark wheel graphic. Displayed as a 3-angle FL Grown board.',
     selectors: ['size'], orderLabel: 'Buy Long Sleeve — $45.00', orderItem: 'Florida Grown Long Sleeve',
     shopifyUrl: {
       'S': '45592416551091:1', 'M': '45592416583859:1', 'L': '45592416616627:1',
