@@ -586,6 +586,22 @@ footer { background: var(--black); border-top: 3px solid var(--border); padding:
           </div>
         </div>
       </div>
+
+      <div class="product-card" onclick="openProduct('reef-hat')">
+        <div class="product-card-img-wrap">
+          <img src="fl-grown-hat-front-crop.png" class="product-card-img" alt="Florida Grown Hat">
+          <div class="product-card-badge">Hat</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-tag">Hats</div>
+          <h4 class="product-card-name">Florida Grown Snapback</h4>
+          <p class="product-card-desc">Structured black snapback with circular front patch, rear fin art, and custom underbrim graphic.</p>
+          <div class="product-card-footer">
+            <span class="product-card-price">$35.00</span>
+            <button class="product-card-btn">Quick View</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -875,10 +891,16 @@ var PRODUCTS = {
     }
   },
   'reef-hat': {
-    badge: 'Florida Grown', name: 'Florida Reef Snapback', sub: 'Embroidered Custom Twill Snapback',
-    price: '$35.00', image: 'images/sng-flgrown-art-spec.jpg',
-    desc: 'Unisex structured snapback with raised embroidery of our Florida Palm Reef logo. Features flat bill visor and 6-panel styling.',
-    selectors: [], orderLabel: 'Buy Snapback — $35.00', orderItem: 'Florida Reef Snapback',
+    badge: 'Florida Grown', name: 'Florida Grown Snapback', sub: 'Structured Black Snapback',
+    price: '$35.00', image: 'fl-grown-hat-front-crop.png',
+    desc: 'Structured black snapback with circular front patch, rear fin art, and custom Build Up underbrim artwork.',
+    imageMode: 'gallery',
+    gallery: [
+      { label: 'Front', image: 'fl-grown-hat-front-crop.png' },
+      { label: 'Side', image: 'fl-grown-hat-side-crop.png' },
+      { label: 'Under', image: 'fl-grown-hat-under-crop.png' }
+    ],
+    selectors: [], orderLabel: 'Buy Snapback — $35.00', orderItem: 'Florida Grown Snapback',
     shopifyUrl: '45592416288947:1'
   },
   'reef-leggings': {
