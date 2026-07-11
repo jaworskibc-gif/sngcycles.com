@@ -80,7 +80,7 @@ button{font:inherit}
       <div class="sub">5 hero products · Shopify-first sell path · 90 day execution layer</div>
     </div>
     <div class="actions">
-      <a class="btn ghost" href="SNG_APPAREL_SALES_OS.html">Open Apparel Sales OS</a>
+      <a class="btn ghost" href="apparel-os/">Open Apparel Sales OS</a>
       <a class="btn blue" href="SNG_HUB.html">Back To Hub</a>
     </div>
   </div>
@@ -89,7 +89,7 @@ button{font:inherit}
       <div>
         <div class="eyebrow">Why 5 Products</div>
         <h1>One focused hero drop beats a scattered catalog</h1>
-        <p>Yes, you need to choose 5 hero products. Not because the rest of the catalog does not matter, but because the next 90 days need concentrated traffic, concentrated content, and concentrated learning. This page is the Shopify-first sell layer for those 5 products: offer logic, landing-copy logic, and ad-creative angles.</p>
+        <p>The hero set is locked. The next 90 days need concentrated traffic, concentrated content, and concentrated learning around the exact five products that won the cut. This page is the Shopify-first sell layer for those five: offer logic, landing-copy logic, bundle sequencing, and ad-creative angles.</p>
       </div>
       <div class="metric-grid">
         <div class="metric"><strong>5</strong><span>Hero SKUs</span></div>
@@ -115,19 +115,19 @@ button{font:inherit}
         </div>
       </div>
       <div class="note">
-        Until you give me the real Shopify product URLs, the buttons on this system should be treated as routing placeholders. The best immediate structure is:
+        Until the final Shopify product URLs are dropped in, these buttons should be treated as clean-route storefront placeholders built around the approved hero set. The immediate structure is:
         <br><br>
         `/collections/hero-drop`
         <br>
-        `/products/builders-series-hat`
+        `/products/rider-team-colors-snapback`
         <br>
-        `/products/sng-rider-hat`
+        `/products/florida-grown-tee`
         <br>
-        `/products/sng-black-tee`
+        `/products/megalodon-tee`
         <br>
-        `/products/sng-black-hoodie`
+        `/products/conversion-tee-series`
         <br>
-        `/products/leave-the-school-behind-tee`
+        `/products/shut-up-get-out-and-ride-hoodie`
       </div>
     </section>
 
@@ -137,64 +137,64 @@ button{font:inherit}
 <script>
 const HERO_PRODUCTS = [
   {
-    name: "Builder's Series Hat",
-    price: '$35',
-    image: 'assets/tonight-mvp/01-builder-series-hat-sng-classic.png',
-    audience: 'Garage culture, e-moto riders, people who buy the joke instantly.',
-    positioning: 'Conversation starter and easiest first-run hat to push.',
-    cta: 'Pick your colorway',
-    shopUrl: 'gear.html#pro-hats',
-    hook: "I USE TA HAVE GAS. NOW I JUST HAUL ASS.",
-    staticAd: "Headline: Builder's Series Hat\nSubhead: The first SNG line that makes riders laugh before they ask questions.\nCTA: Pick your colorway.",
-    videoAd: "Open on hat in first second.\nSay: 'If you ride e-moto and you want merch that actually says something, this is the one.'\nShow 3 colorways.\nClose: 'Pick your colorway before the first run is gone.'"
+    name: 'Shark Not Goldfish Rider Team Colors Snapback',
+    price: 'Shopify price',
+    image: 'hat-team-colors-sheet.jpg',
+    audience: 'E-moto riders, colorway buyers, event traffic, riders matching bike identity to gear.',
+    positioning: 'Main volume hat for the 90-day push. Team-color logic broadens the audience without diluting the brand.',
+    cta: 'Pick your rider colorway',
+    shopUrl: 'products/rider-team-colors-snapback/',
+    hook: 'One rider brand. Multiple team colorways.',
+    staticAd: "Headline: Rider Team Colors Snapback\nSubhead: Pick the colorway that matches your machine and your lane.\nCTA: Pick your rider colorway.",
+    videoAd: "Open on the black and white house hat, then snap through orange, blue, red, green, and yellow.\nSay: 'This is the SNG rider team colors hat line. Same rider energy. Different tribe match.'\nClose: 'Pick your rider colorway before your favorite combination is gone.'"
   },
   {
-    name: 'SNG Rider Hat',
-    price: '$35',
-    image: 'sng-hat-collection.png',
-    audience: 'Style-first riders, broad moto traffic, event impulse buyers.',
-    positioning: 'Cleanest low-friction hat buy and easiest broad-conversion product.',
-    cta: 'Claim the flat brim',
-    shopUrl: 'gear.html#pro-hats',
-    hook: 'Seven colorways. One rider brand.',
-    staticAd: "Headline: SNG Rider Hat\nSubhead: Match your bike, your gear, or your brand.\nCTA: Claim the flat brim.",
-    videoAd: "Show all 7 colorways fast.\nSay: 'This is the SNG rider hat line. Seven clean options. Same rider energy.'\nClose with one favorite colorway and the CTA."
+    name: 'Florida Grown Tee',
+    price: 'Shopify price',
+    image: 'fl-grown-hero-unisex.png',
+    audience: 'Florida pride buyers, local riders, founder-story followers, gift traffic.',
+    positioning: 'Identity product that ties local pride to the SNG worldview without reading like generic state merch.',
+    cta: 'Wear the Florida signal',
+    shopUrl: 'products/florida-grown-tee/',
+    hook: 'Florida grown. Shark not goldfish.',
+    staticAd: "Headline: Florida Grown Tee\nSubhead: Royal Palm Beach energy with a back graphic that actually carries weight.\nCTA: Wear the Florida signal.",
+    videoAd: "Start on the back graphic.\nSay: 'This one is for the riders and builders coming out of Florida who are not trying to blend in.'\nShow front chest hit, then back print.\nClose: 'Wear the Florida signal.'"
   },
   {
-    name: 'SNG Black Tee',
-    price: '$30',
-    image: 'assets/tonight-mvp/02-black-tee-use-ta-have-gas.png',
-    audience: 'Friends of riders, bike pages, broad social traffic, low-ticket conversion.',
-    positioning: 'Best low-friction entry product and strongest slogan tee.',
-    cta: 'Grab the first-run tee',
-    shopUrl: 'gear.html#pro-hoodies',
-    hook: 'The line does the work.',
-    staticAd: "Headline: SNG Black Tee\nSubhead: Dumb enough to make riders laugh. Clean enough to wear anywhere.\nCTA: Grab the first-run tee.",
-    videoAd: "Start on the back print.\nSay: 'This is probably the fastest way to know if somebody is your people or not.'\nCut to front logo.\nClose: 'Grab the first-run tee.'"
+    name: 'Megalodon Tee',
+    price: 'Shopify price',
+    image: 'sng-megalodon-tee-sheet.png',
+    audience: 'Aggression buyers, statement-piece buyers, shark-brand responders, cold social traffic.',
+    positioning: 'Most intense statement tee in the set. This is the stop-scroll graphic piece.',
+    cta: 'Claim the Megalodon tee',
+    shopUrl: 'products/megalodon-tee/',
+    hook: 'Power, instinct, dominance.',
+    staticAd: "Headline: Megalodon Tee\nSubhead: The shark statement piece for riders who do not buy soft branding.\nCTA: Claim the Megalodon tee.",
+    videoAd: "Open on the shark art in the first second.\nSay: 'If the Florida tee is identity, this one is pure attack.'\nFlip through front and back treatment.\nClose: 'Claim the Megalodon tee before the first run gets thin.'"
   },
   {
-    name: 'SNG Black Hoodie',
-    price: '$50',
-    image: 'assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png',
-    audience: 'Warm traffic, repeat viewers, higher-AOV buyers.',
-    positioning: 'Heavyweight upsell once the slogan is proven.',
-    cta: 'Step into the heavyweight hoodie',
-    shopUrl: 'gear.html#pro-hoodies',
-    hook: 'Same line. Bigger statement.',
-    staticAd: "Headline: SNG Black Hoodie\nSubhead: The heavyweight version of the first funny drop.\nCTA: Step into the heavyweight hoodie.",
-    videoAd: "Open on front hit.\nFlip to back fast.\nSay: 'If the tee is the easy entry, this is the real uniform.'\nClose with close-up detail and CTA."
+    name: 'SNG Conversion Tee Series',
+    price: 'Shopify price',
+    image: 'sng-conversion-series-shirt.png',
+    audience: 'EV converts, Sur-Ron buyers, humor buyers, comment-section magnets.',
+    positioning: 'Best slogan-led conversion product in the lineup and one of the easiest products to test across audiences.',
+    cta: 'Pick the conversion colorway',
+    shopUrl: 'products/conversion-tee-series/',
+    hook: 'I use ta have gas. Now I just haul ass.',
+    staticAd: "Headline: Conversion Tee Series\nSubhead: The line does the sorting for you before the rider even clicks.\nCTA: Pick the conversion colorway.",
+    videoAd: "Open on the back line immediately.\nSay: 'People either laugh instantly or they are not the buyer.'\nShow multiple colorways, then the front chest hit.\nClose: 'Pick the conversion colorway.'"
   },
   {
-    name: 'Leave The School Behind Tee',
-    price: '$35',
-    image: 'sng-tee-ltsb-sheet.png',
-    audience: 'Identity buyers, founder-story responders, premium tribe traffic.',
-    positioning: 'Statement product for people buying the worldview, not just the slogan.',
-    cta: 'Wear the statement piece',
-    shopUrl: 'gear.html#pro-mens',
-    hook: 'Not for everybody. Exactly the point.',
-    staticAd: "Headline: Leave The School Behind Tee\nSubhead: Built for riders who already left the crowd in the rearview.\nCTA: Wear the statement piece.",
-    videoAd: "Open on full back graphic.\nSay: 'This one is not the joke. This one is the brand line.'\nTie it back to founder build footage.\nClose with CTA."
+    name: 'Shut Up Get Out And Ride Hoodie',
+    price: 'Shopify price',
+    image: 'mens-race-day-hat-and-hoodie-black.png',
+    audience: 'Warm traffic, higher-AOV buyers, repeat viewers, cold-weather riders.',
+    positioning: 'High-ticket attitude piece and strongest bundle anchor when paired with the checker hat upsell.',
+    cta: 'Step into the rider uniform',
+    shopUrl: 'products/shut-up-get-out-and-ride-hoodie/',
+    hook: 'Shut up. Get out. And ride.',
+    staticAd: "Headline: Shut Up Get Out And Ride Hoodie\nSubhead: The premium attitude piece in the drop, built to lift AOV and hold the checker-hat bundle.\nCTA: Step into the rider uniform.",
+    videoAd: "Open on the checker-lining and front chest hit.\nFlip to the back statement fast.\nSay: 'This is not the entry tee. This is the uniform.'\nClose with the hoodie plus checker-hat bundle callout."
   }
 ];
 
@@ -214,7 +214,7 @@ function renderProducts() {
         <div class="copy"><strong style="color:#fff">Positioning:</strong> ${product.positioning}</div>
         <div class="product-actions">
           <a class="shop-btn" href="${product.shopUrl}">Open Product Area</a>
-          <a class="alt-btn" href="SNG_APPAREL_SALES_OS.html">Open Sales OS</a>
+          <a class="alt-btn" href="apparel-os/">Open Sales OS</a>
         </div>
       </div>
     </article>`;

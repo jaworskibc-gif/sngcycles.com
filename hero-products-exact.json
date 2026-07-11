@@ -1,0 +1,75 @@
+{
+  "updated_at": "2026-07-11",
+  "hero_products": [
+    {
+      "slug": "rider-team-colors-snapback",
+      "name": "Shark Not Goldfish Rider Team Colors Snapback",
+      "status": "not_exact_ready",
+      "locked_requirements": [
+        "smaller SNG front mark",
+        "GET OUT AND RIDE! under front logo",
+        "rider team colorways",
+        "side rider embroidery",
+        "back SNG hit"
+      ],
+      "closest_local_assets": [
+        "hat-team-colors-sheet.jpg",
+        "hat-snap-*.png",
+        "assets/payhip/merch-ready/hat-*.svg"
+      ]
+    },
+    {
+      "slug": "florida-grown-tee",
+      "name": "Florida Grown Tee",
+      "status": "not_exact_ready",
+      "locked_requirements": [
+        "black tee",
+        "small SNG FL Grown chest hit",
+        "full Florida Grown shark back graphic"
+      ],
+      "closest_local_assets": []
+    },
+    {
+      "slug": "megalodon-tee",
+      "name": "Megalodon Tee",
+      "status": "not_exact_ready",
+      "locked_requirements": [
+        "exact chosen front layout",
+        "exact chosen back layout"
+      ],
+      "closest_local_assets": [
+        "sng-megalodon-tee-sheet.png",
+        "sng-tee-megalodon-sheet.png"
+      ]
+    },
+    {
+      "slug": "conversion-tee-series",
+      "name": "SNG Conversion Tee Series",
+      "status": "close_needs_exact_verification",
+      "locked_requirements": [
+        "team colorways",
+        "front chest logo",
+        "I USE TA HAVE GAS. NOW I JUST HAUL ASS."
+      ],
+      "closest_local_assets": [
+        "sng-conversion-series-shirt.png",
+        "assets/printful-ready/tee-front-logo-chest.png",
+        "assets/printful-ready/tee-back-gas-print.png"
+      ]
+    },
+    {
+      "slug": "shut-up-get-out-and-ride-hoodie",
+      "name": "Shut Up Get Out And Ride Hoodie",
+      "status": "not_exact_ready",
+      "locked_requirements": [
+        "black hoodie",
+        "SHUT UP GET OUT AND RIDE back graphic",
+        "sleeve hit",
+        "checker details"
+      ],
+      "closest_local_assets": [
+        "mens-race-day-hat-and-hoodie-black.png"
+      ]
+    }
+  ]
+}
