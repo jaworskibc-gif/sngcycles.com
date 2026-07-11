@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>if(!sessionStorage.getItem('sng_auth')){sessionStorage.setItem('sng_return',location.href);location.href='sng-login.html';}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNG Hero Drop 90 Day System</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#090b10;
+  --bg2:#11141b;
+  --card:#171b24;
+  --card2:#1d222d;
+  --line:#2c3240;
+  --text:#edf1f8;
+  --muted:#8c95a8;
+  --orange:#f47820;
+  --blue:#3ea0ff;
+  --green:#32c277;
+  --gold:#d3a44a;
+  --head:'Barlow Condensed',sans-serif;
+  --body:'Barlow',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--body)}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.topbar{background:var(--bg2);border-bottom:2px solid var(--orange);padding:20px 26px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.brand{font-family:var(--head);font-size:38px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.brand span{color:var(--orange)}
+.sub{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--head);font-size:13px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.btn.blue{background:var(--blue)}
+.wrap{max-width:1340px;margin:0 auto;padding:24px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;padding:24px;border:1px solid rgba(244,120,32,.2);border-radius:18px;background:linear-gradient(135deg, rgba(244,120,32,.12), rgba(62,160,255,.08) 60%, rgba(211,164,74,.06))}
+.hero h1{font-family:var(--head);font-size:clamp(34px,5vw,60px);line-height:.94;text-transform:uppercase;margin-bottom:10px}
+.hero p{font-size:15px;color:#d7dde9;line-height:1.75}
+.metric-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.metric{background:rgba(9,11,16,.45);border:1px solid var(--line);border-radius:14px;padding:18px}
+.metric strong{display:block;font-family:var(--head);font-size:34px;color:var(--orange);line-height:1}
+.metric span{display:block;margin-top:6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.section-label{margin:28px 0 14px;font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--orange)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.grid{display:grid;gap:16px}
+.hero-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.product-card{display:grid;gap:12px;background:var(--card2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.product-img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#0f131b}
+.product-body{padding:16px;display:grid;gap:10px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange)}
+.product-name{font-family:var(--head);font-size:27px;line-height:1;text-transform:uppercase}
+.price{font-family:var(--head);font-size:26px;color:var(--gold)}
+.copy{font-size:14px;color:var(--muted);line-height:1.7}
+.pill-row{display:flex;gap:6px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:#111620;border:1px solid var(--line);font-size:11px;font-weight:700;letter-spacing:.5px}
+.pill.orange{color:var(--orange);border-color:rgba(244,120,32,.28)}
+.pill.blue{color:var(--blue);border-color:rgba(62,160,255,.25)}
+.pill.green{color:var(--green);border-color:rgba(50,194,119,.25)}
+.product-actions{display:flex;gap:8px;flex-wrap:wrap}
+.shop-btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--head);font-size:13px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
+.alt-btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border-radius:8px;border:1px solid var(--line);color:var(--muted);font-family:var(--head);font-size:13px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.creative-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.creative-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.creative-card h3{font-family:var(--head);font-size:22px;text-transform:uppercase;margin-bottom:10px}
+.creative-card pre{white-space:pre-wrap;font-family:var(--body);font-size:14px;line-height:1.7;color:#d7ddea}
+.note{background:rgba(62,160,255,.08);border:1px solid rgba(62,160,255,.18);border-radius:14px;padding:16px;color:#d5e7ff;line-height:1.7}
+.checklist{display:grid;gap:10px}
+.checklist div{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:#d2d9e7;line-height:1.6}
+.checklist strong{display:block;font-family:var(--head);letter-spacing:1px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+@media(max-width:1100px){.hero,.two,.creative-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div>
+      <div class="brand">SNG <span>Hero Drop</span></div>
+      <div class="sub">5 hero products · Shopify-first sell path · 90 day execution layer</div>
+    </div>
+    <div class="actions">
+      <a class="btn ghost" href="SNG_APPAREL_SALES_OS.html">Open Apparel Sales OS</a>
+      <a class="btn blue" href="SNG_HUB.html">Back To Hub</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Why 5 Products</div>
+        <h1>One focused hero drop beats a scattered catalog</h1>
+        <p>Yes, you need to choose 5 hero products. Not because the rest of the catalog does not matter, but because the next 90 days need concentrated traffic, concentrated content, and concentrated learning. This page is the Shopify-first sell layer for those 5 products: offer logic, landing-copy logic, and ad-creative angles.</p>
+      </div>
+      <div class="metric-grid">
+        <div class="metric"><strong>5</strong><span>Hero SKUs</span></div>
+        <div class="metric"><strong>350</strong><span>Units Goal</span></div>
+        <div class="metric"><strong>27</strong><span>Units / Week</span></div>
+        <div class="metric"><strong>4</strong><span>Units / Day</span></div>
+      </div>
+    </section>
+
+    <div class="section-label">Recommended Hero 5</div>
+    <section class="grid hero-grid" id="heroProducts"></section>
+
+    <div class="section-label">Landing Logic</div>
+    <section class="two">
+      <div class="card">
+        <div class="eyebrow">Collection Rule</div>
+        <h2 style="font-family:var(--head);font-size:30px;text-transform:uppercase;margin-bottom:10px">What the Shopify store should do</h2>
+        <div class="checklist">
+          <div><strong>Product page</strong>Each hero SKU needs a clean Shopify product page with product title, short founder line, strong first image, and one clear CTA.</div>
+          <div><strong>Collection page</strong>Create one focused collection for the Hero Drop 90 Day push instead of forcing traffic into the entire apparel catalog.</div>
+          <div><strong>Cart logic</strong>Hat buyers should see tee upsell. Tee buyers should see hoodie upsell. Do not rely on random browse behavior.</div>
+          <div><strong>Offer clarity</strong>The buyer needs to know instantly whether this is a funny slogan piece, identity piece, or founder-story piece.</div>
+        </div>
+      </div>
+      <div class="note">
+        Until you give me the real Shopify product URLs, the buttons on this system should be treated as routing placeholders. The best immediate structure is:
+        <br><br>
+        `/collections/hero-drop`
+        <br>
+        `/products/builders-series-hat`
+        <br>
+        `/products/sng-rider-hat`
+        <br>
+        `/products/sng-black-tee`
+        <br>
+        `/products/sng-black-hoodie`
+        <br>
+        `/products/leave-the-school-behind-tee`
+      </div>
+    </section>
+
+    <div class="section-label">Ad Creative Packs</div>
+    <section class="creative-grid" id="creativePacks"></section>
+  </div>
+<script>
+const HERO_PRODUCTS = [
+  {
+    name: "Builder's Series Hat",
+    price: '$35',
+    image: 'assets/tonight-mvp/01-builder-series-hat-sng-classic.png',
+    audience: 'Garage culture, e-moto riders, people who buy the joke instantly.',
+    positioning: 'Conversation starter and easiest first-run hat to push.',
+    cta: 'Pick your colorway',
+    shopUrl: 'gear.html#pro-hats',
+    hook: "I USE TA HAVE GAS. NOW I JUST HAUL ASS.",
+    staticAd: "Headline: Builder's Series Hat\nSubhead: The first SNG line that makes riders laugh before they ask questions.\nCTA: Pick your colorway.",
+    videoAd: "Open on hat in first second.\nSay: 'If you ride e-moto and you want merch that actually says something, this is the one.'\nShow 3 colorways.\nClose: 'Pick your colorway before the first run is gone.'"
+  },
+  {
+    name: 'SNG Rider Hat',
+    price: '$35',
+    image: 'sng-hat-collection.png',
+    audience: 'Style-first riders, broad moto traffic, event impulse buyers.',
+    positioning: 'Cleanest low-friction hat buy and easiest broad-conversion product.',
+    cta: 'Claim the flat brim',
+    shopUrl: 'gear.html#pro-hats',
+    hook: 'Seven colorways. One rider brand.',
+    staticAd: "Headline: SNG Rider Hat\nSubhead: Match your bike, your gear, or your brand.\nCTA: Claim the flat brim.",
+    videoAd: "Show all 7 colorways fast.\nSay: 'This is the SNG rider hat line. Seven clean options. Same rider energy.'\nClose with one favorite colorway and the CTA."
+  },
+  {
+    name: 'SNG Black Tee',
+    price: '$30',
+    image: 'assets/tonight-mvp/02-black-tee-use-ta-have-gas.png',
+    audience: 'Friends of riders, bike pages, broad social traffic, low-ticket conversion.',
+    positioning: 'Best low-friction entry product and strongest slogan tee.',
+    cta: 'Grab the first-run tee',
+    shopUrl: 'gear.html#pro-hoodies',
+    hook: 'The line does the work.',
+    staticAd: "Headline: SNG Black Tee\nSubhead: Dumb enough to make riders laugh. Clean enough to wear anywhere.\nCTA: Grab the first-run tee.",
+    videoAd: "Start on the back print.\nSay: 'This is probably the fastest way to know if somebody is your people or not.'\nCut to front logo.\nClose: 'Grab the first-run tee.'"
+  },
+  {
+    name: 'SNG Black Hoodie',
+    price: '$50',
+    image: 'assets/tonight-mvp/03-black-hoodie-use-ta-have-gas.png',
+    audience: 'Warm traffic, repeat viewers, higher-AOV buyers.',
+    positioning: 'Heavyweight upsell once the slogan is proven.',
+    cta: 'Step into the heavyweight hoodie',
+    shopUrl: 'gear.html#pro-hoodies',
+    hook: 'Same line. Bigger statement.',
+    staticAd: "Headline: SNG Black Hoodie\nSubhead: The heavyweight version of the first funny drop.\nCTA: Step into the heavyweight hoodie.",
+    videoAd: "Open on front hit.\nFlip to back fast.\nSay: 'If the tee is the easy entry, this is the real uniform.'\nClose with close-up detail and CTA."
+  },
+  {
+    name: 'Leave The School Behind Tee',
+    price: '$35',
+    image: 'sng-tee-ltsb-sheet.png',
+    audience: 'Identity buyers, founder-story responders, premium tribe traffic.',
+    positioning: 'Statement product for people buying the worldview, not just the slogan.',
+    cta: 'Wear the statement piece',
+    shopUrl: 'gear.html#pro-mens',
+    hook: 'Not for everybody. Exactly the point.',
+    staticAd: "Headline: Leave The School Behind Tee\nSubhead: Built for riders who already left the crowd in the rearview.\nCTA: Wear the statement piece.",
+    videoAd: "Open on full back graphic.\nSay: 'This one is not the joke. This one is the brand line.'\nTie it back to founder build footage.\nClose with CTA."
+  }
+];
+
+function renderProducts() {
+  document.getElementById('heroProducts').innerHTML = HERO_PRODUCTS.map(function(product) {
+    return `<article class="product-card">
+      <img class="product-img" src="${product.image}" alt="${product.name}">
+      <div class="product-body">
+        <div class="eyebrow">Hero product</div>
+        <div class="product-name">${product.name}</div>
+        <div class="price">${product.price}</div>
+        <div class="pill-row">
+          <span class="pill orange">Shopify first</span>
+          <span class="pill blue">${product.cta}</span>
+        </div>
+        <div class="copy"><strong style="color:#fff">Audience:</strong> ${product.audience}</div>
+        <div class="copy"><strong style="color:#fff">Positioning:</strong> ${product.positioning}</div>
+        <div class="product-actions">
+          <a class="shop-btn" href="${product.shopUrl}">Open Product Area</a>
+          <a class="alt-btn" href="SNG_APPAREL_SALES_OS.html">Open Sales OS</a>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+function renderCreatives() {
+  document.getElementById('creativePacks').innerHTML = HERO_PRODUCTS.map(function(product) {
+    return `<article class="creative-card">
+      <div class="eyebrow">${product.name}</div>
+      <h3>${product.hook}</h3>
+      <pre>STATIC AD\n${product.staticAd}\n\nUGC / REEL\n${product.videoAd}</pre>
+    </article>`;
+  }).join('');
+}
+
+renderProducts();
+renderCreatives();
+</script>
+</body>
+</html>

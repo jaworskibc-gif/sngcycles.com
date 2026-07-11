@@ -199,6 +199,13 @@ a.tool-card:hover{border-color:var(--orange);}
 .genviral-title{font-family:var(--head);font-size:16px;font-weight:900;text-transform:uppercase;color:var(--blue);letter-spacing:2px;}
 .genviral-sub{font-size:12px;color:var(--muted);margin-top:4px;}
 .genviral-status{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:4px;background:rgba(51,153,255,0.1);border:1px solid rgba(51,153,255,0.3);color:var(--blue);}
+.genviral-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+.genviral-link{
+  font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:8px 16px;border:1px solid rgba(51,153,255,0.4);border-radius:6px;color:var(--blue);
+  text-decoration:none;transition:background .15s,border-color .15s;
+}
+.genviral-link:hover{background:rgba(51,153,255,0.12);border-color:rgba(51,153,255,0.7);}
 
 /* ── FOOTER ── */
 footer{
@@ -233,7 +240,7 @@ footer{
     </div>
     <div class="mission-right">
       <div class="stat-pill"><div class="stat-num">1</div><div class="stat-label">Must Post</div></div>
-      <div class="stat-pill"><div class="stat-num">6</div><div class="stat-label">Agents</div></div>
+      <div class="stat-pill"><div class="stat-num">9</div><div class="stat-label">Agents</div></div>
       <div class="stat-pill"><div class="stat-num">30</div><div class="stat-label">Day Strategy</div></div>
     </div>
   </div>
@@ -473,6 +480,34 @@ Reserve your numbered 270E. Link in bio.
       <span class="agent-badge badge-live">Live</span>
     </a>
 
+    <a class="agent-card" href="SNG_DUCATI_BUYER_AGENT.html">
+      <div class="agent-icon">🔴</div>
+      <div class="agent-name">Ducati Buyer Agent</div>
+      <div class="agent-desc">Find the premium Ducati-adjacent buyer, what channels they live in, and how SNG should enter without looking cheap.</div>
+      <span class="agent-badge badge-live">Live</span>
+    </a>
+
+    <a class="agent-card" href="SNG_SURRON_BUYER_AGENT.html">
+      <div class="agent-icon">⚡</div>
+      <div class="agent-name">Sur-Ron Buyer Agent</div>
+      <div class="agent-desc">Map the upgrade-hungry e-moto crowd and isolate the riders who have already outgrown stock Sur-Ron thinking.</div>
+      <span class="agent-badge badge-live">Live</span>
+    </a>
+
+    <a class="agent-card" href="SNG_FOX_BUYER_AGENT.html">
+      <div class="agent-icon">🦊</div>
+      <div class="agent-name">Fox Buyer Agent</div>
+      <div class="agent-desc">Study premium gear buyers, collection merchandising, and how to sell a line instead of random merch pieces.</div>
+      <span class="agent-badge badge-live">Live</span>
+    </a>
+
+    <a class="agent-card" href="SNG_WEBSITE_PATTERN_AGENT.html">
+      <div class="agent-icon">🧭</div>
+      <div class="agent-name">Website Pattern Agent</div>
+      <div class="agent-desc">Pull what works from Ducati, Sur-Ron, Fox, and Alpinestars websites, then translate it into concrete SNG website moves.</div>
+      <span class="agent-badge badge-live">Live</span>
+    </a>
+
   </div>
 
   <!-- GENVIRAL -->
@@ -481,7 +516,8 @@ Reserve your numbered 270E. Link in bio.
       <div class="genviral-title">⚡ Posting Connector</div>
       <div class="genviral-sub">Native upload links are live now. Full TikTok/Instagram scheduling needs connected accounts through GenViral or official APIs.</div>
     </div>
-    <div>
+    <div class="genviral-actions">
+      <a class="genviral-link" href="https://www.capcut.com/create" target="_blank" rel="noopener">Open CapCut</a>
       <div class="genviral-status">Connect Accounts</div>
     </div>
   </div>
@@ -494,6 +530,11 @@ Reserve your numbered 270E. Link in bio.
       <div class="strategy-sub">Market position · 30-day playbook · Hook library · Priority actions · AI tool stack</div>
     </div>
     <div class="strategy-links">
+      <a class="strategy-link" href="SNG_SOCIAL_POSTING_1PAGER.html">Social 1-Pager</a>
+      <a class="strategy-link" href="SNG_REELS_1PAGER.html">Reels 1-Pager</a>
+      <a class="strategy-link" href="SNG_STORIES_1PAGER.html">Stories 1-Pager</a>
+      <a class="strategy-link" href="SNG_HASHTAGS_1PAGER.html">Hashtags 1-Pager</a>
+      <a class="strategy-link" href="SNG_THIS_WEEK_1PAGER.html">This Week 1-Pager</a>
       <a class="strategy-link" href="SNG_VIRAL_STACK.html">Viral Stack</a>
       <a class="strategy-link" href="SNG_STRATEGY_2PAGE.html">2-Page Brief</a>
       <a class="strategy-link" href="SNG_PLAYBOOK.html">Full Playbook</a>
@@ -523,12 +564,32 @@ Reserve your numbered 270E. Link in bio.
   </div>
 
   <!-- MARKET INTEL BRIEF -->
-  <div class="sh">Market Intelligence — June 20, 2026</div>
+  <div class="sh">Today&apos;s Research — June 20, 2026</div>
   <div class="tool-grid" style="margin-bottom:40px;">
     <a class="tool-card" href="sng-intel-brief-june20.html" style="border-color:rgba(201,168,76,.5);background:rgba(212,175,55,0.06);">
       <div class="tool-icon">📊</div>
       <div class="tool-name" style="color:#c9a84c;">Intel Brief — Jun 20</div>
-      <div class="tool-desc">Market landscape, motors + controllers full survey, suspension tiered report. Printable PDF. 4 sections, 9 action items.</div>
+      <div class="tool-desc">Market landscape, motors and controllers scan, suspension tiers, handlebar recommendations, and SNG action items. Print-ready.</div>
+    </a>
+    <a class="tool-card" href="SNG_NEWS_AGENT.html" style="border-color:rgba(201,168,76,.28);">
+      <div class="tool-icon">📰</div>
+      <div class="tool-name" style="color:#c9a84c;">Daily News Agent</div>
+      <div class="tool-desc">Pull a fresh emoto, supermoto, and competitor brief for the day, then save it in the browser for later review.</div>
+    </a>
+    <a class="tool-card" href="SNG_INSTAGRAM_BRIEF_JUNE20_2026.md" style="border-color:rgba(201,168,76,.28);">
+      <div class="tool-icon">📸</div>
+      <div class="tool-name" style="color:#c9a84c;">Instagram Brief - Jun 20</div>
+      <div class="tool-desc">Premium visual patterns, what is working for Ducati and BMW-style audiences, and the best next IG post for SNG.</div>
+    </a>
+    <a class="tool-card" href="SNG_TIKTOK_BRIEF_JUNE20_2026.md" style="border-color:rgba(201,168,76,.28);">
+      <div class="tool-icon">🎵</div>
+      <div class="tool-name" style="color:#c9a84c;">TikTok Brief - Jun 20</div>
+      <div class="tool-desc">Conflict hooks, founder-proof angles, and the best next TikTok concept for SNG.</div>
+    </a>
+    <a class="tool-card" href="SNG_GEAR_PROMO_BRIEF_JUNE20_2026.md" style="border-color:rgba(201,168,76,.28);">
+      <div class="tool-icon">🧢</div>
+      <div class="tool-name" style="color:#c9a84c;">Gear Promotion Brief - Jun 20</div>
+      <div class="tool-desc">How to get the word out on the apparel line, what converts best, and the strongest immediate promotion plan.</div>
     </a>
   </div>
 
@@ -580,6 +641,11 @@ Reserve your numbered 270E. Link in bio.
       <div class="tool-name">Clip Studio</div>
       <div class="tool-desc">Arrange clips, rough trim, package caption, and jump to TikTok/Instagram upload.</div>
     </a>
+    <a class="tool-card" href="SNG_TIKTOK_POSTLAB.html" style="border-color:rgba(244,120,32,.45);background:rgba(244,120,32,.06);">
+      <div class="tool-icon">📲</div>
+      <div class="tool-name">TikTok PostLab</div>
+      <div class="tool-desc">Upload clips, get the next post angle, text suggestions, music notes, and a fresh 14-day calendar in one place.</div>
+    </a>
     <a class="tool-card" href="SNG_DM_SCRIPTS.html">
       <div class="tool-icon">💬</div>
       <div class="tool-name">DM Scripts</div>
@@ -599,6 +665,16 @@ Reserve your numbered 270E. Link in bio.
       <div class="tool-icon">🚀</div>
       <div class="tool-name">Growth OS</div>
       <div class="tool-desc">Post Tracker, Influencer Watch, Creator CRM, Keyword Bank.</div>
+    </a>
+    <a class="tool-card" href="SNG_APPAREL_SALES_OS.html" style="border-color:rgba(244,120,32,.45);background:rgba(244,120,32,.06);">
+      <div class="tool-icon">🛍️</div>
+      <div class="tool-name">Apparel Sales OS</div>
+      <div class="tool-desc">Zeely-style apparel operator system for product angles, ad scripts, and the 350-piece / 90-day target.</div>
+    </a>
+    <a class="tool-card" href="SNG_HERO_DROP_90DAY.html" style="border-color:rgba(62,160,255,.42);background:rgba(62,160,255,.06);">
+      <div class="tool-icon">🎯</div>
+      <div class="tool-name">Hero Drop 90 Day</div>
+      <div class="tool-desc">Shopify-first hero product landing logic and ad creative packs for the 5-product push.</div>
     </a>
   </div>
 

@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>if(!sessionStorage.getItem('sng_auth')){sessionStorage.setItem('sng_return',location.href);location.href='sng-login.html';}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SNG TikTok PostLab</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0d10;--bg2:#111318;--panel:#171922;--panel2:#1d212b;--border:#2a2d38;
+  --orange:#f47820;--blue:#3ea0ff;--green:#32c277;--yellow:#f4c842;--muted:#8b8fa3;--text:#eef0f6;
+  --head:'Barlow Condensed',sans-serif;--body:'Barlow',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh}
+a{color:inherit}
+button,input,textarea,select{font:inherit}
+.topbar{background:var(--bg2);border-bottom:2px solid var(--orange);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{font-family:var(--head);font-size:30px;font-weight:900;text-transform:uppercase;letter-spacing:2px}
+.brand span{color:var(--orange)}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.nav a,.btn{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:9px 13px;background:var(--panel);color:var(--text);cursor:pointer}
+.nav a.primary,.btn.primary{background:var(--orange);border-color:var(--orange);color:#fff}
+.wrap{max-width:1440px;margin:0 auto;padding:24px}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) 360px;gap:18px;margin-bottom:18px}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px}
+.intro{padding:22px 24px;border-left:3px solid var(--orange)}
+.eyebrow{font-family:var(--head);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+h1{font-family:var(--head);font-size:42px;font-weight:900;text-transform:uppercase;line-height:1;letter-spacing:1px;margin-bottom:10px}
+.intro p,.note,.muted{color:var(--muted);font-size:13px;line-height:1.65}
+.status{padding:18px;display:grid;gap:10px}
+.status-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border);padding-bottom:8px;font-size:13px;color:var(--muted)}
+.status-row:last-child{border-bottom:0;padding-bottom:0}
+.status-row strong{font-family:var(--head);letter-spacing:1px;text-transform:uppercase;color:#fff}
+.grid{display:grid;grid-template-columns:340px minmax(0,1fr) 360px;gap:18px;align-items:start}
+.section-title{font-family:var(--head);font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--orange);padding:16px 16px 0}
+.column{padding:14px 16px 16px}
+.recommend-list,.asset-list,.timeline-list,.shot-list,.calendar-list{display:grid;gap:10px}
+.rec-card,.asset-card,.timeline-item,.shot-card,.calendar-card,.text-card{background:#101219;border:1px solid var(--border);border-radius:10px;padding:12px}
+.rec-card.active{border-color:var(--orange);box-shadow:0 0 0 1px rgba(244,120,32,.24)}
+.rec-head,.asset-head,.timeline-head,.calendar-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.rec-title,.asset-title,.timeline-name,.calendar-day{font-family:var(--head);font-size:18px;font-weight:900;text-transform:uppercase;line-height:1.05}
+.badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;border:1px solid var(--border);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.badge.posted{color:var(--green);border-color:rgba(50,194,119,.28)}
+.badge.next{color:var(--orange);border-color:rgba(244,120,32,.28)}
+.badge.hold{color:var(--yellow);border-color:rgba(244,200,66,.28)}
+.rec-copy,.asset-meta,.calendar-copy{font-size:12px;color:var(--muted);line-height:1.55;margin-top:8px}
+.rec-actions,.controls{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.small-btn{appearance:none;border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:6px;padding:7px 9px;font-family:var(--head);font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-size:11px}
+.small-btn.primary{background:var(--orange);border-color:var(--orange);color:#fff}
+.preview{background:#050607;border:1px solid var(--border);border-radius:10px;aspect-ratio:9/16;max-height:520px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview video,.preview img{width:100%;height:100%;object-fit:contain}
+.upload-box{border:1px dashed rgba(62,160,255,.35);border-radius:10px;padding:14px;background:rgba(62,160,255,.05);margin-bottom:12px}
+.upload-box input{width:100%;margin-top:10px}
+.thumb{width:68px;height:88px;border-radius:8px;overflow:hidden;background:#050607;flex-shrink:0}
+.thumb video,.thumb img{width:100%;height:100%;object-fit:cover}
+.asset-main{display:grid;grid-template-columns:68px 1fr;gap:10px}
+.trim{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+label{display:grid;gap:5px;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;font-weight:700}
+input,textarea,select{width:100%;background:#0b0d12;border:1px solid var(--border);border-radius:6px;color:var(--text);padding:10px;font-size:13px}
+textarea{min-height:120px;resize:vertical;line-height:1.5}
+.package-box{background:#0b0d12;border:1px solid var(--border);border-radius:8px;padding:12px;white-space:pre-wrap;color:#cfd3df;font-size:12px;line-height:1.55;min-height:280px;max-height:420px;overflow:auto;margin-top:12px}
+.text-grid{display:grid;gap:10px;margin-top:12px}
+.text-card strong,.shot-card strong{display:block;font-family:var(--head);font-size:15px;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.text-card p,.shot-card p{font-size:12px;color:var(--muted);line-height:1.6}
+.upload-links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.upload-links a{display:block;text-align:center;text-decoration:none;border-radius:6px;padding:10px 8px;font-family:var(--head);font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:12px}
+.tik{background:#fff;color:#070707}.ig{background:#c13584;color:#fff}.meta{background:#1877f2;color:#fff}.capcut{background:#17324d;color:#79bdff;border:1px solid rgba(51,153,255,.35)}
+@media(max-width:1100px){.hero,.grid{grid-template-columns:1fr}.preview{max-height:70vh}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">SNG <span>TikTok PostLab</span></div>
+  <div class="nav">
+    <a href="SNG_HUB.html">Hub</a>
+    <a href="SNG_CLIP_STUDIO.html">Clip Studio</a>
+    <a href="SNG_Posting_Queue.html">Queue</a>
+    <a class="primary" href="https://www.tiktok.com/upload" target="_blank" rel="noopener">TikTok Upload</a>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="panel intro">
+      <div class="eyebrow">Exact Flow</div>
+      <h1>Upload clips, get the next post angle, add text + music, then map the next 14 days</h1>
+      <p>This app does four things in one place: recommends what the next post should be about based on what SNG already used, tells you what photos or video clips it wants, helps you build the TikTok post package with text and music suggestions, and starts a fresh calendar from today.</p>
+    </div>
+    <div class="panel status">
+      <div class="status-row"><strong>Completed</strong><span>Transformation · Lewis brakes · Founder survive story</span></div>
+      <div class="status-row"><strong>Next Best Angle</strong><span id="heroNextLabel">Loading</span></div>
+      <div class="status-row"><strong>Text Help</strong><span>Built into the same app</span></div>
+      <div class="status-row"><strong>Calendar</strong><span>Fresh 14-day reset</span></div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="panel">
+      <div class="section-title">What To Post Next</div>
+      <div class="column">
+        <div class="recommend-list" id="recommendList"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">Upload + Timeline</div>
+      <div class="column">
+        <div class="upload-box">
+          <div class="eyebrow" style="margin-bottom:4px">Step 1</div>
+          <div>Submit a group of photos and/or short video clips.</div>
+          <input id="fileInput" type="file" accept="image/*,video/*" multiple>
+        </div>
+        <div class="preview" id="preview"><div class="muted">Upload or select an asset</div></div>
+        <div class="asset-list" id="assetList"></div>
+        <div style="height:14px"></div>
+        <div class="timeline-list" id="timelineList"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">Post Package</div>
+      <div class="column">
+        <label>Hook
+          <input id="hook" value="">
+        </label>
+        <div style="height:10px"></div>
+        <label>Caption
+          <textarea id="caption"></textarea>
+        </label>
+        <div style="height:10px"></div>
+        <label>Music Direction
+          <input id="musicNote" value="">
+        </label>
+        <div style="height:10px"></div>
+        <label>On-screen Text Rule
+          <input id="textRule" value="">
+        </label>
+        <div class="rec-actions">
+          <button class="small-btn primary" type="button" id="suggestText">Suggest Text</button>
+          <button class="small-btn" type="button" id="copyCaption">Copy Caption</button>
+          <button class="small-btn" type="button" id="copyPackage">Copy Full Package</button>
+        </div>
+        <div class="text-grid" id="textSuggestions"></div>
+        <div class="package-box" id="packageBox"></div>
+        <div class="upload-links">
+          <a class="tik" href="https://www.tiktok.com/upload" target="_blank" rel="noopener">TikTok</a>
+          <a class="ig" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a class="meta" href="https://business.facebook.com/latest/reels_composer" target="_blank" rel="noopener">Meta Suite</a>
+          <a class="capcut" href="https://www.capcut.com/create" target="_blank" rel="noopener">CapCut</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:18px">
+    <div class="panel">
+      <div class="section-title">Fresh Calendar</div>
+      <div class="column">
+        <div class="rec-actions" style="margin-top:0">
+          <button class="small-btn primary" type="button" id="resetCalendar">Start Fresh 14-Day Calendar</button>
+        </div>
+        <div class="calendar-list" id="calendarList" style="margin-top:12px"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const STORAGE_KEY = 'sng_postlab_v2';
+const recommendations = [
+  {
+    id: 'garage-proof',
+    title: 'Unboxing / Garage Proof',
+    status: 'next',
+    why: 'Transformation already ran. Lewis already ran. Founder pain already ran. The next strongest move is receipts: boxes, wrong parts, waiting, and proof this was real work.',
+    hook: 'This is the part nobody sees.',
+    caption: `This is the part nobody sees.\n\nThe boxes. The waiting. The wrong parts. The decisions that finally made the bike right.\n\nNo factory shortcut. No catalog build. Just one machine getting built the hard way.\n\nBuilt not bought. SNG4LIFE.\n\n#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #florida`,
+    shotList: [
+      '2 to 3 short clips of boxes, bench parts, or open packaging',
+      '1 close clip showing hardware or a part that mattered',
+      '1 wide garage shot that proves the environment',
+      'Optional founder hand or body shot handling parts'
+    ],
+    textBeats: ['This is the part nobody sees', 'The boxes', 'The waiting', 'The wrong parts', 'The decisions that made it right'],
+    music: 'Use a sound with tension or grind, not victory energy.',
+    ask: 'Upload 4 to 7 assets: mostly short clips, one wide proof shot.'
+  },
+  {
+    id: 'tall-rider',
+    title: 'Tall Rider Problem',
+    status: 'ready',
+    why: 'This angle differentiates SNG structurally. It explains why the machine exists and pulls in a specific audience fast.',
+    hook: `Every bike was built for someone 5'10. I am 6'7.`,
+    caption: `This is why SNG exists.\n\nI got tired of folding myself onto bikes made for average-sized riders, so I built one around me.\n\nGarage-built. Florida-built. Made for real riders, not spec-sheet fantasies.\n\nBuilt not bought. Reserve your numbered 270E. Link in bio.\n\n#SharkNotGoldfish #SNGCycles #SNG4LIFE #builtnotbought #supermoto #electricmotorcycle #tallrider #florida`,
+    shotList: ['1 full body clip next to bike', '1 seated fitment shot', '1 angle showing scale compared to normal bike geometry', 'Optional side shot walking around bike'],
+    textBeats: [`Built for someone 5'10?`, `I'm 6'7.`, 'So I built my own.'],
+    music: 'Use lower-drama, confident sound. This is explanation, not chaos.',
+    ask: 'Upload 3 to 5 assets: founder-scale shots and fitment proof.'
+  },
+  {
+    id: 'beauty-preorder',
+    title: 'Beauty Shot / Preorder Ask',
+    status: 'ready',
+    why: 'This is the cleanest direct ask once enough credibility is already on the page.',
+    hook: '270E. 27kW electric supermoto.',
+    caption: `270E.\n\n27kW electric supermoto. Built for tall riders. Florida-built. VIN-stamped. Numbered.\n\nBuilt for riders.\n\nPre-orders are open now. Reserve your unit. Link in bio.\n\n#SharkNotGoldfish #SNGCycles #SNG4LIFE #supermoto #electricmotorcycle #ebike #emoto #florida`,
+    shotList: ['1 strongest finished beauty photo or moving clip', '1 side profile shot', '1 detail shot for premium feel'],
+    textBeats: ['270E', '27kW electric supermoto', 'Built for riders'],
+    music: 'Use premium, cinematic, cleaner sound.',
+    ask: 'Upload 3 to 4 strongest visual assets only.'
+  }
+];
+
+let selectedRecommendation = recommendations[0];
+let uploadedAssets = [];
+let timeline = [];
+let calendar = [];
+
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch (error) { return {}; }
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    selectedRecommendationId: selectedRecommendation.id,
+    timeline: timeline,
+    calendar: calendar,
+    hook: document.getElementById('hook').value,
+    caption: document.getElementById('caption').value,
+    musicNote: document.getElementById('musicNote').value,
+    textRule: document.getElementById('textRule').value
+  }));
+}
+
+function buildFreshCalendar() {
+  const basePlan = [
+    'Garage proof / receipts',
+    'Tall rider fit problem',
+    'Beauty / pre-order ask',
+    'Founder survive story',
+    'Hardware detail / brakes',
+    'Prototype progression',
+    'Rest / scout / reply',
+    'Garage proof follow-up',
+    'Founder direct-to-camera',
+    'Beauty / moving clip',
+    'Tall rider proof follow-up',
+    'Hardware credibility',
+    'Pre-order ask',
+    'Weekly recap / strongest comment replies'
+  ];
+  const today = new Date();
+  return basePlan.map(function(item, index) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + index);
+    return {
+      day: 'Day ' + (index + 1),
+      date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      topic: item
+    };
+  });
+}
+
+function setRecommendation(rec) {
+  selectedRecommendation = rec;
+  document.getElementById('heroNextLabel').textContent = rec.title;
+  document.getElementById('hook').value = rec.hook;
+  document.getElementById('caption').value = rec.caption;
+  document.getElementById('musicNote').value = rec.music;
+  document.getElementById('textRule').value = 'Keep first text line on screen in first second. 4 to 6 words max.';
+  renderRecommendations();
+  renderTimeline();
+  renderTextSuggestions();
+  saveState();
+}
+
+function renderRecommendations() {
+  const root = document.getElementById('recommendList');
+  root.innerHTML = recommendations.map(function(rec) {
+    return `
+      <div class="rec-card ${selectedRecommendation.id === rec.id ? 'active' : ''}">
+        <div class="rec-head">
+          <div class="rec-title">${rec.title}</div>
+          <span class="badge ${rec.status}">${rec.status}</span>
+        </div>
+        <div class="rec-copy">${rec.why}</div>
+        <div class="rec-copy"><strong style="color:#fff">Need from you:</strong> ${rec.ask}</div>
+        <div class="shot-list">
+          ${rec.shotList.map(function(item){ return `<div class="shot-card"><strong>Requested shot</strong><p>${item}</p></div>`; }).join('')}
+        </div>
+        <div class="rec-actions">
+          <button class="small-btn primary" type="button" data-rec="${rec.id}">Use This</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+  root.querySelectorAll('button[data-rec]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      const rec = recommendations.find(function(entry) { return entry.id === button.getAttribute('data-rec'); });
+      if (rec) setRecommendation(rec);
+    });
+  });
+}
+
+function mediaMarkup(asset, muted) {
+  if (asset.type.startsWith('video')) return `<video src="${asset.url}" ${muted ? 'muted' : 'controls'} preload="metadata" playsinline></video>`;
+  return `<img src="${asset.url}" alt="">`;
+}
+
+function showPreview(asset) {
+  document.getElementById('preview').innerHTML = mediaMarkup(asset, false);
+}
+
+function renderAssets() {
+  const root = document.getElementById('assetList');
+  if (!uploadedAssets.length) {
+    root.innerHTML = `<div class="muted">No uploaded assets yet. Upload a batch of photos and/or clips from your phone or desktop.</div>`;
+    return;
+  }
+  root.innerHTML = uploadedAssets.map(function(asset, index) {
+    return `
+      <div class="asset-card">
+        <div class="asset-main">
+          <div class="thumb">${mediaMarkup(asset, true)}</div>
+          <div>
+            <div class="asset-head">
+              <div class="asset-title">${asset.name}</div>
+              <span class="badge">${asset.type.startsWith('video') ? 'video' : 'image'}</span>
+            </div>
+            <div class="asset-meta">Use this if it supports the selected angle. Skip weak or repetitive material.</div>
+          </div>
+        </div>
+        <div class="rec-actions">
+          <button class="small-btn" type="button" data-preview="${index}">Preview</button>
+          <button class="small-btn primary" type="button" data-add="${index}">Add To Timeline</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+  root.querySelectorAll('button[data-preview]').forEach(function(button) {
+    button.addEventListener('click', function() { showPreview(uploadedAssets[Number(button.getAttribute('data-preview'))]); });
+  });
+  root.querySelectorAll('button[data-add]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      const asset = uploadedAssets[Number(button.getAttribute('data-add'))];
+      timeline.push({
+        name: asset.name,
+        type: asset.type,
+        url: asset.url,
+        start: '0:00',
+        end: asset.type.startsWith('video') ? '0:03' : '0:02',
+        text: selectedRecommendation.textBeats[timeline.length] || ''
+      });
+      showPreview(asset);
+      renderTimeline();
+      saveState();
+    });
+  });
+}
+
+function renderTimeline() {
+  const root = document.getElementById('timelineList');
+  if (!timeline.length) {
+    root.innerHTML = `<div class="muted">Add assets to the timeline. The post package will update automatically.</div>`;
+    updatePackage();
+    return;
+  }
+  root.innerHTML = timeline.map(function(item, index) {
+    return `
+      <div class="timeline-item">
+        <div class="timeline-head">
+          <div class="timeline-name">${String(index + 1).padStart(2, '0')} - ${item.name}</div>
+          <div class="controls">
+            <button class="small-btn" type="button" data-action="preview" data-index="${index}">Preview</button>
+            <button class="small-btn" type="button" data-action="up" data-index="${index}" ${index === 0 ? 'disabled' : ''}>Up</button>
+            <button class="small-btn" type="button" data-action="down" data-index="${index}" ${index === timeline.length - 1 ? 'disabled' : ''}>Down</button>
+            <button class="small-btn" type="button" data-action="remove" data-index="${index}">Remove</button>
+          </div>
+        </div>
+        <div class="trim">
+          <label>Start
+            <input data-field="start" data-index="${index}" value="${item.start}">
+          </label>
+          <label>End / Hold
+            <input data-field="end" data-index="${index}" value="${item.end}">
+          </label>
+        </div>
+        <div style="height:8px"></div>
+        <label>On-screen Text
+          <input data-field="text" data-index="${index}" value="${item.text || ''}">
+        </label>
+      </div>
+    `;
+  }).join('');
+
+  root.querySelectorAll('button[data-action]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      const action = button.getAttribute('data-action');
+      const index = Number(button.getAttribute('data-index'));
+      if (action === 'preview') showPreview(timeline[index]);
+      if (action === 'remove') timeline.splice(index, 1);
+      if (action === 'up' && index > 0) [timeline[index - 1], timeline[index]] = [timeline[index], timeline[index - 1]];
+      if (action === 'down' && index < timeline.length - 1) [timeline[index + 1], timeline[index]] = [timeline[index], timeline[index + 1]];
+      renderTimeline();
+      saveState();
+    });
+  });
+
+  root.querySelectorAll('input[data-field]').forEach(function(input) {
+    input.addEventListener('input', function() {
+      const index = Number(input.getAttribute('data-index'));
+      const field = input.getAttribute('data-field');
+      timeline[index][field] = input.value;
+      updatePackage();
+      saveState();
+    });
+  });
+
+  updatePackage();
+}
+
+function renderTextSuggestions() {
+  const hook = selectedRecommendation.hook;
+  const root = document.getElementById('textSuggestions');
+  const suggestions = [
+    { title: 'Hook Option', body: hook },
+    { title: 'First Text Line', body: selectedRecommendation.textBeats[0] || hook },
+    { title: 'Closer Text', body: 'Built not bought. SNG4LIFE.' }
+  ];
+  root.innerHTML = suggestions.map(function(item, index) {
+    return `
+      <div class="text-card">
+        <strong>${item.title}</strong>
+        <p>${item.body}</p>
+        <div class="rec-actions"><button class="small-btn" type="button" data-text="${index}">Use This</button></div>
+      </div>
+    `;
+  }).join('');
+  root.querySelectorAll('button[data-text]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      const suggestion = suggestions[Number(button.getAttribute('data-text'))].body;
+      if (!timeline.length) {
+        document.getElementById('hook').value = suggestion;
+      } else {
+        timeline[0].text = suggestion;
+        renderTimeline();
+      }
+      updatePackage();
+      saveState();
+    });
+  });
+}
+
+function updatePackage() {
+  const hook = document.getElementById('hook').value.trim();
+  const caption = document.getElementById('caption').value.trim();
+  const musicNote = document.getElementById('musicNote').value.trim();
+  const textRule = document.getElementById('textRule').value.trim();
+  const lines = [];
+  lines.push('POST ANGLE: ' + selectedRecommendation.title);
+  lines.push('');
+  lines.push('HOOK: ' + hook);
+  lines.push('');
+  lines.push('REQUESTED SHOTS:');
+  selectedRecommendation.shotList.forEach(function(item, index) { lines.push((index + 1) + '. ' + item); });
+  lines.push('');
+  lines.push('TIMELINE:');
+  if (!timeline.length) {
+    lines.push('No assets selected yet.');
+  } else {
+    timeline.forEach(function(item, index) {
+      lines.push((index + 1) + '. ' + item.name + ' | ' + item.start + ' to ' + item.end + ' | TEXT: ' + (item.text || 'None'));
+    });
+  }
+  lines.push('');
+  lines.push('TEXT RULE: ' + textRule);
+  lines.push('MUSIC NOTE: ' + musicNote);
+  lines.push('');
+  lines.push('CAPTION:');
+  lines.push(caption);
+  document.getElementById('packageBox').textContent = lines.join('\n');
+}
+
+function renderCalendar() {
+  const root = document.getElementById('calendarList');
+  root.innerHTML = calendar.map(function(item, index) {
+    return `
+      <div class="calendar-card">
+        <div class="calendar-head">
+          <div class="calendar-day">${item.day}</div>
+          <span class="badge">${item.date}</span>
+        </div>
+        <div class="calendar-copy">${item.topic}</div>
+        <div style="height:8px"></div>
+        <input data-cal-index="${index}" value="${item.topic}">
+      </div>
+    `;
+  }).join('');
+  root.querySelectorAll('input[data-cal-index]').forEach(function(input) {
+    input.addEventListener('input', function() {
+      const index = Number(input.getAttribute('data-cal-index'));
+      calendar[index].topic = input.value;
+      saveState();
+    });
+  });
+}
+
+function handleFiles(files) {
+  Array.from(files).forEach(function(file) {
+    uploadedAssets.push({
+      name: file.name,
+      type: file.type,
+      url: URL.createObjectURL(file)
+    });
+  });
+  renderAssets();
+  saveState();
+}
+
+document.getElementById('fileInput').addEventListener('change', function(event) {
+  handleFiles(event.target.files);
+});
+
+document.getElementById('hook').addEventListener('input', function() { updatePackage(); saveState(); });
+document.getElementById('caption').addEventListener('input', function() { updatePackage(); saveState(); });
+document.getElementById('musicNote').addEventListener('input', function() { updatePackage(); saveState(); });
+document.getElementById('textRule').addEventListener('input', function() { updatePackage(); saveState(); });
+
+document.getElementById('suggestText').addEventListener('click', function() {
+  renderTextSuggestions();
+});
+
+document.getElementById('copyCaption').addEventListener('click', async function(event) {
+  await navigator.clipboard.writeText(document.getElementById('caption').value);
+  const original = event.currentTarget.textContent;
+  event.currentTarget.textContent = 'Copied';
+  setTimeout(function() { event.currentTarget.textContent = original; }, 1200);
+});
+
+document.getElementById('copyPackage').addEventListener('click', async function(event) {
+  await navigator.clipboard.writeText(document.getElementById('packageBox').textContent);
+  const original = event.currentTarget.textContent;
+  event.currentTarget.textContent = 'Copied';
+  setTimeout(function() { event.currentTarget.textContent = original; }, 1200);
+});
+
+document.getElementById('resetCalendar').addEventListener('click', function() {
+  calendar = buildFreshCalendar();
+  renderCalendar();
+  saveState();
+});
+
+function hydrate() {
+  const saved = loadState();
+  selectedRecommendation = recommendations.find(function(item) { return item.id === saved.selectedRecommendationId; }) || recommendations[0];
+  document.getElementById('heroNextLabel').textContent = selectedRecommendation.title;
+  document.getElementById('hook').value = saved.hook || selectedRecommendation.hook;
+  document.getElementById('caption').value = saved.caption || selectedRecommendation.caption;
+  document.getElementById('musicNote').value = saved.musicNote || selectedRecommendation.music;
+  document.getElementById('textRule').value = saved.textRule || 'Keep first text line on screen in first second. 4 to 6 words max.';
+  timeline = saved.timeline || [];
+  calendar = saved.calendar || buildFreshCalendar();
+  renderRecommendations();
+  renderAssets();
+  renderTextSuggestions();
+  renderTimeline();
+  renderCalendar();
+}
+
+hydrate();
+</script>
+</body>
+</html>
