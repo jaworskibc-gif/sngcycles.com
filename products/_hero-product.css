@@ -1,0 +1,61 @@
+:root{
+  --bg:#080a0f;
+  --bg2:#0f131b;
+  --card:#151a24;
+  --line:#2a3140;
+  --text:#eef2f7;
+  --muted:#98a1b5;
+  --orange:#f47820;
+  --teal:#00c7b7;
+  --coral:#ff6b6b;
+  --blue:#3ea0ff;
+  --green:#32c277;
+  --gold:#d9ac4d;
+  --head:'Barlow Condensed',sans-serif;
+  --body:'Barlow',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:
+  radial-gradient(circle at top, rgba(244,120,32,.14), transparent 34%),
+  linear-gradient(180deg,#07090d 0%,#0c1017 55%,#0b0e14 100%);
+color:var(--text);min-height:100vh}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;padding:22px 28px;border-bottom:2px solid var(--orange);background:rgba(8,10,15,.92);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}
+.brand{font-family:var(--head);font-size:38px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.brand span{color:var(--orange)}
+.sub{margin-top:6px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--head);font-size:13px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;border:none;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.btn.blue{background:var(--blue)}
+.wrap{max-width:1280px;margin:0 auto;padding:28px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:stretch}
+.hero-card{background:rgba(16,20,29,.94);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.visual{padding:20px;background:linear-gradient(160deg,rgba(255,255,255,.02),rgba(0,0,0,.12))}
+.visual img{width:100%;display:block;border-radius:14px;border:1px solid rgba(255,255,255,.06);background:#0d1118}
+.body{padding:24px;display:grid;gap:16px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2.8px;text-transform:uppercase;color:var(--orange)}
+h1{font-family:var(--head);font-size:clamp(38px,5vw,60px);line-height:.92;text-transform:uppercase}
+.tagline{font-size:19px;color:#d9dee8;font-weight:600}
+.price{font-family:var(--head);font-size:34px;color:var(--gold)}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:#121723;border:1px solid var(--line);font-size:11px;font-weight:700;letter-spacing:.5px}
+.copy{font-size:15px;color:#cfd6e4;line-height:1.8}
+.muted{color:var(--muted)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.panel{background:rgba(16,20,29,.94);border:1px solid var(--line);border-radius:18px;padding:20px}
+.panel h2{font-family:var(--head);font-size:28px;text-transform:uppercase;margin-bottom:10px}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:grid;gap:6px}
+.field label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.field select,.field input,.field textarea{width:100%;background:#0f141d;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px 13px;outline:none}
+.field textarea{min-height:102px;resize:vertical}
+.cta-stack{display:grid;gap:10px;margin-top:4px}
+.cta-note{font-size:13px;color:var(--muted);line-height:1.7}
+.bullet-list{display:grid;gap:10px}
+.bullet{background:#10141d;border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:#d5dcea;line-height:1.6}
+.bullet strong{display:block;font-family:var(--head);font-size:16px;letter-spacing:1px;text-transform:uppercase;color:var(--orange);margin-bottom:3px}
+.contact{display:grid;gap:10px}
+.contact a{color:#fff}
+@media(max-width:980px){.hero,.split,.field-grid{grid-template-columns:1fr}}
