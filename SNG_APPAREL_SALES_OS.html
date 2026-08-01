@@ -4,260 +4,136 @@
 <meta charset="UTF-8">
 <script>if(!sessionStorage.getItem('sng_auth')){sessionStorage.setItem('sng_return',location.href);location.href='sng-login.html';}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SNG Apparel Sales OS</title>
+<title>SNG Merch OS</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0b0d11;
-  --bg2:#101319;
-  --card:#171a22;
-  --card2:#1d212c;
-  --line:#282d39;
-  --text:#eef1f7;
-  --muted:#8a92a6;
-  --orange:#f47820;
-  --gold:#d2a13d;
-  --green:#33c074;
-  --blue:#3ea0ff;
-  --head:'Barlow Condensed',sans-serif;
-  --body:'Barlow',sans-serif;
-}
-body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh}
-a{color:inherit}
-button,input,select,textarea{font:inherit}
-.topbar{padding:22px 28px;border-bottom:2px solid var(--orange);background:var(--bg2);display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
-.brand{font-family:var(--head);font-size:38px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+:root{--bg:#0a0d12;--panel:#151b23;--panel2:#1a212c;--line:#29303b;--text:#edf2f9;--muted:#93a3b7;--orange:#f47820;--green:#2fc87c;--blue:#409dff}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif}
+a{text-decoration:none;color:inherit}
+.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 24px;border-bottom:1px solid var(--line)}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
 .brand span{color:var(--orange)}
-.sub{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.top-actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:none;cursor:pointer;background:var(--orange);color:#fff;border-radius:8px;padding:10px 16px;font-family:var(--head);font-weight:900;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+.sub{font-size:11px;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin-top:4px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;border-radius:10px;background:var(--orange);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:1.4px;text-transform:uppercase}
 .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
-.btn.blue{background:var(--blue)}
-.wrap{max-width:1320px;margin:0 auto;padding:24px}
-.hero{background:linear-gradient(135deg, rgba(244,120,32,.12), rgba(210,161,61,.08) 45%, rgba(62,160,255,.08));border:1px solid rgba(244,120,32,.2);border-radius:18px;padding:24px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:20px}
-.hero h1{font-family:var(--head);font-size:clamp(34px,5vw,58px);line-height:.95;text-transform:uppercase;margin-bottom:10px}
-.hero p{font-size:15px;color:#d3d9e5;line-height:1.7;max-width:720px}
-.hero-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.metric{background:rgba(11,13,17,.5);border:1px solid var(--line);border-radius:14px;padding:18px}
-.metric strong{display:block;font-family:var(--head);font-size:34px;line-height:1;color:var(--orange)}
-.metric span{display:block;margin-top:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-.section-label{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:4px;color:var(--orange);text-transform:uppercase;margin:28px 0 14px}
-.grid{display:grid;gap:16px}
-.cards{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
-.card h2,.card h3{font-family:var(--head);text-transform:uppercase;letter-spacing:1px}
-.card h2{font-size:28px;margin-bottom:10px}
-.card h3{font-size:20px;margin-bottom:8px}
-.card p{color:var(--muted);font-size:14px;line-height:1.7}
-.mini{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:8px}
-.split{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
-.triple{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.product-card{display:grid;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px}
-.price{font-family:var(--head);font-size:26px;color:var(--orange)}
-.pill-row{display:flex;gap:6px;flex-wrap:wrap}
-.pill{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;border:1px solid var(--line);background:#12161f;font-size:11px;font-weight:700;letter-spacing:.5px;color:#d7ddeb}
-.pill.orange{border-color:rgba(244,120,32,.28);color:var(--orange)}
-.pill.green{border-color:rgba(51,192,116,.28);color:var(--green)}
-.pill.blue{border-color:rgba(62,160,255,.28);color:var(--blue)}
-.select{width:100%;background:#0f131b;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px 13px;outline:none}
-.tool-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.output{background:#0f131b;border:1px solid var(--line);border-radius:12px;padding:14px;min-height:140px;color:#d8deeb;line-height:1.7;white-space:pre-wrap}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px;background:var(--card)}
-table{width:100%;border-collapse:collapse;min-width:900px}
-th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{background:#111622;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--orange)}
-td input{width:100%;background:#0f131b;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px}
-.target-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.target-box{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px}
-.target-box strong{display:block;font-family:var(--head);font-size:28px;color:var(--gold)}
-.target-box span{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-.callout{background:rgba(62,160,255,.08);border:1px solid rgba(62,160,255,.2);border-radius:14px;padding:16px;color:#d8e9ff;line-height:1.7}
-.checklist{display:grid;gap:10px}
-.checklist div{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:#d0d7e5;line-height:1.6}
-.checklist strong{display:block;color:var(--orange);font-family:var(--head);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
-@media(max-width:1040px){.hero,.split,.triple{grid-template-columns:1fr}.tool-row,.target-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:720px){.wrap{padding:14px}.topbar{padding:18px}.tool-row,.target-grid{grid-template-columns:1fr}}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 18px 60px}
+.hero,.grid,.products{display:grid;gap:16px}
+.hero{grid-template-columns:1.2fr .8fr}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+h1,h2,h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;line-height:.95}
+h1{font-size:58px;margin-bottom:12px}
+h2{font-size:30px;margin-bottom:10px}
+h3{font-size:22px;margin-bottom:8px}
+p,li{font-size:14px;color:var(--muted);line-height:1.8}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:18px}
+.stat strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:34px;line-height:1;color:var(--orange)}
+.stat span{display:block;margin-top:6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.section-label{margin:24px 0 12px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--orange)}
+.grid{grid-template-columns:1fr 1fr}
+.products{grid-template-columns:repeat(5,1fr)}
+.product{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.product img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#0d1117}
+.product strong{font-family:'Barlow Condensed',sans-serif;font-size:21px;line-height:1;text-transform:uppercase}
+.product span{font-size:13px;color:var(--muted);line-height:1.7}
+ul{list-style:none;display:grid;gap:8px}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{display:inline-flex;padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.pill.green{color:var(--green);border-color:rgba(47,200,124,.3)}
+.pill.blue{color:var(--blue);border-color:rgba(64,157,255,.3)}
+.pill.orange{color:var(--orange);border-color:rgba(244,120,32,.3)}
+@media(max-width:1080px){.hero,.grid,.products{grid-template-columns:1fr 1fr}.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.hero,.grid,.products,.stats{grid-template-columns:1fr}h1{font-size:42px}}
 </style>
 </head>
 <body>
-  <div class="topbar">
-    <div>
-      <div class="brand">SNG <span>Apparel Sales OS</span></div>
-      <div class="sub">Zeely-style product-to-ad operator system for the 350 piece / 90 day goal</div>
-    </div>
-    <div class="top-actions">
-      <a class="btn ghost" href="ZEELY_SNG_RESEARCH_JULY_2026.md">Research Spec</a>
-      <a class="btn ghost" href="collections/hero-drop/">Open Hero Collection</a>
-      <a class="btn blue" href="SNG_HUB.html">Back To Hub</a>
-    </div>
+<div class="top">
+  <div>
+    <div class="brand">SNG <span>Merch OS</span></div>
+    <div class="sub">Focused hero-drop operator layer for Shopify selling</div>
   </div>
-  <div class="wrap">
-    <section class="hero">
-      <div>
-        <div class="mini">Zeely Translation</div>
-        <h1>Turn SNG merch into ads, campaigns, and units sold</h1>
-        <p>Zeely’s real value is the closed loop: product in, creative out, campaigns launched, sales tracked. This SNG version is narrower and more useful. It is built around actual SNG apparel, founder-story angles, and the operational target of moving 350 pieces in the next 90 days.</p>
-      </div>
-      <div class="hero-metrics">
-        <div class="metric"><strong>350</strong><span>Unit Goal</span></div>
-        <div class="metric"><strong>90</strong><span>Days</span></div>
-        <div class="metric"><strong>27</strong><span>Units / Week</span></div>
-        <div class="metric"><strong>4</strong><span>Units / Day</span></div>
-      </div>
-    </section>
-
-    <div class="section-label">Target Math</div>
-    <section class="card">
-      <div class="target-grid">
-        <div class="target-box"><strong id="blendedAov">$38</strong><span>Blended AOV</span></div>
-        <div class="target-box"><strong id="grossTarget">$13,300</strong><span>Gross Revenue Target</span></div>
-        <div class="target-box"><strong>5</strong><span>Hero SKUs</span></div>
-        <div class="target-box"><strong>3</strong><span>Weekly creative pushes</span></div>
-      </div>
-      <div class="callout" style="margin-top:14px">This should not be run like a full-catalog store. Treat the Rider Team Colors Snapback, Florida Grown Tee, Megalodon Tee, Conversion Tee Series, and Shut Up Get Out And Ride Hoodie as the working front line. Use the checker hat as the hoodie upsell and bundle piece. Everything else supports depth, not focus.</div>
-    </section>
-
-    <div class="section-label">Hero Product Feed</div>
-    <section class="grid cards" id="productCards"></section>
-
-    <div class="section-label">Creative Engine</div>
-    <section class="split">
-      <div class="card">
-        <h2>Product To Ad</h2>
-        <p>Select a product, a buyer lens, and a creative format. This behaves like a manual Zeely-style ad generator, but grounded in SNG’s actual catalog and sales language instead of generic ecommerce filler.</p>
-        <div class="tool-row" style="margin-top:16px">
-          <select class="select" id="productSelect"></select>
-          <select class="select" id="personaSelect">
-            <option value="e-moto">E-moto rider</option>
-            <option value="stunt">Stunt rider</option>
-            <option value="garage">Garage/builder</option>
-            <option value="streetwear">Streetwear buyer</option>
-          </select>
-          <select class="select" id="angleSelect">
-            <option value="identity">Identity / tribe</option>
-            <option value="humor">Humor / slogan</option>
-            <option value="founder">Founder / build proof</option>
-            <option value="gift">Gift / pack / impulse</option>
-          </select>
-          <select class="select" id="formatSelect">
-            <option value="ugc">UGC short video</option>
-            <option value="static">Static ad</option>
-            <option value="reel">Talking reel</option>
-            <option value="landing">Landing block</option>
-          </select>
-        </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-          <button class="btn" type="button" onclick="generateCreative()">Generate</button>
-          <button class="btn ghost" type="button" onclick="copyOutput('creativeOutput', this)">Copy Output</button>
-        </div>
-        <div class="output" id="creativeOutput" style="margin-top:14px">Choose inputs and generate a hook/script package.</div>
-      </div>
-      <div class="card">
-        <h2>Offer Stack</h2>
-        <div class="checklist">
-          <div><strong>Cold traffic offer</strong> Rider Team Colors Snapback or Conversion Tee with urgency, not catalog sprawl.</div>
-          <div><strong>Warm traffic offer</strong> Bundle snapback + tee or tee + hoodie once product trust is established.</div>
-          <div><strong>Content rule</strong> 70% founder/build proof, 20% culture/community, 10% direct product push.</div>
-          <div><strong>Creative rule</strong> One product, one angle, one CTA. Zeely’s strength is speed, not complexity.</div>
-          <div><strong>CTA rule</strong> Use “Shop the drop”, “Pick your colorway”, or “Claim the first run” instead of generic “Buy now”.</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-label">Campaign Lab</div>
-    <section class="triple">
-      <div class="card">
-        <h2>90-Day Sprint</h2>
-        <div class="checklist">
-          <div><strong>Days 1-14</strong> Push Rider Team Colors Snapback + Conversion Tee. Test tribe, humor, and colorway angles.</div>
-          <div><strong>Days 15-45</strong> Scale winners into Florida Grown and Megalodon traffic, then retarget into the hoodie.</div>
-          <div><strong>Days 46-90</strong> Keep winning CTAs fixed and rotate colorway-led creative plus hoodie bundles.</div>
-        </div>
-      </div>
-      <div class="card">
-        <h2>Channel Mix</h2>
-        <div class="pill-row">
-          <span class="pill orange">TikTok Reels / Shorts</span>
-          <span class="pill blue">Instagram Reels</span>
-          <span class="pill green">Story retargeting</span>
-          <span class="pill">Creator seeding</span>
-          <span class="pill">DM closer flow</span>
-        </div>
-        <p style="margin-top:12px">Zeely promises platform launch automation. In this repo, the practical substitute is a disciplined channel board with faster briefing, faster copy, and tighter measurement.</p>
-      </div>
-      <div class="card">
-        <h2>Creative Volume</h2>
-        <div class="checklist">
-          <div><strong>Weekly minimum</strong> 3 video angles, 3 static ads, 2 story frames, 1 founder proof post.</div>
-          <div><strong>Testing rule</strong> Change hook or product, not both at the same time.</div>
-          <div><strong>Kill rule</strong> If a creative has weak hook response after 1,000 impressions, cut it.</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-label">Sales Tracker</div>
-    <section class="card">
-      <p style="margin-bottom:14px">Edit this table weekly. The math matters more than the aesthetics here. The job is to see quickly whether the business is pacing toward 350 units.</p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Week</th>
-              <th>Units Goal</th>
-              <th>Units Sold</th>
-              <th>Revenue</th>
-              <th>Traffic Source</th>
-              <th>Best SKU</th>
-              <th>Winning Angle</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody id="trackerBody"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <div class="section-label">Operator Notes</div>
-    <section class="card">
-      <h2>What This Is And What It Is Not</h2>
-      <p>This is the part of Zeely that actually helps SNG move product now: speed from product to offer to creative to campaign to measurement. It is not a full clone of Zeely’s proprietary media-generation stack, ad-account automation, or checkout/payment sync. If this workflow starts producing consistent winners, the next upgrade should be external automation APIs, not more static-site complexity.</p>
-    </section>
+  <div class="actions">
+    <a class="btn ghost" href="SNG_HUB.html">Hub</a>
+    <a class="btn ghost" href="collections/hero-drop/">Hero Drop</a>
+    <a class="btn" href="content-hub.html">Content Engine</a>
   </div>
-<script>
-const STORAGE_KEY = 'sng-apparel-sales-os-v1';
-const HERO_PRODUCTS = [
-  { sku:'HERO-001', name:'Rider Team Colors Snapback', price:35.00, angle:'Main volume hat for the 90-day push with built-in rider segmentation by colorway.', audience:'E-moto riders, event traffic, bike-matching buyers.', cta:'Pick your rider colorway.', targetUnits:90 },
-  { sku:'HERO-002', name:'Florida Grown Tee', price:35.00, angle:'Florida identity product with stronger local-pride and founder-story crossover.', audience:'Florida riders, local supporters, gift buyers.', cta:'Wear the Florida signal.', targetUnits:55 },
-  { sku:'HERO-003', name:'Megalodon Tee', price:35.00, angle:'Most aggressive statement tee in the set and one of the strongest stop-scroll graphics.', audience:'Statement-piece buyers, shark-brand responders, cold traffic.', cta:'Claim the Megalodon tee.', targetUnits:60 },
-  { sku:'HERO-004', name:'Conversion Tee Series', price:35.00, angle:'Slogan-led conversion product that explains the buyer instantly.', audience:'EV converts, humor buyers, comment-section magnets.', cta:'Pick the conversion colorway.', targetUnits:90 },
-  { sku:'HERO-005', name:'Shut Up Get Out And Ride Hoodie', price:65.00, angle:'Higher-ticket hoodie and strongest AOV anchor when paired with the checker hat upsell.', audience:'Warm traffic, repeat viewers, premium buyers.', cta:'Step into the rider uniform.', targetUnits:55 }
-];
-const PERSONA_LINES = {
-  'e-moto':'This is for riders already past stock-bike thinking.',
-  'stunt':'This is for riders who want the culture to hit before the product explanation.',
-  'garage':'This is for builders who respect real work, parts decisions, and proof.',
-  'streetwear':'This is for people buying identity, not generic moto merch.'
-};
-const ANGLE_LINES = {
-  identity:['Wear the tribe.','Built for riders who do not want to follow the school.','This is not generic merch.'],
-  humor:['The line does the work.','People either laugh instantly or they are not the buyer.','Sell the slogan, not the fabric spec first.'],
-  founder:['Tie the merch back to the real build.','Founder proof lowers the skepticism.','Make the product feel earned, not printed.'],
-  gift:['Make it easy to buy one for yourself and one for somebody else.','Lead with easy pick-your-color language.','Bundle logic beats catalog logic.']
-};
-const FORMAT_TEMPLATES = {
-  ugc: function(product, persona, angle) {
-    return `HOOK: ${product.name}. ${ANGLE_LINES[angle][0]}\n\nSCRIPT:\n"If you ride e-moto, stunt, or garage-built stuff and you are tired of merch that looks like it was made for everybody, this is the one. ${product.name} from SNG. ${product.angle} ${PERSONA_LINES[persona]} Shop the first run before the colorway you want disappears."\n\nCTA:\n${product.cta}`;
-  },
-  static: function(product, persona, angle) {
-    return `HEADLINE: ${product.name}\nSUBHEAD: ${ANGLE_LINES[angle][1]}\nBODY: ${product.angle} ${PERSONA_LINES[persona]}\nCTA: ${product.cta}\nPRICE CALL-OUT: $${product.price.toFixed(2)}`;
-  },
-  reel: function(product, persona, angle) {
-    return `OPENING LINE:\n"${ANGLE_LINES[angle][2]}"\n\nTALKING REEL STRUCTURE:\n1. Show ${product.name} in first second.\n2. Say why it exists.\n3. Tie it to rider identity.\n4. Close with ${product.cta.toLowerCase()}\n\nCLOSER:\n"If this is your kind of riding, this is your kind of gear."`;
-  },
-  landing: function(product, persona, angle) {
-    return `SECTION HEADLINE:\n${product.name}\n\nSECTION COPY:\n${product.angle} ${PERSONA_LINES[persona]} ${ANGLE_LINES[angle][0]} Built for the SNG audience, not for the middle. Available now while the first run is still clean.\n\nBUTTON:\n${product.cta}`;
-  }
+</div>
+<div class="wrap">
+  <section class="hero">
+    <article class="card">
+      <div class="eyebrow">Sell Path</div>
+      <h1>Keep merch narrow enough to actually move.</h1>
+      <p>The merch OS now does one job: keep the hero set aligned with content, traffic, and Shopify routing. No bloated strategy wall. No fake complexity. Just products, angles, CTAs, and weekly pace.</p>
+      <div class="pill-row">
+        <span class="pill orange">One product</span>
+        <span class="pill blue">One angle</span>
+        <span class="pill green">One CTA</span>
+      </div>
+    </article>
+    <div class="stats">
+      <div class="stat"><strong>5</strong><span>Hero SKUs</span></div>
+      <div class="stat"><strong>350</strong><span>90-day goal</span></div>
+      <div class="stat"><strong>27</strong><span>Weekly pace</span></div>
+      <div class="stat"><strong>4</strong><span>Daily unit goal</span></div>
+    </div>
+  </section>
+
+  <div class="section-label">Hero Set</div>
+  <section class="products">
+    <article class="product">
+      <img src="assets/payhip/merch-ready/hat-sng-classic.png" alt="Snapback">
+      <strong>Team Colors Snapback</strong>
+      <span>Best first-touch product for rider-match content and colder traffic.</span>
+    </article>
+    <article class="product">
+      <img src="assets/payhip/merch-ready/tee-blue-white.png" alt="Florida tee">
+      <strong>Florida Grown Tee</strong>
+      <span>Identity and place-driven product for founder-proof creative.</span>
+    </article>
+    <article class="product">
+      <img src="sng-merch-display.png" alt="Megalodon tee">
+      <strong>Megalodon Tee</strong>
+      <span>Hardest shark graphic and strongest stop-scroll statement.</span>
+    </article>
+    <article class="product">
+      <img src="assets/payhip/merch-ready/tee-black-orange.png" alt="Conversion tee">
+      <strong>Conversion Tee</strong>
+      <span>Humor-led slogan product with strong comment pull.</span>
+    </article>
+    <article class="product">
+      <img src="assets/payhip/merch-ready/hoodie-black-listing.png" alt="Ride hoodie">
+      <strong>Ride Hoodie</strong>
+      <span>Warm-traffic premium piece and strongest upsell anchor.</span>
+    </article>
+  </section>
+
+  <div class="section-label">Rules</div>
+  <section class="grid">
+    <article class="card">
+      <h2>Traffic rules</h2>
+      <ul>
+        <li>Cold traffic should land on the hat or hero drop first.</li>
+        <li>Identity content should route into the matching tee page.</li>
+        <li>Warm traffic should be given hoodie upsell opportunities.</li>
+        <li>Do not send narrow creative into a broad store browse path.</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h2>Creative rules</h2>
+      <ul>
+        <li>Identity, humor, founder proof, or colorway. Pick one.</li>
+        <li>The CTA should match the product and the landing page exactly.</li>
+        <li>Merch should feel earned by the content, not forced into it.</li>
+        <li>Anything that reads generic gets cut.</li>
+      </ul>
+    </article>
+  </section>
+</div>
+</body>
+</html>
 };
 function renderProducts() {
   const root = document.getElementById('productCards');

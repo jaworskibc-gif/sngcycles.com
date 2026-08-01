@@ -2,222 +2,94 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>if(!sessionStorage.getItem('sng_auth')){sessionStorage.setItem('sng_return',location.href);location.href='sng-login.html';}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SNG Growth OS</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0d12;--panel:#151b23;--line:#29303b;--text:#edf2f9;--muted:#93a3b7;--orange:#f47820;--blue:#409dff;--green:#2fc87c}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif}
+a{text-decoration:none;color:inherit}
+.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 24px;border-bottom:1px solid var(--line)}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.brand span{color:var(--orange)}
+.sub{font-size:11px;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin-top:4px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;border-radius:10px;background:var(--orange);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:1.4px;text-transform:uppercase}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.wrap{max-width:1160px;margin:0 auto;padding:24px 18px 60px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.stat strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:36px;line-height:1;color:var(--orange)}
+.stat span{display:block;margin-top:6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.section-label{margin:24px 0 12px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--orange)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+h1,h2,h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;line-height:.95}
+h1{font-size:48px;margin-bottom:10px}
+h2{font-size:28px;margin-bottom:10px}
+h3{font-size:21px;margin-bottom:8px}
+p,li{font-size:14px;color:var(--muted);line-height:1.8}
+ul{list-style:none;display:grid;gap:8px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}
+th{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--orange)}
+.good{color:var(--green)}
+.watch{color:var(--blue)}
+@media(max-width:900px){.stats,.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.stats,.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div>
+    <div class="brand">SNG <span>Growth OS</span></div>
+    <div class="sub">Track content pressure and merch sell-through</div>
+  </div>
+  <div class="actions">
+    <a class="btn ghost" href="SNG_HUB.html">Hub</a>
+    <a class="btn ghost" href="content-hub.html">Content</a>
+    <a class="btn" href="SNG_APPAREL_SALES_OS.html">Merch OS</a>
+  </div>
+</div>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><strong>3</strong><span>Hook tests today</span></div>
+    <div class="stat"><strong>1</strong><span>Merch push live</span></div>
+    <div class="stat"><strong>27</strong><span>Weekly unit pace target</span></div>
+    <div class="stat"><strong>350</strong><span>90-day goal</span></div>
+  </div>
 
-  :root {
-    --bg: #0f1117;
-    --card: #1c1c24;
-    --card-dark: #141418;
-    --border: #2e2e38;
-    --text: #e6edf3;
-    --muted: #9090a0;
-    --orange: #f47820;
-    --orange-light: #ff9a4a;
-    --green: #22c55e;
-    --blue: #3b82f6;
-    --yellow: #eab308;
-    --red: #ef4444;
-    --purple: #a855f7;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 14px;
-    min-height: 100vh;
-    line-height: 1.5;
-  }
-
-  /* ── HEADER ── */
-  .header {
-    background: var(--card-dark);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .logo-text {
-    font-family: 'Barlow Condensed', system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 26px;
-    color: var(--orange);
-    letter-spacing: 0.03em;
-    line-height: 1;
-  }
-
-  .logo-shark {
-    font-size: 28px;
-    line-height: 1;
-  }
-
-  .tagline {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  .header-date {
-    font-family: 'Barlow Condensed', system-ui, sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  /* ── TABS ── */
-  .tabs-bar {
-    background: var(--card-dark);
-    border-bottom: 1px solid var(--border);
-    padding: 0 24px;
-    display: flex;
-    gap: 4px;
-  }
-
-  .tab-btn {
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 12px 18px;
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
-    white-space: nowrap;
-  }
-
-  .tab-btn:hover {
-    color: var(--text);
-  }
-
-  .tab-btn.active {
-    color: var(--orange);
-    border-bottom-color: var(--orange);
-  }
-
-  /* ── MAIN LAYOUT ── */
-  .main {
-    padding: 24px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .tab-section {
-    display: none;
-  }
-
-  .tab-section.active {
-    display: block;
-  }
-
-  /* ── CARDS ── */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-  }
-
-  .card-dark {
-    background: var(--card-dark);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-  }
-
-  .section-title {
-    font-family: 'Barlow Condensed', system-ui, sans-serif;
-    font-weight: 900;
-    font-size: 20px;
-    color: var(--text);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .section-title span {
-    color: var(--orange);
-  }
-
-  /* ── BUTTONS ── */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--orange);
-    color: #fff;
-    border: none;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 9px 18px;
-    cursor: pointer;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-    transition: background 0.15s, transform 0.1s;
-  }
-
-  .btn:hover {
-    background: var(--orange-light);
-  }
-
-  .btn:active {
-    transform: scale(0.97);
-  }
-
-  .btn-sm {
-    padding: 5px 12px;
-    font-size: 11px;
-    clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
-  }
-
-  .btn-ghost {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    clip-path: none;
-    border-radius: 5px;
-    padding: 5px 12px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    transition: border-color 0.15s, color 0.15s;
-  }
-
-  .btn-ghost:hover {
-    border-color: var(--orange);
-    color: var(--orange);
-  }
-
-  /* ── TABLES ── */
-  .table-wrap {
-    overflow-x: auto;
-    border-radius: 10px;
+  <div class="section-label">What matters</div>
+  <section class="grid">
+    <article class="card">
+      <h1>The scoreboard is small on purpose.</h1>
+      <p>The old system tried to do too much at once. This reset tracks only what affects growth: post output, hook performance, merch traffic, and units moved.</p>
+      <ul style="margin-top:12px">
+        <li>Did a real post go out today?</li>
+        <li>Did the post point at the right product or collection?</li>
+        <li>Did the merch lane get traffic without catalog leakage?</li>
+        <li>Did the weekly unit pace improve?</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h2>Weekly pulse</h2>
+      <table>
+        <thead>
+          <tr><th>Track</th><th>Status</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Content consistency</td><td class="good">On</td><td>One real post per day is the baseline.</td></tr>
+          <tr><td>Hero SKU focus</td><td class="good">On</td><td>Five-product focus stays intact.</td></tr>
+          <tr><td>Shopify path</td><td class="watch">Watch</td><td>Needs tighter product-page and collection alignment.</td></tr>
+          <tr><td>Telegram flow</td><td class="watch">Watch</td><td>Approval rail exists conceptually, wiring comes next.</td></tr>
+        </tbody>
+      </table>
+    </article>
+  </section>
+</div>
+</body>
+</html>
     border: 1px solid var(--border);
   }
 
