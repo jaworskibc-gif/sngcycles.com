@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="731" height="82" viewBox="0 0 731 82">
+  <defs>
+    <clipPath id="left-strip">
+      <rect x="0" y="0" width="191" height="82"/>
+    </clipPath>
+    <clipPath id="right-strip">
+      <rect x="193" y="0" width="538" height="82"/>
+    </clipPath>
+  </defs>
+  <rect width="731" height="82" fill="#1d1d1d"/>
+  <g clip-path="url(#left-strip)">
+    <image href="parts-brands.png" width="853" height="82" x="0" y="0"/>
+  </g>
+  <g clip-path="url(#right-strip)" transform="translate(-122 0)">
+    <image href="parts-brands.png" width="853" height="82" x="0" y="0"/>
+  </g>
+</svg>
