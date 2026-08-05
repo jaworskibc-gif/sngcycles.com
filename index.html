@@ -82,6 +82,12 @@ img { display: block; width: 100%; }
   padding-left: 0;
 }
 
+.nav-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
 .brand-name {
   font-family: var(--headline);
   font-size: 22px;
@@ -97,6 +103,55 @@ img { display: block; width: 100%; }
   text-transform: uppercase;
   color: var(--oxide);
   font-weight: 700;
+}
+
+.team-proof-visual {
+  margin-bottom: 22px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.team-proof-visual img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 440px;
+  object-position: center 30%;
+}
+
+.brand-identity-strip {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #060809;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.brand-id-block {
+  padding: 32px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-id-block:first-child {
+  border-right: 1px solid var(--line);
+}
+
+.brand-id-block img {
+  width: 100%;
+  max-width: 480px;
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .brand-identity-strip {
+    grid-template-columns: 1fr;
+  }
+  .brand-id-block:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
 }
 
 .nav-links {
@@ -1206,10 +1261,7 @@ h1, h2, h3 {
   <div class="shell site-frame">
     <header class="nav">
       <div class="mark">
-        <div class="brand-lockup">
-          <div class="brand-name">SNG Cycles</div>
-          <div class="brand-sub">Shark Not Goldfish</div>
-        </div>
+        <img src="images/sng-logo-white.png" alt="SNG Cycles" class="nav-logo">
       </div>
       <nav class="nav-links">
         <a href="#problem">Fit</a>
@@ -1249,7 +1301,7 @@ h1, h2, h3 {
                 </article>
                 <article class="hero-bike-card">
                   <div class="hero-bike-media">
-                    <img src="images/270e-oxide-cover.jpg" alt="SNG 270E showroom bike">
+                    <img src="images/270e-no-gas-team.png" alt="SNG 270E team race build with full livery">
                   </div>
                   <div class="hero-bike-tag">
                     <strong>SNG 270E</strong>
@@ -1368,6 +1420,9 @@ h1, h2, h3 {
         <p>No factory. No oversized staff. Just the founder, a licensed and certified KTM master mechanic, and AI taking the long road until the bike finally felt right.</p>
       </div>
       <div class="section-content">
+        <div class="team-proof-visual">
+          <img src="images/team-300-livery.png" alt="SNG Cycles 300 team livery build — teal, white, and gold">
+        </div>
         <p class="support">Some versions got close. Some got torn back down, sold off, and restarted before they were ever worthy of finishing. This bike was paid for in time, money, and refusing to stop at good enough.</p>
         <div class="credentials">
           <div class="credential">
@@ -1387,6 +1442,15 @@ h1, h2, h3 {
             <span>Small Team, Real Build</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="brand-identity-strip" aria-label="Brand identity">
+      <div class="brand-id-block">
+        <img src="images/shark-not-goldfish-logo.png" alt="Shark Not Goldfish Cycles — team logo">
+      </div>
+      <div class="brand-id-block">
+        <img src="images/sng4life-knuckle.png" alt="SNG4LIFE">
       </div>
     </section>
 
