@@ -1,10 +1,30 @@
-/* SNG site sales bot widget — talks to Command Hub /api/chat */
+/* SNG site sales bot widget — talks to local hub or Supabase edge function */
 (function () {
   "use strict";
   const API = window.SNG_HUB_API || "";
-  const CHAT_URL = API ? API + "/api/chat" : "/.netlify/functions/chat";
-  const LEAD_URL = API ? API + "/api/lead" : "/.netlify/functions/lead";
-  const APPOINTMENT_URL = API ? API + "/api/appointment" : "/.netlify/functions/appointment";
+  const FUNCTION_BASE = (window.SNG_BOT_API_BASE || "").replace(/\/$/, "");
+  const LOCAL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+  const CHAT_URL = API
+    ? API + "/api/chat"
+    : FUNCTION_BASE
+      ? FUNCTION_BASE + "/chat"
+      : LOCAL
+        ? "http://127.0.0.1:8787/api/chat"
+        : "";
+  const LEAD_URL = API
+    ? API + "/api/lead"
+    : FUNCTION_BASE
+      ? FUNCTION_BASE + "/lead"
+      : LOCAL
+        ? "http://127.0.0.1:8787/api/lead"
+        : "";
+  const APPOINTMENT_URL = API
+    ? API + "/api/appointment"
+    : FUNCTION_BASE
+      ? FUNCTION_BASE + "/appointment"
+      : LOCAL
+        ? "http://127.0.0.1:8787/api/appointment"
+        : "";
   const PRODUCT_BRIEF = `Product truth:
 - There are two relevant model references buyers may ask about:
   1. SNG 270E / 270-E: earlier ~27 kW class bike / naming.
@@ -212,6 +232,11 @@ Rules:
     if (!submit) return;
 
     if (state.mode === "lead") {
+      if (!LEAD_URL) {
+        add("bot", "Lead capture host not configured yet. Wire js/chat-config.js to the Supabase function and reload.");
+        closeCapture();
+        return;
+      }
       const name = capture.querySelector('[name="name"]').value.trim();
       const contact = capture.querySelector('[name="contact"]').value.trim();
       const serial = capture.querySelector('[name="serial"]').value.trim();
@@ -261,6 +286,11 @@ Rules:
     }
 
     if (state.mode === "appointment") {
+      if (!APPOINTMENT_URL) {
+        add("bot", "Appointment host not configured yet. Wire js/chat-config.js to the Supabase function and reload.");
+        closeCapture();
+        return;
+      }
       const name = capture.querySelector('[name="name"]').value.trim();
       const contact = capture.querySelector('[name="contact"]').value.trim();
       const when = capture.querySelector('[name="when"]').value.trim();
@@ -302,6 +332,10 @@ Rules:
     e.preventDefault();
     const text = input.value.trim();
     if (!text) return;
+    if (!CHAT_URL) {
+      add("bot", "Bot host not configured yet. Wire js/chat-config.js to the Supabase function and reload.");
+      return;
+    }
     input.value = "";
     add("user", text);
     history.push({ role: "user", content: text });
@@ -330,7 +364,8 @@ Rules:
       }
 
       if (/deposit|allocate|appointment|buy|reserve/i.test(text) && !state.requestSent) {
-        fetch(LEAD_URL, {
+        if (LEAD_URL) {
+          fetch(LEAD_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -338,7 +373,8 @@ Rules:
             message: text,
             reply: reply.slice(0, 500),
           }),
-        }).catch(() => {});
+          }).catch(() => {});
+        }
       }
     } catch (err) {
       add(
