@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SNG Command Hub — Social · Garage · Bot</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="hub.css" />
+</head>
+<body class="hub-body">
+  <div class="hub-shell">
+    <aside class="hub-nav">
+      <a class="hub-logo" href="../index.html">
+        <span class="hub-logo-mark">SNG</span>
+        <span class="hub-logo-text">Command Hub</span>
+      </a>
+      <nav>
+        <button type="button" class="hub-tab active" data-panel="social">Social Engine</button>
+        <button type="button" class="hub-tab" data-panel="garage">Garage Calendar</button>
+        <button type="button" class="hub-tab" data-panel="capcut">CapCut Pipeline</button>
+        <button type="button" class="hub-tab" data-panel="bot">Sales Bot</button>
+        <button type="button" class="hub-tab" data-panel="appointments">Appointments</button>
+        <button type="button" class="hub-tab" data-panel="telegram">Telegram</button>
+        <button type="button" class="hub-tab" data-panel="setup">API Setup</button>
+      </nav>
+      <a class="hub-back" href="../index.html">← Public site</a>
+    </aside>
+
+    <main class="hub-main">
+      <!-- SOCIAL -->
+      <section class="hub-panel active" id="panel-social">
+        <header class="hub-header">
+          <h1>Social Engine</h1>
+          <p>Weekly content machine — posts, hooks, and CapCut-ready scripts for the 270-E and 5 core merch SKUs.</p>
+        </header>
+        <div class="hub-grid-2">
+          <div class="hub-card">
+            <h2>This week’s queue</h2>
+            <ul class="hub-queue" id="social-queue">
+              <li><span class="day">Mon</span><div><strong>Garage proof reel</strong><em>Gold 270-E · 15s · “internet says fake”</em></div><span class="ch">IG/TT</span></li>
+              <li><span class="day">Tue</span><div><strong>Tall rider hook</strong><em>40″ seat vs compact · still + CTA allocate</em></div><span class="ch">IG</span></li>
+              <li><span class="day">Wed</span><div><strong>Parts flex</strong><em>WP / Lewis / Warp9 logo strip + voiceover</em></div><span class="ch">TT</span></li>
+              <li><span class="day">Thu</span><div><strong>Merch drop</strong><em>Haul Ass hoodie · 500/mo frame · shop link</em></div><span class="ch">IG/Shop</span></li>
+              <li><span class="day">Fri</span><div><strong>Founder story</strong><em>6′7″ · $50k · 14 months · deposit CTA</em></div><span class="ch">IG</span></li>
+              <li><span class="day">Sat</span><div><strong>Allocation scarcity</strong><em>30 units · serial strip · $1k deposit</em></div><span class="ch">All</span></li>
+              <li><span class="day">Sun</span><div><strong>Reply engine</strong><em>Hit every “is it real?” comment with site link</em></div><span class="ch">DM</span></li>
+            </ul>
+          </div>
+          <div class="hub-card">
+            <h2>Hook generator</h2>
+            <p class="muted">Uses Claude when the hub server is running.</p>
+            <textarea id="hook-prompt" rows="3" placeholder="e.g. 15s Reel about gold 270-E for tall Ducati riders">Write 5 short social hooks for the SNG 270-E gold full-panel ($20k, 30 units). Aggressive but premium. No e-bike language.</textarea>
+            <button type="button" class="btn btn-primary" id="gen-hooks">Generate hooks</button>
+            <pre class="hub-out" id="hook-out">Hooks appear here…</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- GARAGE CALENDAR -->
+      <section class="hub-panel" id="panel-garage">
+        <header class="hub-header">
+          <h1>Garage Calendar</h1>
+          <p>Build slots, track validations, deposit follow-ups, content shoot days.</p>
+        </header>
+        <div class="hub-card">
+          <div class="cal-toolbar">
+            <button type="button" class="btn btn-ghost" id="cal-prev">←</button>
+            <h2 id="cal-label">Month</h2>
+            <button type="button" class="btn btn-ghost" id="cal-next">→</button>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+          <form class="cal-form" id="cal-form">
+            <h3>Add garage event</h3>
+            <div class="hub-fields">
+              <input name="date" type="date" required />
+              <input name="title" type="text" placeholder="Title (e.g. Track validation #03)" required />
+              <select name="type">
+                <option value="build">Build / wrench</option>
+                <option value="validation">Track validation</option>
+                <option value="content">Content shoot</option>
+                <option value="customer">Customer appointment</option>
+                <option value="ship">Merch / parts ship</option>
+              </select>
+              <input name="notes" type="text" placeholder="Notes" />
+              <button type="submit" class="btn btn-primary">Save event</button>
+            </div>
+          </form>
+          <ul class="hub-event-list" id="cal-events"></ul>
+        </div>
+      </section>
+
+      <!-- CAPCUT -->
+      <section class="hub-panel" id="panel-capcut">
+        <header class="hub-header">
+          <h1>CapCut Pipeline</h1>
+          <p>Simple production line: raw garage → cut → caption → post. Export specs ready for IG/TikTok.</p>
+        </header>
+        <div class="hub-grid-3">
+          <div class="hub-card">
+            <h2>01 · Capture</h2>
+            <ul class="hub-bullets">
+              <li>Gold 270-E only (full panel)</li>
+              <li>Macro: tool marks, brakes, canopy</li>
+              <li>Vertical 9:16 primary</li>
+              <li>No stock music clichés — use raw motor silence</li>
+            </ul>
+          </div>
+          <div class="hub-card">
+            <h2>02 · CapCut cut</h2>
+            <ul class="hub-bullets">
+              <li>Hook text first 1.5s</li>
+              <li>3–5 cuts max · 12–20s</li>
+              <li>End card: Allocate · $1k / Shop</li>
+              <li>Export: 1080×1920, 30fps, high</li>
+            </ul>
+          </div>
+          <div class="hub-card">
+            <h2>03 · Post kit</h2>
+            <ul class="hub-bullets">
+              <li>Caption from Social Engine</li>
+              <li>First comment = site link</li>
+              <li>Tag parts brands when fair</li>
+              <li>Pin allocation CTA on grid</li>
+            </ul>
+          </div>
+        </div>
+        <div class="hub-card" style="margin-top:16px">
+          <h2>Script pad</h2>
+          <textarea id="capcut-script" rows="6" placeholder="Paste CapCut on-screen text + VO…">HOOK: The internet says this is fake.
+BEAT 2: Gold full-panel. 270-E. Florida garage.
+BEAT 3: 40" seat. Under 200 lbs. 100+.
+END: 30 units. $1,000 refundable. Link in bio.</textarea>
+          <button type="button" class="btn btn-primary" id="gen-script">Expand with Claude</button>
+          <pre class="hub-out" id="script-out"></pre>
+        </div>
+      </section>
+
+      <!-- BOT -->
+      <section class="hub-panel" id="panel-bot">
+        <header class="hub-header">
+          <h1>Sales Bot (site + after hours)</h1>
+          <p>Claude-powered. Handles skepticism, specs, allocation, merch, appointments — while you wrench.</p>
+        </header>
+        <div class="hub-grid-2">
+          <div class="hub-card bot-chat">
+            <div class="bot-messages" id="bot-messages">
+              <div class="bot-msg bot"><strong>SNG Bot</strong><p>Ask me anything a customer would ask after hours…</p></div>
+            </div>
+            <form class="bot-compose" id="bot-form">
+              <input id="bot-input" type="text" placeholder="e.g. Is the 70HP real? How do I reserve?" autocomplete="off" />
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+          </div>
+          <div class="hub-card">
+            <h2>Bot can</h2>
+            <ul class="hub-bullets">
+              <li>Kill “fake specs” skepticism with proof language</li>
+              <li>Walk $20k allocation + $1k deposit steps</li>
+              <li>Push 5 core apparel SKUs</li>
+              <li>Book garage appointments (stores in calendar)</li>
+              <li>After-hours FAQ · hours · location framing</li>
+              <li>Escalate hot leads to Telegram</li>
+            </ul>
+            <h2 style="margin-top:20px">System prompt (edit)</h2>
+            <textarea id="bot-system" rows="8">You are the SNG Cycles sales assistant for the 270-E Founders Series gold full-panel hyper-moto ($20,000 MSRP, 30 units, $1,000 refundable deposit). Never say e-bike, Surron, or Light Bee. Say custom billet platform / hyper-moto / 270-E. Tone: luxury-automotive restraint + Shark Not Goldfish attitude. Help with specs (~70HP, under 200lbs, 100+ MPH, ~40" seat), Kinetic Canopy, allocation applications, apparel (5 core items), and garage appointments. If they want to book, collect name, phone/email, preferred date/time, and purpose. Keep answers tight.</textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPOINTMENTS -->
+      <section class="hub-panel" id="panel-appointments">
+        <header class="hub-header">
+          <h1>Appointments</h1>
+          <p>Leads from the site bot + manual adds. Syncs into Garage Calendar.</p>
+        </header>
+        <div class="hub-card">
+          <form id="appt-form" class="hub-fields">
+            <input name="name" placeholder="Name" required />
+            <input name="contact" placeholder="Email or phone" required />
+            <input name="when" type="datetime-local" required />
+            <select name="purpose">
+              <option value="viewing">Garage viewing / proof</option>
+              <option value="deposit">Deposit / allocation talk</option>
+              <option value="validation">Track validation</option>
+              <option value="merch">Merch / brand</option>
+              <option value="other">Other</option>
+            </select>
+            <input name="notes" placeholder="Notes" />
+            <button type="submit" class="btn btn-primary">Add appointment</button>
+          </form>
+          <ul class="hub-event-list" id="appt-list"></ul>
+        </div>
+      </section>
+
+      <!-- TELEGRAM -->
+      <section class="hub-panel" id="panel-telegram">
+        <header class="hub-header">
+          <h1>Telegram bridge</h1>
+          <p>Talk to the hub / get lead alerts through Telegram. You ↔ Claude ↔ customers.</p>
+        </header>
+        <div class="hub-card">
+          <ol class="hub-steps">
+            <li>Message <strong>@BotFather</strong> → create bot → copy token</li>
+            <li>Set <code>TELEGRAM_BOT_TOKEN</code> in <code>hub/.env</code></li>
+            <li>Set <code>TELEGRAM_CHAT_ID</code> (your user or group) for lead alerts</li>
+            <li>Run <code>npm run telegram</code> in <code>hub/</code></li>
+            <li>Message your bot: <code>/leads</code> <code>/calendar</code> <code>/ask …</code></li>
+          </ol>
+          <p class="muted">When the site bot books an appointment or flags a hot buyer, Telegram gets a push.</p>
+          <pre class="hub-out" id="tg-status">Telegram status: check server logs after start.</pre>
+        </div>
+      </section>
+
+      <!-- SETUP -->
+      <section class="hub-panel" id="panel-setup">
+        <header class="hub-header">
+          <h1>API setup</h1>
+          <p>Anthropic tokens stay server-side. Never put keys in the public site JS.</p>
+        </header>
+        <div class="hub-card">
+          <pre class="hub-out setup-pre"># hub/.env
+ANTHROPIC_API_KEY=your-anthropic-key-here
+ANTHROPIC_MODEL=claude-sonnet-4-20250514
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+PORT=8787
+SNG_DEPOSIT_URL=           # Stripe Payment Link for $1k
+SNG_SHOP_URL=https://payhip.com/
+
+# Start
+cd hub
+npm install
+npm start          # API + serves chat endpoints
+npm run telegram   # optional Telegram worker
+</pre>
+          <p class="muted">Public chat widget calls <code>/api/chat</code> on this hub. Preview: site on :8765, hub API on :8787.</p>
+          <p><a class="btn btn-primary" href="../index.html">Open public site</a></p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="hub.js"></script>
+</body>
+</html>
