@@ -1,0 +1,4 @@
+project_id = "sngcycles-command-hub"
+
+[functions.sng-command-hub]
+verify_jwt = false
