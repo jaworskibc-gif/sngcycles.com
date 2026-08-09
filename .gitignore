@@ -1,0 +1,4 @@
+hub/.env
+hub/node_modules/
+hub/data/
+hub/.env.save

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Founders Series Allocation — SNG Cycles</title>
+  <meta name="description" content="Apply for a 520E or 270E Founders Series allocation. 15 units per model. $1,000 fully refundable deposit." />
+<!-- INCLUDE:fonts -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- INCLUDE:nav -->
+
+  <main class="form-shell">
+    <div class="wrap">
+      <div class="form-grid">
+        <aside class="form-aside reveal">
+          <div class="sec-eyebrow" style="color:var(--accent)">Founders Series · 15 units per model</div>
+          <h1>This is not checkout. This is allocation.</h1>
+          <p>Fifteen hand-built, serialized machines per model — 520E and 270E — each with a laser-etched chassis plate. Selling the series funds the shop. You are applying, not impulse-buying.</p>
+          <p><strong>$1,000 fully refundable reservation</strong> held via Shopify checkout. When your deposit clears, the Founders Edition garment box ships within 48 hours.</p>
+        </aside>
+
+        <div class="form-card reveal">
+          <h2>Allocation application</h2>
+          <p class="intro">Complete the form below. Preferred serial numbers are requests — final assignment confirmed after deposit and review.</p>
+
+          <form id="founders-form" novalidate>
+            <div class="f">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="f-row">
+              <div class="f">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required autocomplete="email" />
+              </div>
+              <div class="f">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="f">
+              <label for="location">City / Region</label>
+              <input id="location" name="location" type="text" />
+            </div>
+            <div class="f">
+              <label for="model">Model</label>
+              <select id="model" name="model" required>
+                <option value="" disabled selected>Select model</option>
+                <option value="270E">270E — 27kW</option>
+                <option value="520E">520E — 52kW, billet aluminum frame/swingarm/subframe</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="background">Riding background</label>
+              <select id="background" name="background" required>
+                <option value="" disabled selected>Select primary background</option>
+                <option value="ducati">Ducati owner / rider</option>
+                <option value="bmw">BMW Motorrad</option>
+                <option value="husqvarna">Husqvarna</option>
+                <option value="track">Track / race days</option>
+                <option value="supermoto">Supermoto / street performance</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="experience">Tell us about your machines &amp; intent</label>
+              <textarea id="experience" name="experience" rows="4"></textarea>
+            </div>
+            <div class="f-row">
+              <div class="f">
+                <label for="serial">Preferred serial</label>
+                <select id="serial" name="serial">
+                  <option value="">No preference</option>
+                  <option>01/15</option><option>02/15</option><option>03/15</option>
+                  <option>04/15</option><option>05/15</option><option>06/15</option>
+                  <option>07/15</option><option>08/15</option><option>09/15</option>
+                  <option>10/15</option><option>11/15</option><option>12/15</option>
+                  <option>13/15</option><option>14/15</option><option>15/15</option>
+                </select>
+              </div>
+              <div class="f">
+                <label for="height">Rider height (optional)</label>
+                <input id="height" name="height" type="text" placeholder="e.g. 6'4&quot;" />
+              </div>
+            </div>
+            <div class="f">
+              <label style="display:flex;align-items:flex-start;gap:10px;text-transform:none;letter-spacing:0;font-weight:400;cursor:pointer;">
+                <input type="checkbox" name="terms" required style="width:auto;margin-top:3px;" />
+                <span style="font-size:13px;color:var(--ink-lo);">I understand this is an application for a refundable $1,000 deposit reservation — not a final purchase.</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-fill" style="width:100%;justify-content:center;">Submit allocation application</button>
+          </form>
+
+          <div class="deposit-box" id="deposit-box">
+            <h3>Step 2 · $1,000 refundable deposit</h3>
+            <p>Deposit is collected via Shopify checkout — inventory capped at 15 units per model.</p>
+            <a id="deposit-link" class="btn btn-line-light" href="#">Pay $1,000 refundable deposit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<!-- INCLUDE:footer -->
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+  <script src="js/chat-widget.js"></script>
+</body>
+</html>

@@ -1,899 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SNG Cycles | Shark Not Goldfish</title>
-<meta name="description" content="SNG Cycles builds full-size electric hyper-motos in Florida. The 520E Mako Founders Series leads the program, with the 270E platform proving the stance from the start.">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --black: #050709;
-  --char: #0e1215;
-  --white: #f5f7fa;
-  --white-soft: rgba(245, 247, 250, 0.74);
-  --teal: #2f6f73;
-  --teal-bright: #5ba2a5;
-  --line: rgba(245, 247, 250, 0.16);
-  --line-strong: rgba(245, 247, 250, 0.28);
-  --max: 1500px;
-  --headline: "Antonio", sans-serif;
-  --body: "Space Grotesk", sans-serif;
-}
-
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--body);
-  color: var(--white);
-  background: var(--black);
-}
-
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-
-.page {
-  width: min(calc(100% - 24px), var(--max));
-  margin: 12px auto;
-  border: 1px solid var(--line);
-  background: var(--black);
-}
-
-.shell {
-  width: min(calc(100% - 32px), 1420px);
-  margin: 0 auto;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--teal-bright);
-}
-
-.eyebrow::before {
-  content: "";
-  width: 34px;
-  height: 1px;
-  background: currentColor;
-}
-
-h1, h2, h3, h4 {
-  font-family: var(--headline);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height: 0.92;
-}
-
-p {
-  color: var(--white-soft);
-  line-height: 1.8;
-}
-
-.button {
-  min-height: 52px;
-  padding: 0 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--line-strong);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.button.primary {
-  background: var(--teal);
-  border-color: var(--teal);
-  color: var(--white);
-}
-
-.button.secondary {
-  background: transparent;
-  color: var(--white);
-}
-
-.button:hover {
-  border-color: var(--white);
-}
-
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-  background: rgba(5, 7, 9, 0.92);
-  backdrop-filter: blur(12px);
-}
-
-.nav-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-}
-
-.mark {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.mark img {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-}
-
-.brand-name {
-  font-family: var(--headline);
-  font-size: 22px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.brand-sub {
-  margin-top: 3px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--teal-bright);
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 12px 18px;
-  align-items: center;
-}
-
-.nav-links a {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--white-soft);
-}
-
-.hero {
-  padding: 26px 0 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: 18px;
-  align-items: stretch;
-}
-
-.hero-copy {
-  padding: 20px 0 26px;
-}
-
-.hero-copy h1 {
-  margin-top: 18px;
-  max-width: 8ch;
-  font-size: clamp(78px, 12vw, 170px);
-}
-
-.hero-sub {
-  margin-top: 20px;
-  max-width: 31ch;
-  font-size: 22px;
-  color: var(--white);
-}
-
-.hero-text {
-  margin-top: 18px;
-  max-width: 56ch;
-  font-size: 15px;
-}
-
-.cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.hero-tape {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.hero-tape div {
-  padding: 14px 10px;
-  border-right: 1px solid var(--line);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--white-soft);
-}
-
-.hero-tape div:last-child { border-right: none; }
-
-.hero-stack {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 18px;
-}
-
-.logo-wall {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.logo-tile {
-  min-height: 156px;
-  padding: 18px;
-  border: 1px solid var(--line);
-  background: var(--char);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-tile img {
-  width: 100%;
-  max-width: 210px;
-  max-height: 88px;
-  object-fit: contain;
-}
-
-.hero-bike {
-  border: 1px solid var(--line);
-  background: var(--white);
-  overflow: hidden;
-}
-
-.hero-bike img {
-  width: 100%;
-  aspect-ratio: 1.08 / 1;
-  object-fit: cover;
-}
-
-.hero-bike-caption {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px 18px;
-  background: var(--black);
-  border-top: 1px solid var(--line);
-}
-
-.hero-bike-caption strong,
-.story-card strong,
-.bike-card strong,
-.spec-card strong,
-.detail-card strong,
-.build-card strong,
-.contact-card strong,
-.legal-card strong {
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-.hero-bike-caption span,
-.story-card span,
-.bike-card span,
-.build-card span,
-.contact-card span,
-.legal-card span {
-  display: block;
-  margin-top: 8px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--white-soft);
-}
-
-.section {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.section-head {
-  display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
-  gap: 18px;
-  align-items: end;
-  margin-bottom: 18px;
-}
-
-.section-head h2 {
-  margin-top: 10px;
-  font-size: clamp(44px, 6vw, 92px);
-}
-
-.section-head p {
-  max-width: 62ch;
-  font-size: 15px;
-}
-
-.story-grid,
-.build-grid,
-.contact-grid,
-.legal-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.story-card,
-.build-card,
-.contact-card,
-.legal-card {
-  padding: 18px;
-  border: 1px solid var(--line);
-  background: var(--char);
-}
-
-.bike-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.bike-card {
-  border: 1px solid var(--line);
-  background: var(--char);
-  overflow: hidden;
-}
-
-.bike-card img {
-  width: 100%;
-  aspect-ratio: 16 / 11;
-  object-fit: cover;
-}
-
-.bike-copy {
-  padding: 18px;
-}
-
-.bike-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  align-items: end;
-}
-
-.bike-top h3 {
-  font-size: clamp(34px, 4.6vw, 62px);
-}
-
-.bike-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--teal-bright);
-}
-
-.bike-copy p {
-  margin-top: 14px;
-  font-size: 14px;
-}
-
-.bike-specs {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.bike-specs div,
-.spec-card,
-.detail-card {
-  padding: 14px;
-  border: 1px solid var(--line);
-  background: var(--black);
-}
-
-.bike-specs div {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--white-soft);
-}
-
-.spec-layout {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 18px;
-}
-
-.spec-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.spec-card span {
-  display: block;
-  margin-top: 8px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--white-soft);
-}
-
-.spec-card strong {
-  margin-top: 8px;
-  font-family: var(--headline);
-  font-size: clamp(28px, 3vw, 44px);
-  color: var(--teal-bright);
-}
-
-.detail-stack {
-  display: grid;
-  gap: 12px;
-}
-
-.detail-card p {
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-.build-band {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  gap: 18px;
-}
-
-.build-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.build-visual {
-  display: grid;
-  gap: 12px;
-}
-
-.build-visual img {
-  width: 100%;
-  min-height: 220px;
-  object-fit: cover;
-  border: 1px solid var(--line);
-}
-
-.footer {
-  padding: 22px 0 30px;
-}
-
-.footer-grid {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-  flex-wrap: wrap;
-}
-
-.footer-brand {
-  max-width: 42ch;
-}
-
-.footer-brand p {
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-.footer-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  align-items: start;
-  align-content: start;
-}
-
-.footer-meta a,
-.footer-meta span {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--white-soft);
-}
-
-@media (max-width: 1120px) {
-  .hero-grid,
-  .section-head,
-  .bike-grid,
-  .spec-layout,
-  .build-band {
-    grid-template-columns: 1fr;
-  }
-
-  .story-grid,
-  .legal-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 820px) {
-  .page {
-    width: 100%;
-    margin: 0;
-    border-left: none;
-    border-right: none;
-  }
-
-  .shell {
-    width: min(calc(100% - 24px), 1420px);
-  }
-
-  .nav-row {
-    align-items: start;
-    flex-direction: column;
-  }
-
-  .logo-wall,
-  .hero-tape,
-  .story-grid,
-  .bike-specs,
-  .spec-grid,
-  .build-grid,
-  .contact-grid,
-  .legal-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-copy h1 {
-    font-size: clamp(62px, 18vw, 110px);
-  }
-
-  .footer-grid {
-    flex-direction: column;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .button { transition: none; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SNG Cycles — Street-Legal Electric Hyper-Moto · 520E &amp; 270E</title>
+  <meta name="description" content="SNG Cycles Founders Series. Built for riders the industry forgot — too tall, too big, ignored by every existing electric platform. 520E (52kW) and 270E (27kW). 15 units per model. $1,000 refundable deposit." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div class="page">
-    <header class="nav">
-      <div class="shell nav-row">
-        <a class="mark" href="#top" aria-label="SNG Cycles home">
-          <img src="sng-fin-logo.svg" alt="SNG fin logo">
-          <div>
-            <div class="brand-name">SNG Cycles</div>
-            <div class="brand-sub">Shark Not Goldfish</div>
-          </div>
-        </a>
-        <nav class="nav-links" aria-label="Primary">
-          <a href="#story">Story</a>
-          <a href="#bikes">Bikes</a>
-          <a href="#specs">Specs</a>
-          <a href="#build">Build Path</a>
-          <a class="button primary" href="#contact">Request Allocation</a>
-        </nav>
-      </div>
-    </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="shell hero-grid">
-          <div class="hero-copy">
-            <div class="eyebrow">Florida Built · Electric Only</div>
-            <h1>Built For The Rider Who Refused Smaller.</h1>
-            <p class="hero-sub">SNG is a full-size electric motorcycle program, not a compact-platform apology wrapped in motorsport graphics.</p>
-            <p class="hero-text">The recent strategy and 520E documents all point the same direction: full-size geometry, serious hardware language, serialized Founders allocation, and a visual system that feels like a premium electric motorsport brand instead of another disposable category site.</p>
-            <div class="cta-row">
-              <a class="button primary" href="#bikes">See The Bikes</a>
-              <a class="button secondary" href="#contact">Apply For Founders Series</a>
-            </div>
-            <div class="hero-tape" aria-label="Key 520E highlights">
-              <div>520E Mako</div>
-              <div>~52 kW Torp electric</div>
-              <div>40" seat · 58" wheelbase</div>
-              <div>Founders 01/30</div>
-            </div>
-          </div>
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="nav-brand" aria-label="SNG Cycles home">
+      <img src="assets/brand/sng-fin-script-logo.png" alt="SNG Cycles" />
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="270e.html">270E</a>
+      <a href="520e.html">520E</a>
+      <a href="apparel.html">Apparel</a>
+      <a href="founder.html">Founder</a>
+      <a href="faq.html">FAQ</a>
+      <a href="founders.html" class="nav-cta">Reserve · $1,000</a>
+    </div>
+  </nav>
 
-          <div class="hero-stack">
-            <div class="logo-wall" aria-label="SNG logo system">
-              <div class="logo-tile"><img src="images/sng-logo-white.png" alt="SNG Cycles logo"></div>
-              <div class="logo-tile"><img src="images/shark-not-goldfish-logo.png" alt="Shark Not Goldfish logo"></div>
-              <div class="logo-tile"><img src="images/great-white-logo.png" alt="Great White logo"></div>
-            </div>
-            <figure class="hero-bike">
-              <img src="assets/hero-520e.jpg" alt="SNG 520E Mako electric hyper-moto">
-              <figcaption class="hero-bike-caption">
-                <div>
-                  <strong>520E Mako Founders</strong>
-                  <span>Current flagship visual direction from the August build materials.</span>
-                </div>
-                <div>
-                  <strong>Shark Not Goldfish</strong>
-                  <span>Full-size electric hyper-moto, Florida-built.</span>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
+
+  <header class="hero-stack" id="top">
+    <div class="hero-top">
+      <div class="wrap hero-content">
+        <img src="assets/brand/sng-shark-badge.png" alt="Shark Not Goldfish Cycles" class="hero-badge-top" />
+        <p class="hero-kicker">Founders Series · 15 units per model</p>
+        <h1>270E <span class="accent">&amp;</span> 520E</h1>
+        <p class="hero-sub">Street-legal electric hyper-moto, built for riders the industry forgot.</p>
+        <div class="hero-actions">
+          <a href="founders.html" class="btn btn-fill">Reserve · $1,000</a>
+          <a href="#problem" class="btn btn-line-dark">Why this exists</a>
         </div>
-      </section>
-
-      <section class="section" id="story">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Brand Direction</div>
-              <h2>No Gadget Language. No Fake Factory Theater.</h2>
-            </div>
-            <p>The current docs frame SNG as a premium builder-led electric motorcycle brand. The site now follows that directly: allocation instead of fake scarcity, hardware instead of buzzwords, and a tone built for riders who already know the market has been aiming too low.</p>
-          </div>
-          <div class="story-grid">
-            <article class="story-card">
-              <strong>Full-Size First</strong>
-              <span>The strategy docs treat tall-rider geometry as a category argument, not a footnote. That stance drives the whole page.</span>
-            </article>
-            <article class="story-card">
-              <strong>Premium Read</strong>
-              <span>Raw structure, black surfaces, white typography, teal restraint, and direct copy keep the brand hard-edged and deliberate.</span>
-            </article>
-            <article class="story-card">
-              <strong>Electric Only</strong>
-              <span>The build language stays clean: Torp electric, no fake exhaust, no combustion shorthand, no ICE cosplay.</span>
-            </article>
-            <article class="story-card">
-              <strong>Founders Logic</strong>
-              <span>Application and serialized access fit the business better than pretending this is a mass-market buy-now product.</span>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="bikes">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Two Bikes</div>
-              <h2>One Flagship. One Proof.</h2>
-            </div>
-            <p>The current stack is simple: the 520E Mako Founders build carries the forward position, while the 270E platform proves the stance and intent were already there before the latest refinement pass.</p>
-          </div>
-          <div class="bike-grid">
-            <article class="bike-card">
-              <img src="assets/mako-flagship.jpg" alt="SNG 520E Mako flagship bike">
-              <div class="bike-copy">
-                <div class="bike-top">
-                  <h3>520E Mako</h3>
-                  <div class="bike-tag">Current Hero</div>
-                </div>
-                <p>Built around the August 520E brief: full-size electric hyper-moto posture, black plastics, exposed metal, Torp drive language, and a buyer experience framed around Founders allocation instead of mass-market cart behavior.</p>
-                <div class="bike-specs">
-                  <div>~52 kW power class</div>
-                  <div>Founders 01/30</div>
-                  <div>40" seat target</div>
-                  <div>~58" wheelbase target</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="bike-card">
-              <img src="assets/bike-cover.jpg" alt="SNG 270E platform bike">
-              <div class="bike-copy">
-                <div class="bike-top">
-                  <h3>270E Platform</h3>
-                  <div class="bike-tag">Proof Of Intent</div>
-                </div>
-                <p>The 270E still matters because it shows the original stance: long, sharp, real-motorcycle posture, and zero interest in making electric feel small just because the category kept settling for it.</p>
-                <div class="bike-specs">
-                  <div>Electric supermoto base</div>
-                  <div>Garage-built proof</div>
-                  <div>Black / teal / white system</div>
-                  <div>Shark Not Goldfish read</div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="specs">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">520E Spec Frame</div>
-              <h2>Specific Enough To Matter.</h2>
-            </div>
-            <p>The recent parts list and visual brief are explicit about what belongs here: Torp electric, full-size geometry, serialized Founders positioning, and enough real hardware detail to make the page credible without turning it into a PDF dump.</p>
-          </div>
-          <div class="spec-layout">
-            <div class="spec-grid">
-              <article class="spec-card">
-                <span>Drive</span>
-                <strong>Torp Electric</strong>
-              </article>
-              <article class="spec-card">
-                <span>Position</span>
-                <strong>Hyper-Moto</strong>
-              </article>
-              <article class="spec-card">
-                <span>Price Frame</span>
-                <strong>$20k</strong>
-              </article>
-              <article class="spec-card">
-                <span>Seat</span>
-                <strong>~40"</strong>
-              </article>
-              <article class="spec-card">
-                <span>Wheelbase</span>
-                <strong>~58"</strong>
-              </article>
-              <article class="spec-card">
-                <span>Series</span>
-                <strong>01/30</strong>
-              </article>
-            </div>
-            <div class="detail-stack">
-              <article class="detail-card">
-                <strong>Visual Language</strong>
-                <p>Black plastics, visible metal, controlled logo use, and a stance that reads expensive without decorative noise.</p>
-              </article>
-              <article class="detail-card">
-                <strong>Why It Reads Different</strong>
-                <p>SNG is not selling “innovation.” It is selling the bike electric riders kept waiting for while the market kept shrinking the idea.</p>
-              </article>
-              <article class="detail-card">
-                <strong>Approved Vocabulary</strong>
-                <p>Allocation. Founders. Billet. Full-size. Electric hyper-moto. Builder-led. Those are the words the recent documents consistently support.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="build">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Build Path</div>
-              <h2>Application First. Build Second. No Fake Urgency.</h2>
-            </div>
-            <p>The current strategy language points away from gimmicks and toward a narrower, higher-signal process. This keeps the path credible while the broader storefront gets rebuilt around it.</p>
-          </div>
-          <div class="build-band">
-            <div class="build-grid">
-              <article class="build-card">
-                <strong>01 · Request Allocation</strong>
-                <span>Start with rider fit, platform fit, and what you are actually trying to replace or outperform.</span>
-              </article>
-              <article class="build-card">
-                <strong>02 · Confirm Direction</strong>
-                <span>Build language stays specific: geometry, stance, intended use, and model direction before anything gets treated like a slot.</span>
-              </article>
-              <article class="build-card">
-                <strong>03 · Enter Founders Sequence</strong>
-                <span>The Founders approach is serialized access, not manufactured urgency or generic waitlist theater.</span>
-              </article>
-              <article class="build-card">
-                <strong>04 · Stay Close To The Build</strong>
-                <span>The recent notes emphasize visibility and builder contact over anonymous ecommerce polish.</span>
-              </article>
-            </div>
-            <div class="build-visual">
-              <img src="assets/mockup-520e-garage-dark.jpg" alt="SNG 520E in dark workshop">
-              <img src="assets/mockup-520e-garage-side.jpg" alt="SNG 520E side view in garage">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Contact</div>
-              <h2>Request The Real Conversation.</h2>
-            </div>
-            <p>Until the full allocation workflow is rebuilt around the live bike program, direct contact is the cleanest path. That keeps the CTA usable without pretending a broken pipeline is finished.</p>
-          </div>
-          <div class="contact-grid">
-            <article class="contact-card">
-              <strong>Founders Inquiry</strong>
-              <span>For the 520E Mako Founders conversation, send riding background, location, and the platform you are coming from.</span>
-              <div class="cta-row">
-                <a class="button primary" href="mailto:bryan@sngcycles.com?subject=SNG%20520E%20Founders%20Inquiry">Email SNG</a>
-              </div>
-            </article>
-            <article class="contact-card">
-              <strong>Brand Context</strong>
-              <span>Royal Palm Beach, Florida. Shark Not Goldfish. Full-size electric motorcycle program.</span>
-            </article>
-            <article class="contact-card">
-              <strong>Current Focus</strong>
-              <span>520E Mako Founders positioning, builder-led contact, and a tighter site system built from the recent docs.</span>
-            </article>
-            <article class="contact-card">
-              <strong>Command Hub</strong>
-              <span>If you need the live backend entry point, the command hub remains available separately from the main bike presentation.</span>
-              <div class="cta-row">
-                <a class="button secondary" href="hub.html">Open Hub</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Disclosures</div>
-              <h2>Clean Boundaries.</h2>
-            </div>
-            <p>The site keeps the serious tone but does not overclaim. The recent source material is strong enough without invented legal or performance promises.</p>
-          </div>
-          <div class="legal-grid">
-            <article class="legal-card">
-              <strong>Electric Only</strong>
-              <span>Every SNG bike shown here is represented as electric. No gas-bike placeholders. No ICE styling add-ons pretending to be part of the build.</span>
-            </article>
-            <article class="legal-card">
-              <strong>Street Use Varies</strong>
-              <span>Registration, road-use equipment, and legal status vary by jurisdiction and by final configuration.</span>
-            </article>
-            <article class="legal-card">
-              <strong>Founders Framing</strong>
-              <span>Founders language here reflects the recent strategy docs and current positioning, not a mass-production guarantee.</span>
-            </article>
-            <article class="legal-card">
-              <strong>No Fake Spec Inflation</strong>
-              <span>The page sticks to the recent documents rather than filling gaps with made-up numbers or generic electric-moto copy.</span>
-            </article>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="shell footer-grid">
-        <div class="footer-brand">
-          <div class="brand-name">SNG Cycles</div>
-          <p>Shark Not Goldfish. Full-size electric motorcycle brand. Teal, black, white. Two bikes. Three marks. Current-doc language only.</p>
-        </div>
-        <div class="footer-meta">
-          <a href="#story">Story</a>
-          <a href="#bikes">Bikes</a>
-          <a href="#specs">Specs</a>
-          <a href="#build">Build Path</a>
-          <a href="mailto:bryan@sngcycles.com">Contact</a>
-          <span>Royal Palm Beach, Florida</span>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="v">27</div><div class="l">kW · 270E</div></div>
+          <div class="hero-stat"><div class="v">52</div><div class="l">kW · 520E</div></div>
+          <div class="hero-stat"><div class="v">15</div><div class="l">Per model</div></div>
+          <div class="hero-stat"><div class="v">$1K</div><div class="l">Deposit</div></div>
         </div>
       </div>
-    </footer>
-  </div>
+    </div>
+    <div class="hero-photo-block">
+      <img src="assets/brand/270e-studio-teal.png" alt="SNG 270E — street-legal electric hyper-moto" />
+    </div>
+  </header>
+
+  <section class="sec sec-paper" id="problem">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-eyebrow">Why this exists</div>
+        <h2>The industry builds electric for someone 5′10″.</h2>
+        <p>Every existing platform is undersized and underpowered, and the one or two that come close skip premium parts to hit a price. We build for riders the market forgot.</p>
+      </div>
+      <div class="problem-grid reveal">
+        <div class="problem-panel">
+          <div class="problem-tag">Everything else</div>
+          <h3>Built for average.</h3>
+          <ul>
+            <li>Small platforms, short on real power</li>
+            <li>The rare "big enough" option cuts corners on suspension, brakes, chassis</li>
+            <li>E-bike parts, e-bike compromises</li>
+          </ul>
+        </div>
+        <div class="problem-panel us">
+          <div class="problem-tag">SNG</div>
+          <h3>Built for you.</h3>
+          <ul>
+            <li>Two full-size platforms — 520E (52kW) and 270E (27kW)</li>
+            <li>We source only the best components, never the cheapest that fits</li>
+            <li>Built by a 6′7″ founder who couldn't find a machine that fit him either</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-dark" id="gallery">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-eyebrow">The machines</div>
+        <h2>270E &amp; 520E</h2>
+        <p>27kW entry platform, 52kW billet aluminum flagship.</p>
+      </div>
+    </div>
+    <div class="gallery-lead reveal">
+      <img src="assets/brand/270e-studio-teal.png" alt="SNG 270E studio" />
+    </div>
+    <div class="gallery-row reveal">
+      <img src="assets/brand/520e-studio-billet.png" alt="SNG 520E studio — polished billet aluminum frame and swingarm" />
+      <img src="assets/brand/270e-actual-garage.png" alt="SNG 270E in the build garage" />
+    </div>
+  </section>
+
+  <section class="sec sec-paper" id="specs">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-eyebrow">Validated data</div>
+        <h2>Two platforms. Real numbers.</h2>
+        <p>Full spec sheets are being finalized — power output and unit counts below are confirmed today.</p>
+      </div>
+      <div class="spec-strip reveal">
+        <div class="spec-cell">
+          <div class="n">27<span class="u">kW</span></div>
+          <div class="l">270E peak power</div>
+          <div class="d">The entry platform into the lineup</div>
+        </div>
+        <div class="spec-cell">
+          <div class="n">52<span class="u">kW</span></div>
+          <div class="l">520E peak power</div>
+          <div class="d">Billet aluminum frame, swingarm, subframe</div>
+        </div>
+        <div class="spec-cell">
+          <div class="n">15<span class="u">units</span></div>
+          <div class="l">Per model</div>
+          <div class="d">Serialized, laser-etched chassis plates</div>
+        </div>
+        <div class="spec-cell">
+          <div class="n">$1<span class="u">K</span></div>
+          <div class="l">Deposit</div>
+          <div class="d">Fully refundable, via Shopify checkout</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" id="founders">
+    <div class="wrap reveal">
+      <div class="sec-eyebrow" style="color:var(--accent)">Founders Series allocation</div>
+      <h2>15 machines per model.<br />Apply → deposit → serial.</h2>
+      <p>Serialized 01/15–15/15, per model. Laser-etched chassis plate. $1,000 refundable to hold your place. Not a cart. An invite-style allocation.</p>
+      <div class="cta-steps">
+        <div><strong>01</strong><span>Application</span></div>
+        <div><strong>02</strong><span>$1,000 deposit</span></div>
+        <div><strong>03</strong><span>Welcome + garment</span></div>
+        <div><strong>04</strong><span>Serial assigned</span></div>
+      </div>
+      <a href="founders.html" class="btn btn-fill">Request allocation</a>
+    </div>
+  </section>
+
+  <section class="sec sec-dark" id="founder">
+    <div class="wrap">
+      <div class="founder-wrap reveal">
+        <div class="founder-photo">
+          <img src="assets/brand/270e-actual-garage.png" alt="SNG 270E in the build garage" />
+        </div>
+        <div class="founder-copy">
+          <div class="sec-eyebrow">Founder</div>
+          <h2>6′7″. Everything else was short.</h2>
+          <p class="lead">Built the machine the industry wouldn't — for riders it forgot.</p>
+          <p>Shark Not Goldfish. Two models. Florida.</p>
+          <div class="founder-actions">
+            <a href="founder.html" class="btn btn-line-dark">Read the full story</a>
+            <a href="founders.html" class="btn btn-fill">Join Founders Series</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <img src="assets/brand/sng4life-graphic.png" alt="SNG4LIFE" style="max-width:220px;width:100%;height:auto;margin-bottom:16px;" />
+          <p>Shark Not Goldfish. What are you gonna be?</p>
+          <form class="newsletter-row" action="/.netlify/functions/newsletter" method="post" data-newsletter-form>
+            <input type="email" name="email" placeholder="you@email.com" required aria-label="Email for drop alerts" />
+            <button type="submit" class="btn btn-line-dark">Join</button>
+          </form>
+        </div>
+        <div>
+          <h5>Machine</h5>
+          <ul>
+            <li><a href="520e.html">520E</a></li>
+            <li><a href="270e.html">270E</a></li>
+            <li><a href="founders.html">Allocate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Brand</h5>
+          <ul>
+            <li><a href="apparel.html">Apparel</a></li>
+            <li><a href="founder.html">Founder</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="founders.html">$1,000 deposit</a></li>
+            <li><a href="mailto:hello@sngcycles.com">hello@sngcycles.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="y"></span> SNG Cycles · SNG4LIFE</span>
+        <span>The only thing on the mind of a shark is eat.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
   <script src="js/chat-widget.js"></script>
 </body>
 </html>
